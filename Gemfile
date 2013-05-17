@@ -29,6 +29,9 @@ gem 'devise'
 gem 'cancan'
 gem 'protected_attributes'
 gem 'pg'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
