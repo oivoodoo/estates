@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe AdminController do
-  context "Admin Looged in" do
+  context "when logged in" do
     before { logged_in(:admin) }
     
     describe '#index'do
@@ -11,7 +11,7 @@ describe AdminController do
     end
   end
 
-  context "Admin not logged in" do
+  context "when not logged in" do
     before { User.destroy_all }
 
     describe "#index" do
