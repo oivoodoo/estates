@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  ROLE = %w[admin]
+
+  def role?(base_role)
+    !!ROLE.include?(base_role.to_s) && self.role.to_s.to_sym == base_role.to_sym
+  end
 end
