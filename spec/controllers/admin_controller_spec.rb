@@ -1,9 +1,23 @@
 require 'spec_helper'
 
 describe AdminController do
-	describe '#index'do
-		before { get :index }
+  context "Admin Looged in" do
+    before { logged_in(:admin) }
     
-    it { should respond_with(:success) }
+    describe '#index'do
+      before { get :index }
+      
+      it { should respond_with(:success) }
+    end
+  end
+
+  context "Admin not logged in" do
+    before { User.destroy_all }
+
+    describe "#index" do
+      before { get :index }
+      
+      it { should redirect_to(new_user_session_path) }
+    end
   end
 end
