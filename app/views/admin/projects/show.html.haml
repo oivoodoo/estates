@@ -1,0 +1,12 @@
+%h1= @project.name
+%b
+  Price: $
+  = @project.price
+%p
+  %b
+    Owner:
+    = @project.owner
+%h3
+  = @project.description
+
+= link_to "Back", admin_projects_path, class: "btn btn-danger"

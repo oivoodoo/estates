@@ -1,0 +1,15 @@
+.control-group
+  = f.label :name
+  = f.text_field :name
+.control-group
+  = f.label :price
+  = f.text_field :price
+.control-group
+  = f.label :owner
+  = f.text_field :owner
+.control-group
+  = f.label :description
+  = f.text_area :description
+%br
+= f.submit class: "btn btn-primary"
+= link_to "Back", admin_projects_path, class: "btn btn-danger"
