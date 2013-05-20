@@ -15,9 +15,10 @@ class Admin::ProjectsController < AdminController
     @project = Project.new project_params
 
     if @project.save
-      redirect_to [:admin, @project], flash: { notice: "Project created" }
+      redirect_to [:admin, @project], flash: { notice: "#{@project.name} created" }
     else
-      render :new, notice: flash.now[:error] = @project.errors.full_messages
+      flash.now[:error] = @project.errors.full_messages
+      render :new
     end
   end
 
@@ -28,9 +29,10 @@ class Admin::ProjectsController < AdminController
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
-      redirect_to [:admin, @project], flash: { notice: "Project updated" }
+      redirect_to [:admin, @project], flash: { notice: "#{@project.name} updated" }
     else
-      render :edit, notice: flash.now[:error] = @project.errors.full_messages
+      flash.now[:error] = @project.errors.full_messages
+      render :edit
     end
   end
 
@@ -43,7 +45,7 @@ class Admin::ProjectsController < AdminController
 
   private
 
-    def project_params
-      params.require(:project).permit!
-    end
+  def project_params
+    params.require(:project).permit!
+  end
 end
