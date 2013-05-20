@@ -1,0 +1,12 @@
+= link_to "Add new", new_admin_project_path
+
+- @projects.each do |project|
+  %h2= link_to project.name, admin_project_path(project)
+  = project.price
+  %b= project.owner
+  %h3= project.description
+  = link_to "Edit", edit_admin_project_path(project)
+  = link_to "Delete", admin_project_path(project), confirm: "Are you shure?", method: :delete
+  %hr
+
+= link_to "Back", admin_path

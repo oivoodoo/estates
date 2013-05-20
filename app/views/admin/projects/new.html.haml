@@ -1,0 +1,10 @@
+- if @project.errors.any?
+  .alert.alert-block.alert-error
+    %h1 Errors:
+    - @project.errors.full_messages.each do |message|
+      %h4
+        %li
+          = message
+
+= form_for(@project, :url => admin_projects_path) do |f|
+  = render partial: "form", locals: { f: f }

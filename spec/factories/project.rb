@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :project do
-    name									"project name"
-    owner									"owner name"
-    price              		"12345678"
-    description					 	"description example"
+    name
+    price              "123"
+    owner     "John Snow"
+    description "Some description here"
   end
+
+  sequence(:name) { |i| "#{i}project" }
 end

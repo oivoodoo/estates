@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 3ac1736365a14253b34b4798ee2dc0215896be9a
+  revision: 4aa0f0e661bc4664f59fd3e4287f7acf4d1330e8
   specs:
     twitter-bootstrap-rails (2.2.6)
       actionpack (>= 3.1)
@@ -119,7 +119,7 @@ GEM
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
-    rspec-rails (2.13.1)
+    rspec-rails (2.13.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -159,7 +159,7 @@ GEM
     turbolinks (1.1.1)
       coffee-rails
     tzinfo (0.3.37)
-    uglifier (2.1.0)
+    uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
