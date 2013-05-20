@@ -5,8 +5,12 @@ Estates::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  resources :admin, only: [ :index ]
 
+  get 'admin' => 'admin#index', :as => 'admin'
+
+  namespace :admin do
+    resources :projects
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
