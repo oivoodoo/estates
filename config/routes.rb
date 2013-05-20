@@ -6,7 +6,7 @@ Estates::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  get 'admin' => 'admin#index', :as => 'admin'
+  get 'admin' => 'admin#index', as: 'admin'
 
   namespace :admin do
     resources :projects

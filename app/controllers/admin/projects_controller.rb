@@ -1,4 +1,4 @@
-class Admin::ProjectsController < ApplicationController
+class Admin::ProjectsController < AdminController
   def index
     @projects = Project.all
   end
@@ -15,9 +15,9 @@ class Admin::ProjectsController < ApplicationController
     @project = Project.new project_params
 
     if @project.save
-      redirect_to [:admin, @project]
+      redirect_to [:admin, @project], flash: { notice: "Project created" }
     else
-      render :new
+      render :new, notice: flash.now[:error] = @project.errors.full_messages
     end
   end
 
@@ -27,10 +27,10 @@ class Admin::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    if @project.update_attributes!(project_params)
-      redirect_to [:admin, @project]
+    if @project.update_attributes(project_params)
+      redirect_to [:admin, @project], flash: { notice: "Project updated" }
     else
-      render :edit
+      render :edit, notice: flash.now[:error] = @project.errors.full_messages
     end
   end
 
@@ -38,12 +38,12 @@ class Admin::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to admin_projects_path
+    redirect_to admin_projects_path, flash: { notice: "#{@project.name} deleted" }
   end
 
   private
 
     def project_params
-      params.require(:project).permit(:name, :price, :owner, :description, :id)
+      params.require(:project).permit!
     end
 end
