@@ -69,7 +69,7 @@ describe Admin::ProjectsController do
         
         it { project.reload.name.should == "The best estate in Cuba" }
 
-        it { should redirect_to [:admin, :project] }
+        it { should redirect_to(admin_project_path(assigns(:project))) }
       end
       
       context "without existing project" do
