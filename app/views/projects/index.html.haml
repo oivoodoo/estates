@@ -12,7 +12,7 @@
     %tbody
       - @projects.each do |project|
         %tr
-          %td= link_to project.name, project_path(project)
+          %td= project.name
           %td= project.price
           %td= project.description
           %td= project.owner
