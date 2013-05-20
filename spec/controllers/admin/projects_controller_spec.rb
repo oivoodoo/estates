@@ -14,7 +14,7 @@ describe Admin::ProjectsController do
       context 'with existing project' do
         let(:project) { create(:project) }
 
-        before { get :show, id: project.id }
+        before { get :show, id: project.to_param }
 
         it { should respond_with(:success) }
         
@@ -32,7 +32,6 @@ describe Admin::ProjectsController do
       before { get :new }
 
       it { should render_template(:new) }
-      it { assigns(:project).should be_present }
       it { assigns(:project).should be_a(Project) }
     end
 
@@ -42,20 +41,20 @@ describe Admin::ProjectsController do
         
         it { assigns(:project).should_not be_new_record }
         
-        # it { should redirect_to [:admin, :project] }
+        it { should redirect_to(admin_project_path(assigns(:project))) }
       end
     end
 
     describe "#edit" do
-      context "with existing project" do
+      context "with project" do
         let!(:project) { create(:project) }
         
-        before { get :edit, id: project.id }
+        before { get :edit, id: project.to_param }
         
         it { assigns(:project).should == project }
       end
       
-      context "without existing project" do
+      context "without project" do
         before { get :edit, id: "invalid id" }
         
         it { should respond_with(404) }
@@ -66,7 +65,7 @@ describe Admin::ProjectsController do
       context "with existing project" do
         let!(:project) { create(:project, name: "Estate in Cuba") }
 
-        before { put :update, id: project.id, project: { name: "The best estate in Cuba" } }
+        before { put :update, id: project.to_param, project: { name: "The best estate in Cuba" } }
         
         it { project.reload.name.should == "The best estate in Cuba" }
 
@@ -86,7 +85,7 @@ describe Admin::ProjectsController do
         
         it "should delete the project" do
           lambda {
-            delete :destroy, id: project.id
+            delete :destroy, id: project.to_param
           }.should change(Project, :count).by(-1)
         end
       end
