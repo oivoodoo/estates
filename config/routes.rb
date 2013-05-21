@@ -6,7 +6,7 @@ Estates::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :projects, only: :index
+  resources :projects, only: [:index, :show]
 
   get 'admin' => 'admin#index', :as => 'admin'
 
