@@ -1,193 +1,84 @@
-%html{:dir => "ltr", :lang => "en"}
-  %head
-    %title Flock Captial
-    %meta{:charset => "utf-8"}
-      %meta{:content => "html meta description", :name => "description"}
-        %meta{:content => "html, meta, keywords", :name => "keywords"}
-          %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
-            %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
-              %link{:href => "http://flock.ips/", :rel => "canonical"}
-                %link{:href => "favicon.png", :rel => "Shortcut Icon", :type => "image/ico"}
-                  %link{:href => "http://flockcapital.com/W.style.css.pagespeed.cf.STm3lxPY_z.css", :rel => "stylesheet", :type => "text/css"}
-                    /[if IE 8] <link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen">
-                    :javascript
-                      //
-                      document.createElement("article");document.createElement("aside");document.createElement("audio");document.createElement("canvas");document.createElement("command");document.createElement("datalist");document.createElement("details");document.createElement("embed");document.createElement("figcaption");document.createElement("figure");document.createElement("footer");document.createElement("header");document.createElement("hgroup");document.createElement("keygen");document.createElement("mark");document.createElement("meter");document.createElement("nav");document.createElement("output");document.createElement("progress");document.createElement("rp");document.createElement("rt");document.createElement("ruby");document.createElement("section");document.createElement("source");document.createElement("summary");document.createElement("time");document.createElement("video");
-                      //                    %script{:src => "http://flockcapital.com/js/jquery-1.9.1.min.js.pagespeed.jm.roLDJ9nOeu.js"}
-                    :javascript
-                      //
-                      jQuery(document).ready(function($){var winW,winH,menuTallH,menuShortH,layout=function(){winW=$(window).width();winH=$(window).height();if(winW>=700&&winW<=1000){menuTallH=1.25*144;menuShortH=96;}else{menuTallH=144;menuShortH=48;}
-                      if(winW>1000)$('#project .details').insertAfter('#project .side');else $('#project .side').insertAfter('#project .details');var minIntroH=parseInt($('#intro').css('min-height'),10);if(winW/2<=minIntroH)$('#intro img').addClass('crop').css('margin','0 '+((winW-(minIntroH*2))/2)+'px');else $('#intro img').removeClass('crop').css('margin',0);sizeMenu();}
-                      $(window).on('resize',function(e){$('#screen-width span').text($(window).width());layout();});$(document).on('load',function(){layout();});$(window).on('scroll',function(e){sizeMenu();});window.addEventListener('touchmove',sizeMenu,false);window.addEventListener('ongesturechange',sizeMenu,false);var
-                      menuTimeout,sizeMenu=function(){var scrollTop=$(window).scrollTop(),collapsed=scrollTop>menuTallH-menuShortH?true:false,menuH=collapsed?menuShortH:scrollTop<=0?menuTallH:menuTallH-scrollTop;document.getElementById('masthead').style.height=menuH+'px';$('#masthead').toggleClass('collapsed',collapsed);};layout();});
-                      //                    / <script src="js/ggs.js"></script>
-  %body{:onload => ""}
-    #screen-width
-      %span> 1665
-      px
-    %ul#screen-size-label
-      %li#xxl
-        Very Large Display
-        %span 1800px+
-      %li#xl
-        Large Display
-        %span 1500—1799px
-      %li#l
-        Medium Display
-        %span 1200—1499px
-      %li#m
-        Small Display
-        %span 1001—1199px
-      %li#s
-        Tablets &amp; landscape large smartphones
-        %span 700—1000px
-      %li#xs
-        Large smartphones
-        %span 470—699px
-      %li#xxs
-        Small smartphones
-        %span —469px
-    #wrap
-      %header#masthead{:style => "height: 144px;"}
-        %div
-          #logo
-            %div
-              %h1{:itemprop => "logo"}
-                = link_to "Estates", root_path
-          %nav
-            %div
-              %ul
-                %li
-                  = link_to "Projects", projects_path
-                %li
-                  %a{:href => "#"} How it Works
-                %li
-                  %a{:href => "#"} Blog
-                %li
-                  = render 'devise/menu/registration_items'
-                %li
-                  = render 'devise/menu/login_items'
-                %li
-                  = link_to "Admin", admin_path  
-      #main
-        %section#intro
-          .gridwrap
-            #slideshow.grid-1-1.no-padding
-              %img{:src => "http://flockcapital.com/img/xsf-housing.jpg.pagespeed.ic.LgUeSLDJBi.jpg", :style => "margin: 0px;"}
-        %section.home-listing
-          .listing-head
-            %h4
-              %label Local
-              %span
-                %a{:href => "projects.php?show=all-local"} See all Local
-          .gridwrap
-            %article.project-badge.new{:onclick => "location.href='project.php'"}
-              %div
-                %header
-                  %a{:href => "project.php"}
-                    %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
-                      .thumbfocus
-                  %hgroup
-                    %h3
-                      %a{:href => "project.php"}
-                        Project Name
-                        %label.type Residential
-                    %h4 $32,000,000
-                .goalmeter
-                  .progress{:style => "width:66%"}
-                    .marker{:style => "left:66%;"}
-                      %label 66%
-                %ul.meta
-                  %li.developer Developer: Broadgate Capital
-                  %li.target-return Target return 12%
-            %article.project-badge.new{:onclick => "location.href='project.php'"}
-              %div
-                %header
-                  %a{:href => "project.php"}
-                    %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
-                      .thumbfocus
-                  %hgroup
-                    %h3
-                      %a{:href => "project.php"}
-                        Project Name
-                        %label.type Residential
-                    %h4 $32,000,000
-                .goalmeter
-                  .progress{:style => "width:66%"}
-                    .marker{:style => "left:66%;"}
-                      %label 66%
-                %ul.meta
-                  %li.developer Developer: Broadgate Capital
-                  %li.target-return Target return 12%
-            %article.project-badge.new{:onclick => "location.href='project.php'"}
-              %div
-                %header
-                  %a{:href => "project.php"}
-                    %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
-                      .thumbfocus
-                  %hgroup
-                    %h3
-                      %a{:href => "project.php"}
-                        Project Name
-                        %label.type Residential
-                    %h4 $32,000,000
-                .goalmeter
-                  .progress{:style => "width:66%"}
-                    .marker{:style => "left:66%;"}
-                      %label 66%
-                %ul.meta
-                  %li.developer Developer: Broadgate Capital
-                  %li.target-return Target return 12%
-            %article.project-badge.new{:onclick => "location.href='project.php'"}
-              %div
-                %header
-                  %a{:href => "project.php"}
-                    %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
-                      .thumbfocus
-                  %hgroup
-                    %h3
-                      %a{:href => "project.php"}
-                        Project Name
-                        %label.type Residential
-                    %h4 $32,000,000
-                .goalmeter
-                  .progress{:style => "width:66%"}
-                    .marker{:style => "left:66%;"}
-                      %label 66%
-        %section
-          .gridwrap
-            .grid-1-1
-              %img{:src => "http://flockcapital.com/img/xprocess.png.pagespeed.ic.D46wIDPsp2.png", :style => "width:100%; height:auto;"}
-        %div{:style => "display:none;"}
-          %section
-            .gridwrap
-              .grid-1-3
-                %div
-              .grid-1-3
-                %div
-              .grid-1-3
-                %div
-          %section
-            .gridwrap
-              .grid-1-3
-                %div
-              .grid-2-3
-                %div
-          %section
-            .gridwrap
-              .grid-1-4
-                %div
-              .grid-1-4
-                %div
-              .grid-1-4
-                %div
-              .grid-1-4
-                %div
-          %section
-            .gridwrap
-              .grid-1-4
-                %div
-              .grid-3-4
-                %div
-      / #main
-      %footer
+%section#intro
+  .gridwrap
+    #slideshow.grid-1-1.no-padding
+      %img{:src => "http://flockcapital.com/img/xsf-housing.jpg.pagespeed.ic.LgUeSLDJBi.jpg", :style => "margin: 0px;"}
+%section.home-listing
+  .listing-head
+    %h4
+      %label Local
+      %span
+        %a{:href => "projects.php?show=all-local"} See all Local
+  .gridwrap
+    %article.project-badge.new{:onclick => "location.href='project.php'"}
+      %div
+        %header
+          %a{:href => "project.php"}
+            %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
+              .thumbfocus
+          %hgroup
+            %h3
+              %a{:href => "project.php"}
+                Project Name
+                %label.type Residential
+            %h4 $32,000,000
+        .goalmeter
+          .progress{:style => "width:66%"}
+            .marker{:style => "left:66%;"}
+              %label 66%
+        %ul.meta
+          %li.developer Developer: Broadgate Capital
+          %li.target-return Target return 12%
+    %article.project-badge.new{:onclick => "location.href='project.php'"}
+      %div
+        %header
+          %a{:href => "project.php"}
+            %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
+              .thumbfocus
+          %hgroup
+            %h3
+              %a{:href => "project.php"}
+                Project Name
+                %label.type Residential
+            %h4 $32,000,000
+        .goalmeter
+          .progress{:style => "width:66%"}
+            .marker{:style => "left:66%;"}
+              %label 66%
+        %ul.meta
+          %li.developer Developer: Broadgate Capital
+          %li.target-return Target return 12%
+    %article.project-badge.new{:onclick => "location.href='project.php'"}
+      %div
+        %header
+          %a{:href => "project.php"}
+            %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
+              .thumbfocus
+          %hgroup
+            %h3
+              %a{:href => "project.php"}
+                Project Name
+                %label.type Residential
+            %h4 $32,000,000
+        .goalmeter
+          .progress{:style => "width:66%"}
+            .marker{:style => "left:66%;"}
+              %label 66%
+        %ul.meta
+          %li.developer Developer: Broadgate Capital
+          %li.target-return Target return 12%
+    %article.project-badge.new{:onclick => "location.href='project.php'"}
+      %div
+        %header
+          %a{:href => "project.php"}
+            %img{:src => "http://flockcapital.com/img/xdummy-thumb-soma-grand.jpg.pagespeed.ic.EbsrIAE3Gk.jpg"}
+              .thumbfocus
+          %hgroup
+            %h3
+              %a{:href => "project.php"}
+                Project Name
+                %label.type Residential
+            %h4 $32,000,000
+        .goalmeter
+          .progress{:style => "width:66%"}
+            .marker{:style => "left:66%;"}
+              %label 66%
