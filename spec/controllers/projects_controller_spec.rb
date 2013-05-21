@@ -25,7 +25,7 @@ describe ProjectsController do
 
 				it { should respond_with(:success) }
 
-				it { assigns(:project).should == project }
+				it { expect(assigns(:project)).to eq(project) }
 			end
 
 			context 'without project' do
