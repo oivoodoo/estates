@@ -1,0 +1,21 @@
+%link{:href => "http://flockcapital.com/W.style.css.pagespeed.cf.STm3lxPY_z.css", :rel => "stylesheet", :type => "text/css"}
+%div
+  #logo
+    %div
+      %h1{:itemprop => "logo"}
+        = link_to "Estates", root_path
+  %nav
+    %div
+      %ul
+        %li
+          = link_to "Projects", projects_path
+        %li
+          %a{:href => "#"} How it Works
+        %li
+          %a{:href => "#"} Blog
+        %li
+          = render 'devise/menu/registration_items'
+        %li
+          = render 'devise/menu/login_items'
+        %li
+          = link_to "Admin", admin_path
