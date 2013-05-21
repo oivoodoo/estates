@@ -1,16 +1,22 @@
-- @projects.each do |project|
-  %h1= link_to project.name, admin_project_path(project)
+%table.table.table-hover
+  %thead
+    %tr
+      %th Project name
+      %th Price, $
+      %th Owner
+      %th Actions
 
-  %b $
-  = project.price
-  .owner_label
-    Owner:
-    = project.owner
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= link_to project.name, admin_project_path(project)
+        %td= project.price
+        %td= project.owner
 
-  %h3= project.description
-
-  = link_to "Edit", edit_admin_project_path(project), class: "btn btn-success"
-  = link_to "Delete", admin_project_path(project), confirm: "Are you sure?", method: :delete, class: "btn btn-danger"
-  %hr
+        %td
+          = link_to "Edit", edit_admin_project_path(project), class: "btn btn-success btn-mini"
+          = link_to "Delete", admin_project_path(project), confirm: "Are you sure?", method: :delete, class: "btn btn-danger btn-mini"
 
 = link_to "Back to Admin", admin_path
+
+
