@@ -1,4 +1,5 @@
 %h1= @project.name
+= image_tag(@project.image_url(:thumb))
 %b
   Price: $
   = @project.price
