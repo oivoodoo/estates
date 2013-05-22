@@ -55,4 +55,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'debugger'
   gem 'factory_girl_rails'
+  gem 'heroku'
 end
