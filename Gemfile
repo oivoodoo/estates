@@ -55,5 +55,17 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'debugger'
   gem 'factory_girl_rails'
-  gem 'heroku'
+  gem 'fuubar'
 end
+
+group :development do
+  gem 'heroku'
+  gem 'foreman'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+end
+
