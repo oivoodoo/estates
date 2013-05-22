@@ -16,3 +16,9 @@ Deploy it using:
 git push staging master
 ```
 
+Apply migrations:
+
+```
+heroku run rake db:migrate --remote staging
+```
+
