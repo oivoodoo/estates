@@ -25,7 +25,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 
 gem 'haml'
-gem 'devise'
+gem 'devise', git: 'git://github.com/plataformatec/devise.git'
 gem 'cancan'
 gem 'protected_attributes'
 gem 'pg'
@@ -35,6 +35,9 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'will_paginate', '~> 3.0'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
