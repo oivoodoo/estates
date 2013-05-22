@@ -1,10 +1,11 @@
 class Admin::ProjectsController < AdminController
+  before_filter :find_project, only: [:show, :edit, :update, :destroy]
+
   def index
     @projects = Project.all
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def new
@@ -12,7 +13,7 @@ class Admin::ProjectsController < AdminController
   end
 
   def create
-    @project = Project.new project_params
+    @project = Project.new(project_params)
 
     if @project.save
       redirect_to [:admin, @project], flash: { notice: "#{@project.name} created" }
@@ -23,11 +24,9 @@ class Admin::ProjectsController < AdminController
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       redirect_to [:admin, @project], flash: { notice: "#{@project.name} updated" }
     else
@@ -37,7 +36,6 @@ class Admin::ProjectsController < AdminController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
 
     redirect_to admin_projects_path, flash: { notice: "#{@project.name} deleted" }
@@ -48,4 +46,9 @@ class Admin::ProjectsController < AdminController
   def project_params
     params.require(:project).permit!
   end
+
+  def find_project
+    @project = Project.find(params[:id])
+  end
 end
+
