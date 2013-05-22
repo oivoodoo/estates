@@ -5,9 +5,18 @@ describe Admin::ProjectsController do
     before { logged_in(:admin) }
 
     describe '#index' do
+      let!(:projects) { 2.times.map { create(:project) } }
+
       before { get :index }
 
       it { should respond_with(:success) }
+
+      it 'should pick up projects' do
+        collection = assigns(:projects)
+        expect(collection).to have(2).items
+        expect(collection).to include(projects[0])
+        expect(collection).to include(projects[1])
+      end
     end
 
     describe '#show' do
