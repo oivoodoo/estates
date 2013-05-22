@@ -7913,7 +7913,6 @@ THEME STYLES
 -------------------------------------------------------------- */
 body {
   -webkit-font-smoothing: antialiased;
-  background: url(images/backgrounds/wild_oliva_light.png);
 }
 h1,
 h2,
@@ -7978,7 +7977,6 @@ a:focus {
 /* =Header
 -------------------------------------------------------------- */
 header {
-  background: url(images/backgrounds/wild_oliva_light_head.png);
   border-bottom: solid 1px #cccccc;
 }
 header .container {
@@ -8055,12 +8053,7 @@ header .container {
 .lt-ie9 .navbar .nav .dropdown-menu > li > a {
   padding: 3px 20px;
 }
-.navbar .btn-navbar {
-  margin-top: 22px;
-  margin-right: 0;
-  margin-left: 0;
-  background: url(images/backgrounds/wild_oliva_light.png);
-}
+
 .navbar .btn-navbar span.nb_left {
   padding: 5px;
 }
@@ -8076,18 +8069,15 @@ header .container {
 }
 .in .nav li a {
   margin: 0 0 6px 0px;
-  background: url(wild_oliva_light.png);
 }
 .in .nav li a:hover,
 .in .nav li a:active {
-  background: url(wild_oliva_blue_light.png);
   color: #ffffff;
   text-shadow: 0px 0px 0 transparent;
   border-bottom: solid 0px #0088cc;
 }
 .in .nav li.active a,
 .in .nav li.active a:hover {
-  background: url(wild_oliva_dark.png);
   color: #ffffff;
   text-shadow: 0px 0px 0 transparent;
   border-bottom: solid 0px #0088cc;
@@ -8112,7 +8102,6 @@ header .container {
   display: block;
   float: left;
   margin: 0 3px;
-  background: url(wild_oliva_light.png);
   -webkit-border-radius: 500px;
   -moz-border-radius: 500px;
   border-radius: 500px;
@@ -8129,7 +8118,6 @@ header .container {
 #social_media_wrapper a:active {
   text-decoration: none;
   color: #ffffff;
-  background: url(wild_oliva_blue_light.png);
 }
 #sign {
   position: absolute;
@@ -8319,9 +8307,6 @@ header .container {
 }
 /* =Main, Homepage
 -------------------------------------------------------------- */
-#main {
-  background: url(images/backgrounds/wild_oliva_light.png);
-}
 section.call_to_action {
   text-align: center;
   padding: 35px 0 45px 0;
