@@ -1,1 +1,1 @@
-rvm use --create ruby-1.9.3-p286@estates
+rvm use --create 1.9.3@estates
