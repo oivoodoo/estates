@@ -49,3 +49,4 @@ class Admin::ProjectsController < AdminController
     params.require(:project).permit!
   end
 end
+
