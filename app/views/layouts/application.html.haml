@@ -7,8 +7,8 @@
   %body
     #wrap
       %header#masthead{:style => "height: 144px;"}
-        = render partial: "header"
-      #main   
+        = render 'header'
+      #main
         = yield
-      = render partial: "footer"
+      = render 'footer'
 
