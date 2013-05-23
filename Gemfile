@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'inherited_resources'
 

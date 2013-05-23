@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
+    :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid
 
-  validates :name, presence: true
+  validates :name, :email, presence: true
 
   has_many :authentications
 
@@ -23,6 +23,14 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_google(auth)
+    user = Authentication.find_user_by_auth(auth)
+
+    return user if user.present?
+
+    create_user_by_auth(auth, name: auth.info["name"], email: auth.info["email"])
+  end
+
+  def self.find_for_linkedin(auth)
     user = Authentication.find_user_by_auth(auth)
 
     return user if user.present?

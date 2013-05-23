@@ -8972,7 +8972,7 @@ article.post .post_content .btn {
   font-size: 30px;
   width: 70px;
   height: 70px;
-  padding: 21px;
+  padding: 19px;
   -webkit-transition: all 100ms linear;
   -moz-transition: all 100ms linear;
   -o-transition: all 100ms linear;
@@ -8981,7 +8981,7 @@ article.post .post_content .btn {
 .social_sign a.fb {
   background-color: #3B5998;
 }
-.social_sign a.tw {
+.social_sign a.li {
   background-color: #00ACEE;
 }
 .social_sign a.gp {

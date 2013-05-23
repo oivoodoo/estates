@@ -21,6 +21,8 @@ Devise.setup do |config|
   require "omniauth-google-oauth2"
   config.omniauth :google_oauth2, "662955766629-ker183n38a59d9rqgbd8eno9ehk0kvg6.apps.googleusercontent.com", "RdFJhD5hc6soMw2OnSpXM-Lx", { access_type: "offline", approval_prompt: "force" }
 
+  require "omniauth-linkedin"
+  config.omniauth :linkedin, "0futayxxa8pq", "Mdtba4VZq1JCCUgs"
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for

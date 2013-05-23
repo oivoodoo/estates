@@ -3,8 +3,8 @@
   - unless signed_in?
     %a.fb{:href => user_omniauth_authorize_path(:facebook)}
       %i.icon.icon-facebook
-    %a.tw{:href => "#twitter"}
-      %i.icon.icon-twitter
+    %a.li{:href => user_omniauth_authorize_path(:linkedin)}
+      %i.icon-linkedin
     %a.gp{:href => user_omniauth_authorize_path(:google_oauth2)}
       %i.icon.icon-google-plus
   - else
