@@ -12,7 +12,9 @@ Estates::Application.routes.draw do
 
   namespace :admin do
     resources :projects
+    resources :users
   end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
