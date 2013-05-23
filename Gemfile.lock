@@ -113,7 +113,7 @@ GEM
     guard-rspec (3.0.0)
       guard (>= 1.8)
       rspec (~> 2.13)
-    haml (4.0.2)
+    haml (4.0.3)
       tilt
     hashie (2.0.5)
     heroku (2.39.3)
