@@ -35,13 +35,13 @@ describe User do
 end
 
 describe User do
-  describe '#find_for_facebook_oauth' do
+  describe '#find_for_facebook' do
     context 'with valid auth' do
       before do
         @extra = double('extra', raw_info: double(name: 'John Watson'))
         @info  = double('info', email: "john.watson@example.com")
         @auth  = double('auth', provider: 'facebook', uid: "uid", extra: @extra, info: @info)
-        @user  = User.find_for_facebook_oauth(@auth)
+        @user  = User.find_for_facebook(@auth)
       end
 
       it 'should create a new user by facebook auth' do
@@ -58,7 +58,35 @@ describe User do
         @extra = double('extra', raw_info: double(name: ''))
         @info  = double('info', email: '')
         @auth  = double('auth', provider: 'facebook', uid: 'uid', extra: @extra, info: @info)
-        @user  = User.find_for_facebook_oauth(@auth)
+        @user  = User.find_for_facebook(@auth)
+      end
+
+      it 'should not create a new user' do
+        expect(User.count).to eq(0)
+      end
+    end
+  end
+
+  describe '#find_for_google' do
+    context 'with valid auth' do
+      before do
+        @auth = double('auth', provider: 'google', uid: 'uid', info: { 'email' => 'john.watson@example.com', 'name' => 'John Watson' })
+        @user = User.find_for_google(@auth)
+      end
+
+      it 'should create a new user by facebook auth' do
+        expect(User.count).to     eq(1)
+        expect(@user.name).to     eq("John Watson")
+        expect(@user.provider).to eq("google")
+        expect(@user.uid).to      eq("uid")
+        expect(@user.email).to    eq("john.watson@example.com")
+      end
+    end
+
+    context 'with invalid auth' do
+      before do
+        @auth = double('auth', provider: 'google', uid: 'uid', info: { 'email' => '', 'name' => 'John Watson' })
+        @user = User.find_for_google(@auth)
       end
 
       it 'should not create a new user' do

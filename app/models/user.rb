@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     self.role == r
   end
 
-  def self.find_for_facebook_oauth(auth)
+  def self.find_for_facebook(auth)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
 
     unless user
@@ -28,14 +28,16 @@ class User < ActiveRecord::Base
     user
   end
 
-  def self.find_for_google_oauth2(access_token)
-    data = access_token.info
-    user = User.where(:email => data["email"]).first
+  def self.find_for_google(auth)
+    user = User.find_by(provider: auth.provider, uid: auth.uid)
 
     unless user
+      data = auth.info
       user = User.create(
         name:     data["name"],
         email:    data["email"],
+        provider: auth.provider,
+        uid:      auth.uid,
         password: Devise.friendly_token[0,20]
       )
     end
