@@ -1,0 +1,19 @@
+%article.project-badge.new{:onclick => "location.href='#{url_for(project)}'"}
+  %div
+    %header
+      = link_to project do
+        - image_tag project.image_url do
+          .thumbfocus
+      %hgroup
+        %h3
+          - link_to project.name do
+            %label.type Residential
+        %h4 $32,000,000
+    .goalmeter
+      .progress{:style => "width:66%"}
+        .marker{:style => "left:66%;"}
+          %label 66%
+    %ul.meta
+      %li.developer Developer: Broadgate Capital
+      %li.target-return Target return 12%
+
