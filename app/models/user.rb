@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
 
     unless user
       user = User.create(
-        name:     auth.extra.raw_info.name,
+        name:     auth.extra['raw_info']['name'],
         provider: auth.provider,
         uid:      auth.uid,
-        email:    auth.info.email,
+        email:    auth.info['email'],
         password: Devise.friendly_token[0,20]
       )
     end
@@ -32,10 +32,9 @@ class User < ActiveRecord::Base
     user = User.find_by(provider: auth.provider, uid: auth.uid)
 
     unless user
-      data = auth.info
       user = User.create(
-        name:     data["name"],
-        email:    data["email"],
+        name:     auth.info["name"],
+        email:    auth.info["email"],
         provider: auth.provider,
         uid:      auth.uid,
         password: Devise.friendly_token[0,20]

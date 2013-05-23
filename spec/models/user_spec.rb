@@ -38,9 +38,7 @@ describe User do
   describe '#find_for_facebook' do
     context 'with valid auth' do
       before do
-        @extra = double('extra', raw_info: double(name: 'John Watson'))
-        @info  = double('info', email: "john.watson@example.com")
-        @auth  = double('auth', provider: 'facebook', uid: "uid", extra: @extra, info: @info)
+        @auth  = double('auth', provider: 'facebook', uid: 'uid', extra: { 'raw_info' => { 'name' => 'John Watson' } }, info: { 'email' => 'john.watson@example.com' })
         @user  = User.find_for_facebook(@auth)
       end
 
@@ -55,9 +53,7 @@ describe User do
 
     context 'with invalid auth' do
       before do
-        @extra = double('extra', raw_info: double(name: ''))
-        @info  = double('info', email: '')
-        @auth  = double('auth', provider: 'facebook', uid: 'uid', extra: @extra, info: @info)
+        @auth  = double('auth', provider: 'facebook', uid: 'uid', extra: { 'raw_info' => { 'name' => '' } }, info: { 'email' => '' })
         @user  = User.find_for_facebook(@auth)
       end
 
