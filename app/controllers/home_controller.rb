@@ -3,3 +3,4 @@ class HomeController < ApplicationController
     @projects = Project.all
   end
 end
+
