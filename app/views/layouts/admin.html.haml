@@ -33,10 +33,9 @@
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header Sidebar
-              %li= link_to "List of Estates", admin_projects_path
-              %li= link_to "Link2", "/path2"
-              %li= link_to "Link3", "/path3"
-          = link_to "Add new Project", new_admin_project_path, class: "btn btn-block btn-primary btn btn-large"
+              %li= link_to "Projects", admin_projects_path
+              %li= link_to "Users", admin_users_path
+          = yield :buttons
 
         .span9
           = bootstrap_flash
@@ -46,3 +45,4 @@
         %p © Company 2013
 
     = javascript_include_tag "admin"
+

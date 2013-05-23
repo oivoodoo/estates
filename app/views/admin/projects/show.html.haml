@@ -1,13 +1,13 @@
-%h1= @project.name
-= image_tag(@project.image_url(:thumb))
+%h1= resource.name
+= image_tag(resource.image_url(:thumb))
 %b
   Price: $
-  = @project.price
+  = resource.price
 %p
   %b
     Owner:
-    = @project.owner
+    = resource.owner
 %h3
-  = @project.description
+  = resource.description
 
 = link_to "Back", admin_projects_path, class: "btn btn-danger"

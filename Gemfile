@@ -40,6 +40,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+gem 'inherited_resources'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

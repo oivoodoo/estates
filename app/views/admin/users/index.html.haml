@@ -1,0 +1,15 @@
+- content_for :buttons do
+  = link_to "Add new User", new_admin_user_path, class: "btn btn-block btn-primary btn btn-large"
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Email
+
+  %tbody
+    = render partial: 'user', collection: collection
+
+= link_to "Back to Admin", admin_path
+
+
