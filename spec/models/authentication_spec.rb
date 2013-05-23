@@ -11,6 +11,7 @@ end
 describe Authentication do
   describe '#find_user_by_auth' do
     let!(:kate) { create(:authentication, email: 'kate@example.com', provider: 'google', uid: 'google-id') }
+    let!(:kate) { create(:authentication, email: 'kate@example.com', provider: 'linkedin', uid: 'linkedin-id') }
     let!(:fred) { create(:authentication, email: 'fred@example.com', provider: 'facebook', uid: 'facebook-id', email: 'fred@example.com') }
     let(:auth)  { double('auth', provider: 'facebook', uid: 'facebook-id', info: { 'email' => 'fred@example.com' }) }
 

@@ -81,13 +81,13 @@ describe User do
         @user = User.find_for_google(@auth)
       end
 
-      it 'should create a new user by facebook auth' do
+      it 'should create a new user by google auth' do
         expect(User.count).to  eq(1)
         expect(@user.name).to  eq("John Watson")
         expect(@user.email).to eq("john.watson@example.com")
       end
 
-      it 'should create facebook authentication' do
+      it 'should create google authentication' do
         authentications = @user.reload.authentications
         expect(authentications).to have(1).item
         expect(authentications[0].provider).to eq('google')
@@ -111,17 +111,58 @@ describe User do
     end
   end
 
+  describe '#find_for_linkedin' do
+    context 'with valid auth' do
+      before do
+        @auth = double('auth', provider: 'linkedin', uid: 'linkedin-id', info: { 'email' => 'john.watson@example.com', 'name' => 'John Watson' })
+        @user = User.find_for_linkedin(@auth)
+      end
+
+      it 'should create a new user by linkedin auth' do
+        expect(User.count).to  eq(1)
+        expect(@user.name).to  eq("John Watson")
+        expect(@user.email).to eq("john.watson@example.com")
+      end
+
+      it 'should create linkedin authentication' do
+        authentications = @user.reload.authentications
+        expect(authentications).to have(1).item
+        expect(authentications[0].provider).to eq('linkedin')
+        expect(authentications[0].uid).to      eq('linkedin-id')
+      end
+    end
+
+    context 'with invalid auth' do
+      before do
+        @auth = double('auth', provider: 'linkedin', uid: 'uid', info: { 'email' => '', 'name' => 'John Watson' })
+        @user = User.find_for_linkedin(@auth)
+      end
+
+      it 'should not create a new user' do
+        expect(User.count).to eq(0)
+      end
+
+      it 'should not create a authentication' do
+        expect(Authentication.count).to eq(0)
+      end
+    end
+  end
+
   context 'with multiple authentication methods' do
     let!(:kate_google)   { create(:authentication, email: 'kate@example.com', provider: 'google', uid: 'google-id') }
     let!(:kate_facebook) { create(:authentication, email: 'kate@example.com', provider: 'facebook', uid: 'facebook-id') }
+    let!(:kate_linkedin) { create(:authentication, email: 'kate@example.com', provider: 'linkedin', uid: 'linkedin-id') }
     let(:google)   { double('auth', provider: 'google', uid: 'google-id', info: { 'email' => 'kate@example.com' }) }
     let(:facebook) { double('auth', provider: 'facebook', uid: 'facebook-id', info: { 'email' => 'kate@example.com' }, extra: { 'raw_info' => { 'name' => 'John Watson' } }) }
+    let(:linkedin) { double('auth', provider: 'linkedin', uid: 'linkedin-id', info: { 'email' => 'kate@example.com' }) }
 
     it 'should be possible to login using email and provider details' do
       user = User.find_for_google(google)
       expect(user).to eq(kate_google.user)
       user = User.find_for_facebook(facebook)
       expect(user).to eq(kate_facebook.user)
+      user = User.find_for_linkedin(linkedin)
+      expect(user).to eq(kate_linkedin.user)
     end
   end
 end
