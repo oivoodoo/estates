@@ -22,6 +22,17 @@ describe User do
       end
     end
   end
+
+  describe '#by_auth' do
+    let!(:kate) { create(:user, provider: 'google', uid: 'google-id') }
+    let!(:fred) { create(:user, provider: 'facebook', uid: 'facebook-id') }
+    let(:auth)  { double('auth', provider: 'facebook', uid: 'facebook-id') }
+
+    it 'should be possible to find people by auth' do
+      user = User.by_auth(auth)
+      expect(user).to eq(fred)
+    end
+  end
 end
 
 describe User do

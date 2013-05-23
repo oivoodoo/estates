@@ -8,12 +8,16 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def self.by_auth(auth)
+    find_by(provider: auth.provider, uid: auth.uid)
+  end
+
   def role?(r)
     self.role == r
   end
 
   def self.find_for_facebook(auth)
-    user = User.find_by(provider: auth.provider, uid: auth.uid)
+    user = User.by_auth(auth)
 
     unless user
       user = User.create(
@@ -29,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_google(auth)
-    user = User.find_by(provider: auth.provider, uid: auth.uid)
+    user = User.by_auth(auth)
 
     unless user
       user = User.create(
