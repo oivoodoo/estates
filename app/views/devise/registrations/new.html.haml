@@ -1,12 +1,10 @@
-%h1
-  Sign Up
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  = f.label :email
-  = f.email_field :email, :class => "input-xlarge", :autocomplete => "off", :style => "height: 30px;"
-  = f.label "Password"
-  = f.password_field :password, :class => "input-xlarge", :autocomplete => "off", :style => "height: 30px;"
-  = f.label "Password confirmation"
-  = f.password_field :password_confirmation, :class => "input-xlarge", :style => "height: 30px;"
-  = f.submit "Sig Up", :class => "btn btn-success"
-= render "devise/shared/links"
+%link{:href => "//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css", :rel => "stylesheet"}
+.container
+  %section#register
+    .hgroup
+      %h1 Register or Sign in
+    .row
+      .signin.span6
+        = render partial: 'sign_in'
+      .signup.span6
+        = render partial: 'sign_up' 
