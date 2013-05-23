@@ -151,10 +151,10 @@ describe User do
   context 'with multiple authentication methods' do
     let!(:kate_google)   { create(:authentication, email: 'kate@example.com', provider: 'google', uid: 'google-id') }
     let!(:kate_facebook) { create(:authentication, email: 'kate@example.com', provider: 'facebook', uid: 'facebook-id') }
-    let!(:kate_linkedin)   { create(:authentication, email: 'kate@example.com', provider: 'linkedin', uid: 'linkedin-id') }
+    let!(:kate_linkedin) { create(:authentication, email: 'kate@example.com', provider: 'linkedin', uid: 'linkedin-id') }
     let(:google)   { double('auth', provider: 'google', uid: 'google-id', info: { 'email' => 'kate@example.com' }) }
     let(:facebook) { double('auth', provider: 'facebook', uid: 'facebook-id', info: { 'email' => 'kate@example.com' }, extra: { 'raw_info' => { 'name' => 'John Watson' } }) }
-    let(:linkedin)   { double('auth', provider: 'linkedin', uid: 'linkedin-id', info: { 'email' => 'kate@example.com' }) }
+    let(:linkedin) { double('auth', provider: 'linkedin', uid: 'linkedin-id', info: { 'email' => 'kate@example.com' }) }
 
     it 'should be possible to login using email and provider details' do
       user = User.find_for_google(google)
