@@ -7,15 +7,7 @@
       %th Actions
 
   %tbody
-    - @projects.each do |project|
-      %tr
-        %td= link_to project.name, admin_project_path(project)
-        %td= project.price
-        %td= project.owner
-
-        %td
-          = link_to "Edit", edit_admin_project_path(project), class: "btn btn-success btn-mini"
-          = link_to "Delete", admin_project_path(project), confirm: "Are you sure?", method: :delete, class: "btn btn-danger btn-mini"
+    = render partial: 'project', collection: collection
 
 = link_to "Back to Admin", admin_path
 
