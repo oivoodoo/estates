@@ -8,44 +8,39 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def self.by_auth(auth)
-    find_by(provider: auth.provider, uid: auth.uid)
-  end
+  has_many :authentications
 
   def role?(r)
     self.role == r
   end
 
   def self.find_for_facebook(auth)
-    user = User.by_auth(auth)
+    user = Authentication.find_user_by_auth(auth)
 
-    unless user
-      user = User.create(
-        name:     auth.extra['raw_info']['name'],
-        provider: auth.provider,
-        uid:      auth.uid,
-        email:    auth.info['email'],
-        password: Devise.friendly_token[0,20]
-      )
-    end
+    return user if user.present?
 
-    user
+    create_user_by_auth(auth, name: auth.extra['raw_info']['name'], email: auth.info["email"])
   end
 
   def self.find_for_google(auth)
-    user = User.by_auth(auth)
+    user = Authentication.find_user_by_auth(auth)
 
-    unless user
-      user = User.create(
-        name:     auth.info["name"],
-        email:    auth.info["email"],
-        provider: auth.provider,
-        uid:      auth.uid,
-        password: Devise.friendly_token[0,20]
-      )
+    return user if user.present?
+
+    create_user_by_auth(auth, name: auth.info["name"], email: auth.info["email"])
+  end
+
+  def self.create_user_by_auth(auth, attributes)
+    user = User.find_by(email: auth.info['email'])
+
+    unless user.present?
+      user = User.create(attributes.merge(password: Devise.friendly_token[0,20]))
     end
 
-    user
+    if user.persisted?
+      user.authentications.create(provider: auth.provider, uid: auth.uid, email: auth.info['email'])
+      user
+    end
   end
 end
 
