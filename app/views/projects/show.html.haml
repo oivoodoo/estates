@@ -9,7 +9,7 @@
         Invest
         %i
     .financials
-      %h2= number_to_currency(project.price)
+      %h2= number_to_currency(@project.price)
       %br{:style => "clear:both;"}
         .goalmeter
           .progress{:style => "width:66%"}
