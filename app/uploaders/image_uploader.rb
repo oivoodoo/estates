@@ -11,7 +11,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :active_record
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

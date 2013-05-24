@@ -43,6 +43,7 @@ gem 'omniauth-linkedin'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'inherited_resources'
 gem 'high_voltage'
+gem 'carrierwave-activerecord', github: 'oivoodoo/carrierwave-activerecord'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
