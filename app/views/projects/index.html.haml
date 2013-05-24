@@ -1,21 +1,4 @@
-- model_class = Project
-.container
-  .page-header
-    %h1= t '.title', :default => model_class.model_name.human.pluralize.titleize
-  %table.table.table-striped
-    %thead
-      %tr
-        %th= model_class.human_attribute_name(:name)
-        %th= model_class.human_attribute_name(:price)
-        %th= model_class.human_attribute_name(:description)
-        %th= model_class.human_attribute_name(:owner)
-    %tbody
-      - @projects.each do |project|
-        %tr
-          %td= link_to project.name, project
-          %td= project.price
-          %td= project.description
-          %td= project.owner
-          %td
+.gridwrap
+  = render @projects
+.gridwrap
   = will_paginate @projects
-
