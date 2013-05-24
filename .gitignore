@@ -19,4 +19,5 @@
 
 config/database.yml
 tags
+.DS_Store
 

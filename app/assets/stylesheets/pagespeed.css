@@ -1,4 +1,4 @@
-@charset "UTF-8";@import url(css/reset.css) ;@import url(css/f.css) ;@font-face {
+@charset "UTF-8";@import url(reset.css) ;@import url(f.css) ;@font-face {
   font-family: "Ampersand";
   src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
   unicode-range: U+270C;
