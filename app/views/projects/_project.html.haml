@@ -8,7 +8,7 @@
         %h3
           - link_to project.name do
             %label.type Residential
-        %h4 $32,000,000
+        %h4= number_to_currency(project.price)
     .goalmeter
       .progress{:style => "width:66%"}
         .marker{:style => "left:66%;"}
