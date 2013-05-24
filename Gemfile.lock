@@ -71,6 +71,8 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    choices (0.3.0)
+      hashie (>= 0.4.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -303,6 +305,7 @@ DEPENDENCIES
   cancan
   carrierwave
   carrierwave-activerecord!
+  choices
   coffee-rails (~> 4.0.0)
   debugger
   devise!
