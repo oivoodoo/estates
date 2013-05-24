@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  render_views
+
   describe 'get #index' do
     context 'with project' do
       let!(:projects) { 2.times.map { create(:project) } }
