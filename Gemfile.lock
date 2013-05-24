@@ -125,6 +125,7 @@ GEM
       rubyzip
     heroku-api (0.3.11)
       excon (~> 0.22.1)
+    high_voltage (1.2.2)
     hike (1.2.2)
     httpauth (0.2.0)
     i18n (0.6.4)
@@ -304,6 +305,7 @@ DEPENDENCIES
   guard-rspec
   haml
   heroku
+  high_voltage
   inherited_resources
   jbuilder (~> 1.0.1)
   jquery-rails

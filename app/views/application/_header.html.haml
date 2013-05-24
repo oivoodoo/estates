@@ -8,12 +8,11 @@
       %ul
         %li= link_to "Home", root_path
         %li= link_to "Projects", projects_path
-        %li= link_to "How it Works", '#'
+        %li= link_to "How it Works", page_path("howto")
         %li= link_to "Blog", '#'
-        %li= render 'devise/menu/registration_items'
         - if can?(:manage, :all)
           %li= link_to "Admin", admin_path
         - if user_signed_in?
-          = current_user.name
-          = current_user.email
+          %li= link_to current_user.email, '#'
+        %li= render 'devise/menu/registration_items'
 
