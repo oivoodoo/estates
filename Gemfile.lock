@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/oivoodoo/carrierwave-activerecord.git
+  revision: 73f22d5f93852a273b4ef8821ddfd040f8b43008
+  specs:
+    carrierwave-activerecord (0.1.0rc6)
+      activerecord (~> 4.0.0.beta)
+      carrierwave (~> 0.8.0)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 10c9a492ab27f48d66f50df7f1e7f5e8c68f2b0f
   specs:
@@ -294,6 +302,7 @@ DEPENDENCIES
   activerecord-session_store!
   cancan
   carrierwave
+  carrierwave-activerecord!
   coffee-rails (~> 4.0.0)
   debugger
   devise!
