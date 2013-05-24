@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130524080315) do
+ActiveRecord::Schema.define(version: 20130524140637) do
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20130524080315) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", force: true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"

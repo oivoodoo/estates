@@ -7,6 +7,7 @@ Estates::Application.routes.draw do
   root 'home#index'
 
   resources :projects, only: [:index, :show] do
+    resources :comments
     member do
       get 'image'
     end

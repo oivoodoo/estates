@@ -26,3 +26,24 @@
       #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
       #project-details-content
         %p= @project.description
+      %h2 Comments
+      - @project.comments.each do |comment|
+        %p
+          %strong Commenter:
+          = comment.commenter
+        %p
+          %strong Comment:
+          = comment.body
+
+      %h2 Add a comment:
+      = form_for([@project, @project.comments.build]) do |f|
+        %p
+          = f.label :commenter
+          %br
+          = f.text_field :commenter
+        %p
+          = f.label :body
+          %br
+          = f.text_area :body
+        %p
+          = f.submit
