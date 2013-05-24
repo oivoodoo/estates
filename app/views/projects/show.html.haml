@@ -1,8 +1,28 @@
-.imagery
-	= image_tag @project.image_url
-%h1= @project.name
-%p= @project.price
-%p= @project.owner
-%p= @project.description
-
-= link_to "Invest", "#"
+%section#project
+  .head
+    %hgroup
+      %h1
+        = @project.name
+        %label.type Residential
+    .action
+      %button.primary
+        Invest
+        %i
+    .financials
+      %h2= @project.price
+      %br{:style => "clear:both;"}
+        .goalmeter
+          .progress{:style => "width:66%"}
+            .marker{:style => "left:66%;"}
+              %label 66%
+        %div
+          %ul
+            %li.target-return Target return 12%
+    .imagery
+      = image_tag @project.image_url
+    .side
+      .placeholder= @project.owner
+    .details
+      #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
+      #project-details-content
+        %p= @project.description
