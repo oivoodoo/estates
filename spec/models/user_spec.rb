@@ -12,7 +12,8 @@ describe User do
       let(:admin) { create(:admin) }
 
       it 'should be admin' do
-        expect(admin.role?(:admin)).to be_true
+        expect(admin.role?(:admin)).to  be_true
+        expect(admin.role?('admin')).to be_true
       end
     end
 

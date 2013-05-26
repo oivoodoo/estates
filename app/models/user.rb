@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :authentications
 
   def role?(r)
-    self.role == r
+    self.role.to_s == r.to_s
   end
 
   def self.find_for_facebook(auth)

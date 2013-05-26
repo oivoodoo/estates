@@ -14,7 +14,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 module AuthHelpers
-  def logged_in(role)
+  def logged_in(role = nil)
     @user = create(:user, role: role)
     sign_in(@user)
   end
