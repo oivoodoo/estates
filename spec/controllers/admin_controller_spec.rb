@@ -2,12 +2,24 @@ require 'spec_helper'
 
 describe AdminController do
   context "when logged in" do
-    before { logged_in(:admin) }
+    describe '#admin' do
+      before { logged_in(:admin) }
 
-    describe '#index'do
-      before { get :index }
+      describe '#index'do
+        before { get :index }
 
-      it { should respond_with(:success) }
+        it { should respond_with(:success) }
+      end
+    end
+
+    describe '#user' do
+      before { logged_in }
+
+      describe '#index'do
+        before { get :index }
+
+        it { should redirect_to(root_path) }
+      end
     end
   end
 
