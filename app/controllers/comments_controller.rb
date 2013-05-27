@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to project_path(@project)
     else
-      flash[:notice] = "Please write comment"
+      flash.now[:error] = @comment.errors.full_messages
       redirect_to project_path(@project)
     end
   end
