@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :authentications
 
+  has_many :comments
+
   def role?(r)
     self.role.to_s == r.to_s
   end

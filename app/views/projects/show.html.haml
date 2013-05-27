@@ -26,3 +26,7 @@
       #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
       #project-details-content
         %p= @project.description
+      = render "comments/form"
+      
+      %h1 Comments 
+      =render @project.comments
