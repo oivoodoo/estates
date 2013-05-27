@@ -1,0 +1,5 @@
+%h2 Add a comment:
+= form_for [@project, Comment.new] do |f|
+  = f.text_area :comment
+  = f.submit "Submit"
+  

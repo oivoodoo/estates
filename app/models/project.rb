@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
-	has_many :comments
-
+	acts_as_commentable
+	
   mount_uploader :image, ImageUploader
 
 	validates :name, :price, :owner, presence: true

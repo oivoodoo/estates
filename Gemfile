@@ -45,6 +45,7 @@ gem 'inherited_resources'
 gem 'high_voltage'
 gem 'carrierwave-activerecord', github: 'oivoodoo/carrierwave-activerecord'
 gem 'choices'
+gem 'acts_as_commentable'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
