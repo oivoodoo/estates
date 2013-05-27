@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :comment do
-    commenter "MyString"
-    body "MyText"
-    project nil
+    comment "Short comment to the project"
+    comment {create(:comment)}
   end
 end
