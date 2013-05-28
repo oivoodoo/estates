@@ -1,11 +1,7 @@
 class CommentsController < ApplicationController
-	def index
-    @comments = @project.comments.all
-	end
-
   def create
   	@project = Project.find(params[:project_id])
-    @comment = @project.comments.create(params[:comment])
+    @comment = @project.comments.create(params[:comment]).decorate
     @comment.user = current_user
 
     if @comment.save

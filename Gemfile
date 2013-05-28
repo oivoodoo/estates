@@ -46,6 +46,7 @@ gem 'high_voltage'
 gem 'carrierwave-activerecord', github: 'oivoodoo/carrierwave-activerecord'
 gem 'choices'
 gem 'acts_as_commentable'
+gem 'draper', :git => 'git://github.com/drapergem/draper.git'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
