@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
   	@project = Project.find(params[:project_id])
-    @comment = @project.comments.create(params[:comment]).decorate
+    @comment = @project.comments.create(params[:comment])
     @comment.user = current_user
 
     if @comment.save
