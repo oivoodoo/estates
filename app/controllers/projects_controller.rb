@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comments = @project.comments.all.map(&:decorate)
   end
 
   def image

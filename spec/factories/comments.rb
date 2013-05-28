@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :comment do
     comment "Short comment to the project"
-    comment {create(:comment)}
   end
 end

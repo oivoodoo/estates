@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/drapergem/draper.git
+  revision: d0bf8d18b222bf5bfb2e4911430d0c0d0dea074d
+  specs:
+    draper (1.2.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
+
+GIT
   remote: git://github.com/oivoodoo/carrierwave-activerecord.git
   revision: 73f22d5f93852a273b4ef8821ddfd040f8b43008
   specs:
@@ -235,6 +244,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    request_store (1.0.5)
     responders (0.6.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -311,6 +321,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   devise!
+  draper!
   factory_girl_rails
   foreman
   fuubar
