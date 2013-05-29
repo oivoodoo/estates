@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130524145345) do
+ActiveRecord::Schema.define(version: 20130529210814) do
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20130524145345) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "followers", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "name"
