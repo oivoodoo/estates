@@ -8,6 +8,8 @@
       %button.primary
         Invest
         %i
+    %br
+      = render 'follow'
     .financials
       %h2= number_to_currency(@project.price)
       %br{:style => "clear:both;"}
@@ -22,6 +24,11 @@
       = image_tag @project.image_url
     .side
       .placeholder= @project.owner
+      %a
+        Followers:
+      - @followers.each do |follower|
+        %br
+        = follower.email
     .details
       #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
       #project-details-content
@@ -31,4 +38,3 @@
     = render "comments/form"      
   %h1 Comments 
   = render @comments
-  = render 'follow'
