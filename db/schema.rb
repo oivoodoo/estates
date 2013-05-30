@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20130529210814) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "followers", force: true do |t|
-    t.integer  "follower_id"
+    t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

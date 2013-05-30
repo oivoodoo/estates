@@ -1,7 +1,7 @@
 class CreateFollowers < ActiveRecord::Migration
   def change
     create_table :followers do |t|
-    	t.integer :follower_id
+    	t.integer :project_id
     	t.integer :user_id
     	
       t.timestamps
