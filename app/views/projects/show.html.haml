@@ -3,11 +3,14 @@
     %hgroup
       %h1
         = @project.name
-        %label.type Residential
+        %label.type{:style => "width: 120px;"}
+          Residential
     .action
       %button.primary
         Invest
         %i
+    %br
+      = render 'follow'
     .financials
       %h2= number_to_currency(@project.price)
       %br{:style => "clear:both;"}
@@ -18,10 +21,28 @@
         %div
           %ul
             %li.target-return Target return 12%
+    %h1
+      %label.type{:style => "width: 120px; display:inline;"}
+        %a{:href => "#"} Property/Overview
+      %label.type{:style => "width: 120px; display:inline;"}  
+        %a{:href => "#"} Location
+      %label.type{:style => "width: 120px; display:inline;"}       
+        %a{:href => "#"} Developer
+      %label.type{:style => "width: 120px; display:inline;"}       
+        %a{:href => "#"} Financials
+      %label.type{:style => "width: 120px; display:inline;"}       
+        %a{:href => "#"} Activities  
+      %label.type{:style => "width: 120px; display:inline;"}       
+        %a{:href => "#"} Comments
     .imagery
       = image_tag @project.image_url
     .side
       .placeholder= @project.owner
+      %a
+        Followers:
+      - @followers.each do |follower|
+        %br
+        = follower.email
     .details
       #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
       #project-details-content
@@ -31,4 +52,3 @@
     = render "comments/form"      
   %h1 Comments 
   = render @comments
-  = render 'follow'

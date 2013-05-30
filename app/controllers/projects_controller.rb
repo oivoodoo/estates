@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @project.comments.all.map(&:decorate)
+    @followers = @project.users
   end
 
   def image
