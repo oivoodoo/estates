@@ -28,8 +28,6 @@ describe ProjectsController do
         it { should respond_with(:success) }
 
         it { expect(assigns(:project)).to eq(project) }
-
-        it { expect(assigns(:follower)).to eq(@followers) }
       end
 
       context 'without project' do
