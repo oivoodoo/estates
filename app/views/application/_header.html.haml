@@ -9,7 +9,8 @@
         %li= link_to "Home", root_path
         %li= link_to "Projects", projects_path
         %li= link_to "How it Works", page_path("howto")
-        %li= link_to "Blog", '#'
+        %li= link_to "Blog", "#"
+        %li= link_to "Contact Us", new_contact_path
         - if can?(:manage, :all)
           %li= link_to "Admin", admin_path
         - if user_signed_in?
