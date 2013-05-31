@@ -1,9 +1,7 @@
 .container
   %section#register
     .hgroup
-      %h1 Register or
-      .login{ style: "margin-left: 165px; margin-top: -35px;" }
-        = link_to "Sign In", new_user_session_path
+      %h1 Register
     .row{:style => "margin-left: 250;"}
       .signup.span6
         .social_sign
@@ -22,3 +20,4 @@
               %a{:href => "#"} terms and conditions
           %br
           = f.submit "Create your account"
+
