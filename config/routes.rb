@@ -14,6 +14,8 @@ Estates::Application.routes.draw do
     resources :comments
   end
 
+  resources :contact
+
   get 'admin' => 'admin#index', :as => 'admin'
 
   namespace :admin do

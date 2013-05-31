@@ -1,0 +1,15 @@
+%h1 Get in touch
+.row{:style => "margin-left: 250;"}
+  = form_for @contact, :url => {:action => :create} do |f|
+    - if @contact.errors.any?
+      %h2 List of Errors:
+      %ul
+        - @contact.errors.full_messages.each do |contact|
+          %li= contact
+    = f.text_field :name, :class => "input-xlarge", :placeholder => "Full Name"
+    %br
+    = f.text_field :email, :class => "input-xlarge", :placeholder => "Email"
+    %br
+    = f.text_area :description, :class => "input-xlarge", :placeholder => "Yours message:", :cols => 35, :rows => "15"
+    %br
+    = f.submit 'Send', :class => "btn btn-success"
