@@ -19,6 +19,6 @@ describe ContactController do
 	context 'create contact with empty fields' do
 		before { post :create }
 
-		it { should respond_with(302) }
+		it { should respond_with(200) }
 	end
 end

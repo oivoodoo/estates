@@ -8,6 +8,9 @@ staging:
   linkedin:
     id: <%= ENV['LINKEDIN_ID'] %>
     secret: <%= ENV['LINKEDIN_SECRET'] %>
+  email:
+    username: <%= ENV['email_username'] %>
+    password: <%= ENV['email_password'] %>
 
 production:
   facebook:
@@ -19,6 +22,9 @@ production:
   linkedin:
     id: <%= ENV['LINKEDIN_ID'] %>
     secret: <%= ENV['LINKEDIN_SECRET'] %>
+  email:
+    username: <%= ENV['email_username'] %>
+    password: <%= ENV['email_password'] %>
 
 development:
   facebook:
@@ -30,6 +36,9 @@ development:
   linkedin:
     id: "0futayxxa8pq"
     secret: "Mdtba4VZq1JCCUgs"
+  email:
+    username: "petya.petinych@gmail.com"
+    password: "mintscinnamon02"
 
 test:
   facebook:
@@ -41,4 +50,3 @@ test:
   linkedin:
     id: "id"
     secret: "secret"
-

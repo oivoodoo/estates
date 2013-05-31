@@ -39,7 +39,6 @@ module Estates
     end
 
     config.from_file 'settings.yml'
-    config.from_file 'options.yml'
   end
 end
 

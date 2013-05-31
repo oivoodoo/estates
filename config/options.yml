@@ -1,4 +1,0 @@
-production:
-  email:
-    username: <%= ENV['email_username'] %>
-    password: <%= ENV['email_password'] %>
