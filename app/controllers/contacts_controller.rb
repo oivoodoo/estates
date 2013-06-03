@@ -1,4 +1,4 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
   def new
     @contact = Contact.new
   end
@@ -9,7 +9,7 @@ class ContactController < ApplicationController
     if @contact.save
       ContactMailer.new_contact(@contact).deliver
 
-      redirect_to root_path, :notice => "Message was successfully sent."
+      redirect_to root_path, notice: "Message was successfully sent."
     else
       render :new
     end

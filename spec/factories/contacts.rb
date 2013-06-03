@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :contact do
   	email				"watson@example.com"
   	name				"John Watson"
-  	description	"Some text here"
+  	message	"Some text here"
   end
 end

@@ -3,6 +3,6 @@ class ContactMailer < ActionMailer::Base
 
   def new_contact(contact)
   	@contact = contact
-  	mail(:to => "petya.petinych@gmail.com", :subject => "Contact Us")
+  	mail( to: Rails.configuration.email.support_address, subject: "Contact Us" )
   end
 end
