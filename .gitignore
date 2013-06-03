@@ -17,6 +17,8 @@
 
 /public/uploads/*
 
+/public/assets/*
+
 config/database.yml
 tags
 .DS_Store
