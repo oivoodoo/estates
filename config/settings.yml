@@ -8,6 +8,9 @@ staging:
   linkedin:
     id: <%= ENV['LINKEDIN_ID'] %>
     secret: <%= ENV['LINKEDIN_SECRET'] %>
+  vkontakte:
+    id: <%= ENV['VKONTAKTE_ID'] %>
+    secret: <%= ENV['VKONTAKTE_SECRET'] %>
   email:
     username: <%= ENV['email_username'] %>
     password: <%= ENV['email_password'] %>
@@ -22,6 +25,9 @@ production:
   linkedin:
     id: <%= ENV['LINKEDIN_ID'] %>
     secret: <%= ENV['LINKEDIN_SECRET'] %>
+  vkontakte:
+    id: <%= ENV['VKONTAKTE_ID'] %>
+    secret: <%= ENV['VKONTAKTE_SECRET'] %>
   email:
     username: <%= ENV['email_username'] %>
     password: <%= ENV['email_password'] %>
@@ -39,6 +45,9 @@ development:
   linkedin:
     id: "0futayxxa8pq"
     secret: "Mdtba4VZq1JCCUgs"
+  vkontakte:
+    id: "3689200"
+    secret: "XSqvQ9go9BINQlCaT4KE"
   email:
     username: "petya.petinych@gmail.com"
     password: "mintscinnamon02"
@@ -52,6 +61,9 @@ test:
     id: "id"
     secret: "secret"
   linkedin:
+    id: "id"
+    secret: "secret"
+  vkontakte:
     id: "id"
     secret: "secret"
   email:

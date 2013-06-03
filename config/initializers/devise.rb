@@ -24,6 +24,9 @@ Devise.setup do |config|
   require "omniauth-linkedin"
   config.omniauth :linkedin, Rails.configuration.linkedin.id, Rails.configuration.linkedin.secret
 
+  require "omniauth-vkontakte"
+  config.omniauth :vkontakte, Rails.configuration.vkontakte.id, Rails.configuration.vkontakte.secret
+
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
