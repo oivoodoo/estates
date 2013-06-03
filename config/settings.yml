@@ -27,6 +27,9 @@ production:
     password: <%= ENV['email_password'] %>
 
 development:
+  email:
+    username: "petya.petinych@gmail.com"
+    password: "mintscinnamon02"
   facebook:
     id: "472903682777717"
     secret: "4879261b8fb5aa966983dbcb942e534c"
