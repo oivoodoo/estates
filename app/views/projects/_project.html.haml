@@ -1,9 +1,10 @@
 %article.project-badge.new{:onclick => "location.href='#{url_for(project)}'"}
   %div
     %header
-      = link_to project do
-        - image_tag project.image_url do
-          .thumbfocus
+      .imagery.holder
+        = link_to project do
+          - image_tag project.image_url do
+            .thumbfocus
       %hgroup
         %h3
           - link_to project.name do

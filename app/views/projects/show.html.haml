@@ -34,7 +34,7 @@
         %a{:href => "#"} Activities
       %label.type{:style => "width: 120px; display:inline;"}
         %a{:href => "#"} Comments
-    .imagery
+    .imagery.logo
       = image_tag @project.image_url
     .side
       .placeholder= @project.owner
@@ -52,4 +52,3 @@
     = render "comments/form"
   %h1 Comments
   = render @comments
-
