@@ -39,6 +39,10 @@ development:
   linkedin:
     id: "0futayxxa8pq"
     secret: "Mdtba4VZq1JCCUgs"
+  email:
+    username: "petya.petinych@gmail.com"
+    password: "mintscinnamon02"
+    support_address: "petya.petinych@gmail.com"
 
 test:
   facebook:
@@ -50,4 +54,7 @@ test:
   linkedin:
     id: "id"
     secret: "secret"
-
+  email:
+    username: "username"
+    password: "password"
+    support_address: "address"
