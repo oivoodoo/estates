@@ -1,0 +1,221 @@
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    = stylesheet_link_tag "dashboard", :media => "all"
+    = javascript_include_tag "dashboard"
+    = bootstrap_flash
+  %body
+    .container
+      .navbar
+        .navbar-inner
+          .container
+            %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to "Estates", root_path, :class => "brand"
+            .nav-collapse
+              %ul.nav
+                %li.active
+                  %a{:href => "index.htm"} Dashboard
+                %li
+                  %a{:href => "settings.htm"} Account Settings
+                %li
+                  %a{:href => "help.htm"} Help
+                %li.dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "help.htm"}
+                    Tours
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => "help.htm"} Introduction Tour
+                    %li
+                      %a{:href => "help.htm"} Project Organisation
+                    %li
+                      %a{:href => "help.htm"} Task Assignment
+                    %li
+                      %a{:href => "help.htm"} Access Permissions
+                    %li.divider
+                    %li.nav-header
+                      Files
+                    %li
+                      %a{:href => "help.htm"} How to upload multiple files
+                    %li
+                      %a{:href => "help.htm"} Using file version
+              %form.navbar-search.pull-left{:action => ""}
+                %input.search-query.span2{:placeholder => "Search", :type => "text"}/
+              %ul.nav.pull-right
+                %li
+                  %li= link_to current_user.email, '#'
+                %li
+                  %li= render 'devise/menu/registration_items'
+      .row
+        .span3
+          .well{:style => "padding: 8px 0;"}
+            %ul.nav.nav-list
+              %li.nav-header
+                Akira
+              %li.active
+                %a{:href => "index.htm"}
+                  %i.icon-white.icon-home
+                  Dashboard
+              %li
+                %a{:href => "projects.htm"}
+                  %i.icon-folder-open
+                  Projects
+              %li
+                %a{:href => "tasks.htm"}
+                  %i.icon-check
+                  Tasks
+              %li
+                %a{:href => "messages.htm"}
+                  %i.icon-envelope
+                  Messages
+              %li
+                %a{:href => "files.htm"}
+                  %i.icon-file
+                  Files
+              %li
+                %a{:href => "activity.htm"}
+                  %i.icon-list-alt
+                  Activity
+              %li.nav-header
+                Your Account
+              %li
+                %a{:href => "profile.htm"}
+                  %i.icon-user
+                  Profile
+              %li
+                %a{:href => "settings.htm"}
+                  %i.icon-cog
+                  Settings
+              %li.divider
+              %li
+                %a{:href => "help.htm"}
+                  %i.icon-info-sign
+                  Help
+              %li.nav-header
+                Bonus Templates
+              %li
+                %a{:href => "gallery.htm"}
+                  %i.icon-picture
+                  Gallery
+              %li
+                %a{:href => "blank.htm"}
+                  %i.icon-stop
+                  Blank Slate
+        .span9
+          %h1
+            Dashboard
+          .hero-unit
+            %h1
+              Welcome!
+            %p
+              To get the most out of Akira start with our 3 minute tour.
+          %h2
+            Recent Activity
+          %table.table.table-bordered.table-striped
+            %thead
+              %tr
+                %th
+                  Project
+                %th
+                  Client
+                %th
+                  Type
+                %th
+                  Date
+                %th
+                  View
+            %tbody
+              %tr
+                %td
+                  Nike.com Redesign
+                %td
+                  Monsters Inc
+                %td
+                  New Task
+                %td
+                  4 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+              %tr
+                %td
+                  Nike.com Redesign
+                %td
+                  Monsters Inc
+                %td
+                  New Message
+                %td
+                  5 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+              %tr
+                %td
+                  Nike.com Redesign
+                %td
+                  Monsters Inc
+                %td
+                  New Project
+                %td
+                  5 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+              %tr
+                %td
+                  Twitter Server Consulting
+                %td
+                  Bad Robot
+                %td
+                  New Task
+                %td
+                  6 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+              %tr
+                %td
+                  Childrens Book Illustration
+                %td
+                  Evil Genius
+                %td
+                  New Message
+                %td
+                  9 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+              %tr
+                %td
+                  Twitter Server Consulting
+                %td
+                  Bad Robot
+                %td
+                  New Task
+                %td
+                  16 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+              %tr
+                %td
+                  Twitter Server Consulting
+                %td
+                  Bad Robot
+                %td
+                  New Project
+                %td
+                  16 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+              %tr
+                %td
+                  Twitter Server Proposal
+                %td
+                  Bad Robot
+                %td
+                  Completed Project
+                %td
+                  20 days ago
+                %td
+                  %a.view-link{:href => "#"} View
+          %ul.pager
+            %li.next
+              %a{:href => "activity.htm"} More →
