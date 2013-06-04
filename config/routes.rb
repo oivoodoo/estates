@@ -14,7 +14,7 @@ Estates::Application.routes.draw do
     resources :comments
   end
 
-  resources :user_profile
+  get 'dashboard' => 'dashboard#index'
 
   resources :contacts, only: [:new, :create]
 
