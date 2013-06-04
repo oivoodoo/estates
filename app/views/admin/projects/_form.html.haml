@@ -18,7 +18,18 @@
   = f.label :description, class: 'control-label'
   .controls
     = f.text_area :description
+.control-group
+  = f.label :loan, class: 'control-label'
+  .controls
+    = f.check_box :investment_type
+.control-group
+  = f.label :equity, class: 'control-label'
+  .controls
+    = f.check_box :investment_type
+.control-group
+  = f.label :term, class: 'control-label'
+  .controls
+    = f.date_select :investment_term
 %br
 = f.submit class: "btn btn-primary"
 = link_to "Back", admin_projects_path, class: "btn btn-danger"
-
