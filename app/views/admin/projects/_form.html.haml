@@ -1,3 +1,5 @@
+%script{:src => "http://code.jquery.com/jquery-1.9.1.js"}
+%script{:src => "http://code.jquery.com/ui/1.10.3/jquery-ui.js"}
 .control-group
   = f.label :name, class: 'control-label'
   .controls
@@ -19,17 +21,17 @@
   .controls
     = f.text_area :description
 .control-group
-  = f.label :loan, class: 'control-label'
-  .controls
-    = f.check_box :investment_type
-.control-group
   = f.label :equity, class: 'control-label'
   .controls
-    = f.check_box :investment_type
+    = f.select :investment_type, options_for_select(["Select One", "Loan", "Equity"],:disabled => ["Select One"])
 .control-group
   = f.label :term, class: 'control-label'
   .controls
-    = f.date_select :investment_term
+    = f.text_field :investment_term
 %br
 = f.submit class: "btn btn-primary"
 = link_to "Back", admin_projects_path, class: "btn btn-danger"
+:javascript
+  $(function() {
+    $( "#project_investment_term" ).datepicker();
+  });
