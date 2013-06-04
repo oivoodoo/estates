@@ -14,6 +14,8 @@ Estates::Application.routes.draw do
     resources :comments
   end
 
+  resources :user_profile
+
   resources :contacts, only: [:new, :create]
 
   get 'admin' => 'admin#index', :as => 'admin'

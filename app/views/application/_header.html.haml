@@ -15,4 +15,5 @@
           %li= link_to "Admin", admin_path
         - if user_signed_in?
           %li= link_to current_user.email, edit_user_registration_path
+          %li= link_to "Dashboard", user_profile_index_path
         %li= render 'devise/menu/registration_items'
