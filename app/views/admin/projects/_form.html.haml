@@ -23,15 +23,15 @@
 .control-group
   = f.label :equity, class: 'control-label'
   .controls
-    = f.select :investment_type, options_for_select(["Select One", "Loan", "Equity"],:disabled => ["Select One"])
+    = f.select :investment_type, investment_types
 .control-group
   = f.label :term, class: 'control-label'
   .controls
-    = f.text_field :investment_term
+    = f.text_field :investment_term, data: { datepicker: "datepicker" },value: Time.now.strftime("%m/%d/%y")
+    = f.text_field :investment_term, value: Time.now.strftime("%I:%M%P")
+    to
+    = f.text_field :investment_term, data: { datepicker: "datepicker" }
+    = f.text_field :investment_term, value: Time.now.strftime("%I:%M%P")
 %br
 = f.submit class: "btn btn-primary"
 = link_to "Back", admin_projects_path, class: "btn btn-danger"
-:javascript
-  $(function() {
-    $( "#project_investment_term" ).datepicker();
-  });

@@ -10,6 +10,7 @@
         Invest
         %i
     %br
+    - if user_signed_in?
       = render 'follow'
     .financials
       %h2= number_to_currency(@project.price)
@@ -33,13 +34,16 @@
       %label.type{:style => "width: 120px; display:inline;"}
         %a{:href => "#"} Activities
       %label.type{:style => "width: 120px; display:inline;"}
-        %a{:href => "#"} Comments
+        %a{:href => "#" } Comments
+      %label.type{:style => "width: 120px; display:inline;"}
+        = @comments.count
     .imagery.logo
       = image_tag @project.image_url
     .side
       .placeholder= @project.owner
       %a
         Followers:
+        = @followers.count
       - @followers.each do |follower|
         %br
         = follower.email
@@ -52,3 +56,4 @@
     = render "comments/form"
   %h1 Comments
   = render @comments
+  
