@@ -6,7 +6,18 @@
   = f.label :email, class: 'control-label'
   .controls
     = f.text_field :email, placeholder: 'Email'
+.control-group
+  = f.label :password, class: 'control-label'
+  .controls
+    = f.password_field :password, :placeholder => "Password"
+.control-group
+  = f.label :password_confirmation, class: 'control-label'
+  .controls
+    = f.password_field :password_confirmation, :placeholder => "Password Confirmation"
+.control-group
+  = f.label :status, class: 'control-label'
+  .controls
+    = f.select :status, status
 %br
 = f.submit class: "btn btn-primary"
 = link_to "Back", admin_users_path, class: "btn btn-danger"
-
