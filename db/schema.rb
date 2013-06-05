@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20130531102409) do
     t.float    "price"
     t.text     "description"
     t.string   "owner"
+    t.integer  "investment_type"
+    t.datetime "investment_term"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
