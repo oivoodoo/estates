@@ -5,6 +5,7 @@ User.create! do |user|
   user.password              = "12345678"
   user.password_confirmation = "12345678"
   user.role                  = 'admin'
+  user.status                = 'approved'
 end
 
 # create normal user
