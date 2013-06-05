@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
     :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid, :status
 
-  validates :name, :email, presence: true
+  validates :name, :email, :status, presence: true
 
   has_many :authentications
 
