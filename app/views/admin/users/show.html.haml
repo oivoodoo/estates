@@ -3,5 +3,7 @@
   %b
     Email:
     = resource.email
-
-= link_to "Back", admin_users_path, class: "btn btn-danger"
+= form_for [:admin, resource, @message], html: { class: "form-horizontal", multipart: true } do |f|
+  = f.text_area :body
+  = f.submit "Send message", class: "btn btn-primary"
+  = link_to "Back", admin_users_path, class: "btn btn-danger"
