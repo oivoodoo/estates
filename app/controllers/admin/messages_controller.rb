@@ -3,10 +3,9 @@ class Admin::MessagesController < AdminController
     @user = User.find(params[:user_id])
     @message = @user.messages.create(params[:message])
 
-    if @message.save
-      redirect_to admin_users_path, notice: "Message was sent"
-    else
-      flash[:notice] = "Something went wrong."
+    unless @message.save
+      flash.now[:error] = @message.errors.full_messages
     end
+      redirect_to admin_users_path, notice: "Message was sent"
   end
 end
