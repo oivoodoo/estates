@@ -9,8 +9,4 @@ class Admin::MessagesController < AdminController
       flash[:notice] = "Something went wrong."
     end
   end
-
-  def show
-    @message = Message.find(params[:id])
-  end
 end
