@@ -68,7 +68,7 @@
                   %i.icon-check
                   Tasks
               %li
-                %a{:href => "messages.htm"}
+                %a{:href => dashboard_messages_path}
                   %i.icon-envelope
                   Messages
               %li
@@ -104,117 +104,4 @@
                 %a{:href => "blank.htm"}
                   %i.icon-stop
                   Blank Slate
-        .span9
-          %h1
-            Dashboard
-          .hero-unit
-            %h1
-              Welcome!
-            %p
-              To get the most out of Akira start with our 3 minute tour.
-          %h2
-            Recent Activity
-          %table.table.table-bordered.table-striped
-            %thead
-              %tr
-                %th
-                  Project
-                %th
-                  Client
-                %th
-                  Type
-                %th
-                  Date
-                %th
-                  View
-            %tbody
-              %tr
-                %td
-                  Nike.com Redesign
-                %td
-                  Monsters Inc
-                %td
-                  New Task
-                %td
-                  4 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-              %tr
-                %td
-                  Nike.com Redesign
-                %td
-                  Monsters Inc
-                %td
-                  New Message
-                %td
-                  5 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-              %tr
-                %td
-                  Nike.com Redesign
-                %td
-                  Monsters Inc
-                %td
-                  New Project
-                %td
-                  5 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-              %tr
-                %td
-                  Twitter Server Consulting
-                %td
-                  Bad Robot
-                %td
-                  New Task
-                %td
-                  6 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-              %tr
-                %td
-                  Childrens Book Illustration
-                %td
-                  Evil Genius
-                %td
-                  New Message
-                %td
-                  9 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-              %tr
-                %td
-                  Twitter Server Consulting
-                %td
-                  Bad Robot
-                %td
-                  New Task
-                %td
-                  16 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-              %tr
-                %td
-                  Twitter Server Consulting
-                %td
-                  Bad Robot
-                %td
-                  New Project
-                %td
-                  16 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-              %tr
-                %td
-                  Twitter Server Proposal
-                %td
-                  Bad Robot
-                %td
-                  Completed Project
-                %td
-                  20 days ago
-                %td
-                  %a.view-link{:href => "#"} View
-          %ul.pager
-            %li.next
+= yield
