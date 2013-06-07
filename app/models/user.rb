@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  acts_as_messageable :required => [:body, :topic],                 
+                      :dependent => :destroy
+
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
@@ -14,8 +17,6 @@ class User < ActiveRecord::Base
 
   has_many :followers
   has_many :projects, through: :followers
-
-  has_many :messages
 
   def role?(r)
     self.role.to_s == r.to_s

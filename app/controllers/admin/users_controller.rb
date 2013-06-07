@@ -1,11 +1,11 @@
 class Admin::UsersController < AdminController
   inherit_resources
 
-  before_filter :build_message, only: :show
+  before_filter :find_messages, only: :show
 
   private
 
-  def build_message
-    @message = current_user.messages.build
+  def find_messages
+    @messages = resource.messages
   end
 end

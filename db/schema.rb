@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130606142142) do
+ActiveRecord::Schema.define(version: 20130607083911) do
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -63,11 +63,24 @@ ActiveRecord::Schema.define(version: 20130606142142) do
   end
 
   create_table "messages", force: true do |t|
+    t.string   "topic"
     t.text     "body"
+    t.integer  "received_messageable_id"
+    t.string   "received_messageable_type"
+    t.integer  "sent_messageable_id"
+    t.string   "sent_messageable_type"
+    t.boolean  "opened",                     default: false
+    t.boolean  "recipient_delete",           default: false
+    t.boolean  "sender_delete",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.string   "ancestry"
+    t.boolean  "recipient_permanent_delete", default: false
+    t.boolean  "sender_permanent_delete",    default: false
   end
+
+  add_index "messages", ["ancestry"], name: "index_messages_on_ancestry", using: :btree
+  add_index "messages", ["sent_messageable_id", "received_messageable_id"], name: "acts_as_messageable_ids", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"

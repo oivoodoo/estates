@@ -1,0 +1,5 @@
+= form_for :message, url: admin_user_messages_path(user) do |form|
+  = form.text_field :topic
+  = form.text_area :body
+  .controls
+    = form.submit 'Send'

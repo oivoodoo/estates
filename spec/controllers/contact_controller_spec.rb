@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ContactController do
+describe ContactsController do
 	render_views
 
 	describe '#new' do

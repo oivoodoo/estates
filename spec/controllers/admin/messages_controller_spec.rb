@@ -10,7 +10,10 @@ describe Admin::MessagesController do
       context 'on create a new message' do
         before { post :create, user_id: user.to_param, message: attributes_for(:message) }
 
-        it { assigns(:message).should_not be_new_record }
+        it 'should send a new message' do
+          expect(user.reload.messages).to have(1).item
+          expect(user.reload.messages[0].body).to eq('Hello')
+        end
       end 
     end
   end
