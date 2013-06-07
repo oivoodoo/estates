@@ -15,6 +15,7 @@ Estates::Application.routes.draw do
   end
 
   get 'dashboard' => 'dashboard#index'
+  resources :users
 
   resources :contacts, only: [:new, :create]
 
@@ -22,7 +23,10 @@ Estates::Application.routes.draw do
 
   namespace :admin do
     resources :projects
-    resources :users
+    
+    resources :users do
+      resources :messages, only: :create
+    end
   end
 
   # Example of regular route:

@@ -15,8 +15,12 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 module AuthHelpers
   def logged_in(role = nil)
-    @user = create(:user, role: role)
-    sign_in(@user)
+    @current_user = create(:user, role: role)
+    sign_in(@current_user)
+  end
+
+  def current_user
+    controller.send(:current_user)
   end
 end
 
