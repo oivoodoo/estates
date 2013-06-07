@@ -4,8 +4,7 @@
     Email:
     = resource.email
 
-- @messages.each do |message|
-  = message.body
+= render partial: 'message', :collection => @messages
 
 = render 'message_form', user: resource
     
