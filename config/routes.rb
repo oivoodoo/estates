@@ -25,7 +25,7 @@ Estates::Application.routes.draw do
     resources :projects
     
     resources :users do
-      resources :messages
+      resources :messages, only: :create
     end
   end
 
