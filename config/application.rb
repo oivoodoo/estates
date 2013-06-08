@@ -42,3 +42,4 @@ module Estates
   end
 end
 
+module Dashboard ; end
