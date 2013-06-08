@@ -15,7 +15,10 @@ Estates::Application.routes.draw do
   end
 
   get 'dashboard' => 'dashboard#index'
-  resources :users
+
+  namespace :dashboard do # /dashboard/messages
+    resources :messages, only: :index
+  end
 
   resources :contacts, only: [:new, :create]
 
