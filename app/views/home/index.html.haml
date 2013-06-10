@@ -9,6 +9,7 @@
       %span= link_to "See all Local", projects_path
   .gridwrap
     = render @projects
+    
     %table.table.table-hover
       %thead
         %tr
@@ -17,4 +18,3 @@
 
       %tbody
         = render partial: 'user', collection: @users
-        
