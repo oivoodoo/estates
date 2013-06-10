@@ -16,7 +16,7 @@ Estates::Application.routes.draw do
 
   get 'dashboard' => 'dashboard#index'
 
-  namespace :dashboard do # /dashboard/messages
+  namespace :dashboard do
     resources :messages, only: :index
   end
 
