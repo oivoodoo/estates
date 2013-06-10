@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  acts_as_messageable :required => [:body, :topic],                 
-                      :dependent => :destroy
+  acts_as_messageable :required => [:body, :topic], dependent: :destroy
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,

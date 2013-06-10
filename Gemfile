@@ -62,6 +62,9 @@ group :development, :test do
   gem 'debugger'
   gem 'factory_girl_rails'
   gem 'fuubar'
+  gem 'spork'
+  gem 'spork-rails', github: 'railstutorial/spork-rails'
+  gem 'guard-spork'
 end
 
 group :development do
