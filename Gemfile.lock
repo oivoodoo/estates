@@ -352,6 +352,7 @@ DEPENDENCIES
   pg
   protected_attributes
   rails (= 4.0.0.rc1)
+  rake
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0.rc1)
   sdoc
