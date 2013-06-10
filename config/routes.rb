@@ -16,6 +16,10 @@ Estates::Application.routes.draw do
 
   get 'dashboard' => 'dashboard#index'
 
+  namespace :dashboard do
+    resources :messages, only: :index
+  end
+  
   resources :contacts, only: [:new, :create]
 
   get 'admin' => 'admin#index', :as => 'admin'
