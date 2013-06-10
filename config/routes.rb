@@ -26,7 +26,7 @@ Estates::Application.routes.draw do
 
   namespace :admin do
     resources :projects
-    
+
     resources :users do
       resources :messages, only: :create
     end
