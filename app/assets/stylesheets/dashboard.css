@@ -1,4 +1,17 @@
 /*
  *= require bootstrap_and_overrides
  */
+
+.message {
+  padding: 15px;
+  border-top: 1px solid #666;
+}
+
+.message:last-child {
+  border-bottom: 1px solid #666;
+}
+
+.message.unread {
+  color: red;
+}
  
