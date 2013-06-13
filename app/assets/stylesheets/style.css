@@ -8987,6 +8987,9 @@ article.post .post_content .btn {
 .social_sign a.gp {
   background-color: #E44B39;
 }
+.social_sign a.vk {
+  background-color: rgb(61, 175, 93);
+}
 .social_sign a:link,
 .social_sign a:visited {
   color: #ffffff;

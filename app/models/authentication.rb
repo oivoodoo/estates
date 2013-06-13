@@ -4,7 +4,7 @@ class Authentication < ActiveRecord::Base
   validates :provider, :uid, :email, :user_id, presence: true
 
   def self.find_user_by_auth(auth)
-    authentication = find_by(provider: auth.provider, uid: auth.uid, email: auth.info['email'])
+    authentication = find_by(provider: auth.provider, uid: auth.uid.to_s, email: auth.info['email'])
     authentication.try(:user)
   end
 end

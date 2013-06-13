@@ -13,6 +13,8 @@
               %i.icon-linkedin
             %a.gp{:href => user_omniauth_authorize_path(:google_oauth2)}
               %i.icon.icon-google-plus
+            %a.vk{:href => user_omniauth_authorize_path(:vkontakte)}
+              %i.icon.icon-user-md
           - else
             = current_user.name
             = current_user.email
