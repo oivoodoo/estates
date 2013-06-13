@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Dashboard::MessagesController do
   before { logged_in(:user) }
-  
+
   describe 'GET #index' do
     let(:bob) { create(:user) }
 
@@ -13,3 +13,4 @@ describe Dashboard::MessagesController do
     it { expect(assigns(:messages)).to have(2).items }
   end
 end
+

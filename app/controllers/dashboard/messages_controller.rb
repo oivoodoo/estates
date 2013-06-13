@@ -3,3 +3,4 @@ class Dashboard::MessagesController < DashboardController
     @messages = current_user.messages
   end
 end
+

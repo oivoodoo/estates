@@ -2,6 +2,15 @@ guard 'bundler' do
   watch('Gemfile')
 end
 
+guard 'spork', wait: 60, cucumber: false, rspec: true, test_unit: false do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.+\.rb$})
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('Gemfile')
+  watch('spec/spec_helper.rb')
+end
+
 guard 'rspec', :version => 2, :all_after_pass => false, :cli => "--drb --format documentation" do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }

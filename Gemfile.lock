@@ -27,6 +27,13 @@ GIT
       railties (>= 4.0.0.beta, < 5)
 
 GIT
+  remote: git://github.com/railstutorial/spork-rails.git
+  revision: 5db525af2f917047057f546bc1ac2574d1c6b11e
+  specs:
+    spork-rails (3.2.1)
+      spork (>= 1.0rc0)
+
+GIT
   remote: git://github.com/rubyforce/carrierwave-activerecord.git
   revision: 73f22d5f93852a273b4ef8821ddfd040f8b43008
   specs:
@@ -88,6 +95,8 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    childprocess (0.3.9)
+      ffi (~> 1.0, >= 1.0.11)
     choices (0.3.0)
       hashie (>= 0.4.0)
     coderay (1.0.9)
@@ -140,6 +149,10 @@ GEM
     guard-rspec (3.0.1)
       guard (>= 1.8)
       rspec (~> 2.13)
+    guard-spork (1.5.0)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
+      spork (>= 0.8.4)
     haml (4.0.3)
       tilt
     has_scope (0.5.1)
@@ -285,6 +298,7 @@ GEM
     shoulda-matchers (2.1.0)
       activesupport (>= 3.0.0)
     slop (3.4.5)
+    spork (1.0.0rc3)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -336,6 +350,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-rspec
+  guard-spork
   haml
   heroku
   high_voltage
@@ -357,6 +372,8 @@ DEPENDENCIES
   sass-rails (~> 4.0.0.rc1)
   sdoc
   shoulda-matchers
+  spork
+  spork-rails!
   therubyracer
   turbolinks
   twitter-bootstrap-rails!
