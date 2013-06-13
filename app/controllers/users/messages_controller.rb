@@ -1,4 +1,4 @@
-class Users::MessagesController < UsersController
+class Users::MessagesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     current_user.send_message(@user, params[:message])
