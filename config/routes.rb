@@ -19,6 +19,12 @@ Estates::Application.routes.draw do
   namespace :dashboard do
     resources :messages, only: :index
   end
+  
+  resources :users, only: :show do
+    scope module: 'users' do
+      resources :messages, only: :create
+    end
+  end
 
   resources :contacts, only: [:new, :create]
 
