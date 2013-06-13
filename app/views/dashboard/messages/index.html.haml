@@ -1,3 +1,6 @@
 - @messages.each do |message|
-  = message.topic
-  = message.body
+  .message{ :class => message.opened? ? '' : 'unread' }
+    = link_to message.topic, dashboard_message_path(message)
+    %br
+    = message.body
+    = message.opened

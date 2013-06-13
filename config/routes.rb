@@ -17,7 +17,7 @@ Estates::Application.routes.draw do
   get 'dashboard' => 'dashboard#index'
 
   namespace :dashboard do
-    resources :messages, only: :index
+    resources :messages, only: [ :index, :show ] 
   end
   
   resources :users, only: :show do
