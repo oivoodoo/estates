@@ -15,6 +15,8 @@ Estates::Application.routes.draw do
   end
 
   get 'dashboard' => 'dashboard#index'
+  
+  get 'tags/:tag', to: 'projects#index', as: :tag
 
   namespace :dashboard do
     resources :messages, only: [ :index, :show ] 

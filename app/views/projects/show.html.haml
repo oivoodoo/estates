@@ -4,7 +4,7 @@
       %h1
         = @project.name
         %label.type{:style => "display:inline;"}
-          = @project.tag_list
+          = raw @project.tag_list.map { |t| link_to t, tag_path(t) }.join(' ')
     .action
       %button.primary
         Invest
