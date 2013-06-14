@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 	acts_as_commentable
+	acts_as_taggable
 
 	has_many :followers
 	has_many :users, through: :followers
