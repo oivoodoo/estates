@@ -20,6 +20,22 @@ describe ProjectsController do
       end
     end
 
+    context 'with tags' do
+      let(:project) { create(:project) }
+
+      before { project.tag_list}
+
+      it { expect(assigns(Project.tagged_with(:tag)))}
+    end
+
+    context 'without tags' do
+      let(:project) { create(:project) }
+
+      before { project.tag_list}
+
+      it { expect(assigns(Project.tagged_with(:tag))).should be_nil}
+    end
+
     describe 'get #show' do
       context 'with project' do
         let!(:project) { create(:project) }
