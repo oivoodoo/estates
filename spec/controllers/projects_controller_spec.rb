@@ -16,6 +16,7 @@ describe ProjectsController do
         expect(collection).to have(2).items
         expect(collection).to include(projects[0])
         expect(collection).to include(projects[1])
+        ActsAsTaggableOn::Tag.find_by_name(:tag_list).should == @tag
       end
     end
 

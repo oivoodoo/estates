@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
 	
   mount_uploader :image, ImageUploader
 
-	validates :name, :price, :owner, presence: true
+	validates :name, :price, :owner, :tag_list, presence: true
 
 	self.per_page = 6
 
