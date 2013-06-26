@@ -1,0 +1,6 @@
+= @user.name
+(
+= @user.email
+),
+you have a new message(s)
+= link_to @user.messages.unreaded.count, dashboard_messages_url(@user)

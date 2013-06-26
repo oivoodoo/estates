@@ -40,6 +40,7 @@ development:
     username: "petya.petinych@gmail.com"
     password: "mintscinnamon02"
     support_address: "petya.petinych@gmail.com"
+    subject: "Message"
 
 test:
   facebook:
