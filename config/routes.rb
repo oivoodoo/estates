@@ -14,10 +14,9 @@ Estates::Application.routes.draw do
     resources :comments
   end
 
-  resources :project_tags, only: :index
-
   get 'dashboard' => 'dashboard#index'
-  
+
+  resources :project_tags, only: :index
   get 'tags/:tag', to: 'project_tags#index', as: :tag
 
   namespace :dashboard do

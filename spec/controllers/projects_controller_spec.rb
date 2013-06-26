@@ -7,7 +7,7 @@ describe ProjectsController do
     context 'with project' do
       let!(:projects) { 2.times.map { create(:project) } }
 
-      before { get :index, tags: 'comedy, action' }
+      before { get :index }
 
       it { should respond_with(:success) }
 
@@ -17,13 +17,6 @@ describe ProjectsController do
         expect(collection).to include(projects[0])
         expect(collection).to include(projects[1])
       end
-    end
-
-    context 'with exists tags' do
-      let!(:project1) { create(:project) }
-      before { get :index, tags: 'comedy, action' }
-
-      it { expect(assigns(:projects)).to include(:project1) }
     end
   end
 
