@@ -23,9 +23,9 @@
         %div
           %ul
             %li.target-return Target return 12%
-    %h1
+    %h1#myTab
       %label.type{:style => "display:inline;"}
-        %a{:href => "#"} Property/Overview
+        %a{"data-toggle" => "tab", :href => "#overview"} Property/Overview
       %label.type{:style => "display:inline;"}
         %a{:href => "#"} Location
       %label.type{:style => "display:inline;"}
@@ -35,7 +35,7 @@
       %label.type{:style => "display:inline;"}
         %a{:href => "#"} Activities
       %label.type{:style => "display:inline;"}
-        %a{:href => "#" } Comments
+        %a{"data-toggle" => "tab", :href => "#comments"} Comments
       %label.type{:style => "display:inline;"}
         = @comments.count
     .imagery.logo
@@ -51,11 +51,11 @@
     .details
       #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
       #project-details-content
-        %p= @project.description
-.container
-  - if user_signed_in?
-    = render "comments/form"
-  - if @comments.present?
-    %h1 Comments
-    = render @comments
-
+        .tab-content
+          #overview.tab-pane.active
+            %p= @project.description
+          #comments.tab-pane
+            - if user_signed_in?
+              = render "comments/form"
+            %h1 Comments
+            = render @comments

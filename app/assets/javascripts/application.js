@@ -15,4 +15,5 @@
 //= require application2
 //= require jquery_ujs
 //= require imagepreloader
+//= require projects
 //= require turbolinks
