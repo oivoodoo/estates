@@ -18,23 +18,25 @@ describe ProjectsController do
         expect(collection).to include(projects[1])
       end
     end
+  end
 
-    describe 'get #show' do
-      context 'with project' do
-        let!(:project) { create(:project) }
 
-        before { get :show, id: project.to_param }
 
-        it { should respond_with(:success) }
+  describe 'get #show' do
+    context 'with project' do
+      let!(:project) { create(:project) }
 
-        it { expect(assigns(:project)).to eq(project) }
-      end
+      before { get :show, id: project.to_param }
 
-      context 'without project' do
-        before { get :show, id: 'invalid id' }
+      it { should respond_with(:success) }
 
-        it { should respond_with(404) }
-      end
+      it { expect(assigns(:project)).to eq(project) }
+    end
+
+    context 'without project' do
+      before { get :show, id: 'invalid id' }
+
+      it { should respond_with(404) }
     end
   end
 end

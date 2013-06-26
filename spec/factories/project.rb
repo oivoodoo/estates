@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :project do
     name
-    price              "123"
+    price       "123"
     owner       "John Snow"
     description "Some description here"
   end
