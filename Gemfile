@@ -47,9 +47,10 @@ gem 'inherited_resources'
 gem 'high_voltage'
 gem 'carrierwave-activerecord', github: 'rubyforce/carrierwave-activerecord'
 gem 'choices'
-gem 'acts_as_commentable'
 gem 'draper', github: 'drapergem/draper'
+gem 'acts_as_commentable'
 gem 'acts-as-messageable'
+gem 'acts-as-taggable-on'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

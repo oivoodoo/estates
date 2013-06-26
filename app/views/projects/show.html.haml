@@ -3,8 +3,8 @@
     %hgroup
       %h1
         = @project.name
-        %label.type{:style => "width: 120px;"}
-          Residential
+        %label.type{:style => "display:inline;"}
+          = raw @project.tag_list.map { |t| link_to t, tag_path(t) }.join(' ')
     .action
       %button.primary
         Invest
@@ -23,19 +23,19 @@
           %ul
             %li.target-return Target return 12%
     %h1
-      %label.type{:style => "width: 120px; display:inline;"}
+      %label.type{:style => "display:inline;"}
         %a{:href => "#"} Property/Overview
-      %label.type{:style => "width: 120px; display:inline;"}
+      %label.type{:style => "display:inline;"}
         %a{:href => "#"} Location
-      %label.type{:style => "width: 120px; display:inline;"}
+      %label.type{:style => "display:inline;"}
         %a{:href => "#"} Developer
-      %label.type{:style => "width: 120px; display:inline;"}
+      %label.type{:style => "display:inline;"}
         %a{:href => "#"} Financials
-      %label.type{:style => "width: 120px; display:inline;"}
+      %label.type{:style => "display:inline;"}
         %a{:href => "#"} Activities
-      %label.type{:style => "width: 120px; display:inline;"}
+      %label.type{:style => "display:inline;"}
         %a{:href => "#" } Comments
-      %label.type{:style => "width: 120px; display:inline;"}
+      %label.type{:style => "display:inline;"}
         = @comments.count
     .imagery.logo
       = image_tag @project.image_url
