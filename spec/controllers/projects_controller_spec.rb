@@ -7,7 +7,7 @@ describe ProjectsController do
     context 'with project' do
       let!(:projects) { 2.times.map { create(:project) } }
 
-      before { get :index }
+      before { get :index, tags: 'comedy, action' }
 
       it { should respond_with(:success) }
 
@@ -16,42 +16,34 @@ describe ProjectsController do
         expect(collection).to have(2).items
         expect(collection).to include(projects[0])
         expect(collection).to include(projects[1])
-        ActsAsTaggableOn::Tag.find_by_name(:tag_list).should == @tag
       end
     end
 
-    context 'with tags' do
-      let(:project) { create(:project) }
+    context 'with exists tags' do
+      let!(:project1) { create(:project) }
+      before { get :index, tags: 'comedy, action' }
 
-      before { project.tag_list}
+      it { expect(assigns(:projects)).to include(:project1) }
+    end
+  end
 
-      it { expect(assigns(Project.tagged_with(:tag)))}
+
+
+  describe 'get #show' do
+    context 'with project' do
+      let!(:project) { create(:project) }
+
+      before { get :show, id: project.to_param }
+
+      it { should respond_with(:success) }
+
+      it { expect(assigns(:project)).to eq(project) }
     end
 
-    context 'without tags' do
-      let(:project) { create(:project) }
+    context 'without project' do
+      before { get :show, id: 'invalid id' }
 
-      before { project.tag_list}
-
-      it { expect(assigns(Project.tagged_with(:tag))).should be_nil}
-    end
-
-    describe 'get #show' do
-      context 'with project' do
-        let!(:project) { create(:project) }
-
-        before { get :show, id: project.to_param }
-
-        it { should respond_with(:success) }
-
-        it { expect(assigns(:project)).to eq(project) }
-      end
-
-      context 'without project' do
-        before { get :show, id: 'invalid id' }
-
-        it { should respond_with(404) }
-      end
+      it { should respond_with(404) }
     end
   end
 end
