@@ -3,8 +3,9 @@
     %hgroup
       %h1
         = @project.name
-        %label.type{:style => "display:inline;"}
-          = raw @project.tag_list.map { |t| link_to t, tag_path(t) }.join(' ')
+        - if @project.tag_list.present?
+          %label.type{:style => "display:inline;"}
+            = raw @project.tag_list.map { |t| link_to t, tag_path(t) }.join(' ')
     .action
       %button.primary
         Invest
@@ -54,5 +55,7 @@
 .container
   - if user_signed_in?
     = render "comments/form"
-  %h1 Comments
-  = render @comments
+  - if @comments.present?
+    %h1 Comments
+    = render @comments
+
