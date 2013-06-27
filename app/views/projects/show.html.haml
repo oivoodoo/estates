@@ -39,7 +39,15 @@
       %label.type{:style => "display:inline;"}
         = @comments.count
     .imagery.logo
-      = image_tag @project.image_url
+      .tab-content
+        #overview.tab-pane.active
+          = image_tag @project.image_url
+          #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
+          #project-details-content
+            = @project.description
+        #comments.tab-pane
+          - if user_signed_in?
+            = render "comments/form"
     .side
       .placeholder= @project.owner
       %a
@@ -48,12 +56,3 @@
       - @followers.each do |follower|
         %br
         = follower.email
-    .details
-      #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
-      #project-details-content
-        .tab-content
-          #overview.tab-pane.active
-            %p= @project.description
-          #comments.tab-pane
-            - if user_signed_in?
-              = render "comments/form"
