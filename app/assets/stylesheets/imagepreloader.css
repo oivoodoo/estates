@@ -1,6 +1,6 @@
 .imagery {
 	float: left;
-	background: url('/images/loader.gif') 50% 50% no-repeat !important;
+	background: url('/images/loader.gif') 50% 100% no-repeat !important;
 	display: inline;
 	border: none;
 }
