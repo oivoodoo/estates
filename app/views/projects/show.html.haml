@@ -57,5 +57,6 @@
           #comments.tab-pane
             - if user_signed_in?
               = render "comments/form"
-            %h1 Comments
-            = render @comments
+            - if @comments.present?
+              %h1 Comments
+              = render @comments
