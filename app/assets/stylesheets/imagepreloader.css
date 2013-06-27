@@ -1,13 +1,9 @@
 .imagery {
 	float: left;
-	background: url('/images/loader.gif') 50% 50% no-repeat !important;
+	background: url('/images/loader.gif') 50% 25% no-repeat !important;
 	display: inline;
 	border: none;
-}
-
-.imagery.logo {
-	width: 951px;
-	height: 476px;
+  width: 900px;
 }
 
 .imagery.holder {
