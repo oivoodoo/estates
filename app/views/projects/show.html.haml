@@ -34,9 +34,10 @@
         %a{:href => "#"} Financials
       %label.type{:style => "display:inline;"}
         %a{:href => "#"} Activities
-      %label.type{:style => "display:inline;"}
-        %a{"data-toggle" => "tab", :href => "#follower"} Followers
-        = @followers.count
+      - if @followers.present?
+        %label.type{:style => "display:inline;"}
+          %a{"data-toggle" => "tab", :href => "#follower"} Followers
+          = @followers.count
       %label.type{:style => "display:inline;"}
         %a{"data-toggle" => "tab", :href => "#comments"} Comments
       %label.type{:style => "display:inline;"}
