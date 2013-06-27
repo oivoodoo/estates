@@ -25,15 +25,18 @@
             %li.target-return Target return 12%
     %h1#myTab
       %label.type{:style => "display:inline;"}
-        %a{"data-toggle" => "tab", :href => "#overview"} Property/Overview
+        %a{"data-toggle" => "tab", :href => "#overview"} Overview
       %label.type{:style => "display:inline;"}
         %a{:href => "#"} Location
       %label.type{:style => "display:inline;"}
-        %a{:href => "#"} Developer
+        %a{"data-toggle" => "tab", :href => "#developer"} Developer
       %label.type{:style => "display:inline;"}
         %a{:href => "#"} Financials
       %label.type{:style => "display:inline;"}
         %a{:href => "#"} Activities
+      %label.type{:style => "display:inline;"}
+        %a{"data-toggle" => "tab", :href => "#follower"} Followers
+        = @followers.count
       %label.type{:style => "display:inline;"}
         %a{"data-toggle" => "tab", :href => "#comments"} Comments
       %label.type{:style => "display:inline;"}
@@ -49,11 +52,10 @@
       #comments.tab-pane
         - if user_signed_in?
           = render "comments/form"
-      .side
+      #developer.tab-pane
         .placeholder= @project.owner
+      #follower.tab-pane
         %a
-          Followers:
-          = @followers.count
         - @followers.each do |follower|
           %br
           = follower.email
