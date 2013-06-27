@@ -38,22 +38,22 @@
         %a{"data-toggle" => "tab", :href => "#comments"} Comments
       %label.type{:style => "display:inline;"}
         = @comments.count
-    .imagery
-      .tab-content
-        #overview.tab-pane.active
+    .tab-content
+      #overview.tab-pane.active
+        .imagery.logo
           = image_tag @project.image_url
           #project-details-menu Tabs — Overview, Financials, Location, Property, Strengths &amp; Risks
           #project-details-content
             = @project.description
-          
-        #comments.tab-pane
-          - if user_signed_in?
-            = render "comments/form"
-    .side
-      .placeholder= @project.owner
-      %a
-        Followers:
-        = @followers.count
-      - @followers.each do |follower|
-        %br
-        = follower.email
+        
+      #comments.tab-pane
+        - if user_signed_in?
+          = render "comments/form"
+      .side
+        .placeholder= @project.owner
+        %a
+          Followers:
+          = @followers.count
+        - @followers.each do |follower|
+          %br
+          = follower.email
