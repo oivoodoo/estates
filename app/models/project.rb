@@ -16,4 +16,12 @@ class Project < ActiveRecord::Base
 			users << user
 		end
 	end
+
+	def self.search(query)
+		if query.present?
+    	where('name @@ :q or description @@ :q', q: query)
+    else
+    	scoped
+    end
+  end
 end

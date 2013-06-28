@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require imagepreloader
 //= require projects
+//= require search
 //= require turbolinks

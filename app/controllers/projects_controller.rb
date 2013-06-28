@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :find_project, except: :index
 
 	def index
-		@projects = Project.paginate(:page => params[:page])
+		@projects = Project.paginate(page: params[:page])
 	end
 
   def show
