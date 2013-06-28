@@ -17,13 +17,22 @@ describe ProjectsSearchController do
       end
     end
 
-    context 'search with query params' do
-      let!(:project1) { create(:project, name: "lorem ipsulum") }
-      let!(:project2) { create(:project, name: "lorem ipsulum dolor") }
+    context 'search by name' do
+      let!(:project1) { create(:project, name: "project") }
+      let!(:project2) { create(:project, name: "project 5") }
+
+      before { get :index, query: "project" }
+
+      it { assigns(:projects).should == [project1, project2] }
+    end
+
+    context 'search by description' do
+      let!(:project1) { create(:project, description: "lorem ipsulum") }
+      let!(:project2) { create(:project, description: "lorem ipsulum dolor") }
 
       before { get :index, query: "lorem ipsulum" }
 
       it { assigns(:projects).should == [project1, project2] }
-     end
+    end
   end
 end
