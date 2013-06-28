@@ -19,6 +19,10 @@ Estates::Application.routes.draw do
   resources :project_tags, only: :index
   get 'tags/:tag', to: 'project_tags#index', as: :tag
 
+  resources :projects_search, only: :index do
+    get 'search', :on => :collection
+  end
+
   namespace :dashboard do
     resources :messages, only: [ :index, :show ] 
   end
