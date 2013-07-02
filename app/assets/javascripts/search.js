@@ -1,17 +1,18 @@
 $(function () {
-  var form = $('form'),
+  var form = $('#search_form'),
     search = $('#query');
   
-  form.submit(function(e) {
-    search.addClass('searching');
-    
+  form.submit(function(event) {
+    event.preventDefault();
+
+    $.get('/projects_search', { query: search.val() }, function(data) {
+      $('#main').html(data);
+    });
+
+    search.addClass('searching').val('');
+
     setTimeout(function() {
-        search.removeClass('searching');
+      search.removeClass('searching');
     }, 3600);
   });
-  
-  /* what's with input padding? :/ */
-  if ($.browser.mozilla) {
-    search.css('padding', '3px');
-  }
 });
