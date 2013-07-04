@@ -11,10 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require application1
-//= require application2
 //= require jquery_ujs
-//= require imagepreloader
-//= require projects
-//= require search
 //= require turbolinks
