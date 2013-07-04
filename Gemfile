@@ -4,7 +4,7 @@ ruby "1.9.3"
 gem 'rake'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -51,7 +51,8 @@ gem 'draper', github: 'drapergem/draper'
 gem 'acts_as_commentable'
 gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
-gem "ckeditor", github: 'galetahub/ckeditor'
+
+gem "ckeditor", github: 'aypn0s/ckeditor', branch: 'rails4'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
