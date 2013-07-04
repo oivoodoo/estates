@@ -11,3 +11,8 @@ textarea {
   -moz-box-shadow: 0 2px 4px -1px #ededed;
   box-shadow: 0 2px 4px -1px #ededed;
 }
+
+.new_contact textarea {
+  height: 300px;
+}
+
