@@ -69,6 +69,11 @@
         <div class="tab-pane" id="comments">
           <p>comments</p>
         </div>
+        <div class="tab-pane gallery" id="comments">
+          <% if user_signed_in? %>
+            <%= render "comments/form" %>
+          <% end %>
+        </div>
       </div>
       
     </div>
