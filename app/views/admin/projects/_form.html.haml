@@ -1,3 +1,4 @@
+%legend Basic Properties
 .control-group
   = f.label :name, class: 'control-label'
   .controls
@@ -18,14 +19,12 @@
   = f.label :tag_list, class: 'control-label'
   .controls
     = f.text_field :tag_list, placeholder: 'tags'
+
+%legend Content
 .control-group
   = f.label :description, class: 'control-label'
   .controls
-    = f.text_area :description, class: 'ckeditor'
-.control-group
-  = f.label :equity, class: 'control-label'
-  .controls
-    = f.select :investment_type, investment_types
+    = f.text_area :description, class: 'ckeditor', :ckeditor => {:toolbar => "mini"}
 .control-group
   = f.label :property, class: 'control-label'
   .controls
@@ -37,7 +36,27 @@
 .control-group
   = f.label :financials, class: 'control-label'
   .controls
-    = f.text_field :financials
+    = f.text_area :financials, class: 'ckeditor'
+
+%legend Location
+.control-group
+  = f.label :address, class: 'control-label'
+  .controls
+    = f.text_field :address, class: 'ckeditor'
+.control-group
+  = f.label :longtitude, class: 'control-label'
+  .controls
+    = f.text_field :longtitude, class: 'ckeditor'
+.control-group
+  = f.label :latitude, class: 'control-label'
+  .controls
+    = f.text_field :latitude, class: 'ckeditor'
+
+%legend Investement
+.control-group
+  = f.label :equity, class: 'control-label'
+  .controls
+    = f.select :investment_type, investment_types
 .control-group
   = f.label :term, class: 'control-label'
   .controls
