@@ -24,9 +24,9 @@ Estates::Application.routes.draw do
   end
 
   namespace :dashboard do
-    resources :messages, only: [ :index, :show ] 
+    resources :messages, only: [ :index, :show ]
   end
-  
+
   resources :users, only: :show do
     scope module: 'users' do
       resources :messages, only: :create
@@ -87,4 +87,5 @@ Estates::Application.routes.draw do
   #     resources :products
   #   end
   mount Ckeditor::Engine => '/ckeditor'
+  mount GetVersion::Web => '/'
 end
