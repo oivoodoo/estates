@@ -23,20 +23,21 @@
           <% end %>
         </div>
 
-      <form>
-        <input type="text" placeholder="Full Name" size="1">        <input type="email" placeholder="E-mail" size="1">
-        <input type="password" placeholder="••••••••" size="1">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.text_field :name, placeholder: "Full Name" %>
+        <%= f.email_field :email, placeholder: "Email"%>
+        <%= f.password_field :password, placeholder: "••••••••"%>
         <div class="action">
           <div>
             <div>
               Already have an account? <a href="<%= new_user_session_path %>" class="sign-in">Sign in
             </a>.            </div>
             <div>
-              <input type="submit" class="delta thicker" value="Sign up">
+              <%= f.submit "Sign up", class: "delta thicker" %>
             </div>
           </div>
         </div>
-      </form>
+      <% end %>
       
     </div>
   </div>

@@ -3,21 +3,21 @@
     <div>
       <img class="logo" src="/g/flockinvest-logo.svg">
       <h1>Get in touch</h1>
-        <form>
-          <input type="text" placeholder="Full Name" size="1"/>
-          <input type="email" placeholder="E-mail" size="1"/>
-          <textarea placeholder="Your text" rows="4"></textarea>
+        <%= form_for @contact, url: {:action => :create} do |f| %>
+          <%= f.text_field :name, class: "input-xlarge", placeholder: "Full Name" %>
+          <%= f.text_field :email, class: "input-xlarge", placeholder: "Email" %>
+          <%= f.text_area :message, class: "input-xlarge", placeholder: "Yours message:", :cols => 35, :rows => "15"%>
           <div class="action">
             <div>
               <div>
 
               </div>
               <div>
-                <input type="submit" class="delta thicker" value="Send!">
+                <%= f.submit 'Send me!', class: "delta thicker"%>
               </div>
             </div>
           </div>
-        </form>
+        <% end %>
     </div>
   </div>
 </div>
