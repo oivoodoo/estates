@@ -42,7 +42,9 @@
           <li><a href="#location" data-toggle="tab">Location</a></li>
           <li><a href="#property" data-toggle="tab">Property</a></li>
           <li><a href="#strengths" data-toggle="tab">Strengths</a></li>
-          <li><a href="#comments" data-toggle="tab">Comments</a></li>
+          <% if user_signed_in? %>
+            <li><a href="#comments" data-toggle="tab">Comments</a></li>
+          <% end %>
         </ul>
       </div>
       <div class="tab-content gallery">
@@ -69,9 +71,11 @@
         <div class="tab-pane" id="comments">
           <p>comments</p>
         </div>
-        <div class="tab-pane" id="comments">
-          <%= render "comments/form" %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="tab-pane" id="comments">
+              <%= render "comments/form" %>
+          </div>
+        <% end %>
       </div>
       
     </div>
