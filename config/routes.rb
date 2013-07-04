@@ -86,4 +86,5 @@ Estates::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  mount Ckeditor::Engine => '/ckeditor'
 end
