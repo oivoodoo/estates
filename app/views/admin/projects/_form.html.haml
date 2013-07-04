@@ -35,6 +35,10 @@
   .controls
     = f.text_area :strength
 .control-group
+  = f.label :financials, class: 'control-label'
+  .controls
+    = f.text_field :financials
+.control-group
   = f.label :term, class: 'control-label'
   .controls
     = f.text_field :investment_term, data: { datepicker: "datepicker" },value: Time.now.strftime("%m/%d/%y")
