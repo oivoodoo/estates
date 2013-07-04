@@ -8,6 +8,14 @@ GIT
       request_store (~> 1.0.3)
 
 GIT
+  remote: git://github.com/galetahub/ckeditor.git
+  revision: f3f089d34056c6b1b63fccb659a55c68719c4c9e
+  specs:
+    ckeditor (4.0.4)
+      mime-types
+      orm_adapter
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: ae4448403c1070313dd18fa9589000c0fa07877a
   specs:
@@ -343,6 +351,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-activerecord!
   choices
+  ckeditor!
   coffee-rails (~> 4.0.0)
   debugger
   devise!

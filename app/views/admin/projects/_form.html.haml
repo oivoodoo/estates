@@ -19,7 +19,7 @@
   .controls
     = f.text_field :tag_list, placeholder: 'tags'
 .control-group
-  = f.label :description, class: 'control-label'
+  = f.cktext_area :description, class: 'control-label', :ckeditor => { :toolbar => "mini"}
   .controls
     = f.text_area :description
 .control-group

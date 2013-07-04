@@ -51,6 +51,7 @@ gem 'draper', github: 'drapergem/draper'
 gem 'acts_as_commentable'
 gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
+gem "ckeditor", github: 'galetahub/ckeditor'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
