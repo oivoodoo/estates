@@ -53,6 +53,8 @@ gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
 gem 'geocoder'
 
+gem 'get-version', require: 'get_version'
+
 gem "ckeditor", github: 'aypn0s/ckeditor', branch: 'rails4'
 
 group :doc do
