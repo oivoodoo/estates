@@ -53,20 +53,21 @@
             <%= image_tag @project.image_url %>
           </div>
           <p>
-            <%= @project.description %>
+            <%= @project.description.html_safe %>
           </p>
         </div>
         <div class="tab-pane" id="financials">
-          <%= @project.financials %>
+          <%= @project.financials.to_s.html_safe %>
         </div>
         <div class="tab-pane" id="location">
-          <p>location</p>
+          <%= @project.latitude %>
+          <%= @project.longtitude %>
         </div>
         <div class="tab-pane" id="property">
-          <%= @project.property %>
+          <%= @project.property.to_s.html_safe %>
         </div>
         <div class="tab-pane" id="strengths">
-          <%= @project.strength %>
+          <%= @project.strength.to_s.html_safe %>
         </div>
         <% if user_signed_in? %>
           <div class="tab-pane" id="comments">
