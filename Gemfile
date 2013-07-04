@@ -54,6 +54,7 @@ gem 'acts-as-taggable-on'
 gem 'geocoder'
 
 gem 'get-version', require: 'get_version'
+gem "gritter", "1.0.3"
 
 gem "ckeditor", github: 'aypn0s/ckeditor', branch: 'rails4'
 

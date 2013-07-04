@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap-tab
 //= require turbolinks
+//= require gritter
