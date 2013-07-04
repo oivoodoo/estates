@@ -17,17 +17,18 @@
   <link rel="stylesheet" href="/tabs.css" type="text/css">
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 
   <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen"><![endif]-->
 
   <script src="/js/html5.js"></script>
-  <script src="/js/jquery-1.9.1.min.js"></script>
-  <script src="/js/fancybox/fancybox.min.js"></script>
   <script src="/js/custom.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
 </head>
 <body onload="" class="<%= layout_class %>">
+  <%# gritter nofitication %>
+  <%= gflash %>
+
   <div id="wrap" style="padding-bottom: 228px;">
     <header id="masthead" class="mini">
       <div>

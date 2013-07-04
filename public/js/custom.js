@@ -29,19 +29,19 @@ jQuery(document).ready(function($) {
 			baseFontSize = parseInt($body.css('font-size'), 10);
 			menuTallH = 8*baseFontSize;
 			menuShortH = 3*baseFontSize;
-			
+
 			$wrap.css('padding-bottom', footerH);
-			
+
 			if (is_project) $('#tabspace').height($('#tabs').height());
-			
+
 			/*if (winW>1000) $('#project .primary').insertAfter('#project .side');
 			else $('#project .side').insertAfter('#project .primary');*/
-			
+
 			/*var minIntroH = parseInt($('#intro').css('min-height'), 10);
 			console.log(minIntroH);
 			if (winW/2 <= minIntroH) $('#intro img').addClass('crop').css('margin', '0 '+((winW-(minIntroH*2))/2)+'px');
 			else  $('#intro img').removeClass('crop').css('margin', -(($('#intro img').height()-minIntroH)/2)+'px 0');*/
-			
+
 			sizeMenu();
 		}
 
@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
 		.on('click.nag', function(e){
 			callNag();
 		});
-	
+
 	$(document)
 		.on('load', function(){
 			layout();
@@ -80,10 +80,10 @@ jQuery(document).ready(function($) {
 		}
 		$masthead.toggleClass('expanded').height(function(){
 			var navH = $masthead.find('nav').outerHeight(true);
-			
+
 			mastHeadH = menuFlex ? (expand ? menuH+navH : menuH) : (expand ? ((3+(navH/baseFontSize))*1.1)+'rem' : '3rem'); //TODO: +2.6 ????
 			console.log(baseFontSize, navH);
-			
+
 			return  mastHeadH;
 		});
 	});
@@ -100,9 +100,9 @@ jQuery(document).ready(function($) {
 			var scrollTop = $(window).scrollTop(),
 				mini = scrollTop > menuTallH-menuShortH ? true : false,
 				autohide = scrollTop > menuTallH ? true : false;
-				
+
 			menuH = mini ? menuShortH : scrollTop<=0 ? menuTallH : menuTallH-scrollTop;
-			
+
 			document.getElementById('masthead').style.height = menuH+'px';
 			$masthead.toggleClass('mini', mini);
 		}
@@ -110,7 +110,7 @@ jQuery(document).ready(function($) {
 	/*,
 	autohideMenu = function(e) {
 		var show = !$masthead.hasClass('mini') || ($masthead.hasClass('mini') && (e.clientY < menuShortH || e.type == 'scroll')) ? true : false;
-		
+
 		if (show) {
 			clearTimeout(menuTimeout);
 			$masthead.css({'pointer-events': 'auto', 'opacity': 1});
@@ -130,12 +130,6 @@ jQuery(document).ready(function($) {
 	});*/
 
 
-
-
-	/*  Annoy/destroy the sign in/sign up nag
-		
-		1) we need need the timeout since browsers auto-scroll the page when you navigate back/fwd and we want the nag to be invoked by manual scroll only
-	———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 	var
 	nag = false,
 	callNag = function() {
@@ -147,48 +141,18 @@ jQuery(document).ready(function($) {
 			nag = false;
 		}
 	}
-	
+
 	setTimeout(function(){ // 1)
 		nag = true;
 	}, 1000);
-	
+
 	$nag.find('.close').on('click', function(e){
 		$nag.fadeOut(200, function(){
 			$nag.remove();
 		});
 	});
-
-
-
-
-	/*  Sign-in modal
-	———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
-	$('.sign-in').fancybox({
-		helpers:  {
-	        overlay : {
-		        css : {
-	                'background' : 'rgb(255,255,255)'
-	            }
-	        }
-	    },
-		stretchToView: true,
-		modal: true,
-		afterShow: function() {
-			$wrap.css('visibility', 'hidden');
-		},
-		beforeClose: function() {
-			$wrap.css('visibility', 'visible');
-		}
-	});
-
-
-
-
 	layout();
 });
-
-
-
 
 ///stackoverflow.com/a/10559271
 jQuery.fn.hasAnyClass = function() {
@@ -199,3 +163,4 @@ jQuery.fn.hasAnyClass = function() {
     }
     return false;
 }
+
