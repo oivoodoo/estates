@@ -150,6 +150,7 @@ GEM
       ruby-progressbar (~> 1.0.0)
     get-version (0.0.1)
       sinatra
+    gritter (1.0.3)
     guard (1.8.0)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -369,6 +370,7 @@ DEPENDENCIES
   foreman
   fuubar
   get-version
+  gritter (= 1.0.3)
   guard
   guard-bundler
   guard-rspec

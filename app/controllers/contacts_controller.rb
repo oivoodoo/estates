@@ -8,8 +8,9 @@ class ContactsController < ApplicationController
 
     if @contact.save
       ContactMailer.new_contact(@contact).deliver
+      gflash(success: "Message was successfully sent.")
 
-      redirect_to root_path, notice: "Message was successfully sent."
+      redirect_to root_path
     else
       render :new
     end

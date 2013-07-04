@@ -53,6 +53,7 @@ gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
 
 gem 'get-version', require: 'get_version'
+gem "gritter", "1.0.3"
 
 gem "ckeditor", github: 'aypn0s/ckeditor', branch: 'rails4'
 
