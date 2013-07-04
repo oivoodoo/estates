@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
 
 	validates :name, :price, :owner, presence: true
 
-	self.per_page = 6
+	self.per_page = 8
 
 	def followed_by!(user)
 		unless users.exists?(user.id)

@@ -1,0 +1,19 @@
+<section>
+
+  <div class="listing-filter">
+    <div>
+      <ul>
+        <li><a href="?p=projects&amp;show=local">Local</a></li><li><a href="?p=projects&amp;show=featured">Featured</a></li><li><a href="?p=projects&amp;show=trending">Trending</a></li><li><a class="current" href="?p=projects">All</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="projects" class="gridwrap">
+    <%= render @projects %>
+  </div>
+
+  <div id="projects" class="gridwrap">
+    <%= will_paginate @projects %>
+  </div>
+  
+</section>

@@ -1,0 +1,9 @@
+<section id="intro">
+  <div id="slideshow" class="grid-1-1 no-padding" style="background-image: url('img/intro-1.jpg'); background-color:#fcf4eb;"></div>
+</section>
+<section class="home-listing">
+  <div class="listing-head"><h6 class="listing-heading"><label>Local</label> <span><%= link_to "All Local →", projects_path %></span></h6></div>
+  <div class="gridwrap">
+    <%= render @projects %>
+  </div>
+</section>
