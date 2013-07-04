@@ -21,7 +21,7 @@
 .control-group
   = f.label :description, class: 'control-label'
   .controls
-    = f.text_area :description, class: 'ckeditor'
+    = f.text_area :description, class: 'ckeditor', :ckeditor => {:toolbar => "mini"}
 .control-group
   = f.label :equity, class: 'control-label'
   .controls
@@ -37,7 +37,11 @@
 .control-group
   = f.label :financials, class: 'control-label'
   .controls
-    = f.text_field :financials
+    = f.text_area :financials, class: 'ckeditor'
+.control-group
+  = f.label :address, class: 'control-label'
+  .controls
+    = f.text_field :address, class: 'ckeditor'
 .control-group
   = f.label :term, class: 'control-label'
   .controls
