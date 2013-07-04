@@ -5,6 +5,8 @@ class CreateProjects < ActiveRecord::Migration
       t.float :price
       t.text :description
       t.string :owner
+      t.text :property
+      t.text :strength
       t.integer :investment_type
       t.datetime :investment_term
 
