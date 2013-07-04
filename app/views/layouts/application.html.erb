@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <title>Flock Captial</title>
+  <meta charset="utf-8">
+  <meta name="description" content="html meta description">
+  <meta name="keywords" content="html, meta, keywords" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="canonical" href="http://flock.ips/" />
+  <link rel="Shortcut Icon" type="image/ico" href="favicon.png">
+
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/own.css" type="text/css">
+
+  
+  <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen"><![endif]-->
+
+  <script src="/js/html5.js"></script>
+  <script src="/js/jquery-1.9.1.min.js"></script>
+  <script src="/js/fancybox/fancybox.min.js"></script>
+  <script src="/js/custom.js"></script>
+</head>
+<body onload="" class="<%= layout_class %>">
+  <div id="wrap" style="padding-bottom: 228px;">
+    <header id="masthead" class="mini">
+      <div>
+        <div id="logo">
+          <div>
+            <h1 itemprop="logo"><%= link_to "Flock", root_path %></h1>
+          </div>
+        </div>
+        <nav>
+          <div>
+            <ul>
+              <li><%= link_to "Projects", projects_path %>Projects</li>
+              <li><%= link_to "How it Works", page_path("howto")%></li>
+              <li><%= link_to "Blog", "#" %></li>
+              <li><%= link_to "Get In Touch", new_contact_path%></li>
+              <% if can?(:manage, :all) %>
+                <li>
+                  <%= link_to "Admin", admin_path%>
+                </li>
+              <% end %>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to "#{current_user.email} (#{current_user.status})", edit_user_registration_path%>
+                </li>
+                <li>
+                  <%= link_to "Dashboard", dashboard_path%>
+                </li>
+              <% end %>
+                <li>
+                  <%= render 'devise/menu/registration_items'%>
+                </li>
+            </ul>
+          </div>
+        </nav>
+        <a id="expand"><i></i></a>
+      </div>
+    </header>
+    <div id="main">
+      <%= yield %>
+    </div>
+    <footer>
+    </footer>
+  </div>
+</body>
+</html>

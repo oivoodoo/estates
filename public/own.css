@@ -1,0 +1,13 @@
+textarea {
+  display: block;
+  margin: 0.75rem auto;
+  width: 80%;
+  max-width: 25rem;
+  font: normal 112.5%/1.5 'proxima-nova', 'Helvetica Neue', Helvetica, sans-serif;
+  color: #292929;
+  border: 1px solid #ededed;
+  padding: .4rem .7rem;
+  -webkit-box-shadow: 0 2px 4px -1px #ededed;
+  -moz-box-shadow: 0 2px 4px -1px #ededed;
+  box-shadow: 0 2px 4px -1px #ededed;
+}

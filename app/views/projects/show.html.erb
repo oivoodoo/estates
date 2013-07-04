@@ -1,0 +1,82 @@
+<section id="project">
+  <div class="head">
+    <div class="core">
+      <hgroup>
+        <h1>
+          <%= @project.name %>
+            <% if @project.tag_list.present? %>
+              <label class="type">
+                <%= raw @project.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %>
+              </label>
+            <% end %>
+        </h1>
+      </hgroup>
+      <div class="action">
+        <button>Invest</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="financials">
+    <div>
+      <div><span class="delta"><b>12%</b></span><br>target return</div>
+      <div><span class="delta"><b>Equity</b></span><br>purchase</div>
+      <div><span class="delta"><b>24 month</b></span><br>holding period</div>
+      <div class="goal">
+        <div>
+          <h3><%= number_to_currency(@project.price)%></h3>
+          <div class="goalmeter"><div class="progress" style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
+          <div class="deadline"><b>22</b> Days to close</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="body">
+    <div class="main">
+    
+      <div id="tabs">
+        <ul>
+          <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
+          <li><a href="index-p=project.html#">Financials</a></li>
+          <li><a href="index-p=project.html#">Location</a></li><li><a href="index-p=project.html#">Property</a></li>
+          <li><a href="index-p=project.html#">Strengths</a></li>
+          <li><a href="#comments" data-toggle="tab">Comments</a></li>
+        </ul>
+      </div>
+      <div>
+        <div>
+          <div class="gallery">
+            <%= image_tag @project.image_url %>
+          </div>
+          <p>
+            <%= @project.description %>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="side">
+      <div id="tabspace"></div>
+      <div class="developer">
+        <div>
+          <div class="focus"></div>
+          <img class="logo" src="/img/developer-logo-1-s.png">
+          <h4 class="developer-name">Trigon Capital ltd.</h4>
+        </div>
+      </div>
+      <div>
+        <div class="padding">
+          <h5 style="color: lightGray">Project feed</h5>
+          <p style="font-size:.7em; margin:1em 0 0; color: lightGray">updates, progress, ...</p>
+        </div>
+      </div>
+      <div>
+        <div class="padding">
+          <h5 style="color: lightGray">Personal connections</h5>
+          <p style="font-size:.7em; margin:1em 0 0; color: lightGray">Who has already joined investing in this project — user's Facebook friends, LinkedIn connections etc.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

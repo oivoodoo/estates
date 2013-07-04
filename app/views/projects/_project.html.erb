@@ -1,0 +1,35 @@
+<article class="project-badge new" onclick="location.href=<%=url_for(project)%>">
+  <div>
+    <header>
+      <%= link_to project do %>
+        <%= image_tag project.image_url %>
+        <div class="focus"></div>
+      <% end %>
+      <h4 class="project-name">
+        <% link_to project.name do %>
+          <label class="type">Residential</label>
+        <% end %>
+      </h4>
+    </header>
+
+    <div class="meta table">
+      <div>
+        <img class="dev-logo" src="img/developer-logo-1-s.png">
+      </div>
+      <div>
+        <ul>
+          <li><b>12%</b> target return</li>
+          <li><b>Equity</b> purchase</li>
+          <li><b>24 month</b> holding period</li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="goal table">
+      <li class="deadline"><b>22</b> Days to close</li>
+      <li class="goalsum"><%= number_to_currency(project.price) %></li>
+    </ul>
+
+    <div class="goalmeter"><div class="progress" style="width:66%"></div></div>
+  </div>
+</article>
