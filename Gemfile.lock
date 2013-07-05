@@ -148,7 +148,6 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.2.0)
       ruby-progressbar (~> 1.0)
-    geocoder (1.1.8)
     get-version (0.0.1)
       sinatra
     gritter (1.0.3)
@@ -369,7 +368,6 @@ DEPENDENCIES
   factory_girl_rails
   foreman
   fuubar
-  geocoder
   get-version
   gritter (= 1.0.3)
   guard

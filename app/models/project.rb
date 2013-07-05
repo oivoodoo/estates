@@ -2,9 +2,6 @@ class Project < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable
 
-  geocoded_by :address
-  after_validation :geocode
-
   has_many :followers
   has_many :users, through: :followers
 

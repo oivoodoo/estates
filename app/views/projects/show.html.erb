@@ -39,7 +39,9 @@
         <ul class="nav nav-tabs" id="myTab">
           <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
           <li><a href="#financials" data-toggle="tab">Financials</a></li>
-          <li><a href="#location" data-toggle="tab">Location</a></li>
+          <% if @project.street && @project.city && @project.country.present? %>
+            <li><a href="#map" data-toggle="tab">Location</a></li>
+          <% end %>
           <li><a href="#property" data-toggle="tab">Property</a></li>
           <li><a href="#strengths" data-toggle="tab">Strengths</a></li>
           <% if user_signed_in? %>
@@ -59,9 +61,9 @@
         <div class="tab-pane" id="financials">
           <%= @project.financials.to_s.html_safe %>
         </div>
-        <div class="tab-pane" id="location">
-          <%= @project.latitude %>
-          <%= @project.longtitude %>
+        <div class="tab-pane" id="map">
+          <div id='map_container'>
+          </div>
         </div>
         <div class="tab-pane" id="property">
           <%= @project.property.to_s.html_safe %>
@@ -101,3 +103,39 @@
     </div>
   </div>
 </section>
+
+<script>
+/* <![CDATA[ */
+function setMapAddress( address )
+{
+  var geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode( { address : address }, function( results, status ) {
+    if( status == google.maps.GeocoderStatus.OK ) {
+      var latlng = results[0].geometry.location;
+      var options = {
+        zoom: 17,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      var map = new google.maps.Map( document.getElementById( 'map_container' ), options );
+      $(document).on('shown', "[href='#map']", function() {
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter(latlng);
+        var marker = new google.maps.Marker({
+          map: map, 
+          position: results[0].geometry.location
+        });
+      });
+    }
+  });
+}
+
+$(function() {
+  var address = "<%= @project.address %>";
+  setMapAddress( address );
+});
+
+/* ]]> */
+</script>
