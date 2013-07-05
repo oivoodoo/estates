@@ -1,20 +1,20 @@
 <div id="sign-in">
   <div class="modal-content">
     <div>
-      
+
       <img class="logo" src="/g/flockinvest-logo.svg">
-      
+
       <h1>Sign up</h1>
         <div class="social_sign">
           <h3> Sign up with your social account</h3>
           <% unless signed_in? %>
-            <a href="user_omniauth_authorize_path(:facebook)" class="fb">
+            <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
               <i class="icon-facebook"></i>
             </a>
-            <a href="user_omniauth_authorize_path(:linkedin)" class="li">
+            <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
               <i class="icon-linkedin"></i>
             </a>
-            <a href="user_omniauth_authorize_path(:google_oauth2)" class="gp">
+            <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
               <i class="icon-google-plus"></i>
             </a>
           <% else %>
@@ -26,19 +26,19 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.text_field :name, placeholder: "Full Name" %>
         <%= f.email_field :email, placeholder: "Email"%>
-        <%= f.password_field :password, placeholder: "••••••••"%>
+        <%= f.password_field :password, placeholder: "Password" %>
+
         <div class="action">
           <div>
             <div>
               Already have an account? <a href="<%= new_user_session_path %>" class="sign-in">Sign in
-            </a>.            </div>
-            <div>
-              <%= f.submit "Sign up", class: "delta thicker" %>
+              </a>.
             </div>
+            <div><%= f.submit "Sign up", class: "delta thicker" %></div>
           </div>
         </div>
       <% end %>
-      
     </div>
   </div>
 </div>
+

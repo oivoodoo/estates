@@ -11,3 +11,4 @@ class UsersController < ApplicationController
     @messages = current_user.messages
   end
 end
+
