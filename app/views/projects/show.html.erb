@@ -39,7 +39,7 @@
         <ul class="nav nav-tabs" id="myTab">
           <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
           <li><a href="#financials" data-toggle="tab">Financials</a></li>
-          <% if @project.street && @project.city && @project.country.present? %>
+          <% if @project.street.present? && @project.city.present? && @project.country.present? %>
             <li><a href="#map" data-toggle="tab">Location</a></li>
           <% end %>
           <li><a href="#property" data-toggle="tab">Property</a></li>
