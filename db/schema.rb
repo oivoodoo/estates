@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20130705085442) do
+=======
+ActiveRecord::Schema.define(version: 20130705132308) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> master
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -87,10 +94,6 @@ ActiveRecord::Schema.define(version: 20130705085442) do
     t.float    "price"
     t.text     "description"
     t.string   "owner"
-    t.text     "property"
-    t.text     "strength"
-    t.integer  "investment_type"
-    t.datetime "investment_term"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
@@ -98,6 +101,10 @@ ActiveRecord::Schema.define(version: 20130705085442) do
     t.string   "street"
     t.string   "city"
     t.string   "country"
+    t.text     "property"
+    t.text     "strength"
+    t.text     "investment_type"
+    t.text     "investment_term"
   end
 
   create_table "sessions", force: true do |t|
@@ -128,13 +135,12 @@ ActiveRecord::Schema.define(version: 20130705085442) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",        null: false
-    t.string   "name",                   default: "",        null: false
-    t.string   "encrypted_password",     default: "",        null: false
+    t.string   "email",                              default: "",        null: false
+    t.string   "encrypted_password",     limit: 128, default: "",        null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -142,7 +148,8 @@ ActiveRecord::Schema.define(version: 20130705085442) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
-    t.string   "status",                 default: "pending"
+    t.string   "name",                                                   null: false
+    t.string   "status",                             default: "pending"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
