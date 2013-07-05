@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130705132308) do
+ActiveRecord::Schema.define(version: 20130705144709) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -91,13 +94,13 @@ ActiveRecord::Schema.define(version: 20130705132308) do
     t.datetime "updated_at"
     t.string   "image"
     t.text     "financials"
-    t.string   "street"
-    t.string   "city"
-    t.string   "country"
     t.text     "property"
     t.text     "strength"
     t.text     "investment_type"
     t.text     "investment_term"
+    t.string   "street"
+    t.string   "city"
+    t.string   "country"
   end
 
   create_table "sessions", force: true do |t|
