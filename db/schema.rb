@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130704152050) do
+ActiveRecord::Schema.define(version: 20130705132308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,10 +90,6 @@ ActiveRecord::Schema.define(version: 20130704152050) do
     t.float    "price"
     t.text     "description"
     t.string   "owner"
-    t.text     "property"
-    t.text     "strength"
-    t.integer  "investment_type"
-    t.datetime "investment_term"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
@@ -101,6 +97,10 @@ ActiveRecord::Schema.define(version: 20130704152050) do
     t.float    "latitude"
     t.float    "longtitude"
     t.string   "address"
+    t.text     "property"
+    t.text     "strength"
+    t.text     "investment_type"
+    t.text     "investment_term"
   end
 
   create_table "sessions", force: true do |t|
