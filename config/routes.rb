@@ -9,6 +9,7 @@ Estates::Application.routes.draw do
   resources :projects, only: [:index, :show] do
     member do
       get 'image'
+      get 'company_image'
       post 'follow'
     end
     resources :comments

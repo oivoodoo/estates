@@ -15,6 +15,10 @@ class ProjectsController < ApplicationController
     send_data @project.image.file.file.data
   end
 
+  def company_image
+    send_data @project.company_image.file.file.data
+  end
+
   def follow
     @project = Project.find(params[:id])
     @project.followed_by!(current_user)
