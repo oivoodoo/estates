@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130708073543) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
     t.string   "uid",        null: false
@@ -91,9 +94,6 @@ ActiveRecord::Schema.define(version: 20130708073543) do
     t.datetime "updated_at"
     t.string   "image"
     t.text     "financials"
-    t.string   "street"
-    t.string   "city"
-    t.string   "country"
     t.text     "property"
     t.text     "strength"
     t.text     "investment_type"
@@ -101,6 +101,9 @@ ActiveRecord::Schema.define(version: 20130708073543) do
     t.string   "company_image"
     t.text     "company_description"
     t.float    "percent"
+    t.string   "street"
+    t.string   "city"
+    t.string   "country"
   end
 
   create_table "sessions", force: true do |t|
