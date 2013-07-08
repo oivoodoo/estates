@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  mount_uploader :company_image, CompanyImageUploader
+
   validates :name, :price, :owner, presence: true
 
   self.per_page = 8

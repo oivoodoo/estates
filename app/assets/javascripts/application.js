@@ -15,3 +15,4 @@
 //= require bootstrap-tab
 //= require turbolinks
 //= require gritter
+//= require jquery.prettyPhoto

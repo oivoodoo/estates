@@ -12,13 +12,27 @@
   .controls
     = f.text_field :price, placeholder: 'Price'
 .control-group
-  = f.label :owner, class: 'control-label'
+  = f.label :percentage, class: 'control-label'
   .controls
-    = f.text_field :owner, placeholder: 'Owner'
+    = f.text_field :percent, placeholder: 'Percentage'
 .control-group
   = f.label :tag_list, class: 'control-label'
   .controls
     = f.text_field :tag_list, placeholder: 'tags'
+
+%legend Customers
+.control-group
+  = f.label :company_image, class: 'control-label'
+  .controls
+    = f.file_field :company_image
+.control-group
+  = f.label :owner, placeholder: 'Name', class: 'control-label'
+  .controls
+    = f.text_field :owner
+.control-group
+  = f.label :company_description, class: 'control-label'
+  .controls
+    = f.text_area :company_description, class: 'ckeditor'
 
 %legend Content
 .control-group
