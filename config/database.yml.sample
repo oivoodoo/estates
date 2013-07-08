@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: estates_development
+  pool: 5
+  username: postgres
+  password: '123456'
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: estates_test
+  pool: 5
+  username: postgres
+  password: '123456'
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: estates_production
+  pool: 5
+  username: postgres
+  password: '123456'
