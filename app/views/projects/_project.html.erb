@@ -14,7 +14,7 @@
 
     <div class="meta table">
       <div>
-        <img class="dev-logo" src="img/developer-logo-1-s.png">
+        <img class="dev-logo" src="<%= project.company_image_url %>">
       </div>
       <div>
         <ul>
@@ -29,7 +29,11 @@
       <li class="deadline"><b>22</b> Days to close</li>
       <li class="goalsum"><%= number_to_currency(project.price) %></li>
     </ul>
-
-    <div class="goalmeter"><div class="progress" style="width:66%"></div></div>
+    <% if project.percent? %>
+      <div class="goalmeter">
+        <div class="progress" style="width:<%= number_to_percentage(project.percent, :precision => 0)%>">
+        </div>
+      </div>
+    <% end %>
   </div>
 </article>
