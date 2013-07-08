@@ -607,7 +607,6 @@ label.type {
   text-align: center;
 }
 .focus {
-  display: block;
   position: absolute;
   z-index: 2;
   width: 100%;

@@ -25,7 +25,10 @@
       <div class="goal">
         <div>
           <h3><%= number_to_currency(@project.price)%></h3>
-          <div class="goalmeter"><div class="progress" style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
+          <div class="goalmeter">
+            <div class="progress" style="width:<%= number_to_percentage(@project.percent, :precision => 0)%>">
+            </div>
+          </div>
           <div class="deadline"><b>22</b> Days to close</div>
         </div>
       </div>
@@ -52,7 +55,9 @@
       <div class="tab-content gallery">
         <div class="tab-pane active" id="overview">
           <div>
-            <%= image_tag @project.image_url %>
+            <a href="<%= @project.image_url%>" rel="prettyPhoto" title="This is the description">
+              <%= image_tag @project.image_url %>
+            </a>
           </div>
           <p>
             <%= @project.description.html_safe %>
@@ -81,13 +86,17 @@
     </div>
     <div class="side">
       <div id="tabspace"></div>
-      <div class="developer">
-        <div>
-          <div class="focus"></div>
-          <img class="logo" src="/img/developer-logo-1-s.png">
-          <h4 class="developer-name">Trigon Capital ltd.</h4>
+      <% if @project.company_image.present? %>
+        <div class="developer">
+          <div>
+            <a href="<%= @project.company_image_url%>" rel="prettyPhoto" title="<%= @project.company_description%>">
+              <img class="logo" src="<%= @project.company_image_url%>" alt="<%= @project.owner%>">
+              </img>
+            </a>
+            <h4 class="developer-name"><%= @project.owner %></h4>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div>
         <div class="padding">
           <h5 style="color: lightGray">Project feed</h5>
@@ -136,6 +145,10 @@ $(function() {
   var address = "<%= @project.address %>";
   setMapAddress( address );
 });
+
+$(document).ready(function(){
+    $("a[rel^='prettyPhoto']").prettyPhoto();
+  });
 
 /* ]]> */
 </script>

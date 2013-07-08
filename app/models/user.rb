@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :followers
   has_many :projects, through: :followers
 
+  mount_uploader :profile_img, ProfileImgUploader
+
   def role?(r)
     self.role.to_s == r.to_s
   end
