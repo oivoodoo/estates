@@ -1152,7 +1152,6 @@ label.type {
   -ms-transition: all 0.7s;
   -o-transition: all 0.7s;
   transition: all 0.7s;
-  -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
@@ -1181,7 +1180,7 @@ label.type {
   -ms-filter: none;
   -o-filter: none;
   filter: none;
-  opacity: .05;
+  opacity: 1.35;
 }
 #project .developer > div:hover .focus,
 #project .developer > div:focus .focus {
