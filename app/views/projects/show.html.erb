@@ -55,9 +55,7 @@
       <div class="tab-content gallery">
         <div class="tab-pane active" id="overview">
           <div>
-            <a href="<%= @project.image_url%>" rel="prettyPhoto" title="This is the description">
-              <%= image_tag @project.image_url %>
-            </a>
+            <%= image_tag @project.image_url %>
           </div>
           <p>
             <%= @project.description.html_safe %>
