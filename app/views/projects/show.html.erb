@@ -26,8 +26,10 @@
         <div>
           <h3><%= number_to_currency(@project.price)%></h3>
           <div class="goalmeter">
-            <div class="progress" style="width:<%= number_to_percentage(@project.percent, :precision => 0)%>">
-            </div>
+            <% if @project.percent.present? %>
+              <div class="progress" style="width:<%= number_to_percentage(@project.percent, :precision => 0)%>">
+              </div>
+            <% end %>
           </div>
           <div class="deadline"><b>22</b> Days to close</div>
         </div>
