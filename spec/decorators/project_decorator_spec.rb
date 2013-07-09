@@ -12,4 +12,10 @@ describe ProjectDecorator do
 
     it { expect(decorated.days_to_close).to eq(2) }
   end
+
+  describe ".updated_at" do
+    let(:decorated) { create(:project, updated_at: Date.parse("09.07.2013")).decorate }
+
+    it { expect(decorated.updated_at).to eq("Tuesday, July 9") }
+  end
 end
