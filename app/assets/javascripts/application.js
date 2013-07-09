@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-tab
 //= require turbolinks
 //= require gritter
-//= require jquery.prettyPhoto
+//= require vendors/jquery.prettyPhoto
+//= require vendors/bootstrap-tab

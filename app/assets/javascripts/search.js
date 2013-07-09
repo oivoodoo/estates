@@ -1,7 +1,7 @@
 $(function () {
   var form = $('#search_form'),
     search = $('#query');
-  
+
   form.submit(function(event) {
     event.preventDefault();
 
@@ -16,3 +16,4 @@ $(function () {
     }, 3600);
   });
 });
+
