@@ -19,9 +19,9 @@
   
   <div class="financials">
     <div>
-      <div><span class="delta"><b>12%</b></span><br>target return</div>
+      <div><span class="delta"><b><%= number_to_percentage(@project.target_return, :precision => 0)%></b></span><br>target return</div>
       <div><span class="delta"><b>Equity</b></span><br>purchase</div>
-      <div><span class="delta"><b>24 month</b></span><br>holding period</div>
+      <div><span class="delta"><b><%= @project.holding %></b></span><br>holding period</div>
       <div class="goal">
         <div>
           <h3><%= number_to_currency(@project.price)%></h3>
