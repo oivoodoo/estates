@@ -6,4 +6,10 @@ describe ProjectDecorator do
 
     it { expect(decorated.address).to eq("Slobodskaya 91 Minsk Belarus") }
   end
+
+  describe ".days_to_close" do
+    let(:decorated) { create(:project, finish_investment: 2.days.from_now).decorate }
+
+    it { expect(decorated.days_to_close).to eq(2) }
+  end
 end
