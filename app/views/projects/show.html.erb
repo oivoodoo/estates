@@ -31,7 +31,9 @@
               </div>
             <% end %>
           </div>
-          <div class="deadline"><b><%= @project.days_to_close %></b> Days to close</div>
+          <% if @project.finish_investment? %>
+            <div class="deadline"><b><%= @project.days_to_close %></b> Days to close</div>
+          <% end %>
         </div>
       </div>
     </div>
