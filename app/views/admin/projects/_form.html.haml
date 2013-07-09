@@ -66,7 +66,7 @@
   .controls
     = f.text_field :country, class: 'ckeditor'
 
-%legend Investement
+%legend Investment
 .control-group
   = f.label :equity, class: 'control-label'
   .controls
@@ -79,6 +79,14 @@
     to
     = f.text_field :finish_investment, data: { datepicker: "datepicker" }
     = f.text_field :finish_investment, value: Time.now.strftime("%I:%M%P")
+.control-group
+  = f.label :target_return, class: 'control-label'
+  .controls
+    = f.text_field :target_return, placeholder: "Target Return"
+.control-group
+  = f.label :holding_period, class: 'control-label'
+  .controls
+    = f.text_field :holding, placeholder: "Holding Period"
 %br
 = f.submit class: "btn btn-primary"
 = link_to "Back", admin_projects_path, class: "btn btn-danger"
