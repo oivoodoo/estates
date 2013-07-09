@@ -74,11 +74,11 @@
 .control-group
   = f.label :term, class: 'control-label'
   .controls
-    = f.text_field :investment_term, data: { datepicker: "datepicker" },value: Time.now.strftime("%m/%d/%y")
-    = f.text_field :investment_term, value: Time.now.strftime("%I:%M%P")
+    = f.text_field :start_investment, data: { datepicker: "datepicker" },value: Time.now.strftime("%m/%d/%y")
+    = f.text_field :start_investment, value: Time.now.strftime("%I:%M%P")
     to
-    = f.text_field :investment_term, data: { datepicker: "datepicker" }
-    = f.text_field :investment_term, value: Time.now.strftime("%I:%M%P")
+    = f.text_field :finish_investment, data: { datepicker: "datepicker" }
+    = f.text_field :finish_investment, value: Time.now.strftime("%I:%M%P")
 %br
 = f.submit class: "btn btn-primary"
 = link_to "Back", admin_projects_path, class: "btn btn-danger"
