@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709090326) do
+ActiveRecord::Schema.define(version: 20130709134944) do
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -93,17 +93,17 @@ ActiveRecord::Schema.define(version: 20130709090326) do
     t.text     "financials"
     t.text     "property"
     t.text     "strength"
-    t.text     "investment_type"
+    t.text     "investment_type",     default: "loan"
     t.string   "street"
     t.string   "city"
     t.string   "country"
     t.string   "company_image"
     t.text     "company_description"
     t.float    "percent"
-    t.datetime "start_investment",    default: '2013-07-09 09:16:55'
-    t.datetime "finish_investment",   default: '2013-07-11 09:16:55'
     t.float    "target_return",       default: 50.0
     t.string   "holding",             default: "24 month"
+    t.datetime "start_investment"
+    t.datetime "finish_investment"
   end
 
   create_table "sessions", force: true do |t|

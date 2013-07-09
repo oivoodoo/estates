@@ -31,7 +31,9 @@
               </div>
             <% end %>
           </div>
-          <div class="deadline"><b><%= @project.days_to_close %></b> Days to close</div>
+          <% if @project.finish_investment? %>
+            <div class="deadline"><b><%= @project.days_to_close %></b> Days to close</div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -68,6 +70,11 @@
         </div>
         <div class="tab-pane" id="map">
           <div id='map_container'>
+          </div>
+          <div class="gallery">
+            <p>Street: <%= @project.street %></p>
+            <p>City: <%= @project.city %></p>
+            <p>Country: <%= @project.country %></p>
           </div>
         </div>
         <div class="tab-pane" id="property">
