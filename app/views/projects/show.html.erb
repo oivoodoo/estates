@@ -69,6 +69,11 @@
         <div class="tab-pane" id="map">
           <div id='map_container'>
           </div>
+          <div class="gallery">
+            <p>Street: <%= @project.street %></p>
+            <p>City: <%= @project.city %></p>
+            <p>Country: <%= @project.country %></p>
+          </div>
         </div>
         <div class="tab-pane" id="property">
           <%= @project.property.to_s.html_safe %>
