@@ -20,7 +20,7 @@
   <div class="financials">
     <div>
       <div><span class="delta"><b><%= number_to_percentage(@project.target_return, :precision => 0)%></b></span><br>target return</div>
-      <div><span class="delta"><b>Equity</b></span><br>purchase</div>
+      <div><span class="delta"><b><%= @project.investment_type %></b></span><br>purchase</div>
       <div><span class="delta"><b><%= @project.holding %></b></span><br>holding period</div>
       <div class="goal">
         <div>
@@ -104,7 +104,7 @@
       <div>
         <div class="padding">
           <h5 style="color: lightGray">Project feed</h5>
-          <p style="font-size:.7em; margin:1em 0 0; color: lightGray">updates, progress, ...</p>
+          <p style="font-size:.7em; margin:1em 0 0; color: lightGray"><%= @project.updated_at %></p>
         </div>
       </div>
       <div>
