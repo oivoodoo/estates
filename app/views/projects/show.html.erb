@@ -117,7 +117,15 @@
       <div>
         <div class="padding">
           <h5 style="color: lightGray">Personal connections</h5>
-          <p style="font-size:.7em; margin:1em 0 0; color: lightGray">Who has already joined investing in this project — user's Facebook friends, LinkedIn connections etc.</p>
+          <br>
+          <% if user_signed_in? %>
+            <%= render 'follow' %>
+          <% end %>
+          <p style="font-size:.7em; margin:1em 0 0; color: lightGray">
+            <% @followers.each do |follower| %>
+              <%= follower.email %>
+            <% end %>
+          </p>
         </div>
       </div>
     </div>
