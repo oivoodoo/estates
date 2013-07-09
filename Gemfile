@@ -71,6 +71,7 @@ group :development, :test do
   gem 'spork'
   gem 'spork-rails', github: 'railstutorial/spork-rails'
   gem 'guard-spork'
+  gem 'database_cleaner'
 end
 
 group :development do

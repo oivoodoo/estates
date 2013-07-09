@@ -16,3 +16,7 @@ textarea {
   height: 300px;
 }
 
+#project .action a.button {
+  font-size: 2.6667em;
+}
+

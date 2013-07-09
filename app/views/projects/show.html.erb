@@ -12,11 +12,11 @@
         </h1>
       </hgroup>
       <div class="action">
-        <button>Invest</button>
+        <%= link_to "Invest", new_project_invest_path(@project), class: 'button' %>
       </div>
     </div>
   </div>
-  
+
   <div class="financials">
     <div>
       <div><span class="delta"><b><%= number_to_percentage(@project.target_return, :precision => 0)%></b></span><br>target return</div>
@@ -38,10 +38,10 @@
       </div>
     </div>
   </div>
-  
+
   <div class="body">
     <div class="main">
-    
+
       <div id="tabs">
         <ul class="nav nav-tabs" id="myTab">
           <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
@@ -89,7 +89,7 @@
           </div>
         <% end %>
       </div>
-      
+
     </div>
     <div class="side">
       <div id="tabspace"></div>
@@ -144,7 +144,7 @@ function setMapAddress( address )
         google.maps.event.trigger(map, 'resize');
         map.setCenter(latlng);
         var marker = new google.maps.Marker({
-          map: map, 
+          map: map,
           position: results[0].geometry.location
         });
       });
