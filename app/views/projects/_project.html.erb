@@ -1,15 +1,17 @@
 <article class="project-badge new" onclick="location.href=<%=url_for(project)%>">
   <div>
     <header>
-      <%= link_to project do %>
-        <%= image_tag project.image_url %>
-        <div class="focus"></div>
-      <% end %>
-      <h4 class="project-name">
-        <% link_to project.name do %>
-          <label class="type">Residential</label>
+      <div class="imagery holder">
+        <%= link_to project do %>
+          <%= image_tag project.image_url %>
+          <div class="focus"></div>
         <% end %>
-      </h4>
+        <h4 class="project-name">
+          <% link_to project.name do %>
+            <label class="type">Residential</label>
+          <% end %>
+        </h4>
+      </div>
     </header>
 
     <div class="meta table">

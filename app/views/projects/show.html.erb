@@ -56,7 +56,7 @@
       </div>
       <div class="tab-content gallery">
         <div class="tab-pane active" id="overview">
-          <div>
+          <div class="imagery logo">
             <%= image_tag @project.image_url %>
           </div>
           <p>
@@ -92,7 +92,11 @@
             <a href="<%= @project.company_image_url%>" rel="prettyPhoto" title="<%= @project.company_description%>">
               <img class="logo" src="<%= @project.company_image_url%>" alt="<%= @project.owner%>">
               </img>
-            </a>
+            </a><h4 class="project-name">
+          <% link_to @project.name do %>
+            <label class="type">Residential</label>
+          <% end %>
+        </h4>
             <h4 class="developer-name"><%= @project.owner %></h4>
           </div>
         </div>

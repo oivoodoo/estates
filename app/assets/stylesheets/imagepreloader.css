@@ -1,11 +1,20 @@
 .imagery {
-	float: left;
-	background: url('/images/loader.gif') 50% 25% no-repeat !important;
-	display: inline;
+	background: url('/images/loader.gif') 50% 50% no-repeat !important;
+	display: block-inline;
 	border: none;
 }
 
+.imagery.logo {
+	width: 1014px;
+	height: 517px;
+}
+
 .imagery.holder {
-	width: 404px;
-	height: 202px
+  width: 309px;
+  height: 154px;
+}
+
+.img.logo {
+  width: 192px;
+  height: 120px;
 }

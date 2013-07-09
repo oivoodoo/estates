@@ -15,5 +15,9 @@ function doThis() {
   }
   $('img:hidden').eq(0).fadeIn(500);
   i++;
+<<<<<<< Updated upstream
 }
 
+=======
+}
+>>>>>>> Stashed changes
