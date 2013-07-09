@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709073356) do
+ActiveRecord::Schema.define(version: 20130709090326) do
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -100,8 +100,10 @@ ActiveRecord::Schema.define(version: 20130709073356) do
     t.string   "company_image"
     t.text     "company_description"
     t.float    "percent"
-    t.datetime "start_investment",    default: '2013-07-09 08:51:39'
-    t.datetime "finish_investment",   default: '2013-07-11 08:51:39'
+    t.datetime "start_investment",    default: '2013-07-09 09:16:55'
+    t.datetime "finish_investment",   default: '2013-07-11 09:16:55'
+    t.float    "target_return",       default: 50.0
+    t.string   "holding",             default: "24 month"
   end
 
   create_table "sessions", force: true do |t|
