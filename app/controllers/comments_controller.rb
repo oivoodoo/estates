@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-  	@project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
     @comment = @project.comments.create(params[:comment])
     @comment.user = current_user
 
@@ -12,3 +12,4 @@ class CommentsController < ApplicationController
     end
   end
 end
+
