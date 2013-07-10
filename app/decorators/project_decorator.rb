@@ -1,5 +1,5 @@
 class ProjectDecorator < Draper::Decorator
-  delegate_all
+  delegate_all 
 
   def address
     "#{street} #{city} #{country}"
@@ -10,6 +10,10 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def updated_at
-    object.updated_at.strftime("%A, %B%e")
+    object.updated_at.strftime("%A, %B %e")
+  end
+
+  def investment_type
+    object.investment_type.camelcase
   end
 end

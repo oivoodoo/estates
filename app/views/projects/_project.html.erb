@@ -20,9 +20,12 @@
       </div>
       <div>
         <ul>
-          <li><b>12%</b> target return</li>
-          <li><b>Equity</b> purchase</li>
-          <li><b>24 month</b> holding period</li>
+          <li>
+            <b>
+              <%= number_to_percentage(project.target_return, :precision => 0)%>
+            </b> target return</li>
+          <li><b><%= project.investment_type %></b> purchase</li>
+          <li><b><%= project.holding %></b> holding period</li>
         </ul>
       </div>
     </div>

@@ -18,4 +18,10 @@ describe ProjectDecorator do
 
     it { expect(decorated.updated_at).to eq("Tuesday, July 9") }
   end
+
+  describe ".investment_type" do
+    let(:decorated) { create(:project, investment_type: "loan").decorate }
+
+    it { expect(decorated.investment_type).to eq("Loan") }
+  end
 end
