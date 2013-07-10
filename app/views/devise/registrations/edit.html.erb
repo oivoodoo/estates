@@ -4,12 +4,18 @@
       <img class="logo" src="/g/flockinvest-logo.svg">
       <h1>Profile Settings</h1>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+          <% if @user.avatar? %>
+            <%= image_tag @user.avatar_url(:thumb), class: "circle" %>
+          <% else %>
+            <%= image_tag "/images/default_avatar.png", class: "circle" %>
+          <% end %>
+        <%= f.file_field :avatar %>
         <%= f.text_field :name, class: "input-xlarge", placeholder: "Full Name" %>
         <%= f.text_field :email, class: "input-xlarge", placeholder: "Email" %>
         <%= f.password_field :password, class: "input-xlarge", placeholder: "Password" %>
         <%= f.password_field :password_confirmation, class: "input-xlarge", placeholder: "Password Confirmation" %>
         <i>(your current password to confirm your changes)</i>
-        <%= f.password_field :password_current, class: "input-xlarge", placeholder: "Current Password" %>
+        <%= f.password_field :current_password, class: "input-xlarge", placeholder: "Current Password" %>
         <div class="action">
           <div>
             <div></div>
