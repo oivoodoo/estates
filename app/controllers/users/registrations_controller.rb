@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :current_password, :avatar)
   end
 
   def needs_password?(user, params)
@@ -32,4 +32,3 @@ class Users::RegistrationsController < Devise::RegistrationsController
       !params[:user][:password].blank?
   end
 end
-
