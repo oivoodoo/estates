@@ -13,6 +13,7 @@ Estates::Application.routes.draw do
       post 'follow'
     end
     resources :comments
+    resources :invests, only: :new
   end
 
   get 'dashboard' => 'dashboard#index'

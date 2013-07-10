@@ -120,6 +120,7 @@ GEM
     coffee-script-source (1.6.2)
     columnize (0.3.6)
     commonjs (0.2.6)
+    database_cleaner (1.0.1)
     debugger (1.6.0)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -362,6 +363,7 @@ DEPENDENCIES
   choices
   ckeditor!
   coffee-rails (~> 4.0.0)
+  database_cleaner
   debugger
   devise!
   draper!
