@@ -5,7 +5,7 @@ describe Admin::ProjectsController do
     before { logged_in(:admin) }
 
     describe '#index' do
-      let!(:projects) { 2.times.map { create(:project) } }
+      let!(:projects) { create_list(:project, 2) }
 
       before { get :index }
 
