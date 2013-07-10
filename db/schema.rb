@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709134944) do
+ActiveRecord::Schema.define(version: 20130710112534) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authentications", force: true do |t|
     t.string   "provider",   null: false
@@ -81,6 +84,13 @@ ActiveRecord::Schema.define(version: 20130709134944) do
 
   add_index "messages", ["ancestry"], name: "index_messages_on_ancestry", using: :btree
   add_index "messages", ["sent_messageable_id", "received_messageable_id"], name: "acts_as_messageable_ids", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "name"

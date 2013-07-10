@@ -1,43 +1,40 @@
 <div id="sign-in">
   <div class="modal-content">
     <div>
-
       <img class="logo" src="/g/flockinvest-logo.svg">
-      
+
       <h1>Sign in</h1>
       <div class="social_sign">
         <h3> Sign in with your social account</h3>
         <% unless signed_in? %>
-          <a href="user_omniauth_authorize_path(:facebook)" class="fb">
+          <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
             <i class="icon-facebook"></i>
           </a>
-          <a href="user_omniauth_authorize_path(:linkedin)" class="li">
+          <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
             <i class="icon-linkedin"></i>
           </a>
-          <a href="user_omniauth_authorize_path(:google_oauth2)" class="gp">
+          <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
             <i class="icon-google-plus"></i>
           </a>
-          <% else %>
+        <% else %>
           <%= current_user.name %>
           <%= current_user.email %>
         <% end %>
       </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, placeholder: "Email"%>
-      <%= f.password_field :password, placeholder: "Password"%>
-    <div class="action">
-      <div>
-        <div>
-          Don't have an account? <a href="<%= new_user_registration_path %>" class="sign-in">Sign up</a>!
-        </div>
-        <div>
-            <%= f.submit "Sign in", class: "delta thicker" %>
-        </div>
-      </div>
-    </div>
-    <% end %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.email_field :email, placeholder: "Email"%>
+        <%= f.password_field :password, placeholder: "Password"%>
 
+        <div class="action">
+          <div>
+            <div>
+              Don't have an account? <a href="<%= new_user_registration_path %>" class="sign-in">Sign up</a>!
+            </div>
+            <div><%= f.submit "Sign in", class: "delta thicker" %></div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
