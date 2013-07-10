@@ -1,0 +1,15 @@
+- content_for :buttons do
+  = link_to "Add new Post", new_admin_post_path, class: "btn btn-block btn-primary btn btn-large"
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Title
+      %th Actions
+
+  %tbody
+    = render partial: 'post', collection: collection
+
+= link_to "Back to Admin", admin_path
+
+

@@ -20,9 +20,8 @@
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 
-  
-<!-- sensor=false tells google images we aren't trying to sense the user's location -->
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <!-- sensor=false tells google images we aren't trying to sense the user's location -->
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
   <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen"><![endif]-->
 
@@ -46,7 +45,7 @@
             <ul>
               <li><%= link_to "Projects", projects_path %>Projects</li>
               <li><%= link_to "How it Works", page_path("howto")%></li>
-              <li><%= link_to "Blog", "#" %></li>
+              <li><%= link_to "Blog", blog_path %></li>
               <li><%= link_to "Get In Touch", new_contact_path%></li>
               <% if can?(:manage, :all) %>
                 <li>
