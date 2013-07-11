@@ -122,8 +122,14 @@
             <%= render 'follow' %>
           <% end %>
           <p style="font-size:.7em; margin:1em 0 0; color: lightGray">
-            <% @followers.each do |follower| %>
-              <%= follower.email %>
+            <% @followers.each do |follower, image_tag| %>
+              <%= link_to "#" do %>
+                <% if follower.avatar? %>
+                  <%= image_tag follower.avatar_url(:thumb), class: "circle-follower" %>
+                <% else %>
+                  <%= image_tag "/images/default_avatar.png", class: "circle-follower" %>
+                <% end %>
+              <% end %>
             <% end %>
           </p>
         </div>
