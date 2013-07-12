@@ -10,11 +10,10 @@ describe Project do
   	it { expect(project.reload.followers).to have(1).item }
   	it { expect(project.reload.users).to include(user) }
 
-  	context 'when followed twice for the same user' do
-  		before { project.followed_by!(user) }
+  	context '.unfollow!' do
+  		before { project.unfollow!(user) }
 
-  		it { expect(project.reload.followers).to have(1).item }
-      it { expect(project.reload.users).to include(user) }
+  		it { expect(project.reload.followers).to have(0).item }
   	end
   end
 end
