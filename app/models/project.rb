@@ -19,6 +19,14 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def unfollow!(user)
+    users.delete(user)
+  end
+
+  def followed?(user)
+    users.include?(user)
+  end
+
   def self.search(query)
     if query.present?
       where('name @@ :q or description @@ :q', q: query)
