@@ -14,9 +14,9 @@ describe ProjectDecorator do
   end
 
   describe ".updated_at" do
-    let(:decorated) { create(:project, updated_at: Date.parse("09.07.2013")).decorate }
+    let(:decorated) { create(:project, updated_at: Date.parse("12.07.2013")).decorate }
 
-    it { expect(decorated.updated_at).to eq("Tuesday, July 9") }
+    it { expect(decorated.updated_at).to eq("Friday, July 12") }
   end
 
   describe ".investment_type" do
