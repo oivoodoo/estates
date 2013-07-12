@@ -51,11 +51,12 @@ gem 'draper', github: 'drapergem/draper'
 gem 'acts_as_commentable'
 gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
+gem 'bundler'
 
 gem 'get-version', require: 'get_version'
 gem "gritter", "1.0.3"
 
-gem "ckeditor", github: 'aypn0s/ckeditor', branch: 'rails4'
+gem "ckeditor", github: 'aypn0s/ckeditor'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -89,4 +90,3 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
-
