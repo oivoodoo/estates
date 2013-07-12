@@ -1,7 +1,20 @@
-<div class='post'>
-  <h3 class='post-title'><%= post.title %></h3>
-  <div class='post-content'>
-    <%= post.content.html_safe %>
+<div class="tier x12 blog-sub-header">
+</div>
+  <div class="blog-body">
+    <div class="blog-item clearfix">
+      <h2>
+        <a href="#"><%= post.title %></a>
+      </h2>
+      <div class="byline">
+        <a href="/author/colin/">Colin Brown</a>
+        <span class="date">
+          on July 3, 2013
+        </span>
+      </div>
+      <a href="#">
+        <img class="list-featured-image" src="<%= post.post_image_url %>">
+      </a>
+      <p><%= post.content.html_safe %></p>
+    </div>
   </div>
 </div>
-

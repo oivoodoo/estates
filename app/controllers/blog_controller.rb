@@ -3,4 +3,3 @@ class BlogController < ApplicationController
     @posts = Post.all
   end
 end
-
