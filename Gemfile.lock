@@ -356,7 +356,6 @@ DEPENDENCIES
   acts-as-messageable
   acts-as-taggable-on
   acts_as_commentable
-  bundler
   cancan
   carrierwave
   carrierwave-activerecord!
