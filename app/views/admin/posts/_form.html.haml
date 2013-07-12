@@ -3,6 +3,10 @@
   .controls
     = f.text_field :title, placeholder: 'Name'
 .control-group
+  = f.label :post_image, class: 'control-label'
+  .controls
+    = f.file_field :post_image
+.control-group
   = f.label :content, class: 'control-label'
   .controls
     = f.text_area :content, class: 'ckeditor'
