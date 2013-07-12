@@ -11,6 +11,7 @@ Estates::Application.routes.draw do
       get 'image'
       get 'company_image'
       post 'follow'
+      post 'unfollow'
     end
     resources :comments
     resources :invests, only: :new

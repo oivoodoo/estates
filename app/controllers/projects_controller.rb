@@ -25,6 +25,12 @@ class ProjectsController < ApplicationController
     redirect_to action: :show
   end
 
+  def unfollow
+    @project = Project.find(params[:id])
+    @project.unfollow!(current_user)
+    redirect_to action: :show
+  end
+
   private
 
   def find_project
