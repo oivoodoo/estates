@@ -7,8 +7,13 @@
       </h2>
       <div class="byline">
         <span class="date">
-          July 3, 2013
+          <%= post.created_at %> Created at
         </span>
+        <br>
+        <span class="date">
+          <%= post.updated_at %> Updated at
+        </span>
+
       </div>
       <a href="#">
         <img class="list-featured-image" src="<%= post.post_image_url %>">
