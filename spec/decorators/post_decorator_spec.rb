@@ -6,10 +6,4 @@ describe PostDecorator do
 
     it { expect(decorated.created_at).to eq("Friday, July 12") }
   end
-
-  describe '.updated_at' do
-    let(:decorated) { create(:post, updated_at: Date.parse("12.07.2013")).decorate }
-
-    it { expect(decorated.updated_at).to eq("Friday, July 12") }
-  end
 end
