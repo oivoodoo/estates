@@ -1,5 +1,5 @@
 class BlogController < ApplicationController
   def index
-    @posts = Post.all.decorate
+    @posts = PostsDecorator.decorate(Post.paginate(page: params[:page]))
   end
 end

@@ -10,9 +10,11 @@
           <%= post.created_at %>
         </span>
       </div>
-      <a href="#">
-        <img class="list-featured-image" src="<%= post.post_image_url %>">
-      </a>
+      <% if post.post_image? %>
+        <a href="#">
+          <img class="list-featured-image" src="<%= post.post_image_url %>">
+        </a>
+      <% end %>
       <p><%= post.content.html_safe %></p>
     </div>
   </div>

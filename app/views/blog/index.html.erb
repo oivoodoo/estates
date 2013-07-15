@@ -2,4 +2,8 @@
   <div class="tier x12 page ">
     <%= render partial: 'post', collection: @posts %>
   </div>
+
+  <div id="projects" class="gridwrap">
+    <%= will_paginate @posts %>
+  </div>
 </div>
