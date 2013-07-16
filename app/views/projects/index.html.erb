@@ -3,7 +3,18 @@
   <div class="listing-filter">
     <div>
       <ul>
-        <li><a href="?p=projects&amp;show=local">Local</a></li><li><a href="?p=projects&amp;show=featured">Featured</a></li><li><a href="?p=projects&amp;show=trending">Trending</a></li><li><a class="current" href="?p=projects">All</a></li>
+        <li>
+          <%= link_to "Local", tag_path("local"), class: tag_class_name('local') %>
+        </li>
+        <li>
+          <%= link_to "Featured", tag_path("featured"), class: tag_class_name('featured') %>
+        </li>
+        <li>
+          <%= link_to "Trending", tag_path("trending"), class: tag_class_name('trending') %>
+        </li>
+        <li>
+          <%= link_to "All", projects_path, class: tag_class_name('all') %>
+        </li>
       </ul>
     </div>
   </div>

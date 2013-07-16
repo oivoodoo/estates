@@ -6,7 +6,7 @@
           <%= @project.name %>
             <% if @project.tag_list.present? %>
               <label class="type">
-                <%= raw @project.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %>
+                <%= raw @project.tag_list.map { |t| link_to t.camelcase, tag_path(t) }.join(' ') %>
               </label>
             <% end %>
         </h1>
