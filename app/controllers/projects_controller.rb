@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
   before_filter :find_project, except: :index
 
 	def index
-    @projects = ProjectsDecorator.decorate(Project.paginate(page: params[:page]))
+    if params[:tag]
+      @projects = Project.tagged_with(params[:tag]).paginate(page: params[:page])
+    else
+      @projects = ProjectsDecorator.decorate(Project.paginate(page: params[:page]))
+    end
 	end
 
   def show

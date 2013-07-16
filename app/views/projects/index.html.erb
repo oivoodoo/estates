@@ -3,7 +3,14 @@
   <div class="listing-filter">
     <div>
       <ul>
-        <li><a href="?p=projects&amp;show=local">Local</a></li><li><a href="?p=projects&amp;show=featured">Featured</a></li><li><a href="?p=projects&amp;show=trending">Trending</a></li><li><a class="current" href="?p=projects">All</a></li>
+        <li>
+          <% tag_cloud Project.tag_counts, %w[s m l] do |tag| %>
+            <%= link_to tag.name.camelcase, tag_path(tag.name) %>
+          <% end %>
+        </li>
+        <li>
+          <a class="current" href="<%= projects_path %>">All</a>
+        </li>
       </ul>
     </div>
   </div>

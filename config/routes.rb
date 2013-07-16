@@ -21,7 +21,7 @@ Estates::Application.routes.draw do
   get 'blog' => 'blog#index', as: :blog
 
   resources :project_tags, only: :index
-  get 'tags/:tag', to: 'project_tags#index', as: :tag
+  get 'tags/:tag', to: 'projects#index', as: :tag
 
   resources :projects_search, only: :index do
     get 'search', :on => :collection
