@@ -4,9 +4,13 @@
     <div>
       <ul>
         <li>
-          <% tag_cloud Project.tag_counts, %w[s m l] do |tag| %>
-            <%= link_to tag.name.camelcase, tag_path(tag.name) %>
-          <% end %>
+          <%= link_to "Local", tag_path("local") %>
+        </li>
+        <li>
+          <%= link_to "Featured", tag_path("featured") %>
+        </li>
+        <li>
+          <%= link_to "Trending", tag_path("trending") %>
         </li>
         <li>
           <a class="current" href="<%= projects_path %>">All</a>
