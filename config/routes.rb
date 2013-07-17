@@ -43,17 +43,6 @@ Estates::Application.routes.draw do
 
   resources :contacts, only: [:new, :create]
 
-  # get 'admin' => 'admin#index', :as => 'admin'
-
-  # namespace :admin do
-  #   resources :projects
-  #   resources :posts
-
-  #   resources :users do
-  #     resources :messages, only: :create
-  #   end
-  # end
-
   mount GetVersion::Web => '/'
 end
 
