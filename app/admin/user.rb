@@ -6,6 +6,10 @@ ActiveAdmin.register User do
     default_actions
   end
 
+  filter :email
+  filter :name
+  filter :created_at
+
   controller do
     def permitted_params
       params.permit!
