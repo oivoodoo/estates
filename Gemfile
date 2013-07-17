@@ -35,7 +35,7 @@ gem 'pg'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'will_paginate', '~> 3.0'
+gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'omniauth'
@@ -43,7 +43,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
-gem 'inherited_resources'
 gem 'high_voltage'
 gem 'carrierwave-activerecord', github: 'rubyforce/carrierwave-activerecord'
 gem 'choices'
@@ -55,7 +54,14 @@ gem 'acts-as-taggable-on'
 gem 'get-version', require: 'get_version'
 gem "gritter", "1.0.3"
 
-gem "ckeditor", github: 'aypn0s/ckeditor'
+# admin pages
+gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+gem 'ransack',             github: 'ernie/ransack',         branch: 'rails-4'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'formtastic',          github: 'justinfrench/formtastic'
+gem 'countries'
+gem 'country_select'
+gem 'tinymce-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

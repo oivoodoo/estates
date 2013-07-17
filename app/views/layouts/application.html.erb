@@ -49,7 +49,7 @@
               <li><%= link_to "Get In Touch", new_contact_path%></li>
               <% if can?(:manage, :all) %>
                 <li>
-                  <%= link_to "Admin", admin_path%>
+                  <%= link_to "Admin", '/admin'%>
                 </li>
               <% end %>
               <% if user_signed_in? %>

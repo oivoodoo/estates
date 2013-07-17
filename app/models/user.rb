@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :followers
   has_many :projects, through: :followers
 
+  scope :recent, lambda { |count| order('users.created_at desc').limit(count) }
+
   mount_uploader :avatar, AvatarUploader
 
   def role?(r)
