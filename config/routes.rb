@@ -1,5 +1,9 @@
 Estates::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   devise_for :users, :controllers => { :omniauth_callbacks => :omniauth_callbacks, :registrations => :"users/registrations", :passwords => :"users/passwords", :sessions => :"users/sessions" }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,18 +43,17 @@ Estates::Application.routes.draw do
 
   resources :contacts, only: [:new, :create]
 
-  get 'admin' => 'admin#index', :as => 'admin'
+  # get 'admin' => 'admin#index', :as => 'admin'
 
-  namespace :admin do
-    resources :projects
-    resources :posts
+  # namespace :admin do
+  #   resources :projects
+  #   resources :posts
 
-    resources :users do
-      resources :messages, only: :create
-    end
-  end
+  #   resources :users do
+  #     resources :messages, only: :create
+  #   end
+  # end
 
-  mount Ckeditor::Engine => '/ckeditor'
   mount GetVersion::Web => '/'
 end
 

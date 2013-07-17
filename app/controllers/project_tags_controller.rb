@@ -1,9 +1,9 @@
 class ProjectTagsController < ApplicationController
   def index
     @projects = unless params[:tag].blank?
-      Project.tagged_with(params[:tag]).paginate(page: params[:page])
+      Project.tagged_with(params[:tag]).page(params[:page])
     else
-      Project.paginate(page: params[:page])
+      Project.page(params[:page])
     end
 
     render 'projects/index'

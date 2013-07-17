@@ -1,4 +1,4 @@
 .gridwrap
   = render @projects
 .gridwrap
-  = will_paginate @projects
+  = paginate @projects
