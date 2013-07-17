@@ -1,7 +1,0 @@
-%tr
-  %td= link_to post.title, [:admin, post]
-
-  %td
-    = link_to "Edit", edit_admin_post_path(post), class: "btn btn-success btn-mini"
-    = link_to "Delete", admin_post_path(post), confirm: "Are you sure?", method: :delete, class: "btn btn-danger btn-mini"
-
