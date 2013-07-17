@@ -1,10 +1,8 @@
-require 'will_paginate/array'
-
 class ProjectsSearchController < ApplicationController
   layout false
 
   def index
-    @projects = Project.search(params[:query]).paginate(page: params[:page])
+    @projects = Project.search(params[:query]).page(params[:page])
     render 'projects/index'
   end
 end
