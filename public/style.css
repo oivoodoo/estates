@@ -1074,6 +1074,7 @@ label.type {
 #project .paper {
   background: white;
   padding: 1.5rem;
+  width: 100%;
 }
 #project .side {
   display: table-cell;

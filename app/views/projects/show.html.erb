@@ -46,134 +46,143 @@
         <ul class="nav nav-tabs" id="myTab">
           <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
           <li><a href="#financials" data-toggle="tab">Financials</a></li>
-          <% if @project.street.present? && @project.city.present? && @project.country.present? %>
+
+          <% if @project.address? %>
             <li><a href="#map" data-toggle="tab">Location</a></li>
           <% end %>
+
           <li><a href="#property" data-toggle="tab">Property</a></li>
           <li><a href="#strengths" data-toggle="tab">Strengths</a></li>
+
           <% if user_signed_in? %>
             <li><a href="#comments" data-toggle="tab">Comments</a></li>
           <% end %>
         </ul>
       </div>
-      <div class="tab-content gallery">
-        <div class="tab-pane active" id="overview">
-          <div class="imagery logo">
-            <%= image_tag @project.image_url %>
+
+      <div class="tab-content">
+        <div class="paper tab-pane active" id="overview">
+          <div class="gallery">
+            <div>
+              <%= image_tag @project.image_url %>
+            </div>
           </div>
-          <p>
-            <%= @project.description.html_safe %>
-          </p>
+          <%= @project.description.html_safe %>
         </div>
-        <div class="tab-pane" id="financials">
+
+        <div class="paper tab-pane" id="financials">
           <%= @project.financials.to_s.html_safe %>
         </div>
-        <div class="tab-pane" id="map">
-          <div id='map_container'>
+
+        <% if @project.address? %>
+          <div class="paper tab-pane" id="map">
+            <div id='map_container'>
+            </div>
+            <div>
+              <p>Street: <%= @project.street %></p>
+              <p>City: <%= @project.city %></p>
+              <p>Country: <%= @project.country %></p>
+            </div>
           </div>
-          <div class="gallery">
-            <p>Street: <%= @project.street %></p>
-            <p>City: <%= @project.city %></p>
-            <p>Country: <%= @project.country %></p>
-          </div>
-        </div>
-        <div class="tab-pane" id="property">
+        <% end %>
+
+        <div class="paper tab-pane" id="property">
           <%= @project.property.to_s.html_safe %>
         </div>
-        <div class="tab-pane" id="strengths">
+
+        <div class="paper tab-pane" id="strengths">
           <%= @project.strength.to_s.html_safe %>
         </div>
+
         <% if user_signed_in? %>
           <div class="tab-pane" id="comments">
             <%= render "comments/form" %>
           </div>
         <% end %>
       </div>
-
     </div>
+
     <div class="side">
-      <div id="tabspace"></div>
-      <% if @project.company_image.present? %>
-        <div class="developer">
-          <div>
+      <div id="tabspace" style="height: 48px;"></div>
+
+      <div class="developer">
+        <div>
+          <% if @project.company_image? %>
             <a href="<%= @project.company_image_url%>" rel="prettyPhoto" title="<%= @project.company_description%>">
-              <img class="logo" src="<%= @project.company_image_url%>" alt="<%= @project.owner%>">
-              </img>
-            </a><h4 class="project-name">
-          <% link_to @project.name do %>
-            <label class="type">Residential</label>
+              <img class="logo" src="<%= @project.company_image_url%>" alt="<%= @project.owner%>"></img>
+            </a>
           <% end %>
-        </h4>
-            <h4 class="developer-name"><%= @project.owner %></h4>
-          </div>
+
+          <h4 class="project-name">
+            <% link_to @project.name do %>
+              <label class="type">Residential</label>
+            <% end %>
+          </h4>
+
+          <h4 class="developer-name"><%= @project.owner %></h4>
         </div>
-      <% end %>
+      </div>
+
       <div>
         <div class="padding">
           <h5 style="color: lightGray">Project feed</h5>
           <p style="font-size:.7em; margin:1em 0 0; color: lightGray"><%= @project.updated_at %></p>
         </div>
       </div>
+
+
       <div>
         <div class="padding">
           <h5 style="color: lightGray">Personal connections</h5>
           <br>
-          <% if user_signed_in? %>
-            <%= render 'follow' %>
-          <% end %>
+          <%= render('follow') if user_signed_in? %>
           <p style="font-size:.7em; margin:1em 0 0; color: lightGray">
-            <% @followers.each do |follower, image_tag| %>
-              <%= link_to "#" do %>
-                <% if follower.avatar? %>
-                  <%= image_tag follower.avatar_url(:thumb), class: "circle-follower" %>
-                <% else %>
-                  <%= image_tag "/images/default_avatar.png", class: "circle-follower" %>
-                <% end %>
-              <% end %>
-            <% end %>
+            <%= render partial: 'follower', collection: @followers %>
           </p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <script>
-/* <![CDATA[ */
-function setMapAddress( address )
-{
-  var geocoder = new google.maps.Geocoder();
+  /* <![CDATA[ */
+  function setMapAddress( address )
+  {
+    var geocoder = new google.maps.Geocoder();
 
-  geocoder.geocode( { address : address }, function( results, status ) {
-    if( status == google.maps.GeocoderStatus.OK ) {
-      var latlng = results[0].geometry.location;
-      var options = {
-        zoom: 17,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
+    geocoder.geocode( { address : address }, function( results, status ) {
+      if( status == google.maps.GeocoderStatus.OK ) {
+        var latlng = results[0].geometry.location;
+        var options = {
+          zoom: 17,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-      var map = new google.maps.Map( document.getElementById( 'map_container' ), options );
-      $(document).on('shown', "[href='#map']", function() {
-        google.maps.event.trigger(map, 'resize');
-        map.setCenter(latlng);
-        var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
+        var map = new google.maps.Map( document.getElementById( 'map_container' ), options );
+        $(document).on('shown', "[href='#map']", function() {
+          google.maps.event.trigger(map, 'resize');
+          map.setCenter(latlng);
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
         });
-      });
-    }
-  });
-}
+      }
+    });
+  }
 
-$(function() {
-  var address = "<%= @project.address %>";
-  setMapAddress( address );
-});
-
-$(document).ready(function(){
+  $(function() {
+    var address = "<%= @project.address %>";
+    setMapAddress( address );
     $("a[rel^='prettyPhoto']").prettyPhoto();
-  });
 
+    $(document).on('click','[data-toggle="tab"]', function(event) {
+
+    });
+  });
 /* ]]> */
 </script>
+

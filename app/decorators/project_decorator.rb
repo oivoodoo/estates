@@ -1,8 +1,12 @@
 class ProjectDecorator < Draper::Decorator
-  delegate_all 
+  delegate_all
 
   def address
     "#{street} #{city} #{country}"
+  end
+
+  def address?
+    address.strip.present?
   end
 
   def days_to_close

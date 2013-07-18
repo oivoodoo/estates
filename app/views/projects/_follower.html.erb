@@ -1,0 +1,8 @@
+<%= link_to "#" do %>
+  <% if follower.avatar? %>
+    <%= image_tag follower.avatar_url(:thumb), class: "circle-follower" %>
+  <% else %>
+    <%= image_tag "/images/default_avatar.png", class: "circle-follower" %>
+  <% end %>
+<% end %>
+

@@ -126,3 +126,8 @@
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
 }
+
+.tab-content {
+  display: inherit;
+}
+
