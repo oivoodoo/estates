@@ -67,6 +67,7 @@ gem 'tinymce-rails'
 # deployment
 gem 'capistrano'
 gem 'capistrano-puma', require: false
+gem 'rvm-capistrano'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
