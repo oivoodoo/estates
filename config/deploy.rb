@@ -26,6 +26,23 @@ role :db,  "192.81.133.78", primary: true # This is where Rails migrations will 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 
+namespace(:customs) do
+  task :config, :roles => :app do
+    run <<-CMD
+      ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml
+    CMD
+  end
+  task :symlink, :roles => :app do
+    run <<-CMD
+      ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads
+    CMD
+  end
+end
+
+after "deploy:update_code", "customs:config"
+after "deploy:symlink","customs:symlink"
+after "deploy", "deploy:cleanup"
+
 after "deploy:start",          "puma:start"
 after "deploy:stop",           "puma:stop"
 after "deploy:restart",        "puma:restart"
