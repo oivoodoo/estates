@@ -1,1 +1,91 @@
-<h1>Invest</h1>
+<%= stylesheet_link_tag "master-responsive-24" %>
+<header id="page-header">
+  <div class="container">
+    <ol class="progress-indicator">
+      <li class="current  step">
+        <span class="step-number" ><span class="fill">1</span></span>
+        <span class="step-title">Background</span>
+        <span class="step-connector"><span class="fill"></span></span>
+      </li>
+      <li class="  step">
+        <span class="step-number"><span class="fill">2</span></span>
+        <span class="step-title">Order <br class="show-on-mobile">Form</span>
+        <span class="step-connector"><span class="fill"></span></span>
+      </li>
+      <li class="  step">
+        <span class="step-number"><span class="fill">3</span></span>
+        <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
+        <span class="step-connector"><span class="fill"></span></span>
+      </li>
+      <li class="  step">
+        <span class="step-number"><span class="fill">4</span></span>
+        <span class="step-title">Payment</span>
+        <span class="step-connector"><span class="fill"></span></span>
+      </li>
+      <li class=" step 2">
+        <span class="step-number"><span class="fill">5</span></span>
+        <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
+        <span class="step-connector"><span class="fill"></span></span>
+      </li>
+    </ol>
+  </div>
+</header>
+
+<div id="page-content">
+  <div class="container"> 
+    <div class="row">
+      <div class="span8 column">
+        <form id="accreditedQuestionnaireForm" class="labels-left" action="save-questionnaire-step-1" method="post">
+          <%= render 'step1' %>
+          <%= render 'step2' %>
+          <%= render 'step3' %>
+          <%= render 'step4' %>
+          <%= render 'step5' %>
+        </form>
+      </div>      
+      
+
+
+      <div class="span4 column stl hide-on-mobile">
+        <div class="module">
+          <section class="module-section">
+            <div class="image-bordered mb4">
+              <img src="/img/dummy-thumb-soma-grand.jpg">
+            </div>
+
+            <h3 class="mb1 ellipsis">3400 Georgia Avenue Investments I LLC</h3>
+            <div class="small muted ellipsis lh1">Private Offering • Washington, DC</div>
+
+          <table class="mt4 table-bordered" style="display: none;">
+            <tbody><tr>
+              <td class="muted">Quantity</td>
+              <td class="text-right">1</td>
+            </tr>
+            <tr>
+              <td class="muted">Price Per Share</td>
+              <td class="text-right">$100</td>
+            </tr>
+            <tr>
+              <td class="muted">Total Investment</td>
+              <td class="text-right">$100</td>
+            </tr>
+          </tbody>
+        </table>
+
+          </section>
+        </div>
+        <a href="https://trustsealinfo.verisign.com/splash?form_file=fdf/splash.fdf&amp;dn=fundrise.com&amp;lang=en" target="_blank">
+          <img class="native-width mb2" src="https://s3.amazonaws.com/fundrise-content/interface/norton-secured.png" alt="norton-secured" width="120" height="65">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.current').click(function() {
+    $(this).hide();
+  });
+});
+</script>
