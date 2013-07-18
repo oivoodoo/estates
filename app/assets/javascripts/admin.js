@@ -1,1 +1,1 @@
-//= require tinymce/tiny_mce
+//= require tinymce
