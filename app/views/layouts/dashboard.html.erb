@@ -45,7 +45,7 @@
               <li><%= link_to "Blog", "#" %></li>
               <li><%= link_to "Get In Touch", new_contact_path%></li>
               <% if can?(:manage, :all) %>
-              <li><%= link_to "Admin", admin_root_path%></li>
+              <li><%= link_to "Admin", '/admin' %></li>
               <% end %>
               <% if user_signed_in? %>
               <li><%= link_to "#{current_user.email} (#{current_user.status})", edit_user_registration_path %></li>
@@ -61,7 +61,7 @@
 
     <div id="main">
       <div class="container-fluid">
-        
+
         <div class="row-fluid listing-filter">
           <div class="span2">
             <% if current_user.avatar? %>
@@ -73,7 +73,7 @@
           <div class="span8">
             <p><b><%= current_user.name%></b></p>
             <p><b><%= current_user.email %></b></p>
-            <p><b>Citites(s) Active(e.g. Londnon-NY)</b></p> 
+            <p><b>Citites(s) Active(e.g. Londnon-NY)</b></p>
           </div>
         </div><!-- row-fluid -->
 
