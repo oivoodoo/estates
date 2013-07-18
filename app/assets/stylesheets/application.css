@@ -14,4 +14,8 @@
  *= require prettyPhoto
  *= require circle_image
  *= require container
+ *= require style
+ *= require font-awesome.min
+ *= require tabs
+ *= require own
  */

@@ -11,28 +11,28 @@ form {
   padding: 8px;
   position: relative;
   width: 10px;
-  
+
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
   border-radius: 15px;
-  
+
   -moz-appearance: none;
   -webkit-appearance: none;
 }
 
-#query:focus {   
+#query:focus {
   outline: none;
   width: 180px;
-  
-  -moz-transition: all .2s ease-in-out;  
+
+  -moz-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
 }
 
 #query.searching {
   margin-left: 80px;
   width: 10px;
-  
-  -moz-transition: all .2s ease-in-out;  
+
+  -moz-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
 }
 
@@ -46,11 +46,11 @@ form {
   right: 10px;
   top: -8px;
   width: 4px;
-  
+
   -moz-border-radius: 1px;
   -webkit-border-radius: 1px;
   border-radius: 1px;
-   
+
   -moz-transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   -moz-transform-origin: center 20px;
@@ -77,10 +77,11 @@ h3 {
   font-size: 20px;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 100px 100px 50px;
-  
+
   -webkit-font-smoothing: antialiased;
 }
 
 h3 p {
   font-size: 13px;
 }
+

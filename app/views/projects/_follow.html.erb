@@ -1,4 +1,4 @@
-<% if @project.followed?(current_user) %> 
+<% if @project.followed?(current_user) %>
   <%= button_to "Unfollow", action: :unfollow %>
 <% else %>
   <%= button_to "Follow", action: :follow %>

@@ -16,3 +16,5 @@
 //= require gritter
 //= require vendors/jquery.prettyPhoto
 //= require vendors/bootstrap-tab
+//= require custom
+//= require html5
