@@ -1,0 +1,251 @@
+<div class="invests" style="display: none">
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Primary Residence &amp; Phone</h2>
+    </header>
+    <section class="module-section">
+      <p>Please enter in your primary residence and phone number</p>            
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label">Address Line 1</label>
+          </div>                  
+          <div class="span6">               
+            <div class="fields">
+              <input id="address1" name="address1" required="required" type="text" value="100 Howard St" maxlength="150">
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>              
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label">Address Line 2</label>
+          </div>                  
+          <div class="span6">               
+            <div class="fields">
+              <input id="address2" name="address2" type="text" value="" maxlength="150">
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>                
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label">City</label>
+          </div>                    
+          <div class="span6">               
+            <div class="fields">
+              <input id="city" name="city" required="required" type="text" value="San Francisco" maxlength="150">
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>                
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label">State</label>
+          </div>                    
+          <div class="span6">               
+            <div class="fields">
+              <div class="select-holder">                     
+                <select id="state" name="state">
+                  <option value="DC">District of Columbia</option>
+                  <option value="VA">Virginia</option>
+                </select>
+                <div class="select-mask">District of Columbia</div>
+              </div>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>                
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label">ZIP Code</label>
+          </div>                    
+          <div class="span6">               
+            <div class="fields">
+              <input id="zip" name="zip" class="char5" pattern="[0-9]{5}" data-message="Must be 5 digits" required="required" type="text" value="94105" maxlength="5"> 
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>                
+      <div class="field-group mb0">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label">Phone Number</label>
+          </div>                    
+          <div class="span6">               
+            <div class="fields multi-field">
+              <input id="phoneAreaCode" class="char3" type="text" pattern="[0-9]{3}" maxlength="3">
+              <div class="input-inline">-</div>
+              <input id="phonePrefix" class="char3" type="text" pattern="[0-9]{3}" maxlength="3">
+              <div class="input-inline">-</div>
+              <input id="phoneLastFour" class="char4" type="text" pattern="[0-9]{4}" maxlength="4">
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Identification</h2>
+    </header>
+    <section class="module-section">
+      <p>To verify your identity, please upload an image of one of the following forms of identification:</p>
+      <ul>
+        <li>State-issued driver license</li>
+        <li>Passport (info page only)</li>
+        <li>State-issued ID</li>
+        <li>Military ID</li>
+        <li>Birth certificate</li>
+        <li>Citizenship card</li>
+      </ul>
+      <ul class="radio-checkbox-list">
+        <li>
+          <label class="radio-checkbox-label">
+            <input name="upload-toggle" type="radio" value="now" checked="checked"> Upload a scan of your ID now
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <input name="upload-toggle" type="radio" value="later"> Fax or email a copy later
+          </label>
+        </li>
+      </ul>               
+      <div class="module" id="id-upload">
+        <div class="module-section">
+          <div class="mb2">
+            <input id="frontOfId" name="frontOfId" type="file">
+          </div>
+          <div class="mb4 small muted">JPG, PNG or PDF. Maximum 4 MB.</div>
+        </div>
+      </div>
+      <div class="module hide" id="id-later">
+        <div class="module-section">
+          <p>
+            Please email an image of your ID to 
+            <a href="mailto:support@fundrise.com">support@fundrise.com</a> 
+            or fax to 202-747-3982.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="module module-subdued">
+    <div class="module-section form-actions">
+      <button class="button button-blue" type="submit">Continue</button>
+      <a class="button" href="order-form">Go Back</a>
+    </div>
+  </div>
+</div>
+<div class="echeck" style="display: none;">
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Pay with Electronic Check</h2>
+    </header>
+    <section class="module-section">          
+
+      <ul class="radio-checkbox-list mb0">
+
+        <li>
+          <label class="radio-checkbox-label">
+            <input type="radio" name="existingAccountId" value="436" checked=""> Pay with test XXXXX1234 (Checking)
+          </label>
+        </li>
+
+        <li><label class="radio-checkbox-label"><input type="radio" name="existingAccountId" value="-1"> Set up a new bank account</label></li>
+      </ul>
+
+      <div class="ach-setup mt4 hide" style="display: none;">
+        <img src="https://s3.amazonaws.com/fundrise-content/interface/sample-check.png" class="native-width mb5" style="max-width: 100%;">              
+        <div class="field-group">
+          <div class="sub-row">
+            <div class="span4">
+              <label class="field-label">Account Type</label>
+            </div>                  
+            <div class="span6">               
+              <div class="fields">
+                <div class="select-holder">
+                  <select id="accountType" name="accountType">
+                    <option value="CHECKING">Checking</option><option value="SAVINGS">Savings</option>
+                  </select>
+                  <div class="select-mask">Checking</div>
+                </div>
+              </div>
+            </div>
+            <div class="span2"></div>
+          </div>
+        </div>              
+        <div class="field-group">
+          <div class="sub-row">
+            <div class="span4">
+              <label class="field-label">Bank Name</label>
+            </div>                  
+            <div class="span6">               
+              <div class="fields">
+                <input id="bankName" name="bankName" type="text" value="" maxlength="40">
+              </div>
+            </div>
+            <div class="span2"></div>
+          </div>
+        </div>              
+        <div class="field-group">
+          <div class="sub-row">
+            <div class="span4">
+              <label class="field-label">Routing Number</label>
+            </div>                  
+            <div class="span6">               
+              <div class="fields">
+                <input id="routingNumber" name="routingNumber" class="char9" pattern="^$|[0-9]{9}" type="text" value="" maxlength="9">
+                <div class="field-instructions">9-digit number on the bottom left of your checks.</div>
+              </div>
+            </div>
+            <div class="span2"></div>
+          </div>
+        </div>              
+        <div class="field-group">
+          <div class="sub-row">
+            <div class="span4">
+              <label class="field-label">Account Number</label>
+            </div>                  
+            <div class="span6">               
+              <div class="fields">
+                <input id="accountNumber" name="accountNumber" pattern="^$|[0-9]{4,30}" type="text" value="" maxlength="30">
+              </div>
+            </div>
+            <div class="span2"></div>
+          </div>
+        </div>              
+        <div class="field-group mb0">
+          <div class="sub-row">
+            <div class="span4">
+              <label class="field-label">Confirm Account No.</label>
+            </div>                  
+            <div class="span6">               
+              <div class="fields">
+                <input id="accountNumberConfirm" name="accountNumberConfirm" pattern="^$|[0-9]{4,30}" data-equals="accountNumber" type="text" value="" maxlength="30">
+                <div class="field-instructions">Confirm your account number by typing it again.</div>
+              </div>
+            </div>
+            <div class="span2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="module module-subdued">
+    <div class="module-section form-actions">
+      <button class="button button-blue" type="submit">Continue</button>
+      <a class="button" href="order-form">Go Back</a>
+    </div>
+  </div>
+</div>
