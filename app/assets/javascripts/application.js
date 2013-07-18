@@ -17,4 +17,4 @@
 //= require vendors/jquery.prettyPhoto
 //= require vendors/bootstrap-tab
 //= require custom
-//= require html5
+//= require vendors/html5

@@ -2,7 +2,7 @@
   <div class="modal-content">
     <div>
 
-      <img class="logo" src="/g/flockinvest-logo.svg">
+      <%= render 'layouts/logo' %>
 
       <h1>Sign up</h1>
         <div class="social_sign">
@@ -27,7 +27,7 @@
         <%= f.text_field :name, placeholder: "Full Name" %>
         <%= f.email_field :email, placeholder: "Email"%>
         <%= f.password_field :password, placeholder: "Password" %>
-        
+
         <div class="action">
           <div>
             <div>

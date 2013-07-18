@@ -1,23 +1,21 @@
 <div id="sign-in">
   <div class="modal-content">
     <div>
-      <img class="logo" src="/g/flockinvest-logo.svg">
+      <%= render 'layouts/logo' %>
       <h1>Get in touch</h1>
         <%= form_for @contact, url: {:action => :create} do |f| %>
           <%= f.text_field :name, class: "input-xlarge", placeholder: "Full Name" %>
           <%= f.text_field :email, class: "input-xlarge", placeholder: "Email" %>
           <%= f.text_area :message, class: "input-xlarge", placeholder: "Yours message:", :cols => 35, :rows => "15"%>
+
           <div class="action">
             <div>
-              <div>
-
-              </div>
-              <div>
-                <%= f.submit 'Send me!', class: "delta thicker"%>
-              </div>
+              <div></div>
+              <div><%= f.submit 'Send me!', class: "delta thicker"%></div>
             </div>
           </div>
         <% end %>
     </div>
   </div>
 </div>
+

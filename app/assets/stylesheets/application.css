@@ -9,12 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require reset
+ *= require f
+ *= require style
  *= require gritter
  *= require map
  *= require prettyPhoto
  *= require circle_image
  *= require container
- *= require style
  *= require font-awesome.min
  *= require tabs
  *= require own

@@ -71,6 +71,10 @@ input, textarea {
     -moz-appearance: none; 
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
 }
 
 /*---Additional Form resets---*/
@@ -117,11 +121,11 @@ img {-ms-interpolation-mode: bicubic;}
 /* Custom fonts */
 @font-face {
     font-family: 'ModernPictogramsNormal';
-    src: url('fonts/modernpictograms/modernpics-webfont.eot');
-    src: url('fonts/modernpictograms/modernpics-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/modernpictograms/modernpics-webfont.woff') format('woff'),
-         url('fonts/modernpictograms/modernpics-webfont.ttf') format('truetype'),
-         url('fonts/modernpictograms/modernpics-webfont.svg#ModernPictogramsNormal') format('svg');
+    src: url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.eot');
+    src: url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.woff') format('woff'),
+         url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.ttf') format('truetype'),
+         url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.svg#ModernPictogramsNormal') format('svg');
     font-weight: normal;
     font-style: normal; }
 
