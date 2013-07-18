@@ -1,7 +1,5 @@
 require 'bundler/capistrano'
 
-load 'deploy/assets'
-
 # Load RVM's capistrano plugin.
 require "rvm/capistrano"
 
@@ -71,4 +69,6 @@ end
 after "deploy:update_code", "customs:config"
 after "deploy:symlink","customs:symlink"
 after "deploy", "deploy:cleanup"
+
+load 'deploy/assets'
 
