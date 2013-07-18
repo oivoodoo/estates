@@ -45,7 +45,7 @@
               <li><%= link_to "Blog", "#" %></li>
               <li><%= link_to "Get In Touch", new_contact_path%></li>
               <% if can?(:manage, :all) %>
-              <li><%= link_to "Admin", admin_path%></li>
+                <li><%= link_to "Admin", admin_root_path%></li>
               <% end %>
               <% if user_signed_in? %>
               <li><%= link_to "#{current_user.email} (#{current_user.status})", edit_user_registration_path %></li>
