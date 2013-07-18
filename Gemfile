@@ -61,7 +61,7 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',          github: 'justinfrench/formtastic'
 gem 'countries'
 gem 'country_select'
-gem 'tinymce-rails'
+gem 'tinymce-rails', github: 'spohlenz/tinymce-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

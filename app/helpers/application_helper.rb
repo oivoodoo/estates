@@ -1,9 +1,10 @@
 module ApplicationHelper
   def layout_class
-    if controller_name == 'project_tags'
-      "projects"
+    if action_name == 'show'
+      "project"
     else
-      controller_name
+      controller_name == 'project_tags'
+      "projects"
     end
   end
 end
