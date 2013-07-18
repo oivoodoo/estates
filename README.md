@@ -2,23 +2,15 @@
 
 # Deployment
 
-Add heroku section to the .git/config file:
-
 ```
-[remote "staging"]
-	url = git@heroku.com:estates-staging.git
-	fetch = +refs/heads/*:refs/remotes/heroku/*
+cap deploy
 ```
 
-Deploy it using:
+# Production Server:
 
-```
-git push staging master
-```
+[http://li603-78.members.linode.com/](http://li603-78.members.linode.com/)
 
-Apply migrations:
+# SSH Production:
 
-```
-heroku run rake db:migrate --remote staging
-```
+[ssh <user-name>@192.81.133.78 -p 16888](ssh <user-name>@192.81.133.78 -p 16888)
 
