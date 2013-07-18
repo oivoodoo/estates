@@ -63,6 +63,9 @@ namespace(:customs) do
     run <<-CMD
       ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads
     CMD
+    run <<-CMD
+      ln -nfs #{shared_path}/public/assets/ #{release_path}/public/assets/
+    CMD
   end
 end
 
