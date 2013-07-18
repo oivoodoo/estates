@@ -1,9 +1,9 @@
-require 'capistrano-puma'
 require 'bundler/capistrano'
 
 # Load RVM's capistrano plugin.
 require "rvm/capistrano"
 
+set :stage, "production"
 set :rvm_ruby_string, '2.0.0'
 set :rvm_type, :user
 
@@ -26,6 +26,33 @@ role :db,  "192.81.133.78", primary: true # This is where Rails migrations will 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 
+set :shared_children, shared_children << 'tmp/sockets'
+
+set :puma_sock, "unix:///var/run/puma/estates.sock"
+set :puma_state, "/var/run/puma/estates.state"
+
+namespace :deploy do
+  desc "Start the application"
+  task :start, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && RAILS_ENV=#{stage} bundle exec puma -e #{stage} -d -b #{puma_sock} -S #{puma_state}", :pty => false
+  end
+
+  desc "Stop the application"
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && RAILS_ENV=#{stage} bundle exec pumactl -S #{puma_state} stop"
+  end
+
+  desc "Restart the application"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && RAILS_ENV=#{stage} bundle exec pumactl -S #{puma_state} restart"
+  end
+
+  desc "Status of the application"
+  task :status, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && RAILS_ENV=#{stage} bundle exec pumactl -S #{puma_state} stats"
+  end
+end
+
 namespace(:customs) do
   task :config, :roles => :app do
     run <<-CMD
@@ -42,9 +69,4 @@ end
 after "deploy:update_code", "customs:config"
 after "deploy:symlink","customs:symlink"
 after "deploy", "deploy:cleanup"
-
-after "deploy:start",          "puma:start"
-after "deploy:stop",           "puma:stop"
-after "deploy:restart",        "puma:restart"
-after "deploy:create_symlink", "puma:after_symlink"
 
