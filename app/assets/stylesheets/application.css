@@ -12,12 +12,12 @@
  *= require reset
  *= require f
  *= require style
+ *= require vendors/font-awesome.min
+ *= require vendors/prettyPhoto
  *= require gritter
  *= require map
- *= require prettyPhoto
  *= require circle_image
  *= require container
- *= require font-awesome.min
  *= require tabs
  *= require own
  */

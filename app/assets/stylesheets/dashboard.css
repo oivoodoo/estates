@@ -1,5 +1,5 @@
 /*
- *= require bootstrap-responsive
+ *= require vendors/bootstrap-responsive
  *= require circle_image
  */
 
@@ -15,4 +15,4 @@
 .message.unread {
   color: red;
 }
- 
+
