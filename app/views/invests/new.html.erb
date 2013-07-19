@@ -3,28 +3,28 @@
 <header id="page-header">
   <div class="container">
     <ol class="progress-indicator">
-      <li class="step">
-        <span class="step-number" ><span class="fill">1</span></span>
+      <li class="current  step" data-container='#tab1'>
+        <span class="step-number"><span class="fill">1</span></span>
         <span class="step-title">Background</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class="  step">
-        <span class="step-number" id="step"><span class="fill">2</span></span>
+      <li class="  step" data-container='#tab2'>
+        <span class="step-number"><span class="fill">2</span></span>
         <span class="step-title">Order <br class="show-on-mobile">Form</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class="  step">
-        <span class="step-number" id="step"><span class="fill">3</span></span>
+      <li class="  step" data-container='#tab3'>
+        <span class="step-number"><span class="fill">3</span></span>
         <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class="  step">
-        <span class="step-number" id="step"><span class="fill">4</span></span>
+      <li class="  step" data-container='#tab4'>
+        <span class="step-number"><span class="fill">4</span></span>
         <span class="step-title">Payment</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class=" step">
-        <span class="step-number" id="step"><span class="fill">5</span></span>
+      <li class=" step" data-container='#tab5'>
+        <span class="step-number"><span class="fill">5</span></span>
         <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
@@ -83,10 +83,13 @@
 
 <script>
 $(document).ready(function(){
-  $('.step-number').click(function() {
-    $(this).show();
-    $('.step').hide('slow');
+  $('.step').click(function() {
+    $("li").removeClass("current");
+    $(this).addClass("current");
+    $(".tab").hide();
+    var container_id = $(this).data('container');
+    $(container_id).show();
+    return false;
   });
 });
 </script>
-
