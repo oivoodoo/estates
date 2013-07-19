@@ -3,27 +3,27 @@
 <header id="page-header">
   <div class="container">
     <ol class="progress-indicator">
-      <li class="current  step" data-container='#tab1'>
+      <li class="current  step" id="step1" data-container='#tab1'>
         <span class="step-number"><span class="fill">1</span></span>
         <span class="step-title">Background</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class="  step" data-container='#tab2'>
+      <li class="  step" id="step2" data-container='#tab2'>
         <span class="step-number"><span class="fill">2</span></span>
         <span class="step-title">Order <br class="show-on-mobile">Form</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class="  step" data-container='#tab3'>
+      <li class="  step" id="step3" data-container='#tab3'>
         <span class="step-number"><span class="fill">3</span></span>
         <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class="  step" data-container='#tab4'>
+      <li class="  step" id="step4" data-container='#tab4'>
         <span class="step-number"><span class="fill">4</span></span>
         <span class="step-title">Payment</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class=" step" data-container='#tab5'>
+      <li class=" step" id="step5" data-container='#tab5'>
         <span class="step-number"><span class="fill">5</span></span>
         <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
         <span class="step-connector"><span class="fill"></span></span>
@@ -36,7 +36,7 @@
   <div class="container">
     <div class="row">
       <div class="span8 column">
-        <form id="accreditedQuestionnaireForm" class="labels-left" action="save-questionnaire-step-1" method="post">
+        <form id="accreditedQuestionnaireForm" class="labels-left" method="post">
           <%= render 'step1' %>
           <%= render 'step2' %>
           <%= render 'step3' %>
@@ -84,12 +84,69 @@
 <script>
 $(document).ready(function(){
   $('.step').click(function() {
-    $("li").removeClass("current");
-    $(this).addClass("current");
-    $(".tab").hide();
+    $('.step').removeClass('current');
+    $(this).addClass('current');
+    $('.tab').hide();
     var container_id = $(this).data('container');
     $(container_id).show();
     return false;
+  });
+
+  $('.button').click(function() {
+    $('html, body').animate({scrollTop: '0px'}, 300);
+  });
+
+  $('#button1').click(function(){
+    $('#step1').removeClass('current');
+    $('#step2').addClass('current');
+    $('#tab2').show();
+    $('#tab1').hide();
+  });
+
+  $('#button2').click(function(){
+    $('#step2').removeClass('current');
+    $('#step3').addClass('current');
+    $('#tab3').show();
+    $('.mt4').show();
+    $('#tab2').hide();
+  });
+
+  $('#button3').click(function(){
+    $('#step3').removeClass('current');
+    $('#step4').addClass('current');
+    $('#tab4').show();
+    $('#tab3').hide();
+  });
+
+  $('#button4').click(function(){
+    $('#step4').removeClass('current');
+    $('#step3').addClass('current');
+    $('.echeck').show();
+    $('#tab4').hide();
+  });
+
+  $('#radio').click(function(){
+    $('.ach-setup').show();
+  })
+
+  $('#button5').click(function(){
+    $('#step3').removeClass('current');
+    $('#step5').addClass('current');
+    $('#tab5').show();
+    $('.echeck').hide();
+  });
+
+  $('#button6').click(function(){
+    $('#step4').addClass('current');
+    $('.wire').show();
+    $('#tab4').hide();
+  });
+
+  $('#button7').click(function(){
+    $('#step4').removeClass('current');
+    $('#step5').addClass('current');
+    $('#tab5').show();
+    $('.wire').hide();
   });
 });
 </script>
