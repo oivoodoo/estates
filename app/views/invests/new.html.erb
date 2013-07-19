@@ -3,28 +3,28 @@
 <header id="page-header">
   <div class="container">
     <ol class="progress-indicator">
-      <li class="current  step">
+      <li class="step">
         <span class="step-number" ><span class="fill">1</span></span>
         <span class="step-title">Background</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
       <li class="  step">
-        <span class="step-number"><span class="fill">2</span></span>
+        <span class="step-number" id="step"><span class="fill">2</span></span>
         <span class="step-title">Order <br class="show-on-mobile">Form</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
       <li class="  step">
-        <span class="step-number"><span class="fill">3</span></span>
+        <span class="step-number" id="step"><span class="fill">3</span></span>
         <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
       <li class="  step">
-        <span class="step-number"><span class="fill">4</span></span>
+        <span class="step-number" id="step"><span class="fill">4</span></span>
         <span class="step-title">Payment</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
-      <li class=" step 2">
-        <span class="step-number"><span class="fill">5</span></span>
+      <li class=" step">
+        <span class="step-number" id="step"><span class="fill">5</span></span>
         <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
@@ -85,8 +85,9 @@
 
 <script>
 $(document).ready(function(){
-  $('.current').click(function() {
-    $(this).hide();
+  $('.step-number').click(function() {
+    $(this).show();
+    $('.step').hide('slow');
   });
 });
 </script>
