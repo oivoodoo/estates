@@ -3,6 +3,7 @@ require 'bundler/capistrano'
 # Load RVM's capistrano plugin.
 require "rvm/capistrano"
 
+set :rails_env, "production"
 set :stage, "production"
 set :rvm_ruby_string, '2.0.0'
 set :rvm_type, :user
@@ -72,6 +73,7 @@ end
 after "deploy:update_code", "customs:config"
 after "deploy:symlink","customs:symlink"
 after "deploy", "deploy:cleanup"
+after "deploy", "deploy:migrations"
 
 load 'deploy/assets'
 
