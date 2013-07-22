@@ -1,120 +1,33 @@
 <div id="tab1" class="tab">
   <div class="module">
     <header class="module-section module-header">
-      <h2>Verify Accreditation</h2>
+      <h2>Specify Order Quantity</h2>
     </header>
     <section class="module-section">
-      <p>
-        This investment is only available to accredited investors.  
-        Please answer the following questions to verify your qualfication as an 
-        <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
-      </p>          
-    </section>
-  </div>
-  <div class="module">
-    <header class="module-section module-header">
-      <h2>Annual Individual Income</h2>
-    </header>
-    <section class="module-section">
-      <p>I have an individual income for each of the two most recent years equal to an income level indicated below and reasonably expect to reach at least the same income level this year.</p>          
-      <ul class="radio-checkbox-list mb0">
-        <li><label class="radio-checkbox-label"> Less than $200,000</label><input id="individualIncome1" name="individualIncome" type="radio" value="less-than-200k" checked="checked"></li>
-        <li><label class="radio-checkbox-label"><input id="individualIncome2" name="individualIncome" type="radio" value="200k-350k"> $200,000 - $350,000</label></li>
-        <li><label class="radio-checkbox-label"><input id="individualIncome3" name="individualIncome" type="radio" value="350k-500k"> $350,000 - $500,000</label></li>
-        <li><label class="radio-checkbox-label"><input id="individualIncome4" name="individualIncome" type="radio" value="more-than-500k"> More than $500,000</label></li>
-      </ul>
-    </section>
-  </div>
-  <div class="module">
-    <header class="module-section module-header">
-      <h2>Annual Joint Income</h2>
-    </header>
-    <section class="module-section">
-      <p>Does your joint income with your spouse exceed $300,000 annually?</p>
-      <ul class="radio-checkbox-list mb0">
-        <li><label class="radio-checkbox-label"><input id="annualJointIncome1" name="annualJointIncome" type="radio" value="more-than-300k"> Yes</label></li>
-        <li><label class="radio-checkbox-label"><input id="annualJointIncome2" name="annualJointIncome" type="radio" value="less-than-300k" checked="checked"> No</label></li>
-        <li><label class="radio-checkbox-label"><input id="annualJointIncome3" name="annualJointIncome" type="radio" value="single"> I’m not married</label></li>
-      </ul>
-    </section>
-  </div>
-  <div class="module">
-    <header class="module-section module-header">
-      <h2>Net Worth</h2>
-    </header>
-    <section class="module-section">
-      <p>
-        Either individually or upon a joint basis with my spouse, I have a net worth equal 
-        to an amount indicated below. I acknowledge that the value of my primary residence 
-        does not count towards this amount.
-      </p>
-      <div class="fields">
-        <div class="select-holder">
-          <select id="netWorth" name="netWorth">
-            <option value="0">Less than $1 million</option>
-            <option value="1000000">$1 - $2.5 million</option>
-            <option value="2500000">$2.5 - $5 million</option>
-            <option value="5000000">More than $5 million</option>
-          </select>
-          <div class="select-mask">Less than $1 million</div>
+      <div id="checkout-order-form">
+        <div class="meta-horizontal items-3">
+          <div id="checkout-order-form-quantity" class="item">
+            <div class="metric">Quantity</div>
+            <input id="numberOfShares" name="numberOfShares" class="order-form-field" pattern="[1-9][0-9]*" data-message="Please enter in a valid number of shares to purchase" type="text" value="" maxlength="3">
+            <div class="math-symbol">×</div>
+          </div>
+          <div id="checkout-order-form-price" class="item">
+            <div class="metric">Price / Share</div>
+            <div class="order-form-field value"><%= number_to_currency(@project.price)%></div>
+            <div class="math-symbol">=</div>
+          </div>
+          <div id="checkout-order-form-total" class="item">
+            <div class="metric">Total Investment</div>
+            <div class="order-form-field value"></div>
+          </div>
         </div>
       </div>
+      <div id="checkout-order-form-instructions" class="small muted"></div>
     </section>
   </div>
   <div class="module">
-    <header class="module-section module-header">
-      <h2>Business Representative</h2>
-    </header>
-    <section class="module-section">
-      <p>
-        Are you a representative of a bank, insurance company, registered investment company, business development company, 
-        or small business investment company interested in investment opportunities on Fundrise?
-      </p>
-      <ul class="radio-checkbox-list mb0">
-        <li><label class="radio-checkbox-label"><input id="businessRepresentative1" name="businessRepresentative" type="radio" value="false" checked="checked"> No</label></li>
-        <li><label class="radio-checkbox-label"><input id="businessRepresentative2" name="businessRepresentative" type="radio" value="true"> Yes</label></li>
-      </ul>
-    </section>
-  </div>
-  <div class="module">
-    <header class="module-section module-header">
-      <h2>Securities Firm</h2>
-    </header>
-    <section class="module-section">
-      <p>Are you associated with a Securities Firm?</p>         
-      <ul class="radio-checkbox-list mb0">
-        <li><label class="radio-checkbox-label"><input id="securitiesFirm1" name="securitiesFirm" type="radio" value="false" checked="checked"> No</label></li>
-        <li><label class="radio-checkbox-label"><input id="securitiesFirm2" name="securitiesFirm" type="radio" value="true"> Yes</label></li>
-      </ul>
-    </section>
-  </div>
-  <div class="module">
-    <header class="module-section module-header">
-      <h2>Public Company Director</h2>
-    </header>
-    <section class="module-section">
-      <p>Are you the director of a public company?</p>
-      <ul class="radio-checkbox-list mb0">
-        <li><label class="radio-checkbox-label"><input id="publicCompanyDirector1" name="publicCompanyDirector" type="radio" value="false" checked="checked"> No</label></li>
-        <li><label class="radio-checkbox-label"><input id="publicCompanyDirector2" name="publicCompanyDirector" type="radio" value="true"> Yes</label></li>
-      </ul>
-    </section>
-  </div>
-  <div class="module">
-    <header class="module-section module-header">
-      <h2>Public Company Shareholder or Officer</h2>
-    </header>
-    <section class="module-section">
-      <p>Are you a 10% shareholder or policy-making officer of a public company?</p>
-      <ul class="radio-checkbox-list mb0">
-        <li><label class="radio-checkbox-label"><input id="publicCompanyShareholderOrOfficer1" name="publicCompanyShareholderOrOfficer" type="radio" value="false" checked="checked"> No</label></li>
-        <li><label class="radio-checkbox-label"><input id="publicCompanyShareholderOrOfficer2" name="publicCompanyShareholderOrOfficer" type="radio" value="true"> Yes</label></li>
-      </ul>
-    </section>
-  </div>
-  <div class="module">
-    <section class="module-section">
+    <div class="module-section form-actions">
       <button class="button button-blue" id="button1">Continue</button>
-    </section>
+    </div>
   </div>
 </div>
