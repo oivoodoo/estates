@@ -48,34 +48,31 @@
       <div class="span4 column stl hide-on-mobile">
         <div class="module">
           <section class="module-section">
-            <div class="image-bordered mb4">
-              <img src="/img/dummy-thumb-soma-grand.jpg">
-            </div>
+            <% if @project.image? %>
+              <div class="image-bordered mb4" style='width: 238px; height: 119px;'>
+                <%= image_tag @project.image.url(:invest) %>
+              </div>
+            <% end %>
 
-            <h3 class="mb1 ellipsis">3400 Georgia Avenue Investments I LLC</h3>
-            <div class="small muted ellipsis lh1">Private Offering • Washington, DC</div>
-
-          <table class="mt4 table-bordered" style="display: none;">
-            <tbody><tr>
-              <td class="muted">Quantity</td>
-              <td class="text-right">1</td>
-            </tr>
-            <tr>
-              <td class="muted">Price Per Share</td>
-              <td class="text-right">$100</td>
-            </tr>
-            <tr>
-              <td class="muted">Total Investment</td>
-              <td class="text-right">$100</td>
-            </tr>
-          </tbody>
-        </table>
+            <h3 class="mb1 ellipsis"><%= @project.address %></h3>
+            <table class="mt4 table-bordered" style="display: none;">
+              <tbody><tr>
+                <td class="muted">Quantity</td>
+                <td class="text-right">1</td>
+              </tr>
+              <tr>
+                <td class="muted">Price Per Share</td>
+                <td class="text-right">$100</td>
+              </tr>
+              <tr>
+                <td class="muted">Total Investment</td>
+                <td class="text-right">$100</td>
+              </tr>
+              </tbody>
+            </table>
 
           </section>
         </div>
-        <a href="https://trustsealinfo.verisign.com/splash?form_file=fdf/splash.fdf&amp;dn=fundrise.com&amp;lang=en" target="_blank">
-          <img class="native-width mb2" src="https://s3.amazonaws.com/fundrise-content/interface/norton-secured.png" alt="norton-secured" width="120" height="65">
-        </a>
       </div>
     </div>
   </div>
