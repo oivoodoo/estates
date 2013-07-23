@@ -20,6 +20,7 @@
 /public/assets/*
 
 config/database.yml
+config/settings.yml
 tags
 .DS_Store
 
