@@ -17,9 +17,6 @@
             <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
               <i class="icon-google-plus"></i>
             </a>
-          <% else %>
-            <%= current_user.name %>
-            <%= current_user.email %>
           <% end %>
         </div>
 
