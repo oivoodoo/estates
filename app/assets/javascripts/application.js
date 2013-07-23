@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.validate
 //= require turbolinks
 //= require gritter
 //= require vendors/jquery.prettyPhoto
 //= require vendors/bootstrap-tab
 //= require custom
 //= require vendors/html5
+//= require common

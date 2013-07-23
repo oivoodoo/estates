@@ -54,6 +54,8 @@ gem 'acts-as-taggable-on'
 
 gem 'sendgrid'
 
+gem 'jquery-validation-rails'
+
 gem 'get-version', require: 'get_version'
 gem "gritter", "1.0.3"
 
