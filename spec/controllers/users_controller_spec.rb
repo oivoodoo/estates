@@ -15,3 +15,4 @@ describe UsersController do
     end
   end
 end
+
