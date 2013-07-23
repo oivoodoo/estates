@@ -30,8 +30,6 @@ module Estates
     # config.i18n.default_locale = :de
     config.active_record.whitelist_attributes = false
 
-    config.action_mailer.async = true
-
     config.generators do |g|
       g.helper false
       g.assets false
