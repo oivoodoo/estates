@@ -32,25 +32,6 @@ Estates::Application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
-  config.action_mailer.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => 587,
-    :domain => Rails.configuration.domain,
-    :authentication => :plain,
-    :user_name => Rails.configuration.email.username,
-    :password => Rails.configuration.email.password
-  }
-
-  config.action_mailer.smtp_settings = {
-    :address              => Rails.configuration.email.host,
-    :port                 => Rails.configuration.email.port,
-    :domain               => Rails.configuration.email.domain,
-    :user_name            => Rails.configuration.email.username,
-    :password             => Rails.configuration.email.password,
-    :authentication       => :plain,
-    :enable_starttls_auto => true
-  }
-
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 

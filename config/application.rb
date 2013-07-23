@@ -30,6 +30,8 @@ module Estates
     # config.i18n.default_locale = :de
     config.active_record.whitelist_attributes = false
 
+    config.action_mailer.async = true
+
     config.generators do |g|
       g.helper false
       g.assets false
@@ -46,6 +48,16 @@ module Estates
     end
 
     config.from_file 'settings.yml'
+
+    config.action_mailer.smtp_settings = {
+      :address              => Rails.configuration.email.host,
+      :port                 => Rails.configuration.email.port,
+      :domain               => Rails.configuration.email.domain,
+      :user_name            => Rails.configuration.email.username,
+      :password             => Rails.configuration.email.password,
+      :authentication       => :plain,
+      :enable_starttls_auto => true
+    }
   end
 end
 
