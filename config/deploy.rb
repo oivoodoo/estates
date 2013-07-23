@@ -58,6 +58,7 @@ namespace(:customs) do
   task :config, :roles => :app do
     run <<-CMD
       ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml
+      ln -nfs #{shared_path}/config/settings.yml #{release_path}/config/settings.yml
     CMD
   end
   task :symlink, :roles => :app do
