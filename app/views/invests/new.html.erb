@@ -50,11 +50,11 @@
               </tr>
               <tr>
                 <td class="muted">Price Per Share</td>
-                <td class="text-right">$100</td>
+                <td class="text-right"><%= number_to_currency(@project.per_share) %>$</td>
               </tr>
               <tr>
                 <td class="muted">Total Investment</td>
-                <td class="text-right">$100</td>
+                <td class="text-right">100$</td>
               </tr>
               </tbody>
             </table>
@@ -68,20 +68,22 @@
 
 <script>
 $(document).ready(function(){
-  $('.step').click(function() {
+  $('.step').click(function(event) {
+    event.preventDefault();
     $('.step').removeClass('current');
     $(this).addClass('current');
     $('.tab').hide();
     var container_id = $(this).data('container');
     $(container_id).show();
-    return false;
   });
 
-  $('.button').click(function() {
+  $('.button').click(function(event) {
+    event.preventDefault();
     $('html, body').animate({scrollTop: '0px'}, 300);
   });
 
-  $('#button1').click(function(){
+  $('#button1').click(function(event){
+    event.preventDefault();
     $('#step1').removeClass('current');
     $('#step2').addClass('current');
     $('#tab2').show();
@@ -89,7 +91,8 @@ $(document).ready(function(){
     $('#tab1').hide();
   });
 
-  $('#button2').click(function(){
+  $('#button2').click(function(event){
+    event.preventDefault();
     $('#step2').removeClass('current');
     $('#step3').addClass('current');
     $('#tab3').show();
@@ -97,3 +100,4 @@ $(document).ready(function(){
   });
 });
 </script>
+

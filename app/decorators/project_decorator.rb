@@ -20,4 +20,9 @@ class ProjectDecorator < Draper::Decorator
   def investment_type
     object.investment_type.camelcase
   end
+
+  def per_share
+    price / shares.to_f
+  end
 end
+

@@ -3,6 +3,7 @@ ActiveAdmin.register Project do
     column :name
     column :owner
     column :percent
+    column :shares
     column :start_investment
     column :finish_investment
     column :created_at

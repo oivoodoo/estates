@@ -24,4 +24,11 @@ describe ProjectDecorator do
 
     it { expect(decorated.investment_type).to eq("Loan") }
   end
+
+  describe '.per_share' do
+    let(:decorated) { create(:project, shares: 10, price: 100).decorate }
+
+    it { expect(decorated.per_share).to eq(1) }
+  end
 end
+
