@@ -83,11 +83,7 @@
           <div class="paper tab-pane" id="map">
             <div id='map_container'>
             </div>
-            <div>
-              <p>Street: <%= @project.street %></p>
-              <p>City: <%= @project.city %></p>
-              <p>Country: <%= @project.country %></p>
-            </div>
+            <div><%= @project.address %></div>
           </div>
         <% end %>
 
