@@ -9,8 +9,13 @@ staging:
     id: <%= ENV['LINKEDIN_ID'] %>
     secret: <%= ENV['LINKEDIN_SECRET'] %>
   email:
+    host: <%= ENV['email_host'] %>
+    port: <%= ENV['email_port'] %>
+    domain: <%= ENV['email_domain'] %>
     username: <%= ENV['email_username'] %>
     password: <%= ENV['email_password'] %>
+    support_address: "petya.petinych@gmail.com"
+    subject: "Message"
 
 production:
   facebook:
@@ -23,8 +28,13 @@ production:
     id: <%= ENV['LINKEDIN_ID'] %>
     secret: <%= ENV['LINKEDIN_SECRET'] %>
   email:
+    host: <%= ENV['email_host'] %>
+    port: <%= ENV['email_port'] %>
+    domain: <%= ENV['email_domain'] %>
     username: <%= ENV['email_username'] %>
     password: <%= ENV['email_password'] %>
+    support_address: "petya.petinych@gmail.com"
+    subject: "Message"
 
 development:
   facebook:
@@ -37,6 +47,9 @@ development:
     id: "0futayxxa8pq"
     secret: "Mdtba4VZq1JCCUgs"
   email:
+    host: "smtp.gmail.com"
+    port: 587
+    domain: "gmail.com"
     username: "petya.petinych@gmail.com"
     password: "mintscinnamon02"
     support_address: "petya.petinych@gmail.com"
@@ -53,6 +66,10 @@ test:
     id: "id"
     secret: "secret"
   email:
+    host: "smtp.test.com"
+    port: 587
+    domain: "test.com"
     username: "username"
     password: "password"
     support_address: "address"
+

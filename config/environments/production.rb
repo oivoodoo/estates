@@ -33,9 +33,18 @@ Estates::Application.configure do
   config.assets.digest = true
 
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => "gmail.com",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :domain => Rails.configuration.domain,
+    :authentication => :plain,
+    :user_name => Rails.configuration.email.username,
+    :password => Rails.configuration.email.password
+  }
+
+  config.action_mailer.smtp_settings = {
+    :address              => Rails.configuration.email.host,
+    :port                 => Rails.configuration.email.port,
+    :domain               => Rails.configuration.email.domain,
     :user_name            => Rails.configuration.email.username,
     :password             => Rails.configuration.email.password,
     :authentication       => :plain,
