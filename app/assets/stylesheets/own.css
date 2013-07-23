@@ -20,5 +20,10 @@ textarea {
   font-size: 2.6667em;
 }
 
+.blog-item .left { float: left; }
+.blog-item .left.image { margin-right: 20px; }
+.blog-item .left.text { width: 70%; }
+
 .step-number { cursor: pointer; }
+.clear { clear: both; }
 
