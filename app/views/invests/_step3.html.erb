@@ -6,20 +6,22 @@
     <section class="module-section">
       <div id="checkout-order-form">
         <div class="meta-horizontal items-3">
-          <div id="checkout-order-form-quantity" class="item">
-            <div class="metric">Quantity</div>
-            <input id="numberOfShares" name="numberOfShares" class="order-form-field" pattern="[1-9][0-9]*" data-message="Please enter in a valid number of shares to purchase" type="text" value="" maxlength="3">
-            <div class="math-symbol">×</div>
-          </div>
-          <div id="checkout-order-form-price" class="item">
-            <div class="metric">Price / Share</div>
-            <div class="order-form-field value"><%= number_to_currency(@project.per_share)%></div>
-            <div class="math-symbol">=</div>
-          </div>
-          <div id="checkout-order-form-total" class="item">
-            <div class="metric">Total Investment</div>
-            <div class="order-form-field value"></div>
-          </div>
+          <form name="theForm">
+            <div id="checkout-order-form-quantity" class="item">
+              <div class="metric">Quantity</div>
+              <input type="text" id='quantity' value maxlength="3" required number>
+              <div class="math-symbol">×</div>
+            </div>
+            <div id="checkout-order-form-price" class="item">
+              <div class="metric">Price / Share</div>
+              <div id='per_share' class="order-form-field value" data-value="<%= @project.per_share %>"><%= number_to_currency(@project.per_share)%></div>
+              <div class="math-symbol">=</div>
+            </div>
+            <div id="checkout-order-form-total" class="item">
+              <div class="metric">Total Investment</div>
+              <div class="order-form-field value" id="result"></div>
+            </div>
+          </form>
         </div>
       </div>
       <div id="checkout-order-form-instructions" class="small muted"></div>

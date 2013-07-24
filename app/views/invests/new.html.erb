@@ -50,19 +50,21 @@
 
             <h3 class="mb1 ellipsis"><%= @project.address %></h3>
             <table class="mt4 table-bordered" style="display: none;">
-              <tbody><tr>
-                <td class="muted">Quantity</td>
-                <td class="text-right">1</td>
-              </tr>
-              <tr>
-                <td class="muted">Price Per Share</td>
-                <td class="text-right"><%= number_to_currency(@project.per_share) %>$</td>
-              </tr>
-              <tr>
-                <td class="muted">Total Investment</td>
-                <td class="text-right">100$</td>
-              </tr>
-              </tbody>
+              <form name="theForm">
+                <tbody><tr>
+                  <td class="muted">Quantity</td>
+                  <td class="text-right">1</td>
+                </tr>
+                <tr>
+                  <td class="muted">Price Per Share</td>
+                  <td class="text-right"><%= number_to_currency(@project.per_share) %></td>
+                </tr>
+                <tr>
+                  <td class="muted">Total Investment</td>
+                  <td class="text-right">100$</td>
+                </tr>
+                </tbody>
+              </form>
             </table>
 
           </section>

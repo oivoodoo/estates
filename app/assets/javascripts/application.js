@@ -19,4 +19,5 @@
 //= require vendors/bootstrap-tab
 //= require custom
 //= require vendors/html5
+//= require calculateTotalPurchase
 //= require common
