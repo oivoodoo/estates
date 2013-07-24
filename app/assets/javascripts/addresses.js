@@ -2,7 +2,7 @@ $(document).ready(function() {
   $(document).on('step4:opened', function() {
     var address1 = $('#address1').val();
     var address2 = $('#address2').val();
-    var address = (address1 + ', ' + address2);
+    var address = address1 + ', ' + address2;
     $('#address').html(address);
 
     var city = $('#city').val();
