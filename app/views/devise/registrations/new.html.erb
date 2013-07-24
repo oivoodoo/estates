@@ -17,16 +17,13 @@
             <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
               <i class="icon-google-plus"></i>
             </a>
-          <% else %>
-            <%= current_user.name %>
-            <%= current_user.email %>
           <% end %>
         </div>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.text_field :name, placeholder: "Full Name" %>
-        <%= f.email_field :email, placeholder: "Email"%>
-        <%= f.password_field :password, placeholder: "Password" %>
+        <%= f.email_field :email, placeholder: "Email", :required => true %>
+        <%= f.password_field :password, placeholder: "Password", :required => true %>
 
         <div class="action">
           <div>

@@ -5,8 +5,8 @@
       <h1>Get in touch</h1>
         <%= form_for @contact, url: {:action => :create} do |f| %>
           <%= f.text_field :name, class: "input-xlarge", placeholder: "Full Name" %>
-          <%= f.text_field :email, class: "input-xlarge", placeholder: "Email" %>
-          <%= f.text_area :message, class: "input-xlarge", placeholder: "Yours message:", :cols => 35, :rows => "15"%>
+          <%= f.text_field :email, class: "input-xlarge", placeholder: "Email", :required => true %>
+          <%= f.text_area :message, class: "input-xlarge", placeholder: "Yours message:", :required => true, :cols => 35, :rows => "15"%>
 
           <div class="action">
             <div>
