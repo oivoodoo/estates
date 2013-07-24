@@ -47,12 +47,27 @@
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
+            <label class="field-label">Country</label>
+          </div>
+          <div class="span6">
+            <div class="fields">
+              <div class="select-holder">
+                <%= f.country_select(:country) %>
+              </div>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
             <label class="field-label">State</label>
           </div>
           <div class="span6">
             <div class="fields">
               <div class="select-holder">
-                <%= state_select(@invest, :state) %>
+                <%= f.state_select(:state)%>
               </div>
             </div>
           </div>

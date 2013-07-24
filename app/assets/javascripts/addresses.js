@@ -8,8 +8,11 @@ $(document).ready(function() {
     var city = $('#city').val();
     $('#city1').html(city);
 
-    var state = $('#state').val();
-    $('#state1').html(state);
+    var country = $('#invest_country').val();
+    $('#country').html(country);
+
+    var state = $('#invest_state').val();
+    $('#state').html(state);
 
     var zip_code = $('#zip').val();
     $('#zip1').html(zip_code);
