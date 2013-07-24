@@ -114,6 +114,14 @@ $(document).ready(function(){
     $('.mt4').show();
     $('#tab3').hide();
   })
+
+  $('#edit').click(function(event){
+    event.preventDefault();
+    $('#step4').removeClass('current');
+    $('#step2').addClass('current')
+    $('#tab2').show();
+    $('#tab4').hide();
+  });
 });
 </script>
 
