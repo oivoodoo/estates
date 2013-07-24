@@ -83,6 +83,10 @@ $(document).ready(function(){
     $('.tab').hide();
     var container_id = $(this).data('container');
     $(container_id).show();
+    
+    if (container_id === '#tab4') {
+      $(document).trigger('step4:opened');
+    }
   });
 
   $('.button').click(function(event) {
@@ -113,6 +117,8 @@ $(document).ready(function(){
     $('#tab4').show();
     $('.mt4').show();
     $('#tab3').hide();
+
+    $(document).trigger('step4:opened');
   })
 
   $('#edit_info').click(function(event){

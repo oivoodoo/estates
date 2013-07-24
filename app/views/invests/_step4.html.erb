@@ -14,16 +14,12 @@
     <section class="module-section">
       <table class="table-bordered checkout-review">
         <tbody><tr>
-          <td class="muted">First Name</td>
-          <td>Alexander</td>
-        </tr>
-        <tr>
-          <td class="muted">Last Name</td>
-          <td>Korsak</td>
+          <td class="muted">Full Name</td>
+          <td><%= current_user.name %></td>
         </tr>
         <tr>
           <td class="muted">Email Address</td>
-          <td>alex.korsak@gmail.com</td>
+          <td><%= current_user.email %></td>
         </tr>
       </tbody></table>
     </section>
@@ -34,28 +30,30 @@
     </header>
     <section class="module-section">
       <table class="table-bordered checkout-review">
-        <tbody><tr>
-          <td class="muted">Mailing Address</td>
-          <td>100 Howard St</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td class="muted">Mailing Address</td>
+            <td id="address"></td>
+          </tr>
 
-        <tr>
-          <td class="muted">City</td>
-          <td>San Francisco</td>
-        </tr>
-        <tr>
-          <td class="muted">State</td>
-          <td>District of Columbia</td>
-        </tr>
-        <tr>
-          <td class="muted">ZIP Code</td>
-          <td>94105</td>
-        </tr>
-        <tr>
-          <td class="muted">Phone Number</td>
-          <td>4157068530</td>
-        </tr>
-      </tbody></table>
+          <tr>
+            <td class="muted">City</td>
+            <td id="city1"></td>
+          </tr>
+          <tr>
+            <td class="muted">State</td>
+            <td id="state1"></td>
+          </tr>
+          <tr>
+            <td class="muted">ZIP Code</td>
+            <td id="zip1"></td>
+          </tr>
+          <tr>
+            <td class="muted">Phone Number</td>
+            <td id="phone_number"></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </div>
   <div class="module">

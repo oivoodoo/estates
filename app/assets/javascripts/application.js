@@ -21,3 +21,4 @@
 //= require vendors/html5
 //= require calculateTotalPurchase
 //= require common
+//= require addresses
