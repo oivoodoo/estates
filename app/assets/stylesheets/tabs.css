@@ -18,11 +18,6 @@
   clear: both;
 }
 
-.tab-content {
-  overflow: auto;
-  width: 960px
-}
-
 .tabs-below > .nav-tabs,
 .tabs-right > .nav-tabs,
 .tabs-left > .nav-tabs {

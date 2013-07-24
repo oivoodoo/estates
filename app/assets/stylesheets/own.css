@@ -27,3 +27,4 @@ textarea {
 .step-number { cursor: pointer; }
 .clear { clear: both; }
 
+#disqus_thread { width: 960px; }
