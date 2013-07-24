@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $(document).on('step4:opened', function() {
-    var street1 = $('#street1').val();
-    var street2 = $('#street2').val();
-    var address = (street1 + street2);
+    var address1 = $('#address1').val();
+    var address2 = $('#address2').val();
+    var address = address1 + ', ' + address2;
     $('#address').html(address);
 
     var city = $('#city').val();
