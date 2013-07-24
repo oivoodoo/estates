@@ -16,9 +16,11 @@
             <% end %>
         </h1>
       </hgroup>
-      <div class="action">
-        <%= link_to "Invest", new_project_invest_path(@project), class: 'button' %>
-      </div>
+      <% if signed_in? %>
+        <div class="action">
+          <%= link_to "Invest", new_project_invest_path(@project), class: 'button' %>
+        </div>
+      <% end %>
     </div>
   </div>
 

@@ -66,6 +66,7 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',          github: 'justinfrench/formtastic'
 gem 'countries'
 gem 'country_select'
+gem 'state_select', github: 'stormsilver/state_select'
 gem 'tinymce-rails', github: 'spohlenz/tinymce-rails'
 
 # deployment

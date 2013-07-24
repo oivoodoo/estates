@@ -2,6 +2,7 @@ class InvestsController < ApplicationController
   before_filter :find_project
 
   def new
+    @invest = @project.invests.new
   end
 
   private

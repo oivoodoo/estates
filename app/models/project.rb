@@ -13,6 +13,8 @@ class Project < ActiveRecord::Base
 
   paginates_per 8
 
+  has_many :invests
+
   def followed_by!(user)
     unless users.exists?(user.id)
       users << user

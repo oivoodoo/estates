@@ -4,84 +4,80 @@
       <h2>Primary Residence &amp; Phone</h2>
     </header>
     <section class="module-section">
-      <p>Please enter in your primary residence and phone number</p>            
+      <p>Please enter in your primary residence and phone number</p>
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
             <label class="field-label">Address Line 1</label>
-          </div>                  
-          <div class="span6">               
+          </div>
+          <div class="span6">
             <div class="fields">
               <input id="street1" name="address1" required="required" type="text" value="" maxlength="150">
             </div>
           </div>
           <div class="span2"></div>
         </div>
-      </div>              
+      </div>
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
             <label class="field-label">Address Line 2</label>
-          </div>                  
-          <div class="span6">               
+          </div>
+          <div class="span6">
             <div class="fields">
               <input id="street2" name="address2" type="text" value="" maxlength="150">
             </div>
           </div>
           <div class="span2"></div>
         </div>
-      </div>                
+      </div>
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
             <label class="field-label">City</label>
-          </div>                    
-          <div class="span6">               
+          </div>
+          <div class="span6">
             <div class="fields">
               <input id="city" name="city" required="required" type="text" value="" maxlength="150">
             </div>
           </div>
           <div class="span2"></div>
         </div>
-      </div>                
+      </div>
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
             <label class="field-label">State</label>
-          </div>                    
-          <div class="span6">               
+          </div>
+          <div class="span6">
             <div class="fields">
-              <div class="select-holder">                     
-                <select id="state" name="state">
-                  <option value="District of Columbia">District of Columbia</option>
-                  <option value="Virginia">Virginia</option>
-                </select>
-                <div class="select-mask">District of Columbia</div>
+              <div class="select-holder">
+                <%= state_select(@invest, :state) %>
               </div>
             </div>
           </div>
           <div class="span2"></div>
         </div>
-      </div>                
+      </div>
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
             <label class="field-label">ZIP Code</label>
-          </div>                    
-          <div class="span6">               
+          </div>
+          <div class="span6">
             <div class="fields">
-              <input id="zip" name="zip" class="char5" pattern="[0-9]{5}" data-message="Must be 5 digits" required="required" type="text" value="94105" maxlength="5"> 
+              <input id="zip" name="zip" class="char5" pattern="[0-9]{5}" data-message="Must be 5 digits" required="required" type="text" value="94105" maxlength="5">
             </div>
           </div>
           <div class="span2"></div>
         </div>
-      </div>                
+      </div>
       <div class="field-group mb0">
         <div class="sub-row">
           <div class="span4">
             <label class="field-label">Phone Number</label>
-          </div>                    
-          <div class="span6">               
+          </div>
+          <div class="span6">
             <div class="fields multi-field">
               <input id="phoneAreaCode" class="char3" type="text" pattern="[0-9]{3}" maxlength="3">
               <div class="input-inline">-</div>
@@ -120,7 +116,7 @@
             <input name="upload-toggle" type="radio" value="later"> Fax or email a copy later
           </label>
         </li>
-      </ul>               
+      </ul>
       <div class="module" id="id-upload">
         <div class="module-section">
           <div class="mb2">
@@ -132,8 +128,8 @@
       <div class="module hide" id="id-later">
         <div class="module-section">
           <p>
-            Please email an image of your ID to 
-            <a href="mailto:support@fundrise.com">support@fundrise.com</a> 
+            Please email an image of your ID to
+            <a href="mailto:support@fundrise.com">support@fundrise.com</a>
             or fax to 202-747-3982.
           </p>
         </div>
