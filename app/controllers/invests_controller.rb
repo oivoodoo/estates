@@ -5,6 +5,9 @@ class InvestsController < ApplicationController
     @invest = @project.invests.new
   end
 
+  def create
+  end
+
   private
 
   def find_project
