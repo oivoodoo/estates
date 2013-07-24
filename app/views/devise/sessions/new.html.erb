@@ -6,25 +6,20 @@
       <h1>Sign in</h1>
       <div class="social_sign">
         <h3> Sign in with your social account</h3>
-        <% unless signed_in? %>
-          <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
-            <i class="icon-facebook"></i>
-          </a>
-          <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
-            <i class="icon-linkedin"></i>
-          </a>
-          <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
-            <i class="icon-google-plus"></i>
-          </a>
-        <% else %>
-          <%= @user.name %>
-          <%= @user.email %>
-        <% end %>
+        <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
+          <i class="icon-facebook"></i>
+        </a>
+        <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
+          <i class="icon-linkedin"></i>
+        </a>
+        <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
+          <i class="icon-google-plus"></i>
+        </a>
       </div>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.email_field :email, placeholder: "Email"%>
-        <%= f.password_field :password, placeholder: "Password"%>
+        <%= f.email_field :email, placeholder: "Email", autocomplete: 'off' %>
+        <%= f.password_field :password, placeholder: "Password", autocomplete: 'off' %>
 
         <div class="action">
           <div>

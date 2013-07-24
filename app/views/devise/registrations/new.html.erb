@@ -7,23 +7,21 @@
       <h1>Sign up</h1>
         <div class="social_sign">
           <h3> Sign up with your social account</h3>
-          <% unless signed_in? %>
-            <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
-              <i class="icon-facebook"></i>
-            </a>
-            <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
-              <i class="icon-linkedin"></i>
-            </a>
-            <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
-              <i class="icon-google-plus"></i>
-            </a>
-          <% end %>
+          <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
+            <i class="icon-facebook"></i>
+          </a>
+          <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
+            <i class="icon-linkedin"></i>
+          </a>
+          <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
+            <i class="icon-google-plus"></i>
+          </a>
         </div>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.text_field :name, placeholder: "Full Name" %>
-        <%= f.email_field :email, placeholder: "Email", :required => true %>
-        <%= f.password_field :password, placeholder: "Password", :required => true %>
+        <%= f.email_field :email, placeholder: "Email"%>
+        <%= f.password_field :password, placeholder: "Password" %>
 
         <div class="action">
           <div>

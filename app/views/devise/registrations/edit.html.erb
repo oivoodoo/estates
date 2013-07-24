@@ -4,11 +4,7 @@
       <%= render 'layouts/logo' %>
       <h1>Profile Settings</h1>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-          <% if @user.avatar? %>
-            <%= image_tag @user.avatar_url(:thumb), class: "circle" %>
-          <% else %>
-            <%= image_tag "default_avatar.png", class: "circle" %>
-          <% end %>
+        <%= render partial: 'users/avatar', object: @user %>
         <%= f.file_field :avatar %>
         <%= f.text_field :name, class: "input-xlarge", placeholder: "Full Name" %>
         <%= f.text_field :email, class: "input-xlarge", placeholder: "Email", :required => true %>
