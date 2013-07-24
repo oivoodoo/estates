@@ -944,7 +944,6 @@ textarea {
   position: relative;
 }
 select {
-  opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   display: block;
   position: relative;

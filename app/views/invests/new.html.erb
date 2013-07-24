@@ -31,12 +31,12 @@
   <div class="container">
     <div class="row">
       <div class="span8 column">
-        <form id="accreditedQuestionnaireForm" class="labels-left" method="get">
-          <%= render 'step1' %>
-          <%= render 'step2' %>
-          <%= render 'step3' %>
-          <%= render 'step4' %>
-        </form>
+        <%= form_for [@project, @invest] do |f| %>
+          <%= render 'step1', f: f %>
+          <%= render 'step2', f: f %>
+          <%= render 'step3', f: f %>
+          <%= render 'step4', f: f %>
+        <% end %>
       </div>
 
       <div class="span4 column stl hide-on-mobile">
