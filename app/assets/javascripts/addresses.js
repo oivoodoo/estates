@@ -35,17 +35,20 @@ $(document).ready(function() {
       $('#hidden_field_state').hide();
     };
   });
-
-  $('#invest_identification_now').change(function(){
-    var invest = $('#invest_identification_now').val();
-    if (invest = "now"){
-      $('#id-upload').show();
-    };
-  });
-  $('#invest_identification_later').change(function(){
-    var invest = $('#invest_identification_later').val();
-    if (invest = "later"){
-      $('#id-upload').hide();
-    };
+  $(document).ready(function(){
+    $('#id-upload').show();
+    
+    $('#invest_identification_now').change(function(){
+      var invest = $('#invest_identification_now').val();
+      if (invest = "now"){
+        $('#id-upload').show();
+      };
+    });
+    $('#invest_identification_later').change(function(){
+      var invest = $('#invest_identification_later').val();
+      if (invest = "later"){
+        $('#id-upload').hide();
+      };
+    });
   });
 });

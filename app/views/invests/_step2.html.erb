@@ -125,12 +125,12 @@
       <ul class="radio-checkbox-list">
         <li>
           <label class="radio-checkbox-label">
-            <%= f.radio_button(:identification, "now", checked: false)%> Upload a scan of your ID now
+            <%= f.radio_button(:identification, "now", checked: true)%> Upload a scan of your ID now
           </label>
         </li>
         <li>
           <label class="radio-checkbox-label">
-            <%= f.radio_button(:identification, "later", checked: true)%> Fax or email a copy later
+            <%= f.radio_button(:identification, "later", checked: false)%> Fax or email a copy later
           </label>
         </li>
       </ul>
