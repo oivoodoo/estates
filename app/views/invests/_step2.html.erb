@@ -8,11 +8,11 @@
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
-            <label class="field-label">Address Line 1</label>
+            <label class="field-label"><%= f.label :address_line_1, style: "font-weight: bold;" %></label>
           </div>
           <div class="span6">
             <div class="fields">
-              <input id="address1" name="address1" required="required" type="text" value="" maxlength="150">
+              <%= f.text_field :address_line_1 %>
             </div>
           </div>
           <div class="span2"></div>
@@ -21,11 +21,11 @@
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
-            <label class="field-label">Address Line 2</label>
+            <label class="field-label"><%= f.label :address_line_2, style: "font-weight: bold;" %></label>
           </div>
           <div class="span6">
             <div class="fields">
-              <input id="address2" name="address2" type="text" value="" maxlength="150">
+              <%= f.text_field :address_line_2 %>
             </div>
           </div>
           <div class="span2"></div>
@@ -34,11 +34,13 @@
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
-            <label class="field-label">City</label>
+            <label class="field-label">
+              <%= f.label :city, style: "font-weight: bold;" %>
+            </label>
           </div>
           <div class="span6">
             <div class="fields">
-              <input id="city" name="city" required="required" type="text" value="" maxlength="150">
+              <%= f.text_field :city %>
             </div>
           </div>
           <div class="span2"></div>
@@ -47,7 +49,7 @@
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
-            <label class="field-label">Country</label>
+            <label class="field-label"><%= f.label :country, style: "font-weight: bold;" %></label>
           </div>
           <div class="span6">
             <div class="fields">
@@ -62,7 +64,7 @@
       <div class="field-group" id="hidden_state" style="display: none;">
         <div class="sub-row">
           <div class="span4">
-            <label class="field-label">State</label>
+            <label class="field-label"><%= f.label :state, style: "font-weight: bold;" %></label>
           </div>
           <div class="span6">
             <div class="fields">
@@ -77,11 +79,11 @@
       <div class="field-group">
         <div class="sub-row">
           <div class="span4">
-            <label class="field-label">ZIP Code</label>
+            <label class="field-label"><%= f.label :zip_code, style: "font-weight: bold;" %></label>
           </div>
           <div class="span6">
             <div class="fields">
-              <input id="zip" name="zip" class="char5" pattern="[0-9]{5}" data-message="Must be 5 digits" required="required" type="text" value="94105" maxlength="5">
+              <%= f.number_field :zip_code, class: "char5" %>
             </div>
           </div>
           <div class="span2"></div>
@@ -90,15 +92,15 @@
       <div class="field-group mb0">
         <div class="sub-row">
           <div class="span4">
-            <label class="field-label">Phone Number</label>
+            <label class="field-label"><%= f.label :phone_number, style: "font-weight: bold;" %></label>
           </div>
           <div class="span6">
             <div class="fields multi-field">
-              <input id="phoneAreaCode" class="char3" type="text" pattern="[0-9]{3}" maxlength="3">
+              <%= f.number_field :phone_area_code, class: "char3" %>
               <div class="input-inline">-</div>
-              <input id="phonePrefix" class="char3" type="text" pattern="[0-9]{3}" maxlength="3">
+              <%= f.number_field :phone_prefix, class: "char3" %>
               <div class="input-inline">-</div>
-              <input id="phoneLastFour" class="char4" type="text" pattern="[0-9]{4}" maxlength="4">
+              <%= f.number_field :phone_last_four, class: "char4" %>
             </div>
           </div>
           <div class="span2"></div>
@@ -123,30 +125,21 @@
       <ul class="radio-checkbox-list">
         <li>
           <label class="radio-checkbox-label">
-            <input name="upload-toggle" type="radio" value="now" checked="checked"> Upload a scan of your ID now
+            <%= f.radio_button(:identification, "now", checked: false)%> Upload a scan of your ID now
           </label>
         </li>
         <li>
           <label class="radio-checkbox-label">
-            <input name="upload-toggle" type="radio" value="later"> Fax or email a copy later
+            <%= f.radio_button(:identification, "later", checked: true)%> Fax or email a copy later
           </label>
         </li>
       </ul>
-      <div class="module" id="id-upload">
+      <div class="module" id="id-upload" style="display: none;">
         <div class="module-section">
           <div class="mb2">
-            <input id="frontOfId" name="frontOfId" type="file">
+            <%= f.file_field :identification_image %>
           </div>
           <div class="mb4 small muted">JPG, PNG or PDF. Maximum 4 MB.</div>
-        </div>
-      </div>
-      <div class="module hide" id="id-later">
-        <div class="module-section">
-          <p>
-            Please email an image of your ID to
-            <a href="mailto:support@fundrise.com">support@fundrise.com</a>
-            or fax to 202-747-3982.
-          </p>
         </div>
       </div>
     </section>
