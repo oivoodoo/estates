@@ -4815,7 +4815,7 @@ h3.sidebar-heading span {
   height: 100%;
   top: 0;
   left: 0;
-  background: transparent url("../interface/checkmark-white.png") no-repeat 0 0;
+  background: transparent url("/img/checkmark-white.png") no-repeat 0 0;
 }
 @media (-webkit-min-device-pixel-ratio: 2) {
   .progress-indicator .step.completed .step-number .fill: before {

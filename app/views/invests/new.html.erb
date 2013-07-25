@@ -97,6 +97,7 @@ $(document).ready(function(){
   $('#button1').click(function(event){
     event.preventDefault();
     $('#step1').removeClass('current');
+    $('#step1').addClass('completed');
     $('#step2').addClass('current');
     $('#tab2').show();
     $('#tab1').hide();
@@ -105,6 +106,7 @@ $(document).ready(function(){
   $('#button2').click(function(event){
     event.preventDefault();
     $('#step2').removeClass('current');
+    $('#step2').addClass('completed');
     $('#step3').addClass('current');
     $('#tab3').show();
     $('#tab2').hide();
@@ -113,6 +115,7 @@ $(document).ready(function(){
   $('#button3').click(function(event){
     event.preventDefault();
     $('#step3').removeClass('current');
+    $('#step3').addClass('completed');
     $('#step4').addClass('current');
     $('#tab4').show();
     $('.mt4').show();
