@@ -76,19 +76,6 @@
 
 <script>
 $(document).ready(function(){
-  $('.step').click(function(event) {
-    event.preventDefault();
-    $('.step').removeClass('current');
-    $(this).addClass('current');
-    $('.tab').hide();
-    var container_id = $(this).data('container');
-    $(container_id).show();
-    
-    if (container_id === '#tab4') {
-      $(document).trigger('step4:opened');
-    }
-  });
-
   $('.button').click(function(event) {
     event.preventDefault();
     $('html, body').animate({scrollTop: '0px'}, 300);
