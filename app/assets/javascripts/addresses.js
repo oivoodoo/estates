@@ -37,12 +37,14 @@ $(document).ready(function() {
   });
   $(document).ready(function(){
     $('#id-upload').show();
-    
+
     $('#invest_identification_now').change(function(){
       var invest = $('#invest_identification_now').val();
       if (invest = "now"){
         $('#id-upload').show();
-      };
+      } else {
+        $('#id-upload').hide();
+      }
     });
     $('#invest_identification_later').change(function(){
       var invest = $('#invest_identification_later').val();
