@@ -29,8 +29,10 @@ $(document).ready(function() {
 
     if (country == 'United States') {
       $('#hidden_state').show();
+      $('#hidden_field_state').show();
     } else {
-      $('#hidden_state').hide();  
+      $('#hidden_state').hide();
+      $('#hidden_field_state').hide();
     };
   });
 });
