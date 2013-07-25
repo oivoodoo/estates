@@ -23,4 +23,17 @@ $(document).ready(function() {
     var result = [phoneAreaCode, phonePrefix, phoneLastFour].join('-');
     $('#phone_number').html(result);
   });
+
+  $('#invest_country').change(function(){
+    var country = $('#invest_country').val();
+
+    if (country == 'United States')
+    {
+      $('#hidden_state').show();
+    }
+    else
+    {
+      $('#hidden_state').hide();  
+    };
+  });
 });
