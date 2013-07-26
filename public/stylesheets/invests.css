@@ -1055,7 +1055,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-.error input {
+input.error {
   border-color: #a01d2b;
 }
 .error-message {
