@@ -52,9 +52,9 @@ gem 'acts_as_commentable'
 gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
 
-gem 'sendgrid'
-
 gem 'jquery-validation-rails'
+
+gem 'sendgrid'
 
 gem 'get-version', require: 'get_version'
 gem "gritter", "1.0.3"

@@ -9,7 +9,7 @@
           <form name="theForm">
             <div id="checkout-order-form-quantity" class="item">
               <div class="metric">Quantity</div>
-              <input type="text" id='quantity' value maxlength="3" required number>
+              <%= f.number_field :quantity, class: "char8", required: true %>
               <div class="math-symbol">×</div>
             </div>
             <div id="checkout-order-form-price" class="item">
