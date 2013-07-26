@@ -97,8 +97,9 @@ $(document).ready(function(){
       $('#step3').addClass('current');
       $('#tab3').show();
       $('#tab2').hide();
-    }
+    } else {
     $('label.error').addClass('error-message');
+    }
   });
 
   $('#button3').click(function(event){
@@ -110,9 +111,9 @@ $(document).ready(function(){
       $('#tab4').show();
       $('.mt4').show();
       $('#tab3').hide();
-    }
+    } else {
     $('label.error').addClass('error-message');
-
+    }
     $(document).trigger('step4:opened');
   })
 
