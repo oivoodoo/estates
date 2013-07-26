@@ -73,7 +73,6 @@
     </div>
   </div>
 </div>
-
 <script>
 $(document).ready(function(){
   $('.button').click(function(event) {
@@ -92,22 +91,29 @@ $(document).ready(function(){
 
   $('#button2').click(function(event){
     event.preventDefault();
-    $('#step2').removeClass('current');
-    $('#step2').addClass('completed');
-    $('#step3').addClass('current');
-    $('#tab3').show();
-    $('#tab2').hide();
+    if ($('#new_invest').valid()) {
+      $('#step2').removeClass('current');
+      $('#step2').addClass('completed');
+      $('#step3').addClass('current');
+      $('#tab3').show();
+      $('#tab2').hide();
+    } else {
+      $('label.error').addClass('error-message');
+    }
   });
 
   $('#button3').click(function(event){
     event.preventDefault();
-    $('#step3').removeClass('current');
-    $('#step3').addClass('completed');
-    $('#step4').addClass('current');
-    $('#tab4').show();
-    $('.mt4').show();
-    $('#tab3').hide();
-
+    if ($('#new_invest').valid()) {
+      $('#step3').removeClass('current');
+      $('#step3').addClass('completed');
+      $('#step4').addClass('current');
+      $('#tab4').show();
+      $('.mt4').show();
+      $('#tab3').hide();
+    } else {
+      $('label.error').addClass('error-message');
+    }
     $(document).trigger('step4:opened');
   })
 
@@ -151,4 +157,3 @@ $(document).ready(function(){
   });
 });
 </script>
-
