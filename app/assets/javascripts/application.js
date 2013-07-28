@@ -15,7 +15,6 @@
 //= require jquery.validate
 //= require turbolinks
 //= require gritter
-//= require vendors/bootstrap-tab
 //= require custom
 //= require vendors/html5
 //= require vendors/fancybox.min
@@ -24,3 +23,4 @@
 //= require invests
 //= require common
 //= require addresses
+//= require ajax

@@ -12,7 +12,6 @@
  *= require reset
  *= require f
  *= require style
- *= require vendors/font-awesome.min
  *= require vendors/fancybox
  *= require gritter
  */

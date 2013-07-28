@@ -13,8 +13,8 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
         <div class="tight">
           <div class="input-group">
-            <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%' %>
-            <%= f.password_field :password, placeholder: "Password", autocomplete: 'off', size: 1, style: 'width: 50%' %>
+            <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%', required: true %>
+            <%= f.password_field :password, placeholder: "Password", autocomplete: 'off', size: 1, style: 'width: 50%', required: true %>
           </div>
         </div>
         <div class="action">
@@ -39,4 +39,8 @@
     </div>
   </div>
 </div>
+
+<script type='text/javascript'>
+  $('form').validate();
+</script>
 

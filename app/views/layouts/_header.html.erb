@@ -2,7 +2,7 @@
   <li><%= link_to "Investments", projects_path %></li>
   <li><%= link_to "How it Works", page_path("howto")%></li>
   <li><%= link_to "Blog", blog_path %></li>
-  <li><%= link_to "Get In Touch", new_contact_path%></li>
+  <li><%= link_to "Get In Touch", new_contact_path, class: "get-in-touch fancybox.ajax" %></li>
 
   <% unless signed_in? %>
     <li><a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">Sign Up</a></li>
