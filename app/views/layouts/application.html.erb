@@ -9,18 +9,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <link rel="canonical" href="http://flock.ips/" />
-  <link rel="Shortcut Icon" type="image/ico" href="<%= image_path("favicon.png") %>">
+
+  <link rel="Shortcut Icon" type="image/svg" href="<%= image_path('g/flockinvest-logo-symbol.svg') %>">
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <%= yield :header %>
+  <!-- sensor=false tells google images we aren't trying to sense the user's location -->
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
   <!--[if lte IE 8]> <%= stylesheet_link_tag "ie8" %><![endif]-->
 
 <body onload="" class="<%= layout_class %>">
-  <%= gflash %>
+  <%= gflash(js: true) %>
 
   <div id="wrap" style="padding-bottom: 228px;">
     <header id="masthead" class="mini">
@@ -29,23 +31,8 @@
           <div><h1 itemprop="logo"><%= link_to "Flock", root_path %></h1></div>
         </div>
         <nav>
-          <div>
-            <ul>
-              <li><%= link_to "Projects", projects_path %>Projects</li>
-              <li><%= link_to "How it Works", page_path("howto")%></li>
-              <li><%= link_to "Blog", blog_path %></li>
-              <li><%= link_to "Get In Touch", new_contact_path%></li>
-
-              <% if can?(:manage, :all) %>
-                <li><%= link_to "Admin", '/admin'%></li>
-              <% end %>
-
-              <% if user_signed_in? %>
-                <li><%= link_to current_user.email, edit_user_registration_path %></li>
-              <% end %>
-
-              <li><%= render 'devise/menu/registration_items'%></li>
-            </ul>
+          <div id='header-bar'>
+            <%= render 'layouts/header' %>
           </div>
         </nav>
         <a id="expand"><i></i></a>

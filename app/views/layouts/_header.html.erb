@@ -1,0 +1,29 @@
+<ul>
+  <li><%= link_to "Investments", projects_path %></li>
+  <li><%= link_to "How it Works", page_path("howto")%></li>
+  <li><%= link_to "Blog", blog_path %></li>
+  <li><%= link_to "Get In Touch", new_contact_path%></li>
+
+  <% unless signed_in? %>
+    <li><a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">Sign Up</a></li>
+    <li><a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Log In</a></li>
+  <% else %>
+    <li class="profile-badge ">
+      <a href="<%= dashboard_path %>" id="profile-badge">
+        <%= image_tag current_user.profile_image, class: 'front' %>
+        <div class="focus"></div>
+      </a>
+
+      <ul>
+        <li class="name"><%= current_user.name %></li>
+        <% if can?(:manage, :all) %>
+          <li><%= link_to "Admin", '/admin'%></li>
+        <% end %>
+        <li><a href="<%= dashboard_path %>">Dashboard</a></li>
+        <li><a href="<%= edit_user_registration_path %>">Profile</a></li>
+        <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete)%></li>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+

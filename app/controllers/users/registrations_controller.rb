@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout false
+
   def update
     @user = User.find(current_user.id)
 
@@ -32,3 +34,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       !params[:user][:password].blank?
   end
 end
+

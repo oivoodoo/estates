@@ -13,12 +13,7 @@
  *= require f
  *= require style
  *= require vendors/font-awesome.min
- *= require vendors/prettyPhoto
+ *= require vendors/fancybox
  *= require gritter
- *= require map
- *= require circle_image
- *= require container
- *= require tabs
- *= require own
  */
 

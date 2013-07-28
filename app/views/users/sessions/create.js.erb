@@ -1,0 +1,5 @@
+<%= add_gritter(flash.now[:success], :image => :success) %>
+$('#header-bar').html('<%= escape_javascript(render(partial: 'layouts/header')) %>');
+$.fancybox.close()
+Estates.loader();
+
