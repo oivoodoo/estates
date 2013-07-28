@@ -55,8 +55,8 @@
   <div class="body">
     <div class="main">
 
-      <div id="tabs">
-        <ul id="tabs" class="tabs">
+      <div id="tabs" class='tabs'>
+        <ul>
           <li><a class="current">Overview</a></li>
           <li><a>Financials</a></li>
 
@@ -67,14 +67,163 @@
           <li><a>Property</a></li>
           <li><a>Strengths</a></li>
           <li><a>Risks</a></li>
-
-          <% if user_signed_in? %>
-            <li><a href="#comments">Comments</a></li>
-          <% end %>
         </ul>
       </div>
 
+			<div>
+				<div class="paper" id="tab-1">
+          <%= @project.description.to_s.html_safe %>
+				</div>
+				<div class="paper" id="tab-2" style='display:none'>
+          <%= @project.financials.to_s.html_safe %>
+				</div>
+				<div class="paper" id="tab-3" style='display:none'>
+          <div id='map_container'>
+          </div>
+          <div><%= @project.address %></div>
+				</div>
+				<div class="paper" id="tab-4" style='display:none'>
+          <%= @project.property.to_s.html_safe %>
+				</div>
+        <div class="paper" id="tab-5" style='display: none'>
+          <%= @project.strength.to_s.html_safe %>
+        </div>
+        <div class="paper" id="tab-6" style='display: none'>
+          <%= @project.risks.to_s.html_safe %>
+        </div>
+			</div>
     </div>
+
+		<div class="side">
+      <div id="tabspace"></div>
+
+			<div>	
+				<div id="connections-tabs" class="tabs">
+					<ul>
+						<li><a href="index-p=project&project=1800-van-ness.html#" class="current">Investors</a></li><li><a href="index-p=project&project=1800-van-ness.html#">Followers</a></li>
+					</ul>
+				</div>
+				<div class="connections-wrap">
+					<ul class="connections">
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png" width="256" height="256"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+      <div>
+				<ul class="feed">
+					<li>
+						<div class="profile-badge">
+							<div>
+								<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+								<div class="focus"></div>
+							</div>
+						</div>
+						<div class="entry">
+							<h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness">1800 Van Ness</a></h5>
+							<div class="entry-meta">
+								<div class="profile-badge">
+									<div>
+										<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+										<div class="focus"></div>
+									</div>
+								</div>
+								<div class="profile-badge">
+									<div>
+										<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+										<div class="focus"></div>
+									</div>
+								</div>
+								<time>2 days, 7hours ago</time>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="profile-badge">
+							<div>
+								<a href="index-p=developer&d=cbre.html" title="CBRE"><img src="img/cbre.png"></a>
+								<div class="focus"></div>
+							</div>
+						</div>
+						<div class="entry">
+							<h5 class="entry-title"><a href="index-p=developer&d=cbre.html" title="CBRE">CBRE</a> published a video to <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness">1800 Van Ness</a></h5>
+							<div class="entry-content">
+								<div class="profile-badge video">
+									<div>
+										<a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="img/dummy-thumb-soma-grand.jpg"></a>
+										<div class="focus"></div>
+									</div>
+								</div>
+							</div>
+							<div class="entry-meta">
+								<time>2 days, 7hours ago</time>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="profile-badge">
+							<div>
+								<a href="index-p=developer&d=cbre.html" title="CBRE"><img src="img/cbre.png"></a>
+								<div class="focus"></div>
+							</div>
+						</div>
+						<div class="entry">
+							<h5 class="entry-title"><a href="index-p=developer&d=cbre.html" title="CBRE">CBRE</a> launched <a href="index-p=project.html" title="1800 Van Ness">1800 Van Ness</a></h5>
+							<div class="entry-meta">
+								<time>2 days, 7hours ago</time>
+							</div>
+						</div>
+					</li>
+				</ul>
+					
+			</div>
   </div>
 </section>
 
@@ -85,82 +234,3 @@
   });
 </script>
 
-
-
-
-    <%#   <div class="tab-content">%>
-    <%#     <div class="paper tab-pane active" id="overview">%>
-    <%#       <div class="gallery">%>
-    <%#         <div>%>
-    <%#           <%= image_tag @project.image_url %>%>
-    <%#         </div>%>
-    <%#       </div>%>
-    <%#       <%= @project.description.html_safe %>%>
-    <%#     </div>%>
-
-    <%#     <div class="paper tab-pane" id="financials">%>
-    <%#       <%= @project.financials.to_s.html_safe %>%>
-    <%#     </div>%>
-
-    <%#     <% if @project.address? %>%>
-    <%#       <div class="paper tab-pane" id="map">%>
-    <%#         <div id='map_container'>%>
-    <%#         </div>%>
-    <%#         <div><%= @project.address %></div>%>
-    <%#       </div>%>
-    <%#     <% end %>%>
-
-    <%#     <div class="paper tab-pane" id="property">%>
-    <%#       <%= @project.property.to_s.html_safe %>%>
-    <%#     </div>%>
-
-    <%#     <div class="paper tab-pane" id="strengths">%>
-    <%#       <%= @project.strength.to_s.html_safe %>%>
-    <%#     </div>%>
-
-    <%#     <% if user_signed_in? %>%>
-    <%#       <div class="paper tab-pane" id="comments">%>
-    <%#         <%= render "comments/form" %>%>
-    <%#       </div>%>
-    <%#     <% end %>%>
-    <%#   </div>%>
-    <%# </div>%>
-
-    <%# <div class="side">%>
-    <%#   <div id="tabspace" style="height: 48px;"></div>%>
-
-    <%#   <div class="developer">%>
-    <%#     <div>%>
-    <%#       <% if @project.company_image? %>%>
-    <%#         <a href="<%= @project.company_image_url%>" rel="prettyPhoto" title="<%= @project.company_description%>">%>
-    <%#           <img class="logo" src="<%= @project.company_image_url%>" alt="<%= @project.owner%>"></img>%>
-    <%#         </a>%>
-    <%#       <% end %>%>
-
-    <%#       <h4 class="project-name">%>
-    <%#         <% link_to @project.name do %>%>
-    <%#           <label class="type">Residential</label>%>
-    <%#         <% end %>%>
-    <%#       </h4>%>
-
-    <%#       <h4 class="developer-name"><%= @project.owner %></h4>%>
-    <%#     </div>%>
-    <%#   </div>%>
-
-    <%#   <div>%>
-    <%#     <div class="padding">%>
-    <%#       <h5 style="color: lightGray">Project feed</h5>%>
-    <%#       <p style="font-size:.7em; margin:1em 0 0; color: lightGray"><%= @project.updated_at %></p>%>
-    <%#     </div>%>
-    <%#   </div>%>
-
-    <%#   <div>%>
-    <%#     <div class="padding">%>
-    <%#       <h5 style="color: lightGray">Personal connections</h5>%>
-    <%#       <br>%>
-    <%#       <%= render('follow') if user_signed_in? %>%>
-    <%#       <p style="font-size:.7em; margin:1em 0 0; color: lightGray">%>
-    <%#         <%= render partial: 'follower', collection: @followers %>%>
-    <%#       </p>%>
-    <%#     </div>%>
-    <%#   </div>%>
