@@ -43,8 +43,17 @@
       <%= yield %>
     </div>
 
-    <footer></footer>
+    <footer>
+      <div id="nag">
+        <div>
+          <i></i><a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">Sign Up</a> or <a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Log In</a> to follow projects
+        </div>
+        <div class="close"></div>
+      </div>
+    </footer>
   </div>
+
+  <%= render 'layouts/js' %>
 </body>
 </html>
 

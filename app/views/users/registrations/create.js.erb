@@ -1,4 +1,6 @@
 <%= add_gritter(flash.now[:success], :image => :success) %>
 $('#header-bar').html('<%= escape_javascript(render(partial: 'layouts/header')) %>');
+$('#js-settings').replaceWith('<%= escape_javascript(render(partial: 'layouts/js')) %>');
+$(document).trigger('user:signed_in')
 $.fancybox.close()
 

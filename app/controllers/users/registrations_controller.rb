@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_up(resource_name, resource)
     else
       clean_up_passwords resource
+      flash.now[:errors] = resource.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -31,6 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in @user, :bypass => true
       redirect_to after_update_path_for(@user)
     else
+      flash.now[:errors] = resource.errors.full_messages.join(', ')
       render "edit"
     end
   end
