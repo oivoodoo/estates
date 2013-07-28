@@ -4,21 +4,29 @@
 <% end %>
 
 <section id="project">
+	<div class="cover-wrap">
+		<div class="cover">
+			<%= image_tag(@project.image_url) %>
+		</div>
+	</div>
+
   <div class="head">
     <div class="core">
       <hgroup>
         <h1>
-          <%= @project.name %>
-            <% if @project.tag_list.present? %>
-              <label class="type">
-                <%= raw @project.tag_list.map { |t| link_to t.camelcase, tag_path(t) }.join(' ') %>
-              </label>
-            <% end %>
+					<div class="profile-badge">
+						<div>
+              <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
+							<div class="focus"></div>
+						</div>
+					</div>
+
+          <%= @project.address %><span> Ness <%= render_tag_list(@project) %></span>
         </h1>
       </hgroup>
       <% if signed_in? %>
         <div class="action">
-          <%= link_to "Invest", new_project_invest_path(@project), class: 'button' %>
+          <button formaction="<%= new_project_invest_path(@project) %>">Invest</button>
         </div>
       <% end %>
     </div>
@@ -38,9 +46,7 @@
               </div>
             <% end %>
           </div>
-          <% if @project.finish_investment? %>
-            <div class="deadline"><b><%= @project.days_to_close %></b> Days to close</div>
-          <% end %>
+          <div class="deadline"><b><%= @project.days_to_close %></b> Days to close</div>
         </div>
       </div>
     </div>
@@ -50,140 +56,111 @@
     <div class="main">
 
       <div id="tabs">
-        <ul class="nav nav-tabs" id="myTab">
-          <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
-          <li><a href="#financials" data-toggle="tab">Financials</a></li>
+        <ul id="tabs" class="tabs">
+          <li><a class="current">Overview</a></li>
+          <li><a>Financials</a></li>
 
           <% if @project.address? %>
-            <li><a href="#map" data-toggle="tab">Location</a></li>
+            <li><a href='#map'>Location</a></li>
           <% end %>
 
-          <li><a href="#property" data-toggle="tab">Property</a></li>
-          <li><a href="#strengths" data-toggle="tab">Strengths</a></li>
+          <li><a>Property</a></li>
+          <li><a>Strengths</a></li>
+          <li><a>Risks</a></li>
 
           <% if user_signed_in? %>
-            <li><a href="#comments" data-toggle="tab">Comments</a></li>
+            <li><a href="#comments">Comments</a></li>
           <% end %>
         </ul>
-      </div>
-
-      <div class="tab-content">
-        <div class="paper tab-pane active" id="overview">
-          <div class="gallery">
-            <div>
-              <%= image_tag @project.image_url %>
-            </div>
-          </div>
-          <%= @project.description.html_safe %>
-        </div>
-
-        <div class="paper tab-pane" id="financials">
-          <%= @project.financials.to_s.html_safe %>
-        </div>
-
-        <% if @project.address? %>
-          <div class="paper tab-pane" id="map">
-            <div id='map_container'>
-            </div>
-            <div><%= @project.address %></div>
-          </div>
-        <% end %>
-
-        <div class="paper tab-pane" id="property">
-          <%= @project.property.to_s.html_safe %>
-        </div>
-
-        <div class="paper tab-pane" id="strengths">
-          <%= @project.strength.to_s.html_safe %>
-        </div>
-
-        <% if user_signed_in? %>
-          <div class="paper tab-pane" id="comments">
-            <%= render "comments/form" %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="side">
-      <div id="tabspace" style="height: 48px;"></div>
-
-      <div class="developer">
-        <div>
-          <% if @project.company_image? %>
-            <a href="<%= @project.company_image_url%>" rel="prettyPhoto" title="<%= @project.company_description%>">
-              <img class="logo" src="<%= @project.company_image_url%>" alt="<%= @project.owner%>"></img>
-            </a>
-          <% end %>
-
-          <h4 class="project-name">
-            <% link_to @project.name do %>
-              <label class="type">Residential</label>
-            <% end %>
-          </h4>
-
-          <h4 class="developer-name"><%= @project.owner %></h4>
-        </div>
-      </div>
-
-      <div>
-        <div class="padding">
-          <h5 style="color: lightGray">Project feed</h5>
-          <p style="font-size:.7em; margin:1em 0 0; color: lightGray"><%= @project.updated_at %></p>
-        </div>
-      </div>
-
-      <div>
-        <div class="padding">
-          <h5 style="color: lightGray">Personal connections</h5>
-          <br>
-          <%= render('follow') if user_signed_in? %>
-          <p style="font-size:.7em; margin:1em 0 0; color: lightGray">
-            <%= render partial: 'follower', collection: @followers %>
-          </p>
-        </div>
       </div>
 
     </div>
   </div>
 </section>
 
-<script>
-  /* <![CDATA[ */
-  function setMapAddress( address )
-  {
-    var geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode( { address : address }, function( results, status ) {
-      if( status == google.maps.GeocoderStatus.OK ) {
-        var latlng = results[0].geometry.location;
-        var options = {
-          zoom: 17,
-          center: latlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        var map = new google.maps.Map( document.getElementById( 'map_container' ), options );
-        $(document).on('shown', "[href='#map']", function() {
-          google.maps.event.trigger(map, 'resize');
-          map.setCenter(latlng);
-          var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-          });
-        });
-      }
-    });
-  }
-
+<script type='text/javascript'>
   $(function() {
-    var address = "<%= @project.address %>";
-    setMapAddress( address );
-    $("a[rel^='prettyPhoto']").prettyPhoto();
-
-    $(document).on('click','[data-toggle="tab"]', function(event) {
-
-    });
+    var maps = new Maps("<%= @project.address %>");
+    maps.setup();
   });
-/* ]]> */
 </script>
+
+
+
+
+    <%#   <div class="tab-content">%>
+    <%#     <div class="paper tab-pane active" id="overview">%>
+    <%#       <div class="gallery">%>
+    <%#         <div>%>
+    <%#           <%= image_tag @project.image_url %>%>
+    <%#         </div>%>
+    <%#       </div>%>
+    <%#       <%= @project.description.html_safe %>%>
+    <%#     </div>%>
+
+    <%#     <div class="paper tab-pane" id="financials">%>
+    <%#       <%= @project.financials.to_s.html_safe %>%>
+    <%#     </div>%>
+
+    <%#     <% if @project.address? %>%>
+    <%#       <div class="paper tab-pane" id="map">%>
+    <%#         <div id='map_container'>%>
+    <%#         </div>%>
+    <%#         <div><%= @project.address %></div>%>
+    <%#       </div>%>
+    <%#     <% end %>%>
+
+    <%#     <div class="paper tab-pane" id="property">%>
+    <%#       <%= @project.property.to_s.html_safe %>%>
+    <%#     </div>%>
+
+    <%#     <div class="paper tab-pane" id="strengths">%>
+    <%#       <%= @project.strength.to_s.html_safe %>%>
+    <%#     </div>%>
+
+    <%#     <% if user_signed_in? %>%>
+    <%#       <div class="paper tab-pane" id="comments">%>
+    <%#         <%= render "comments/form" %>%>
+    <%#       </div>%>
+    <%#     <% end %>%>
+    <%#   </div>%>
+    <%# </div>%>
+
+    <%# <div class="side">%>
+    <%#   <div id="tabspace" style="height: 48px;"></div>%>
+
+    <%#   <div class="developer">%>
+    <%#     <div>%>
+    <%#       <% if @project.company_image? %>%>
+    <%#         <a href="<%= @project.company_image_url%>" rel="prettyPhoto" title="<%= @project.company_description%>">%>
+    <%#           <img class="logo" src="<%= @project.company_image_url%>" alt="<%= @project.owner%>"></img>%>
+    <%#         </a>%>
+    <%#       <% end %>%>
+
+    <%#       <h4 class="project-name">%>
+    <%#         <% link_to @project.name do %>%>
+    <%#           <label class="type">Residential</label>%>
+    <%#         <% end %>%>
+    <%#       </h4>%>
+
+    <%#       <h4 class="developer-name"><%= @project.owner %></h4>%>
+    <%#     </div>%>
+    <%#   </div>%>
+
+    <%#   <div>%>
+    <%#     <div class="padding">%>
+    <%#       <h5 style="color: lightGray">Project feed</h5>%>
+    <%#       <p style="font-size:.7em; margin:1em 0 0; color: lightGray"><%= @project.updated_at %></p>%>
+    <%#     </div>%>
+    <%#   </div>%>
+
+    <%#   <div>%>
+    <%#     <div class="padding">%>
+    <%#       <h5 style="color: lightGray">Personal connections</h5>%>
+    <%#       <br>%>
+    <%#       <%= render('follow') if user_signed_in? %>%>
+    <%#       <p style="font-size:.7em; margin:1em 0 0; color: lightGray">%>
+    <%#         <%= render partial: 'follower', collection: @followers %>%>
+    <%#       </p>%>
+    <%#     </div>%>
+    <%#   </div>%>

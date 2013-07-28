@@ -24,5 +24,6 @@ class ProjectDecorator < Draper::Decorator
   def per_share
     price / shares.to_f
   end
+
 end
 

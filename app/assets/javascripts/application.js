@@ -23,4 +23,5 @@
 //= require invests
 //= require common
 //= require addresses
+//= require maps
 //= require ajax
