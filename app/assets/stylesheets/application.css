@@ -11,6 +11,8 @@
  *= require_self
  *= require reset
  *= require f
+ *= require css/typeplate
+ *= require css/mixins
  *= require style
  *= require vendors/fancybox
  *= require gritter
