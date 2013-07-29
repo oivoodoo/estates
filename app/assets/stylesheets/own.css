@@ -1,29 +1,7 @@
-textarea {
-  display: block;
-  margin: 0.75rem auto;
-  width: 80%;
-  max-width: 25rem;
-  font: normal 112.5%/1.5 'proxima-nova', 'Helvetica Neue', Helvetica, sans-serif;
-  color: #292929;
-  border: 1px solid #ededed;
-  padding: .4rem .7rem;
-  -webkit-box-shadow: 0 2px 4px -1px #ededed;
-  -moz-box-shadow: 0 2px 4px -1px #ededed;
-  box-shadow: 0 2px 4px -1px #ededed;
-}
-
-.new_contact textarea {
-  height: 300px;
-}
-
-#project .action a.button {
-  font-size: 2.6667em;
-}
-
-.blog-item .left { float: left; }
-.blog-item .left.image { margin-right: 20px; }
-.blog-item .left.text { width: 70%; }
+.item { margin-bottom: 30px }
+.item .left { float: left; }
+.item .left.image { width: 280px; }
+.item .left.text { width: 70%; }
 
 .clear { clear: both; }
 
-#disqus_thread { width: 960px; }

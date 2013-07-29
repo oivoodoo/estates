@@ -15,5 +15,6 @@
  *= require vendors/fancybox
  *= require gritter
  *= require errors
+ *= require own
  */
 
