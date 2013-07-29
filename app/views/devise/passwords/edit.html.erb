@@ -1,16 +1,28 @@
-<h2>Change your password</h2>
+<div id="sign-in" class="signin external">
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+  <div class="modal-content">
+    <div>
+      <div class="logo"><div><%= image_tag("g/flockinvest-logo.svg") %></div></div>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></div>
+      <h2>Change your password</h2>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
+      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
+        <%= f.password_field :password, placeholder: "New Password", :style => 'width: 50%;', size: 1, required: true %>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm new password", :style => 'width: 50%;', size: 1, required: true %>
 
-<%= render :partial => "devise/shared/links" %>
+        <div class="action">
+          <div>
+            <div>
+              <%= f.submit "Change my password", class: "delta thicker" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+

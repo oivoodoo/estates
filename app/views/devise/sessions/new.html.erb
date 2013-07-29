@@ -1,36 +1,46 @@
-<div id="sign-in">
+<div id="sign-in" class="signin external">
+  <div class="modal-header">
+    <div>
+      <div class="logo"><%= image_tag("g/flockinvest-logo.svg") %></div>
+      <div class="close" onclick="$.fancybox.close()"></div>
+    </div>
+  </div>
+
   <div class="modal-content">
     <div>
-      <%= render 'layouts/logo' %>
+      <div class="logo"><div><%= image_tag("g/flockinvest-logo.svg") %></div></div>
 
-      <h1>Sign in</h1>
-      <div class="social_sign">
-        <h3> Sign in with your social account</h3>
-        <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
-          <i class="icon-facebook"></i>
-        </a>
-        <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
-          <i class="icon-linkedin"></i>
-        </a>
-        <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
-          <i class="icon-google-plus"></i>
-        </a>
-      </div>
-
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.email_field :email, placeholder: "Email", autocomplete: 'off' %>
-        <%= f.password_field :password, placeholder: "Password", autocomplete: 'off' %>
-
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+        <div class="tight">
+          <div class="input-group">
+            <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%', required: true %>
+            <%= f.password_field :password, placeholder: "Password", autocomplete: 'off', size: 1, style: 'width: 50%', required: true %>
+          </div>
+        </div>
         <div class="action">
           <div>
             <div>
-              Don't have an account? <a href="<%= new_user_registration_path %>" class="sign-in">Sign up</a>!
+              <a href="<%= new_user_password_path %>" class="sign-in fancybox.ajax">Forgot password?</a>
             </div>
-            <div><%= f.submit "Sign in", class: "delta thicker" %></div>
+            <div>
+              <%= f.submit "Sign in", class: "delta thicker" %>
+            </div>
           </div>
         </div>
+        <br><br>
+        <div class="ext-account-buttons">
+          <button formaction="<%= user_omniauth_authorize_path(:facebook) %>" name="ext-account" value="facebook" class="ext-account-button facebook"></button>
+          <%# <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="twitter" class="ext-account-button twitter"></button>%>
+          <button formaction="<%= user_omniauth_authorize_path(:google_oauth2) %>" name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+          <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+        </div>
+        <p class="tertiary">You may alternatively sign in with one of your external accounts</p>
       <% end %>
     </div>
   </div>
 </div>
+
+<script type='text/javascript'>
+  $('form').validate();
+</script>
 

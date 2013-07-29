@@ -1,39 +1,51 @@
-<div id="sign-in">
-  <div class="modal-content">
+<div id="sign-in" class="signup external">
+  <div class="modal-header">
     <div>
-
-      <%= render 'layouts/logo' %>
-
-      <h1>Sign up</h1>
-        <div class="social_sign">
-          <h3> Sign up with your social account</h3>
-          <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="fb">
-            <i class="icon-facebook"></i>
-          </a>
-          <a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="li">
-            <i class="icon-linkedin"></i>
-          </a>
-          <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="gp">
-            <i class="icon-google-plus"></i>
-          </a>
-        </div>
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.text_field :name, placeholder: "Full Name" %>
-        <%= f.email_field :email, placeholder: "Email"%>
-        <%= f.password_field :password, placeholder: "Password" %>
-
-        <div class="action">
-          <div>
-            <div>
-              Already have an account? <a href="<%= new_user_session_path %>" class="sign-in">Sign in
-              </a>.
-            </div>
-            <div><%= f.submit "Sign up", class: "delta thicker" %></div>
-          </div>
-        </div>
-      <% end %>
+      <div class="logo"><%= image_tag("g/flockinvest-logo.svg") %></div>
+      <div class="close" onclick="$.fancybox.close()"></div>
     </div>
   </div>
+
+	<div class="modal-content">
+		<div>
+			<div class="logo"><div><%= image_tag("g/flockinvest-logo.svg") %></div></div>
+        <% unless params[:internal] %>
+          <form action="signup">
+            <div class="ext-account-buttons">
+              <button formaction="<%= user_omniauth_authorize_path(:facebook) %>" name="ext-account" value="facebook" class="ext-account-button facebook"></button>
+              <%# <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="twitter" class="ext-account-button twitter"></button>%>
+              <button formaction="<%= user_omniauth_authorize_path(:google_oauth2) %>" name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+              <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+            </div>
+            <div class="action">
+              <div>
+                <div>
+                  Sign up with an external account to follow your friends' activity on Flock.<br><a href="<%= new_user_registration_path(:internal => true) %>" class="sign-in fancybox.ajax">Sign up without any external accounts</a>.
+                </div>
+              </div>
+            </div>
+          </form>
+        <% else %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
+            <%= f.text_field :name, placeholder: "Full Name", size: 1, required: true %>
+            <%= f.email_field :email, placeholder: "Email", size: 1, required: true %>
+            <%= f.password_field :password, placeholder: "Password", size: 1, required: true %>
+
+            <div class="action">
+              <div>
+                <div>
+                  Already have an account? <a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Sign in</a>.
+                </div>
+                <div><%= f.submit "Sign up", class: "delta thicker" %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+		</div>
+	</div>
 </div>
+
+<script type='text/javascript'>
+  $('form').validate();
+</script>
 

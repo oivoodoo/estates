@@ -1,15 +1,30 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout false
+
+  def create
+    build_resource(sign_up_params)
+
+    if resource.save
+      flash.now[:success] = I18n.t('devise.registrations.signed_up')
+      sign_up(resource_name, resource)
+    else
+      clean_up_passwords resource
+      flash.now[:errors] = resource.errors.full_messages.join(', ')
+      render :new
+    end
+  end
+
   def update
     @user = User.find(current_user.id)
 
     successfully_updated = if needs_password?(@user, params)
-      @user.update_with_password(params[:user])
-    else
-      # remove the virtual current_password attribute update_without_password
-      # doesn't know how to ignore it
-      params[:user].delete(:current_password)
-      @user.update_without_password(params[:user])
-    end
+                             @user.update_with_password(params[:user])
+                           else
+                             # remove the virtual current_password attribute update_without_password
+                             # doesn't know how to ignore it
+                             params[:user].delete(:current_password)
+                             @user.update_without_password(params[:user])
+                           end
 
     if successfully_updated
       set_flash_message :notice, :updated
@@ -17,6 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in @user, :bypass => true
       redirect_to after_update_path_for(@user)
     else
+      flash.now[:errors] = resource.errors.full_messages.join(', ')
       render "edit"
     end
   end
@@ -32,3 +48,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       !params[:user][:password].blank?
   end
 end
+

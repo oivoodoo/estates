@@ -1,9 +1,11 @@
 <section id="intro">
-  <div id="slideshow" class="grid-1-1 no-padding" style="background-image: url(<%= asset_path('intro-1.jpg') %>); background-color:#fcf4eb;"></div>
+  <div id="slideshow" class="grid-1-1 no-padding" style="background-image: url(<%= asset_path('sf-housing.jpg') %>); background-size: 100% auto; background-repeat:repeat-y"></div>
 </section>
+
 <section class="home-listing">
-  <div class="listing-head"><h6 class="listing-heading"><label>Local</label> <span><%= link_to "All Local →", projects_path %></span></h6></div>
+  <div class="listing-head"><h4 class="listing-heading"><label>Featured Investments</label> <span><a href="<%= projects_path %>">See all →</a></span></h4></div>
   <div class="gridwrap">
     <%= render @projects %>
   </div>
 </section>
+

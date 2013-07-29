@@ -15,10 +15,13 @@
 //= require jquery.validate
 //= require turbolinks
 //= require gritter
-//= require vendors/jquery.prettyPhoto
-//= require vendors/bootstrap-tab
 //= require custom
 //= require vendors/html5
-//= require calculateTotalPurchase
+//= require vendors/fancybox.min
+//= require vendors/jquery-ui-1.10.3.min
+//= require vendors/jquery.ui.widget-combobox
+//= require invests
 //= require common
 //= require addresses
+//= require maps
+//= require ajax

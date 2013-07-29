@@ -60,5 +60,9 @@ class User < ActiveRecord::Base
       user
     end
   end
+
+  def profile_image
+    avatar.present? ? avatar.url(:thumb) : "default_avatar.png"
+  end
 end
 

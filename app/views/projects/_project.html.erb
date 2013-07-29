@@ -1,29 +1,23 @@
 <article class="project-badge new" onclick="location.href='<%= url_for(project) %>'">
   <div>
     <header>
-      <div class="imagery holder">
-        <%= link_to project do %>
-          <%= image_tag project.image_url %>
-          <div class="focus"></div>
-        <% end %>
-        <h4 class="project-name">
-          <% link_to project.name do %>
-            <label class="type">Residential</label>
-          <% end %>
-        </h4>
-      </div>
+      <a class="project-thumb" href="<%= project_path(project) %>"><%= image_tag project.image_url %><div class="focus"></div></a>
+      <h4 class="project-name">
+        <div class="profile-badge">
+          <div>
+            <a href="index-p=developer&d=cbre.html" title="CBRE"><%= image_tag("cbre.png") %></a>
+            <div class="focus"></div>
+          </div>
+        </div>
+
+        <a class="project-link" href="index-p=project.html"><%= project.address %><span> Ness <%= render_tag_list(project) %></span></a>
+      </h4>
     </header>
 
     <div class="meta table">
       <div>
-        <img class="dev-logo" src="<%= project.company_image_url %>">
-      </div>
-      <div>
         <ul>
-          <li>
-            <b>
-              <%= number_to_percentage(project.target_return, :precision => 0)%>
-            </b> target return</li>
+          <li><b><%= number_to_percentage(project.target_return, :precision => 0)%></b> target return</li>
           <li><b><%= project.investment_type %></b> purchase</li>
           <li><b><%= project.holding %></b> holding period</li>
         </ul>
@@ -31,9 +25,10 @@
     </div>
 
     <ul class="goal table">
-      <li class="deadline"><b>22</b> Days to close</li>
+      <li class="deadline"><b><%= project.days_to_close %></b> Days to close</li>
       <li class="goalsum"><%= number_to_currency(project.price) %></li>
     </ul>
+
     <% if project.percent? %>
       <div class="goalmeter">
         <div class="progress" style="width:<%= number_to_percentage(project.percent, :precision => 0)%>">
