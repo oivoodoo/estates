@@ -7,9 +7,11 @@ gem 'rails', '4.0.0'
 
 gem 'puma'
 
-# Use SCSS for stylesheets
-gem 'sass-rails'
-gem 'less-rails'
+group :assets do
+  # Use SCSS for stylesheets
+  gem 'sass-rails'
+  gem 'less-rails'
+end
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
