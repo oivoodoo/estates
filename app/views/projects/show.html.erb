@@ -26,7 +26,7 @@
       </hgroup>
       <% if signed_in? %>
         <div class="action">
-          <button formaction="<%= new_project_invest_path(@project) %>">Invest</button>
+          <button onclick="window.location='<%= new_project_invest_path(@project) %>'">Invest</button>
         </div>
       <% end %>
     </div>
