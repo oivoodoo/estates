@@ -1,0 +1,230 @@
+@charset "UTF-8";
+
+
+
+@portlandOrange: rgb(239, 89, 56);
+@lustRed: rgb(193, 21, 41);
+@asparagusGreen: rgb(146, 199, 142);
+@shamrockGreen: rgb(41, 180, 113);
+@azureBlue: rgb(0, 160, 209);
+@prussianBlue: rgb(0, 77, 102);
+
+
+@highlight: @shamrockGreen;
+@offBlack: lighten(black, 16%); // also @heading-color in typeplate.less
+@darkGray: lighten(black, 22%);
+@textGray: lighten(black, 31%); // also @body-copy-color in typeplate.less
+
+@offWhite: darken(white, 3%);
+@lightGray: darken(white, 7%);
+@silver: darken(white, 13%);
+@magnesium: darken(white, 28%);
+@aluminium: darken(white, 40%);
+@nickel: darken(white, 53%);
+
+
+
+@offBlack: lighten(black, 16%); // also @heading-color in typeplate.less
+@darkGray: lighten(black, 22%);
+@textGray: lighten(black, 31%); // also @body-copy-color in typeplate.less
+
+
+@mastheadTall: 8rem;
+@mastheadShort: 3rem;
+@menuBreakWidth: 55rem;
+
+
+
+.transform (...) {
+	-webkit-transform: @arguments;
+	   -moz-transform: @arguments;
+		-ms-transform: @arguments;
+		 -o-transform: @arguments;
+			transform: @arguments;
+}
+.transform-multiple (...) {
+	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
+	-webkit-transform: @props;
+	   -moz-transform: @props;
+		-ms-transform: @props;
+		 -o-transform: @props;
+			transform: @props;
+}
+.text-shadow (...) {
+	-webkit-text-shadow: @arguments;
+	   -moz-text-shadow: @arguments;
+	   		text-shadow: @arguments;
+}
+.text-shadow-multiple (...) {
+	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
+	-webkit-text-shadow: @props;
+	   -moz-text-shadow: @props;
+	   		text-shadow: @props;
+}
+.box-shadow (...) {
+	-webkit-box-shadow: @arguments;
+	   -moz-box-shadow: @arguments;
+	   		box-shadow: @arguments;
+}
+.box-shadow-multiple (...) {
+	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
+	-webkit-box-shadow: @props;
+	   -moz-box-shadow: @props;
+	   		box-shadow: @props;
+}
+.transition (...) {
+	-webkit-transition:@arguments;
+	   -moz-transition:@arguments;
+		-ms-transition:@arguments;
+		 -o-transition:@arguments;
+			transition:@arguments;
+}
+.transition-multiple (...) {
+	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
+	-webkit-transition:@props;
+	   -moz-transition:@props;
+		-ms-transition:@props;
+		 -o-transition:@props;
+			transition:@props;
+}
+.border-radius (@radius:5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+.border-box {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+}
+.content-box {
+	-webkit-box-sizing: content-box;
+	   -moz-box-sizing: content-box;
+			box-sizing: content-box;
+}
+.disable-user-select {
+	-webkit-touch-callout: none;
+	  -webkit-user-select: none;
+	   -khtml-user-select: none;
+		 -moz-user-select: none;
+		  -ms-user-select: none;
+			  user-select: none;
+}
+
+.gradient-vertical (@top:white, @bottom:whiteSmoke) {
+	background-color: @top;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(@top),to(@bottom));
+	background-image: -webkit-linear-gradient(top,@top,@bottom);
+	background-image: -moz-linear-gradient(top,@top,@bottom);
+	background-image: -ms-linear-gradient(top,@top,@bottom);
+	background-image: -o-linear-gradient(top,@top,@bottom);
+	background-image: linear-gradient(to bottom,@top,@bottom);
+}
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+    background-color: @start;
+    background-image: -webkit-linear-gradient(@origin, @start, @stop);
+    background-image: -moz-linear-gradient(@origin, @start, @stop);
+    background-image: -o-linear-gradient(@origin, @start, @stop);
+    background-image: -ms-linear-gradient(@origin, @start, @stop);
+    background-image: linear-gradient(@origin, @start, @stop);
+}
+
+.filter(...) {
+	-webkit-filter:@arguments;
+	   -moz-filter:@arguments;
+		-ms-filter:@arguments;
+		 -o-filter:@arguments;
+			filter:@arguments;
+}
+.filter-multiple (...) {
+	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
+	-webkit-filter:@props;
+	   -moz-filter:@props;
+		-ms-filter:@props;
+		 -o-filter:@props;
+			filter:@props;
+}
+.blend-mode(...) {
+	-webkit-blend-mode:@arguments;
+	   -moz-blend-mode:@arguments;
+		-ms-blend-mode:@arguments;
+		 -o-blend-mode:@arguments;
+			blend-mode:@arguments;
+}
+.blend-mode-multiple (...) {
+	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
+	-webkit-blend-mode:@props;
+	   -moz-blend-mode:@props;
+		-ms-blend-mode:@props;
+		 -o-blend-mode:@props;
+			blend-mode:@props;
+}
+.placeholder(@color: @aluminium, @weight: 100) {
+	
+	@fontSize: @theta;
+	@lineHeight: @line-height*(1/@fontSize);
+	
+	input::-webkit-input-placeholder {
+		color: @color;
+		font-weight: @weight;
+		.modular-scale(@fontSize, @type-scale-unit-value);
+		line-height: @lineHeight;
+	}
+	input:-moz-placeholder {
+		color: @color;
+		font-weight: @weight;
+		.modular-scale(@fontSize, @type-scale-unit-value);
+		line-height: @lineHeight;
+	}
+	textarea::-webkit-input-placeholder {
+		color: @color;
+		font-weight: @weight;
+		.modular-scale(@fontSize, @type-scale-unit-value);
+		line-height: @lineHeight;
+	}
+	textarea:-moz-placeholder {
+		color: @color;
+		font-weight: @weight;
+		.modular-scale(@fontSize, @type-scale-unit-value);
+		line-height: @lineHeight;
+	}
+}
+
+.clear-children {
+	&:after {
+		display: block;
+		clear: both;
+		content: ' ';
+		height: 0;
+		visibility: hidden;
+	}
+}
+
+.border-bottom {
+	border-bottom: 1px solid fade(@offBlack, 10%);
+}
+.border-top {
+	border-top: 1px solid fade(@offBlack, 10%);
+}
+.border-left {
+	border-left: 1px solid fade(@offBlack, 10%);
+}
+.border-right {
+	border-right: 1px solid fade(@offBlack, 10%);
+}
+
+
+
+
+
+
+
+@facebookBlue: rgb(59, 89, 152);
+@twitterBlue: rgb(64, 153, 255);
+@linkedInBlue: rgb(0, 123, 182);
+@googlePlusOrange: rgb(221, 75, 57);
+
+
+

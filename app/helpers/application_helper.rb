@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include ProjectsHelper
+
   def layout_class
     if controller_name == 'projects' && action_name == 'show'
       "project"
@@ -9,3 +11,4 @@ module ApplicationHelper
     end
   end
 end
+

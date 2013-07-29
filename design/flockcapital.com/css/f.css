@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'ips-renner';
+    src: url('../f/ips-renner-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'icobundl';
+    src: url('../f/icobundl-ext.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'entypo';
+    src: url('../f/entypo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'entypo-social';
+    src: url('../f/entypo-social.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'modern-pictograms';
+    src: url('../f/modernpictogramspro_2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-light-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-lightit-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-reg-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-regit-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-boldit-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-xbold-webfont.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima-nova';
+    src: url('../f/proximanova-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}

@@ -26,6 +26,9 @@ end
     p.country     = 'Belarus'
     p.city        = 'Minsk'
     p.street      = 'Slobodskaya 61'
+    p.start_investment  = DateTime.now
+    p.finish_investment = 1.month.from_now
+    p.tag_list          = ["Residential"]
   end
 end
 

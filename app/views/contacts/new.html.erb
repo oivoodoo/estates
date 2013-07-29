@@ -1,20 +1,36 @@
-<div id="sign-in">
+<div id="sign-in" class="signin external">
+  <div class="modal-header">
+    <div>
+      <div class="logo"><%= image_tag("g/flockinvest-logo.svg") %></div>
+      <div class="close" onclick="$.fancybox.close()"></div>
+    </div>
+  </div>
+
   <div class="modal-content">
     <div>
-      <%= render 'layouts/logo' %>
-      <h1>Get in touch</h1>
-        <%= form_for @contact, url: {:action => :create} do |f| %>
-          <%= f.text_field :name, class: "input-xlarge", placeholder: "Full Name" %>
-          <%= f.text_field :email, class: "input-xlarge", placeholder: "Email", :required => true %>
-          <%= f.text_area :message, class: "input-xlarge", placeholder: "Yours message:", :required => true, :cols => 35, :rows => "15"%>
+      <div class="logo"><div><%= image_tag("g/flockinvest-logo.svg") %></div></div>
 
-          <div class="action">
+      <%= form_for @contact, remote: true do |f| %>
+        <div class="tight">
+          <div class="input-group">
+            <%= f.text_field :name, placeholder: "Name", size: 1, style: 'width: 50%' %>
+            <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%', required: true %>
+            <%= f.text_area :message, placeholder: "Yours message:", required: true, :cols => 35, :rows => "5", :style => "width: 398px" %>
+          </div>
+        </div>
+        <div class="action">
+          <div>
             <div>
-              <div><%= f.submit 'Send me!', class: "delta thicker"%></div>
+              <%= f.submit "Submit", class: "delta thicker" %>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<script type='text/javascript'>
+  $('form').validate();
+</script>
 
