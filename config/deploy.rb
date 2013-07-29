@@ -78,5 +78,3 @@ after "deploy:symlink","customs:symlink"
 after "deploy", "deploy:cleanup"
 after "deploy", "deploy:migrations"
 
-load 'deploy/assets'
-
