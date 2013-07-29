@@ -7,9 +7,10 @@ gem 'rails', '4.0.0'
 
 gem 'puma'
 
+gem 'sass-rails'
+
 group :assets do
   # Use SCSS for stylesheets
-  gem 'sass-rails'
   gem 'less-rails'
 end
 
@@ -106,4 +107,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+
+gem 'angularjs-rails'
 
