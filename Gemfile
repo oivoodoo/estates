@@ -8,10 +8,10 @@ gem 'rails', '4.0.0'
 gem 'puma'
 
 gem 'sass-rails'
+gem 'less-rails'
 
 group :assets do
   # Use SCSS for stylesheets
-  gem 'less-rails'
 end
 
 # Use Uglifier as compressor for JavaScript assets
