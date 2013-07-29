@@ -8,7 +8,7 @@ gem 'rails', '4.0.0'
 gem 'puma'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails'
 gem 'less-rails'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -34,9 +34,6 @@ gem 'devise', git: 'git://github.com/plataformatec/devise.git'
 gem 'cancan'
 gem 'protected_attributes'
 gem 'pg'
-gem 'therubyracer'
-gem 'less-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
