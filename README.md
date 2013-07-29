@@ -2,6 +2,15 @@
 
 # Deployment
 
+
+# TODO: replace it by remote copy to the remote folder
+
+```
+RAILS_ENV=production RAILS_GROUPS=assets bundle exec rake assets:precompile
+git add .
+git commit -m "Precompile assets and commit it"
+```
+
 ```
 cap deploy
 ```
