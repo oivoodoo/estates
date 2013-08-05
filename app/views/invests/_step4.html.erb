@@ -13,15 +13,17 @@
     </header>
     <section class="module-section">
       <table class="table-bordered checkout-review">
-        <tbody><tr>
-          <td class="muted">Full Name</td>
-          <td><%= current_user.name %></td>
-        </tr>
-        <tr>
-          <td class="muted">Email Address</td>
-          <td><%= current_user.email %></td>
-        </tr>
-      </tbody></table>
+        <tbody>
+          <tr>
+            <td class="muted">Full Name</td>
+            <td><%= current_user.name %></td>
+          </tr>
+          <tr>
+            <td class="muted">Email Address</td>
+            <td><%= current_user.email %></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </div>
   <div class="module">
@@ -93,7 +95,7 @@
   </div>
   <div class="module">
     <section class="module-section">
-      <a href="submit-order" class="button button-blue">Place Order</a>
+      <%= f.submit "Place Order", class: "button button-blue" %>
       <button class="button" id="go_back2">Go Back</button>
     </section>
   </div>
