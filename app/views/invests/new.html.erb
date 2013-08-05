@@ -1,11 +1,11 @@
-<%= stylesheet_link_tag "invests.css" %>
+<%= stylesheet_link_tag "invests" %>
 
 <header id="page-header">
   <div class="container">
     <ol class="progress-indicator">
       <li class="current  step" id="step1" data-container='#tab1'>
         <span class="step-number"><span class="fill">1</span></span>
-        <span class="step-title">Background</span>
+        <span class="step-title">Background <br class="show-on-mobile">Form</span>
         <span class="step-connector"><span class="fill"></span></span>
       </li>
       <li class="  step" id="step2" data-container='#tab2'>
@@ -75,11 +75,6 @@
 </div>
 <script>
 $(document).ready(function(){
-  $('.button').click(function(event) {
-    event.preventDefault();
-    $('html, body').animate({scrollTop: '0px'}, 300);
-  });
-
   $('#button1').click(function(event){
     event.preventDefault();
     $('#step1').removeClass('current');
