@@ -482,7 +482,7 @@ img.native-width {
 @font-face {
   font-family: "Proxima Nova";
   src: url("../webfonts/215F45_10_0.eot");
-  src: url("../webfonts/215F45_10_0.eot?#iefix") format("embedded-opentype"), url("../webfonts/215F45_10_0.woff") format("woff"), url("../webfonts/215F45_10_0.ttf") format("truetype");
+  src: url("../webfonts/215F45_10_0.eot?#iefix") format("embedded-opentype"), url("../f/215F45_10_0.woff") format("woff"), url("../webfonts/215F45_10_0.ttf") format("truetype");
   font-weight: 400;
 }
 @font-face {
@@ -750,7 +750,6 @@ label, input, textarea {
   font-weight: normal;
 }
 .field-group {
-  margin-bottom: 14px;
 }
 .field-group .field-label {
   display: block;
@@ -5310,9 +5309,7 @@ h3.sidebar-heading span {
   content: "";
   display: table;
 }
-.meta-horizontal:after {
-  clear: both;
-}
+
 .meta-horizontal.items-3 .item {
   width: 33.33333%}
 .meta-horizontal.items-4 .item {
@@ -5413,7 +5410,6 @@ h3.sidebar-heading span {
   font-size: 21px;
 }
 #checkout-order-form .order-form-field {
-  line-height: 30px;
 }
 #checkout-order-form .item {
   min-height: 74px;
