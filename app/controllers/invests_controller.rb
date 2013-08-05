@@ -6,6 +6,15 @@ class InvestsController < ApplicationController
   end
 
   def create
+    @invest = @project.invests.new(params[:invest])
+
+    if @invest.save
+      gflash(notice: "Invest was created")
+      redirect_to root_path
+    else
+      gflash(errors: "Something went wrong")
+      render :new
+    end
   end
 
   private
