@@ -9,7 +9,8 @@ class InvestsController < ApplicationController
     @invest = @project.invests.new(params[:invest])
 
     if @invest.save
-      redirect_to root_path, notice: "This message will persist"
+      gflash(notice: "Invest was created")
+      redirect_to root_path
     else
       gflash(errors: "Something went wrong")
       render :new
