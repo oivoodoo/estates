@@ -75,6 +75,19 @@
 </div>
 <script>
 $(document).ready(function(){
+  $('#button1').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop: '0px'}, 300);
+  });
+  $('#button2').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop: '0px'}, 300);
+  });
+  $('#button3').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop: '0px'}, 300);
+  });
+
   $('#button1').click(function(event){
     event.preventDefault();
     $('#step1').removeClass('current');
