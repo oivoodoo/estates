@@ -25,3 +25,8 @@
 //= require addresses
 //= require maps
 //= require ajax
+//= require angular
+//= require angularjs/rails/resource
+//= require angular-ui
+//= require ng-rails-csrf
+//= require estates

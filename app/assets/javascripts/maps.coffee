@@ -1,5 +1,5 @@
 class @Maps
-  constructor: (@address)
+  constructor: (@address) ->
 
   setup: ->
     geocoder = new google.maps.Geocoder()
@@ -12,7 +12,7 @@ class @Maps
           mapTypeId: google.maps.MapTypeId.ROADMAP
 
         map = new google.maps.Map(document.getElementById('map_container'), options)
-        $(document).on 'shown', "[href='#map']", ->
+        $(document).on 'click', "[href='#map']", ->
           google.maps.event.trigger(map, 'resize')
           map.setCenter(latlng)
           marker = new google.maps.Marker
