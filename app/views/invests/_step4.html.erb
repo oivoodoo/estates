@@ -1,4 +1,4 @@
-<div id='tab4' class="tab" style="display: none;">  
+<div id='tab4' class="tab" ng-show="investButton == 3">  
   <div class="module">
     <header class="module-section module-header">
       <h2>Review Your Order</h2>
@@ -96,7 +96,7 @@
   <div class="module">
     <section class="module-section">
       <%= f.submit "Place Order", class: "button button-blue" %>
-      <button class="button" id="go_back2">Go Back</button>
+      <button class="button" id="go_back2" es-scroll-top ng-click="prev(2, $event)">Go Back</button>
     </section>
   </div>
 </div>

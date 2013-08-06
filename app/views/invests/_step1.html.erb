@@ -1,4 +1,4 @@
-<div id="tab1" class="tab">
+<div id="tab1" class="tab" ng-show="investButton == 0" ng-init='investButton = 0'>
   <div class="module">
     <header class="module-section module-header">
       <h2>Verify Accreditation</h2>
@@ -168,7 +168,7 @@
   </div>
   <div class="module">
     <div class="module-section form-actions">
-      <button class="button button-blue" id="button1">Continue</button>
+      <button class="button button-blue" id="button1" es-scroll-top ng-click="next(1, $event)">Continue</button>
     </div>
   </div>
 </div>
