@@ -3,22 +3,22 @@
   <header id="page-header">
     <div class="container">
       <ol class="progress-indicator">
-        <li class="current  step" id="step1" data-container='#tab1'>
+        <li class="current  step" id="step1" ng-class="{current:investButton == 0}">
           <span class="step-number"><span class="fill">1</span></span>
           <span class="step-title">Background <br class="show-on-mobile">Form</span>
           <span class="step-connector"><span class="fill"></span></span>
         </li>
-        <li class="  step" id="step2" data-container='#tab2'>
+        <li class="  step" id="step2" ng-class="{current:investButton == 1}">
           <span class="step-number"><span class="fill">2</span></span>
           <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
           <span class="step-connector"><span class="fill"></span></span>
         </li>
-        <li class="  step" id="step3" data-container='#tab3'>
+        <li class="  step" id="step3" ng-class="{current:investButton == 2}">
           <span class="step-number"><span class="fill">3</span></span>
           <span class="step-title">Order <br class="show-on-mobile">Form</span>
           <span class="step-connector"><span class="fill"></span></span>
         </li>
-        <li class="  step" id="step4" data-container='#tab4'>
+        <li class="  step" id="step4" ng-class="{current:investButton == 3}">
           <span class="step-number"><span class="fill">4</span></span>
           <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
           <span class="step-connector"><span class="fill"></span></span>
