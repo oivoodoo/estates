@@ -16,5 +16,6 @@
  *= require gritter
  *= require errors
  *= require own
+ *= require angular-ui
  */
 
