@@ -1,4 +1,4 @@
-<div id="tab3" class="tab" style="display: none;">
+<div id="tab3" class="tab" ng-show="investButton == 2">
   <div class="module">
     <header class="module-section module-header">
       <h2>Specify Order Quantity</h2>
@@ -27,8 +27,8 @@
   </div>
   <div class="module">
     <div class="module-section form-actions">
-      <button class="button button-blue" id="button3">Continue</button>
-      <button class="button" id="go_back1">Go Back</button>
+      <button class="button button-blue" id="button3" es-scroll-top ng-click="step(3, $event)">Continue</button>
+      <button class="button" id="go_back1" es-scroll-top ng-click="step(1, $event)">Go Back</button>
     </div>
   </div>
 </div>

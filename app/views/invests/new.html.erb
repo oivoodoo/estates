@@ -1,167 +1,76 @@
 <%= stylesheet_link_tag "invests" %>
+<div ng-controller="InvestsController">
+  <header id="page-header">
+    <div class="container">
+      <ol class="progress-indicator">
+        <li class="current  step" id="step1" ng-class= "{current:investButton == 0,completed:investButton > 0}">
+          <span class="step-number"><span class="fill">1</span></span>
+          <span class="step-title">Background <br class="show-on-mobile">Form</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+        <li class="  step" id="step2" ng-class="{current:investButton == 1,completed:investButton > 1}">
+          <span class="step-number"><span class="fill">2</span></span>
+          <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+        <li class="  step" id="step3" ng-class="{current:investButton == 2,completed:investButton > 2}">
+          <span class="step-number"><span class="fill">3</span></span>
+          <span class="step-title">Order <br class="show-on-mobile">Form</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+        <li class="  step" id="step4" ng-class="{current:investButton == 3,completed:investButton > 3}">
+          <span class="step-number"><span class="fill">4</span></span>
+          <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+      </ol>
+    </div>
+  </header>
 
-<header id="page-header">
-  <div class="container">
-    <ol class="progress-indicator">
-      <li class="current  step" id="step1" data-container='#tab1'>
-        <span class="step-number"><span class="fill">1</span></span>
-        <span class="step-title">Background <br class="show-on-mobile">Form</span>
-        <span class="step-connector"><span class="fill"></span></span>
-      </li>
-      <li class="  step" id="step2" data-container='#tab2'>
-        <span class="step-number"><span class="fill">2</span></span>
-        <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
-        <span class="step-connector"><span class="fill"></span></span>
-      </li>
-      <li class="  step" id="step3" data-container='#tab3'>
-        <span class="step-number"><span class="fill">3</span></span>
-        <span class="step-title">Order <br class="show-on-mobile">Form</span>
-        <span class="step-connector"><span class="fill"></span></span>
-      </li>
-      <li class="  step" id="step4" data-container='#tab4'>
-        <span class="step-number"><span class="fill">4</span></span>
-        <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
-        <span class="step-connector"><span class="fill"></span></span>
-      </li>
-    </ol>
-  </div>
-</header>
+  <div id="page-content">
+    <div class="container">
+      <div class="row">
+        <div class="span8 column">
+          <%= form_for [@project, @invest] do |f| %>
+            <%= render 'step1', f: f %>
+            <%= render 'step2', f: f %>
+            <%= render 'step3', f: f %>
+            <%= render 'step4', f: f %>
+          <% end %>
+        </div>
 
-<div id="page-content">
-  <div class="container">
-    <div class="row">
-      <div class="span8 column">
-        <%= form_for [@project, @invest] do |f| %>
-          <%= render 'step1', f: f %>
-          <%= render 'step2', f: f %>
-          <%= render 'step3', f: f %>
-          <%= render 'step4', f: f %>
-        <% end %>
-      </div>
+        <div class="span4 column stl hide-on-mobile">
+          <div class="module">
+            <section class="module-section">
+              <% if @project.image? %>
+                <div class="image-bordered mb4" style='width: 238px; height: 119px;'>
+                  <%= image_tag @project.image.url(:invest) %>
+                </div>
+              <% end %>
 
-      <div class="span4 column stl hide-on-mobile">
-        <div class="module">
-          <section class="module-section">
-            <% if @project.image? %>
-              <div class="image-bordered mb4" style='width: 238px; height: 119px;'>
-                <%= image_tag @project.image.url(:invest) %>
-              </div>
-            <% end %>
+              <h3 class="mb1 ellipsis"><%= @project.address %></h3>
+              <table class="mt4 table-bordered" style="display: none;">
+                <form name="theForm">
+                  <tbody><tr>
+                    <td class="muted">Quantity</td>
+                    <td class="text-right" id="quantity1"></td>
+                  </tr>
+                  <tr>
+                    <td class="muted">Price Per Share</td>
+                    <td class="text-right"><%= number_to_currency(@project.per_share) %></td>
+                  </tr>
+                  <tr>
+                    <td class="muted">Total Investment</td>
+                    <td class="text-right" id="total_investment"></td>
+                  </tr>
+                  </tbody>
+                </form>
+              </table>
 
-            <h3 class="mb1 ellipsis"><%= @project.address %></h3>
-            <table class="mt4 table-bordered" style="display: none;">
-              <form name="theForm">
-                <tbody><tr>
-                  <td class="muted">Quantity</td>
-                  <td class="text-right" id="quantity1"></td>
-                </tr>
-                <tr>
-                  <td class="muted">Price Per Share</td>
-                  <td class="text-right"><%= number_to_currency(@project.per_share) %></td>
-                </tr>
-                <tr>
-                  <td class="muted">Total Investment</td>
-                  <td class="text-right" id="total_investment"></td>
-                </tr>
-                </tbody>
-              </form>
-            </table>
-
-          </section>
+            </section>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<script>
-$(document).ready(function(){
-  $('#button1').click(function(event) {
-    event.preventDefault();
-    $('html, body').animate({scrollTop: '0px'}, 300);
-  });
-  $('#button2').click(function(event) {
-    event.preventDefault();
-    $('html, body').animate({scrollTop: '0px'}, 300);
-  });
-  $('#button3').click(function(event) {
-    event.preventDefault();
-    $('html, body').animate({scrollTop: '0px'}, 300);
-  });
-
-  $('#button1').click(function(event){
-    event.preventDefault();
-    $('#step1').removeClass('current');
-    $('#step1').addClass('completed');
-    $('#step2').addClass('current');
-    $('#tab2').show();
-    $('#tab1').hide();
-  });
-
-  $('#button2').click(function(event){
-    event.preventDefault();
-    if ($('#new_invest').valid()) {
-      $('#step2').removeClass('current');
-      $('#step2').addClass('completed');
-      $('#step3').addClass('current');
-      $('#tab3').show();
-      $('#tab2').hide();
-    } else {
-      $('label.error').addClass('error-message');
-    }
-  });
-
-  $('#button3').click(function(event){
-    event.preventDefault();
-    if ($('#new_invest').valid()) {
-      $('#step3').removeClass('current');
-      $('#step3').addClass('completed');
-      $('#step4').addClass('current');
-      $('#tab4').show();
-      $('.mt4').show();
-      $('#tab3').hide();
-    } else {
-      $('label.error').addClass('error-message');
-    }
-    $(document).trigger('step4:opened');
-  })
-
-  $('#edit_info').click(function(event){
-    event.preventDefault();
-    $('#step4').removeClass('current');
-    $('#step3').removeClass('completed')
-    $('#step2').removeClass('completed')
-    $('#step2').addClass('current')
-    $('#tab2').show();
-    $('.mt4').hide();
-    $('#tab4').hide();
-  });
-
-  $('#go_back').click(function(event){
-    event.preventDefault();
-    $('#step2').removeClass('current');
-    $('#step1').addClass('current')
-    $('#step1').removeClass('completed')
-    $('#tab1').show();
-    $('#tab2').hide();
-  });
-
-  $('#go_back1').click(function(event){
-    event.preventDefault();
-    $('#step3').removeClass('current');
-    $('#step2').addClass('current')
-    $('#step2').removeClass('completed')
-    $('#tab2').show();
-    $('#tab3').hide();
-  });
-
-  $('#go_back2').click(function(event){
-    event.preventDefault();
-    $('#step4').removeClass('current');
-    $('#step3').addClass('current')
-    $('#step3').removeClass('completed')
-    $('#tab3').show();
-    $('.mt4').hide();
-    $('#tab4').hide();
-  });
-});
-</script>
