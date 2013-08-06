@@ -1,7 +1,7 @@
 estates.controller 'InvestsController', [
   '$scope'
   ($scope) ->
-    $scope.step = (next, event) ->
+    $scope.step = (step, event) ->
       event.preventDefault()
-      $scope.investButton = next
+      $scope.investButton = step
 ]
