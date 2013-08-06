@@ -3,7 +3,7 @@
   <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <% end %>
 
-<section id="project">
+<section id="project" ng-controller="ProjectsController">
 	<div class="cover-wrap">
 		<div class="cover">
 			<%= image_tag(@project.image_url) %>
@@ -57,38 +57,38 @@
 
       <div id="tabs" class='tabs'>
         <ul>
-          <li><a class="current">Overview</a></li>
-          <li><a>Financials</a></li>
+          <li><a class="current" ng:click="projectTab=1" ng:init='projectTab=1'>Overview</a></li>
+          <li><a href ng:click="projectTab=2">Financials</a></li>
 
           <% if @project.address? %>
-            <li><a href='#map'>Location</a></li>
+            <li><a href='#map' ng:click="projectTab=3">Location</a></li>
           <% end %>
 
-          <li><a>Property</a></li>
-          <li><a>Strengths</a></li>
-          <li><a>Risks</a></li>
+          <li><a href ng:click="projectTab=4">Property</a></li>
+          <li><a href ng:click="projectTab=5">Strengths</a></li>
+          <li><a href ng:click="projectTab=6">Risks</a></li>
         </ul>
       </div>
 
 			<div>
-				<div class="paper" id="tab-1">
+				<div ng:show="projectTab == 1">
           <%= @project.description.to_s.html_safe %>
 				</div>
-				<div class="paper" id="tab-2" style='display:none'>
+				<div ng:show="projectTab == 2">
           <%= @project.financials.to_s.html_safe %>
 				</div>
-				<div class="paper" id="tab-3" style='display:none'>
+				<div id= "map" ng:show="projectTab == 3">
           <div id='map_container'>
           </div>
           <div><%= @project.address %></div>
 				</div>
-				<div class="paper" id="tab-4" style='display:none'>
+				<div ng:show="projectTab == 4">
           <%= @project.property.to_s.html_safe %>
 				</div>
-        <div class="paper" id="tab-5" style='display: none'>
+        <div ng:show="projectTab == 5">
           <%= @project.strength.to_s.html_safe %>
         </div>
-        <div class="paper" id="tab-6" style='display: none'>
+        <div ng:show="projectTab == 6">
           <%= @project.risks.to_s.html_safe %>
         </div>
 			</div>
@@ -100,59 +100,92 @@
 			<div>
 				<div id="connections-tabs" class="tabs">
 					<ul>
-						<li><a href="index-p=project&project=1800-van-ness.html#" class="current">Investors</a></li><li><a href="index-p=project&project=1800-van-ness.html#">Followers</a></li>
+						<li>
+              <a href class="current" ng:click="viewerTab=1" ng:init='viewerTab=1'>Investors</a>
+            </li>
+            <li>
+              <a href ng:click="viewerTab=2">Followers</a>
+            </li>
 					</ul>
 				</div>
 				<div class="connections-wrap">
 					<ul class="connections">
-						<li>
-							<div class="profile-badge">
-								<div>
-                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="index-p=investor&i=michael.html" title="Michael Walsh"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("mart.png", width:"256", height:"256") %></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
+            <div ng:show="viewerTab == 1">
+  						<li>
+  							<div class="profile-badge">
+  								<div>
+                    <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
+  									<div class="focus"></div>
+  								</div>
+  							</div>
+  						</li>
+  						<li>
+  							<div class="profile-badge">
+  								<div>
+  									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
+  									<div class="focus"></div>
+  								</div>
+  							</div>
+  						</li>
+  						<li>
+  							<div class="profile-badge">
+  								<div>
+  									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
+  									<div class="focus"></div>
+  								</div>
+  							</div>
+  						</li>
+  						<li>
+  							<div class="profile-badge">
+  								<div>
+  									<a href="index-p=investor&i=michael.html" title="Michael Walsh"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
+  									<div class="focus"></div>
+  								</div>
+  							</div>
+  						</li>
+  						<li>
+  							<div class="profile-badge">
+  								<div>
+  									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("mart.png", width:"256", height:"256") %></a>
+  									<div class="focus"></div>
+  								</div>
+  							</div>
+  						</li>
+  						<li>
+  							<div class="profile-badge">
+  								<div>
+  									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
+  									<div class="focus"></div>
+  								</div>
+  							</div>
+  						</li>
+            </div>
+            <div ng:show="viewerTab == 2">
+              <li>
+                <div class="profile-badge">
+                  <div>
+                    <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
+                    <div class="focus"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="profile-badge">
+                  <div>
+                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
+                    <div class="focus"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="profile-badge">
+                  <div>
+                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("mart.png", width:"256", height:"256") %></a>
+                    <div class="focus"></div>
+                  </div>
+                </div>
+              </li>
+            </div>
 					</ul>
 				</div>
 			</div>
