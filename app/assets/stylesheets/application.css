@@ -10,7 +10,9 @@
  *
  *= require_self
 
+ *= require css/reset
  *= require css/f
+ *= require css/fancybox/fancybox
  *= require style
 
  *= require gritter
