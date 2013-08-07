@@ -2,6 +2,7 @@
 
 
 
+
 @portlandOrange: rgb(239, 89, 56);
 @lustRed: rgb(193, 21, 41);
 @asparagusGreen: rgb(146, 199, 142);
@@ -10,10 +11,8 @@
 @prussianBlue: rgb(0, 77, 102);
 
 
-@highlight: @shamrockGreen;
-@offBlack: lighten(black, 16%); // also @heading-color in typeplate.less
-@darkGray: lighten(black, 22%);
-@textGray: lighten(black, 31%); // also @body-copy-color in typeplate.less
+@highlight: @azureBlue;
+
 
 @offWhite: darken(white, 3%);
 @lightGray: darken(white, 7%);
@@ -23,14 +22,24 @@
 @nickel: darken(white, 53%);
 
 
-
 @offBlack: lighten(black, 16%); // also @heading-color in typeplate.less
 @darkGray: lighten(black, 22%);
 @textGray: lighten(black, 31%); // also @body-copy-color in typeplate.less
 
 
+
+
+@facebookBlue: rgb(59, 89, 152);
+@twitterBlue: rgb(64, 153, 255);
+@linkedInBlue: rgb(0, 123, 182);
+@googlePlusOrange: rgb(221, 75, 57);
+
+
+
+@maxW: 320px;
+@padding: 1.25rem;
 @mastheadTall: 8rem;
-@mastheadShort: 3rem;
+@mastheadShort: 4rem;
 @menuBreakWidth: 55rem;
 
 
@@ -41,6 +50,13 @@
 		-ms-transform: @arguments;
 		 -o-transform: @arguments;
 			transform: @arguments;
+}
+.transform-origin (...) {
+	-webkit-transform-origin: @arguments;
+	   -moz-transform-origin: @arguments;
+		-ms-transform-origin: @arguments;
+		 -o-transform-origin: @arguments;
+			transform-origin: @arguments;
 }
 .transform-multiple (...) {
 	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
@@ -122,13 +138,21 @@
 	background-image: -o-linear-gradient(top,@top,@bottom);
 	background-image: linear-gradient(to bottom,@top,@bottom);
 }
-.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+.linear-gradient (@from: left, @start: #ffffff, @stop: #000000) {
     background-color: @start;
-    background-image: -webkit-linear-gradient(@origin, @start, @stop);
-    background-image: -moz-linear-gradient(@origin, @start, @stop);
-    background-image: -o-linear-gradient(@origin, @start, @stop);
-    background-image: -ms-linear-gradient(@origin, @start, @stop);
-    background-image: linear-gradient(@origin, @start, @stop);
+    background-image: -webkit-linear-gradient(@from, @start, @stop);
+    background-image: -moz-linear-gradient(@from, @start, @stop);
+    background-image: -o-linear-gradient(@from, @start, @stop);
+    background-image: -ms-linear-gradient(@from, @start, @stop);
+    background-image: linear-gradient(@from, @start, @stop);
+}
+.radial-gradient (@from: center, @start: #ffffff, @stop: #000000, @extent: farthest-corner) {
+    background-color: @start;
+    background-image: -webkit-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: -moz-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: -o-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: -ms-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
 }
 
 .filter(...) {
@@ -161,7 +185,7 @@
 		 -o-blend-mode:@props;
 			blend-mode:@props;
 }
-.placeholder(@color: @aluminium, @weight: 100) {
+.placeholder(@color: @aluminium, @weight: 300) {
 	
 	@fontSize: @theta;
 	@lineHeight: @line-height*(1/@fontSize);
@@ -201,30 +225,6 @@
 		visibility: hidden;
 	}
 }
-
-.border-bottom {
-	border-bottom: 1px solid fade(@offBlack, 10%);
-}
-.border-top {
-	border-top: 1px solid fade(@offBlack, 10%);
-}
-.border-left {
-	border-left: 1px solid fade(@offBlack, 10%);
-}
-.border-right {
-	border-right: 1px solid fade(@offBlack, 10%);
-}
-
-
-
-
-
-
-
-@facebookBlue: rgb(59, 89, 152);
-@twitterBlue: rgb(64, 153, 255);
-@linkedInBlue: rgb(0, 123, 182);
-@googlePlusOrange: rgb(221, 75, 57);
 
 
 

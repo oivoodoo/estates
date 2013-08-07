@@ -1,49 +1,58 @@
 <section id="intro">
-	<div id="slideshow" class="grid-1-1 no-padding" style="background-image: url('img/sf-housing.jpg'); background-size: 100% auto; background-repeat:repeat-y"></div>
+	<div id="slideshow" class="grid-1-1 no-padding" <?php /*style="
+		background-image: url('img/intro-3-bg.png');
+		background-size: auto 100%;
+		background-repeat: repeat-x;
+	"*/ ?>>
+		<div>
+			<div style="
+				background-image: url('img/intro-3.png');
+				background-size: auto 100%;
+				background-repeat: no-repeat;
+				background-position: center bottom;
+			">
+				<h1 class="title">Build a real estate portfolio online</h1>
+				<h6>Get access to exclusive investments and manage your portfolio using Flock.</h6>
+			</div>
+		</div>
+	</div>
 </section>
 
 
 <section class="home-listing">
-	<div class="listing-head"><h4 class="listing-heading"><label>Featured Investments</label> <span><a href="?p=projects&show=local">See all →</a></span></h4></div>
+	<div class="listing-head"><h5 class="listing-heading"><label>Featured Investments</label><span><a href="?p=projects&show=local">View all</a></span></h5></div>
 	<div class="gridwrap">
 		<?php
-			$projects = array(
-				array(
-					'link'		=> '?p=project',
-					'name'		=> '1800 Van Ness',
-					'handle'	=> '1800-van-ness',
-					'type_label'=> 'Residential',
-					'developer'	=> array(
-						'handle'=> 'cbre',
-						'name'	=> 'CBRE'
-					),
-					'goal'		=> format_money(32000000),
-					'progress'	=> 66, // percentage
-					'terms'		=> array(
-						'<b>12%</b> target return',
-						'<b>Equity</b> purchase',
-						'<b>24 month</b> holding period'
-					)
-				),
-				array(
-					'link'		=> '?p=project',
-					'name'		=> '1800 Van Ness',
-					'handle'	=> '1800-van-ness',
-					'type_label'=> 'Residential',
-					'developer'	=> array(
-						'handle'=> 'cbre',
-						'name'	=> 'CBRE'
-					),
-					'goal'		=> format_money(32000000),
-					'progress'	=> 66, // percentage
-					'terms'		=> array(
-						'<b>12%</b> target return',
-						'<b>Equity</b> purchase',
-						'<b>24 month</b> holding period'
-					)
-				)
-			);
-			foreach($projects as $project) {
+			global $featured_projects;
+			foreach($featured_projects as $project) {
+				require('project-badge.php');
+			}
+		?>
+	</div><?php /*
+	<nav><div><div></div></div></nav>*/ ?>
+</section>
+
+
+<section class="home-listing">
+	<div class="listing-head"><h5 class="listing-heading"><label>Featured Investments</label><span><a href="?p=projects&show=local">View all</a></span></h5></div>
+	<div class="gridwrap">
+		<?php
+			global $featured_projects;
+			foreach($featured_projects as $project) {
+				require('project-badge.php');
+			}
+		?>
+	</div><?php /*
+	<nav><div><div></div></div></nav>*/ ?>
+</section>
+
+
+<section class="home-listing">
+	<div class="listing-head"><h5 class="listing-heading"><label>Featured Investments</label><span><a href="?p=projects&show=local">View all</a></span></h5></div>
+	<div class="gridwrap">
+		<?php
+			global $featured_projects;
+			foreach($featured_projects as $project) {
 				require('project-badge.php');
 			}
 		?>

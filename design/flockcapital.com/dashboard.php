@@ -1,21 +1,26 @@
 <?php
 
-	$tab = array_key_exists('tab', $_GET) ? $_GET['tab'] : null;
+	$h = 'kadri';
 
 ?>
 
 
-
 <section id="dashboard">
 
-	<div id="tabs" class="listing-filter tabs">
+	<div id="tabs" class="submenu">
 		<div>
 			<ul>
-				<li><a class="activity <?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='activity') ? 'current' : ''; ?>" href="?p=dashboard">Activity Feed</a></li>
+				<?php /*<li><a class="activity <?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='activity') ? 'current' : ''; ?>" href="?p=dashboard">Activity Feed</a></li>*/ ?>
+				<li><a class="dashboard <?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='dashboard') ? 'current' : ''; ?>" href="?p=dashboard">Dashboard</a></li>
+				<li><a class="profile" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li>
+				<?php /*<li><a class="accreditation" href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation">Investor Accreditation</a></li>*/ ?>
+				<li><a class="settings" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
+				<?php /*
 				<li><a class="investments <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='investments' ? 'current' : ''; ?>" href="?p=dashboard&tab=investments">My Investments</a></li>
 				<li><a class="follow projects <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='projects' ? 'current' : ''; ?>" href="?p=dashboard&tab=projects">Projects</a></li>
 				<li><a class="follow investors <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='investors' ? 'current' : ''; ?>" href="?p=dashboard&tab=investors">Investors</a></li>
-				<li><a class="follow developers <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='developers' ? 'current' : ''; ?>" href="?p=dashboard&tab=developers">Developers</a></li>
+				<li><a class="follow s <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='s' ? 'current' : ''; ?>" href="?p=dashboard&tab=s">Developers</a></li>
+				<?php /*<li style="float:right"><a href="?p=investor&i=kadri">My Profile &rarr;</a>*/ ?>
 			</ul>
 		</div>
 	</div>
@@ -29,7 +34,7 @@
 				<div>
 					<?php
 						switch($tab) {
-							case 'investments': ?>
+							/*case 'investments': ?>
 								<div class="tab-content">
 									
 									<div class="projects gridwrap">
@@ -40,9 +45,9 @@
 													'name'		=> '1800 Van Ness',
 													'handle'	=> '1800-van-ness',
 													'type_label'=> 'Residential',
-													'developer'	=> array(
-														'handle'=> 'cbre',
-														'name'	=> 'CBRE'
+													''	=> array(
+														'handle'=> 'broadgate',
+														'name'	=> 'Broadgate'
 													),
 													'goal'		=> format_money(32000000),
 													'progress'	=> 66, // percentage
@@ -57,9 +62,9 @@
 													'name'		=> '1800 Van Ness',
 													'handle'	=> '1800-van-ness',
 													'type_label'=> 'Residential',
-													'developer'	=> array(
-														'handle'=> 'cbre',
-														'name'	=> 'CBRE'
+													''	=> array(
+														'handle'=> 'broadgate',
+														'name'	=> 'Broadgate'
 													),
 													'goal'		=> format_money(32000000),
 													'progress'	=> 66, // percentage
@@ -90,12 +95,12 @@
 													'name'		=> '1800 Van Ness',
 													'handle'	=> '1800-van-ness',
 													'type_label'=> 'Residential',
-													'developer'	=> array(
-														'handle'=> 'cbre',
-														'name'	=> 'CBRE'
+													''	=> array(
+														'handle'=> 'broadgate',
+														'name'	=> 'Broadgate'
 													),
 													'goal'		=> format_money(32000000),
-													'$progress'	=> 66, // percentage
+													'progress'	=> 66, // percentage
 													'terms'		=> array(
 														'<b>12%</b> target return',
 														'<b>Equity</b> purchase',
@@ -107,12 +112,12 @@
 													'name'		=> '1800 Van Ness',
 													'handle'	=> '1800-van-ness',
 													'type_label'=> 'Residential',
-													'developer'	=> array(
-														'handle'=> 'cbre',
-														'name'	=> 'CBRE'
+													''	=> array(
+														'handle'=> 'broadgate',
+														'name'	=> 'Broadgate'
 													),
 													'goal'		=> format_money(32000000),
-													'$progress'	=> 66, // percentage
+													'progress'	=> 66, // percentage
 													'terms'		=> array(
 														'<b>12%</b> target return',
 														'<b>Equity</b> purchase',
@@ -124,12 +129,12 @@
 													'name'		=> '1800 Van Ness',
 													'handle'	=> '1800-van-ness',
 													'type_label'=> 'Residential',
-													'developer'	=> array(
-														'handle'=> 'cbre',
-														'name'	=> 'CBRE'
+													''	=> array(
+														'handle'=> 'broadgate',
+														'name'	=> 'Broadgate'
 													),
 													'goal'		=> format_money(32000000),
-													'$progress'	=> 66, // percentage
+													'progress'	=> 66, // percentage
 													'terms'		=> array(
 														'<b>12%</b> target return',
 														'<b>Equity</b> purchase',
@@ -141,12 +146,12 @@
 													'name'		=> '1800 Van Ness',
 													'handle'	=> '1800-van-ness',
 													'type_label'=> 'Residential',
-													'developer'	=> array(
-														'handle'=> 'cbre',
-														'name'	=> 'CBRE'
+													''	=> array(
+														'handle'=> 'broadgate',
+														'name'	=> 'Broadgate'
 													),
 													'goal'		=> format_money(32000000),
-													'$progress'	=> 66, // percentage
+													'progress'	=> 66, // percentage
 													'terms'		=> array(
 														'<b>12%</b> target return',
 														'<b>Equity</b> purchase',
@@ -158,12 +163,12 @@
 													'name'		=> '1800 Van Ness',
 													'handle'	=> '1800-van-ness',
 													'type_label'=> 'Residential',
-													'developer'	=> array(
-														'handle'=> 'cbre',
-														'name'	=> 'CBRE'
+													''	=> array(
+														'handle'=> 'broadgate',
+														'name'	=> 'Broadgate'
 													),
 													'goal'		=> format_money(32000000),
-													'$progress'	=> 66, // percentage
+													'progress'	=> 66, // percentage
 													'terms'		=> array(
 														'<b>12%</b> target return',
 														'<b>Equity</b> purchase',
@@ -241,7 +246,7 @@
 									</div>
 								<?php break;
 							
-							case 'developers': ?>
+							case 's': ?>
 								<div class="tab-content">
 									
 									<ul class="connections-list gridwrap">
@@ -250,37 +255,37 @@
 											array(
 												'name'		=> 'Trigon Capital',
 												'handle'	=> 'trigon',
-												'type'		=> 'developer'
+												'type'		=> ''
 											),
 											array(
 												'name'		=> 'Broadgate Capital',
 												'handle'	=> 'broadgate',
-												'type'		=> 'developer'
+												'type'		=> ''
 											),
 											array(
-												'name'		=> 'CBRE',
-												'handle'	=> 'cbre',
-												'type'		=> 'developer'
+												'name'		=> 'Broadgate',
+												'handle'	=> 'broadgate',
+												'type'		=> ''
 											),
 											array(
 												'name'		=> 'Trigon Capital',
 												'handle'	=> 'trigon',
-												'type'		=> 'developer'
+												'type'		=> ''
 											),
 											array(
 												'name'		=> 'Broadgate Capital',
 												'handle'	=> 'broadgate',
-												'type'		=> 'developer'
+												'type'		=> ''
 											),
 											array(
 												'name'		=> 'Trigon Capital',
 												'handle'	=> 'trigon',
-												'type'		=> 'developer'
+												'type'		=> ''
 											),
 											array(
-												'name'		=> 'CBRE',
-												'handle'	=> 'cbre',
-												'type'		=> 'developer'
+												'name'		=> 'Broadgate',
+												'handle'	=> 'broadgate',
+												'type'		=> ''
 											)
 										);
 										foreach ($profiles as $profile_data) {
@@ -289,16 +294,21 @@
 									</ul>
 									
 								</div>
-								<?php break;
+								<?php break;*/
 							
 							default: ?>
-								<div class="tab-content">
+								<div class="tab-content gridwrap">
 									
-									<ul class="feed gridwrap">
+									<?php /*
+									<div class="message quiet">
+										<span>Your profile is 33% complete</span> <a class="button theta thicker" href="?p=investor-edit&i=<?php echo $h; ?>">Complete your profile</a>
+									</div>*/ ?>
+									
+									<ul class="feed">
 										<li>
 											<div class="profile-badge">
 												<div>
-													<a href="#" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+													<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
 													<div class="focus"></div>
 												</div>
 											</div>
@@ -307,7 +317,7 @@
 												<div class="entry-content">
 													<div class="profile-badge project">
 														<div>
-															<a href="?p=project&project=1800-van-ness" title="1800 Van Ness"><img src="img/1800-van-ness-thumb.png"></a>
+															<a href="?p=project&project=1800-van-ness" title="1800 Van Ness"><img src="img/1800-van-ness.png"></a>
 															<div class="focus"></div>
 														</div>
 													</div>

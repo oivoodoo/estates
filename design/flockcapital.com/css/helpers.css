@@ -1,0 +1,575 @@
+@charset "UTF-8";
+/*
++---------------------------------------------------------------------+
+|        _                               _         _                  |
+|       | |_  _   _  _ __    ___  _ __  | |  __ _ | |_  ___           |
+|       | __|| | | || '_ \  / _ \| '_ \ | | / _` || __|/ _ \          |
+|       | |_ | |_| || |_) ||  __/| |_) || || (_| || |_|  __/          |
+|        \__| \__, || .__/  \___|| .__/ |_| \__,_| \__|\___|          |
+|             |___/ |_|          |_|                                  |
+|                                                                     |
+|                                                                     |
+| URL: http://typeplate.com                                           |
+| VERSION: 1.0.1                                                      |
+| Github: https://github.com/typePlate/typeplate.github.com           |
+| AUTHORS: Zachary Kain (@zakkain) & Dennis Gaebel (@gryghostvisuals) |
+| LICENSE: Creative Commmons                                          |
+| http://creativecommons.org/licenses/by/3.0                          |
+|                                                                     |
++---------------------------------------------------------------------+
+*/
+@font-face {
+  font-family: "Ampersand";
+  src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+  unicode-range: U+270C;
+}
+@font-face {
+  font-family: "Ampersand";
+  src: local("Georgia");
+  unicode-range: U+270C;
+}
+.ampersand-placeholder {
+  font-family: Verdana, sans-serif;
+}
+.breakword {
+  word-wrap: break-word;
+}
+.normal-wrap {
+  word-wrap: normal;
+}
+.inherit-wrap {
+  word-wrap: auto;
+}
+/**
+ * Dropcap Sass @include
+ * Use the following Sass @include with any selector you feel necessary.
+ *
+	@include dropcap(@float: left, @font-size: 4em, @font-family: inherit, @text-indent: 0, @margin: inherit, @padding: inherit, @color: inherit, @lineHeight: 1, @bg: transparent);
+ *
+ * Extend this object into your custom stylesheet.
+ *
+ */
+.drop-cap:first-letter {
+  float: left;
+  margin: inherit;
+  padding: inherit;
+  font-size: 4em;
+  font-family: inherit;
+  line-height: 1;
+  text-indent: 0;
+  background: transparent;
+  color: inherit;
+}
+html {
+  font: normal 106.25%/1.5 'Neue Haas Grotesk Text Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -moz-font-feature-settings: "pnum" 1, "frac" 1, "kern" 1, "salt" 1;
+  -moz-font-feature-settings: "pnum=1, frac=1, kern=1, salt=1";
+  -ms-font-feature-settings: "pnum" 1, "frac" 1, "kern" 1, "salt" 1;
+  -o-font-feature-settings: "pnum" 1, "frac" 1, "kern" 1, "salt" 1;
+  -webkit-font-feature-settings: "pnum" 1, "frac" 1, "kern" 1, "salt" 1;
+  font-feature-settings: "pnum" 1, "frac" 1, "kern" 1, "salt" 1;
+}
+body {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  color: #4f4f4f;
+}
+.tera {
+  font-size: 6.5em;
+}
+.giga {
+  font-size: 5em;
+}
+.mega {
+  font-size: 4em;
+}
+.alpha {
+  font-size: 3.3333em;
+}
+.beta {
+  font-size: 2.6667em;
+}
+.gamma {
+  font-size: 2em;
+}
+.delta {
+  font-size: 1.3333em;
+}
+.epsilon {
+  font-size: 1.1667em;
+}
+.zeta {
+  font-size: 1em;
+}
+.eta {
+  font-size: 0.9em;
+}
+.theta {
+  font-size: 0.8em;
+}
+.iota {
+  font-size: 0.75em;
+}
+.kappa {
+  font-size: 0.7em;
+}
+.lambda {
+  font-size: 0.65em;
+}
+.mu {
+  font-size: 0.6em;
+}
+.nu {
+  font-size: 0.55em;
+}
+.xi {
+  font-size: 0.5em;
+}
+.omicron {
+  font-size: 0.45em;
+}
+.pi {
+  font-size: 0.4em;
+}
+.rho {
+  font-size: 0.35em;
+}
+.sigma {
+  font-size: 0.3em;
+}
+h1 {
+  font-size: 3.3333em;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+h2 {
+  font-size: 2.6667em;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+h3 {
+  font-size: 2em;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+h4 {
+  font-size: 1.3333em;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+h5 {
+  font-size: 1.1667em;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+h6 {
+  font-size: 1em;
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+p {
+  margin: 0 0 1.5em;
+}
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -o-hyphens: none;
+  hyphens: none;
+}
+pre code {
+  word-wrap: normal;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+}
+pre {
+  white-space: pre;
+}
+code {
+  white-space: pre;
+  font-family: monospace;
+}
+/**
+ * Abbreviations Markup
+ *
+	<abbr title="hyper text markup language">HMTL</abbr>
+ *
+ * Extend this object into your markup.
+ *
+ */
+abbr {
+  font-variant: small-caps;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: #808080;
+}
+abbr:hover {
+  cursor: help;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Haas Grot Disp', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #292929;
+}
+/**
+ * Lining Definition Style Markup
+ *
+	<dl class="lining">
+		<dt><b></b></dt>
+		<dd></dd>
+	</dl>
+ *
+ * Extend this object into your markup.
+ *
+ */
+.lining dt,
+.lining dd {
+  display: inline;
+  margin: 0;
+}
+.lining dt + dt:before,
+.lining dd + dt:before {
+  content: "\A";
+  white-space: pre;
+}
+.lining dd + dd:before {
+  content: ", ";
+}
+.lining dd:before {
+  content: ": ";
+  margin-left: -0.2rem;
+}
+/**
+ * Dictionary Definition Style Markup
+ *
+	<dl class="dictionary-style">
+		<dt><b></b></dt>
+			<dd></dd>
+	</dl>
+ *
+ * Extend this object into your markup.
+ *
+ */
+.dictionary-style dt {
+  display: inline;
+  counter-reset: definitions;
+}
+.dictionary-style dt + dt:before {
+  content: ", ";
+  margin-left: -0.2rem;
+}
+.dictionary-style dd {
+  display: block;
+  counter-increment: definitions;
+}
+.dictionary-style dd:before {
+  content: counter(definitions, decimal) ". ";
+}
+/**
+ * Blockquote Markup
+ *
+	<blockquote cite="">
+		<p>&Prime;&Prime;</p>
+		<cite>
+			<small><a href=""></a></small>
+		</cite>
+	</blockquote>
+ *
+ * Extend this object into your markup.
+ *
+ */
+.cite {
+  display: block;
+  font-size: 0.875em;
+  text-align: right;
+}
+/**
+ * Pull Quotes Markup
+ *
+	<aside class="pull-quote">
+		<blockquote>
+			<p></p>
+		</blockquote>
+	</aside>
+ *
+ * Extend this object into your custom stylesheet.
+ *
+ */
+.pull-quote {
+  position: relative;
+  padding: 1em;
+}
+.pull-quote:before,
+.pull-quote:after {
+  height: 1em;
+  opacity: 0.15;
+  position: absolute;
+  font-size: 4em;
+}
+.pull-quote:before {
+  content: '“';
+  top: 0em;
+  left: 0em;
+}
+.pull-quote:after {
+  content: '”';
+  bottom: 0em;
+  right: 0em;
+}
+.border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.content-box {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.disable-user-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.clear-children:after {
+  display: block;
+  clear: both;
+  content: ' ';
+  height: 0;
+  visibility: hidden;
+}
+.border-bottom {
+  border-bottom: 1px solid rgba(41, 41, 41, 0.1);
+}
+.border-top {
+  border-top: 1px solid rgba(41, 41, 41, 0.1);
+}
+.border-left {
+  border-left: 1px solid rgba(41, 41, 41, 0.1);
+}
+.border-right {
+  border-right: 1px solid rgba(41, 41, 41, 0.1);
+}
+/*	Screen size display
+	(don't really need it anymore since Google Chrome now displays
+	rulers when you resize the window and have the Dev Tools open)
+—————————————————————————————————————————————————————————————————————————— */
+#screen-size-label {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  right: 0;
+  bottom: 0;
+}
+#screen-size-label span {
+  font-weight: normal;
+}
+#screen-size-label li,
+#screen-width {
+  display: none;
+  background: lightGray;
+  color: white;
+  font-size: 0.6em;
+  font-weight: bold;
+  padding: .3em .7em;
+}
+#screen-width {
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
+  display: none;
+}
+@media only screen and (min-width: 1800px) {
+  #screen-size-label li#xxl {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1500px) and (max-width: 1799px) {
+  #screen-size-label li#xl {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1499px) {
+  #screen-size-label li#l {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1001px) and (max-width: 1199px) {
+  #screen-size-label li#m {
+    display: block;
+  }
+}
+@media only screen and (min-width: 700px) and (max-width: 1000px) {
+  #screen-size-label li#s {
+    display: block;
+  }
+}
+@media only screen and (min-width: 470px) and (max-width: 699px) {
+  #screen-size-label li#xs {
+    display: block;
+  }
+}
+@media only screen and (max-width: 469px) {
+  #screen-size-label li#xxs {
+    display: block;
+  }
+}
+/*	Designer pointers
+	
+	WP pointers
+	https://github.com/WordPress/WordPress/blob/3.4.1/wp-includes/css/wp-pointer.dev.css
+—————————————————————————————————————————————————————————————————————————— */
+.wp-pointer-content {
+  position: relative;
+  background: #f16a4c;
+  color: white;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.15);
+  font-size: 0.65em;
+  padding-bottom: 0.875rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+.wp-pointer-content p,
+.wp-pointer-content ul {
+  padding: 0 1.1666666666666667rem;
+  margin: 0.875rem 0;
+}
+.wp-pointer-content ul li {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+.wp-pointer-content h3 {
+  position: relative;
+  margin-bottom: 0.875rem;
+  padding: 0.875rem;
+  font-size: 2em;
+  color: white;
+  background-color: #ef5938;
+  background-color: #f27559;
+  background-image: -webkit-linear-gradient(top, #f27559, #eb3a13);
+  background-image: -moz-linear-gradient(top, #f27559, #eb3a13);
+  background-image: -o-linear-gradient(top, #f27559, #eb3a13);
+  background-image: -ms-linear-gradient(top, #f27559, #eb3a13);
+  background-image: linear-gradient(top, #f27559, #eb3a13);
+}
+.wp-pointer-content h3:before {
+  font-family: 'icobundl';
+  font-size: 1.2em;
+  line-height: 0;
+  vertical-align: middle;
+  content: '\e83d';
+  margin-right: 0.875rem;
+  margin-left: 0.2916666666666667rem;
+}
+.wp-pointer-content *:last-child {
+  margin-bottom: 0;
+}
+.wp-pointer-buttons {
+  padding: 0 0.875rem;
+  margin: 0.875rem 0;
+  text-align: right;
+}
+.wp-pointer-buttons a {
+  text-shadow: none;
+  color: #83200b;
+  display: inline-block;
+  text-decoration: none;
+}
+.wp-pointer-buttons a:hover,
+.wp-pointer-buttons a:active {
+  color: #000000;
+}
+.wp-pointer-buttons a.close:before {
+  font-family: 'icobundl';
+  content: '\e801';
+  margin-right: 0.35rem;
+}
+/* The arrow base class must take up no space, even with transparent borders. */
+.wp-pointer-arrow,
+.wp-pointer-arrow-inner {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.wp-pointer-arrow {
+  z-index: 10;
+}
+.wp-pointer-arrow-inner {
+  z-index: 20;
+}
+/* Make Room for the Arrow! */
+.wp-pointer-top,
+.wp-pointer-undefined {
+  padding-top: 0.5833333333333334rem;
+}
+.wp-pointer-bottom {
+  padding-bottom: 0.5833333333333334rem;
+}
+.wp-pointer-left {
+  padding-left: 0.5833333333333334rem;
+}
+.wp-pointer-right {
+  padding-right: 0.5833333333333334rem;
+}
+/* Base Size & Positioning */
+.wp-pointer-top .wp-pointer-arrow,
+.wp-pointer-bottom .wp-pointer-arrow,
+.wp-pointer-undefined .wp-pointer-arrow {
+  left: 3.5rem;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+}
+.wp-pointer-left .wp-pointer-arrow,
+.wp-pointer-right .wp-pointer-arrow {
+  top: 0.875rem;
+  border-top: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+}
+/* Arrow Sprite */
+.wp-pointer-top .wp-pointer-arrow,
+.wp-pointer-undefined .wp-pointer-arrow {
+  top: 0.08333333333333337rem;
+  border-bottom: 0.5rem solid #f27559;
+}
+.wp-pointer-bottom .wp-pointer-arrow {
+  bottom: 0.08333333333333337rem;
+  border-top: 0.5rem solid #ffffff;
+}
+.wp-pointer-left .wp-pointer-arrow {
+  left: 0.08333333333333337rem;
+  border-right: 0.5rem solid #ef5938;
+}
+.wp-pointer-right .wp-pointer-arrow {
+  right: 0.08333333333333337rem;
+  border-left: 0.5rem solid #ef5938;
+}

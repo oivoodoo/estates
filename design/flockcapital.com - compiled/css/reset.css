@@ -1,0 +1,225 @@
+/*
+strppd.css by Iain MacDonald(http://iainspad.com/strppd-css/)
+
+Based on the Meyer Reset by MeyerWeb (http://meyerweb.com/eric/tools/css/reset/)
+This is a modified version with additional resetting such as setting certain elements to certain properties, as they should.
+This also carries some resets for HTML5 elements i.e. the ':required' pseudo-selector, as well as resetting for mobile browsers.
+Also included is some typographical styling, just to set them to their respective type styles.
+Finally, there's also form and interactive element styling so forms and navigation elements look clickable.
+
+Be sure to contribute any improvements and changes to this reset as you see fit. Have fun!
+
+v. 1.0
+License: Public Domain
+
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {display: block;}
+
+/*---Universal Selector to add additional resets, such as text-size adjust and tap highlighting---*/
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    /*-webkit-font-smoothing: antialiased;*/
+}
+
+a {text-decoration: none;}
+
+body {line-height: 1;}
+
+ol, ul {list-style-type: none;}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+}
+
+/*---Removes Webkit form styling on Mobiles---*/
+
+input, textarea {
+    /*-webkit-appearance: none;
+    -moz-appearance: none; */
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+}
+
+/*---Additional Form resets---*/
+
+:required {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+}
+
+/*---Typographic Styling---*/
+
+em, i {font-style: italic;}
+
+strong, b {font-weight: bold;}
+
+u {text-decoration: underline;}
+
+pre, code {font-family: Monaco, Courier, monospace;}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+blockquote, q {quotes: "" "";}
+
+blockquote:before, blockquote:after, q:before,  q:after, {content: "";}
+
+/*---Interactive Element Settings---*/
+
+a, input[type="submit"], input[type="button"], button, label[for] {cursor: pointer;}
+
+/*---Misc. Element Styling---*/
+
+img {-ms-interpolation-mode: bicubic;}
+
+/* End strppd.css */
+
+/* Custom fonts */
+@font-face {
+    font-family: 'ModernPictogramsNormal';
+    src: url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.eot');
+    src: url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.woff') format('woff'),
+         url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.ttf') format('truetype'),
+         url('http://flockcapital.com/css/fonts/modernpictograms/modernpics-webfont.svg#ModernPictogramsNormal') format('svg');
+    font-weight: normal;
+    font-style: normal; }
+
+/* Proper box model */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* General styles */
+::-moz-selection {  }
+::selection {  }
+
+a{  }
+
+a:hover{  }
+a:active{  }
+a:visited{  }
+
+address{  }
+
+aside{  }
+
+b, strong{  }
+
+body{  }
+
+blockquote{  }
+
+button{ cursor: pointer; }
+button:hover{  }
+button:active{  }
+
+caption, th, td{ vertical-align: middle; }
+
+h1{  }
+h2{  }
+h3{  }
+h4{  }
+h5{  }
+h6{  }
+
+i, em{  }
+
+img{ vertical-align: top; }
+
+input, select, textarea{  }
+
+input[type=radio]{  }
+input[type=checkbox]{  }
+
+label{  }
+
+li{  }
+
+p{ margin:0 0 1em 0; }
+
+select{  }
+select option{  }
+
+table{ border: 0; border-spacing:0; empty-cells:show; }
+
+textarea{ resize: none; }
+
+ul, ol{  }
+
+
+/* ================================================================== */
+/* === Responsive styles ============================================ */
+/* ================================================================== */
+
+/* Smartphones */
+@media only screen and (max-width: 469px) {
+
+}
+
+/* Large smartphones */
+@media only screen and (min-width: 470px) and (max-width: 699px) {
+
+}
+
+/* Tablets and landscape large smartphones */
+@media only screen and (min-width: 700px) and (max-width: 1000px) {
+
+}
+
+/* Desktop screens */
+@media only screen and (min-width: 1200px) and (max-width: 1499px){
+
+}
+
+/* Large screen */
+@media only screen and (min-width: 1500px) and (max-width: 1799px){
+
+}
+
+/* Very large screen */
+@media only screen and (min-width: 1800px){
+
+}

@@ -1,24 +1,6 @@
 <?php
 
-	$projects = array(
-		'1800-van-ness' => array(
-			'link'		=> '?p=project&project=1800-van-ness',
-			'handle'	=> '1800-van-ness',
-			'name'		=> '1800 Van Ness',
-			'type_label'=> 'Residential',
-			'developer'	=> array(
-				'handle'=> 'cbre',
-				'name'	=> 'CBRE'
-			),
-			'goal'		=> format_money(32000000),
-			'$progress'	=> 66, // percentage
-			'terms'		=> array(
-				'<span class="delta"><b>12%</b></span><br>target return',
-				'<span class="delta"><b>Equity</b></span><br>purchase',
-				'<span class="delta"><b>24 month</b></span><br>holding period'
-			)
-		)
-	);
+	global $projects, $managers;
 
 	$h = array_key_exists('project', $_GET) ? $_GET['project'] : null;
 	
@@ -29,15 +11,20 @@
 	$handle		= array_key_exists('handle',	$project)	? $project['handle']	: null;
 	$name		= array_key_exists('name',		$project)	? $project['name']		: null;
 	
-	if (strrpos($project['name'], ' ')!==false )
-		$name =	substr($project['name'], 0, strrpos($project['name'], ' ')) . ' <span>' . strrchr($project['name'], ' ');
+	/*if (strrpos($project['name'], ' ')!==false )
+		$name =	substr($project['name'], 0, strrpos($project['name'], ' ')) . ' <span>' . strrchr($project['name'], ' ');*/
 	
-	$link		= array_key_exists('link',		$project)	? $project['link']		: null;
-	$type		= array_key_exists('type_label',$project)	? $project['type_label']: null;
-	$developer	= array_key_exists('developer', $project)	? $project['developer']	: null;
-	$goal		= array_key_exists('goal',		$project)	? $project['goal']		: null;
-	$progress	= array_key_exists('progress',	$project)	? $project['progress']	: null;	// percentage
-	$terms		= array_key_exists('terms',		$project)	? $project['terms']		: null;	// percentage
+	$link				= array_key_exists('link',		$project)			? $project['link']			: null;
+	$type				= array_key_exists('type_label',$project)			? $project['type_label']	: null;
+	
+	$manager			= array_key_exists('manager',	$project) &&
+						  array_key_exists($project['manager'], $managers)	? $managers[$project['manager']] : null;
+	
+	$goal				= array_key_exists('goal',		$project)			? $project['goal']			: null;
+	$progress			= array_key_exists('progress',	$project)			? $project['progress']		: null;
+	$progress_percent	= ($goal && $progress)								? round($progress/$goal*100): null;	// percentage
+	$financials			= array_key_exists('financials',$project)			? $project['financials']	: null;
+	$terms				= array_key_exists('terms',		$project)			? $project['terms']			: null;
 
 ?>
 
@@ -45,57 +32,108 @@
 
 <section id="project">
 
-	<div class="cover-wrap">
-		<div class="cover">
-			<img src="img/<?php echo $handle; ?>-cover.png">
-		</div>
-	</div>
-
 	<div class="head">
-		<div class="core">
-			<hgroup>
-				<h1>
-					<div class="profile-badge">
-						<div>
-							<a href="?p=developer&d=<?php echo $developer['handle']; ?>" title="<?php echo $developer['name']; ?>"><img src="img/<?php echo $developer['handle']; ?>.png"></a>
-							<div class="focus"></div>
-						</div>
-					</div>
-				
-					<?php echo $name; ?> <label class="type"><?php echo $type; ?></label></span>
-				</h1>
-			</hgroup>
-			<div class="action">
-				<button>Invest<?php /*<i></i>*/ ?></button>
+		<div class="cover">
+			<div>
+				<div>
+					<img src="img/<?php echo $handle; ?>.png">
+				</div>
 			</div>
 		</div>
-	</div>
 	
-	<div class="financials">
-		<div>
-			<?php 
-				foreach($terms as $term) {
-					echo "<div>".$term."</div>\n";
-				}
-			?>
-			<div class="goal">
+		<div class="financials">
+			<div>
 				<div>
-					<h3><?php echo $goal; ?></h3>
-					<div class="goalmeter"><div class="progress" style="width:<?php echo $progress; ?>%"><div class="marker" style="left:<?php echo $progress; ?>%;"><label><?php echo $progress; ?>%</label></div></div></div>
-					<div class="deadline"><b>22</b> Days to close</div>
+					<div>
+						<?php
+							//$fw = round(100/(count($financials)+2), 2);
+							$fc = count($financials)+2;
+							
+							if ($financials) {
+								if (array_key_exists('type', $financials)) {
+									echo "<ul class='size-".$fc."'>\n";
+										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
+									echo "</ul>\n";
+								}
+								if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
+									echo "<ul class='size-".$fc."'>\n";
+										echo '<li class="share"><div><b>'.format_money($financials['share']['price'], true, false)."</b> <label>/share</label></div></li>\n";
+									echo "</ul>\n";
+								}
+								if (array_key_exists('yield', $financials)) {
+									echo "<ul class='size-".$fc."'>\n";
+										echo '<li class="yield"><div><b>'.$financials['yield']['value'].'<u>'.$financials['yield']['unit']."</u></b> <label>yield</label></div></li>\n";
+									echo "</ul>\n";
+								}
+								if (array_key_exists('term', $financials)) {
+									echo "<ul class='size-".$fc."'>\n";
+										echo '<li class="term"><div><b>'.$financials['term']['value'].' <u class="short">'.$financials['term']['unit']['short'].'</u><u class="long">'.$financials['term']['unit']['long']."</u></b> <label>term</label></div></li>\n";
+									echo "</ul>\n";
+								}
+							}
+						?>
+						<div class="moneywrap size-<?php echo $fc/2; ?>">
+							<div>
+								<?php
+									if ($goal || $progress) {
+										echo "<ul class='money'>\n";
+					
+											if ($progress)
+												echo '<li class="raised" style="width:'.$progress_percent.'%;"><div><label>Raised</label>'.format_money($progress)."</div></li>\n";
+						
+											if ($goal)
+												echo '<li class="budget" style="width:'.(!$progress ? 100 : 100-$progress_percent).'%;"><div><label>Budget</label>'.format_money($goal)."</div></li>\n";
+											
+										echo "</ul>\n";
+									}
+								?>
+								<div class="goal">
+									<div>
+										<?php /*<h4><?php echo format_money($goal); ?></h4>*/ ?>
+										<div class="goalmeter"><div class="progress <?php echo $progress_percent==100 ? 'full' : ''; ?>" style="width:<?php echo $progress_percent; ?>%"><div class="marker" style="left:<?php echo $progress_percent; ?>%;"><label><?php echo $progress_percent; ?>%</label></div></div></div>
+										<?php /*<div class="deadline"><b>22</b> Days to close</div>*/ ?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="action">
+							<button>Purchase Shares</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	
+	<div class="title fix">
+		<hgroup>
+			<h2>
+				<div class="profile-badge">
+					<div>
+						<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
+						<div class="focus"></div>
+					</div>
+				</div>
+				<?php echo $name; /*?></span>*/ ?>
+			</h2>
+		</hgroup>
+		<div id="tabs" class="tabs major gridwrap-padded">
+			<ul>
+				<li><a href="?p=project&project=<?php echo $handle; ?>&tab=overview" class="current"><span>Overview</span></a></li>
+				<li><a href="?p=project&project=<?php echo $handle; ?>&tab=financials"><span>Financials</span></a></li>
+				<li><a href="?p=project&project=<?php echo $handle; ?>&tab=location"><span>Location</span></a></li>
+				<li><a href="?p=project&project=<?php echo $handle; ?>&tab=property"><span>Property</span></a></li>
+				<li><a href="?p=project&project=<?php echo $handle; ?>&tab=strengths"><span>Strengths</span></a></li>
+				<li><a href="?p=project&project=<?php echo $handle; ?>&tab=risks"><span>Risks</span></a></li>
+				<li><a href="?p=project&project=<?php echo $handle; ?>&tab=manager"><span>Manager</span></a></li>
+			</ul>
+		</div>
+	</div>
+	
+	
 	<div class="body">
 		<div class="main">
-		
-			<div id="tabs" class="tabs">
-				<ul>
-					<li><a href="#" class="current">Overview</a></li><li><a href="#">Financials</a></li><li><a href="#">Location</a></li><li><a href="#">Property</a></li><li><a href="#">Strengths</a></li><li><a href="#">Risks</a></li>
-				</ul>
-			</div>
+	
 			<div>
 				<div class="paper" id="tab-1">
 					<p>
@@ -115,154 +153,193 @@
 			
 		</div>
 		<div class="side">
-			<div id="tabspace"></div><?php /*
-			<div class="developer">
-				<div>
-					<div class="focus"></div>
-					<img class="logo" src="img/developer-logo-1-s.png">
-					<h4 class="developer-name">Trigon Capital ltd.</h4>
-				</div>
-			</div>
-			<div>
-				<div class="padding">
-					<h5 style="color: lightGray">Project feed</h5>
-					<p style="font-size:.7em; margin:1em 0 0; color: lightGray">updates, progress, ...</p>
-				</div>
-			</div>
-			<div>
-				<div class="padding">
-					<h5 style="color: lightGray">Personal connections</h5>
-					<p style="font-size:.7em; margin:1em 0 0; color: lightGray">Who has already joined investing in this project — user's Facebook friends, LinkedIn connections etc.</p>
-				</div>
-			</div>*/ ?>
-			<div>
-					
-				<ul class="feed">
-					<li>
-						<div class="profile-badge">
-							<div>
-								<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-								<div class="focus"></div>
-							</div>
-						</div>
-						<div class="entry">
-							<h5 class="entry-title"><a href="?p=investor&i=kadri" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="?p=project&project=1800-van-ness" title="1800 Van Ness">1800 Van Ness</a></h5>
-							<div class="entry-meta">
-								<div class="profile-badge">
-									<div>
-										<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
-										<div class="focus"></div>
-									</div>
-								</div>
-								<div class="profile-badge">
-									<div>
-										<a href="?p=investor&i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
-										<div class="focus"></div>
-									</div>
-								</div>
-								<time>2 days, 7hours ago</time>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="profile-badge">
-							<div>
-								<a href="?p=developer&d=cbre" title="CBRE"><img src="img/cbre.png"></a>
-								<div class="focus"></div>
-							</div>
-						</div>
-						<div class="entry">
-							<h5 class="entry-title"><a href="?p=developer&d=cbre" title="CBRE">CBRE</a> published a video to <a href="?p=project&project=1800-van-ness" title="1800 Van Ness">1800 Van Ness</a></h5>
-							<div class="entry-content">
-								<div class="profile-badge video">
-									<div>
-										<a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="img/dummy-thumb-soma-grand.jpg"></a>
-										<div class="focus"></div>
-									</div>
-								</div>
-							</div>
-							<div class="entry-meta">
-								<time>2 days, 7hours ago</time>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="profile-badge">
-							<div>
-								<a href="?p=developer&d=cbre" title="CBRE"><img src="img/cbre.png"></a>
-								<div class="focus"></div>
-							</div>
-						</div>
-						<div class="entry">
-							<h5 class="entry-title"><a href="?p=developer&d=cbre" title="CBRE">CBRE</a> launched <a href="?p=project" title="1800 Van Ness">1800 Van Ness</a></h5>
-							<div class="entry-meta">
-								<time>2 days, 7hours ago</time>
-							</div>
-						</div>
-					</li>
-				</ul>
-					
-			</div>
-			<div>
-				
-				<div id="connections-tabs" class="tabs">
-					<ul>
-						<li><a href="#" class="current">Investors</a></li><li><a href="#">Followers</a></li>
-					</ul>
-				</div>
-				<div class="connections-wrap">
-					<ul class="connections">
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=michael" title="Michael Walsh"><img src="img/michael.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
+			<?php /*<div class="tabspace"></div>*/ ?>
 			
+			<div>
+				<div>
+				
+					<div class="tabs connection-tabs">
+						<ul>
+							<li><a href="#" class="current"><em>27</em> Investors</a></li><li><a href="#"><em>189</em> Followers</a></li>
+						</ul>
+					</div>
+					<ul class="connections">
+						<?php
+								$profiles = array(
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Michael Walsh',
+										'handle'	=> 'michael',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Michael Walsh',
+										'handle'	=> 'michael',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Michael Walsh',
+										'handle'	=> 'michael',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									)
+								);
+								foreach ($profiles as $profile_data) {
+									require('connection-badge.php');
+								}
+							?>
+					</ul>
+			
+				</div>
+			</div>
+			
+			<div>
+				<div>
+					
+					<ul class="feed">
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+							<div class="entry">
+								<h5 class="entry-title"><a href="?p=investor&i=kadri" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="?p=project&project=1800-van-ness" title="<?php echo $name; ?>"><?php echo $name; ?></a></h5>
+								<div class="entry-meta">
+									<div class="profile-badge">
+										<div>
+											<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+											<div class="focus"></div>
+										</div>
+									</div>
+									<div class="profile-badge">
+										<div>
+											<a href="?p=investor&i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+											<div class="focus"></div>
+										</div>
+									</div>
+									<time>2 days, 7hours ago</time>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+							<div class="entry">
+								<h5 class="entry-title"><a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><?php echo $manager['name']; ?></a> published a video to <a href="?p=project&project=1800-van-ness" title="<?php echo $name; ?>"><?php echo $name; ?></a></h5>
+								<div class="entry-content">
+									<div class="profile-badge video">
+										<div>
+											<a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="img/dummy-thumb-soma-grand.jpg"></a>
+											<div class="focus"></div>
+										</div>
+									</div>
+								</div>
+								<div class="entry-meta">
+									<time>2 days, 7hours ago</time>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="profile-badge">
+								<div>
+									<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
+									<div class="focus"></div>
+								</div>
+							</div>
+							<div class="entry">
+								<h5 class="entry-title"><a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><?php echo $manager['name']; ?></a> launched <a href="?p=project&project=<?php echo $h; ?>" title="<?php echo $name; ?>"><?php echo $name; ?></a></h5>
+								<div class="entry-meta">
+									<time>2 days, 7hours ago</time>
+								</div>
+							</div>
+						</li>
+					</ul>
+				
+				</div>	
 			</div>
 		</div>
 	</div>

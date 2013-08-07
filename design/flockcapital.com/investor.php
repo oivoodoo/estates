@@ -22,24 +22,45 @@
 	
 	$investor_name = $investor_data[$h]['name'];
 	$investor_short_name = strtok($investor_name, ' ');
-	if (array_key_exists('type_class', $investor_data[$h])) $investor_type_class = $investor_data[$h]['type_class'];
-	if (array_key_exists('type_label', $investor_data[$h])) $investor_type_label = $investor_data[$h]['type_label'];
+	//if (array_key_exists('type_class', $investor_data[$h])) $investor_type_class = $investor_data[$h]['type_class'];
+	//if (array_key_exists('type_label', $investor_data[$h])) $investor_type_label = $investor_data[$h]['type_label'];
 ?>
 
 
 
-<section id="investor">
+<section id="investor" <?php if ($h=='kadri') { echo 'class="me"'; }?>>
+	<?php /*if ($h=='kadri') { ?>
+	<div id="tabs" class="submenu tabs">
+		<div>
+			<ul>
+				<li><a class="dashboard" href="?p=dashboard">Dashboard</a></li>
+				<li><a class="view current" href="?p=investor&i=<?php echo $h ?>">My Profile</a></li>
+				<li><a class="accreditation" href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation">Investor Accreditation</a></li>
+				<li><a class="settings" href="?p=investor-edit&i=<?php echo $h ?>&tab=settings">Settings</a></li>
+			</ul>
+		</div>
+	</div>
+	<?php }*/ ?>
+
+	
+	<?php if ($h=='kadri') { ?>
+	<div class="message">
+		<span>This is <u>Your</u> profile.</span> <a class="button iota thicker" href="?p=investor-edit&i=<?php echo $h; ?>">Edit</a>
+	</div>
+	<?php } ?>
+
+	
 	<div class="head">
-		<div class="core">
+		<div>
+			
 			<figure class="profile-badge">
 				<a href="profile-pic.php" class="profile-pic fancybox.ajax"><img src="img/<?php echo $h; ?>.png"><div class="focus"></div></a>
 			</figure>
 			<div id="investor-details">
-				<h1><?php echo $investor_name; ?>
+				<h3><?php echo $investor_name; /*?>
 					<?php if (isset($investor_type_label) && isset($investor_type_class)) { ?>
 						<label class="type <?php echo $investor_type_class; ?>"><?php echo $investor_type_label; ?></label>
-					<?php } ?>
-				</h1>
+					<?php }*/ ?></h3>
 				
 				<div id="mini-bio">
 					<p>Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav<?php /*<br><a href="#" class="hellip">…</a>*/ ?></p>
@@ -51,16 +72,21 @@
 							<div>
 								<button name="ext-account" value="facebook" class="ext-account-button facebook connected-ext-account-button"></button>
 								<button name="ext-account" value="twitter" class="ext-account-button twitter connected-ext-account-button"></button>
+								<?php /*if ($h=='kadri') { ?>
 								<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
 								<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+								<?php }*/ ?>
 							</div>
 						</div>
+						<?php /*if ($h=='kadri') { ?>
 						<div>
-							<p class="tertiary">↑ Connect external accounts to follow your friends' activity on Flock.</p>
+							<p class="tertiary">Connect external accounts to follow your friends' activity on Flock.</p>
 						</div>
+						<?php }*/ ?>
 					</div>
 				</div>
 			</div>
+			<?php /*if ($h=='kadri') { ?>
 			<div class="action">
 				<ul>
 					<li><a class="" href="?p=investor-edit&i=<?php echo $h; ?>">Edit Profile</a></li>
@@ -69,16 +95,15 @@
 					<li><a class="warning" href="#">Delete Account</a></li>
 				</ul>
 			</div>
+			<?php }*/ ?>
 		</div>
 	</div>
 	
 	<div class="body">
 		<div class="main">
 			
-			<div class="tabspace"></div>
-			
 			<div>
-				<div id="tab-1">
+				<div id="tab-1" class="feed-wrapper">
 					
 					<ul class="feed">
 						<li>
@@ -93,7 +118,7 @@
 								<div class="entry-content">
 									<div class="profile-badge project">
 										<div>
-											<a href="?p=project&project=1800-van-ness" title="1800 Van Ness"><img src="img/1800-van-ness-thumb.png"></a>
+											<a href="?p=project&project=1800-van-ness" title="1800 Van Ness"><img src="img/1800-van-ness.png"></a>
 											<div class="focus"></div>
 										</div>
 									</div>
@@ -136,64 +161,122 @@
 			
 		</div>
 		<div class="side">
-			<div id="tabs" class="tabs">
-				<ul>
-					<li><a href="#" class="current">Following</a></li><li><a href="#">Followers</a></li><li><a href="#">Investments</a></li>
-				</ul>
-			</div>
+			
 			<div>
-				<div class="connections-wrap">
-					
+				<div>
+				
+					<div class="tabs connection-tabs">
+						<ul>
+							<li><a href="#" class="current"><em>2</em> Investments</a></li>
+							<li><a href="#"><em>8</em> Follows</a></li>
+							<li><a href="#"><em>473</em> Followers</a></li>
+						</ul>
+					</div>
 					<ul class="connections">
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=michael" title="Michael Walsh"><img src="img/michael.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
+						<?php
+								$profiles = array(
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Michael Walsh',
+										'handle'	=> 'michael',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Michael Walsh',
+										'handle'	=> 'michael',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Michael Walsh',
+										'handle'	=> 'michael',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Kadri Liis Rääk',
+										'handle'	=> 'kadri',
+										'type'		=> 'investor',
+										'type_label'=> 'Accredited Investor',
+										'type_class'=> 'investor accredited'
+									),
+									array(
+										'name'		=> 'Mart Uibo',
+										'handle'	=> 'mart',
+										'type'		=> 'investor'
+									)
+								);
+								foreach ($profiles as $profile_data) {
+									require('connection-badge.php');
+								}
+							?>
 					</ul>
+
 					
 				</div>
 			</div>
