@@ -1,21 +1,19 @@
 <div id="sign-in" class="signin external">
   <div class="modal-header">
     <div>
-      <div class="logo"><%= image_tag("g/flockinvest-logo.svg") %></div>
+      <%= render 'layouts/logo' %>
       <div class="close" onclick="$.fancybox.close()"></div>
     </div>
   </div>
 
   <div class="modal-content">
     <div>
-      <div class="logo"><div><%= image_tag("g/flockinvest-logo.svg") %></div></div>
-
       <%= form_for @contact, remote: true do |f| %>
         <div class="tight">
           <div class="input-group">
             <%= f.text_field :name, placeholder: "Name", size: 1, style: 'width: 50%' %>
             <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%', required: true %>
-            <%= f.text_area :message, placeholder: "Yours message:", required: true, :cols => 35, :rows => "5", :style => "width: 398px" %>
+            <%= f.text_area :message, placeholder: "Yours message:", required: true, :cols => 35, :rows => "5", :style => "width: 424px" %>
           </div>
         </div>
         <div class="action">
