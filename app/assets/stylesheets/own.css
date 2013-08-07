@@ -5,3 +5,6 @@ section.home-listing .item .left.text { width: 70%; }
 
 .clear { clear: both; }
 
+.project-badge .project-thumb img { height: 369px; }
+.project-badge  header { height: 45px; }
+
