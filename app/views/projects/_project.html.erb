@@ -27,10 +27,10 @@
               <li class="type"><div><b><%= project.investment_type %></b> <label>offering</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+              <li class="share"><div><b><i>$</i><%= project.shares %></b> <label>/share</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+              <li class="yield"><div><b><%= project.view_percent %></b> <label>yield</label></div></li>
             </ul>
             <ul class='size-6'>
               <li class="term"><div><b><%= project.holding %> <u class="short"></u><u class="long">months</u></b> <label>term</label></div></li>
