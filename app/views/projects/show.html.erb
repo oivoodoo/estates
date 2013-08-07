@@ -4,258 +4,306 @@
 <% end %>
 
 <section id="project" ng-controller="ProjectsController">
-	<div class="cover-wrap">
-		<div class="cover">
-			<%= image_tag(@project.image_url) %>
-		</div>
-	</div>
-
   <div class="head">
-    <div class="core">
-      <hgroup>
-        <h1>
-					<div class="profile-badge">
-						<div>
-              <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
-							<div class="focus"></div>
-						</div>
-					</div>
-
-          <%= @project.address %><span> Ness <%= render_tag_list(@project) %></span>
-        </h1>
-      </hgroup>
-      <% if signed_in? %>
-        <div class="action">
-          <button onclick="window.location='<%= new_project_invest_path(@project) %>'">Invest</button>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="financials">
-    <div>
-      <div><span class="delta"><b><%= number_to_percentage(@project.target_return, :precision => 0)%></b></span><br>target return</div>
-      <div><span class="delta"><b><%= @project.investment_type %></b></span><br>purchase</div>
-      <div><span class="delta"><b><%= @project.holding %></b></span><br>holding period</div>
-      <div class="goal">
+    <div class="cover">
+      <div>
         <div>
-          <h3><%= number_to_currency(@project.price)%></h3>
-          <div class="goalmeter">
-            <% if @project.percent.present? %>
-              <div class="progress" style="width:<%= number_to_percentage(@project.percent, :precision => 0)%>">
+          <%= image_tag("img/cafe-klaus.png") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="financials">
+      <div>
+        <div>
+          <div>
+            <ul class='size-6'>
+              <li class="type"><div><b><%= @project.investment_type %></b> <label>offering</label></div></li>
+            </ul>
+            <ul class='size-6'>
+              <li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+            </ul>
+            <ul class='size-6'>
+              <li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+            </ul>
+            <ul class='size-6'>
+              <li class="term"><div><b><%= @project.holding %> <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
+            </ul>
+            <div class="moneywrap size-3">
+              <div>
+                <ul class='money'>
+                  <li class="raised" style="width:<%= @project.view_percent %>;"><div><label>Raised</label><i>$</i>21.1m</div></li>
+                  <li class="budget" style="width:<%= number_to_percentage(100 - @project.percent, :precision => 0)%>;"><div><label>Budget</label><i>$</i>32m</div></li>
+                </ul>
+                <div class="goal">
+                  <div>
+                    <div class="goalmeter"><div class="progress " style="width:<%= @project.view_percent %>"><div class="marker" style="left:<%= @project.view_percent %>;"><label><%= @project.view_percent %></label></div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% if signed_in? %>
+              <div class="action">
+                <button onclick="window.location='<%= new_project_invest_path(@project) %>'">Purchase Shares</button>
               </div>
             <% end %>
           </div>
-          <div class="deadline"><b><%= @project.days_to_close %></b> Days to close</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="title fix">
+    <hgroup>
+      <h2>
+        <div class="profile-badge">
+          <div>
+            <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
+            <div class="focus"></div>
+          </div>
+        </div>
+        <%= @project.name %>
+      </h2>
+    </hgroup>
+    <div id="tabs" class="tabs major gridwrap-padded">
+      <ul>
+        <li><a ng-class="{current:projectTab==1}" ng-click="projectTab=1" ng-init='projectTab=1'><span>Overview</span></a></li>
+        <li><a ng-class="{current:projectTab==2}" ng-click="projectTab=2"><span>Financials</span></a></li>
+
+        <% if @project.address? %>
+          <li><a ng-class="{current:projectTab==3}" href='#map' ng-click="projectTab=3"><span>Location</span></a></li>
+        <% end %>
+
+        <li><a ng-class="{current:projectTab==4}" ng-click="projectTab=4"><span>Property</span></a></li>
+        <li><a ng-class="{current:projectTab==5}" ng-click="projectTab=5"><span>Strengths</span></a></li>
+        <li><a ng-class="{current:projectTab==6}" ng-click="projectTab=6"><span>Risks</span></a></li>
+        <li><a ng-class="{current:projectTab==7}" ng-click="projectTab=7"><span>Manager</span></a></li>
+      </ul>
     </div>
   </div>
 
   <div class="body">
     <div class="main">
-
-      <div id="tabs" class='tabs'>
-        <ul>
-          <li><a class="current" ng:click="projectTab=1" ng:init='projectTab=1'>Overview</a></li>
-          <li><a href ng:click="projectTab=2">Financials</a></li>
-
-          <% if @project.address? %>
-            <li><a href='#map' ng:click="projectTab=3">Location</a></li>
-          <% end %>
-
-          <li><a href ng:click="projectTab=4">Property</a></li>
-          <li><a href ng:click="projectTab=5">Strengths</a></li>
-          <li><a href ng:click="projectTab=6">Risks</a></li>
-        </ul>
-      </div>
-
 			<div>
-				<div ng:show="projectTab == 1">
+				<div class='paper' ng:show="projectTab == 1">
           <%= @project.description.to_s.html_safe %>
 				</div>
-				<div ng:show="projectTab == 2">
+				<div class='paper' ng:show="projectTab == 2">
           <%= @project.financials.to_s.html_safe %>
 				</div>
-				<div id= "map" ng:show="projectTab == 3">
+				<div class='paper' id="map" ng:show="projectTab == 3">
           <div id='map_container'>
           </div>
           <div><%= @project.address %></div>
 				</div>
-				<div ng:show="projectTab == 4">
+				<div class='paper' ng:show="projectTab == 4">
           <%= @project.property.to_s.html_safe %>
 				</div>
-        <div ng:show="projectTab == 5">
+        <div class='paper' ng:show="projectTab == 5">
           <%= @project.strength.to_s.html_safe %>
         </div>
-        <div ng:show="projectTab == 6">
+        <div class='paper' ng:show="projectTab == 6">
           <%= @project.risks.to_s.html_safe %>
+        </div>
+        <div class='paper' ng:show="projectTab == 7">
+          <!-- TODO: add migration for manager field, place here manager content -->
         </div>
 			</div>
     </div>
 
 		<div class="side">
-      <div id="tabspace"></div>
-
 			<div>
-				<div id="connections-tabs" class="tabs">
-					<ul>
-						<li>
-              <a href class="current" ng:click="viewerTab=1" ng:init='viewerTab=1'>Investors</a>
-            </li>
+        <div>
+          <div class="connections-tabs tabs">
+            <ul>
+              <li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="viewerTab=1" ng:init='viewerTab=1'><em>27</em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="viewerTab=2"><em>189</em> Followers</a></li>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="connections">
             <li>
-              <a href ng:click="viewerTab=2">Followers</a>
-            </li>
-					</ul>
-				</div>
-				<div class="connections-wrap">
-					<ul class="connections">
-            <div ng:show="viewerTab == 1">
-  						<li>
-  							<div class="profile-badge">
-  								<div>
-                    <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-  									<div class="focus"></div>
-  								</div>
-  							</div>
-  						</li>
-  						<li>
-  							<div class="profile-badge">
-  								<div>
-  									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-  									<div class="focus"></div>
-  								</div>
-  							</div>
-  						</li>
-  						<li>
-  							<div class="profile-badge">
-  								<div>
-  									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-  									<div class="focus"></div>
-  								</div>
-  							</div>
-  						</li>
-  						<li>
-  							<div class="profile-badge">
-  								<div>
-  									<a href="index-p=investor&i=michael.html" title="Michael Walsh"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-  									<div class="focus"></div>
-  								</div>
-  							</div>
-  						</li>
-  						<li>
-  							<div class="profile-badge">
-  								<div>
-  									<a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("mart.png", width:"256", height:"256") %></a>
-  									<div class="focus"></div>
-  								</div>
-  							</div>
-  						</li>
-  						<li>
-  							<div class="profile-badge">
-  								<div>
-  									<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-  									<div class="focus"></div>
-  								</div>
-  							</div>
-  						</li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
             </div>
-            <div ng:show="viewerTab == 2">
-              <li>
-                <div class="profile-badge">
-                  <div>
-                    <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-                    <div class="focus"></div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="profile-badge">
-                  <div>
-                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("kadri.png", width:"256", height:"256") %></a>
-                    <div class="focus"></div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="profile-badge">
-                  <div>
-                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("mart.png", width:"256", height:"256") %></a>
-                    <div class="focus"></div>
-                  </div>
-                </div>
-              </li>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                <div class="focus"></div>
+              </div>
             </div>
-					</ul>
-				</div>
-			</div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            </li><li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+          </li>					</ul>
+
+        </div>
+      </div>
 
       <div>
-				<ul class="feed">
-					<li>
-						<div class="profile-badge">
-							<div>
-								<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><%= image_tag("kadri.png") %></a>
-								<div class="focus"></div>
-							</div>
-						</div>
-						<div class="entry">
-							<h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness">1800 Van Ness</a></h5>
-							<div class="entry-meta">
-								<div class="profile-badge">
-									<div>
-										<a href="index-p=investor&i=mart.html" title="Mart Uibo"><%= image_tag("mart.png") %></a>
-										<div class="focus"></div>
-									</div>
-								</div>
-								<div class="profile-badge">
-									<div>
-										<a href="index-p=investor&i=michael.html" title="Michael Walsh"><%= image_tag("michael.png") %></a>
-										<div class="focus"></div>
-									</div>
-								</div>
-								<time>2 days, 7hours ago</time>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="profile-badge">
-							<div>
-								<a href="index-p=developer&d=cbre.html" title="CBRE"><%= image_tag("cbre.png") %></a>
-								<div class="focus"></div>
-							</div>
-						</div>
-						<div class="entry">
-							<h5 class="entry-title"><a href="index-p=developer&d=cbre.html" title="CBRE">CBRE</a> published a video to <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness">1800 Van Ness</a></h5>
-							<div class="entry-content">
-								<div class="profile-badge video">
-									<div>
-										<a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="img/dummy-thumb-soma-grand.jpg"></a>
-										<div class="focus"></div>
-									</div>
-								</div>
-							</div>
-							<div class="entry-meta">
-								<time>2 days, 7hours ago</time>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="profile-badge">
-							<div>
-                <a href="index-p=developer&d=cbre.html" title="CBRE"><%= image_tag("cbre.png") %></a>
-								<div class="focus"></div>
-							</div>
-						</div>
-						<div class="entry">
-							<h5 class="entry-title"><a href="index-p=developer&d=cbre.html" title="CBRE">CBRE</a> launched <a href="index-p=project.html" title="1800 Van Ness">1800 Van Ness</a></h5>
-							<div class="entry-meta">
-								<time>2 days, 7hours ago</time>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
+        <div>
+
+          <ul class="feed">
+            <li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            <div class="entry">
+              <h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="Rimi Supermaket">Rimi Supermaket</a></h5>
+              <div class="entry-meta">
+                <div class="profile-badge">
+                  <div>
+                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                    <div class="focus"></div>
+                  </div>
+                </div>
+                <div class="profile-badge">
+                  <div>
+                    <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+                    <div class="focus"></div>
+                  </div>
+                </div>
+                <time>2 days, 7hours ago</time>
+              </div>
+            </div>
+            </li>
+            <li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            <div class="entry">
+              <h5 class="entry-title"><a href="index-p=manager&m=trigon.html" title="Trigon Capital">Trigon Capital</a> published a video to <a href="index-p=project&project=1800-van-ness.html" title="Rimi Supermaket">Rimi Supermaket</a></h5>
+              <div class="entry-content">
+                <div class="profile-badge video">
+                  <div>
+                    <a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="img/dummy-thumb-soma-grand.jpg"></a>
+                    <div class="focus"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="entry-meta">
+                <time>2 days, 7hours ago</time>
+              </div>
+            </div>
+            </li>
+            <li>
+            <div class="profile-badge">
+              <div>
+                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
+                <div class="focus"></div>
+              </div>
+            </div>
+            <div class="entry">
+              <h5 class="entry-title"><a href="index-p=manager&m=trigon.html" title="Trigon Capital">Trigon Capital</a> launched <a href="index-p=project&project=vilnius-rimi.html" title="Rimi Supermaket">Rimi Supermaket</a></h5>
+              <div class="entry-meta">
+                <time>2 days, 7hours ago</time>
+              </div>
+            </div>
+            </li>
+          </ul>
+				</div>
+      </div>
+    </div>
   </div>
 </section>
 

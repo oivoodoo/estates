@@ -1,6 +1,8 @@
 class ProjectDecorator < Draper::Decorator
   delegate_all
 
+  include ActionView::Helpers::NumberHelper
+
   def address
     "#{street} #{city} #{country}"
   end
@@ -25,9 +27,12 @@ class ProjectDecorator < Draper::Decorator
     price / shares.to_f
   end
 
-
   def percent
     object.percent.to_f
+  end
+
+  def view_percent
+    number_to_percentage(percent, :precision => 0)
   end
 end
 
