@@ -15,6 +15,7 @@ ActiveAdmin.register Project do
   filter :owner
   filter :manager
   filter :price
+  filter :raised
   filter :start_investment
   filter :finish_investment
   filter :price
@@ -45,6 +46,7 @@ ActiveAdmin.register Project do
     end
     f.inputs "Financials" do
       f.input :price
+      f.input :raised
       f.input :shares
       f.input :start_investment, :as => :string, :input_html => { :class => "hasDatetimePicker" }
       f.input :finish_investment, :as => :string, :input_html => { :class => "hasDatetimePicker" }

@@ -39,4 +39,8 @@ class ProjectDecorator < Draper::Decorator
   def view_price
     number_to_human(price, :precision => 2)
   end
+
+  def view_raise
+    number_to_human(raised, :precision => 2)
+  end
 end
