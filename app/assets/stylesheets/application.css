@@ -9,7 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+
+ *= require css/f
  *= require style
+
  *= require gritter
  *= require errors
  *= require own
