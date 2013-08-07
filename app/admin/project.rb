@@ -2,6 +2,7 @@ ActiveAdmin.register Project do
   index do
     column :name
     column :owner
+    column :manager
     column :percent
     column :shares
     column :start_investment
@@ -12,6 +13,7 @@ ActiveAdmin.register Project do
 
   filter :name
   filter :owner
+  filter :manager
   filter :price
   filter :start_investment
   filter :finish_investment
@@ -25,6 +27,7 @@ ActiveAdmin.register Project do
     end
     f.inputs "Company" do
       f.input :owner
+      f.input :manager
       f.input :company_image
     end
     f.inputs "Address (for showing on the google maps)" do
@@ -45,6 +48,7 @@ ActiveAdmin.register Project do
       f.input :start_investment, :as => :string, :input_html => { :class => "hasDatetimePicker" }
       f.input :finish_investment, :as => :string, :input_html => { :class => "hasDatetimePicker" }
       f.input :target_return
+      f.input :holding
       f.input :percent
       f.input :investment_type, :as => :select, :include_blank => false, :collection => [["Loan", "loan"], ["Equity", "equity"]]
     end

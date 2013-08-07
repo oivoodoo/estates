@@ -27,7 +27,7 @@
               <li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="term"><div><b><%= @project.holding %> <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
+              <li class="term"><div><b><%= @project.holding %> <u class="short"></u><u class="long"></u></b> <label>term</label></div></li>
             </ul>
             <div class="moneywrap size-3">
               <div>
@@ -106,7 +106,7 @@
           <%= @project.risks.to_s.html_safe %>
         </div>
         <div class='paper' ng:show="projectTab == 7">
-          <!-- TODO: add migration for manager field, place here manager content -->
+          <%= @project.manager.to_s.html_safe %>
         </div>
 			</div>
     </div>
