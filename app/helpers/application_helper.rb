@@ -14,6 +14,8 @@ module ApplicationHelper
   def header_class
     if controller_name == 'projects'
       "mini"
+    else
+      "mini"
     end
   end
 end
