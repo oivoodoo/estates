@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def header_class
-    if controller_name == 'projects' && action_name == 'show'
+    if controller_name == 'projects'
       "mini"
     end
   end
