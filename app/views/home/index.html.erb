@@ -1,9 +1,21 @@
 <section id="intro">
-  <div id="slideshow" class="grid-1-1 no-padding" style="background-image: url(<%= asset_path('sf-housing.jpg') %>); background-size: 100% auto; background-repeat:repeat-y"></div>
+  <div id="slideshow" class="grid-1-1 no-padding" >
+    <div>
+      <div style="
+        background-image: url(<%= image_path('img/intro-3.png') %>);
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        ">
+        <h1 class="title">Build a real estate portfolio online</h1>
+        <h6>Get access to exclusive investments and manage your portfolio using Flock.</h6>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="home-listing">
-  <div class="listing-head"><h4 class="listing-heading"><label>Featured Investments</label> <span><a href="<%= projects_path %>">See all →</a></span></h4></div>
+  <div class="listing-head"><h5 class="listing-heading"><label>Featured Investments</label><span><a href="<%= projects_path %>">View all</a></span></h5></div>
   <div class="gridwrap">
     <%= render @projects %>
   </div>

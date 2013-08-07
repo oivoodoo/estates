@@ -1,46 +1,44 @@
 <div id="sign-in" class="signup external">
   <div class="modal-header">
     <div>
-      <div class="logo"><%= image_tag("g/flockinvest-logo.svg") %></div>
+      <%= render 'layouts/logo' %>
       <div class="close" onclick="$.fancybox.close()"></div>
     </div>
   </div>
 
 	<div class="modal-content">
 		<div>
-			<div class="logo"><div><%= image_tag("g/flockinvest-logo.svg") %></div></div>
-        <% unless params[:internal] %>
-          <form action="signup">
-            <div class="ext-account-buttons">
-              <button formaction="<%= user_omniauth_authorize_path(:facebook) %>" name="ext-account" value="facebook" class="ext-account-button facebook"></button>
-              <%# <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="twitter" class="ext-account-button twitter"></button>%>
-              <button formaction="<%= user_omniauth_authorize_path(:google_oauth2) %>" name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-              <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
-            </div>
-            <div class="action">
+      <% unless params[:internal] %>
+        <form action="signup">
+          <div class="ext-account-buttons">
+            <button formaction="<%= user_omniauth_authorize_path(:facebook) %>" name="ext-account" value="facebook" class="ext-account-button facebook"></button>
+            <button formaction="<%= user_omniauth_authorize_path(:google_oauth2) %>" name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+            <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+          </div>
+          <div class="action">
+            <div>
               <div>
-                <div>
-                  Sign up with an external account to follow your friends' activity on Flock.<br><a href="<%= new_user_registration_path(:internal => true) %>" class="sign-in fancybox.ajax">Sign up without any external accounts</a>.
-                </div>
+                Sign up with an external account to follow your friends' activity on Flock.<br><a href="<%= new_user_registration_path(:internal => true) %>" class="sign-in fancybox.ajax">Sign up without any external accounts</a>.
               </div>
             </div>
-          </form>
-        <% else %>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
-            <%= f.text_field :name, placeholder: "Full Name", size: 1, required: true %>
-            <%= f.email_field :email, placeholder: "Email", size: 1, required: true %>
-            <%= f.password_field :password, placeholder: "Password", size: 1, required: true %>
+          </div>
+        </form>
+      <% else %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
+          <%= f.text_field :name, placeholder: "Full Name", size: 1, required: true %>
+          <%= f.email_field :email, placeholder: "Email", size: 1, required: true %>
+          <%= f.password_field :password, placeholder: "Password", size: 1, required: true %>
 
-            <div class="action">
+          <div class="action">
+            <div>
               <div>
-                <div>
-                  Already have an account? <a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Sign in</a>.
-                </div>
-                <div><%= f.submit "Sign up", class: "delta thicker" %></div>
+                Already have an account? <a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Sign in</a>.
               </div>
+              <div><%= f.submit "Sign up", class: "delta thicker" %></div>
             </div>
-          <% end %>
+          </div>
         <% end %>
+      <% end %>
 		</div>
 	</div>
 </div>

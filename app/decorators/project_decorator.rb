@@ -25,5 +25,9 @@ class ProjectDecorator < Draper::Decorator
     price / shares.to_f
   end
 
+
+  def percent
+    object.percent.to_f
+  end
 end
 
