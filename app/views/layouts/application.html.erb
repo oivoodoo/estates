@@ -25,7 +25,7 @@
   <%= gflash(js: true) %>
 
   <div id="wrap">
-    <header id="masthead" class='<%= header_class %>'>
+    <header id="masthead" class='<%= header_class %>' ng-class="{mini:headerClass=1}">
       <div>
         <div id="logo">
           <div>
@@ -67,4 +67,3 @@
   <%= render 'layouts/js' %>
 </body>
 </html>
-

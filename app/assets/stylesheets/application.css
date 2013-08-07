@@ -14,5 +14,6 @@
  *= require errors
  *= require own
  *= require angular-ui
+ *= require validates
  */
 
