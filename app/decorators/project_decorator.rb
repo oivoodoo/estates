@@ -12,7 +12,8 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def days_to_close
-    ((finish_investment = DateTime.now).to_f / 60.to_f / 60.to_f / 24.to_f).round
+    return 0 unless finish_investment.present?
+    ((finish_investment - DateTime.now).to_f / 60.to_f / 60.to_f / 24.to_f).round
   end
 
   def updated_at
