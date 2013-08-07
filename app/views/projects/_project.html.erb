@@ -39,7 +39,7 @@
               <div>
                 <ul class='money'>
                   <li class="raised" style="width:<%= number_to_percentage(project.percent, :precision => 0)%>;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-                  <li class="budget" style="width:<%= number_to_percentage(100 - project.percent, :precision => 0)%>;"><div><label>Budget</label><i>$</i><%= project.price %></div></li>
+                  <li class="budget" style="width:<%= number_to_percentage(100 - project.percent, :precision => 0)%>;"><div><label>Budget</label><i>$</i><%= project.view_price %></div></li>
                 </ul>
                 <div class="goal">
                   <div>
