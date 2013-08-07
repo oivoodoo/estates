@@ -44,7 +44,7 @@
             </div>
             <% if signed_in? %>
               <div class="action">
-                <button onclick="window.location='<%= new_project_invest_path(@project) %>'">Purchase Shares</button>
+                <button onclick="Turbolinks.visit('<%= new_project_invest_path(@project) %>')">Purchase Shares</button>
               </div>
             <% end %>
           </div>

@@ -13,21 +13,27 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.validate
+//
 //= require turbolinks
+//= require jquery.turbolinks
+//= require turbo
+//
 //= require gritter
-//= require custom
 //= require vendors/html5
 //= require vendors/fancybox.min
 //= require vendors/jquery-ui-1.10.3.min
 //= require vendors/jquery.ui.widget-combobox
 //= require vendors/jquery.fileupload
+//= require custom
 //= require invests
 //= require common
 //= require addresses
 //= require maps
 //= require ajax
+//
 //= require angular
 //= require angularjs/rails/resource
 //= require angular-ui
 //= require ng-rails-csrf
 //= require estates
+

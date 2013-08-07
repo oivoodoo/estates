@@ -1,0 +1,2 @@
+$.setReadyEvent('page:change')
+
