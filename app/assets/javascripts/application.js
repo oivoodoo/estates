@@ -20,6 +20,7 @@
 //= require vendors/fancybox.min
 //= require vendors/jquery-ui-1.10.3.min
 //= require vendors/jquery.ui.widget-combobox
+//= require vendors/jquery.fileupload
 //= require invests
 //= require common
 //= require addresses

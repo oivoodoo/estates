@@ -21,10 +21,10 @@
               <li class="type"><div><b><%= @project.investment_type %></b> <label>offering</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+              <li class="share"><div><b><i>$</i><%= @project.shares %></b> <label>/share</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+              <li class="yield"><div><b><%= @project.view_percent %><u></u></b> <label>yield</label></div></li>
             </ul>
             <ul class='size-6'>
               <li class="term"><div><b><%= @project.holding %> <u class="short"></u><u class="long"></u></b> <label>term</label></div></li>
@@ -33,7 +33,7 @@
               <div>
                 <ul class='money'>
                   <li class="raised" style="width:<%= @project.view_percent %>;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-                  <li class="budget" style="width:<%= number_to_percentage(100 - @project.percent, :precision => 0)%>;"><div><label>Budget</label><i>$</i>32m</div></li>
+                  <li class="budget" style="width:<%= number_to_percentage(100 - @project.percent, :precision => 0)%>;"><div><label>Budget</label><i>$</i><%= @project.view_price %></div></li>
                 </ul>
                 <div class="goal">
                   <div>
