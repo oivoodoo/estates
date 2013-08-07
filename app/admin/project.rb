@@ -37,6 +37,7 @@ ActiveAdmin.register Project do
     end
     f.inputs "Content" do
       f.input :description
+      f.input :short_description
       f.input :financials
       f.input :property
       f.input :strength
