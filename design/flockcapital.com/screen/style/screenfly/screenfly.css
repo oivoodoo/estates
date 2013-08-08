@@ -1,0 +1,126 @@
+body {
+	background: dimGray;
+}
+body.fixed.fixed-toolbar #page {
+	padding-top: 50px;
+}
+body.fixed .toolbar {
+	top:0;
+}
+#header {
+	display:none;
+}
+body.screenfly-frame {
+	background-image:url(../quirktools/i/ruler-v.png),url(../quirktools/i/ruler-h.png);
+	background-position:0 30px,30px 0;
+	background-repeat:no-repeat
+
+}
+body.fixed.screenfly-frame {
+	background-position:0 80px,30px 50px
+}
+body.fixed.fixed-toolbar.screenfly-frame {
+	background-position:0 80px,30px 50px
+}
+.toolbar-group>li.custom>ul.pop-form {
+	width:260px
+}
+.pop-form-contents input[type=number] {
+	width:80px;
+	padding:10px;
+	margin-right:10px;
+	float:left
+}
+#screenfly-form {
+	text-align:center
+}
+#siteurl {
+	width:600px;
+	font-size:17px;
+	line-height:20px;
+	padding:14px 20px
+}
+#go {
+	display:inline-block;
+	vertical-align:bottom;
+	float:none;
+	background:#f16304;
+	margin:0 0 0 10px
+}
+#frame {
+	background:#fff url(../quirktools/i/loading.gif) center no-repeat;
+	margin:0;
+	border:0
+}
+#viewport {
+	padding:30px
+}
+#viewport-body {
+	-webkit-box-shadow:0 0 40px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 0 40px rgba(0,0,0,0.2);
+	-o-box-shadow:0 0 40px rgba(0,0,0,0.2);
+	box-shadow:0 0 40px rgba(0,0,0,0.2)
+}
+#viewport-footer {
+	height:100px
+}
+#viewport-meta {
+	margin:10px 0 0 0;
+	height:24px;
+	padding:12px;
+	line-height:24px;
+	background:#000;
+	background:rgba(0,0,0,0.9);
+	color:#fff
+}
+#viewport-url {
+	display:block;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:pre;
+	font-weight:200;
+	margin-right:100px;
+	font-size:17px
+}
+#viewport-url a {
+	color:#fff;
+	border-bottom:1px solid transparent
+}
+#viewport-url a:hover,#viewport-url a:focus {
+	border-bottom:1px dotted #fff
+}
+#viewport-size {
+	display:block;
+	float:right;
+	font-weight:200;
+	color:#aaa
+}
+@media screen and (max-width:767px) {
+	#help-pop {
+		margin:10px 10px 0 0;
+		font-size:20px;
+		line-height:30px;
+		width:30px;
+		height:30px
+	}
+	#siteurl {
+		width:210px
+	}
+	#mimic label.checkbox {
+		font-size:14px
+	}
+}
+@media screen and (max-width:479px) {
+	#ruler {
+		position:fixed;
+		bottom:0;
+		left:0;
+		width:100%;
+		background:#eee;
+		-webkit-box-shadow:inset 0 10px 15px rgba(0,0,0,0.1)
+	}
+	#ruler .icon:before {
+		margin-left:20px
+	}
+}
+	

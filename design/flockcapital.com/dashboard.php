@@ -301,7 +301,9 @@
 									
 									<?php /*
 									<div class="message quiet">
-										<span>Your profile is 33% complete</span> <a class="button theta thicker" href="?p=investor-edit&i=<?php echo $h; ?>">Complete your profile</a>
+										<div>
+											<span>Your profile is 33% complete</span> <a class="button theta thicker" href="?p=investor-edit&i=<?php echo $h; ?>">Complete your profile</a>
+										</div>
 									</div>*/ ?>
 									
 									<ul class="feed">

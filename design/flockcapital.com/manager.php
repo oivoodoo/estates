@@ -17,12 +17,12 @@
 	<div class="head">
 		<div>
 			<figure class="profile-badge">
-				<a href="profile-pic.php" class="profile-pic fancybox.ajax"><img src="img/<?php echo $h; ?>.png"></a>
+				<img src="img/<?php echo $h; ?>.png">
 			</figure>
-			<div id="manager-details">
-				<h1><?php echo $name; ?></h1>
+			<div class="profile-details">
+				<h3 class="name"><?php echo $name; ?></h3>
 				
-				<div id="mini-bio">
+				<div class="mini-bio">
 					<p>Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav<?php /*<br><a href="#" class="hellip">…</a>*/ ?></p>
 				</div>
 	

@@ -5,6 +5,7 @@ jQuery(document).ready(function($) {
 		winH,
 		menuTallH,
 		menuShortH,
+		submenuH,
 		baseFontSize = parseInt($('body').css('font-size'), 10),
 		menuH,
 		footerH,
@@ -53,15 +54,16 @@ jQuery(document).ready(function($) {
 		fixPos = function() {
 			var scrollTop = $window.scrollTop();
 			$('.fix').each(function(i,el){
-				var $el = $(el);
+				var $el = $(el),
+					top = $el.data('top') || menuShortH;
 				
-				if (scrollTop+menuShortH > $el.data('offsetTop')) {
+				if (scrollTop+top > $el.data('offsetTop') && winW > 469) {
 					if (!$el.data('fixed')) {
-						$el.addClass('narrow').data('fixedclone').insertBefore($el);
+						$el.addClass('narrow').data('fixedclone').insertBefore($el).css('top', top);
 						$el.data('fixed', true);
 						setTimeout(function(){
 							$el.data('fixedclone').addClass('narrow');
-						}, 10);
+						}, 1);
 					}
 				} else {
 					$el.removeClass('narrow').data('fixedclone').removeClass('narrow').detach();
@@ -76,8 +78,12 @@ jQuery(document).ready(function($) {
 			baseFontSize = parseInt($body.css('font-size'), 10);
 			menuTallH = 8*baseFontSize;
 			menuShortH = 4*baseFontSize;
+			submenuH = $('.submenu').outerHeight();
 			$('.fix').each(function(i,el){
-				$(el).data('offsetTop', $(el).offset().top);
+				var $el = $(el),
+					$prev = $('.fix').eq(Math.max(1,i)-1);
+				$el.data('offsetTop', $el.offset().top);
+				$el.data('top', i==0 ? menuShortH : menuShortH+$prev.outerHeight());
 			});
 			
 			$wrap.css('padding-bottom', footerH);
@@ -132,16 +138,24 @@ jQuery(document).ready(function($) {
 				$submenu.outerHeight( 0 );
 			}
 		});
-		
-	$('.project-badge .profile-badge')
+	
+	$('.project-badge .project-name .profile-badge')
 		.on('mouseenter', function(e){
-			$(this).closest('.project-badge').find('.project-thumb .focus').addClass('overridehide');
+			$(this).parent().find('.manager-location span a').addClass('active');
 		})
 		.on('mouseleave', function(e){
-			$(this).closest('.project-badge').find('.project-thumb .focus').removeClass('overridehide');
+			$(this).parent().find('.manager-location span a').removeClass('active');
+		});
+	
+	$('.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .manager-location a')
+		.on('mouseenter', function(e){
+			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').addClass('overridehide');
+		})
+		.on('mouseleave', function(e){
+			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').removeClass('overridehide');
 		});
 		
-	$('#masthead nav ul, .tabs ul, .submenu ul, .financials >div >div >div')
+	$('#masthead nav ul, .tabs ul, .submenu ul, .financials >div >div >div, .ext-account-buttons')
 		.cleanWhitespace();
 	
 	$('.combobox')
@@ -335,12 +349,12 @@ jQuery(document).ready(function($) {
 					  }
 				  }
 			  },
-			  closeBtn: false/*,
+			  closeBtn: false,/*,
 			stretchToView: true,
-			modal: true,
+			modal: true,*/
 			afterShow: function() {
-				$wrap.css('visibility', 'hidden');
-			},
+				$('.ext-account-buttons').cleanWhitespace();
+			}/*,
 			beforeClose: function() {
 				$wrap.css('visibility', 'visible');
 			}*/
@@ -382,10 +396,13 @@ jQuery.fn.hasAnyClass = function() {
 	return false;
 }
 
-$.fn.cleanWhitespace = function() {
+jQuery.fn.cleanWhitespace = function() {
 	///stackoverflow.com/a/2587356
 	textNodes = this.contents().filter(function() {
 		return (this.nodeType == 3 && !/\S/.test(this.nodeValue));
 	}).remove();
 	return this;
 }
+
+
+

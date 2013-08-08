@@ -108,7 +108,7 @@
 	<div class="title fix">
 		<hgroup>
 			<h2>
-				<div class="profile-badge">
+				<div class="profile-badge manager-badge">
 					<div>
 						<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
 						<div class="focus"></div>
@@ -302,7 +302,7 @@
 							</div>
 						</li>
 						<li>
-							<div class="profile-badge">
+							<div class="profile-badge manager-badge">
 								<div>
 									<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
 									<div class="focus"></div>
@@ -324,7 +324,7 @@
 							</div>
 						</li>
 						<li>
-							<div class="profile-badge">
+							<div class="profile-badge manager-badge">
 								<div>
 									<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
 									<div class="focus"></div>

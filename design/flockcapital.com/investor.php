@@ -45,7 +45,9 @@
 	
 	<?php if ($h=='kadri') { ?>
 	<div class="message">
-		<span>This is <u>Your</u> profile.</span> <a class="button iota thicker" href="?p=investor-edit&i=<?php echo $h; ?>">Edit</a>
+		<div>
+			This is Your profile. &nbsp;&nbsp;<a class="button" href="?p=investor-edit&i=<?php echo $h; ?>">Edit</a>
+		</div>
 	</div>
 	<?php } ?>
 
@@ -54,15 +56,15 @@
 		<div>
 			
 			<figure class="profile-badge">
-				<a href="profile-pic.php" class="profile-pic fancybox.ajax"><img src="img/<?php echo $h; ?>.png"><div class="focus"></div></a>
+				<img src="img/<?php echo $h; ?>.png"><div class="focus"></div>
 			</figure>
-			<div id="investor-details">
-				<h3><?php echo $investor_name; /*?>
+			<div class="profile-details">
+				<h3 class="name"><?php echo $investor_name; /*?>
 					<?php if (isset($investor_type_label) && isset($investor_type_class)) { ?>
 						<label class="type <?php echo $investor_type_class; ?>"><?php echo $investor_type_label; ?></label>
 					<?php }*/ ?></h3>
 				
-				<div id="mini-bio">
+				<div class="mini-bio">
 					<p>Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav<?php /*<br><a href="#" class="hellip">…</a>*/ ?></p>
 				</div>
 	

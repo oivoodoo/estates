@@ -25,10 +25,6 @@ AUTHORS: Ivar Oja, Tyrone Tranmer
 
 
 
-
-
-
-
 @charset "UTF-8";
 
 @import "css/typeplate.less";
@@ -52,7 +48,7 @@ AUTHORS: Ivar Oja, Tyrone Tranmer
 html, body {
 	height: 100%;
 	background: white;
-	min-width: @maxW;
+	min-width: @bodyMaxW;
 }
 
 #wrap {
@@ -197,6 +193,9 @@ input[type=submit] {
 .thickest {
 	padding: .5em 1.2em;
 }
+.fat {
+	padding: 1em 1.2em;
+}
 .circle {
 	padding: .75em;
 	line-height: 0;
@@ -208,7 +207,7 @@ input[type=submit] {
 	.box-shadow(0 2px 3px -2px fade(black, 30%));
 	.text-shadow(0 -1px 1px fade(white, 20%));
 	color: @highlight;
-	&:hover {
+	&:hover, &:active {
 		.linear-gradient(top, darken(@offWhite, 3%), lighten(@offWhite, 3%));
 		.box-shadow(0 0 0 0 fade(black, 0%));
 	}
@@ -218,19 +217,29 @@ input[type=submit] {
 	.linear-gradient(top, lighten(@aluminium, 3%), darken(@aluminium, 3%));
 	.box-shadow(0 2px 3px -2px fade(black, 30%));
 	color: white;
-	&:hover {
+	&:hover, &:active {
 		.linear-gradient(top, darken(@aluminium, 3%), lighten(@aluminium, 3%));
 		.box-shadow(0 0 0 0 fade(black, 0%));
 	}
 }
+.faded {
+	font-family: 'HaasGrotDisp-55Roman'; // TODO @font-face for Neue Haas Grotesk
+	color: @magnesium;
+	background: @offWhite;
+	.box-shadow(none);
+	.text-shadow(none);
+	&:hover, &:active {
+		color: @offBlack;
+	}
+}
 .outlined {
 	font-weight: 400;
-	color: @aluminium;
-	border: 1px solid @magnesium;
+	color: @magnesium;
+	border: 1px solid @silver;
 	background: transparent;
 	.box-shadow(none);
 	.text-shadow(none);
-	&:hover {
+	&:hover, &:active {
 		color: @textGray;
 		border: 1px solid @nickel;
 	}
@@ -266,6 +275,8 @@ textarea {
 	padding: .5rem 1rem;
 	.box-shadow(0 2px 4px -1px fade(black, 0%));
 	.transition(all .2s);
+	
+	margin: .75em 0;
 	
 	&:focus {
 		.box-shadow(0 2px 4px -1px fade(black, 13%));
@@ -502,7 +513,7 @@ label.type {
 	.transition(all .2s);
 	pointer-events: none;
 	&:after {
-		font-family: 'entypo';
+		font-family: 'icobundl';
 		font-size: 6rem;
 		line-height: 1;
 		color: white;
@@ -517,12 +528,11 @@ label.type {
 }
 .eye {	
 	&:after {
-		content: '\E70A';
+		content: '\e807';
 	}
 }
 .info {
 	&:after {
-		font-family: 'icobundl';
 		font-size: 2rem;
 		height: 2rem;
 		margin-top: -1rem;
@@ -578,7 +588,7 @@ label.type {
 
 .paper {
 	//background: white;
-	padding: @padding*1.5 @padding*2.5 @padding*1.5 @padding;
+	padding: @padding*2.5 @padding*2.5 @padding*1.5 @padding;
 	//.box-shadow-multiple(1px -1px 0 mix(@lightGray, @offWhite), -1px -1px 0 mix(@lightGray, @offWhite));
 }
 @media only screen and (max-width: 1000px) { // <= Tablets and landscape large smartphones
@@ -600,12 +610,13 @@ label.type {
 
 
 .tabs {
-	
-	.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
+	//background: white;
+	//.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
 	border-bottom: 1px solid @lightGray;
 	ul {
 		padding-left: @padding/3;
 		line-height: 1;
+		padding-bottom: .4rem;
 	}
 	li {
 		.eta;
@@ -614,14 +625,15 @@ label.type {
 		a {
 			display: inline-block;
 			
-			padding: 0 @padding/3*2 .2rem;
-			line-height: 2.5rem;
+			padding: .5rem @padding/3*2 .3rem;
+			line-height: 2rem;
 			white-space: nowrap;
+			font-family: 'HaasGrotDisp-55Roman'; // TODO @font-face for Neue Haas Grotesk
 			color: @textGray;
 			vertical-align: top;
 			.transition(all .2s);
 			&.current {
-				font-weight: 500;
+				//font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
 				color: @highlight;
 			}
 			&:hover, &:active {
@@ -629,13 +641,16 @@ label.type {
 			}
 			
 		}
-	}
-	/*&.major {
+	}/*
+	&.major {
 		li {
 			a {
-				font-weight: 400;
-				&.current {
-					font-weight: 700;
+				border-bottom: 1px solid transparent;
+				&:hover, &:active {
+					border-bottom: 1px solid mix(@highlight, white, 50%);
+				}
+				&.current, &.current:hover {
+					border-bottom: 1px solid @highlight;
 				}
 			}
 		}
@@ -693,9 +708,25 @@ label.type {
 	}
 }
 .tabspace {
-	border-bottom: 1px solid @lightGray;
+	//border-bottom: 1px solid @lightGray;
 	.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
 	height: 3rem;
+}
+@media only screen and (max-width: 699px) { // <= Large smartphones
+	.tabs {
+		ul {
+			margin-left: -@padding;
+		}
+	}
+}
+@media only screen and (max-width: 469px) { // <= Large smartphones
+	.tabs {
+		padding-left: 0;
+		padding-right: 0;
+		ul {
+			margin-left: 0;
+		}
+	}
 }
 
 
@@ -880,8 +911,13 @@ label.type {
 
 .submenu {
 	//background: @offWhite;
-	.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
-	padding: 1rem;
+	//.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
+		
+	//.radial-gradient(50% 150%, @darkGray, @offBlack, farthest-side);
+	background-color: @offBlack;
+	//background-origin: content-box;
+	
+	padding: @padding/4 @padding;
 	>div {
 		.gridwrap;
 	}
@@ -894,10 +930,12 @@ label.type {
 		display: inline-block;
 		white-space: nowrap;
 		a {
+			.eta;
 			line-height: 1;
 			display: inline-block;
-			padding: 1rem;
-			color: @offBlack;
+			padding: @padding;
+			//color: @offBlack;
+			color: @offWhite;
 			.transition(all .2s);
 			font-weight: 500;
 			&.current {
@@ -910,13 +948,16 @@ label.type {
 			&:before {
 				font-family: 'icobundl';
 				content: '';
+				line-height: 0;
 			}
 			&.dashboard:before {
+				font-size: 1.2em;
 				content: '\e8ce';
 				margin-right: .5rem;
+				vertical-align: -1px;
 			}
 			&.settings:before {
-				content: '\e925';
+				content: '\e925'; // sliders (mixer/equalizer) — e925 | cogwheel — e85a | cogwheels — e958
 				margin-right: .5rem;
 			}
 			&.follow:before {
@@ -928,7 +969,7 @@ label.type {
 				margin-right: .5rem;
 			}
 			&.profile:before {
-				content: '\e80e';
+				content: '\e984';
 				margin-right: .5rem;
 			}
 			&.activity {
@@ -952,7 +993,7 @@ label.type {
 
 
 .message {
-	padding: @padding/2 @gridMargin;
+	padding: 0 @gridMargin;
 	margin-bottom: @padding;
 	color: white;
 	background: desaturate(lighten(@highlight, 5%), 5%);
@@ -960,11 +1001,26 @@ label.type {
 	.border-radius(.1em);
 	.clear-children;
 	
+	>div {
+		.padding;
+	}
+	
 	a.button,
 	button,
 	input[type=button],
 	input[type=submit] {
+		.theta;
 		.invert;
+		white-space: nowrap;
+		.box-shadow(none);
+		background: white;
+		padding: .5rem 1.5rem;
+		margin-top: -.5rem;
+		margin-bottom: -.5rem;
+		&:hover {
+			color: white;
+			background: darken(@highlight, 5%);
+		}
 	}
 	span {
 		+a.button,
@@ -1000,6 +1056,50 @@ label.type {
 			&:hover, &:active {
 				background: @offBlack;
 				color: white;
+			}
+		}
+	}
+}
+
+
+
+.fixed {
+	//.linear-gradient(top, fade(@offWhite, 80%), fade(darken(@offWhite, 2%), 80%));
+	//.box-shadow(inset 0 -@padding @padding -@padding fade(black, 10%));
+	position: fixed;
+	z-index: 7;
+	left: 0;
+	top: @mastheadShort;
+	width: 100%;
+	//background: @offWhite;
+	/*hgroup {
+		background: fade(@offWhite, 95%);
+	}*/
+	//.box-shadow(0 4px 4px -4px fade(black, 20%));
+}
+.narrow {
+	hgroup, .contract {
+		padding-top: @padding/1.25 !important;
+		padding-bottom: @padding/3 !important;
+		h2 {
+			font-size: unit(@gamma, em) !important;
+		}
+	}
+}
+@media only screen and (max-width: 1000px) { // <= Tablets and landscape large smartphones
+	.narrow {
+		hgroup {
+			h2{
+				font-size: unit(@gamma, em) !important;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 469px) { // <= Smartphones
+	.narrow {
+		hgroup {
+			h2{
+				font-size: unit(@delta, em) !important;
 			}
 		}
 	}
@@ -1073,6 +1173,18 @@ label.type {
 					opacity: 0;
 				}
 			}
+			.action {
+				button {
+					&.details {
+						color: white;
+						background: @highlight;
+						&.overridehide {
+							color: @highlight;
+							background: @offWhite;
+						}
+					}
+				}
+			}
 		}
 	}
 	
@@ -1085,7 +1197,13 @@ label.type {
 			width: 100%;
 			height: auto;
 		}
+		.focus {
+			//.eye;
+			//.info;
+			background: fade(@offBlack, 0%);
+		}
 	}
+	
 	header {
 		//display: none;
 		//.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
@@ -1094,9 +1212,10 @@ label.type {
 		//border-bottom: 1px solid @lightGray;
 		//background: white;
 		margin: @padding/1.5 0;
+		.clear-children;
 		.project-name {
 			.delta;
-			//font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+			font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
 			line-height: 1.1;
 			//margin-top: @padding/2;
 			//display: table;
@@ -1106,13 +1225,19 @@ label.type {
 			}
 		}
 		.profile-badge {
-			display: inline-block;
+			display: block;
 			vertical-align: top;
+			float: left;
+			//margin-right: .35em;
 			>div {
 				position: relative;
 				overflow: hidden;
-				width: 1.1em;
-				height: 1.1em;
+				width: 1.85em;
+				height: 1.85em;
+				/*.transition(all .2s);
+				&:hover {
+					.box-shadow(0 0 0 3px @highlight);
+				}*/
 			}
 			img {
 				width: 100%;
@@ -1122,28 +1247,44 @@ label.type {
 				padding: 0;
 			}
 			.focus{
-				background: fade(@offBlack, 60%);
+				//display: none;
+				background: fade(white, 90%);
 				&:after {
 					content: '';
 				}
+			}
+		}
+		.titlewrap {
+			margin-left: 2.2em;
+		}
+		.manager-location {
+			.mu;
+			line-height: 1.3;
+			margin-top: .2em;
+			font-family: 'HaasGrotDisp-45Light'; // TODO @font-face for Neue Haas Grotesk
+			color: @nickel;
+			a {
+				color: @nickel;
+				&.active, &:hover, &:active {
+					color: @highlight;
+				}
+			}
+			address {
+				display: inline-block;
+			}
+			span+address:before {
+				content: ' \00a0•\00a0\00a0 ';
 			}
 		}
 		a {
 			color: @offBlack;
 			display: inline;
 			vertical-align: top;
-			padding: 0 0 0 @padding/5;
 		}
 	}
 	
 	label.type {
 		font-size: .4em;
-	}
-	
-	.focus {
-		//.eye;
-		//.info;
-		background: fade(@offBlack, 30%);
 	}
 	
 	.summary {
@@ -1177,7 +1318,7 @@ label.type {
 					margin: 0;
 					width: auto;
 					padding-top: 0;
-					white-space: normal;
+					white-space: nowrap;
 				}
 			}
 		}
@@ -1242,6 +1383,9 @@ label.type {
 				width: 33.33%;
 				padding-top: @padding/4;
 				margin-right: -1em;
+				>div {
+					max-width: 100%;
+				}
 			}
 		}
 		ul {
@@ -1284,6 +1428,14 @@ label.type {
 					//.eta;
 					//color: @aluminium;
 				}
+				&.term {
+					u.long {
+						display: none;
+					}
+					u.short {
+						display: inline;
+					}
+				}
 			}
 			&:first-of-type {
 				li {
@@ -1309,6 +1461,7 @@ label.type {
 					//padding-top: .875rem;
 					padding-top: 0;
 					padding-right: 0;
+					.delta;
 					&.raised {
 						text-align: right;
 					}
@@ -1335,32 +1488,48 @@ label.type {
 			background: @offBlack;
 		}
 	}
+	
 	.action {
 		background: white;
 //		.box-shadow(0 2px 3px -2px fade(black, 30%));
 		button {
 			.thickest;
-			.kappa;
-			//font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+			.iota;
+			padding: 0 1.2em;
+			height: 2.4rem;
+			font-family: 'HaasGrotDisp-55Roman'; // TODO @font-face for Neue Haas Grotesk
 			//text-transform: uppercase;
 			width: 50%;
-			position: relative;
-			&:hover {
+			//position: relative;
+			background: @offWhite;
+			.transition-multiple(background-color .2s, color .2s, font-size 0);
+			/*&:hover {
 				z-index: 1;
-			}
+			}*/
 			&.follow {
 				//.outlined;
 				//.invert;
-				//color: @aluminium;
-				color: @aluminium;
-				background: transparent;
-				margin-right: -1px;
-				.border-radius(.3em 0 0 .3em);
-				.box-shadow(inset 0 0 0 1px @magnesium);
+				color: @magnesium;
+				//color: @offBlack;
+				//margin-right: -1px;
+				//.border-radius(.3em 0 0 .3em);
+				.border-radius(.2em 0 0 .2em);
+				//.box-shadow(inset 0 0 0 1px @magnesium);
+				//.box-shadow(0 2px 3px -2px fade(black, 20%));
+				.box-shadow(none);
 				.text-shadow(none);
 				&:hover {
-					color: @textGray;
-					.box-shadow(inset 0 0 0 1px @nickel);
+					//color: @textGray;
+					//.box-shadow(inset 0 0 0 1px @nickel);
+					//color: @highlight;
+					//background: mix(@offWhite, @highlight, 97%);
+					color: @offBlack;
+					//background: @darkGray;
+				}
+				&:before {
+					font-family: 'icobundl';
+					content: '\e800';
+					margin-right: .5em;
 				}
 				/*border-right: 0;
 				&:hover {
@@ -1368,11 +1537,27 @@ label.type {
 				}*/
 			}
 			&.details {
+				color: @highlight;
 				//border: 1px solid @highlight;
 				//.grayed;
-				.border-radius(0 .3em .3em 0);
+				//.border-radius(0 .3em .3em 0);
+				.border-radius(0 .2em .2em 0);
+				//.linear-gradient(top, lighten(@highlight, 1%), darken(@highlight, 1%));
+				.box-shadow(-1px 0 0 white);
+				.text-shadow(none);
+				//.linear-gradient(top, @offWhite, @offWhite);
+				&:hover {
+					color: white;
+					//.linear-gradient(top, darken(@highlight, 1%), lighten(@highlight, 1%));
+					background: @highlight;
+				}
+				&:after {
+					font-family: 'icobundl';
+					content: '\e96f';
+					margin-left: .5em;
+				}
 				//.box-shadow-multiple(-1px 0 0 fade(black, 3%), inset 1px 0 0 fade(white, 10%));
-				.box-shadow(none);
+				//.box-shadow(none);
 				border-left: 0;
 				//margin-left: -1px;
 				/*&:hover, &:active {
@@ -1433,8 +1618,8 @@ label.type {
 }
 @media only screen and (min-width: 1500px) and (max-width: 1799px){ // Large screen
 	.project-badge {
-		.grid-1-4;
-		&:nth-child(4n+1) {
+		.grid-1-3;
+		&:nth-child(3n+1) {
 			clear: left;
 		}
 	}
@@ -1455,8 +1640,8 @@ label.type {
 }
 @media only screen and (min-width: 1001px) and (max-width: 1199px) {
 	.project-badge {
-		.grid-1-3;
-		&:nth-child(3n+1) {
+		.grid-1-2;
+		&:nth-child(2n+1) {
 			clear: left;
 		}
 	}
@@ -1540,10 +1725,11 @@ label.type {
 		.grid-2-3;
 		//.gridwrap;
 		padding-top: @padding;
-		padding-bottom: @padding;
+		padding-bottom: @padding*2;
 		>div {
 			.table;
-			padding: 0 (@padding - (@padding/1.5)) 0 @gridMargin*3/2;
+			//padding: 0 (@padding - (@padding/1.5)) 0 @gridMargin*3/2;
+			padding: 0 @padding*2.5 0 @gridMargin*3/2;
 			/*padding: 0 @padding;
 			max-width: 50rem;
 			margin: 0 auto;*/
@@ -1558,19 +1744,26 @@ label.type {
 		}
 	}
 	.title {
-		background: @offWhite;
 		//.transition(all .5s);
+		//.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
+		background: white;
+		.tabs {
+			background: none;
+		}
 		hgroup {
+			//background: @offWhite;
 			.gridwrap;
 			padding: @padding;
 			
-			.profile-badge {				display: inline-block;
+			.profile-badge {
+				display: inline-block;
 				vertical-align: top;
+				padding-right: .2em;
 				>div {
 					position: relative;
 					overflow: hidden;
-					width: .95em;
-					height: .95em;
+					width: .9em;
+					height: .9em;
 				}
 				img {
 					width: 100%;
@@ -1584,6 +1777,7 @@ label.type {
 				}
 			}
 			h2 {
+				font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
 				margin-bottom: 0;
 				span {
 					white-space: nowrap;
@@ -1591,24 +1785,7 @@ label.type {
 			}
 			.transition(all .5s);
 		}
-		.transition(all .5s);
-		&.fixed {
-			position: fixed;
-			z-index: 7;
-			left: 0;
-			top: @mastheadShort;
-			width: 100%;
-			background: @offWhite;
-		}
-		&.narrow {
-			hgroup {
-				padding-top: @padding/1.25;
-				padding-bottom: @padding/3;
-				h2 {
-					.gamma;
-				}
-			}
-		}
+		.transition(all 1s);
 	}
 	.body {
 		.paper {
@@ -1808,7 +1985,7 @@ label.type {
 		.gridwrap;
 	}
 	.message {
-		text-align: center;
+		//text-align: center;
 		margin-bottom: 0;
 		a.button,
 		button,
@@ -1817,21 +1994,39 @@ label.type {
 			float: none;
 			display: inline-block;
 		}
-		+.head {
-			padding-top: @padding;
-		}
 	}
+	
 	.head {
-		background: @offWhite;
-		padding: @padding 0 0;
+		background: white;
+		.transition(all .5s);
+		
+		&.narrow {
+			.profile-badge {
+				width: 3rem;
+			}
+			.profile-details {
+				padding-bottom: 0;
+			}
+			.mini-bio, .ext-account-buttons {
+				.transition(all .5s);
+				height: 0 !important;
+				margin: 0;
+			}
+		}
+		
 		>div {
+			padding-top: @padding*2;
+			padding-bottom: @padding;
 			padding-right: @gridMargin;
 			padding-left: @gridMargin;
 			.table;
+			>* {
+				vertical-align: top;
+			}
 		}
 		figure {
 			//float: left;
-			width: 8rem;
+			width: 10rem;
 			padding-left: @padding;
 			text-align: center;
 			vertical-align: top;
@@ -1844,29 +2039,33 @@ label.type {
 				position: relative;
 				width: 100%;
 			}
-			/*.focus {
-				background: fade(@offBlack, 90%);
-				&:after {
-					content: '\1F304';
-				}
-			}*/
+			.focus {
+				opacity: 0;
+			}
 		}
-		#investor-details, #manager-details {
-			padding: 0 @padding @padding @padding/1.5;
+		.profile-details {
+			padding: 0 @padding @padding @padding;
+			.name {
+				font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+			}
 		}
-		#mini-bio {
+		.mini-bio {
+			.transition(all .5s);
 			.iota;
 			text-align: left;
 			max-width: 40rem;
 			margin-top: @padding/2;
+			overflow: hidden;
 			*:last-child {
 				margin-bottom: 0;
 			}
 		}
 		.ext-account-buttons {
+			.transition(all .5s);
 			margin-left: auto;
 			margin-right: auto;
 			margin-top: @padding/2;
+			overflow: hidden;
 			
 			.tertiary {
 				margin: 0;
@@ -1887,7 +2086,7 @@ label.type {
 						font-size: 0; // we want no space there between inline-block elements!
 						button {
 							padding: 0;
-							font-size: @padding*2; // size in rem (not em) units
+							font-size: 4.75rem; // size in rem (not em) units
 							color: @silver;
 							&.connected-ext-account-button {
 								&.facebook, &.twitter, &.google-plus, &.linked-in {
@@ -1901,6 +2100,24 @@ label.type {
 				}
 				
 			}
+		}
+	
+		.tabs {
+			display: block;
+			width: auto;
+			background: white;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+			ul {
+				display: block;
+			}
+		}
+	}
+	
+	.tab-content {
+		>div {
+			padding: @padding*2;
+			margin: 0 -@padding;
 		}
 	}
 }
@@ -2090,7 +2307,7 @@ label.type {
 					width: 100%;
 					text-align: center;
 					&.btns {
-						margin: 1rem auto 1rem;
+						margin: 1rem auto 0;
 						width: 100% !important;
 						>div {
 							margin: 0 auto;
@@ -2138,230 +2355,50 @@ label.type {
 —————————————————————————————————————————————————————————————————————————— */
 #investor-edit {
 	.submenu {
-		.linear-gradient(top, @offWhite, darken(@offWhite, 4%));
-	}
-	.head {
-		padding-top: 0;
-		padding-bottom: @padding*2;
-	}
-	.tabs {
-		padding: 0;
-		padding-right: @gridMargin;
-		padding-left: @gridMargin;
-	}
-	.tab-content {
-		.padding;
-	}
-	label {
-		display: block;
-		margin: @padding 0;
-		span {
-			display: block;
-			.lambda;
-			line-height: 1;
-			color: @aluminium;
-			&.ui-helper-hidden-accessible {
-				display: none;
-			}
-			+input, +.input-group {
-				margin-top: @padding/6 !important;
-			}
-		}
-		&.radio {
-			.transition(all .2s);
-			&:hover, &:active, &:focus, &.selected {
-				color: @highlight;
-			}
-		}
-	}
-	fieldset {
-		display: block;
-		margin: @padding 0;
-		legend {
-			display: block;
-			.lambda;
-			line-height: 1;
-			color: @aluminium;
-			+input, +.input-group {
-				padding-top: @padding/6;
-			}
-		}
-		&.separated-top,
-		&.separated-bottom,
-		&.separated-both {
-			/*margin-left: -@padding;
-			margin-right: -@padding;
-			padding-left: @padding;
-			padding-right: @padding;*/
-		}
-		&.separated-bottom {
-			padding-bottom: @padding;
-			border-bottom: 1px solid @silver;
-		}
-		&.separated-top {
-			padding-top: @padding;
-			border-top: 1px solid @silver;
-		}
-		&.separated-both {
-			padding-top: @padding;
-			padding-bottom: @padding;
-			border: 1px solid @silver;
-			border-width: 1px 0;
-		}
-		&.separated-top,
-		&.separated-both {
-			// TODO: this here is a webkit workaround
-			position: relative;
-			legend {
-				position: absolute;
-				left: 0;
-				top: @padding;
-				+input, +.input-group {
-					margin-top: (@padding/6) + (@padding);
-				}
-			}
-		}
-	}
-	.tight {
-		label {
-			margin: -1px 0 0;
-		}
-		input {
-			margin: 0 !important;
-		}
-		margin: @padding 0;
-	}
-	input[type=checkbox],
-	input[type=radio] {
-		margin-right: @padding/4;
-	}
-	input[type=text],
-	input[type=number],
-	input[type=email],
-	input[type=tel],
-	input[type=time],
-	input[type=week],
-	input[type=month],
-	input[type=datetime],
-	input[type=datetime-local],
-	input[type=search],
-	input[type=url],
-	input[type=password],
-	textarea,
-	.input-group {
-		margin: 0;
-		width: 100%;
-		position: relative;
-		z-index: 1;
-		&:focus {
-			z-index: 2;
-		}
-	}
-	.input-group {
-		padding: 0;
-		label {
-			margin: 0;
-			float: left;
-			+label {
-				margin-left: -1px;
-			}
-		}
-		.clear-children;
+		//.linear-gradient(top, @offWhite, darken(@offWhite, 4%));
 	}
 	
-	.action {
-		text-align: right;
-		margin-bottom: @padding/2;
-	}
-	
-	.tertiary {
-		.lambda;
-		font-weight: 400;
-		color: @magnesium;
-		margin: @padding/2 0 0 0;
-	}
-	
-	&.edit-profile {
-		.message {
-			&.quiet {
-				padding-top: 0;
-				//text-align: right;
-				a.button,
-				button,
-				input[type=button],
-				input[type=submit] {
-					.outlined;
-					//margin-right: @padding;
-					&:after {
-						font-family: 'icobundl';
-						content: '\e96f';
-						margin-left: .5em;
-					}
-				}
-			}
-		}
-	}
-}
-.investor-edit {
-	#wrap {
-		background: @offWhite;
-	}
-	&.accreditation {
-		#wrap {
-			background: white;
-		}
-	}
-	#main {
-		padding-top: @mastheadShort;
-	}
-}
-	#profile {
-		padding-top: 0;
-		.message {
-			text-align: center;
-			/*&.silent {
-				text-align: right;
-			}*/
+	.message {
+
+		&.quiet, &.silent {
+			//padding-top: 0;
+			//text-align: right;
 			a.button,
 			button,
 			input[type=button],
 			input[type=submit] {
-				float: none;
-			}
-		}
-		form {
-			//margin: 0 auto;
-			width: 100%;
-			max-width: 48rem;
-		}
-		.head {
-			.table;
-			margin-bottom: @padding*2;
-		}
-		figure {
-			.grid-1-3;
-			
-			img {
-				width: 100%;
-				height: auto;
-			}
-			a {
-				display: block;
-				position: relative;
-				width: 100%;
-			}
-			.focus {
-				background: fade(@offBlack, 90%);
+				.iota;
+				.fat;
+				.faded;
+				//margin-right: @padding;
 				&:after {
-					content: '\1F304';
+					font-family: 'icobundl';
+					content: '\e96f';
+					margin-left: .5em;
 				}
 			}
 		}
+	}
+	
+	.head {
+		.table;
+		
+		figure {
+			.focus {
+				background: fade(@offBlack, 90%);
+				&:after {
+					font-size: 2em;
+					line-height: 10rem;
+					height: 10rem;
+					margin-top: -5rem;
+					content: '\e806';
+				}
+			}
+		}
+		
 		.ext-account-buttons {
-			.grid-2-3;
-			padding-left: @padding;
 			
-			>div {
+			/*>div {
 				>div {
 					vertical-align: middle;
 					text-align: center;
@@ -2388,20 +2425,200 @@ label.type {
 						}
 					}
 				}
+			}*/
+		}
+	}
+	
+	.tabs {
+		padding: 0;
+		padding-right: @gridMargin;
+		padding-left: @gridMargin;
+		ul {
+			text-align: left;
+		}
+	}
+	
+	form {
+		//margin: 0 auto;
+		//width: 100%;
+		max-width: 50rem;
+		padding: @padding;
+		margin: 0 -@padding;
+		
+		>*:first-child {
+			margin-top: 0 !important;
+		}
+		>*:last-child {
+			margin-bottom: 0 !important;
+		}
+
+		label {
+		display: block;
+		margin: @padding 0;
+		span {
+			display: block;
+			.lambda;
+			line-height: 1;
+			color: @aluminium;
+			&.ui-helper-hidden-accessible {
+				display: none;
+			}
+			+input, +.input-group {
+				margin-top: @padding/6 !important;
 			}
 		}
-		/*.main, .side {
-			background: transparent;
-		}*/
+		&.radio {
+			.transition(all .2s);
+			&:hover, &:active, &:focus, &.selected {
+				color: @highlight;
+			}
+		}
+	}
+	
+		fieldset {
+			display: block;
+			margin: @padding*1.5 0;
+			legend {
+				width: 100%;
+				display: block;
+				.lambda;
+				line-height: 1;
+				color: @aluminium;
+				+input, +.input-group {
+					padding-top: @padding/6;
+				}
+			}
+			&.separated-top,
+			&.separated-bottom,
+			&.separated-both {
+				/*margin-left: -@padding;
+				margin-right: -@padding;
+				padding-left: @padding;
+				padding-right: @padding;*/
+			}
+			&.separated-bottom {
+				padding-bottom: @padding*1.5;
+				border-bottom: 1px solid @lightGray;
+			}
+			&.separated-top {
+				padding-top: @padding*1.5;
+				border-top: 1px solid @lightGray;
+			}
+			&.separated-both {
+				padding-top: @padding*1.5;
+				padding-bottom: @padding*1.5;
+				border: 1px solid @lightGray;
+				border-width: 1px 0;
+			}
+			&.separated-top,
+			&.separated-both {
+				// TODO: this here is a webkit workaround
+				position: relative;
+				legend {
+					position: absolute;
+					left: 0;
+					top: @padding*1.5;
+					+input, +.input-group {
+						margin-top: (@padding/6) + (@padding);
+					}
+				}
+			}
+		}
+	
+		.tight {
+		label {
+			margin: -1px 0 0;
+		}
+		input {
+			margin: 0 !important;
+		}
+		margin: @padding 0;
+	}
+	
+		input[type=checkbox],
+		input[type=radio] {
+		margin-right: @padding/4;
+	}
+		input[type=text],
+		input[type=number],
+		input[type=email],
+		input[type=tel],
+		input[type=time],
+		input[type=week],
+		input[type=month],
+		input[type=datetime],
+		input[type=datetime-local],
+		input[type=search],
+		input[type=url],
+		input[type=password],
+		textarea,
+		.input-group {
+		margin: 0;
+		width: 100%;
+		position: relative;
+		z-index: 1;
+		&:focus {
+			z-index: 2;
+		}
+	}
+		
+		.input-group {
+			padding: 0;
+			label {
+				margin: 0;
+				float: left;
+				+label {
+					margin-left: -1px;
+				}
+			}
+			.clear-children;
+		}
+		
+		.action {
+			text-align: right;
+			margin-bottom: @padding/2;
+		}
+	}
+	
+	.tertiary {
+		.lambda;
+		font-weight: 400;
+		color: @magnesium;
+		margin: @padding/2 0 0 0;
+	}
+
+}
+.investor-edit {
+	/*#wrap {
+		background: @offWhite;
+	}*/
+	&.accreditation {
+		#wrap {
+			background: white;
+		}
+	}
+	#main {
+		padding-top: @mastheadShort;
+	}
+}
+	#profile {
+		form {
+			background: @offWhite;
+		}
 	}
 	#accreditation {
-		.intro {
-			padding: @padding 0 @padding/6;
+		form {
+			p, #doc-scan-preview {
+				max-width: 48rem;
+			}
 		}
-		h1, h2, h3, h4, h5 {
+		.intro {
+			padding: @padding 0 0;
+		}
+		h1, h2, h3, h4, h5, h6 {
 			//margin-bottom: unit(@line-height, rem);
 			margin-bottom: @padding/2;
-			font-weight: 600;
+			font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
 		}
 		#doc-upload-progress {
 			display: none;
@@ -2432,6 +2649,7 @@ label.type {
 		}
 		fieldset {
 			color: @offBlack;
+			
 			p {
 				.iota;
 				//font-weight: 300;
@@ -2441,12 +2659,17 @@ label.type {
 				margin: @padding/4 0;
 			}
 		}
-		form p, #doc-scan-preview {
-			max-width: 48rem;
-		}
 	}
 @media only screen and (max-width: 699px) { // <= Large smartphones
 	#investor-edit {
+		.tab-content {
+			>div {
+				padding-left: 0;
+				padding-right: 0;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
 		#profile {
 			.message {
 				margin: 0 0 @padding;
@@ -2486,18 +2709,37 @@ label.type {
 }
 @media only screen and (max-width: 469px) { // <= Smartphones
 	#investor-edit {
-		.input-group {
-			label {
-				width: 100% !important;
-				float: none;
-				~label {
-					margin-left: 0;
-					margin-top: -1px;
-					input {
-						margin: 0;
-					}
-					span {
-						display: none;
+		.head{
+			>div {
+				padding-left: @padding;
+				padding-right: @padding;
+				&.tabs {
+					padding: 0;
+				}
+			}
+			.profile-details {
+				padding-top: @padding;
+				padding-right: 0;
+				padding-left: 0;
+			}
+		}
+		form {
+			padding-top: @padding*2;
+			margin-left: 0;
+			margin-right: 0;
+			.input-group {
+				label {
+					width: 100% !important;
+					float: none;
+					~label {
+						margin-left: 0;
+						margin-top: -1px;
+						input {
+							margin: 0;
+						}
+						span {
+							display: none;
+						}
 					}
 				}
 			}
@@ -2505,6 +2747,12 @@ label.type {
 		&.edit-profile {
 			.message.quiet {
 				text-align: center;
+			}
+		}
+		
+		.tab-content {
+			>div {
+				padding-top: 0;
 			}
 		}
 	}
@@ -2524,7 +2772,7 @@ label.type {
 	.theta;
 	.grid-1-3;
 	//text-align: center;
-	padding: @padding @padding @padding @padding/1.5;
+	padding: @padding @padding @padding*2 @padding/1.5;
 	/*.gridwrap;
 	padding: @padding/3 @padding @padding @padding;
 	max-width: 50rem;
@@ -2650,7 +2898,7 @@ label.type {
 				/*>div:before {
 					content: '\e84d';
 				}*/
-				u.long {
+				u.short {
 					display: none;
 				}
 			}
@@ -2732,6 +2980,14 @@ label.type {
 			.delta;
 			padding: 1em 1.2em;
 			width: 100%;
+			/*&:after {
+				font-family: 'icobundl';
+				//font-size: 1.5em;
+				//vertical-align: -.1em;
+				//line-height: 0;
+				content: '\e96f';
+				margin-left: .5em;
+			}*/
 		}
 	}
 }
@@ -2805,7 +3061,8 @@ label.type {
 				vertical-align: top;
 				background: none;
 				li {
-					padding-top: @padding;
+					font-size: 1.65em;
+					padding-top: 1.45rem;
 					padding-bottom: 0;
 					label {
 						margin-left: 0;
@@ -2842,6 +3099,7 @@ label.type {
 			}
 		}
 		.goal {
+			padding-top: @padding/2;
 			width: 100%;
 			background: none;
 		}
@@ -2911,6 +3169,7 @@ label.type {
 				li {
 					padding-left: 0;
 					padding-right: 0;
+					padding-top: 0;
 				}
 			}
 		}
@@ -3415,13 +3674,27 @@ label.type {
 		}
 	}
 	.focus {
-		background: fade(@offBlack, 30%);
+		background: fade(@offWhite, 10%);
 		&:after {
 			//content: '\1F304';
 		}
 	}
 	a {
 		border: 0;
+	}
+	&.manager-badge {
+		img {
+			.filter(grayscale(100%));
+			.transition(all .2s);
+		}
+		&:hover, &:focus {
+			img {
+				.filter(none);
+			}
+			.focus {
+				opacity: 0;
+			}
+		}
 	}
 }
 
@@ -3822,15 +4095,22 @@ label.type {
 				color: white;
 				padding-left: @gridMargin;
 				padding-right: @gridMargin;
+				padding-top: @mastheadShort;
+				h1, h2 {
+					font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+				}
+				h6 {
+					.eta;
+				}
 				h1, h2, h3, h4, h5, h6 {
 					padding-left: @padding;
 					padding-right: @padding;
 					color: white;
 					font-weight: 300;
 					line-height: 1.2;
-					//.text-shadow(0 -1px 0 black);
-					+h1, +h2, +h3, +h4, +h5, +h6 {
-						margin-top: @padding;
+					//.text-shadow(0 1px 3px black);
+					+h1, +h2, +h3, +h4, +h5, +h6, +div {
+						margin-top: @padding/2;
 					}
 				}
 				h6 {
@@ -3923,6 +4203,7 @@ label.type {
 
 
 
+
 /*	Footer
 —————————————————————————————————————————————————————————————————————————— */
 #wrap >footer {
@@ -3945,6 +4226,7 @@ label.type {
 
 /*	Signup-login modal
 —————————————————————————————————————————————————————————————————————————— */
+@maxW: 30.575rem;
 #sign-in {
 	display: table;
 	width: 100%;
@@ -3971,7 +4253,7 @@ label.type {
 			height: 3rem;
 			line-height: 3rem;
 			img, svg {
-				height: 1em;
+				height: 2em;
 				vertical-align: middle;
 			}
 			svg {
@@ -3982,7 +4264,6 @@ label.type {
 		}
 	}
 
-	@maxW: 30.55rem;
 
 	.modal-content {
 		>div {
@@ -4157,6 +4438,28 @@ label.type {
 						display: block;
 						text-align: center !important;
 					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: (@maxW + @padding + 2rem + 6rem)) {
+	#sign-in {
+		.modal-content {
+			form {
+				.ext-account-buttons {
+					width: @maxW/2;
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: (@maxW/2 + @padding + 2rem + 6rem)) {
+	#sign-in {
+		.modal-content {
+			form {
+				.ext-account-buttons {
+					width: @maxW/4;
 				}
 			}
 		}

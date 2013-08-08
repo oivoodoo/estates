@@ -18,7 +18,7 @@
 	$progress			= array_key_exists('progress',	$project)			? $project['progress']			: null;
 	$progress_percent	= ($goal && $progress)								? round($progress/$goal*100)	: null;	// percentage
 	$financials			= array_key_exists('financials',$project)			? $project['financials']		: null;
-	$terms				= array_key_exists('terms',		$project)			? $project['terms']				: null;
+	$location			= array_key_exists('location',	$project)			? $project['location']			: null;
 	
 	global $badge_alt;
 
@@ -30,14 +30,36 @@
 		
 		<header>
 			<h4 class="project-name">
-				<div class="profile-badge">
+				<div class="profile-badge manager-badge">
 					<div>
 						<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
 						<div class="focus"></div>
 					</div>
 				</div>
 				
-				<a class="project-link" href="<?php echo $link ?>"><?php echo $name; /*?> <label class="type"><?php echo $type; ?></label>*/ ?></span></a>
+				<div class="titlewrap">
+					<a class="project-link" href="<?php echo $link ?>"><?php echo $name; /*?> <label class="type"><?php echo $type; ?></label></span>*/ ?></a>
+					<div class="manager-location">
+						<?php
+							if ($manager) {
+								echo '<span><a href="?p=manager&m='.$project['manager'].'" title="'.$manager['name'].'">'.$manager['name'].'</a></span> ';
+							}
+							if ($location && (array_key_exists('locality', $location) || array_key_exists('address', $location))) {
+								echo '<address>';
+								
+								if (array_key_exists('address', $location))
+									echo '<a href="'.$link.'#location" title="'.$location['address'].'">';
+								
+									echo array_key_exists('locality', $location) ? $location['locality'] : $location['address'];
+								
+								if (array_key_exists('address', $location))
+									echo '</a>';
+								
+								echo '</address>';
+							}
+						?>
+					</div>
+				</div>
 			</h4>
 		</header>
 		
@@ -107,7 +129,7 @@
 		</div>
 		
 		<div class="action">
-			<button class="follow">Follow</button><button class="details">Full Details</button>
+			<button class="follow" title="Follow this project">Follow</button><button class="details" title="<?php echo $name; ?>">Full Details</button>
 		</div>
 		
 	</div>

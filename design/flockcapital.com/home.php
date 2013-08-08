@@ -6,13 +6,17 @@
 	"*/ ?>>
 		<div>
 			<div style="
-				background-image: url('img/intro-3.png');
+				background-image: url('img/intro-3-434391.jpg');
 				background-size: auto 100%;
 				background-repeat: no-repeat;
-				background-position: center bottom;
+				background-position: left bottom;
 			">
 				<h1 class="title">Build a real estate portfolio online</h1>
 				<h6>Get access to exclusive investments and manage your portfolio using Flock.</h6>
+				<div>
+					<button class="how-it-works">How It Works</button>
+					<button class="sign-up">Sign Up</button>
+				</div>
 			</div>
 		</div>
 	</div>
