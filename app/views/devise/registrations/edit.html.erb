@@ -1,4 +1,4 @@
-<section id="investor-edit" class="edit-profile">
+<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: :short_bio) %>'>
 
   <div class="submenu">
     <div>
@@ -18,13 +18,13 @@
   <div class="head">
     <div>
       <figure class="profile-badge">
-        <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax"><%= render partial: 'users/avatar', locals: { user: @user } %><div class="focus"></div></a>
+        <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax"><%= render partial: 'users/avatar', locals: { user: current_user } %><div class="focus"></div></a>
       </figure>
       <div id="investor-details">
-        <h3><%= @user.title %> <%= current_user.name %></h3>
+        <h3><%= current_user.title %> <%= current_user.name %></h3>
 
         <div id="mini-bio">
-          <p><%= @user.short_bio %> {{ shortBio }}</p>
+          <p>{{ user.short_bio }}</p>
         </div>
 
         <div class="ext-account-buttons">
@@ -63,7 +63,9 @@
           </label>
 
           <label for="user_short_bio">
-            <%= f.text_area :short_bio, placeholder: "Short biography", 'ng-model' => "shortBio", :size => 1 %>
+            <%= f.text_area :short_bio, placeholder: "Short biography", 'ng-model' => "user.short_bio", :size => 1 do %>
+              {{user.short_bio}}
+            <% end %>
           </label>
 
           <fieldset class="separated-bottom">
@@ -187,6 +189,6 @@
   </div>
 </section>
 
-<%#= render partial: 'users/avatar', object: @user %>
+<%#= render partial: 'users/avatar', object: current_user %>
 <%#= f.file_field :avatar %>
 
