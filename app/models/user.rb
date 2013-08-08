@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    "#{first_name} #{last_name} #{middle_name}".strip
+    "#{first_name} #{middle_name} #{last_name}".strip
   end
 
   #"James Bond Petrovich"
