@@ -155,7 +155,7 @@ $(function() {
 
 $(window)
 .on('resize', function(e){
-  layout();
+  window.layout();
   connectionMasonry();
 })
 .on('scroll', function(e){
@@ -167,7 +167,7 @@ $(window)
   callNag();
 })
 .on('load', function(){
-  layout();
+  window.layout();
   connectionMasonry();
 });
 
