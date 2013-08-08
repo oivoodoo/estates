@@ -1,6 +1,5 @@
-<% if @user.avatar? %>
-  <%= image_tag @user.avatar_url(:thumb), class: "circle" %>
+<% if user.avatar? %>
+  <%= image_tag user.avatar_url(:thumb)%>
 <% else %>
-  <%= image_tag "default_avatar.png", class: "circle" %>
+  <%= image_tag "default_avatar.png"%>
 <% end %>
-
