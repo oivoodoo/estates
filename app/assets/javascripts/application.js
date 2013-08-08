@@ -15,9 +15,8 @@
 //= require jquery.validate
 //
 //= require turbolinks
-//= require jquery.turbolinks
 //= require turbo
-//
+
 //= require gritter
 //= require vendors/html5
 //= require vendors/fancybox.min

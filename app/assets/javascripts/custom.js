@@ -16,7 +16,7 @@ $.fn.cleanWhitespace = function() {
   return this;
 }
 
-$(function() {
+window.load = function() {
   var winW,
   winH,
   menuTallH,
@@ -116,20 +116,17 @@ $(function() {
   window.sizeMenu = function() {
     if (menuFlex) {
       var scrollTop = $(window).scrollTop(),
-      //mini = scrollTop > menuTallH-menuShortH ? true : false,
+
       autohide = scrollTop > menuTallH ? true : false;
 
-      /*if (mini)
-        return;*/
-
-      if (   scrollTop <= Math.max(0, $('#intro').height()-menuTallH)   ) {
+      if (scrollTop <= Math.max(0, $('#intro').height()-menuTallH)   ) {
         // don't contract the menu yet
         document.getElementById('masthead').style.height = '';
         document.getElementById('nav').style.marginTop = '';
         document.getElementById('expand').style.marginTop = '';
         $('#masthead').removeClass('mini');
 
-      } else if (   scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
+      } else if (scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
         // don't contract the menu any further
         document.getElementById('masthead').style.height = '';
         document.getElementById('nav').style.marginTop = '';
@@ -137,21 +134,17 @@ $(function() {
         $('#masthead').addClass('mini');
 
       } else {
-        //menuH = menuTallH - (scrollTop - (Math.abs($('#intro').height()-menuTallH)));
         menuH = menuTallH - scrollTop + Math.max(0, ($('#intro').height()-menuTallH));
-        //menuH = $('#intro').height() - scrollTop;
-        console.log(menuH);
         document.getElementById('masthead').style.height = menuH+'px';
         document.getElementById('nav').style.marginTop = ((menuH-menuShortH)/2)+'px';
         document.getElementById('expand').style.marginTop = ((menuH-menuShortH)/2)+'px';
         $('#masthead').removeClass('mini');
-
       }
     }
   };
+};
 
-  window.layout();
-});
+$(document).ready(window.load);
 
 $(window)
 .on('resize', function(e){
@@ -232,7 +225,6 @@ $(document).on('click', '#expand', function(e) {
     var navH = $masthead.find('nav').outerHeight(true);
 
     mastHeadH = menuFlex ? (expand ? menuH+navH : menuH) : (expand ? ((3+(navH/baseFontSize))*1.1)+'rem' : '3rem'); //TODO: +2.6 ????
-    //console.log(baseFontSize, navH);
 
     return  mastHeadH;
   });

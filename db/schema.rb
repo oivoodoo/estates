@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130808130438) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -171,8 +174,8 @@ ActiveRecord::Schema.define(version: 20130808130438) do
     t.integer  "shares",              default: 1,          null: false
     t.string   "risks",               default: ""
     t.text     "manager"
-    t.float    "raised"
     t.text     "short_description"
+    t.float    "raised"
   end
 
   create_table "sessions", force: true do |t|

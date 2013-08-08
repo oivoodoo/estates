@@ -1,2 +1,3 @@
-$.setReadyEvent('page:change')
+$(document).on 'page:load', ->
+  window.load()
 
