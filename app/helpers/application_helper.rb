@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def header_class
-    if controller_name == 'projects'
+    if ['projects', 'registrations', 'pages'].include?(controller_name)
       "mini"
     end
   end

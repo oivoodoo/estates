@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_password
 
-  validates :name, :email, :status, presence: true
+  validates :email, :status, presence: true
 
   has_many :authentications
 
@@ -63,6 +63,18 @@ class User < ActiveRecord::Base
 
   def profile_image
     avatar.present? ? avatar.url(:thumb) : "default_avatar.png"
+  end
+
+  def name
+    "#{first_name} #{last_name} #{middle_name}".strip
+  end
+
+  #"James Bond Petrovich"
+  def name=(full_name)
+    names = full_name.to_s.split(/ /)
+    self.first_name  = names[0]
+    self.last_name   = names[1]
+    self.middle_name = names[2]
   end
 end
 

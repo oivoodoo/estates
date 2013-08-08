@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe User do
   it { should have_many(:authentications) }
-  it { should validate_presence_of(:name) }
   it { should validate_presence_of(:email) }
 end
 
@@ -164,6 +163,44 @@ describe User do
       expect(user).to eq(kate_facebook.user)
       user = User.find_for_linkedin(linkedin)
       expect(user).to eq(kate_linkedin.user)
+    end
+  end
+end
+
+describe User do
+  describe '.name' do
+    let(:user) { build(:user, first_name: "James", middle_name: "Petrovich", last_name: "Bond") }
+
+    it 'should return full name based on first, middle, last names' do
+      expect(user.name).to eq("James Bond Petrovich")
+    end
+  end
+
+  describe '.name=(value)' do
+    let(:user) { build(:user) }
+
+    it 'should not assign anything in case of noname' do
+      user.name = nil
+      expect(user.first_name).not_to be
+      expect(user.last_name).not_to be
+      expect(user.middle_name).not_to be
+    end
+
+    it 'should assign first, middle, last names using passed full name' do
+      user.name = "Kate"
+      expect(user.first_name).to eq("Kate")
+      expect(user.last_name).not_to be
+      expect(user.middle_name).not_to be
+
+      user.name = "Kate Watson"
+      expect(user.first_name).to eq("Kate")
+      expect(user.last_name).to eq("Watson")
+      expect(user.middle_name).not_to be
+
+      user.name = "Kate Watson Petrovna"
+      expect(user.first_name).to eq("Kate")
+      expect(user.last_name).to eq("Watson")
+      expect(user.middle_name).to eq("Petrovna")
     end
   end
 end

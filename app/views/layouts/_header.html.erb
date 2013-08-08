@@ -8,13 +8,13 @@
     <li><a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Log In</a></li>
   <% else %>
     <li class="profile-badge ">
-      <a href="<%= dashboard_path %>" id="profile-badge">
+      <a href="<%= edit_user_registration_path %>" id="profile-badge">
         <%= image_tag current_user.profile_image, class: 'front' %>
         <div class="focus"></div>
       </a>
 
       <ul>
-        <li class="namee"><a class='current' href="<%= dashboard_path %>"><%= current_user.name %></a></li>
+        <li class="namee"><a class='current' href="<%= edit_user_registration_path %>"><%= current_user.name %></a></li>
         <% if can?(:manage, :all) %>
           <li><%= link_to "Admin", '/admin'%></li>
         <% end %>

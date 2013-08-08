@@ -5,6 +5,7 @@ class ProjectTagsController < ApplicationController
     else
       Project.page(params[:page])
     end
+    @projects = ProjectsDecorator.decorate(@projects)
 
     render 'projects/index'
   end

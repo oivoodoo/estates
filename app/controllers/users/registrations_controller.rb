@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout false
+  layout false, only: [:new, :create]
 
   def create
     build_resource(sign_up_params)
