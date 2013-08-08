@@ -9,11 +9,11 @@
 	<div class="modal-content">
 		<div>
       <% unless params[:internal] %>
-        <form action="signup">
+        <form>
           <div class="ext-account-buttons">
-            <button formaction="<%= user_omniauth_authorize_path(:facebook) %>" name="ext-account" value="facebook" class="ext-account-button facebook"></button>
-            <button formaction="<%= user_omniauth_authorize_path(:google_oauth2) %>" name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-            <button formaction="<%= user_omniauth_authorize_path(:linkedin) %>" name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+            <button onclick="window.location='<%= user_omniauth_authorize_path(:facebook) %>'" name="ext-account" value="facebook" class="ext-account-button facebook"></button>
+            <button onclick="window.location='<%= user_omniauth_authorize_path(:google_oauth2) %>'" name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+            <button onclick="window.location='<%= user_omniauth_authorize_path(:linkedin) %>'" name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
           </div>
           <div class="action">
             <div>
