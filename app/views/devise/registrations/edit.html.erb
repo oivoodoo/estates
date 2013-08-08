@@ -1,4 +1,4 @@
-<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name]) %>'>
+<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link]) %>'>
 
   <div class="submenu">
     <div>
@@ -31,10 +31,10 @@
           <div>
             <div class="btns">
               <div>
-                <button name="ext-account" value="facebook" class="ext-account-button facebook connected-ext-account-button" onclick="window.location=facebook.com"></button>
-                <button name="ext-account" value="twitter" class="ext-account-button twitter connected-ext-account-button"></button>
-                <button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-                <button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+                <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-disbled="!user.facebook_link"></button>
+                <button name="ext-account" value="twitter" class="ext-account-button twitter" ng-click='open(user.twitter_link)' ng-class="{'connected-ext-account-button':user.twitter_link}" ng-disabled="!user.twitter_link"></button>
+                <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-disabled="!user.google_plus_link"></button>
+                <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-disabled="!user.linkedin_link"></button>
               </div>
             </div> &nbsp;&nbsp;
             <div>
@@ -72,13 +72,13 @@
             <legend>To change your password, provide your old password and then type the new one:</legend>
             <div class="input-group">
               <label for="user_current_password" style="width:33.3%">
-                <%= f.password_field :current_password, placeholder: "Old password", :size => 1 %>
+                <%= f.password_field :current_password, placeholder: "Old password", :size => 1, :autocomplete => 'off' %>
               </label>
               <label for="user_password" style="width:33.3%">
-                <%= f.password_field :password, placeholder: "New password", :size => 1 %>
+                <%= f.password_field :password, placeholder: "New password", :size => 1, :autocomplete => 'off' %>
               </label>
               <label for="user_password_confirmation" style="width:33.3%">
-                <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1 %>
+                <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1, :autocomplete => 'off' %>
               </label>
             </div>
           </fieldset>
@@ -129,6 +129,21 @@
             <label for="user_state">
               <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
             </label>
+            <fieldset class="separated-bottom">
+              <legend>Add your social link:</legend>
+              <label for="user_facebook_link">
+                <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
+              </label>
+              <label for="user_twitter_link">
+                <%= f.text_field :twitter_link, placeholder: "https://twitter.com/", :size => 1, 'ng-model' => 'user.twitter_link' %>
+              </label>
+              <label for="user_google_plus_link">
+                <%= f.text_field :google_plus_link, placeholder: "https://plus.google.com/", :size => 1, 'ng-model' => 'user.google_plus_link'%>
+              </label>
+              <label for="user_linkedin_link">
+                <%= f.text_field :linkedin_link, placeholder: "http://www.linkedin.com/", :size => 1, :autocomplete => 'off', 'ng-model' => 'user.linkedin_link' %>
+              </label>
+            </fieldset>
           </div>
 
           <div class="action">
