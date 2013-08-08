@@ -1,4 +1,4 @@
-<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: :short_bio) %>'>
+<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name]) %>'>
 
   <div class="submenu">
     <div>
@@ -21,7 +21,7 @@
         <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax"><%= render partial: 'users/avatar', locals: { user: current_user } %><div class="focus"></div></a>
       </figure>
       <div id="investor-details">
-        <h3><%= current_user.title %> <%= current_user.name %></h3>
+        <h3>{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}} </h3>
 
         <div id="mini-bio">
           <p>{{ user.short_bio }}</p>
@@ -85,16 +85,24 @@
 
           <fieldset class="input-group name">
             <label for="user_title" style="width:15%;">
-              <%= f.text_field :title, placeholder: 'Title', size: 1 %>
+              <%= f.text_field :title, placeholder: 'Title', 'ng-model' => "user.title", size: 1 do %>
+                {{user.title}}
+              <% end %>
             </label>
             <label for="user_first_name" style="width:28.33%">
-              <%= f.text_field :first_name, placeholder: 'First Name', size: 1 %>
+              <%= f.text_field :first_name, placeholder: 'First Name', 'ng-model' => "user.first_name", size: 1 do %>
+                {{user.first_name}}
+              <% end %>
             </label>
             <label for="user_last_name" style="width:28.33%">
-              <%= f.text_field :last_name, placeholder: 'Last Name', size: 1 %>
+              <%= f.text_field :last_name, placeholder: 'Last Name', 'ng-model' => "user.last_name", size: 1 do %>
+                {{user.last_name}}
+              <% end %>
             </label>
             <label for="user_middle_name" style="width:28.33%">
-              <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', size: 1 %>
+              <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', 'ng-model' => "user.middle_name", size: 1 do %>
+                {{user.middle_name}}
+              <% end %>
             </label>
           </fieldset>
 
