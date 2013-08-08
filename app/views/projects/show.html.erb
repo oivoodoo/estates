@@ -67,17 +67,17 @@
     </hgroup>
     <div id="tabs" class="tabs major gridwrap-padded">
       <ul>
-        <li><a ng-class="{current:projectTab==1}" ng-click="projectTab=1" ng-init='projectTab=1'><span>Overview</span></a></li>
-        <li><a ng-class="{current:projectTab==2}" ng-click="projectTab=2"><span>Financials</span></a></li>
+        <li><a ng-class="{current:projectTab==1}" ng-click="open($event, 'projectTab', 1)" ng-init='projectTab=1'><span>Overview</span></a></li>
+        <li><a ng-class="{current:projectTab==2}" ng-click="open($event, 'projectTab', 2)"><span>Financials</span></a></li>
 
         <% if @project.address? %>
-          <li><a ng-class="{current:projectTab==3}" href='#map' ng-click="projectTab=3"><span>Location</span></a></li>
+          <li><a ng-class="{current:projectTab==3}" href='#map' ng-click="open($event, 'projectTab', 3)"><span>Location</span></a></li>
         <% end %>
 
-        <li><a ng-class="{current:projectTab==4}" ng-click="projectTab=4"><span>Property</span></a></li>
-        <li><a ng-class="{current:projectTab==5}" ng-click="projectTab=5"><span>Strengths</span></a></li>
-        <li><a ng-class="{current:projectTab==6}" ng-click="projectTab=6"><span>Risks</span></a></li>
-        <li><a ng-class="{current:projectTab==7}" ng-click="projectTab=7"><span>Manager</span></a></li>
+        <li><a ng-class="{current:projectTab==4}" ng-click="open($event, 'projectTab', 4)"><span>Property</span></a></li>
+        <li><a ng-class="{current:projectTab==5}" ng-click="open($event, 'projectTab', 5)"><span>Strengths</span></a></li>
+        <li><a ng-class="{current:projectTab==6}" ng-click="open($event, 'projectTab', 6)"><span>Risks</span></a></li>
+        <li><a ng-class="{current:projectTab==7}" ng-click="open($event, 'projectTab', 7)"><span>Manager</span></a></li>
       </ul>
     </div>
   </div>
@@ -121,8 +121,8 @@
           <div class="connections-tabs tabs">
             <ul>
               <li>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="viewerTab=1" ng:init='viewerTab=1'><em>27</em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="viewerTab=2"><em>189</em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em>27</em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>189</em> Followers</a></li>
               </li>
             </ul>
           </div>

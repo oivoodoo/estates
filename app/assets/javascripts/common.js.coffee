@@ -5,6 +5,7 @@ $ ->
     # remove bottom notification about the sign up or in if user has already
     # signed up
     $('#nag').remove()
+    window.load()
 
   $(document).trigger('user:signed_in') if Settings.user.signed_in
 
