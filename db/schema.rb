@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-ActiveRecord::Schema.define(version: 20130807154500) do
+ActiveRecord::Schema.define(version: 20130808081726) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -173,8 +171,8 @@ ActiveRecord::Schema.define(version: 20130807154500) do
     t.integer  "shares",              default: 1,          null: false
     t.string   "risks",               default: ""
     t.text     "manager"
-    t.text     "short_description"
     t.float    "raised"
+    t.text     "short_description"
   end
 
   create_table "sessions", force: true do |t|
