@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
 
-  attr_accessor :current_password
+  attr_accessor :current_password, :country, :state
 
   validates :email, :status, presence: true
 
