@@ -18,7 +18,7 @@
   <div class="head">
     <div>
       <figure class="profile-badge">
-        <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax"><%= render partial: 'users/avatar', object: @user %><div class="focus"></div></a>
+        <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax"><%= render partial: 'users/avatar', locals: { user: @user } %><div class="focus"></div></a>
       </figure>
       <div id="investor-details">
         <h3><%= current_user.name %></h3>
