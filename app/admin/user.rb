@@ -24,6 +24,19 @@ ActiveAdmin.register User do
       f.input :middle_name
       f.input :avatar
     end
+    f.inputs 'Address' do
+      f.input :phone
+      f.input :country
+      f.input :state
+      f.input :city
+      f.input :street_address
+    end
+    f.inputs 'Social' do
+      f.input :facebook_link
+      f.input :twitter_link
+      f.input :linkedin_link
+      f.input :google_plus_link
+    end
     f.inputs "Administration" do
       f.input :status
       f.input :role
@@ -34,6 +47,15 @@ ActiveAdmin.register User do
   controller do
     def permitted_params
       params.permit!
+    end
+
+    def update
+      if params[:user][:password].blank?
+        params[:user].delete("password")
+        params[:user].delete("password_confirmation")
+      end
+
+      super
     end
   end
 end
