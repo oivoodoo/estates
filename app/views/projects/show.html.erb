@@ -8,7 +8,7 @@
     <div class="cover">
       <div>
         <div>
-          <%= image_tag("img/cafe-klaus.png") %>
+          <%= image_tag @project.image %>
         </div>
       </div>
     </div>
@@ -86,7 +86,11 @@
     <div class="main">
 			<div>
 				<div class='paper' ng:show="projectTab == 1">
-          <%= @project.description.to_s.html_safe %>
+          <div class='gallery'>
+            <div>
+              <%= @project.description.to_s.html_safe %>
+            </div>
+          </div>
 				</div>
 				<div class='paper' ng:show="projectTab == 2">
           <%= @project.financials.to_s.html_safe %>
