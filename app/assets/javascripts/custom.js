@@ -256,7 +256,7 @@ $(document).on('click', '#nag .close', function(e){
 
 /*	 Sign-in modal
      ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
-$('.sign-in, .profile-pic')
+$('.sign-in, .sign-up, .profile-pic')
 .fancybox({
   helpers:	 {
     overlay : {

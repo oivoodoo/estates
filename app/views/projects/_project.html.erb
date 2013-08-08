@@ -4,14 +4,19 @@
 
     <header>
       <h4 class="project-name">
-        <div class="profile-badge">
+        <div class="profile-badge manager-badge">
           <div>
             <a href="index-p=developer&d=cbre.html" title="CBRE"><%= image_tag("cbre.png") %></a>
             <div class="focus"></div>
           </div>
         </div>
 
-        <a class="project-link" href="index-p=project.html"><%= project.address %><span><%= render_tag_list(project) %></span></a>
+        <div class="titlewrap">
+          <a class="project-link" href="index-p=project.html"><%= project.name %></a>
+          <div class='manager-location'>
+            <span><%= project.owner %></span>
+            <address><%= project.address %></address>
+          </div>
       </h4>
     </header>
 
@@ -54,7 +59,8 @@
     </div>
 
     <div class="action">
-      <button class="follow">Follow</button><button class="details" onclick="Turbolinks.visit('<%= url_for(project) %>')">Full Details</button>
+      <button class="follow">Follow</button>
+      <button class="details" onclick="Turbolinks.visit('<%= url_for(project) %>')" title='<%= project.name %>'>Full Details</button>
     </div>
   </div>
 </article>
