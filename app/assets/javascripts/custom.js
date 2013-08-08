@@ -81,6 +81,7 @@ window.load = function() {
       }
     });
   };
+
   window.layout = function() {
     winW = $(window).width();
     winH = $(window).height();
@@ -144,6 +145,7 @@ window.load = function() {
   };
 };
 
+window.load();
 $(document).ready(window.load);
 
 $(window)
