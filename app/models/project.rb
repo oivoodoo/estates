@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
   end
 
   before_save do
-    # return unless address_changed?
+    return unless address_changed?
 
     coordinates = Geocoder.coordinates(address)
 
