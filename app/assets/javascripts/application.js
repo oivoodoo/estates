@@ -26,7 +26,6 @@
 //= require invests
 //= require common
 //= require addresses
-//= require maps
 //= require ajax
 //
 //= require angular
@@ -34,4 +33,5 @@
 //= require angular-ui
 //= require ng-rails-csrf
 //= require estates
+//= require vendors/angular-google-maps
 

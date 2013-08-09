@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
     elsif social_avatar_url?
       social_avatar_url
     else
-      "avatar.present? ?  : default_avatar.png"
+      "default_avatar.png"
     end
   end
 
