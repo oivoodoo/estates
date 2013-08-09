@@ -62,7 +62,7 @@ window.load = function() {
     });
   };
 
-  window.fixPos = function() {
+  window.fixPos = function($scope, $compile) {
     var scrollTop = $window.scrollTop();
     $('.fix').each(function(i,el){
       var $el = $(el);
@@ -73,6 +73,7 @@ window.load = function() {
           $el.data('fixed', true);
           setTimeout(function(){
             $el.data('fixedclone').addClass('narrow');
+            $el.data('fixedclone').replaceWith($compile($el.data('fixedclone'))($scope));
           }, 10);
         }
       } else {
@@ -148,23 +149,6 @@ window.load = function() {
 window.load();
 $(document).ready(window.load);
 
-$(window)
-.on('resize', function(e){
-  window.layout();
-  connectionMasonry();
-})
-.on('scroll', function(e){
-  sizeMenu();
-  callNag();
-  fixPos();
-})
-.on('click.nag', function(e){
-  callNag();
-})
-.on('load', function(){
-  window.layout();
-  connectionMasonry();
-});
 
 $(document).on('mouseenter', '#masthead li', function(e){
   var $submenu = $(this).find('ul');

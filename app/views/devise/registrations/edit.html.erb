@@ -10,17 +10,21 @@
     </div>
   </div>
 
-  <div class="message quiet">
-    <a class="button iota thicker" href="index-p=investor&i=kadri.html">View your public profile</a>
+  <div class="message silent">
+    <div>
+      <a class="button iota thicker" href="index-p=investor&i=kadri.html">View your public profile</a>
+    </div>
   </div>
 
-
-  <div class="head">
-    <div>
+  <div class="head fix">
+    <div class='contact'>
       <figure class="profile-badge">
-        <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax"><%= render partial: 'users/avatar', locals: { user: current_user } %><div class="focus"></div></a>
+        <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax">
+          <%= render partial: 'users/avatar', locals: { user: current_user } %>
+          <div class="focus"> </div>
+      </a>
       </figure>
-      <div id="investor-details">
+      <div class="profile-details">
         <h3>{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}} </h3>
 
         <div id="mini-bio">
@@ -43,171 +47,160 @@
           </div>
         </div>
       </div>
+    </div><!-- contact -->
+
+
+    <div id="tabs" class="tabs profile">
+      <ul>
+        <li><a class="personal current" ng-click="profileTab=1" ng-class="{current:profileTab == 1}"><em>1</em> Personal Details</a></li>
+        <li><a class="accreditation " ng-click="profileTab=2" ng-class="{current:profileTab == 2}"><em>2</em> Accreditation</a></li>
+      </ul>
     </div>
   </div>
-  <div class="body">
-    <div class="main">
 
-      <div id="tabs" class="tabs profile">
-        <ul>
-          <li><a class="personal current" ng-click="profileTab=1" ng-class="{current:profileTab == 1}"><em>1</em> Personal Details</a></li>
-          <li><a class="accreditation " ng-click="profileTab=2" ng-class="{current:profileTab == 2}"><em>2</em> Accreditation</a></li>
-        </ul>
-      </div>
+  <div class="tab-content gridwrap" id="profile" ng-show="profileTab == 1" ng-init="profileTab=1">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <label for="user_email">
+        <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
+      </label>
 
-      <div class="tab-content gridwrap" id="profile" ng-show="profileTab == 1" ng-init="profileTab=1">
-
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-          <label for="user_email">
-            <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
-          </label>
-
-          <label for="user_short_bio">
-            <%= f.text_area :short_bio, placeholder: "Short biography", 'ng-model' => "user.short_bio", :size => 1 do %>
-              {{user.short_bio}}
-            <% end %>
-          </label>
-
-          <fieldset class="separated-bottom">
-            <legend>To change your password, provide your old password and then type the new one:</legend>
-            <div class="input-group">
-              <label for="user_current_password" style="width:33.3%">
-                <%= f.password_field :current_password, placeholder: "Old password", :size => 1, :autocomplete => 'off' %>
-              </label>
-              <label for="user_password" style="width:33.3%">
-                <%= f.password_field :password, placeholder: "New password", :size => 1, :autocomplete => 'off' %>
-              </label>
-              <label for="user_password_confirmation" style="width:33.3%">
-                <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1, :autocomplete => 'off' %>
-              </label>
-            </div>
-          </fieldset>
-
-          <fieldset class="input-group name">
-            <label for="user_title" style="width:15%;">
-              <%= f.text_field :title, placeholder: 'Title', 'ng-model' => "user.title", size: 1 do %>
-                {{user.title}}
-              <% end %>
-            </label>
-            <label for="user_first_name" style="width:28.33%">
-              <%= f.text_field :first_name, placeholder: 'First Name', 'ng-model' => "user.first_name", size: 1 do %>
-                {{user.first_name}}
-              <% end %>
-            </label>
-            <label for="user_last_name" style="width:28.33%">
-              <%= f.text_field :last_name, placeholder: 'Last Name', 'ng-model' => "user.last_name", size: 1 do %>
-                {{user.last_name}}
-              <% end %>
-            </label>
-            <label for="user_middle_name" style="width:28.33%">
-              <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', 'ng-model' => "user.middle_name", size: 1 do %>
-                {{user.middle_name}}
-              <% end %>
-            </label>
-          </fieldset>
-
-          <label for="user_phone">
-            <%= f.text_field :phone, placeholder: "Phone", size: 1 %>
-          </label>
-
-          <div class="tight">
-            <label for="user_street">
-              <%= f.text_field :street_address, placeholder: "Street address", size: 1 %>
-            </label>
-            <label for="user_zip">
-              <%= f.text_field :zip_code, placeholder: "Zip code", size: 1 %>
-            </label>
-
-            <label for="user_city">
-              <%= f.text_field :city, placeholder: "City/Town/Locality", size: 1 %>
-            </label>
-
-            <label for="user_country">
-              <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
-            </label>
-
-            <label for="user_state">
-              <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
-            </label>
-            <fieldset class="separated-bottom">
-              <legend>Add your social link:</legend>
-              <label for="user_facebook_link">
-                <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
-              </label>
-              <label for="user_twitter_link">
-                <%= f.text_field :twitter_link, placeholder: "https://twitter.com/", :size => 1, 'ng-model' => 'user.twitter_link' %>
-              </label>
-              <label for="user_google_plus_link">
-                <%= f.text_field :google_plus_link, placeholder: "https://plus.google.com/", :size => 1, 'ng-model' => 'user.google_plus_link'%>
-              </label>
-              <label for="user_linkedin_link">
-                <%= f.text_field :linkedin_link, placeholder: "http://www.linkedin.com/", :size => 1, :autocomplete => 'off', 'ng-model' => 'user.linkedin_link' %>
-              </label>
-            </fieldset>
-          </div>
-
-          <div class="action">
-            <div>
-              <div>
-                <%= f.submit 'Update', :class => "zeta thickest" %>
-              </div>
-            </div>
-          </div>
-
+      <label for="user_short_bio">
+        <%= f.text_area :short_bio, placeholder: "Short biography", 'ng-model' => "user.short_bio", :size => 1 do %>
+          {{user.short_bio}}
         <% end %>
-      </div>
-      <div class="tab-content gridwrap" id="accreditation" ng-show="profileTab == 2">
-        <form>
+      </label>
 
-          <div class="intro">
-            <p>
-              Most investments are available to accredited investors only. Please answer the following questions to verify your qualification as an <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
-            </p>
+      <fieldset class="separated-bottom">
+        <legend>To change your password, provide your old password and then type the new one:</legend>
+        <div class="input-group">
+          <label for="user_current_password" style="width:33.3%">
+            <%= f.password_field :current_password, placeholder: "Old password", :size => 1, :autocomplete => 'off' %>
+          </label>
+          <label for="user_password" style="width:33.3%">
+            <%= f.password_field :password, placeholder: "New password", :size => 1, :autocomplete => 'off' %>
+          </label>
+          <label for="user_password_confirmation" style="width:33.3%">
+            <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1, :autocomplete => 'off' %>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="input-group name">
+        <label for="user_title" style="width:15%;">
+          <%= f.text_field :title, placeholder: 'Title', 'ng-model' => "user.title", size: 1 %>
+        </label>
+        <label for="user_first_name" style="width:28.33%">
+          <%= f.text_field :first_name, placeholder: 'First Name', 'ng-model' => "user.first_name", size: 1 %>
+        </label>
+        <label for="user_last_name" style="width:28.33%">
+          <%= f.text_field :last_name, placeholder: 'Last Name', 'ng-model' => "user.last_name", size: 1 %>
+        </label>
+        <label for="user_middle_name" style="width:28.33%">
+          <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', 'ng-model' => "user.middle_name", size: 1 %>
+        </label>
+      </fieldset>
+
+      <label for="user_phone">
+        <%= f.text_field :phone, placeholder: "Phone", size: 1 %>
+      </label>
+
+      <div class="tight">
+        <label for="user_street">
+          <%= f.text_field :street_address, placeholder: "Street address", size: 1 %>
+        </label>
+        <label for="user_zip">
+          <%= f.text_field :zip_code, placeholder: "Zip code", size: 1 %>
+        </label>
+
+        <label for="user_city">
+          <%= f.text_field :city, placeholder: "City/Town/Locality", size: 1 %>
+        </label>
+
+        <label for="user_country">
+          <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
+        </label>
+
+        <label for="user_state">
+          <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
+        </label>
+        <fieldset class="separated-bottom">
+          <legend>Add your social link:</legend>
+          <label for="user_facebook_link">
+            <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
+          </label>
+          <label for="user_twitter_link">
+            <%= f.text_field :twitter_link, placeholder: "https://twitter.com/", :size => 1, 'ng-model' => 'user.twitter_link' %>
+          </label>
+          <label for="user_google_plus_link">
+            <%= f.text_field :google_plus_link, placeholder: "https://plus.google.com/", :size => 1, 'ng-model' => 'user.google_plus_link'%>
+          </label>
+          <label for="user_linkedin_link">
+            <%= f.text_field :linkedin_link, placeholder: "http://www.linkedin.com/", :size => 1, :autocomplete => 'off', 'ng-model' => 'user.linkedin_link' %>
+          </label>
+        </fieldset>
+      </div>
+
+      <div class="action">
+        <div>
+          <div>
+            <%= f.submit 'Update', :class => "zeta thickest" %>
           </div>
-
-          <fieldset class="separated-both">
-            <h5>Identification Document</h5>
-            <p>Please upload a scan of your Identification Document.</p>
-            <div class="table">
-              <div style="text-align:left;">
-                <input id="doc-upload" type="file" name="doc-scan[]">
-              </div>
-              <div id="doc-upload-response"></div>
-            </div>
-            <div id="doc-upload-progress" class="goalmeter">
-              <div class="progress" style="width:0%"></div>
-            </div>
-            <div id="doc-scan-preview">
-              <img src="img/doc-scan.png">
-            </div>
-          </fieldset>
-
-          <fieldset class="separated-bottom">
-            <h5>Annual Individual Income</h5>
-            <p>I have an individual income for each of the two most recent years equal to an income level indicated below and reasonably expect to reach at least the same level this year.</p>
-            <label class="radio" for="level-1"><input id="level-1" type="radio" name="income-level"> &lt; $200'000</label>
-            <label class="radio" for="level-2"><input id="level-2" type="radio" name="income-level"> $200'000 — $350'000</label>
-            <label class="radio" for="level-3"><input id="level-3" type="radio" name="income-level"> $350'000 — $500'000</label>
-            <label class="radio" for="level-4"><input id="level-4" type="radio" name="income-level"> $500'000 &lt;</label>
-          </fieldset>
-
-          <fieldset class="separated-bottom">
-            <h5>Securities Firm</h5>
-            <p>Are you associated with a Securities Firm?</p>
-            <label class="radio" for="no-securities-firm"><input id="no-securities-firm" type="radio" name="securities-firm"> No</label>
-            <label class="radio" for="yes-securities-firm"><input id="yes-securities-firm" type="radio" name="securities-firm"> Yes</label>
-          </fieldset>
-
-          <fieldset>
-            <h5>Public Company Shareholder or Officer</h5>
-            <p>?</p>
-            <label class="radio" for="no-public-company"><input id="no-public-company" type="radio" name="public-company"> No</label>
-            <label class="radio" for="yes-public-company"><input id="yes-public-company" type="radio" name="public-company"> Yes</label>
-          </fieldset>
-
-        </form>
-
+        </div>
       </div>
+
+    <% end %>
+  </div>
+
+  <div class="tab-content gridwrap" id="accreditation" ng-show="profileTab == 2">
+    <div>
+      <form>
+        <div class="intro">
+          <p>
+            Most investments are available to accredited investors only. Please answer the following questions to verify your qualification as an <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
+          </p>
+        </div>
+
+        <fieldset class="separated-both">
+          <h5>Identification Document</h5>
+          <p>Please upload a scan of your Identification Document.</p>
+          <div class="table">
+            <div style="text-align:left;">
+              <input id="doc-upload" type="file" name="doc-scan[]">
+            </div>
+            <div id="doc-upload-response"></div>
+          </div>
+          <div id="doc-upload-progress" class="goalmeter">
+            <div class="progress" style="width:0%"></div>
+          </div>
+          <div id="doc-scan-preview">
+            <img src="img/doc-scan.png">
+          </div>
+        </fieldset>
+
+        <fieldset class="separated-bottom">
+          <h5>Annual Individual Income</h5>
+          <p>I have an individual income for each of the two most recent years equal to an income level indicated below and reasonably expect to reach at least the same level this year.</p>
+          <label class="radio" for="level-1"><input id="level-1" type="radio" name="income-level"> &lt; $200'000</label>
+          <label class="radio" for="level-2"><input id="level-2" type="radio" name="income-level"> $200'000 — $350'000</label>
+          <label class="radio" for="level-3"><input id="level-3" type="radio" name="income-level"> $350'000 — $500'000</label>
+          <label class="radio" for="level-4"><input id="level-4" type="radio" name="income-level"> $500'000 &lt;</label>
+        </fieldset>
+
+        <fieldset class="separated-bottom">
+          <h5>Securities Firm</h5>
+          <p>Are you associated with a Securities Firm?</p>
+          <label class="radio" for="no-securities-firm"><input id="no-securities-firm" type="radio" name="securities-firm"> No</label>
+          <label class="radio" for="yes-securities-firm"><input id="yes-securities-firm" type="radio" name="securities-firm"> Yes</label>
+        </fieldset>
+
+        <fieldset>
+          <h5>Public Company Shareholder or Officer</h5>
+          <p>?</p>
+          <label class="radio" for="no-public-company"><input id="no-public-company" type="radio" name="public-company"> No</label>
+          <label class="radio" for="yes-public-company"><input id="yes-public-company" type="radio" name="public-company"> Yes</label>
+        </fieldset>
+
+      </form>
     </div>
   </div>
 </section>

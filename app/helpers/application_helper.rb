@@ -6,6 +6,8 @@ module ApplicationHelper
       "project"
     elsif controller_name == 'project_tags'
       "projects"
+    elsif controller_name == "registrations"
+      "investor-edit"
     else
       controller_name
     end
