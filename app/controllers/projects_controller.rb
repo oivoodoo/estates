@@ -22,13 +22,13 @@ class ProjectsController < ApplicationController
   def follow
     @project = Project.find(params[:id])
     @project.followed_by!(current_user)
-    redirect_to action: :show
+    render :nothing => true
   end
 
   def unfollow
     @project = Project.find(params[:id])
     @project.unfollow!(current_user)
-    redirect_to action: :show
+    render :nothing => true
   end
 
   private

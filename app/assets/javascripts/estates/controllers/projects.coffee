@@ -1,6 +1,6 @@
 estates.controller 'ProjectsController', [
-  '$scope', '$element', '$compile'
-  ($scope, $element, $compile) ->
+  '$scope', '$element', '$compile', '$http'
+  ($scope, $element, $compile, $http) ->
     $scope.project = $element.data('project')
 
     marker =
@@ -30,10 +30,10 @@ estates.controller 'ProjectsController', [
       if $scope.followState == 'not-following'
         $scope.followText = 'Stop Following'
         $scope.followState = 'following'
-        $http.post('/projects/3/follow', data).success(successCallback);
+        $http.post('/projects/3/follow');
       else
         $scope.followText = 'Follow'
         $scope.followState = 'not-following'
-        $http.post('/projects/3/', data).success(successCallback);
+        $http.post('/projects/3/unfollow');
 ]
 
