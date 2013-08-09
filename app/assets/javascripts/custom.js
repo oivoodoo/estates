@@ -111,38 +111,42 @@ window.load = function() {
 
   submenuHeights();
 
-  $('#masthead nav ul, .tabs ul, .submenu ul, .financials >div >div >div').cleanWhitespace();
+	$('#masthead nav ul, .tabs ul, .submenu ul, #intro .action, .financials >div >div >div, .ext-account-buttons')
+		.cleanWhitespace();
 
   $('.combobox').combobox();
 
   var menuTimeout;
   window.sizeMenu = function() {
-    if (menuFlex) {
+    if ($('body').hasAnyClass('home')) {
       var scrollTop = $(window).scrollTop(),
 
       autohide = scrollTop > menuTallH ? true : false;
 
-      if (scrollTop <= Math.max(0, $('#intro').height()-menuTallH)   ) {
-        // don't contract the menu yet
-        document.getElementById('masthead').style.height = '';
-        document.getElementById('nav').style.marginTop = '';
-        document.getElementById('expand').style.marginTop = '';
-        $('#masthead').removeClass('mini');
-
-      } else if (scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
-        // don't contract the menu any further
-        document.getElementById('masthead').style.height = '';
-        document.getElementById('nav').style.marginTop = '';
-        document.getElementById('expand').style.marginTop = '';
-        $('#masthead').addClass('mini');
-
-      } else {
-        menuH = menuTallH - scrollTop + Math.max(0, ($('#intro').height()-menuTallH));
-        document.getElementById('masthead').style.height = menuH+'px';
-        document.getElementById('nav').style.marginTop = ((menuH-menuShortH)/2)+'px';
-        document.getElementById('expand').style.marginTop = ((menuH-menuShortH)/2)+'px';
-        $('#masthead').removeClass('mini');
-      }
+			if (   scrollTop <= Math.max(0, $('#intro').height()-menuTallH)   ) {
+				// don't contract the menu yet
+				document.getElementById('masthead').style.height = '';
+				document.getElementById('nav').style.marginTop = '';
+				document.getElementById('expand').style.marginTop = '';
+				$('#masthead').removeClass('mini');
+			
+			} else if (   scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
+				// don't contract the menu any further 
+				document.getElementById('masthead').style.height = '';
+				document.getElementById('nav').style.marginTop = '';
+				document.getElementById('expand').style.marginTop = '';
+				$('#masthead').addClass('mini');
+			
+			} else {
+				//menuH = menuTallH - (scrollTop - (Math.abs($('#intro').height()-menuTallH)));
+				  menuH = menuTallH - scrollTop + Math.max(0, ($('#intro').height()-menuTallH));
+				//menuH = $('#intro').height() - scrollTop;
+				console.log(menuH);
+				document.getElementById('masthead').style.height = menuH+'px';
+				document.getElementById('nav').style.marginTop = ((menuH-menuShortH)/2)+'px';
+				document.getElementById('expand').style.marginTop = ((menuH-menuShortH)/2)+'px';
+				$('#masthead').removeClass('mini');
+			}
     }
   };
 };
