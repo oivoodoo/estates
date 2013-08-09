@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 20130808165535) do
     t.text     "manager"
     t.float    "raised"
     t.text     "short_description"
+    t.float    "raised"
   end
 
   create_table "sessions", force: true do |t|
