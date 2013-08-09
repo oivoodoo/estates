@@ -17,7 +17,7 @@
   </div>
 
   <div class="head fix">
-    <div class='contact'>
+    <div class='contract'>
       <figure class="profile-badge">
         <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax">
           <%= render partial: 'users/avatar', locals: { user: current_user } %>
@@ -27,7 +27,7 @@
       <div class="profile-details">
         <h3>{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}} </h3>
 
-        <div id="mini-bio">
+        <div class="mini-bio">
           <p>{{ user.short_bio }}</p>
         </div>
 
