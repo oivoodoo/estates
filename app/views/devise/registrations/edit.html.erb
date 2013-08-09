@@ -17,17 +17,17 @@
   </div>
 
   <div class="head fix">
-    <div class='contact'>
+    <div class='contract'>
       <figure class="profile-badge">
         <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax">
           <%= render partial: 'users/avatar', locals: { user: current_user } %>
           <div class="focus"> </div>
-        </a>
+      </a>
       </figure>
       <div class="profile-details">
         <h3>{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}} </h3>
 
-        <div id="mini-bio">
+        <div class="mini-bio">
           <p>{{ user.short_bio }}</p>
         </div>
 
@@ -60,98 +60,98 @@
 
   <div class="tab-content gridwrap" id="profile" ng-show="profileTab == 1" ng-init="profileTab=1">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <label for="user_email">
-      <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
-    </label>
-
-    <label for="user_short_bio">
-      <%= f.text_area :short_bio, placeholder: "Short biography", 'ng-model' => "user.short_bio", :size => 1 do %>
-      {{user.short_bio}}
-      <% end %>
-    </label>
-
-    <fieldset class="separated-bottom">
-      <legend>To change your password, provide your old password and then type the new one:</legend>
-      <div class="input-group">
-        <label for="user_current_password" style="width:33.3%">
-          <%= f.password_field :current_password, placeholder: "Old password", :size => 1, :autocomplete => 'off' %>
-        </label>
-        <label for="user_password" style="width:33.3%">
-          <%= f.password_field :password, placeholder: "New password", :size => 1, :autocomplete => 'off' %>
-        </label>
-        <label for="user_password_confirmation" style="width:33.3%">
-          <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1, :autocomplete => 'off' %>
-        </label>
-      </div>
-    </fieldset>
-
-    <fieldset class="input-group name">
-      <label for="user_title" style="width:15%;">
-        <%= f.text_field :title, placeholder: 'Title', 'ng-model' => "user.title", size: 1 %>
+      <label for="user_email">
+        <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
       </label>
-      <label for="user_first_name" style="width:28.33%">
-        <%= f.text_field :first_name, placeholder: 'First Name', 'ng-model' => "user.first_name", size: 1 %>
+
+      <label for="user_short_bio">
+        <%= f.text_area :short_bio, placeholder: "Short biography", 'ng-model' => "user.short_bio", :size => 1 do %>
+          {{user.short_bio}}
+        <% end %>
       </label>
-      <label for="user_last_name" style="width:28.33%">
-        <%= f.text_field :last_name, placeholder: 'Last Name', 'ng-model' => "user.last_name", size: 1 %>
+
+      <fieldset class="separated-bottom">
+        <legend>To change your password, provide your old password and then type the new one:</legend>
+        <div class="input-group">
+          <label for="user_current_password" style="width:33.3%">
+            <%= f.password_field :current_password, placeholder: "Old password", :size => 1, :autocomplete => 'off' %>
+          </label>
+          <label for="user_password" style="width:33.3%">
+            <%= f.password_field :password, placeholder: "New password", :size => 1, :autocomplete => 'off' %>
+          </label>
+          <label for="user_password_confirmation" style="width:33.3%">
+            <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1, :autocomplete => 'off' %>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="input-group name">
+        <label for="user_title" style="width:15%;">
+          <%= f.text_field :title, placeholder: 'Title', 'ng-model' => "user.title", size: 1 %>
+        </label>
+        <label for="user_first_name" style="width:28.33%">
+          <%= f.text_field :first_name, placeholder: 'First Name', 'ng-model' => "user.first_name", size: 1 %>
+        </label>
+        <label for="user_last_name" style="width:28.33%">
+          <%= f.text_field :last_name, placeholder: 'Last Name', 'ng-model' => "user.last_name", size: 1 %>
+        </label>
+        <label for="user_middle_name" style="width:28.33%">
+          <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', 'ng-model' => "user.middle_name", size: 1 %>
+        </label>
+      </fieldset>
+
+      <label for="user_phone">
+        <%= f.text_field :phone, placeholder: "Phone", size: 1 %>
       </label>
-      <label for="user_middle_name" style="width:28.33%">
-        <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', 'ng-model' => "user.middle_name", size: 1 %>
-      </label>
-    </fieldset>
 
-    <label for="user_phone">
-      <%= f.text_field :phone, placeholder: "Phone", size: 1 %>
-    </label>
+      <fieldset class="separated-bottom">
+        <div class="tight">
+          <label for="user_street">
+            <%= f.text_field :street_address, placeholder: "Street address", size: 1 %>
+          </label>
+          <label for="user_zip">
+            <%= f.text_field :zip_code, placeholder: "Zip code", size: 1 %>
+          </label>
 
-    <fieldset class="separated-bottom">
-      <div class="tight">
-        <label for="user_street">
-          <%= f.text_field :street_address, placeholder: "Street address", size: 1 %>
-        </label>
-        <label for="user_zip">
-          <%= f.text_field :zip_code, placeholder: "Zip code", size: 1 %>
-        </label>
+          <label for="user_city">
+            <%= f.text_field :city, placeholder: "City/Town/Locality", size: 1 %>
+          </label>
 
-        <label for="user_city">
-          <%= f.text_field :city, placeholder: "City/Town/Locality", size: 1 %>
-        </label>
+          <label for="user_country">
+            <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
+          </label>
 
-        <label for="user_country">
-          <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
-        </label>
+          <label for="user_state">
+            <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
+          </label>
+        </div>
+      </fieldset>
 
-        <label for="user_state">
-          <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
-        </label>
-      </div>
-    </fieldset>
+      <fieldset class="separated-bottom">
+        <legend>Add your social links:</legend>
+        <div class="tight">
+          <label for="user_facebook_link">
+            <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
+          </label>
+          <label for="user_twitter_link">
+            <%= f.text_field :twitter_link, placeholder: "https://twitter.com/", :size => 1, 'ng-model' => 'user.twitter_link' %>
+          </label>
+          <label for="user_google_plus_link">
+            <%= f.text_field :google_plus_link, placeholder: "https://plus.google.com/", :size => 1, 'ng-model' => 'user.google_plus_link'%>
+          </label>
+          <label for="user_linkedin_link">
+            <%= f.text_field :linkedin_link, placeholder: "http://www.linkedin.com/", :size => 1, :autocomplete => 'off', 'ng-model' => 'user.linkedin_link' %>
+          </label>
+        </div>
+      </fieldset>
 
-    <fieldset class="separated-bottom">
-      <legend>Add your social links:</legend>
-      <div class="tight">
-        <label for="user_facebook_link">
-          <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
-        </label>
-        <label for="user_twitter_link">
-          <%= f.text_field :twitter_link, placeholder: "https://twitter.com/", :size => 1, 'ng-model' => 'user.twitter_link' %>
-        </label>
-        <label for="user_google_plus_link">
-          <%= f.text_field :google_plus_link, placeholder: "https://plus.google.com/", :size => 1, 'ng-model' => 'user.google_plus_link'%>
-        </label>
-        <label for="user_linkedin_link">
-          <%= f.text_field :linkedin_link, placeholder: "http://www.linkedin.com/", :size => 1, :autocomplete => 'off', 'ng-model' => 'user.linkedin_link' %>
-        </label>
-      </div>
-    </fieldset>
-
-    <div class="action">
-      <div>
+      <div class="action">
         <div>
-          <%= f.submit 'Update', :class => "zeta thickest" %>
+          <div>
+            <%= f.submit 'Update', :class => "zeta thickest" %>
+          </div>
         </div>
       </div>
-    </div>
 
     <% end %>
   </div>
@@ -209,5 +209,7 @@
     </div>
   </div>
 </section>
-  <%#= render partial: 'users/avatar', object: current_user %>
-  <%#= f.file_field :avatar %>
+
+<%#= render partial: 'users/avatar', object: current_user %>
+<%#= f.file_field :avatar %>
+
