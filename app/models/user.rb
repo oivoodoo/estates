@@ -40,7 +40,10 @@ class User < ActiveRecord::Base
 
     return user if user.present?
 
-    create_user_by_auth(auth, name: auth.info["name"], email: auth.info["email"])
+    create_user_by_auth(auth,
+      social_avatar_url: auth.info['image'],
+      name: auth.info["name"],
+      email: auth.info["email"])
   end
 
   def self.find_for_linkedin(auth)
@@ -48,7 +51,10 @@ class User < ActiveRecord::Base
 
     return user if user.present?
 
-    create_user_by_auth(auth, name: auth.info["name"], email: auth.info["email"])
+    create_user_by_auth(auth,
+      social_avatar_url: auth.info['image'],
+      name: auth.info["name"],
+      email: auth.info["email"])
   end
 
   def self.create_user_by_auth(auth, attributes)
