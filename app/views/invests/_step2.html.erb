@@ -57,7 +57,7 @@
           <div class="span6">
             <div class="fields">
               <div class="select-holder">
-                <%= f.country_select(:country) %>
+                <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { })%>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
           <div class="span6">
             <div class="fields">
               <div class="select-holder">
-                <%= f.state_select(:state)%>
+                <%= f.state_select(:state, "US", {}, {})%>
               </div>
             </div>
           </div>
