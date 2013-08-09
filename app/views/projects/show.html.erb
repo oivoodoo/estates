@@ -53,7 +53,9 @@
   <div class="title fix">
     <hgroup>
       <h2>
-        <div class="followwrap following"><button class="following" title="Stop following this project">Following</button></div>
+        <div class="followwrap following">
+          <%= render 'follow' %>
+          <button title='{{followText}}' ng-click="follow()">{{followText}}</button></div>
         <div class="profile-badge">
           <div>
             <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
@@ -132,115 +134,32 @@
             </ul>
           </div>
 
-          <ul class="connections">
+          <ul class="connections" ng-show="viewerTab == 1">
             <li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-                <div class="focus"></div>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
               </div>
-            </div>
-            </li><li>
-
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-                <div class="focus"></div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
               </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
-                <div class="focus"></div>
+            </li>
+          </ul>
+          <ul class="connections" ng-show="viewerTab == 2">
+            <li>
+              <div class="profile-badge">
+                <%= render partial: 'follower', collection: @followers %>
+                <div class="focus">
+                </div>
               </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            </li><li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-          </li>					</ul>
-
+            </li>
         </div>
       </div>
 
