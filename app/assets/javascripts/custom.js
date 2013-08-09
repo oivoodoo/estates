@@ -239,6 +239,14 @@ $(document).on('click', '#nag .close', function(e){
   });
 });
 
+$(document).on('mouseenter', 'button.following', function() {
+  $(this).text('Stop following');
+});
+
+$(document).on('mouseleave', 'button.following', function() {
+  $(this).text('Following');
+});
+
 /*	 Sign-in modal
      ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 $('.sign-in, .sign-up, .profile-pic')

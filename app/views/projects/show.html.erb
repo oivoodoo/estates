@@ -42,11 +42,9 @@
                 </div>
               </div>
             </div>
-            <% if signed_in? %>
-              <div class="action">
-                <button onclick="Turbolinks.visit('<%= new_project_invest_path(@project) %>')">Purchase Shares</button>
-              </div>
-            <% end %>
+            <div class="action">
+              <button onclick="Turbolinks.visit('<%= new_project_invest_path(@project) %>')">Purchase Shares</button>
+            </div>
           </div>
         </div>
       </div>
@@ -56,6 +54,7 @@
   <div class="title fix">
     <hgroup>
       <h2>
+        <div class="followwrap following"><button class="following" title="Stop following this project">Following</button></div>
         <div class="profile-badge">
           <div>
             <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
@@ -65,6 +64,7 @@
         <%= @project.name %>
       </h2>
     </hgroup>
+
     <div id="tabs" class="tabs major gridwrap-padded">
       <ul>
         <li><a ng-class="{current:projectTab==1}" ng-click="open($event, 'projectTab', 1)" ng-init='projectTab=1'><span>Overview</span></a></li>
@@ -78,6 +78,10 @@
         <li><a ng-class="{current:projectTab==5}" ng-click="open($event, 'projectTab', 5)"><span>Strengths</span></a></li>
         <li><a ng-class="{current:projectTab==6}" ng-click="open($event, 'projectTab', 6)"><span>Risks</span></a></li>
         <li><a ng-class="{current:projectTab==7}" ng-click="open($event, 'projectTab', 7)"><span>Manager</span></a></li>
+
+        <li><a class='side-tab' ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em>27</em> Investors</a></li>
+        <li><a class='side-tab' ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>189</em> Followers</a></li>
+        <li><a class='side-tab' ng-class="{current:viewerTab==3}" ng:click="open($event, 'viewerTab', 3)"><em>189</em> Timeline</a></li>
       </ul>
     </div>
   </div>
@@ -85,31 +89,31 @@
   <div class="body">
     <div class="main">
 			<div>
-				<div class='paper' ng:show="projectTab == 1">
+				<div class='tab-content paper' ng-class="{current:projectTab==1}" ng:show="projectTab == 1">
           <div class='gallery'>
             <div>
               <%= @project.description.to_s.html_safe %>
             </div>
           </div>
 				</div>
-				<div class='paper' ng:show="projectTab == 2">
+				<div class='tab-content paper' ng-class="{current:projectTab==2}" ng:show="projectTab == 2">
           <%= @project.financials.to_s.html_safe %>
 				</div>
-				<div class='paper' id="map" ng:show="projectTab == 3">
+				<div class='tab-content paper'ng-class="{current:projectTab==3}" id="map" ng:show="projectTab == 3">
           <div id='map_container'>
           </div>
           <div><%= @project.address %></div>
 				</div>
-				<div class='paper' ng:show="projectTab == 4">
+				<div class='tab-content paper' ng-class="{current:projectTab==4}" ng:show="projectTab == 4">
           <%= @project.property.to_s.html_safe %>
 				</div>
-        <div class='paper' ng:show="projectTab == 5">
+        <div class='tab-content paper' ng-class="{current:projectTab==5}" ng:show="projectTab == 5">
           <%= @project.strength.to_s.html_safe %>
         </div>
-        <div class='paper' ng:show="projectTab == 6">
+        <div class='tab-content paper' ng-class="{current:projectTab==6}" ng:show="projectTab == 6">
           <%= @project.risks.to_s.html_safe %>
         </div>
-        <div class='paper' ng:show="projectTab == 7">
+        <div class='tab-content paper' ng-class="{current:projectTab==7}" ng:show="projectTab == 7">
           <%= @project.manager.to_s.html_safe %>
         </div>
 			</div>
@@ -117,7 +121,8 @@
 
 		<div class="side">
 			<div>
-        <div>
+        <div id="investors-content" class="tab-content side-tab-content side-switch side-current">
+
           <div class="connections-tabs tabs">
             <ul>
               <li>
@@ -136,6 +141,7 @@
               </div>
             </div>
             </li><li>
+
             <div class="profile-badge">
               <div>
                 <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
