@@ -38,9 +38,11 @@ if ($is_forgotten) {} else {
 				<?php if ($is_internal) { ?>
 				
 					<form action="signup">
-						<input type="text" placeholder="Full Name" size="1">
-						<input type="email" placeholder="E-mail" size="1">
-						<input type="text" placeholder="••••••••" size="1">
+						<div class="tight">
+							<label><input type="text" placeholder="Full Name" size="1"></label>
+							<label><input type="email" placeholder="E-mail" size="1"></label>
+							<label><input type="text" placeholder="••••••••" size="1"></label>
+						</div>
 						<div class="action">
 							<div>
 								<div>
@@ -57,10 +59,12 @@ if ($is_forgotten) {} else {
 				
 					<form action="signup">
 						<div class="ext-account-buttons">
-							<button name="ext-account" value="facebook" class="ext-account-button facebook"></button>
-							<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
-							<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-							<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+							<span>
+								<button name="ext-account" value="facebook" class="ext-account-button facebook"></button>
+								<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
+								<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+								<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+							</span>
 						</div>
 						<div class="action">
 							<div>

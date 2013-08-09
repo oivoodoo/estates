@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
 		baseFontSize = parseInt($('body').css('font-size'), 10),
 		menuH,
 		footerH,
+		iniLoad = true,
 		$window = $(window),
 		$body = $('body'),
 		$masthead = $('#masthead'),
@@ -20,26 +21,17 @@ jQuery(document).ready(function($) {
 		is_investor = $body.hasClass('investor'),
 		menuFlex = $body.hasAnyClass('home') ? true : false,
 		connectionMasonry = function(){
-			connectionH = $('.connections li').eq(0).height();
-			$('.connections li:gt(0)').each(function(i,el){
-				var $li = $(el);
-				$li.height(connectionH);
-				$li.find('.plate').css('text-align', '');
+			$('.connections').each(function(i,el){
+				var $el = $(el);
+				var connectionH = $el.find('li').eq(0).height();
+				$el.find('li:gt(0)').each(function(i,el){
+					var $li = $(el);
+					$li.height(connectionH);
+					$li.find('.plate').css('text-align', '');
+				});
+				$el.find('li').css('visibility','visible');
 			});
-			$('.connections li').css('visibility','visible');
-			
-			/*
-			var $connections = $('.connections'),
-				colW = (winW<1500 && winW>=1000) ? 3 : ((winW<=1000) ? 6.66667 : 4 );
-			$connections.isotope({
-				layoutMode: 'masonry',
-				resizable: false, // disable normal resizing
-				masonry: {
-					columnWidth: $connections.width() / colW
-				}
-			});*/
 		},
-		connectionH,
 		submenuHeights = function() {
 			$('#masthead ul ul')
 				.each(function(i,el){
@@ -55,11 +47,13 @@ jQuery(document).ready(function($) {
 			var scrollTop = $window.scrollTop();
 			$('.fix').each(function(i,el){
 				var $el = $(el),
-					top = $el.data('top') || menuShortH;
+					top = $el.data('top') || menuShortH,
+					steal = 0; // px
 				
-				if (scrollTop+top > $el.data('offsetTop') && winW > 469) {
+				if (scrollTop+top+steal > $el.data('offsetTop') && winW > 469) {
 					if (!$el.data('fixed')) {
-						$el.addClass('narrow').data('fixedclone').insertBefore($el).css('top', top);
+						$el.addClass('narrow');
+						$el.data('fixedclone').insertBefore($el).css('top', top);
 						$el.data('fixed', true);
 						setTimeout(function(){
 							$el.data('fixedclone').addClass('narrow');
@@ -70,6 +64,35 @@ jQuery(document).ready(function($) {
 					$el.data('fixed', false);
 				}
 			});
+		},
+		hashChange = function(e) {
+			e.preventDefault();
+			if (is_project) {
+				var first_tab_href = $('.main .tabs a, .tabs.major a').eq(0).attr('href'),
+					tab = window.location.hash || first_tab_href.substring(first_tab_href.indexOf("#")),
+					$tab = $(tab+'-tab'),
+					$other_tabs = $tab.closest('ul').find('a').not($tab),
+					$tab_content = $(tab+'-content'),
+					$other_tab_contents = $('.tab-content').not($tab_content),
+					$other_main_tab_contents = $('.main .tab-content').not($tab_content);
+				
+				//if ($tab_content.length) {
+					if (winW > 1000) {
+						if (!$tab_content.hasClass('side-tab-content')) {
+							$other_main_tab_contents.removeClass('current');
+							$tab_content.addClass('current');
+							$other_tabs.removeClass('current');
+							$tab.addClass('current');
+						}
+					} else {
+						$other_tab_contents.removeClass('current');
+						$tab_content.addClass('current');
+						connectionMasonry();
+						$other_tabs.removeClass('current');
+						$tab.addClass('current');
+					}
+				//}
+			}
 		},
 		layout = function() {
 			winW = $(window).width();
@@ -88,10 +111,11 @@ jQuery(document).ready(function($) {
 			
 			$wrap.css('padding-bottom', footerH);
 			
-			/*if (is_project) {
-				$('.side .tabspace').height($('.main .tabs').height());
-				$('.cover img').css('margin-left', (winW<700 ? Math.min(0, ($('.cover').width()-$('.cover img').width())/2 ) : 0));
-			}*/
+			if (is_project) {
+				if (winW > 1000 && $('.side .tab-content.current').length) {
+					location.href = $('.main .tabs a, .tabs.major a').eq(0).attr('href');
+				}
+			}
 			
 			submenuHeights();
 			
@@ -115,6 +139,9 @@ jQuery(document).ready(function($) {
 		.on('load', function(){
 			layout();
 			connectionMasonry();
+		})
+		.on('hashchange', function(e){
+			hashChange(e);
 		});
 		
 	$('.fix')
@@ -122,6 +149,18 @@ jQuery(document).ready(function($) {
 			var $el = $(el);
 			$el.data('fixedclone', $el.clone().removeClass('fix').addClass('fixed'));
 			$el.data('fixedclone').find('ul').cleanWhitespace();
+		});
+	
+	$('.side-switch .tabs a')
+		.on('click', function(e){
+			var $el = $(this),
+				switch_name = $el.attr('href').substring(1);
+			
+			if (!$el.hasClass('current')) {
+				$('.side-switch').removeClass('side-current');
+				$('#'+switch_name+'-content').addClass('side-current');
+				connectionMasonry();
+			}
 		});
 	
 	submenuHeights();
@@ -147,15 +186,23 @@ jQuery(document).ready(function($) {
 			$(this).parent().find('.manager-location span a').removeClass('active');
 		});
 	
-	$('.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .manager-location a')
+	$('.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .action button.following, .project-badge .manager-location a')
 		.on('mouseenter', function(e){
 			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').addClass('overridehide');
 		})
 		.on('mouseleave', function(e){
 			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').removeClass('overridehide');
 		});
+	
+	$('button.following')
+		.on('mouseenter', function(e){
+			$(this).text('Stop following');
+		})
+		.on('mouseleave', function(e){
+			$(this).text('Following');
+		});
 		
-	$('#masthead nav ul, .tabs ul, .submenu ul, .financials >div >div >div, .ext-account-buttons')
+	$('#masthead nav ul, .tabs ul, .submenu ul, #intro .action, .financials >div >div >div, .ext-account-buttons')
 		.cleanWhitespace();
 	
 	$('.combobox')
@@ -168,7 +215,6 @@ jQuery(document).ready(function($) {
 		.on('blur', function(){
 			if ($(this).val()=='') $(this).prop('type', 'text');
 		});
-	
 	
 	$('label.radio')
 		.on('click', function(){
@@ -326,7 +372,7 @@ jQuery(document).ready(function($) {
 	}
 	
 	setTimeout(function(){ // 1)
-		nag = true;
+		nag = true; // true = nag ON / false = nag OFF
 	}, 1000);
 	
 	$nag.find('.close').on('click', function(e){
@@ -379,8 +425,12 @@ jQuery(document).ready(function($) {
 
 
 
-
 	layout();
+	
+	$window.trigger( 'hashchange' );
+	iniLoad = false;
+	
+	
 });
 
 

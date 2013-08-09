@@ -5,9 +5,6 @@
 	$handle		= array_key_exists('handle', 	$project)	? $project['handle']	: null;
 	$name		= array_key_exists('name',		$project)	? $project['name']		: null;
 	
-	/*if (strrpos($project['name'], ' ')!==false )
-		$name =	substr($project['name'], 0, strrpos($project['name'], ' ')) . ' <span>' . strrchr($project['name'], ' ');*/
-	
 	$link				= array_key_exists('link',		$project)			? $project['link']				: null;
 	$type				= array_key_exists('type_label',$project)			? $project['type_label']		: null;
 	
@@ -19,6 +16,7 @@
 	$progress_percent	= ($goal && $progress)								? round($progress/$goal*100)	: null;	// percentage
 	$financials			= array_key_exists('financials',$project)			? $project['financials']		: null;
 	$location			= array_key_exists('location',	$project)			? $project['location']			: null;
+	$is_followed		= array_key_exists('is_followed',$project)			? $project['is_followed']		: null;
 	
 	global $badge_alt;
 
@@ -38,7 +36,7 @@
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="<?php echo $link ?>"><?php echo $name; /*?> <label class="type"><?php echo $type; ?></label></span>*/ ?></a>
+					<a class="project-link" href="<?php echo $link ?>"><?php echo $name; ?></a>
 					<div class="manager-location">
 						<?php
 							if ($manager) {
@@ -129,7 +127,7 @@
 		</div>
 		
 		<div class="action">
-			<button class="follow" title="Follow this project">Follow</button><button class="details" title="<?php echo $name; ?>">Full Details</button>
+			<button <?php echo $is_followed ? 'class="following" title="Stop following this project">Following' : 'class="follow" title="Follow this project">Follow'; ?></button><button class="details" title="<?php echo $name; ?>">Full Details</button>
 		</div>
 		
 	</div>

@@ -22,13 +22,16 @@ AUTHORS: Ivar Oja, Tyrone Tranmer
 
 
 
+
+
+
 @charset "UTF-8";
+
 
 @import "css/typeplate.css.less";
 @import "css/mixins.css.less";
 
 @import "css/helpers.css.less";
-
 
 
 
@@ -117,45 +120,29 @@ input[type=submit] {
 	padding: .2em 1.2em;
 	.border-radius(.2em);
 	
-	font-family: @font-family-sans;
-	//font-family: @heading-font-family;
+	//font-family: @font-family-sans;
+	font-family: @heading-font-family;
 	color: white;
 	font-weight: 400;
-	//background: @offBlack;
 	.linear-gradient(top, lighten(@highlight, 3%), darken(@highlight, 3%));
 	.box-shadow(0 2px 3px -2px fade(black, 30%));
 	.text-shadow(0 1px 1px fade(black, 20%));
-	
 	.transition(all .2s);
 	
-	//.text-shadow-multiple(0 -1px 1px fade(black, 15%), 0 1px 1px fade(white, 30%));
-	//.box-shadow(0 2px 5px -2px fade(black, 50%) inset);
-	//.text-shadow(0 1px 3px fade(black, 50%));
-	
-	i:after {
-		//font: normal normal 80%/1.2 'Ipsicons';
-		font-style: normal;
-		content: "›";
-		width: 0;
-		opacity: 0;
-		overflow: hidden;
-		display: inline-block;
-		text-align: right;
-		position: relative;
-		top: -.05em;
-		.transition(all .2s);
-	}
 	&:hover {
-		//background: @highlight;
 		.linear-gradient(top, darken(@highlight, 3%), lighten(@highlight, 3%));
 		.box-shadow(0 0 0 0 fade(black, 0%));
-	
-		/*padding: .2em .8em;
-		i:after {
-			width: .8em;
-			opacity: 1;
-		}*/
 	}
+	
+	&.flat {
+		background: @highlight;
+		.box-shadow(none);
+		&:hover, &:active {
+			.linear-gradient(top, darken(@highlight, 3%), lighten(@highlight, 3%));
+		}
+	}
+	
+	
 	&.thinner {
 		padding: .1em 1.2em;
 	}
@@ -165,6 +152,93 @@ input[type=submit] {
 	&.thickest {
 		padding: .5em 1.2em;
 	}
+	&.fat {
+		padding: 1em 1.2em;
+	}
+	&.fatter {
+		padding: 1.5em 1.2em;
+	}
+	&.fattest {
+		padding: 2em 1.2em;
+	}
+	&.circle {
+		padding: .75em;
+		line-height: 0;
+		.border-radius(2em);
+	}
+	&.invert {
+		.linear-gradient(top, lighten(@offWhite, 3%), darken(@offWhite, 3%));
+		.box-shadow(0 2px 3px -2px fade(black, 30%));
+		.text-shadow(0 -1px 1px fade(white, 20%));
+		color: @highlight;
+		&:hover, &:active {
+			.linear-gradient(top, darken(@offWhite, 3%), lighten(@offWhite, 3%));
+			.box-shadow(0 0 0 0 fade(black, 0%));
+		}
+		&.flat {
+			background: white;
+			.box-shadow(none);
+			&:hover, &:active {
+				.linear-gradient(top, darken(@offWhite, 3%), lighten(@offWhite, 3%));
+			}
+		}
+	}
+	&.grayed {
+		.linear-gradient(top, lighten(@aluminium, 3%), darken(@aluminium, 3%));
+		.box-shadow(0 2px 3px -2px fade(black, 30%));
+		color: white;
+		&:hover, &:active {
+			.linear-gradient(top, darken(@aluminium, 3%), lighten(@aluminium, 3%));
+			.box-shadow(0 0 0 0 fade(black, 0%));
+		}
+		&.flat {
+			background: @aluminium;
+			.box-shadow(none);
+			&:hover, &:active {
+				.linear-gradient(top, darken(@aluminium, 3%), lighten(@aluminium, 3%));
+			}
+		}
+	}
+	&.faded {
+		font-family: 'neue-haas-grotesk-display';
+		font-weight: 400;
+		color: @magnesium;
+		background: @offWhite;
+		.box-shadow(none);
+		.text-shadow(none);
+		&:hover, &:active {
+			color: @offBlack;
+		}
+	}
+	&.outlined {
+		font-weight: 400;
+		color: @magnesium;
+		border: 1px solid @silver;
+		background: transparent;
+		.box-shadow(none);
+		.text-shadow(none);
+		&:hover, &:active {
+			color: @textGray;
+			border: 1px solid @nickel;
+		}
+	}
+	&.warning {
+		.linear-gradient(top, lighten(@lustRed, 3%), darken(@lustRed, 3%));
+		.box-shadow(0 2px 3px -2px fade(black, 30%));
+		color: white;
+		&:hover {
+			.linear-gradient(top, darken(@lustRed, 3%), lighten(@lustRed, 3%));
+			.box-shadow(0 0 0 0 fade(black, 0%));
+		}
+		&.flat {
+			background: @lustRed;
+			.box-shadow(none);
+			&:hover, &:active {
+				.linear-gradient(top, darken(@lustRed, 3%), lighten(@lustRed, 3%));
+			}
+		}
+	}
+
 	&.tertiary {
 		font-weight: 400;
 		font-size: inherit;
@@ -173,6 +247,7 @@ input[type=submit] {
 			background: @highlight;
 		}
 	}
+	
 }
 .thinner {
 	padding: .1em 1.2em;
@@ -185,6 +260,12 @@ input[type=submit] {
 }
 .fat {
 	padding: 1em 1.2em;
+}
+.fatter {
+	padding: 1.5em 1.2em;
+}
+.fattest {
+	padding: 2em 1.2em;
 }
 .circle {
 	padding: .75em;
@@ -201,6 +282,13 @@ input[type=submit] {
 		.linear-gradient(top, darken(@offWhite, 3%), lighten(@offWhite, 3%));
 		.box-shadow(0 0 0 0 fade(black, 0%));
 	}
+	&.flat {
+		background: white;
+		.box-shadow(none);
+		&:hover, &:active {
+			.linear-gradient(top, darken(@offWhite, 3%), lighten(@offWhite, 3%));
+		}
+	}
 }
 .grayed {
 	//background: @offWhite;
@@ -211,9 +299,17 @@ input[type=submit] {
 		.linear-gradient(top, darken(@aluminium, 3%), lighten(@aluminium, 3%));
 		.box-shadow(0 0 0 0 fade(black, 0%));
 	}
+	&.flat {
+		background: @aluminium;
+		.box-shadow(none);
+		&:hover, &:active {
+			.linear-gradient(top, darken(@aluminium, 3%), lighten(@aluminium, 3%));
+		}
+	}
 }
 .faded {
-	font-family: 'HaasGrotDisp-55Roman'; // TODO @font-face for Neue Haas Grotesk
+	font-family: 'neue-haas-grotesk-display';
+	font-weight: 400;
 	color: @magnesium;
 	background: @offWhite;
 	.box-shadow(none);
@@ -241,6 +337,13 @@ input[type=submit] {
 	&:hover {
 		.linear-gradient(top, darken(@lustRed, 3%), lighten(@lustRed, 3%));
 		.box-shadow(0 0 0 0 fade(black, 0%));
+	}
+	&.flat {
+		background: @lustRed;
+		.box-shadow(none);
+		&:hover, &:active {
+			.linear-gradient(top, darken(@lustRed, 3%), lighten(@lustRed, 3%));
+		}
 	}
 }
 
@@ -308,6 +411,11 @@ textarea {
 			}
 		}
 		.clear-children;
+	}
+	
+	label {
+		display: block;
+		margin-top: -1px;
 	}
 }
 @media only screen and (max-width: 469px) { // Smartphones
@@ -586,14 +694,16 @@ label.type {
 		padding-right: @padding;
 	}
 }
-@media only screen and (min-width: 470px) and (max-width: 699px) { // == Large smartphones
+@media only screen and (max-width: 699px) { // == Large smartphones
 	.paper {
-		padding: @padding @gridMargin;
+		padding-right: @gridMargin;
+		padding-left: @gridMargin;
 	}
 }
 @media only screen and (max-width: 469px) { // <= Smartphones
 	.paper {
-		padding: @padding;
+		padding-right: @padding;
+		padding-left: @padding;
 	}
 }
 
@@ -614,26 +724,44 @@ label.type {
 		vertical-align: middle;
 		a {
 			display: inline-block;
-			
-			padding: .5rem @padding/3*2 .3rem;
-			line-height: 2rem;
+			padding: .8rem @padding/3*2;
+			line-height: .9;
 			white-space: nowrap;
-			font-family: 'HaasGrotDisp-55Roman'; // TODO @font-face for Neue Haas Grotesk
+			font-family: 'neue-haas-grotesk-display';
+			font-weight: 400;
 			color: @textGray;
-			vertical-align: top;
 			.transition(all .2s);
+			em {
+				display: inline-block;
+				.zeta;
+				line-height: 1;
+				font-style: normal;
+				text-align: center;
+				padding: .3em .6em;
+				margin: -.3em .25em -.3em 0;
+				min-width: 1.9em;
+				background-color: @offBlack	;
+				color: white;
+				.border-radius(.15rem);
+				.transition(background-color .2s);
+			}
 			&.current {
-				//font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
 				color: @highlight;
+				em {
+					background-color: @highlight;
+				}
 			}
 			&:hover, &:active {
 				color: @highlight;
+				em {
+					background-color: @highlight;
+				}
 			}
 			
 		}
-	}/*
-	&.major {
-		li {
+	}
+	/*&.major {*/
+	/*	li {
 			a {
 				border-bottom: 1px solid transparent;
 				&:hover, &:active {
@@ -652,48 +780,6 @@ label.type {
 		}
 		li {
 			.kappa;
-			a {
-				color: @magnesium;
-				font-weight: 300;
-				line-height: .9;
-				padding-top: (@padding/1.5)*.2;
-				padding-bottom: (@padding/1.5)*.2;
-				vertical-align: middle;
-				em {
-					display: inline-block;
-					.zeta;
-					font-style: normal;
-					text-align: center;
-					margin-right: .15em;
-					padding: .5em;
-					min-width: 1.9em;
-					//border: 1px solid @lightGray;
-					background-color: @magnesium;
-					color: white;
-					.border-radius(.15rem);
-					.transition(background-color .2s);
-				}
-				&:hover, &:active {
-					color: @highlight;
-					em {
-						//border-color: @highlight;
-						background-color: @highlight;
-					}
-				}
-				&.current {
-					color: @offBlack;
-					font-weight: 400;
-					em {
-						background-color: @offBlack;
-					}
-					&:hover, &:active {
-						color: @highlight;
-						em {
-							background-color: @highlight;
-						}
-					}
-				}
-			}
 		}
 	}
 }
@@ -753,7 +839,7 @@ label.type {
 		}
 	}
 	.feed {
-		padding: 0 @padding/1.5 @padding;
+		padding: 0 @padding @padding @padding/1.5;
 		li {
 			>div {
 				padding: @padding/1.5;
@@ -845,7 +931,7 @@ label.type {
 		}
 	}
 	.connections {
-		padding: 0 @padding/1.5 @padding*2;
+		padding: 0 @padding @padding*2 @padding/1.5;
 	}
 }
 @media only screen and (max-width: 1000px) { // <= Tablets and landscape large smartphones
@@ -1050,31 +1136,36 @@ label.type {
 		}
 	}
 }
+@media only screen and (max-width: 469px) { // <= Smartphones
+	.message {
+		text-align: center;
+	}
+}
 
 
 
 .fixed {
-	//.linear-gradient(top, fade(@offWhite, 80%), fade(darken(@offWhite, 2%), 80%));
-	//.box-shadow(inset 0 -@padding @padding -@padding fade(black, 10%));
 	position: fixed;
 	z-index: 7;
 	left: 0;
 	top: @mastheadShort;
 	width: 100%;
-	//background: @offWhite;
-	/*hgroup {
-		background: fade(@offWhite, 95%);
-	}*/
-	//.box-shadow(0 4px 4px -4px fade(black, 20%));
-}
-.narrow {
-	hgroup, .contract {
-		padding-top: @padding/1.25 !important;
-		padding-bottom: @padding/3 !important;
-		h2 {
-			font-size: unit(@gamma, em) !important;
+	&.narrow {
+		hgroup, .contract {
+			padding-top: @padding/1.25 !important;
+			padding-bottom: @padding/3 !important;
+			h2 {
+				font-size: unit(@gamma, em) !important;
+			}
+		}
+		.followwrap {
+			height: 0 !important;
+			margin: 0 !important;
 		}
 	}
+}
+.fix.narrow {
+	opacity: 0;
 }
 @media only screen and (max-width: 1000px) { // <= Tablets and landscape large smartphones
 	.narrow {
@@ -1148,8 +1239,6 @@ label.type {
 
 .project-badge {
 	.grid;
-	//padding: @padding/2;
-	//margin-bottom: 1rem;
 	
 	> div {
 		cursor: pointer;
@@ -1205,7 +1294,8 @@ label.type {
 		.clear-children;
 		.project-name {
 			.delta;
-			font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+			font-family: 'neue-haas-grotesk-display';
+			font-weight: 500;
 			line-height: 1.1;
 			//margin-top: @padding/2;
 			//display: table;
@@ -1251,10 +1341,12 @@ label.type {
 			.mu;
 			line-height: 1.3;
 			margin-top: .2em;
-			font-family: 'HaasGrotDisp-45Light'; // TODO @font-face for Neue Haas Grotesk
+			font-family: 'neue-haas-grotesk-display';
+			font-weight: 300;
 			color: @nickel;
 			a {
 				color: @nickel;
+				white-space: nowrap;
 				&.active, &:hover, &:active {
 					color: @highlight;
 				}
@@ -1301,6 +1393,7 @@ label.type {
 			padding-right: 0;
 			>div {
 				display: block;
+				padding: 0;
 				>div {
 					color: @offBlack;
 					height: 100%;
@@ -1399,19 +1492,23 @@ label.type {
 					text-align: left;
 				}
 				/*u {
-					font-family: 'HaasGrotDisp-75Bold'; // TODO @font-face for Neue Haas Grotesk
+					font-family: 'neue-haas-grotesk-display';
+					font-weight: 75Bold;
 				}
 				i {
-					font-family: 'HaasGrotDisp-35Thin'; // TODO @font-face for Neue Haas Grotesk
+					font-family: 'neue-haas-grotesk-display';
+					font-weight: 200;
 				}*/
 				b {
 					.epsilon;
 					//font-size: 1.35em;
-					//font-family: 'HaasGrotDisp-75Bold'; // TODO @font-face for Neue Haas Grotesk
+					//font-family: 'neue-haas-grotesk-display';
+					//font-weight: 75Bold;
 				}
 				label {
 					display: block;
-					font-family: 'HaasGrotDisp-35Thin'; // TODO @font-face for Neue Haas Grotesk
+					font-family: 'neue-haas-grotesk-display';
+					font-weight: 200;
 					/*line-height: inherit;
 					vertical-align: baseline;
 					margin-left: 0;*/
@@ -1447,7 +1544,8 @@ label.type {
 				height: auto;
 				vertical-align: top;
 				li {
-					//font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+					//font-family: 'neue-haas-grotesk-display';
+					//font-weight: 500;
 					//padding-top: .875rem;
 					padding-top: 0;
 					padding-right: 0;
@@ -1461,7 +1559,8 @@ label.type {
 						padding-left: 1.25rem;
 					}
 					u {
-						//font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+						//font-family: 'neue-haas-grotesk-display';
+						//font-weight: 500;
 					}
 					label {
 						font-size: 8px;
@@ -1481,64 +1580,41 @@ label.type {
 	
 	.action {
 		background: white;
-//		.box-shadow(0 2px 3px -2px fade(black, 30%));
 		button {
 			.thickest;
 			.iota;
 			padding: 0 1.2em;
 			height: 2.4rem;
-			font-family: 'HaasGrotDisp-55Roman'; // TODO @font-face for Neue Haas Grotesk
-			//text-transform: uppercase;
+			font-family: 'neue-haas-grotesk-display';
+			font-weight: 400;
 			width: 50%;
-			//position: relative;
 			background: @offWhite;
 			.transition-multiple(background-color .2s, color .2s, font-size 0);
-			/*&:hover {
-				z-index: 1;
-			}*/
-			&.follow {
-				//.outlined;
-				//.invert;
+			&.follow, &.following {
 				color: @magnesium;
-				//color: @offBlack;
-				//margin-right: -1px;
-				//.border-radius(.3em 0 0 .3em);
 				.border-radius(.2em 0 0 .2em);
-				//.box-shadow(inset 0 0 0 1px @magnesium);
-				//.box-shadow(0 2px 3px -2px fade(black, 20%));
 				.box-shadow(none);
 				.text-shadow(none);
 				&:hover {
-					//color: @textGray;
-					//.box-shadow(inset 0 0 0 1px @nickel);
-					//color: @highlight;
-					//background: mix(@offWhite, @highlight, 97%);
 					color: @offBlack;
-					//background: @darkGray;
 				}
 				&:before {
 					font-family: 'icobundl';
 					content: '\e800';
 					margin-right: .5em;
 				}
-				/*border-right: 0;
-				&:hover {
-					border-right: 0;
-				}*/
+			}
+			&.following {
+				color: @offBlack;
 			}
 			&.details {
 				color: @highlight;
-				//border: 1px solid @highlight;
-				//.grayed;
-				//.border-radius(0 .3em .3em 0);
 				.border-radius(0 .2em .2em 0);
-				//.linear-gradient(top, lighten(@highlight, 1%), darken(@highlight, 1%));
-				.box-shadow(-1px 0 0 white);
+				//.box-shadow(-1px 0 0 white);
+				.box-shadow(none);
 				.text-shadow(none);
-				//.linear-gradient(top, @offWhite, @offWhite);
 				&:hover {
 					color: white;
-					//.linear-gradient(top, darken(@highlight, 1%), lighten(@highlight, 1%));
 					background: @highlight;
 				}
 				&:after {
@@ -1546,14 +1622,6 @@ label.type {
 					content: '\e96f';
 					margin-left: .5em;
 				}
-				//.box-shadow-multiple(-1px 0 0 fade(black, 3%), inset 1px 0 0 fade(white, 10%));
-				//.box-shadow(none);
-				border-left: 0;
-				//margin-left: -1px;
-				/*&:hover, &:active {
-					//color: @highlight;
-					border-color: @highlight;
-				}*/
 			}
 		}
 	}
@@ -1654,7 +1722,12 @@ label.type {
 	/*.home-listing .project-badge:nth-child(n+2){ display:none; }*/
 }
 @media only screen and (max-width: 469px) { // Smartphones
-	.project-badge { .grid-1-1; }
+	.project-badge {
+		.grid-1-1;
+		.summary {
+			display: none;
+		}
+	}
 	.home-listing .project-badge:nth-child(n+2){ display:none; }
 }
 
@@ -1734,15 +1807,18 @@ label.type {
 		}
 	}
 	.title {
-		//.transition(all .5s);
-		//.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
 		background: white;
+		.transition(all .5s);
+		&.fix {
+			position: relative;
+		}
 		.tabs {
 			background: none;
 		}
 		hgroup {
 			//background: @offWhite;
 			.gridwrap;
+			.transition(all .5s);
 			padding: @padding;
 			
 			.profile-badge {
@@ -1767,15 +1843,40 @@ label.type {
 				}
 			}
 			h2 {
-				font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+				font-family: 'neue-haas-grotesk-display';
+				font-weight: 500;
 				margin-bottom: 0;
 				span {
 					white-space: nowrap;
 				}
 			}
-			.transition(all .5s);
+			.followwrap {
+				.grid-1-3;
+				float: right;
+				padding-left: @gridMargin/3*2;
+				overflow: hidden;
+				margin: -.12em 0;
+				.transition(all .2s);
+				&.following {
+					min-width: 3.8em;
+				}
+				button {
+					.faded;
+					.fat;
+					white-space: nowrap;
+					font-size: unit(@zeta, rem);
+					width: 100%;
+					&.following {
+						color: @offBlack;
+					}
+					&:before {
+						font-family: 'icobundl';
+						content: '\e800';
+						margin-right: .5em;
+					}
+				}
+			}
 		}
-		.transition(all 1s);
 	}
 	.body {
 		.paper {
@@ -1793,13 +1894,72 @@ label.type {
 			height:auto;
 		}
 	}
+	
+	.side-tab {
+		display: none;
+	}
+	.tab-content {
+		display: none;
+		&.current {
+			display: block;
+		}
+	}
 	.side {
 		padding-top: @padding*1.5;
+		.tab-content {
+			display: block;
+		}
+		
+		#investors-content, #followers-content {
+			display: none;
+			&.side-current {
+				display: block;
+			}
+		}
 	}
 }
 .project {
 	#main {
 		padding-top: 0;
+	}
+}
+@media only screen and (min-width: 1500px){ // >
+	#project {
+		.title {
+			hgroup {
+				.followwrap {
+					button {
+						font-size: unit(@delta, rem);
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 1499px){ // >= Large screen
+	#project {
+		.title {
+			hgroup {
+				.followwrap {
+					button {
+						font-size: unit(@epsilon, rem);
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 1199px) { // <= Desktop screens
+	#project {
+		.title {
+			hgroup {
+				.followwrap {
+					button {
+						font-size: unit(@zeta, rem);
+					}
+				}
+			}
+		}
 	}
 }
 @media only screen and (max-width: 1000px) { // <= Tablets and landscape large smartphones
@@ -1827,7 +1987,39 @@ label.type {
 				h2{
 					.beta;
 				}
+				.followwrap {
+					button {
+						font-size: unit(@eta, rem);
+					}
+				}
 			}
+		}
+		
+		.side-tab {
+			display: inline-block;
+		}
+		.side {
+			.tab-content {
+				display: none;
+				&.current {
+					display: block;
+				}
+			}
+			#investors-content, #followers-content {
+				display: none;
+				&.current {
+					display: block;
+				}
+				&.side-current {
+					display: none;
+					&.current {
+						display: block;
+					}
+				}
+			}
+		}
+		.connection-tabs {
+			display: none;
 		}
 	}
 }
@@ -1843,6 +2035,11 @@ label.type {
 			hgroup {
 				padding-left: 0;
 				padding-right: 0;
+				.followwrap {
+					button {
+						font-size: unit(@eta, rem);
+					}
+				}
 			}
 		}
 		.tabs {
@@ -1873,8 +2070,21 @@ label.type {
 				margin-right: 0;
 				padding-left: @padding;
 				padding-right: @padding;
+				padding-top: 0;
 				h2 {
 					.gamma;
+				}
+				.followwrap {
+					float: none;
+					width: auto;
+					padding-left: 0;
+					margin-bottom: @padding*1.5;
+					margin-left: -@padding;
+					margin-right: -@padding;
+					button {
+						font-size: unit(@zeta, rem);
+						.border-radius(0);
+					}
 				}
 			}
 			.tabs {
@@ -1990,7 +2200,11 @@ label.type {
 		background: white;
 		.transition(all .5s);
 		
-		&.narrow {
+		&.fix.narrow {
+			.transition(none);
+		}
+		
+		&.fixed.narrow {
 			.profile-badge {
 				width: 3rem;
 			}
@@ -1998,7 +2212,6 @@ label.type {
 				padding-bottom: 0;
 			}
 			.mini-bio, .ext-account-buttons {
-				.transition(all .5s);
 				height: 0 !important;
 				margin: 0;
 			}
@@ -2006,7 +2219,7 @@ label.type {
 		
 		>div {
 			padding-top: @padding*2;
-			padding-bottom: @padding;
+			padding-bottom: @padding*3;
 			padding-right: @gridMargin;
 			padding-left: @gridMargin;
 			.table;
@@ -2014,7 +2227,8 @@ label.type {
 				vertical-align: top;
 			}
 		}
-		figure {
+		.profile-badge {
+			.transition(all .5s);
 			//float: left;
 			width: 10rem;
 			padding-left: @padding;
@@ -2034,9 +2248,11 @@ label.type {
 			}
 		}
 		.profile-details {
+			.transition(all .5s);
 			padding: 0 @padding @padding @padding;
 			.name {
-				font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+				font-family: 'neue-haas-grotesk-display';
+				font-weight: 500;
 			}
 		}
 		.mini-bio {
@@ -2208,7 +2424,7 @@ label.type {
 @media only screen and (max-width: 699px) { // <= Large smartphones
 	#investor, #manager, #dashboard , #investor-edit {
 		.head {
-			figure {
+			.profile-badge {
 				//.grid-1-3;
 				padding: 0;
 				width: 10rem - @padding;
@@ -2263,8 +2479,13 @@ label.type {
 			text-align: center;
 			>div {
 				display: block;
+				padding-left: @padding;
+				padding-right: @padding;
+				&.tabs {
+					padding: 0;
+				}
 			}
-			figure {
+			.profile-badge {
 				display: block;
 				.grid-1-1;
 				padding: 0;
@@ -2275,9 +2496,8 @@ label.type {
 					display: inline-block;
 				}
 			}
-			#investor-details, #manager-details {
+			.profile-details {
 				display: block;
-				.grid-1-1;
 				padding-top: @padding;
 				padding-left: 0;
 				padding-right: 0;
@@ -2373,7 +2593,7 @@ label.type {
 	.head {
 		.table;
 		
-		figure {
+		.profile-badge {
 			.focus {
 				background: fade(@offBlack, 90%);
 				&:after {
@@ -2384,38 +2604,11 @@ label.type {
 					content: '\e806';
 				}
 			}
-		}
-		
-		.ext-account-buttons {
-			
-			/*>div {
-				>div {
-					vertical-align: middle;
-					text-align: center;
+			a:hover {
+				.focus {
+					opacity: 1;
 				}
-				.btns {
-					margin: 0 auto;
-					@maxW: 14rem;
-					white-space: nowrap;
-					width: @maxW;
-					>div {
-						max-width: @maxW;
-						font-size: 0; // we want no space there between inline-block elements!
-						button {
-							padding: 0;
-							font-size: 6rem; // size in rem (not em) units
-							color: @silver;
-							&.connected-ext-account-button {
-								&.facebook, &.twitter, &.google-plus, &.linked-in {
-									&:hover {
-										color: @silver !important;
-									}
-								}
-							}
-						}
-					}
-				}
-			}*/
+			}
 		}
 	}
 	
@@ -2516,14 +2709,14 @@ label.type {
 		}
 	
 		.tight {
-		label {
-			margin: -1px 0 0;
+			label {
+				margin: -1px 0 0;
+			}
+			input {
+				margin: 0 !important;
+			}
+			margin: @padding 0;
 		}
-		input {
-			margin: 0 !important;
-		}
-		margin: @padding 0;
-	}
 	
 		input[type=checkbox],
 		input[type=radio] {
@@ -2608,7 +2801,8 @@ label.type {
 		h1, h2, h3, h4, h5, h6 {
 			//margin-bottom: unit(@line-height, rem);
 			margin-bottom: @padding/2;
-			font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+			font-family: 'neue-haas-grotesk-display';
+			font-weight: 500;
 		}
 		#doc-upload-progress {
 			display: none;
@@ -2699,20 +2893,6 @@ label.type {
 }
 @media only screen and (max-width: 469px) { // <= Smartphones
 	#investor-edit {
-		.head{
-			>div {
-				padding-left: @padding;
-				padding-right: @padding;
-				&.tabs {
-					padding: 0;
-				}
-			}
-			.profile-details {
-				padding-top: @padding;
-				padding-right: 0;
-				padding-left: 0;
-			}
-		}
 		form {
 			padding-top: @padding*2;
 			margin-left: 0;
@@ -2762,7 +2942,7 @@ label.type {
 	.theta;
 	.grid-1-3;
 	//text-align: center;
-	padding: @padding @padding @padding*2 @padding/1.5;
+	padding: @padding 0 @padding*2;
 	/*.gridwrap;
 	padding: @padding/3 @padding @padding @padding;
 	max-width: 50rem;
@@ -2773,6 +2953,8 @@ label.type {
 		height: 100%;
 		padding-right: @gridMargin*3;
 		>div {
+			padding-right: @padding;
+			padding-left: @padding/1.5;
 			>div {
 				color: @financialsColor;
 				position: relative;
@@ -2818,6 +3000,8 @@ label.type {
 		display: inline-table;
 		width: 100%;
 		li {
+			font-family: 'neue-haas-grotesk-display';
+			font-weight: 500;
 			font-size: unit((@gamma+@delta)/2, em);
 			line-height: 1.2;
 			white-space: nowrap;
@@ -2833,28 +3017,21 @@ label.type {
 			label {
 				display: inline-block;
 				color: @aluminium;
-				/*line-height: 0;
-				vertical-align: 1em;
-				margin-left: .25em;*/
-				//font-size: 2em;
-				//font-weight: 300;
-				font-family: 'HaasGrotDisp-25XThin'; // TODO @font-face for Neue Haas Grotesk
+				font-family: 'neue-haas-grotesk-display';
+				font-weight: 100;
 			}
 			b {
-				//font-weight: 500;
-				//.gamma;
-				font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
-				font-weight: normal;
+				font-weight: 500;
 			}
 			u {
 				text-decoration: none;
 				border: 0;
-				font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
 				line-height: 0;
 			}
 			i {
 				font-style: normal;
-				font-family: 'HaasGrotDisp-15XXThin'; // TODO @font-face for Neue Haas Grotesk
+				font-family: 'neue-haas-grotesk-display';
+				font-weight: 100;
 			}
 			/*>div:before {
 				color: @aluminium;
@@ -2876,13 +3053,6 @@ label.type {
 			}
 			&.share >div:before {
 				content: '\e977';
-			}*/
-			/*&.type {
-				b {
-					display: inline-block;
-					.transform-origin(0 50% 0);
-					.transform(scale(.6,1));
-				}
 			}*/
 			&.term {
 				/*>div:before {
@@ -2919,8 +3089,6 @@ label.type {
 			width: 100%;
 			padding-top: @padding;
 			li {
-				font-family: @font-family-sans;
-				//font-weight: 500;
 				line-height: 1;
 				.delta;
 				padding-top: @padding/4;
@@ -3000,7 +3168,6 @@ label.type {
 	.financials {
 		.gridwrap;
 		.kappa;
-		padding-left: @padding;
 		padding-top: @padding/3;
 		
 		>div {
@@ -3008,6 +3175,7 @@ label.type {
 			height: auto;
 			padding-right: 0;
 			>div {
+				padding-left: @padding;
 				display: block;
 				>div {
 					height: 100%;
@@ -3103,8 +3271,12 @@ label.type {
 @media only screen and (max-width: 699px) { // <= Large smartphones
 	.financials {
 		//.theta;
-		padding-left: 0;
-		padding-right: 0;
+		>div {
+			>div {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
 		ul, div {
 			&.size-2 {
 				width: 100%;
@@ -3263,7 +3435,8 @@ label.type {
 		a {
 			color: @offBlack;
 			//font-weight: 500;
-			font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
+			font-family: 'neue-haas-grotesk-display';
+			font-weight: 500;
 			border: 0;
 			&:hover, &:active {
 				color: @highlight;
@@ -3702,7 +3875,7 @@ label.type {
 	left: 0; top: 0;
 	z-index: 3;
 	width: 100%;
-	min-width: @maxW;
+	min-width: @bodyMaxW;
 	height: @mastheadTall;
 	//background: white;
 	text-align: right;
@@ -4071,7 +4244,7 @@ label.type {
 		>div {
 			position: fixed;
 			width: 100%;
-			min-width: @maxW;
+			min-width: @bodyMaxW;
 			height: @introH;
 			background-size: auto @introH;
 			background-position: center top;
@@ -4086,25 +4259,61 @@ label.type {
 				padding-left: @gridMargin;
 				padding-right: @gridMargin;
 				padding-top: @mastheadShort;
-				h1, h2 {
-					font-family: 'HaasGrotDisp-65Medium'; // TODO @font-face for Neue Haas Grotesk
-				}
-				h6 {
-					.eta;
-				}
 				h1, h2, h3, h4, h5, h6 {
 					padding-left: @padding;
 					padding-right: @padding;
 					color: white;
-					font-weight: 300;
 					line-height: 1.2;
 					//.text-shadow(0 1px 3px black);
-					+h1, +h2, +h3, +h4, +h5, +h6, +div {
+					+h1, +h2, +h3, +h4, +h5, +h6 {
 						margin-top: @padding/2;
 					}
 				}
+				h1, h2 {
+					font-family: 'neue-haas-grotesk-display';
+					font-weight: 500;
+				}
+				h4 {
+					font-weight: 200;
+				}
 				h6 {
+					.eta;
 					line-height: @line-height;
+				}
+				.action {
+					margin-top: @padding;
+					button {
+						.zeta;
+						.fatter;
+						min-width: 12rem;
+						//height: 4rem;
+						span {
+							.iota;
+							font-weight: 100;
+						}
+						&.sign-up {
+							.epsilon;
+							//margin-left: 1px;
+							.border-radius(0 .2em .2em 0);
+						}
+						&.how-it-works {
+							//.border-radius(.2em 0 0 .2em);
+							background: fade(@highlight, 40%);
+							color: white;
+							&:hover {
+								color: @highlight;
+								background: fade(white, 10%);
+							}
+							&:before {
+								font-size: 2em;
+								font-family: 'icobundl';
+								content: '\e942';
+								margin-right: .5rem;
+								line-height: 0;
+								vertical-align: middle;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -4216,7 +4425,6 @@ label.type {
 
 /*	Signup-login modal
 —————————————————————————————————————————————————————————————————————————— */
-@maxW: 30.575rem;
 #sign-in {
 	display: table;
 	width: 100%;
@@ -4283,7 +4491,6 @@ label.type {
 				margin-right: auto;
 				
 				width: 80%;
-				max-width: @maxW;
 			}
 			.input-group {
 				input+input {
@@ -4297,7 +4504,6 @@ label.type {
 			
 			.action {
 				width: 80%;
-				max-width: @maxW;
 				margin: 0 auto;
 				float: none;
 				padding: 0 0 @padding/2;
@@ -4320,17 +4526,24 @@ label.type {
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
-				max-width: @maxW;
 				font-size: 0; // we want no space there between inline-block elements!
+				text-align: center;
 				button {
 					padding: .35rem;
 					font-size: 12rem; // size in rem (not em) units
 				}
+				span {
+					&:hover {
+						button {
+							color: @silver;
+						}	
+					}
+				}/*
 				&:hover {
 					button {
 						color: @silver;
 					}
-				}
+				}*/
 			}
 			
 			.tertiary {
@@ -4349,9 +4562,9 @@ label.type {
 		text-align: center;
 		.transition(all, .2s);
 		&:after {
-			content: '\2716';
-			font-family: 'entypo';
-			font-size: 3em;
+			font-family: 'icobundl';
+			content: '\e801';
+			font-size: 1.75em;
 			width: 3rem;
 			height: 3rem;
 			line-height: 3rem;
@@ -4370,19 +4583,10 @@ label.type {
 	}
 	
 	&.signin {
-		@maxW: 25rem;
 		
 		.modal-content form .ext-account-buttons button {
 			font-size: 6rem;
 			color: @magnesium;
-		}
-		.logo >div {
-			max-width: @maxW;
-		}
-		form {
-			input, .input-group, .action, .ext-account-buttons {
-				max-width: @maxW;
-			}
 		}
 	}
 }
@@ -4432,18 +4636,29 @@ label.type {
 			}
 		}
 	}
+}/*
+@media only screen and (max-width: (@maxW + @padding + 2rem + 6rem)) {
+	#sign-in {
+		.modal-content {
+			form {
+				.ext-account-buttons {
+					width: @maxW/2;
+				}
+			}
+		}
+	}
 }
-
-@media only screen and (max-width: 39.825rem) {
-  #sign-in .modal-content form .ext-account-buttons {
-    width: 15.2875rem;
-  }
-}
-@media only screen and (max-width: 24.5375rem) {
-  #sign-in .modal-content form .ext-account-buttons {
-    width: 7.64375rem;
-  }
-}
+@media only screen and (max-width: (@maxW/2 + @padding + 2rem + 6rem)) {
+	#sign-in {
+		.modal-content {
+			form {
+				.ext-account-buttons {
+					width: @maxW/4;
+				}
+			}
+		}
+	}
+}*/
 
 
 
@@ -4465,40 +4680,31 @@ label.type {
 	width: 100%;
 	display: table;
 	color: white;
-	.epsilon;
+	.zeta;
+	.radial-gradient(50% 150%, @textGray, @offBlack, farthest-corner);
 	
 	>div {
-		background: desaturate(lighten(@highlight, 5%), 5%);
-		.box-shadow(inset 0 3rem 3rem -3rem fade(black, 15%));
+		//background: desaturate(lighten(@highlight, 5%), 5%);
+		//background: @darkGray;
+		//.box-shadow(inset 0 3rem 3rem -3rem fade(black, 15%));
 		display: table-cell;
 		text-align: center;
 		vertical-align: middle;
 		min-height: 6rem;
-		padding: 1rem 0 1rem 4rem;
+		padding: .5rem 0 .5rem 4rem;
+	}
+	
+	span {
+		display: inline-block;
+		white-space: nowrap;
+		line-height: 2.2;
 	}
 	
 	a {
-		font-weight: bold;
-		color: @offBlack;
-		.transition(all, .2s);
-		&:hover, &:active {
-			color: white;
-			.text-shadow(0 0 1rem fade(white, 60%));
-		}
-	}
-	
-	i {
-		font-family: 'entypo';
-		font-style: normal;
-		line-height: 1px;
-		&:after {
-			content: '\E705';
-			color: white;
-			.text-shadow(0 0 1rem fade(white, 40%));
-			font-size: 4rem;
-			vertical-align: -.55rem;
-			margin-right: .5rem;
-		}
+		//font-family: 'neue-haas-grotesk-display';
+		//font-weight: 500;
+		white-space: nowrap;
+		margin: 0 .5em;
 	}
 	
 	.close {
@@ -4509,9 +4715,9 @@ label.type {
 		padding: 0;
 		.transition(all, .2s);
 		&:after {
-			content: '\274C';
-			font-family: 'entypo';
-			.gamma;
+			font-family: 'icobundl';
+			content: '\e801';
+			.epsilon;
 			line-height: 1;
 			height: 100%;
 			width: 4rem;
@@ -4522,6 +4728,13 @@ label.type {
 		&:hover {
 			background: @offBlack;
 			color: @highlight;
+		}
+	}
+}
+@media only screen and (max-width: 699px) {  // <= Large smartphones
+	#nag {
+		>div:first-child {
+			padding-left: .5rem;
 		}
 	}
 }

@@ -105,7 +105,7 @@
 				<h3 class="name"><?php echo $full_name;  ?></h3>
 				
 				<div class="mini-bio">
-					<p>Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav<?php /*<br><a href="#" class="hellip">…</a>*/ ?></p>
+					<p>Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav <a href="#">Edit</a></p>
 				</div>
 	
 				<div class="ext-account-buttons">
@@ -191,6 +191,14 @@
 										<label class="radio" for="no-public-company"><input id="no-public-company" type="radio" name="public-company"> No</label>
 										<label class="radio" for="yes-public-company"><input id="yes-public-company" type="radio" name="public-company"> Yes</label>
 									</fieldset>
+									
+									<div class="action">
+										<div>
+											<div>
+												<input type="submit" class="zeta thickest" value="Submit">
+											</div>
+										</div>
+									</div>
 									
 								</form>
 							

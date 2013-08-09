@@ -10,17 +10,9 @@
 	<div id="tabs" class="submenu">
 		<div>
 			<ul>
-				<?php /*<li><a class="activity <?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='activity') ? 'current' : ''; ?>" href="?p=dashboard">Activity Feed</a></li>*/ ?>
-				<li><a class="dashboard <?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='dashboard') ? 'current' : ''; ?>" href="?p=dashboard">Dashboard</a></li>
+				<li><a class="dashboard current" href="?p=dashboard">Dashboard</a></li>
 				<li><a class="profile" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li>
-				<?php /*<li><a class="accreditation" href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation">Investor Accreditation</a></li>*/ ?>
 				<li><a class="settings" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
-				<?php /*
-				<li><a class="investments <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='investments' ? 'current' : ''; ?>" href="?p=dashboard&tab=investments">My Investments</a></li>
-				<li><a class="follow projects <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='projects' ? 'current' : ''; ?>" href="?p=dashboard&tab=projects">Projects</a></li>
-				<li><a class="follow investors <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='investors' ? 'current' : ''; ?>" href="?p=dashboard&tab=investors">Investors</a></li>
-				<li><a class="follow s <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='s' ? 'current' : ''; ?>" href="?p=dashboard&tab=s">Developers</a></li>
-				<?php /*<li style="float:right"><a href="?p=investor&i=kadri">My Profile &rarr;</a>*/ ?>
 			</ul>
 		</div>
 	</div>

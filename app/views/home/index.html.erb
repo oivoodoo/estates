@@ -9,15 +9,16 @@
         ">
         <h1 class="title">Build a real estate portfolio online</h1>
         <h6>Get access to exclusive investments and manage your portfolio using Flock.</h6>
-        <div>
-          <button onclick="Turbolinks.visit('<%=page_path("howto")%>')" class="how-it-works">How It Works</button>
+
+        <div class="action">
+          <button onclick="Turbolinks.visit('<%=page_path("howto")%>')" class="how-it-works faded">Watch how &nbsp;&nbsp;<span>1:45 min</span></button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="home-listing">
+<sectipn class="home-listing">
   <div class="listing-head"><h5 class="listing-heading"><label>Featured Investments</label><span><a href="<%= projects_path %>">View all</a></span></h5></div>
   <div class="gridwrap">
     <%= render @projects %>

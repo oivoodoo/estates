@@ -194,6 +194,30 @@ $featured_projects = array($projects['cafe-klaus'], $projects['tallinn-rimi']);
 
 
 
+$investors = array(
+	'kadri' => array(
+		'name'		=> 'Kadri Liis Rääk',
+		'handle'	=> 'kadri',
+		'type'		=> 'investor',
+		'type_label'=> 'Accredited Investor',
+		'type_class'=> 'investor accredited'
+	),
+	'mart' => array(
+		'name'		=> 'Mart Uibo',
+		'handle'	=> 'mart',
+		'type'		=> 'investor'
+	),
+	'michael' => array(
+		'name'		=> 'Michael Walsh',
+		'handle'	=> 'michael',
+		'type'		=> 'investor',
+		'type_label'=> 'Accredited Investor',
+		'type_class'=> 'investor accredited'
+	)
+);
+
+
+
 $managers = array(
 	'stonemount' => array(
 		'name' => 'Stonemount'

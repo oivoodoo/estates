@@ -6,6 +6,8 @@ jQuery(document).ready(function($) {
 		$body = $('body'),
 		is_project = $body.hasClass('project'),
 		is_investor = $body.hasClass('investor'),
+		is_manager = $body.hasClass('manager'),
+		is_profile = $body.hasAnyClass('investor', 'manager'),
 		is_dashboard = $body.hasClass('dashboard'),
 		layout = function() {
 			winW = $(window).width();
@@ -31,33 +33,14 @@ jQuery(document).ready(function($) {
 	        $(pointer.target).pointer(options).pointer('open');
 	    },
 	    pointers = {
-    		'my-profile': {
-    			target: '.head h1',
-    			content: '<h3>My Profile</h3>\
-    					  <p>This is how you would see your own profile. Notice the buttons "Edit profile", "Investor Accreditation", …</p>',
-		        position: {
-					edge: 'top',
-					align: 'left'
-				},
-				pointerWidth: 240
-    		},
-    		'public-profile': {
-    			target: '.head h1',
-    			content: '<h3>Public Profile</h3>\
-    					  <p>This is how you would see someone elses profile. Notice missing "Edit profile", "Investor Accreditation", … buttons.</p>',
-		        position: {
-					edge: 'top',
-					align: 'left'
-				},
-				pointerWidth: 240
-    		},
     		'dashboard': {
     			target: '.feed',
-    			content: '<h3>Dashboard</h3>\
-    					  <p>A lotta more shit would be on the dashboard:</p>\
+    			content: '<p><b>Dashboard:</b></p>\
     					  <ul>\
-    					  	<li>Infographics — Earnings etc.</li>\
-    					  	<li>How complete is your profile</li>\
+    					  	<li>Activity feed</li>\
+    					  	<li>Line graph — earnings total</li>\
+    					  	<li>Map — cities/locations of investments</li>\
+    					  	<li>How complete is your profile<br>(add a little badge "33%" to "Profile" in submenu)</li>\
     					  	<li>What you follow</li>\
     					  	<li>Who you follow</li>\
     					  	<li>Who follow you</li>\
@@ -68,17 +51,51 @@ jQuery(document).ready(function($) {
 					align: 'left'
 				},
 				pointerWidth: 240
+    		},
+    		'profile': {
+    			target: '.main >div >div',
+    			content: '<p><b>Tabs:</b></p>\
+    					  <ul>\
+    					  	<li>Activity feed</li>\
+    					  	<li>Accreditation ?</li>\
+    					  	<li>Experience</li>\
+    					  	<li>(#) Investments (side/tab)</li>\
+    					  	<li>(#) Follows (side/tab)</li>\
+    					  	<li>(#) Followers (side/tab)</li>\
+    					  </ul>',
+		        position: {
+					edge: 'top',
+					align: 'left'
+				},
+				pointerWidth: 240
+    		},
+    		'manager': {
+    			target: '.main >div >div',
+    			content: '<p><b>Tabs:</b></p>\
+    					  <ul>\
+    					  	<li>Activity feed</li>\
+    					  	<li>Track record ?</li>\
+    					  	<li>(#) Projects (side/tab)</li>\
+    					  	<li>(#) Followers (side/tab)</li>\
+    					  </ul>',
+		        position: {
+					edge: 'top',
+					align: 'left'
+				},
+				pointerWidth: 240
     		}
     	};
     
 	if (is_investor) {
-		if ($('#investor').hasClass('me')) {
-			//open_pointer('my-profile');
-		} else {
-			//open_pointer('public-profile');
-		}
-	} else if (is_dashboard) {
-		//open_pointer('dashboard');
+		open_pointer('profile');
+	}
+	if (is_manager) {
+		open_pointer('manager');
+	}
+	if (is_dashboard) {
+		open_pointer('dashboard');
+	}
+	if (is_profile) {
 	}
 
 
@@ -86,3 +103,15 @@ jQuery(document).ready(function($) {
 
 	layout();
 });
+
+
+
+///stackoverflow.com/a/10559271
+jQuery.fn.hasAnyClass = function() {
+	for (var i = 0; i < arguments.length; i++) {
+		if (this.hasClass(arguments[i])) {
+			return true;
+		}
+	}
+	return false;
+}

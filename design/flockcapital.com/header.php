@@ -38,6 +38,7 @@
         <script src="js/jquery.wp-pointer.min.js"></script>
         <script src="js/fancybox/fancybox.min.js"></script>
         <script src="js/jquery.fileupload.js"></script>
+        <script src="js/jquery.ba-bbq.1.3.min.js"></script>
         <?php /* TODO: discard jQuery Isotope (this line & script files) if it ends up unused <script src="js/jquery.isotope.min.js"></script>*/ ?>
 
         <?php /* All custom functions */ ?>
