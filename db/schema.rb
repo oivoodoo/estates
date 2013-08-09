@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130809112256) do
 
-
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -175,8 +174,11 @@ ActiveRecord::Schema.define(version: 20130809112256) do
     t.float    "raised"
     t.text     "short_description"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     t.float    "latitude"
     t.float    "longitude"
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   end
