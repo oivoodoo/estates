@@ -1,0 +1,202 @@
+<section id="investor" class="me" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link]) %>'>
+
+  <div class="message">
+    <div>
+      This is Your profile. &nbsp;&nbsp;<a class="button" href="<%= edit_user_registration_path %>">Edit</a>
+    </div>
+  </div>
+  
+  
+  <div class="head">
+    <div>
+
+      <figure class="profile-badge">
+        <%= render partial: 'users/avatar', locals: { user: current_user } %><div class="focus"></div>
+      </figure>
+      <div class="profile-details">
+        <h3 class="name">{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}}</h3>
+        
+        <div class="mini-bio">
+          <p>{{user.short_bio}}</p>
+        </div>
+
+        <div class="ext-account-buttons">
+          <div>
+            <div class="btns">
+              <div>
+                <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-disabled="!user.facebook_link"></button>
+                <button name="ext-account" value="twitter" class="ext-account-button twitter" ng-click='open(user.twitter_link)' ng-class="{'connected-ext-account-button':user.twitter_link}" ng-disabled="!user.twitter_link"></button>
+                <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-disabled="!user.google_plus_link"></button>
+                <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-disabled="!user.linkedin_link"></button>
+              </div>
+            </div> &nbsp;&nbsp;
+            <div>
+              <p class="tertiary">Connect external accounts to follow your friends' activity on Flock.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="body">
+    <div class="main">
+
+      <div>
+        <div id="tab-1" class="feed-wrapper">
+
+          <ul class="feed">
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
+              </div>
+              <div class="entry">
+                <h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and 2 other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness">1800 Van Ness</a></h5>
+                <div class="entry-content">
+                  <div class="profile-badge project">
+                    <div>
+                      <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness"><img src="/assets/1800-van-ness.png"></a>
+                      <div class="focus"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="entry-meta">
+                  <div class="profile-badge">
+                    <div>
+                      <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
+                      <div class="focus"></div>
+                    </div>
+                  </div>
+                  <div class="profile-badge">
+                    <div>
+                      <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="/assets/michael.png"></a>
+                      <div class="focus"></div>
+                    </div>
+                  </div>
+                  <time>2 days, 7hours ago</time>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
+              </div>
+              <div class="entry">
+                <h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> joined Flock</h5>
+                <div class="entry-meta">
+                  <time>2 days, 7hours ago</time>
+                </div>
+              </div>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+      
+    </div>
+    <div class="side">
+
+      <div>
+        <div>
+
+          <div class="tabs connection-tabs">
+            <ul>
+              <li><a ng-click="connectionsTab=1" ng-class="{current:connectionsTab == 1}"><em>2</em> Investments</a></li>
+              <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em>8</em> Follows</a></li>
+              <li><a ng-click="connectionsTab=3" ng-class="{current:connectionsTab == 3}"><em>473</em> Followers</a></li>
+            </ul>
+          </div>
+          <ul class="connections" ng-show="connectionsTab == 1" ng-init="connectionsTab=1">
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
+                  <div class="focus">
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="connections" ng-show="connectionsTab == 2">
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
+                  <div class="focus">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
+                  <div class="focus">
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="connections" ng-show="connectionsTab == 3">
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
+                  <div class="focus">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
+                  <div class="focus">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="profile-badge">
+                <div>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
+                  <div class="focus"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
