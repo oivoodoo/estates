@@ -100,7 +100,7 @@
 				</div>
 				<div class='tab-content paper'ng-class="{current:projectTab==3}" ng:show="projectTab == 3">
           <div id='map_container' style='display: block'>
-            <google-map center="center" draggable="true" zoom="zoom" markers="markers" mark-click="true" refresh='projectTab == 3' style="display:block; height: 400px"></google-map>
+            <google-map center="center" latitude="latitude" longitude="longitude" mark-click='true' draggable="true" zoom="zoom" markers="markers" mark-click="true" refresh='projectTab == 3' style="display:block; height: 400px"></google-map>
           </div>
           <div><%= @project.address %></div>
 				</div>

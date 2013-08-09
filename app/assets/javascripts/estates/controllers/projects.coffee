@@ -1,20 +1,26 @@
 estates.controller 'ProjectsController', [
-  '$scope', '$element'
-  ($scope, $element) ->
-    debugger
-
+  '$scope', '$element', '$compile'
+  ($scope, $element, $compile) ->
     $scope.project = $element.data('project')
 
-    options =
-      center:
-        latitude: $scope.project.latitude
-        longitude: $scope.project.longitude
-      markers: []
-      zoom: 15
-    angular.extend $scope, options
+    marker =
+      latitude: $scope.project.latitude
+      longitude: $scope.project.longitude
+
+    $scope.latitude  = marker.latitude
+    $scope.longitude = marker.longitude
+    $scope.markers   = []
+    $scope.center    = marker
+    $scope.zoom      = 12
 
     $scope.open = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step
+
+    $(document).bind 'fix:scroll', (event, el) ->
+      $el = $(el)
+      $scope.$apply ->
+        control = $el.parent().find('.fixed')
+        $compile(control)($scope)
 ]
 
