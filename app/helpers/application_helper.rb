@@ -8,6 +8,8 @@ module ApplicationHelper
       "projects"
     elsif controller_name == "registrations"
       "investor-edit"
+    elsif controller_name == 'users'
+      'investor'
     else
       controller_name
     end
