@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808165535) do
+ActiveRecord::Schema.define(version: 20130809095041) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -171,7 +174,6 @@ ActiveRecord::Schema.define(version: 20130808165535) do
     t.integer  "shares",              default: 1,          null: false
     t.string   "risks",               default: ""
     t.text     "manager"
-    t.float    "raised"
     t.text     "short_description"
     t.float    "raised"
   end
@@ -234,6 +236,7 @@ ActiveRecord::Schema.define(version: 20130808165535) do
     t.string   "twitter_link"
     t.string   "google_plus_link"
     t.string   "linkedin_link"
+    t.string   "social_avatar_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

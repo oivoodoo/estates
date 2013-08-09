@@ -5,3 +5,8 @@ section.home-listing .item .left.text { width: 70%; }
 
 .clear { clear: both; }
 
+#masthead nav .profile-badge img {
+  width: auto !important;
+  height: 4rem;
+}
+

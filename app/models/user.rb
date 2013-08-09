@@ -29,7 +29,10 @@ class User < ActiveRecord::Base
 
     return user if user.present?
 
-    create_user_by_auth(auth, name: auth.extra['raw_info']['name'], email: auth.info["email"])
+    create_user_by_auth(auth,
+      social_avatar_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large",
+      name: auth.extra['raw_info']['name'],
+      email: auth.info["email"])
   end
 
   def self.find_for_google(auth)
@@ -62,7 +65,13 @@ class User < ActiveRecord::Base
   end
 
   def profile_image
-    avatar.present? ? avatar.url(:thumb) : "default_avatar.png"
+    if avatar?
+      avatar.url(:thumb)
+    elsif social_avatar_url?
+      social_avatar_url
+    else
+      "avatar.present? ?  : default_avatar.png"
+    end
   end
 
   def name
