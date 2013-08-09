@@ -1,19 +1,25 @@
 estates.controller 'ApplicationController', [
-  '$scope', '$compile'
-  ($scope, $compile) ->
-    $(window)
-    .on('resize', ->
-      window.layout();
-      connectionMasonry();
-    ).on('scroll', ->
+  '$scope', '$compile', '$window'
+  ($scope, $compile, $window) ->
+    $window.onresize = ->
+      layout()
+      connectionMasonry()
+
+    $window.onscroll = ->
       sizeMenu()
       callNag()
-      fixPos($scope, $compile)
-    ).on('click.nag', ->
+      fixPos()
+
+    $(document).on 'click', '.nag', ->
       callNag()
-    ).on('load', ->
-      window.layout()
+
+    $window.onload = ->
+      layout()
       connectionMasonry()
-    )
+
+    $(document).on 'page:load', ->
+      window.load()
+      layout()
+      connectionMasonry()
 ]
 

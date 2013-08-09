@@ -62,7 +62,7 @@ window.load = function() {
     });
   };
 
-  window.fixPos = function($scope, $compile) {
+  window.fixPos = function() {
     var scrollTop = $window.scrollTop();
     $('.fix').each(function(i,el){
       var $el = $(el);
@@ -73,7 +73,8 @@ window.load = function() {
           $el.data('fixed', true);
           setTimeout(function(){
             $el.data('fixedclone').addClass('narrow');
-            $el.data('fixedclone').replaceWith($compile($el.data('fixedclone'))($scope));
+            // AK changes
+            $(document).trigger('fix:scroll', $el);
           }, 10);
         }
       } else {

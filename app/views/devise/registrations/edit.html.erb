@@ -104,27 +104,32 @@
         <%= f.text_field :phone, placeholder: "Phone", size: 1 %>
       </label>
 
-      <div class="tight">
-        <label for="user_street">
-          <%= f.text_field :street_address, placeholder: "Street address", size: 1 %>
-        </label>
-        <label for="user_zip">
-          <%= f.text_field :zip_code, placeholder: "Zip code", size: 1 %>
-        </label>
+      <fieldset class="separated-bottom">
+        <div class="tight">
+          <label for="user_street">
+            <%= f.text_field :street_address, placeholder: "Street address", size: 1 %>
+          </label>
+          <label for="user_zip">
+            <%= f.text_field :zip_code, placeholder: "Zip code", size: 1 %>
+          </label>
 
-        <label for="user_city">
-          <%= f.text_field :city, placeholder: "City/Town/Locality", size: 1 %>
-        </label>
+          <label for="user_city">
+            <%= f.text_field :city, placeholder: "City/Town/Locality", size: 1 %>
+          </label>
 
-        <label for="user_country">
-          <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
-        </label>
+          <label for="user_country">
+            <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
+          </label>
 
-        <label for="user_state">
-          <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
-        </label>
-        <fieldset class="separated-bottom">
-          <legend>Add your social link:</legend>
+          <label for="user_state">
+            <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="separated-bottom">
+        <legend>Add your social links:</legend>
+        <div class="tight">
           <label for="user_facebook_link">
             <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
           </label>
@@ -137,8 +142,8 @@
           <label for="user_linkedin_link">
             <%= f.text_field :linkedin_link, placeholder: "http://www.linkedin.com/", :size => 1, :autocomplete => 'off', 'ng-model' => 'user.linkedin_link' %>
           </label>
-        </fieldset>
-      </div>
+        </div>
+      </fieldset>
 
       <div class="action">
         <div>
@@ -173,7 +178,7 @@
             <div class="progress" style="width:0%"></div>
           </div>
           <div id="doc-scan-preview">
-            <img src="img/doc-scan.png">
+            <%= image_tag("img/doc-scan.png") %>
           </div>
         </fieldset>
 

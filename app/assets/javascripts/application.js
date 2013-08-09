@@ -15,7 +15,6 @@
 //= require jquery.validate
 //
 //= require turbolinks
-//= require turbo
 
 //= require gritter
 //= require vendors/html5
