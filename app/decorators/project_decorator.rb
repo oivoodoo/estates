@@ -3,10 +3,6 @@ class ProjectDecorator < Draper::Decorator
 
   include ActionView::Helpers::NumberHelper
 
-  def address
-    "#{street} #{city} #{country}"
-  end
-
   def address?
     address.strip.present?
   end

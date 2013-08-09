@@ -1,14 +1,16 @@
 estates.controller 'ProjectsController', [
-  '$scope', '$timeout', '$element'
-  ($scope, $timeout, $element) ->
-    address = $element.data('address')
+  '$scope', '$element'
+  ($scope, $element) ->
+    debugger
+
+    $scope.project = $element.data('project')
 
     options =
       center:
-        latitude: 28
-        longitude: 53
+        latitude: $scope.project.latitude
+        longitude: $scope.project.longitude
       markers: []
-      zoom: 8
+      zoom: 15
     angular.extend $scope, options
 
     $scope.open = (event, variable, step) ->

@@ -2,7 +2,7 @@
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
 <% end %>
 
-<section id="project" ng-controller="ProjectsController" data-address='<%= @project.address %>'>
+<section id="project" ng-controller="ProjectsController" data-project='<%= @project.to_json(only: [:latitude, :longitude]) %>'>
   <div class="head">
     <div class="cover">
       <div>

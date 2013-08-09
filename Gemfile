@@ -52,6 +52,7 @@ gem 'draper', github: 'drapergem/draper'
 gem 'acts_as_commentable'
 gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
+gem "geocoder"
 
 gem 'jquery-validation-rails'
 
