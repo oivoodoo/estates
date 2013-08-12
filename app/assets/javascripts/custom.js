@@ -1,4 +1,6 @@
 ///stackoverflow.com/a/10559271
+window.graphs = {};
+
 jQuery.fn.hasAnyClass = function() {
   for (var i = 0; i < arguments.length; i++) {
     if (this.hasClass(arguments[i])) {
@@ -129,14 +131,14 @@ window.load = function() {
 				document.getElementById('nav').style.marginTop = '';
 				document.getElementById('expand').style.marginTop = '';
 				$('#masthead').removeClass('mini');
-			
+
 			} else if (   scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
-				// don't contract the menu any further 
+				// don't contract the menu any further
 				document.getElementById('masthead').style.height = '';
 				document.getElementById('nav').style.marginTop = '';
 				document.getElementById('expand').style.marginTop = '';
 				$('#masthead').addClass('mini');
-			
+
 			} else {
 				//menuH = menuTallH - (scrollTop - (Math.abs($('#intro').height()-menuTallH)));
 				  menuH = menuTallH - scrollTop + Math.max(0, ($('#intro').height()-menuTallH));
@@ -279,4 +281,46 @@ $('.fancybox-video')
     this.height = parseInt(this.element.data('height'));
   }
 });
+
+
+var	graphDefaults = {
+    line: {
+      bezierCurve: false,
+      scaleFontFamily: 'neue-haas-grotesk-text',
+      scaleSteps: 5,
+      scaleFontColor: 'hsl(0, 0%, 16%)',
+      pointDotRadius: 3,
+      pointDotStrokeWidth: 1,
+      scaleLineColor : 'rgba(41,41,41, .1)',
+      scaleGridLineColor : 'rgba(41,41,41, .05)',
+    },
+    doughnut: {
+    }
+};
+
+window.drawGraphs = function() {
+  $.each(window.graphs, function(g, options) {
+    var $canvas = $('#'+g+'-canvas');
+    if ($canvas.length && $canvas.is(':visible')) {
+      var canvasW = $canvas.attr('width'),
+        canvasH = $canvas.attr('height');
+
+      $('.graph-canvas').hide();
+      var parentW = $canvas.parent().width();
+      $('.graph-canvas').show();
+      $canvas.prop({
+        width: parentW,
+        height: parentW*canvasH/canvasW
+      });
+
+      var ctx = $canvas.get(0).getContext('2d'),
+        graph_options = $.extend(graphDefaults[options.type], options['options'], {}),
+        graph = options.type == 'line' ?
+              new Chart(ctx).Line(options['data'], graph_options)
+            : options.type == 'doughnut' ?
+              new Chart(ctx).Doughnut(options['data'], graph_options)
+            : null;
+    }
+  });
+};
 

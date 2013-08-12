@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
 				var $el = $(el),
 					top = $el.data('top') || menuShortH,
 					steal = 0; // px
-				
+
 				if (scrollTop+top+steal > $el.data('offsetTop') && winW > 469) {
 					if (!$el.data('fixed')) {
 						$el.addClass('narrow');
@@ -76,7 +76,7 @@ jQuery(document).ready(function($) {
 					$tab_content = $(tab+'-content'),
 					$other_tab_contents = $('.tab-content').not($tab_content),
 					$other_main_tab_contents = $('.main .tab-content').not($tab_content);
-				
+
 				//if ($tab_content.length) {
 					if (winW > 1000) {
 						if (!$tab_content.hasClass('side-tab-content')) {
@@ -114,17 +114,17 @@ jQuery(document).ready(function($) {
 				$el.data('offsetTop', $el.offset().top);
 				$el.data('top', i==0 ? menuShortH : menuShortH+$prev.outerHeight());
 			});
-			
+
 			$wrap.css('padding-bottom', footerH);
-			
+
 			if (is_project) {
 				if (winW > 1000 && $('.side .tab-content.current').length) {
 					location.href = $('.main .tabs a, .tabs.major a').eq(0).attr('href');
 				}
 			}
-			
+
 			submenuHeights();
-			
+
 			sizeMenu();
 		}
 
@@ -150,39 +150,39 @@ jQuery(document).ready(function($) {
 		.on('hashchange', function(e){
 			hashChange(e);
 		});
-		
+
 	$('.fix')
 		.each(function(i,el){
 			var $el = $(el);
 			$el.data('fixedclone', $el.clone().removeClass('fix').addClass('fixed'));
 			$el.data('fixedclone').find('ul').cleanWhitespace();
 		});
-	
+
 	$('.main-switch .tabs a')
 		.on('click', function(e){
 			var $el = $(this),
 				$switch_group = $el.closest('.switch-group'),
 				switch_name = $el.attr('href');
-			
+
 			if (!$el.hasClass('main-switch-current')) {
 				$switch_group.find('.main-switch').removeClass('main-switch-current');
 				$(switch_name+'-content').addClass('main-switch-current');
 			}
 		});
-	
+
 	$('.side-switch .tabs a')
 		.on('click', function(e){
 			var $el = $(this),
 				$switch_group = $el.closest('.switch-group'),
 				switch_name = $el.attr('href');
-			
+
 			if (!$el.hasClass('side-switch-current')) {
 				$switch_group.find('.side-switch').removeClass('side-switch-current');
 				$(switch_name+'-content').addClass('side-switch-current');
 				connectionMasonry();
 			}
 		});
-	
+
 	submenuHeights();
 	$('#masthead li')
 		.on('mouseenter', function(e){
@@ -197,7 +197,7 @@ jQuery(document).ready(function($) {
 				$submenu.outerHeight( 0 );
 			}
 		});
-	
+
 	$('.project-badge .project-name .profile-badge')
 		.on('mouseenter', function(e){
 			$(this).parent().find('.manager-location span a').addClass('active');
@@ -205,7 +205,7 @@ jQuery(document).ready(function($) {
 		.on('mouseleave', function(e){
 			$(this).parent().find('.manager-location span a').removeClass('active');
 		});
-	
+
 	$('.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .action button.tracking, .project-badge .manager-location a')
 		.on('mouseenter', function(e){
 			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').addClass('overridehide');
@@ -213,7 +213,7 @@ jQuery(document).ready(function($) {
 		.on('mouseleave', function(e){
 			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').removeClass('overridehide');
 		});
-	
+
 	$('button.tracking')
 		.on('mouseenter', function(e){
 			$(this).text('Stop tracking');
@@ -221,13 +221,13 @@ jQuery(document).ready(function($) {
 		.on('mouseleave', function(e){
 			$(this).text('Following');
 		});
-		
+
 	$('#masthead nav ul, .tabs ul, .submenu ul, #intro .action, .financials >div >div >div, .ext-account-buttons')
 		.cleanWhitespace();
-	
+
 	$('.combobox')
 		.combobox();
-	
+
 	$('#password-old')
 		.on('keydown', function(){
 			$(this).prop('type', 'password');
@@ -235,12 +235,12 @@ jQuery(document).ready(function($) {
 		.on('blur', function(){
 			if ($(this).val()=='') $(this).prop('type', 'text');
 		});
-	
+
 	$('label.radio')
 		.on('click', function(){
 			var $this = $(this),
 				id = $this.attr('for');
-			
+
 			if (typeof id!=='undefined') {
 				var name = $('#'+id).prop('name');
 				if (typeof name!=='undefined') {
@@ -254,7 +254,7 @@ jQuery(document).ready(function($) {
 			}
 			$this.addClass('selected');
 		});
-	
+
 	$('#doc-upload')
 		.fileupload({
 			// data type for callback response
@@ -295,7 +295,7 @@ jQuery(document).ready(function($) {
 				scaleGridLineColor : 'rgba(41,41,41, .05)',
 			},
 			doughnut: {
-				
+
 			}
 		},
 		drawGraphs = function() {
@@ -304,7 +304,7 @@ jQuery(document).ready(function($) {
 				if ($canvas.length && $canvas.is(':visible')) {
 					var canvasW = $canvas.attr('width'),
 						canvasH = $canvas.attr('height');
-					
+
 					$('.graph-canvas').hide();
 					var parentW = $canvas.parent().width();
 					$('.graph-canvas').show();
@@ -312,7 +312,7 @@ jQuery(document).ready(function($) {
 						width: parentW,
 						height: parentW*canvasH/canvasW
 					});
-					
+
 					var ctx = $canvas.get(0).getContext('2d'),
 						graph_options = $.extend(graphDefaults[options.type], options['options'], {}),
 						graph = options.type == 'line' ?
@@ -340,10 +340,10 @@ jQuery(document).ready(function($) {
 			}
 			$masthead.toggleClass('expanded').height(function(){
 				var navH = $masthead.find('nav').outerHeight(true);
-				
+
 				mastHeadH = menuFlex ? (expand ? menuH+navH : menuH) : (expand ? ((3+(navH/baseFontSize))*1.1)+'rem' : '3rem'); //TODO: +2.6 ????
 				//console.log(baseFontSize, navH);
-				
+
 				return  mastHeadH;
 			});
 		});
@@ -354,24 +354,24 @@ jQuery(document).ready(function($) {
 			var scrollTop = $(window).scrollTop(),
 				//mini = scrollTop > menuTallH-menuShortH ? true : false,
 				autohide = scrollTop > menuTallH ? true : false;
-			
+
 			/*if (mini)
 				return;*/
-				
+
 			if (   scrollTop <= Math.max(0, $('#intro').height()-menuTallH)   ) {
 				// don't contract the menu yet
 				document.getElementById('masthead').style.height = '';
 				document.getElementById('nav').style.marginTop = '';
 				document.getElementById('expand').style.marginTop = '';
 				$('#masthead').removeClass('mini');
-			
+
 			} else if (   scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
-				// don't contract the menu any further 
+				// don't contract the menu any further
 				document.getElementById('masthead').style.height = '';
 				document.getElementById('nav').style.marginTop = '';
 				document.getElementById('expand').style.marginTop = '';
 				$('#masthead').addClass('mini');
-			
+
 			} else {
 				//menuH = menuTallH - (scrollTop - (Math.abs($('#intro').height()-menuTallH)));
 				  menuH = menuTallH - scrollTop + Math.max(0, ($('#intro').height()-menuTallH));
@@ -381,11 +381,11 @@ jQuery(document).ready(function($) {
 				document.getElementById('nav').style.marginTop = ((menuH-menuShortH)/2)+'px';
 				document.getElementById('expand').style.marginTop = ((menuH-menuShortH)/2)+'px';
 				$('#masthead').removeClass('mini');
-			
-			}
-			
 
-			
+			}
+
+
+
 			//document.getElementById('masthead').style.height = menuH+'px';
 			//$masthead.toggleClass('mini', mini);
 		}
@@ -393,7 +393,7 @@ jQuery(document).ready(function($) {
 	/*,
 	autohideMenu = function(e) {
 		var show = !$masthead.hasClass('mini') || ($masthead.hasClass('mini') && (e.clientY < menuShortH || e.type == 'scroll')) ? true : false;
-		
+
 		if (show) {
 			clearTimeout(menuTimeout);
 			$masthead.css({'pointer-events': 'auto', 'opacity': 1});
@@ -416,7 +416,7 @@ jQuery(document).ready(function($) {
 
 
 	/*	 Annoy/destroy the sign in/sign up nag
-		
+
 		1) we need need the timeout since browsers auto-scroll the page when you navigate back/fwd and we want the nag to be invoked by manual scroll only
 	———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 	var
@@ -430,5 +430,4 @@ jQuery(document).ready(function($) {
 			nag = false;
 		}
 	}
-	
-	se
+

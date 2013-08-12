@@ -1,0 +1,29 @@
+<canvas class="graph-canvas" id="performance-canvas" height="250" width="400"></canvas>
+<script>
+  window.graphs.performance = {
+    type: 'line',
+    data: {
+      labels : ['', "February '13", "March '13", "April '13", "May '13", "June '13", "August '13"],
+      datasets : [
+        {
+        fillColor : 'hsla(151, 63%, 43%, .1)',
+        strokeColor : 'hsl(151, 63%, 43%)',
+        pointColor : 'white',
+        data : [0, 330, 401, 480, 770, 800, 999]
+      }
+      ]
+
+    },
+    options: {
+      scaleOverride : true,
+
+      //** Required if scaleOverride is true **
+      //Number - The number of steps in a hard coded scale
+      scaleSteps: 5,
+      //Number - The value jump in the hard coded scale
+      scaleStepWidth: 200,
+      //Number - The scale starting value
+      scaleStartValue: 0,
+    }
+  }
+</script>

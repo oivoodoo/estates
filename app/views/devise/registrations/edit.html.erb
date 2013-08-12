@@ -1,15 +1,4 @@
 <section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link]) %>'>
-
-  <div class="submenu">
-    <div>
-      <ul>
-        <li><a class="dashboard" href="<%= dashboard_path %>" ng-click="submenuTab=1">Dashboard</a></li>
-        <li><a class="profile current" href="<%= edit_user_registration_path %>" ng-click="submenuTab=2">Profile</a></li>
-        <li><a class="settings" href="index-p=settings&i=kadri.html" ng-click="submenuTab=3">Settings</a></li>
-      </ul>
-    </div>
-  </div>
-
   <div class="message silent">
     <div>
       <a class="button" href="<%= user_path(current_user) %>">View your public profile</a>
@@ -19,11 +8,9 @@
   <div class="head fix">
     <div class='contract'>
       <figure class="profile-badge">
-        <a href="http://flockcapital.com/profile-pic.php" class="profile-pic fancybox.ajax">
-          <%= render partial: 'users/avatar', locals: { user: current_user } %>
-          <div class="focus"> </div>
-      </a>
+        <%= render partial: 'users/avatar', locals: { user: current_user } %>
       </figure>
+
       <div class="profile-details">
         <h3>{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}} </h3>
 
@@ -58,7 +45,7 @@
     </div>
   </div>
 
-  <div class="tab-content gridwrap" id="profile" ng-show="profileTab == 1" ng-init="profileTab=1">
+  <div class="tab-content gridwrap" id="profile" ng-class='{current:profileTab==1}' ng-show="profileTab == 1" ng-init="profileTab=1">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <label for="user_email">
         <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
@@ -125,10 +112,7 @@
             <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
           </label>
         </div>
-      </fieldset>
 
-      <fieldset class="separated-bottom">
-        <legend>Add your social links:</legend>
         <div class="tight">
           <label for="user_facebook_link">
             <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
@@ -156,9 +140,9 @@
     <% end %>
   </div>
 
-  <div class="tab-content gridwrap" id="accreditation" ng-show="profileTab == 2">
+  <div class="tab-content gridwrap" id="accreditation" ng-class='{current:profileTab==2}' ng-show="profileTab == 2">
     <div>
-      <form>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
         <div class="intro">
           <p>
             Most investments are available to accredited investors only. Please answer the following questions to verify your qualification as an <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
@@ -205,11 +189,16 @@
           <label class="radio" for="yes-public-company"><input id="yes-public-company" type="radio" name="public-company"> Yes</label>
         </fieldset>
 
-      </form>
+        <div class="action">
+          <div>
+            <div>
+              <%= f.submit 'Update', class: "zeta thickest", disabled: 'disabled' %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
     </div>
   </div>
 </section>
-
-<%#= render partial: 'users/avatar', object: current_user %>
-<%#= f.file_field :avatar %>
 
