@@ -22,13 +22,13 @@ class ProjectsController < ApplicationController
   def follow
     @project = Project.find(params[:id])
     @project.followed_by!(current_user)
-    render :nothing => true
+    render partial: 'projects/follower', locals: { follower: current_user }
   end
 
   def unfollow
     @project = Project.find(params[:id])
     @project.unfollow!(current_user)
-    render :nothing => true
+    render partial: 'projects/unfollow'
   end
 
   private

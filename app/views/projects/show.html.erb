@@ -2,7 +2,7 @@
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
 <% end %>
 
-<section id="project" ng-controller="ProjectsController" data-project='<%= @project.to_json(only: [:latitude, :longitude]) %>'>
+<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>'%>'>
   <div class="head">
     <div class="cover">
       <div>
@@ -49,12 +49,12 @@
       </div>
     </div>
   </div>
-
   <div class="title fix">
     <hgroup>
       <h2>
         <div class="followwrap following">
-          <button title='{{followText}}' ng-click="follow()">{{followText}}</button></div>
+          <button title='{{followText}}' ng-click="follow()" following="following">{{followText}}</button>
+        </div>
         <div class="profile-badge">
           <div>
             <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
@@ -137,7 +137,7 @@
             <li>
               <div class="profile-badge">
                 <div>
-                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
                   <div class="focus"></div>
                 </div>
               </div>
@@ -145,7 +145,7 @@
             <li>
               <div class="profile-badge">
                 <div>
-                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
                   <div class="focus"></div>
                 </div>
               </div>
@@ -153,7 +153,7 @@
           </ul>
           <ul class="connections" ng-show="viewerTab == 2">
             <li>
-              <div class="profile-badge">
+              <div class="follow-profile-badge">
                 <%= render partial: 'follower', collection: @followers %>
                 <div class="focus">
                 </div>
@@ -169,7 +169,7 @@
             <li>
             <div class="profile-badge">
               <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
                 <div class="focus"></div>
               </div>
             </div>
@@ -178,13 +178,13 @@
               <div class="entry-meta">
                 <div class="profile-badge">
                   <div>
-                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
                     <div class="focus"></div>
                   </div>
                 </div>
                 <div class="profile-badge">
                   <div>
-                    <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+                    <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="/assets/michael.png"></a>
                     <div class="focus"></div>
                   </div>
                 </div>
@@ -195,7 +195,7 @@
             <li>
             <div class="profile-badge">
               <div>
-                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
+                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="/assets/trigon.png"></a>
                 <div class="focus"></div>
               </div>
             </div>
@@ -204,7 +204,7 @@
               <div class="entry-content">
                 <div class="profile-badge video">
                   <div>
-                    <a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="img/dummy-thumb-soma-grand.jpg"></a>
+                    <a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="/assets/dummy-thumb-soma-grand.jpg"></a>
                     <div class="focus"></div>
                   </div>
                 </div>
@@ -217,7 +217,7 @@
             <li>
             <div class="profile-badge">
               <div>
-                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
+                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="/assets/trigon.png"></a>
                 <div class="focus"></div>
               </div>
             </div>

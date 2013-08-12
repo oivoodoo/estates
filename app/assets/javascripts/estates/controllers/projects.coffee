@@ -22,18 +22,24 @@ estates.controller 'ProjectsController', [
       $scope.$apply ->
         control = $el.parent().find('.fixed')
         $compile(control)($scope)
-
-    $scope.followState = 'not-following'
-    $scope.followText = 'Follow'
+        
+    if $scope.project.followed
+      $scope.followText = 'Stop Following'
+      $scope.followState = 'following'
+    else
+      $scope.followState = 'not-following'
+      $scope.followText = 'Follow'
 
     $scope.follow = ->
       if $scope.followState == 'not-following'
         $scope.followText = 'Stop Following'
         $scope.followState = 'following'
-        $http.post('/projects/3/follow');
+        $http.post('/projects/3/follow').success (data) ->
+          $('.follow-profile-badge').html(data)
       else
         $scope.followText = 'Follow'
         $scope.followState = 'not-following'
-        $http.post('/projects/3/unfollow');
+        $http.post('/projects/3/unfollow').success (data) ->
+          $('.follow-profile-badge').html(data)
 ]
 
