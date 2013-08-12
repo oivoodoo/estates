@@ -19,6 +19,7 @@
         
                 <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
+        <script src="js/chart.min.js"></script>
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
@@ -63,8 +64,11 @@
 										<div class="focus"></div>
 									</a>
 									<ul>
-										<li class="namee"><a class="current" href="index-p=investor&i=kadri.html">Kadri Liis Rääk</a></li>
-																				<li><a href="index-p=project&project=tallinn-rimi.html#">Log Out</a></li>
+										<li class="name"><a class="current" href="index-p=investor&i=kadri.html">Kadri Liis Rääk</a></li>
+										<li class="dashboard"><a href="index-p=dashboard.html">Dashboard</a></li>
+										<li class="profile"><a href="index-p=investor-edit&i=kadri.html">Profile</a></li>
+										<li class="settings"><a href="index-p=settings&i=kadri.html">Settings</a></li>
+										<li><a href="index-p=project&project=tallinn-rimi.html#">Log Out</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -131,7 +135,7 @@
 	<div class="title fix">
 		<hgroup>
 			<h2>
-				<div class="followwrap follow"><button class="follow" title="Follow this project">Follow</button></div>				<div class="profile-badge manager-badge">
+				<div class="trackwrap track"><button class="track" title="Follow this project">Track</button></div>				<div class="profile-badge manager-badge">
 					<div>
 						<a href="index-p=manager&m=broadgate.html" title="Broadgate"><img src="img/broadgate.png"></a>
 						<div class="focus"></div>
@@ -149,7 +153,7 @@
 				<li><a href="index-p=project&project=tallinn-rimi.html#risks" id="risks-tab"><span>Risks</span></a></li>
 				<li><a href="index-p=project&project=tallinn-rimi.html#manager" id="manager-tab"><span>Manager</span></a></li>
 				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#investors" id="investors-tab"><span><em>27</em> Investors</span></a></li>
-				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#followers" id="followers-tab"><span><em>189</em> Followers</span></a></li>
+				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#trackers" id="trackers-tab"><span><em>189</em> Followers</span></a></li>
 				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#timeline" id="timeline-tab"><span>Timeline</span></a></li>
 			</ul>
 		</div>
@@ -170,248 +174,259 @@
 						</div>
 					</div>
 					<p>	
-		Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.
-		Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim.
+						Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.
+						Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim.
 					</p>
 				</div>
+				
+				<div id="location-content" class="tab-content paper">
+											<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:24rem;"
+							src="https://www.google.com/maps?q=Paldiski+mnt+56,+10617+Tallinn,+Estonia&z=14&output=embed"></iframe>
+						
+						<p style="text-align: right;"><a href="https://www.google.com/maps?q=Paldiski+mnt+56,+10617+Tallinn,+Estonia&z=14&source=embed" target="_blank">Google maps &rarr;</a></p>
+									</div>
 				
 			</div>
 		</div>
 		<div class="side">
 			<div>
 			
-				<div id="investors-content" class="tab-content side-tab-content side-switch side-current">
+				<div class="switch-group">
 				
-					<div class="tabs connection-tabs">
-						<ul>
-							<li><a href="index-p=project&project=tallinn-rimi.html#investors" class="current"><em>27</em> Investors</a></li><li><a href="index-p=project&project=tallinn-rimi.html#followers"><em>189</em> Followers</a></li>
-						</ul>
+					<div id="investors-content" class="tab-content side-tab-content side-switch side-switch-current">
+					
+						<div class="tabs connection-tabs">
+							<ul>
+								<li><a href="index-p=project&project=tallinn-rimi.html#investors" class="current"><em>27</em> Investors</a></li><li><a href="index-p=project&project=tallinn-rimi.html#trackers"><em>189</em> Trackers</a></li>
+							</ul>
+						</div>
+						<ul class="connections">
+							<li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li>						</ul>
+				
 					</div>
-					<ul class="connections">
-						<li>
+					
+					<div id="trackers-content" class="tab-content side-tab-content side-switch">
+					
+						<div class="tabs connection-tabs">
+							<ul>
+								<li><a href="index-p=project&project=tallinn-rimi.html#investors"><em>27</em> Investors</a></li><li><a href="index-p=project&project=tallinn-rimi.html#trackers" class="current"><em>189</em> Trackers</a></li>
+							</ul>
+						</div>
+						<ul class="connections">
+							<li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
-</li>					</ul>
-			
-				</div>
+</li>						</ul>
 				
-				<div id="followers-content" class="tab-content side-tab-content side-switch">
-				
-					<div class="tabs connection-tabs">
-						<ul>
-							<li><a href="index-p=project&project=tallinn-rimi.html#investors"><em>27</em> Investors</a></li><li><a href="index-p=project&project=tallinn-rimi.html#followers" class="current"><em>189</em> Followers</a></li>
-						</ul>
 					</div>
-					<ul class="connections">
-						<li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li>					</ul>
-			
+					
 				</div>
 				
 				<div id="timeline-content" class="tab-content side-tab-content">
@@ -443,29 +458,7 @@
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="profile-badge manager-badge">
-								<div>
-									<a href="index-p=manager&m=broadgate.html" title="Broadgate"><img src="img/broadgate.png"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-							<div class="entry">
-								<h5 class="entry-title"><a href="index-p=manager&m=broadgate.html" title="Broadgate">Broadgate</a> published a video to <a href="index-p=project&project=1800-van-ness.html" title="Rimi Supermarket">Rimi Supermarket</a></h5>
-								<div class="entry-content">
-									<div class="profile-badge video">
-										<div>
-											<a href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" title="1800 Van Ness intro" class="fancybox-video fancybox.iframe" data-height="480" data-width="854"><img src="img/dummy-thumb-soma-grand.jpg"></a>
-											<div class="focus"></div>
-										</div>
-									</div>
-								</div>
-								<div class="entry-meta">
-									<time>2 days, 7hours ago</time>
-								</div>
-							</div>
-						</li>
-						<li>
+												<li>
 							<div class="profile-badge manager-badge">
 								<div>
 									<a href="index-p=manager&m=broadgate.html" title="Broadgate"><img src="img/broadgate.png"></a>

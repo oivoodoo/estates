@@ -1,4 +1,10 @@
-<%= link_to user_path(follower) do %>
-  <%= image_tag follower.profile_image %>
-<% end %>
+<li>
+  <div class="profile-badge">
+    <div>
+      <%= link_to user_path(follower) do %>
+        <%= image_tag follower.profile_image %>
+      <% end %>
+    </div>
+  </div>
+</li>
 

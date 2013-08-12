@@ -1,6 +1,9 @@
 <?php
 	
-	global $project, $managers;
+	global $project, $managers, $project_badge_size;
+	
+	if (!$project_badge_size)
+		$project_badge_size = 'full';
 		
 	$handle		= array_key_exists('handle', 	$project)	? $project['handle']	: null;
 	$name		= array_key_exists('name',		$project)	? $project['name']		: null;
@@ -16,12 +19,10 @@
 	$progress_percent	= ($goal && $progress)								? round($progress/$goal*100)	: null;	// percentage
 	$financials			= array_key_exists('financials',$project)			? $project['financials']		: null;
 	$location			= array_key_exists('location',	$project)			? $project['location']			: null;
-	$is_followed		= array_key_exists('is_followed',$project)			? $project['is_followed']		: null;
-	
-	global $badge_alt;
+	$is_tracked			= array_key_exists('is_tracked',$project)			? $project['is_tracked']		: null;
 
 ?>
-<article class="project-badge new">
+<article class="project-badge <?php echo $project_badge_size; ?>">
 	<div onclick="location.href='<?php echo $link ?>'">
 	
 		<a class="project-thumb" href="<?php echo $link ?>"><img src="img/<?php echo $handle; ?>.png"><div class="focus"></div></a>
@@ -61,9 +62,11 @@
 			</h4>
 		</header>
 		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
+		<?php //if (in_array($project_badge_size, array('full'))) { ?>
+			<div class="summary">
+				<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
+			</div>
+		<?php //} ?>
 		
 		<div class="financials">
 			<div>
@@ -73,7 +76,7 @@
 						
 							$fc = count($financials)+2;
 							
-							if ($financials) {
+							if ($financials/* && $project_badge_size!='dash-invested'*/) {
 								if (array_key_exists('type', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
 										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
@@ -97,7 +100,7 @@
 							}
 							
 						?>
-						<div class="moneywrap size-<?php echo $fc/2; ?>">
+						<div class="moneywrap size-<?php echo /*$project_badge_size=='dash-invested' ? 1 : */$fc/2; ?>">
 							<div>
 								<?php
 									if ($goal || $progress) {
@@ -126,9 +129,4 @@
 			</div>
 		</div>
 		
-		<div class="action">
-			<button <?php echo $is_followed ? 'class="following" title="Stop following this project">Following' : 'class="follow" title="Follow this project">Follow'; ?></button><button class="details" title="<?php echo $name; ?>">Full Details</button>
-		</div>
-		
-	</div>
-</article>
+		<?php //if ($project_badge_size!

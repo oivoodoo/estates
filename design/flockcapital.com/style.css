@@ -1473,14 +1473,20 @@ label.type {
 .tabs li a:active em {
   background-color: #29b471;
 }
-.tabs.connection-tabs {
+.tabs.connection-tabs,
+.tabs.project-tabs {
   border: 0;
 }
-.tabs.connection-tabs ul {
+.tabs.connection-tabs ul,
+.tabs.project-tabs ul {
   padding-bottom: 0.6666666666666667rem;
 }
-.tabs.connection-tabs li {
+.tabs.connection-tabs li,
+.tabs.project-tabs li {
   font-size: 0.7em;
+}
+.tabs.project-tabs ul {
+  margin-bottom: -1.25rem;
 }
 .tabspace {
   background-color: #f7f7f7;
@@ -1505,6 +1511,13 @@ label.type {
     margin-left: 0;
   }
 }
+.tab-content {
+  display: none;
+}
+.tab-content.current,
+.tab-content.keep {
+  display: block;
+}
 .body {
   width: 100%;
   display: table;
@@ -1520,6 +1533,12 @@ label.type {
 }
 .main > div {
   padding-left: 10.714285714285715%;
+}
+.main .main-switch {
+  display: none;
+}
+.main .main-switch.main-switch-current {
+  display: block;
 }
 .side {
   vertical-align: top;
@@ -1538,6 +1557,15 @@ label.type {
 .side .tabs li a {
   padding-left: 0.4166666666666667rem;
   padding-right: 0.4166666666666667rem;
+}
+.side .tab-content {
+  display: block;
+}
+.side .side-switch {
+  display: none;
+}
+.side .side-switch.side-switch-current {
+  display: block;
 }
 .side .feed {
   padding: 0 1.25rem 1.25rem 0.8333333333333334rem;
@@ -1630,12 +1658,30 @@ label.type {
   .body {
     display: block;
   }
+  .tab-content.keep {
+    display: none;
+  }
+  .tab-content.keep.current {
+    display: block;
+  }
   .main {
     display: block;
     width: 100%;
   }
   .main > div {
     padding: 0 7.142857142857143%;
+  }
+  .main .main-switch {
+    display: none;
+  }
+  .main .main-switch.current {
+    display: block;
+  }
+  .main .main-switch.main-switch-current {
+    display: none;
+  }
+  .main .main-switch.main-switch-current.current {
+    display: block;
   }
   .side {
     display: block;
@@ -1647,6 +1693,24 @@ label.type {
   .side .tabs ul {
     padding-left: 0.8333333333333334rem;
     padding-right: 0.8333333333333334rem;
+  }
+  .side .tab-content {
+    display: none;
+  }
+  .side .tab-content.current {
+    display: block;
+  }
+  .side .side-switch {
+    display: none;
+  }
+  .side .side-switch.current {
+    display: block;
+  }
+  .side .side-switch.side-switch-current {
+    display: none;
+  }
+  .side .side-switch.side-switch-current.current {
+    display: block;
   }
   .side .connections,
   .side .feed {
@@ -1729,7 +1793,8 @@ label.type {
   content: '\e925';
   margin-right: .5rem;
 }
-.submenu li a.follow:before {
+.submenu li a.follow:before,
+.submenu li a.track:before {
   content: '\E800';
   margin-right: .5rem;
 }
@@ -1966,7 +2031,8 @@ label.type {
 .fixed.narrow .contract h2 {
   font-size: 2em !important;
 }
-.fixed.narrow .followwrap {
+.fixed.narrow .followwrap,
+.fixed.narrow .trackwrap {
   height: 0 !important;
   margin: 0 !important;
 }
@@ -2073,9 +2139,6 @@ label.type {
   background: rgba(41, 41, 41, 0);
 }
 .project-badge header {
-  /*background-position: 0 @padding/1.5;
-		background-repeat: no-repeat;*/
-
   margin: 0.8333333333333334rem 0;
 }
 .project-badge header:after {
@@ -2105,11 +2168,6 @@ label.type {
   overflow: hidden;
   width: 1.85em;
   height: 1.85em;
-  /*.transition(all .2s);
-				&:hover {
-					.box-shadow(0 0 0 3px @highlight);
-				}*/
-
 }
 .project-badge header .profile-badge img {
   width: 100%;
@@ -2187,74 +2245,45 @@ label.type {
   margin: 0;
   width: auto;
   padding-top: 0;
-  white-space: nowrap;
 }
 .project-badge .financials ul,
 .project-badge .financials div {
-  /*&.size-2 {
-				width: 50%;
-			}
-			&.size-3 {
-				width: 33.3%;
-			}
-			&.size-4 {
-				width: 25%;
-			}
-			&.size-5 {
-				width: 20%;
-			}
-			&.size-6 {
-				width: 16.6%;
-			}
-			&.size-7 {
-				width: 14.2%;
-			}
-			&.size-8 {
-				width: 12.5%;
-			}
-			&.moneywrap {
-				vertical-align: top;
-				display: inline-block;
-				padding: 0;
-				width: 33.33%;
-			}*/
-
-  /*&.size-2 {
-				width: 100%;
-			}
-			&.size-3 {
-				width: 100%;
-			}
-			&.size-4 {
-				width: 50%;
-			}
-			&.size-5 {
-				width: 33.3%;
-			}
-			&.size-6 {
-				width: 25%;
-			}
-			&.size-7 {
-				width: 20%;
-			}
-			&.size-8 {
-				width: 16.6%;
-			}*/
-
+  width: 100%;
+}
+.project-badge .financials ul.size-2,
+.project-badge .financials div.size-2 {
+  width: 50%;
+}
+.project-badge .financials ul.size-3,
+.project-badge .financials div.size-3 {
+  width: 33.3%;
+}
+.project-badge .financials ul.size-4,
+.project-badge .financials div.size-4 {
+  width: 25%;
+}
+.project-badge .financials ul.size-5,
+.project-badge .financials div.size-5 {
+  width: 20%;
 }
 .project-badge .financials ul.size-6,
 .project-badge .financials div.size-6 {
-  width: 16.66%;
+  width: 16.6%;
 }
-.project-badge .financials ul.moneywrap,
+.project-badge .financials ul.size-7,
+.project-badge .financials div.size-7 {
+  width: 14.2%;
+}
+.project-badge .financials ul.size-8,
+.project-badge .financials div.size-8 {
+  width: 12.5%;
+}
 .project-badge .financials div.moneywrap {
   vertical-align: top;
   display: inline-block;
-  width: 33.33%;
   padding-top: 0.3125rem;
   margin-right: -1em;
 }
-.project-badge .financials ul.moneywrap > div,
 .project-badge .financials div.moneywrap > div {
   max-width: 100%;
 }
@@ -2265,26 +2294,6 @@ label.type {
   font-size: 1.1667em;
   padding: 0.20833333333333334rem 0;
   text-align: left;
-  /*&.term {
-					u {
-						&.short {
-							display: inline;
-						}
-						&.long {
-							display: none;
-						}
-					}
-				}*/
-
-  /*u {
-					font-family: 'neue-haas-grotesk-display';
-					font-weight: 75Bold;
-				}
-				i {
-					font-family: 'neue-haas-grotesk-display';
-					font-weight: 200;
-				}*/
-
 }
 .project-badge .financials ul li > div {
   display: inline-block;
@@ -2297,10 +2306,6 @@ label.type {
   display: block;
   font-family: 'neue-haas-grotesk-display';
   font-weight: 200;
-  /*line-height: inherit;
-					vertical-align: baseline;
-					margin-left: 0;*/
-
 }
 .project-badge .financials ul li.term u.long {
   display: none;
@@ -2350,7 +2355,6 @@ label.type {
   background: white;
 }
 .project-badge .action button {
-  padding: .5em 1.2em;
   font-size: 0.75em;
   padding: 0 1.2em;
   height: 2.4rem;
@@ -2364,8 +2368,8 @@ label.type {
   -o-transition: background-color 0.2s, color 0.2s, font-size 0;
   transition: background-color 0.2s, color 0.2s, font-size 0;
 }
-.project-badge .action button.follow,
-.project-badge .action button.following {
+.project-badge .action button.track,
+.project-badge .action button.tracking {
   color: #b8b8b8;
   -webkit-border-radius: 0.2em 0 0 0.2em;
   -moz-border-radius: 0.2em 0 0 0.2em;
@@ -2379,17 +2383,17 @@ label.type {
   -moz-text-shadow: none;
   text-shadow: none;
 }
-.project-badge .action button.follow:hover,
-.project-badge .action button.following:hover {
+.project-badge .action button.track:hover,
+.project-badge .action button.tracking:hover {
   color: #292929;
 }
-.project-badge .action button.follow:before,
-.project-badge .action button.following:before {
+.project-badge .action button.track:before,
+.project-badge .action button.tracking:before {
   font-family: 'icobundl';
   content: '\e800';
   margin-right: .5em;
 }
-.project-badge .action button.following {
+.project-badge .action button.tracking {
   color: #292929;
 }
 .project-badge .action button.details {
@@ -2414,6 +2418,37 @@ label.type {
   font-family: 'icobundl';
   content: '\e96f';
   margin-left: .5em;
+}
+.project-badge.dash-invested,
+.project-badge.dash-tracking {
+  padding-right: 0;
+}
+.project-badge.dash-invested header,
+.project-badge.dash-tracking header {
+  margin-bottom: 0;
+}
+.project-badge.dash-invested header .project-name,
+.project-badge.dash-tracking header .project-name {
+  font-size: 1em;
+}
+.project-badge.dash-invested header .manager-location,
+.project-badge.dash-tracking header .manager-location {
+  font-size: 0.7em;
+}
+.project-badge.dash-invested .summary,
+.project-badge.dash-tracking .summary {
+  display: none;
+}
+.project-badge.dash-invested .action button,
+.project-badge.dash-tracking .action button {
+  height: 1.8rem;
+}
+.project-badge.dash-invested .action,
+.project-badge.dash-invested .financials > div > div > div > ul {
+  display: none;
+}
+.project-badge.dash-invested div.moneywrap {
+  width: 100%;
 }
 .home-listing {
   margin-top: 0;
@@ -2512,6 +2547,8 @@ label.type {
 @media only screen and (min-width: 470px) and (max-width: 699px) {
   .project-badge {
     width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
   .home-listing .project-badge {
     width: 100%;
@@ -2521,9 +2558,6 @@ label.type {
 @media only screen and (max-width: 469px) {
   .project-badge {
     width: 100%;
-  }
-  .project-badge .summary {
-    display: none;
   }
   .home-listing .project-badge:nth-child(n+2) {
     display: none;
@@ -2673,7 +2707,7 @@ label.type {
 #project .title hgroup h2 span {
   white-space: nowrap;
 }
-#project .title hgroup .followwrap {
+#project .title hgroup .trackwrap {
   width: 33.333333333333336%;
   float: right;
   padding-left: 4.761904761904762%;
@@ -2685,10 +2719,10 @@ label.type {
   -o-transition: all 0.2s;
   transition: all 0.2s;
 }
-#project .title hgroup .followwrap.following {
+#project .title hgroup .trackwrap.tracking {
   min-width: 3.8em;
 }
-#project .title hgroup .followwrap button {
+#project .title hgroup .trackwrap button {
   font-family: 'neue-haas-grotesk-display';
   font-weight: 400;
   color: #b8b8b8;
@@ -2704,14 +2738,14 @@ label.type {
   font-size: 1rem;
   width: 100%;
 }
-#project .title hgroup .followwrap button:hover,
-#project .title hgroup .followwrap button:active {
+#project .title hgroup .trackwrap button:hover,
+#project .title hgroup .trackwrap button:active {
   color: #292929;
 }
-#project .title hgroup .followwrap button.following {
+#project .title hgroup .trackwrap button.tracking {
   color: #292929;
 }
-#project .title hgroup .followwrap button:before {
+#project .title hgroup .trackwrap button:before {
   font-family: 'icobundl';
   content: '\e800';
   margin-right: .5em;
@@ -2729,41 +2763,24 @@ label.type {
 #project .side-tab {
   display: none;
 }
-#project .tab-content {
-  display: none;
-}
-#project .tab-content.current {
-  display: block;
-}
 #project .side {
   padding-top: 1.875rem;
-}
-#project .side .tab-content {
-  display: block;
-}
-#project .side #investors-content,
-#project .side #followers-content {
-  display: none;
-}
-#project .side #investors-content.side-current,
-#project .side #followers-content.side-current {
-  display: block;
 }
 .project #main {
   padding-top: 0;
 }
 @media only screen and (min-width: 1500px) {
-  #project .title hgroup .followwrap button {
+  #project .title hgroup .trackwrap button {
     font-size: 1.3333rem;
   }
 }
 @media only screen and (max-width: 1499px) {
-  #project .title hgroup .followwrap button {
+  #project .title hgroup .trackwrap button {
     font-size: 1.1667rem;
   }
 }
 @media only screen and (max-width: 1199px) {
-  #project .title hgroup .followwrap button {
+  #project .title hgroup .trackwrap button {
     font-size: 1rem;
   }
 }
@@ -2797,33 +2814,11 @@ label.type {
   #project .title hgroup h2 {
     font-size: 2.6667em;
   }
-  #project .title hgroup .followwrap button {
+  #project .title hgroup .trackwrap button {
     font-size: 0.9rem;
   }
   #project .side-tab {
     display: inline-block;
-  }
-  #project .side .tab-content {
-    display: none;
-  }
-  #project .side .tab-content.current {
-    display: block;
-  }
-  #project .side #investors-content,
-  #project .side #followers-content {
-    display: none;
-  }
-  #project .side #investors-content.current,
-  #project .side #followers-content.current {
-    display: block;
-  }
-  #project .side #investors-content.side-current,
-  #project .side #followers-content.side-current {
-    display: none;
-  }
-  #project .side #investors-content.side-current.current,
-  #project .side #followers-content.side-current.current {
-    display: block;
   }
   #project .connection-tabs {
     display: none;
@@ -2838,7 +2833,7 @@ label.type {
     padding-left: 0;
     padding-right: 0;
   }
-  #project .title hgroup .followwrap button {
+  #project .title hgroup .trackwrap button {
     font-size: 0.9rem;
   }
   #project .tabs ul {
@@ -2869,7 +2864,7 @@ label.type {
   #project .title hgroup h2 {
     font-size: 2em;
   }
-  #project .title hgroup .followwrap {
+  #project .title hgroup .trackwrap {
     float: none;
     width: auto;
     padding-left: 0;
@@ -2877,7 +2872,7 @@ label.type {
     margin-left: -1.25rem;
     margin-right: -1.25rem;
   }
-  #project .title hgroup .followwrap button {
+  #project .title hgroup .trackwrap button {
     font-size: 1rem;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -2903,54 +2898,41 @@ label.type {
 }
 /*	Profile
 —————————————————————————————————————————————————————————————————————————— */
-#investor .action,
-#manager .action,
-#dashboard .action {
-  padding: 1.25rem;
-  width: 20%;
-  float: right;
-  clear: right;
-  position: relative;
-  margin-top: 1.0416666666666667rem;
-  padding-top: 0;
-  padding-left: 0;
-}
-#investor .action li,
-#manager .action li,
-#dashboard .action li {
-  text-align: left;
-  margin-bottom: .5em;
-}
-#investor .action li a,
-#manager .action li a,
-#dashboard .action li a {
-  font-size: 0.8em;
-  white-space: nowrap;
-  border-bottom: 1px solid transparent;
-}
-#investor .action li a:hover,
-#manager .action li a:hover,
-#dashboard .action li a:hover,
-#investor .action li a:focus,
-#manager .action li a:focus,
-#dashboard .action li a:focus,
-#investor .action li a.current,
-#manager .action li a.current,
-#dashboard .action li a.current {
-  border-color: #29b471;
-  color: #29b471;
-}
-#investor .action li a.warning:hover,
-#manager .action li a.warning:hover,
-#dashboard .action li a.warning:hover,
-#investor .action li a.warning:focus,
-#manager .action li a.warning:focus,
-#dashboard .action li a.warning:focus,
-#investor .action li a.warning.current,
-#manager .action li a.warning.current,
-#dashboard .action li a.warning.current {
-  border-color: #c11529;
-  color: #c11529;
+#investor,
+#manager,
+#dashboard {
+  /*.action {
+		.padding;
+		.grid-1-5;
+		float: right;
+		clear: right;
+		position: relative;
+		margin-top: @padding/1.2;
+		padding-top: 0;
+		padding-left: 0;
+		
+		li {
+			text-align: left;
+			margin-bottom: .5em;
+
+			a {
+				.theta;
+				white-space: nowrap;
+				border-bottom: 1px solid transparent;
+				&:hover, &:focus, &.current {
+					border-color: @highlight;
+					color: @highlight;
+				}
+				&.warning {
+					&:hover, &:focus, &.current {
+						border-color: @lustRed;
+						color: @lustRed;
+					}
+				}
+			}
+		}
+	}*/
+
 }
 #investor .body,
 #manager .body,
@@ -2985,6 +2967,12 @@ label.type {
 #manager.me .head,
 #dashboard.me .head {
   padding-top: 0;
+}
+#investor .tab-content > div,
+#manager .tab-content > div,
+#investor-edit .tab-content > div {
+  padding: 2.5rem;
+  margin: 0 -1.25rem;
 }
 #investor .core,
 #manager .core,
@@ -3255,13 +3243,6 @@ label.type {
 #investor-edit .head .tabs ul {
   display: block;
 }
-#investor .tab-content > div,
-#manager .tab-content > div,
-#dashboard .tab-content > div,
-#investor-edit .tab-content > div {
-  padding: 2.5rem;
-  margin: 0 -1.25rem;
-}
 .investor #main,
 .manager #main,
 .dashboard #main {
@@ -3270,64 +3251,182 @@ label.type {
 #dashboard .body {
   padding-top: 0;
 }
+#dashboard .main-numbers {
+  background-color: #4f4f4f;
+  background-image: -webkit-radial-gradient(50% 100%, ellipse farthest-side, #4f4f4f 0%, #292929 100%);
+  background-image: -moz-radial-gradient(50% 100%, ellipse farthest-side, #4f4f4f 0%, #292929 100%);
+  background-image: -o-radial-gradient(50% 100%, ellipse farthest-side, #4f4f4f 0%, #292929 100%);
+  background-image: -ms-radial-gradient(50% 100%, ellipse farthest-side, #4f4f4f 0%, #292929 100%);
+  background-image: radial-gradient(50% 100%, ellipse farthest-side, #4f4f4f 0%, #292929 100%);
+  background-color: #292929;
+  padding: 1.25rem 0;
+}
+#dashboard .main-numbers ul {
+  padding: 1.25rem;
+}
+#dashboard .main-numbers ul:after {
+  display: block;
+  clear: both;
+  content: ' ';
+  height: 0;
+  visibility: hidden;
+}
+#dashboard .main-numbers ul li {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+#dashboard .main-numbers ul li > div {
+  display: inline-block;
+}
+#dashboard .main-numbers ul li i {
+  font-style: normal;
+  font-family: 'neue-haas-grotesk-display';
+  font-weight: 100;
+}
+#dashboard .main-numbers ul li em {
+  font-style: normal;
+  font-family: 'neue-haas-grotesk-display';
+  font-weight: 500;
+  color: #f7f7f7;
+  font-size: 3.3333em;
+  line-height: 1.3;
+}
+#dashboard .main-numbers ul li label {
+  display: block;
+  font-family: 'neue-haas-grotesk-display';
+  font-weight: 100;
+  color: #999999;
+}
 #dashboard .tabs {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  font-size: 1em;
-  /*.clear-children;
-		li {
-			float: left;
-		}*/
-
+  background: white;
+  display: none;
 }
-#dashboard .main {
+#dashboard .tabs.connection-tabs,
+#dashboard .tabs.project-tabs {
+  display: block;
+}
+#dashboard .tabs ul {
+  padding-top: .4rem;
+}
+#dashboard .side-tab {
+  display: none;
+}
+#dashboard .main .tab-content {
+  padding-right: 3.125rem;
+}
+#dashboard .main .tab-content > div:after {
+  display: block;
+  clear: both;
+  content: ' ';
+  height: 0;
+  visibility: hidden;
+}
+#dashboard .main .tab-content + .tab-content,
+#dashboard .main .tab-content + .switch-group {
+  margin-top: 3.125rem;
+}
+#dashboard .main .switch-group .tab-content + .tab-content {
+  margin-top: 0;
+}
+#dashboard .main,
+#dashboard .side {
+  padding-top: 1.875rem;
+}
+#dashboard .chart-title {
+  margin-bottom: 1.25rem;
+}
+#dashboard #reports-content {
+  padding-left: 1.25rem;
+  padding-right: 1.875rem;
+}
+#dashboard #reports-content > div {
   width: 100%;
+  display: table;
 }
-#dashboard .main > div {
-  padding: 0;
+#dashboard #reports-content > div > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+#dashboard #reports-content > div > div {
+  vertical-align: top;
+  text-align: left;
+}
+#dashboard #reports-content h5 {
+  margin-bottom: 1.25rem;
+}
+#dashboard #performance {
+  width: 80%;
+}
+#dashboard #allocation {
+  width: 20%;
 }
 @media only screen and (min-width: 1800px) {
-  
+  #dashboard .project-badge {
+    width: 33.333333333333336%;
+    clear: none;
+  }
+  #dashboard .project-badge:nth-child(3n+1) {
+    clear: left;
+  }
 }
 @media only screen and (min-width: 1500px) and (max-width: 1799px) {
-  
-}
-@media only screen and (max-width: 1499px) {
-  
+  #dashboard .project-badge {
+    width: 33.333333333333336%;
+    clear: none;
+  }
+  #dashboard .project-badge:nth-child(3n+1) {
+    clear: left;
+  }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1499px) {
-  
+  #dashboard .project-badge {
+    width: 50%;
+    clear: none;
+  }
+  #dashboard .project-badge:nth-child(2n+1) {
+    clear: left;
+  }
 }
 @media only screen and (min-width: 1001px) and (max-width: 1199px) {
-  #investor .main,
-  #manager .main,
-  #dashboard .main {
-    width: 60.00000000000001%;
+  #dashboard .project-badge {
+    width: 50%;
+    clear: none;
+  }
+  #dashboard .project-badge:nth-child(2n+1) {
+    clear: left;
   }
 }
+/*@media only screen and (min-width: 700px) and (max-width: 1000px) { // Tablets and landscape large smartphones
+	#dashboard {
+		.project-badge {
+			.grid-1-3;
+			&:nth-child(3n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+@media only screen and (min-width: 470px) and (max-width: 699px) { // Large smartphones
+	#dashboard {
+		.project-badge {
+			.grid-1-2;
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+@media only screen and (max-width: 469px) { // Smartphones
+	#dashboard {
+		.project-badge {
+			.grid-1-1;
+		}
+	}
+}*/
 @media only screen and (max-width: 1000px) {
-  #investor #investor-details,
-  #manager #investor-details,
-  #dashboard #investor-details,
-  #investor #manager-details,
-  #manager #manager-details,
-  #dashboard #manager-details {
-    min-height: 0;
-  }
-  #investor .action,
-  #manager .action,
-  #dashboard .action {
-    padding-left: 1.25rem;
-    width: 33.333333333333336%;
-    float: left;
-    clear: left;
-    text-align: center;
-  }
-  #investor .action ul,
-  #manager .action ul,
-  #dashboard .action ul {
-    position: static;
-  }
   #investor .body,
   #manager .body,
   #dashboard .body {
@@ -3349,9 +3448,6 @@ label.type {
   #dashboard .side {
     display: block;
     width: 100%;
-    -webkit-box-shadow: inset 0 1px 0 #f7f7f7;
-    -moz-box-shadow: inset 0 1px 0 #f7f7f7;
-    box-shadow: inset 0 1px 0 #f7f7f7;
   }
   #investor .side > div,
   #manager .side > div,
@@ -3363,20 +3459,22 @@ label.type {
   #dashboard .side .tabs {
     padding-top: 3.125rem;
   }
-}
-@media only screen and (min-width: 700px) and (max-width: 1000px) {
-  #investor #investor-details,
-  #manager #investor-details,
-  #dashboard #investor-details,
-  #investor #manager-details,
-  #manager #manager-details,
-  #dashboard #manager-details {
-    min-height: 0;
+  #dashboard .tabs {
+    display: block;
   }
-  #investor .action button,
-  #manager .action button,
-  #dashboard .action button {
-    font-size: 1em;
+  #dashboard .tabs.connection-tabs,
+  #dashboard .tabs.project-tabs {
+    display: none;
+  }
+  #dashboard .main .tab-content {
+    padding-right: 0;
+  }
+  #dashboard .main .tab-content + .tab-content,
+  #dashboard .main .tab-content + .switch-group {
+    margin-top: 0;
+  }
+  #dashboard .project-badge {
+    padding-right: 1.25rem;
   }
 }
 @media only screen and (max-width: 699px) {
@@ -3397,12 +3495,6 @@ label.type {
   #investor-edit .head .profile-badge a {
     max-width: 15rem;
   }
-  #investor .head .action,
-  #manager .head .action,
-  #dashboard .head .action,
-  #investor-edit .head .action {
-    padding-left: 0;
-  }
   #investor .head .ext-account-buttons > div > div:first-child,
   #manager .head .ext-account-buttons > div > div:first-child,
   #dashboard .head .ext-account-buttons > div > div:first-child,
@@ -3415,31 +3507,8 @@ label.type {
   #investor-edit .head .ext-account-buttons > div > div:last-child {
     padding-right: 0;
   }
-  #investor .main > div,
-  #manager .main > div,
-  #dashboard .main > div {
-    padding: 0;
-    margin: 0;
-  }
-  #investor .connections-wrap,
-  #manager .connections-wrap,
-  #dashboard .connections-wrap {
+  #dashboard #reports-content {
     padding-left: 0;
-    padding-right: 0;
-  }
-}
-@media only screen and (min-width: 470px) and (max-width: 699px) {
-  #investor .main > div,
-  #manager .main > div,
-  #dashboard .main > div {
-    padding: 0;
-    margin: 0;
-  }
-  #investor .tabs ul,
-  #manager .tabs ul,
-  #dashboard .tabs ul {
-    padding: 0;
-    margin: 0 -1rem;
   }
 }
 @media only screen and (max-width: 469px) {
@@ -3534,19 +3603,6 @@ label.type {
   #dashboard {
     width: 100%;
     margin: 0;
-  }
-  #investor .action,
-  #manager .action,
-  #dashboard .action {
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-  }
-  #investor .action li,
-  #manager .action li,
-  #dashboard .action li {
-    text-align: center;
   }
   #investor .body,
   #manager .body,
@@ -3953,40 +4009,6 @@ label.type {
   font-size: 0.8em;
   width: 33.333333333333336%;
   padding: 1.25rem 0 2.5rem;
-  /*.gridwrap;
-	padding: @padding/3 @padding @padding @padding;
-	max-width: 50rem;
-	margin: 0 auto;*/
-
-  /*ul, div {
-		&.size-2 {
-			width: 50%;
-		}
-		&.size-3 {
-			width: 33.3%;
-		}
-		&.size-4 {
-			width: 25%;
-		}
-		&.size-5 {
-			width: 20%;
-		}
-		&.size-6 {
-			width: 16.6%;
-		}
-		&.size-7 {
-			width: 14.2%;
-		}
-		&.size-8 {
-			width: 12.5%;
-		}
-		&.moneywrap {
-			vertical-align: top;
-			display: inline-block;
-			padding: 0;
-		}
-	}*/
-
 }
 .financials > div {
   width: 100%;
@@ -4005,9 +4027,6 @@ label.type {
 .financials > div > div > div {
   color: #f7f7f7;
   position: relative;
-  /*height: 100%;
-				white-space: nowrap;*/
-
 }
 .financials h1,
 .financials h2,
@@ -4098,6 +4117,7 @@ label.type {
 .financials ul li.raised > div {
   display: inline-block;
   margin-right: -1.2em;
+  text-align: right;
 }
 .financials ul li.raised label {
   left: 0;
@@ -4105,6 +4125,9 @@ label.type {
 .financials ul li.budget {
   padding-left: 1.75em;
   color: #f7f7f7;
+}
+.financials ul li.budget > div {
+  text-align: right;
 }
 .financials ul li.budget label {
   right: 0;
@@ -5037,27 +5060,26 @@ label.type {
   right: 0;
 }
 #masthead nav .profile-badge ul li {
-  /*&:last-child {
+  /*&.name {
+						.zeta;
+						height: 3rem;
+						line-height: 3rem;
+						padding: 0 @padding 0 @padding*2;
+						font-weight: 500;
+						background-color: @highlight;
+						color: white;
+						margin-bottom: @padding/3;
+					}
+					&:last-child {
 						padding-bottom: @padding/3;
 					}*/
 
 }
-#masthead nav .profile-badge ul li a,
-#masthead nav .profile-badge ul li.name {
+#masthead nav .profile-badge ul li a {
   text-align: right;
   white-space: nowrap;
   line-height: 1.3;
   padding: 0.625rem 1.25rem 0.625rem 2.5rem;
-}
-#masthead nav .profile-badge ul li.name {
-  font-size: 1em;
-  height: 3rem;
-  line-height: 3rem;
-  padding: 0 1.25rem 0 2.5rem;
-  font-weight: 500;
-  background-color: #29b471;
-  color: white;
-  margin-bottom: 0.4166666666666667rem;
 }
 #masthead #expand {
   position: absolute;
@@ -5704,71 +5726,4 @@ label.type {
 }
 @media only screen and (max-width: 469px) {
   .gridwrap {
-    width: 100%;
-    margin: 0;
-  }
-  .gridwrap-padded {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-.padding {
-  padding: 1.25rem;
-}
-.no-padding {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  padding: 0 !important;
-}
-.grid,
-[class*='grid-'] {
-  float: left;
-  padding: 1.25rem;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.grid div.placeholder,
-[class*='grid-'] div.placeholder {
-  background: lightGray;
-  height: 15em;
-}
-.grid + .grid,
-[class*='grid-'] + .grid,
-.grid + [class*='grid-'],
-[class*='grid-'] + [class*='grid-'] {
-  -webkit-box-shadow: -1px 0 0 lightGray;
-  -moz-box-shadow: -1px 0 0 lightGray;
-  box-shadow: -1px 0 0 lightGray;
-}
-.grid-1-1 {
-  width: 100%;
-}
-.grid-1-2 {
-  width: 50%;
-}
-.grid-1-3 {
-  width: 33.333333333333336%;
-}
-.grid-2-3 {
-  width: 66.66666666666667%;
-}
-.grid-1-4 {
-  width: 25%;
-}
-.grid-3-4 {
-  width: 75%;
-}
-.grid-1-5 {
-  width: 20%;
-}
-.grid-4-5 {
-  width: 80%;
-}
-.grid-2-5 {
-  width: 40%;
-}
-.grid-3-5 {
-  width: 60.00000000000001%;
-}
+    widt

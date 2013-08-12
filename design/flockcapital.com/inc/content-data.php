@@ -5,7 +5,7 @@ include_once('helper-functions.php');
 
 $projects = array(
 	'1800-van-ness' => array(
-		'is_followed' => true,
+		'is_tracked' => true,
 		'link'		=> '?p=project&project=1800-van-ness',
 		'handle'	=> '1800-van-ness',
 		'name'		=> '1800 Van Ness',
@@ -42,7 +42,7 @@ $projects = array(
 		)
 	),
 	'vilnius-rimi' => array(
-		'is_followed' => false,
+		'is_tracked' => false,
 		'link'		=> '?p=project&project=vilnius-rimi',
 		'handle'	=> 'vilnius-rimi',
 		'name'		=> 'Rimi Supermaket',
@@ -79,7 +79,7 @@ $projects = array(
 		)
 	),
 	'cafe-klaus' => array(
-		'is_followed' => true,
+		'is_tracked' => true,
 		'link'		=> '?p=project&project=cafe-klaus',
 		'handle'	=> 'cafe-klaus',
 		'name'		=> 'Café Klaus',
@@ -116,7 +116,7 @@ $projects = array(
 		)
 	),
 	'tallinn-rimi' => array(
-		'is_followed' => false,
+		'is_tracked' => false,
 		'link'		=> '?p=project&project=tallinn-rimi',
 		'handle'	=> 'tallinn-rimi',
 		'name'		=> 'Rimi Supermarket',
@@ -153,7 +153,7 @@ $projects = array(
 		)
 	),
 	'spain-maxima' => array(
-		'is_followed' => false,
+		'is_tracked' => false,
 		'link'		=> '?p=project&project=spain-maxima',
 		'handle'	=> 'spain-maxima',
 		'name'		=> 'Maxima Supermarket',
@@ -196,19 +196,30 @@ $featured_projects = array($projects['cafe-klaus'], $projects['tallinn-rimi']);
 
 $investors = array(
 	'kadri' => array(
-		'name'		=> 'Kadri Liis Rääk',
+		'name'		=> array(
+			'title'	=> 'Ms.',
+			'first'	=> 'Kadri',
+			'middle'=> 'Liis',
+			'last'	=> 'Rääk'
+		),
 		'handle'	=> 'kadri',
 		'type'		=> 'investor',
 		'type_label'=> 'Accredited Investor',
 		'type_class'=> 'investor accredited'
 	),
 	'mart' => array(
-		'name'		=> 'Mart Uibo',
+		'name'		=> array(
+			'first'	=> 'Mart',
+			'last'	=> 'Uibo'
+		),
 		'handle'	=> 'mart',
 		'type'		=> 'investor'
 	),
 	'michael' => array(
-		'name'		=> 'Michael Walsh',
+		'name'		=> array(
+			'first'	=> 'Michael',
+			'last'	=> 'Walsh'
+		),
 		'handle'	=> 'michael',
 		'type'		=> 'investor',
 		'type_label'=> 'Accredited Investor',
@@ -480,11 +491,4 @@ $countries 		= array (
 	'VU' => 'Vanuatu',
 	'VA' => 'Vatican',
 	'VE' => 'Venezuela',
-	'VN' => 'Vietnam',
-	'WF' => 'Wallis and Futuna',
-	'EH' => 'Western Sahara',
-	'WS' => 'Western Samoa',
-	'YE' => 'Yemen',
-	'ZM' => 'Zambia',
-	'ZW' => 'Zimbabwe'
-);
+	'VN' 

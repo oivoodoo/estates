@@ -32,6 +32,7 @@
         <?php /* Libraries */ ?>
         <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
+        <script src="js/chart.min.js"></script>
         
         <?php /* Library ext */ ?>
         <script src="js/jquery.ui.widget-combobox.js"></script>
@@ -84,17 +85,14 @@
 										<div class="focus"></div>
 									</a>
 									<ul>
-										<li class="namee"><a class="current" href="?p=investor&i=kadri">Kadri Liis Rääk</a></li>
-										<?php /*<li><a href="?p=dashboard">Dashboard</a></li>
-										<li><a href="?p=investor&i=kadri">My Profile</a></li>
-										<li><a href="?p=investor-edit&i=kadri&tab=settings">Settings</a></li>*/ ?>
+										<li class="name"><a class="current" href="?p=investor&i=kadri">Kadri Liis Rääk</a></li>
+										<li class="dashboard"><a href="?p=dashboard">Dashboard</a></li>
+										<li class="profile"><a href="?p=investor-edit&i=kadri">Profile</a></li>
+										<li class="settings"><a href="?p=settings&i=kadri">Settings</a></li>
 										<li><a href="#">Log Out</a></li>
 									</ul>
 								</li>
 							</ul>
 						</div>
 					</nav>
-					<a id="expand"><i></i></a>
-        		</div>
-			</header>
-            <div id="main">
+					<a id="expand">

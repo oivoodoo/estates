@@ -1,34 +1,20 @@
 <?php
-	
-	$investor_data = array(
-		'kadri' => array(
-			'name'		=> 'Kadri Liis Rääk',
-			'type_label'=> 'Accredited Investor',
-			'type_class'=> 'investor accredited'
-		),
-		'mart' => array(
-			'name'		=> 'Mart Uibo'
-		),
-		'michael' => array(
-			'name'		=> 'Michael Walsh',
-			'type_label'=> 'Accredited Investor',
-			'type_class'=> 'investor accredited'
-		)
-	);
+
+	global $investors;
 	
 	$h = array_key_exists('i', $_GET) ? $_GET['i'] : null;
 	
-	if (!$h) return;
+	if (!$h || !array_key_exists($h, $investors)) return;
 	
-	$investor_name = $investor_data[$h]['name'];
-	$investor_short_name = strtok($investor_name, ' ');
-	//if (array_key_exists('type_class', $investor_data[$h])) $investor_type_class = $investor_data[$h]['type_class'];
-	//if (array_key_exists('type_label', $investor_data[$h])) $investor_type_label = $investor_data[$h]['type_label'];
+	$investor_name = implode(' ', $investors[$h]['name']);
+	$investor_short_name = $investors[$h]['name']['first'];
+
 ?>
 
 
 
 <section id="investor" <?php if ($h=='kadri') { echo 'class="me"'; }?>>
+	
 	<?php /*if ($h=='kadri') { ?>
 	<div id="tabs" class="submenu tabs">
 		<div>
@@ -41,16 +27,14 @@
 		</div>
 	</div>
 	<?php }*/ ?>
-
 	
 	<?php if ($h=='kadri') { ?>
-	<div class="message">
-		<div>
-			This is Your profile. &nbsp;&nbsp;<a class="button" href="?p=investor-edit&i=<?php echo $h; ?>">Edit</a>
+		<div class="message">
+			<div>
+				This is Your profile. &nbsp;&nbsp;<a class="button" href="?p=investor-edit&i=<?php echo $h; ?>">Edit</a>
+			</div>
 		</div>
-	</div>
 	<?php } ?>
-
 	
 	<div class="head">
 		<div>
@@ -284,4 +268,4 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

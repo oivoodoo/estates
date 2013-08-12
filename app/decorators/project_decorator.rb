@@ -32,6 +32,10 @@ class ProjectDecorator < Draper::Decorator
     number_to_percentage(percent, :precision => 0)
   end
 
+  def view_remaining_percent
+    number_to_percentage(100 - percent, :precision => 0)
+  end
+
   def view_price
     number_to_human(price, :precision => 2)
   end

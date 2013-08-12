@@ -1,5 +1,5 @@
+window.graphs = {};
 jQuery(document).ready(function($) {
-
 
 	var winW,
 		winH,
@@ -19,6 +19,7 @@ jQuery(document).ready(function($) {
 		is_home = $body.hasClass('home'),
 		is_project = $body.hasClass('project'),
 		is_investor = $body.hasClass('investor'),
+		is_dashboard = $body.hasClass('dashboard'),
 		menuFlex = $body.hasAnyClass('home') ? true : false,
 		connectionMasonry = function(){
 			$('.connections').each(function(i,el){
@@ -67,7 +68,7 @@ jQuery(document).ready(function($) {
 		},
 		hashChange = function(e) {
 			e.preventDefault();
-			if (is_project) {
+			if (is_project || is_dashboard) {
 				var first_tab_href = $('.main .tabs a, .tabs.major a').eq(0).attr('href'),
 					tab = window.location.hash || first_tab_href.substring(first_tab_href.indexOf("#")),
 					$tab = $(tab+'-tab'),
@@ -92,6 +93,11 @@ jQuery(document).ready(function($) {
 						$tab.addClass('current');
 					}
 				//}
+			}
+			if (is_dashboard) {
+				var tab = window.location.hash || first_tab_href.substring(first_tab_href.indexOf("#"));
+				if (tab=='#reports')
+					drawGraphs();
 			}
 		},
 		layout = function() {
@@ -126,6 +132,7 @@ jQuery(document).ready(function($) {
 		.on('resize', function(e){
 			layout();
 			connectionMasonry();
+			drawGraphs();
 		})
 		.on('scroll', function(e){
 			sizeMenu();
@@ -151,14 +158,27 @@ jQuery(document).ready(function($) {
 			$el.data('fixedclone').find('ul').cleanWhitespace();
 		});
 	
+	$('.main-switch .tabs a')
+		.on('click', function(e){
+			var $el = $(this),
+				$switch_group = $el.closest('.switch-group'),
+				switch_name = $el.attr('href');
+			
+			if (!$el.hasClass('main-switch-current')) {
+				$switch_group.find('.main-switch').removeClass('main-switch-current');
+				$(switch_name+'-content').addClass('main-switch-current');
+			}
+		});
+	
 	$('.side-switch .tabs a')
 		.on('click', function(e){
 			var $el = $(this),
-				switch_name = $el.attr('href').substring(1);
+				$switch_group = $el.closest('.switch-group'),
+				switch_name = $el.attr('href');
 			
-			if (!$el.hasClass('current')) {
-				$('.side-switch').removeClass('side-current');
-				$('#'+switch_name+'-content').addClass('side-current');
+			if (!$el.hasClass('side-switch-current')) {
+				$switch_group.find('.side-switch').removeClass('side-switch-current');
+				$(switch_name+'-content').addClass('side-switch-current');
 				connectionMasonry();
 			}
 		});
@@ -186,7 +206,7 @@ jQuery(document).ready(function($) {
 			$(this).parent().find('.manager-location span a').removeClass('active');
 		});
 	
-	$('.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .action button.following, .project-badge .manager-location a')
+	$('.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .action button.tracking, .project-badge .manager-location a')
 		.on('mouseenter', function(e){
 			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').addClass('overridehide');
 		})
@@ -194,9 +214,9 @@ jQuery(document).ready(function($) {
 			$(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').removeClass('overridehide');
 		});
 	
-	$('button.following')
+	$('button.tracking')
 		.on('mouseenter', function(e){
-			$(this).text('Stop following');
+			$(this).text('Stop tracking');
 		})
 		.on('mouseleave', function(e){
 			$(this).text('Following');
@@ -260,6 +280,52 @@ jQuery(document).ready(function($) {
 
 
 
+
+	/*	 Graph creation
+	———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
+	var	graphDefaults = {
+			line: {
+				bezierCurve: false,
+				scaleFontFamily: 'neue-haas-grotesk-text',
+				scaleSteps: 5,
+				scaleFontColor: 'hsl(0, 0%, 16%)',
+				pointDotRadius: 3,
+				pointDotStrokeWidth: 1,
+				scaleLineColor : 'rgba(41,41,41, .1)',
+				scaleGridLineColor : 'rgba(41,41,41, .05)',
+			},
+			doughnut: {
+				
+			}
+		},
+		drawGraphs = function() {
+			$.each(window.graphs, function(g, options) {
+				var $canvas = $('#'+g+'-canvas');
+				if ($canvas.length && $canvas.is(':visible')) {
+					var canvasW = $canvas.attr('width'),
+						canvasH = $canvas.attr('height');
+					
+					$('.graph-canvas').hide();
+					var parentW = $canvas.parent().width();
+					$('.graph-canvas').show();
+					$canvas.prop({
+						width: parentW,
+						height: parentW*canvasH/canvasW
+					});
+					
+					var ctx = $canvas.get(0).getContext('2d'),
+						graph_options = $.extend(graphDefaults[options.type], options['options'], {}),
+						graph = options.type == 'line' ?
+									new Chart(ctx).Line(options['data'], graph_options)
+							  : options.type == 'doughnut' ?
+									new Chart(ctx).Doughnut(options['data'], graph_options)
+							  : null;
+				}
+			});
+		}
+
+
+
 	/*	 Expand/contract the main menu when it doesn't fit
 	———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 	$('#expand')
@@ -281,12 +347,6 @@ jQuery(document).ready(function($) {
 				return  mastHeadH;
 			});
 		});
-
-
-
-
-	/*	 Size the menu tall/short
-	———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— */
 	var
 	menuTimeout,
 	sizeMenu = function() {
@@ -372,7 +432,7 @@ jQuery(document).ready(function($) {
 	}
 	
 	setTimeout(function(){ // 1)
-		nag = true; // true = nag ON / false = nag OFF
+		nag = false; // true = nag ON / false = nag OFF
 	}, 1000);
 	
 	$nag.find('.close').on('click', function(e){
@@ -428,6 +488,7 @@ jQuery(document).ready(function($) {
 	layout();
 	
 	$window.trigger( 'hashchange' );
+	drawGraphs();
 	iniLoad = false;
 	
 	
