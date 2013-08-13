@@ -47,7 +47,8 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large",
       name: auth.extra['raw_info']['name'],
-      email: auth.info["email"])
+      email: auth.info["email"],
+      facebook_link: auth.info['urls']['Facebook'])
   end
 
   def self.find_for_google(auth)

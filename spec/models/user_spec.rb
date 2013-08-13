@@ -40,7 +40,7 @@ describe User do
   describe '#find_for_facebook' do
     context 'with valid auth' do
       before do
-        @auth  = double('auth', provider: 'facebook', uid: 'facebook-id', extra: { 'raw_info' => { 'name' => 'John Watson' } }, info: { 'email' => 'john.watson@example.com' })
+        @auth  = double('auth', provider: 'facebook', uid: 'facebook-id', extra: { 'raw_info' => { 'name' => 'John Watson' } }, info: { 'email' => 'john.watson@example.com', 'urls' => { 'Facebook' => 'http://facebook.com' } })
         @user  = User.find_for_facebook(@auth)
       end
 
@@ -49,6 +49,7 @@ describe User do
         expect(@user.name).to  eq("John Watson")
         expect(@user.email).to eq("john.watson@example.com")
         expect(@user.social_avatar_url).to eq("http://graph.facebook.com/facebook-id/picture?type=large")
+        expect(@user.facebook_link).to eq("http://facebook.com")
       end
 
       it 'should create facebook authentication' do
