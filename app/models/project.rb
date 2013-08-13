@@ -37,20 +37,6 @@ class Project < ActiveRecord::Base
     price / shares.to_f
   end
 
-  def followed_by!(user)
-    unless users.exists?(user.id)
-      users << user
-    end
-  end
-
-  def unfollow!(user)
-    users.delete(user)
-  end
-
-  def followed?(user)
-    users.include?(user)
-  end
-
   def self.search(query)
     if query.present?
       where('name @@ :q or description @@ :q', q: query)

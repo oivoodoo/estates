@@ -33,20 +33,20 @@
 
             <div class="tabs project-tabs">
               <ul>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= current_user.investments.count %></em> Investments</a></li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= current_user.invested_projects.count %></em> Investments</a></li>
                 <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= current_user.following_projects.count %></em> Tracking</a></li>
               </ul>
             </div>
 
             <div ng-show="viewerTab == 1">
-              <%= render partial: 'project', collection: current_user.investments %>
+              <%= render partial: 'project', collection: current_user.invested_projects %>
             </div>
           </div>
 
           <div id="tracking-content" class="tab-content main-switch" ng-class="{'main-switch-current':viewerTab==2}">
             <div class="tabs project-tabs">
               <ul>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)"><em><%= current_user.investments.count %></em> Investments</a></li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)"><em><%= current_user.invested_projects.count %></em> Investments</a></li>
                 <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= current_user.following_projects.count %></em> Tracking</a></li>
               </ul>
             </div>

@@ -12,18 +12,15 @@ class User < ActiveRecord::Base
   has_many :authentications
   has_many :comments
 
-  def followers
-    []
-  end
-
   has_many :investments
-  has_many :invested_projects, through: :investments, source: :project
+  has_many :invested_projects, through: :investments, source: :project, uniq: true
 
   acts_as_followable
   acts_as_follower
 
   def investors
-    investments.map(&:project_investors).flatten.uniq
+    # do not include self
+    investments.map(&:project_investors).flatten.uniq - [self]
   end
 
   def total_invested
