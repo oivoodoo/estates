@@ -6,17 +6,6 @@ class ProjectsController < ApplicationController
 	end
 
   def show
-    @comment = Comment.new
-    @comments = @project.comments.all.map(&:decorate)
-    @followers = @project.users
-  end
-
-  def image
-    send_data @project.image.file.file.data
-  end
-
-  def company_image
-    send_data @project.company_image.file.file.data
   end
 
   def follow

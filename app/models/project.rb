@@ -5,6 +5,9 @@ class Project < ActiveRecord::Base
   has_many :followers
   has_many :users, through: :followers
 
+  has_many :investments
+  has_many :investors, through: :investments, source: :user
+
   mount_uploader :image, ImageUploader
 
   mount_uploader :company_image, CompanyImageUploader
@@ -12,8 +15,6 @@ class Project < ActiveRecord::Base
   validates :name, :price, :owner, :start_investment, :finish_investment, presence: true
 
   paginates_per 8
-
-  has_many :invests
 
   def address
     "#{street} #{city} #{country}"
@@ -32,6 +33,10 @@ class Project < ActiveRecord::Base
 
     self.longitude = coordinates[1]
     self.latitude = coordinates[0]
+  end
+
+  def per_share
+    price / shares.to_f
   end
 
   def followed_by!(user)

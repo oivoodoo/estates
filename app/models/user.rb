@@ -13,8 +13,30 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
-  has_many :followers
-  has_many :projects, through: :followers
+  # has_many :followed_projects, through: :followers, source: :project
+
+  def followers
+    []
+  end
+
+  def investors
+    []
+  end
+
+  has_many :investments
+  has_many :invested_projects, through: :investments, source: :project
+
+  def tracking
+    projects
+  end
+
+  def total_invested
+    investments.map(&:money).sum
+  end
+
+  def total_earnings
+    '10k'
+  end
 
   scope :recent, lambda { |count| order('users.created_at desc').limit(count) }
 

@@ -20,16 +20,16 @@ class ProjectDecorator < Draper::Decorator
     object.investment_type.camelcase
   end
 
-  def per_share
-    price / shares.to_f
-  end
-
   def percent
     object.percent.to_f
   end
 
   def view_percent
     number_to_percentage(percent, :precision => 0)
+  end
+
+  def view_remaining_percent
+    number_to_percentage(100 - percent, :precision => 0)
   end
 
   def view_price

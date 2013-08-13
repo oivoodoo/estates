@@ -206,3 +206,23 @@ describe User do
   end
 end
 
+describe User do
+  let(:user) { create(:user) }
+
+  describe '.total_invested' do
+    let!(:project1) { create(:project, price: 100, shares: 1) }
+    let!(:project2) { create(:project, price: 200, shares: 1) }
+
+    let(:investments) { InvestmentsCreator.new(user) }
+
+    before do
+      investments.create(project1, quantity: 1)
+      investments.create(project2, quantity: 2)
+    end
+
+    it 'should calculate total investments' do
+      expect(user.total_invested).to eq(500)
+    end
+  end
+end
+

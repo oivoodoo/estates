@@ -1,4 +1,4 @@
-ActiveAdmin.register Invest do
+ActiveAdmin.register Investment do
   index do
     column :project
     column :created_at

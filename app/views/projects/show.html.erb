@@ -7,7 +7,7 @@
     <div class="cover">
       <div>
         <div>
-          <%= image_tag @project.image %>
+          <%= image_tag @project.image.url %>
         </div>
       </div>
     </div>
@@ -26,13 +26,13 @@
               <li class="yield"><div><b><%= @project.view_percent %><u></u></b> <label>yield</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="term"><div><b><%= @project.holding %> <u class="short"></u><u class="long"></u></b> <label>term</label></div></li>
+              <li class="term"><div><b><%= @project.holding %><u class="short"></u><u class="long"></u></b> <label>term</label></div></li>
             </ul>
             <div class="moneywrap size-3">
               <div>
                 <ul class='money'>
                   <li class="raised" style="width:<%= @project.view_percent %>;"><div><label>Raised</label><i>$</i><%= @project.view_raise %></div></li>
-                  <li class="budget" style="width:<%= number_to_percentage(100 - @project.percent, :precision => 0)%>;"><div><label>Budget</label><i>$</i><%= @project.view_price %></div></li>
+                  <li class="budget" style="width:<%= @project.view_remaining_percent %>;"><div><label>Budget</label><i>$</i><%= @project.view_price %></div></li>
                 </ul>
                 <div class="goal">
                   <div>
@@ -52,21 +52,18 @@
   <div class="title fix">
     <hgroup>
       <h2>
-        <% if user_signed_in? %>
-          <div class="followwrap following">
-            <button title='{{followText}}' ng-click="follow()" >{{followText}}</button>
-          </div>
-        <% else %>
-          <div class="followwrap following">
+        <div class="trackwrap track">
+	  <% if user_signed_in? %>
+            <button class="track" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+          <% else %>
             <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
               <button title='{{followText}}' ng-click="follow()">{{followText}}</button>
             </a>
-          </div>
-        <% end %>
-
-        <div class="profile-badge">
+          <% end %>
+        </div>
+        <div class="profile-badge manager-badge">
           <div>
-            <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
+            <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag("cbre.png") %></a>
             <div class="focus"></div>
           </div>
         </div>
@@ -78,32 +75,22 @@
       <ul>
         <li><a ng-class="{current:projectTab==1}" ng-click="open($event, 'projectTab', 1)" ng-init='projectTab=1'><span>Overview</span></a></li>
         <li><a ng-class="{current:projectTab==2}" ng-click="open($event, 'projectTab', 2)"><span>Financials</span></a></li>
-
         <% if @project.address? %>
           <li><a ng-class="{current:projectTab==3}" ng-click="open($event, 'projectTab', 3)"><span>Location</span></a></li>
         <% end %>
-
         <li><a ng-class="{current:projectTab==4}" ng-click="open($event, 'projectTab', 4)"><span>Property</span></a></li>
         <li><a ng-class="{current:projectTab==5}" ng-click="open($event, 'projectTab', 5)"><span>Strengths</span></a></li>
         <li><a ng-class="{current:projectTab==6}" ng-click="open($event, 'projectTab', 6)"><span>Risks</span></a></li>
         <li><a ng-class="{current:projectTab==7}" ng-click="open($event, 'projectTab', 7)"><span>Manager</span></a></li>
-
-        <li><a class='side-tab' ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em>27</em> Investors</a></li>
-        <li><a class='side-tab' ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>189</em> Followers</a></li>
-        <li><a class='side-tab' ng-class="{current:viewerTab==3}" ng:click="open($event, 'viewerTab', 3)"><em>189</em> Timeline</a></li>
       </ul>
     </div>
   </div>
 
-  <div class="body" style='display: block'>
+  <div class="body">
     <div class="main">
 			<div>
 				<div class='tab-content paper' ng-class="{current:projectTab==1}" ng:show="projectTab == 1">
-          <div class='gallery'>
-            <div>
-              <%= @project.description.to_s.html_safe %>
-            </div>
-          </div>
+          <%= @project.description.to_s.html_safe %>
 				</div>
 				<div class='tab-content paper' ng-class="{current:projectTab==2}" ng:show="projectTab == 2">
           <%= @project.financials.to_s.html_safe %>
@@ -131,17 +118,21 @@
 
 		<div class="side">
 			<div>
-        <div id="investors-content" class="tab-content side-tab-content side-switch side-current">
+        <div class="switch-group">
+          <div id="investors-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':viewerTab==1}">
+            <div class="tabs connections-tabs">
+              <ul>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= @project.followers.count %></em> Followers</a></li>
+              </ul>
+            </div>
 
-          <div class="connections-tabs tabs">
-            <ul>
-              <li>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em>27</em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>189</em> Followers</a></li>
-              </li>
+            <ul class="connections" ng-show="viewerTab == 1">
+              <%= render partial: 'follower', collection: @project.investors %>
             </ul>
           </div>
 
+<<<<<<< HEAD
           <ul class="connections" ng-show="viewerTab == 1">
             <li>
               <div class="profile-badge">
@@ -168,20 +159,33 @@
                 </div>
               </div>
             </li>
+=======
+          <div id="trackers-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':viewerTab==2}">
+            <div class="tabs connections-tabs">
+              <ul>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= @project.followers.count %></em> Followers</a></li>
+              </ul>
+            </div>
+
+            <ul class="connections">
+              <%= render partial: 'follower', collection: @project.followers %>
+            </ul>
+          </div>
+>>>>>>> master
         </div>
       </div>
 
-      <div>
-        <div>
-
-          <ul class="feed">
-            <li>
+      <div id="timeline-content" class="tab-content side-tab-content">
+        <ul class="feed">
+          <li>
             <div class="profile-badge">
               <div>
                 <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
                 <div class="focus"></div>
               </div>
             </div>
+
             <div class="entry">
               <h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="Rimi Supermaket">Rimi Supermaket</a></h5>
               <div class="entry-meta">
@@ -200,6 +204,7 @@
                 <time>2 days, 7hours ago</time>
               </div>
             </div>
+<<<<<<< HEAD
             </li>
             <li>
             <div class="profile-badge">
@@ -225,6 +230,11 @@
             </li>
             <li>
             <div class="profile-badge">
+=======
+          </li>
+          <li>
+            <div class="profile-badge manager-badge">
+>>>>>>> master
               <div>
                 <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="/assets/trigon.png"></a>
                 <div class="focus"></div>
@@ -236,9 +246,8 @@
                 <time>2 days, 7hours ago</time>
               </div>
             </div>
-            </li>
-          </ul>
-				</div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

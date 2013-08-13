@@ -1,84 +1,50 @@
 <?php
 	
-	global $countries;
-	
-	$profiles = array(
-		'kadri' => array(
-			'name'		=> array(
-				'title'	=> 'Ms.',
-				'first'	=> 'Kadri',
-				'middle'=> 'Liis',
-				'last'	=> 'Rääk'
-			),
-			'email'		=> 'kadri@example.com',
-			'phone'		=> '+372 5555 5555',
-			'street'	=> 'Nice House, Kadriorg',
-			'zip'		=> '12345',
-			'city'		=> 'Tallinn',
-			'country'	=> 'EE'
-		),
-		'mart' => array(
-			'name'		=> array(
-				'title'	=> '',
-				'first'	=> 'Mart',
-				'middle'=> '',
-				'last'	=> 'Uibo'
-			),
-			'email'		=> 'mart@example.com'
-		),
-		'michael' => array(
-			'name'		=> array(
-				'title'	=> 'Mr.',
-				'first'	=> 'Michael',
-				'middle'=> '',
-				'last'	=> 'Walsh'
-			),
-			'email'		=> 'michael@example.com'
-		)
-	);
+	global $investors, $countries;
 	
 	$h = array_key_exists('i', $_GET) ? $_GET['i'] : null;
 	
-	if (!$h) return;
+	if (!$h || !array_key_exists($h, $investors)) return;
 	
 	$tab = $tab ? $tab : 'edit-profile';
 	
-	$full_name		= implode(' ', $profiles[$h]['name']);
-	$first_name		= $profiles[$h]['name']['first'];
-	$last_name		= $profiles[$h]['name']['last'];
+	$full_name		= implode(' ', $investors[$h]['name']);
+	$first_name		= $investors[$h]['name']['first'];
+	$last_name		= $investors[$h]['name']['last'];
 	
-	$title			= array_key_exists('name', $profiles[$h]) && array_key_exists('title', $profiles[$h]['name']) ? $profiles[$h]['name']['title'] : null;
-	$middle_name	= array_key_exists('name', $profiles[$h]) && array_key_exists('middle', $profiles[$h]['name']) ? $profiles[$h]['name']['middle'] : null;
+	$title			= array_key_exists('name', $investors[$h]) && array_key_exists('title', $investors[$h]['name']) ? $investors[$h]['name']['title'] : null;
+	$middle_name	= array_key_exists('name', $investors[$h]) && array_key_exists('middle', $investors[$h]['name']) ? $investors[$h]['name']['middle'] : null;
 	
-	$email			= array_key_exists('email',		$profiles[$h]) ? $profiles[$h]['email']		: null;
-	$password		= array_key_exists('password',	$profiles[$h]) ? $profiles[$h]['password']	: null;
-	$phone			= array_key_exists('phone',		$profiles[$h]) ? $profiles[$h]['phone']		: null;
+	$email			= array_key_exists('email',		$investors[$h]) ? $investors[$h]['email']		: null;
+	$password		= array_key_exists('password',	$investors[$h]) ? $investors[$h]['password']	: null;
+	$phone			= array_key_exists('phone',		$investors[$h]) ? $investors[$h]['phone']		: null;
 	
-	$street			= array_key_exists('street',	$profiles[$h]) ? $profiles[$h]['street']	: null;
-	$zip			= array_key_exists('zip',		$profiles[$h]) ? $profiles[$h]['zip']		: null;
-	$city			= array_key_exists('city',		$profiles[$h]) ? $profiles[$h]['city']		: null;
+	$street			= array_key_exists('street',	$investors[$h]) ? $investors[$h]['street']	: null;
+	$zip			= array_key_exists('zip',		$investors[$h]) ? $investors[$h]['zip']		: null;
+	$city			= array_key_exists('city',		$investors[$h]) ? $investors[$h]['city']		: null;
 	
 	
-	$country_code	= array_key_exists('country',	$profiles[$h]) ? $profiles[$h]['country']	: null;
+	$country_code	= array_key_exists('country',	$investors[$h]) ? $investors[$h]['country']	: null;
 	$country		= $country_code && array_key_exists($country_code, $countries) ? $countries[$country_code]	: null;
 	
-	$bio			= array_key_exists('bio',		$profiles[$h]) ? $profiles[$h]['bio']		: null;
+	$bio			= array_key_exists('bio',		$investors[$h]) ? $investors[$h]['bio']		: null;
 ?>
 
 
 
 <section id="investor-edit" class="<?php echo $tab; ?>">
 	
+	<?php /*
 	<div class="submenu">
 		<div>
 			<ul>
 				<li><a class="dashboard" href="?p=dashboard">Dashboard</a></li>
 				<li><a class="profile current" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li>
-				<?php /*<li><a class="accreditation <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='accreditation' ? 'current' : ''; ?>" href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation">Investor Accreditation</a></li>*/ ?>
+				<?php /*<li><a class="accreditation <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='accreditation' ? 'current' : ''; ?>" href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation">Investor Accreditation</a></li>* ?>
 				<li><a class="settings" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
 			</ul>
 		</div>
-	</div>
+	</div>*/ ?>
 
 	
 	<?php if (array_key_exists('email', $_POST)) { ?>
@@ -141,7 +107,7 @@
 			<?php
 				switch($tab) {
 					case 'accreditation': ?>
-						<div class="tab-content gridwrap" id="accreditation">
+						<div class="tab-content gridwrap current" id="accreditation">
 							<div>
 							
 								<form>
@@ -207,11 +173,11 @@
 						<?php break;
 
 					case 'experience': ?>
-						<div class="tab-content"><div></div></div>
+						<div class="tab-content current"><div></div></div>
 						<?php break;
 
 					default: ?>
-						<div class="tab-content gridwrap" id="profile">
+						<div class="tab-content gridwrap current" id="profile">
 							<div>
 					
 								<form action="?p=investor-edit&i=<?php echo $h ?>" method="post">
@@ -324,4 +290,4 @@
 		<div class="action">
 		</div>*/ ?>
 		
-</section>
+</section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

@@ -92,11 +92,9 @@ jQuery(document).ready(function($) {
 	if (is_manager) {
 		open_pointer('manager');
 	}
-	if (is_dashboard) {
+	/*if (is_dashboard) {
 		open_pointer('dashboard');
-	}
-	if (is_profile) {
-	}
+	}*/
 
 
 

@@ -34,4 +34,6 @@
 //= require ng-rails-csrf
 //= require estates
 //= require vendors/angular-google-maps
+//
+//= require vendors/chart.min
 

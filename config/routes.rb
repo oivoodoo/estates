@@ -22,6 +22,7 @@ Estates::Application.routes.draw do
   end
 
   get 'dashboard' => 'dashboard#index'
+  get 'settings' => 'settings#index'
   get 'blog' => 'blog#index', as: :blog
 
   resources :project_tags, only: :index

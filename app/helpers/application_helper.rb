@@ -16,9 +16,7 @@ module ApplicationHelper
   end
 
   def header_class
-    if ['projects', 'registrations', 'pages', 'invests', 'dashboard', 'users'].include?(controller_name)
-      "mini"
-    end
+    'mini' unless controller_name == 'home'
   end
 end
 

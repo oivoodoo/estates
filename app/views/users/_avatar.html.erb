@@ -1,1 +1,5 @@
-<%= image_tag user.profile_image %>
+<a rel='avatar' href='<%= user.profile_image %>' class="profile-pic fancybox.ajax">
+  <%= image_tag user.profile_image, alt: user.name %>
+  <div class="focus"></div>
+</a>
+

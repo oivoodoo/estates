@@ -780,13 +780,18 @@ label.type {
 			}
 		}
 	}*/
-	&.connection-tabs {
+	&.connection-tabs, &.project-tabs {
 		border: 0;
 		ul {
 			padding-bottom: (@padding/1.5)*.8;
 		}
 		li {
 			.kappa;
+		}
+	}
+	&.project-tabs {
+		ul {
+			margin-bottom: -@padding;
 		}
 	}
 }
@@ -815,6 +820,12 @@ label.type {
 
 
 
+.tab-content {
+	display: none;
+	&.current, &.keep {
+		display: block;
+	}
+}
 .body {
 	.table;
 }
@@ -825,13 +836,22 @@ label.type {
 	>div {
 		padding-left: @gridMargin*3/2;
 	}
+	
+	.main-switch {
+		display: none;
+		&.main-switch-current {
+			display: block;
+		}
+	}
 }
 .side {
 	vertical-align: top;
 	background: white;
+	
 	>div {
 		padding-right: @gridMargin*3;
 	}
+	
 	.tabs {
 		background: transparent;
 		ul {
@@ -845,6 +865,18 @@ label.type {
 			}
 		}
 	}
+	
+	.tab-content {
+		display: block;
+	}
+	
+	.side-switch {
+		display: none;
+		&.side-switch-current {
+			display: block;
+		}
+	}
+	
 	.feed {
 		padding: 0 @padding @padding @padding/1.5;
 		li {
@@ -945,13 +977,37 @@ label.type {
 	.body {
 		display: block;
 	}
+	
+	.tab-content {
+		&.keep {
+			display: none;
+			&.current {
+				display: block;
+			}
+		}
+	}
+
 	.main {
 		display: block;
 		.grid-1-1;
 		>div {
 			padding: 0 @gridMargin;
 		}
+		
+		.main-switch {
+			display: none;
+			&.current {
+				display: block;
+			}
+			&.main-switch-current {
+				display: none;
+				&.current {
+					display: block;
+				}
+			}
+		}
 	}
+	
 	.side {
 		display: block;
 		.grid-1-1;
@@ -965,6 +1021,27 @@ label.type {
 				padding-right: @padding/1.5;
 			}
 		}
+		
+		.tab-content {
+			display: none;
+			&.current {
+				display: block;
+			}
+		}
+		
+		.side-switch {
+			display: none;
+			&.current {
+				display: block;
+			}
+			&.side-switch-current {
+				display: none;
+				&.current {
+					display: block;
+				}
+			}
+		}
+		
 		.connections, .feed {
 			padding-left: @padding;
 			padding-right: @padding;
@@ -1043,7 +1120,7 @@ label.type {
 				content: '\e925'; // sliders (mixer/equalizer) — e925 | cogwheel — e85a | cogwheels — e958
 				margin-right: .5rem;
 			}
-			&.follow:before {
+			&.follow:before, &.track:before {
 				content: '\E800';
 				margin-right: .5rem;
 			}
@@ -1165,7 +1242,7 @@ label.type {
 				font-size: unit(@gamma, em) !important;
 			}
 		}
-		.followwrap {
+		.followwrap, .trackwrap {
 			height: 0 !important;
 			margin: 0 !important;
 		}
@@ -1291,22 +1368,13 @@ label.type {
 	}
 	
 	header {
-		//display: none;
-		//.linear-gradient(top, @offWhite, darken(@offWhite, 2%));
-		/*background-position: 0 @padding/1.5;
-		background-repeat: no-repeat;*/
-		//border-bottom: 1px solid @lightGray;
-		//background: white;
 		margin: @padding/1.5 0;
 		.clear-children;
 		.project-name {
 			.delta;
 			font-family: 'neue-haas-grotesk-display';
 			font-weight: 500;
-			line-height: 1.1;
-			//margin-top: @padding/2;
-			//display: table;
-			width: 100%;
+			line-height: 1.1;			width: 100%;
 			span {
 				white-space: nowrap;
 			}
@@ -1315,16 +1383,11 @@ label.type {
 			display: block;
 			vertical-align: top;
 			float: left;
-			//margin-right: .35em;
 			>div {
 				position: relative;
 				overflow: hidden;
 				width: 1.85em;
 				height: 1.85em;
-				/*.transition(all .2s);
-				&:hover {
-					.box-shadow(0 0 0 3px @highlight);
-				}*/
 			}
 			img {
 				width: 100%;
@@ -1334,7 +1397,6 @@ label.type {
 				padding: 0;
 			}
 			.focus{
-				//display: none;
 				background: fade(white, 90%);
 				&:after {
 					content: '';
@@ -1391,9 +1453,6 @@ label.type {
 		margin: @padding/2 0;
 		padding: 0;
 		width: 100%;
-		//.radial-gradient(50% 100%, white, @lightGray, farthest-corner);
-		//.linear-gradient(top, white, @offWhite);
-		//.box-shadow(inset 0 -@padding/2 @padding fade(black, 3%));
 		>div {
 			display: block;
 			height: auto;
@@ -1404,16 +1463,16 @@ label.type {
 				>div {
 					color: @offBlack;
 					height: 100%;
-					//margin: 0 0 0 -@padding/2;
 					margin: 0;
 					width: auto;
 					padding-top: 0;
-					white-space: nowrap;
+					//white-space: nowrap;
 				}
 			}
 		}
 		ul, div {
-			/*&.size-2 {
+			width: 100%;
+			&.size-2 {
 				width: 50%;
 			}
 			&.size-3 {
@@ -1434,48 +1493,14 @@ label.type {
 			&.size-8 {
 				width: 12.5%;
 			}
-			&.moneywrap {
-				vertical-align: top;
-				display: inline-block;
-				padding: 0;
-				width: 33.33%;
-			}*/
-			
-			/*&.size-2 {
-				width: 100%;
-			}
-			&.size-3 {
-				width: 100%;
-			}
-			&.size-4 {
-				width: 50%;
-			}
-			&.size-5 {
-				width: 33.3%;
-			}
-			&.size-6 {
-				width: 25%;
-			}
-			&.size-7 {
-				width: 20%;
-			}
-			&.size-8 {
-				width: 16.6%;
-			}*/
-			
-			&.size-6 {
-				width: 16.66%;
-			}
-			
-			&.moneywrap {
-				vertical-align: top;
-				display: inline-block;
-				width: 33.33%;
-				padding-top: @padding/4;
-				margin-right: -1em;
-				>div {
-					max-width: 100%;
-				}
+		}
+		div.moneywrap {
+			vertical-align: top;
+			display: inline-block;
+			padding-top: @padding/4;
+			margin-right: -1em;
+			>div {
+				max-width: 100%;
 			}
 		}
 		ul {
@@ -1484,43 +1509,17 @@ label.type {
 				.epsilon;
 				padding: @padding/6 0;
 				text-align: left;
-				/*&.term {
-					u {
-						&.short {
-							display: inline;
-						}
-						&.long {
-							display: none;
-						}
-					}
-				}*/
 				>div {
 					display: inline-block;
 					text-align: left;
 				}
-				/*u {
-					font-family: 'neue-haas-grotesk-display';
-					font-weight: 75Bold;
-				}
-				i {
-					font-family: 'neue-haas-grotesk-display';
-					font-weight: 200;
-				}*/
 				b {
 					.epsilon;
-					//font-size: 1.35em;
-					//font-family: 'neue-haas-grotesk-display';
-					//font-weight: 75Bold;
 				}
 				label {
 					display: block;
 					font-family: 'neue-haas-grotesk-display';
 					font-weight: 200;
-					/*line-height: inherit;
-					vertical-align: baseline;
-					margin-left: 0;*/
-					//.eta;
-					//color: @aluminium;
 				}
 				&.term {
 					u.long {
@@ -1533,14 +1532,12 @@ label.type {
 			}
 			&:first-of-type {
 				li {
-					//padding-left: @padding/2;
 					padding-left: 0;
 					text-align: left;
 				}
 			}
 			&:last-of-type {
 				li {
-					//padding-right: @padding/2;
 					padding-right: 0;
 					text-align: left;
 				}
@@ -1551,9 +1548,6 @@ label.type {
 				height: auto;
 				vertical-align: top;
 				li {
-					//font-family: 'neue-haas-grotesk-display';
-					//font-weight: 500;
-					//padding-top: .875rem;
 					padding-top: 0;
 					padding-right: 0;
 					.delta;
@@ -1564,10 +1558,6 @@ label.type {
 						color: @offBlack;
 						text-align: right;
 						padding-left: 1.25rem;
-					}
-					u {
-						//font-family: 'neue-haas-grotesk-display';
-						//font-weight: 500;
 					}
 					label {
 						font-size: 8px;
@@ -1588,7 +1578,6 @@ label.type {
 	.action {
 		background: white;
 		button {
-			.thickest;
 			.iota;
 			padding: 0 1.2em;
 			height: 2.4rem;
@@ -1597,7 +1586,7 @@ label.type {
 			width: 50%;
 			background: @offWhite;
 			.transition-multiple(background-color .2s, color .2s, font-size 0);
-			&.follow, &.following {
+			&.track, &.tracking {
 				color: @magnesium;
 				.border-radius(.2em 0 0 .2em);
 				.box-shadow(none);
@@ -1611,7 +1600,7 @@ label.type {
 					margin-right: .5em;
 				}
 			}
-			&.following {
+			&.tracking {
 				color: @offBlack;
 			}
 			&.details {
@@ -1630,6 +1619,35 @@ label.type {
 					margin-left: .5em;
 				}
 			}
+		}
+	}
+	
+	&.dash-invested, &.dash-tracking {
+		padding-right: 0;
+		header {
+			margin-bottom: 0;
+			.project-name {
+				.zeta;
+			}
+			.manager-location {
+				.kappa;
+			}
+		}
+		.summary {
+			display: none;
+		}
+		.action {
+			button {
+				height: 1.8rem;
+			}
+		}
+	}
+	&.dash-invested {
+		.action, .financials >div >div >div >ul {
+			display: none;
+		}
+		div.moneywrap {
+			width: 100%;
 		}
 	}
 }
@@ -1669,6 +1687,7 @@ label.type {
 		}
 	}
 }
+
 
 @media only screen and (min-width: 1800px){ // Very large screen
 	.project-badge {
@@ -1724,19 +1743,23 @@ label.type {
 	/*.home-listing .project-badge:nth-child(n+3){ display:none; }*/
 }
 @media only screen and (min-width: 470px) and (max-width: 699px) { // Large smartphones
-	.project-badge { .grid-1-1; }
+	.project-badge {
+		.grid-1-1;
+		padding-left: 0;
+		padding-right: 0;
+	}
 	.home-listing .project-badge { .grid-1-1; }
 	/*.home-listing .project-badge:nth-child(n+2){ display:none; }*/
 }
 @media only screen and (max-width: 469px) { // Smartphones
 	.project-badge {
 		.grid-1-1;
-		.summary {
-			display: none;
-		}
 	}
 	.home-listing .project-badge:nth-child(n+2){ display:none; }
 }
+
+
+
 
 .listing-head {
 	.gridwrap;
@@ -1857,14 +1880,14 @@ label.type {
 					white-space: nowrap;
 				}
 			}
-			.followwrap {
+			.trackwrap {
 				.grid-1-3;
 				float: right;
 				padding-left: @gridMargin/3*2;
 				overflow: hidden;
 				margin: -.12em 0;
 				.transition(all .2s);
-				&.following {
+				&.tracking {
 					min-width: 3.8em;
 				}
 				button {
@@ -1873,7 +1896,7 @@ label.type {
 					white-space: nowrap;
 					font-size: unit(@zeta, rem);
 					width: 100%;
-					&.following {
+					&.tracking {
 						color: @offBlack;
 					}
 					&:before {
@@ -1885,6 +1908,7 @@ label.type {
 			}
 		}
 	}
+	
 	.body {
 		.paper {
 			.theta;
@@ -1892,10 +1916,6 @@ label.type {
 	}
 	.gallery {
 		margin: 2em 0;
-		>div {
-			//margin-left: -@padding;
-			//margin-right: -@padding;
-		}
 		img {
 			width:100%;
 			height:auto;
@@ -1905,24 +1925,9 @@ label.type {
 	.side-tab {
 		display: none;
 	}
-	.tab-content {
-		display: none;
-		&.current {
-			display: block;
-		}
-	}
+	
 	.side {
 		padding-top: @padding*1.5;
-		.tab-content {
-			display: block;
-		}
-		
-		#investors-content, #followers-content {
-			display: none;
-			&.side-current {
-				display: block;
-			}
-		}
 	}
 }
 .project {
@@ -1934,7 +1939,7 @@ label.type {
 	#project {
 		.title {
 			hgroup {
-				.followwrap {
+				.trackwrap {
 					button {
 						font-size: unit(@delta, rem);
 					}
@@ -1947,7 +1952,7 @@ label.type {
 	#project {
 		.title {
 			hgroup {
-				.followwrap {
+				.trackwrap {
 					button {
 						font-size: unit(@epsilon, rem);
 					}
@@ -1960,7 +1965,7 @@ label.type {
 	#project {
 		.title {
 			hgroup {
-				.followwrap {
+				.trackwrap {
 					button {
 						font-size: unit(@zeta, rem);
 					}
@@ -1994,7 +1999,7 @@ label.type {
 				h2{
 					.beta;
 				}
-				.followwrap {
+				.trackwrap {
 					button {
 						font-size: unit(@eta, rem);
 					}
@@ -2004,26 +2009,6 @@ label.type {
 		
 		.side-tab {
 			display: inline-block;
-		}
-		.side {
-			.tab-content {
-				display: none;
-				&.current {
-					display: block;
-				}
-			}
-			#investors-content, #followers-content {
-				display: none;
-				&.current {
-					display: block;
-				}
-				&.side-current {
-					display: none;
-					&.current {
-						display: block;
-					}
-				}
-			}
 		}
 		.connection-tabs {
 			display: none;
@@ -2042,7 +2027,7 @@ label.type {
 			hgroup {
 				padding-left: 0;
 				padding-right: 0;
-				.followwrap {
+				.trackwrap {
 					button {
 						font-size: unit(@eta, rem);
 					}
@@ -2081,7 +2066,7 @@ label.type {
 				h2 {
 					.gamma;
 				}
-				.followwrap {
+				.trackwrap {
 					float: none;
 					width: auto;
 					padding-left: 0;
@@ -2128,7 +2113,7 @@ label.type {
 /*	Profile
 —————————————————————————————————————————————————————————————————————————— */
 #investor, #manager, #dashboard {
-	.action {
+	/*.action {
 		.padding;
 		.grid-1-5;
 		float: right;
@@ -2158,7 +2143,7 @@ label.type {
 				}
 			}
 		}
-	}
+	}*/
 	.body {
 		display: table;
 		width: 100%;
@@ -2186,6 +2171,15 @@ label.type {
 	}
 }
 
+
+#investor, #manager, #investor-edit {
+	.tab-content {
+		>div {
+			padding: @padding*2;
+			margin: 0 -@padding;
+		}
+	}
+}
 
 #investor, #manager, #dashboard, #investor-edit {
 	.core {
@@ -2234,6 +2228,7 @@ label.type {
 				vertical-align: top;
 			}
 		}
+		
 		.profile-badge {
 			.transition(all .5s);
 			//float: left;
@@ -2327,12 +2322,6 @@ label.type {
 		}
 	}
 	
-	.tab-content {
-		>div {
-			padding: @padding*2;
-			margin: 0 -@padding;
-		}
-	}
 }
 .investor, .manager, .dashboard {
 	#main {
@@ -2345,54 +2334,187 @@ label.type {
 	.body {
 		padding-top: 0;
 	}
-	.tabs {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		.zeta;
-		/*.clear-children;
-		li {
-			float: left;
-		}*/
-	}
-	.main {
-		.grid-1-1;
-		>div {
-			padding: 0;
-		}
-	}
-}
-
-
-@media only screen and (min-width: 1800px){	// == Very large screen
-}
-@media only screen and (min-width: 1500px) and (max-width: 1799px){ // == Large screen
-}
-@media only screen and (max-width: 1499px){ // >= Large screen
-}
-@media only screen and (min-width: 1200px) and (max-width: 1499px){ // == Desktop screens
-}
-@media only screen and (min-width: 1001px) and (max-width: 1199px) { // == Default
-	#investor, #manager, #dashboard {
-		.main {
-			.grid-3-5;
-		}
-	}
-}
-@media only screen and (max-width: 1000px) { // <= Tablets and landscape large smartphones
-	#investor, #manager, #dashboard {
-		#investor-details, #manager-details {
-			min-height: 0;
-		}
-		.action {
-			padding-left: @padding;
-			.grid-1-3;
-			float: left;
-			clear: left;
-			text-align: center;
-			ul {
-				position: static;
+	
+	.main-numbers {
+		.radial-gradient(50% 100%, @textGray, @offBlack, farthest-side);
+		background-color: @offBlack;
+		padding: @padding 0;
+		ul {
+			.padding;
+			.clear-children;
+			li {
+				float: left;
+				width: 25%;
+				text-align: center;
+				>div {
+					display: inline-block;
+					//text-align: left;
+				}
+				i {
+					font-style: normal;
+					font-family: 'neue-haas-grotesk-display';
+					font-weight: 100;
+				}
+				em {
+					font-style: normal;
+					font-family: 'neue-haas-grotesk-display';
+					font-weight: 500;
+					color: @offWhite;
+					.alpha;
+					line-height: 1.3;
+				}
+				label {
+					display: block;
+					font-family: 'neue-haas-grotesk-display';
+					font-weight: 100;
+					color: @aluminium;
+				}
 			}
 		}
+	}
+	
+	.tabs {
+		background: white;
+		display: none;
+		&.connection-tabs, &.project-tabs {
+			display: block;
+		}
+		ul {
+			padding-top: .4rem;
+		}
+	}
+	
+	.side-tab {
+		display: none;
+	}
+	
+	.main {
+		.tab-content {
+			padding-right: @padding*2.5;
+			>div {
+				.clear-children;
+			}
+			+.tab-content, +.switch-group {
+				margin-top: @padding*2.5;
+			}
+		}
+		.switch-group {
+			.tab-content + .tab-content {
+				margin-top: 0;
+			}
+		}
+	}
+	
+	.main, .side {
+		padding-top: @padding*1.5;
+	}
+	
+	.chart-title {
+		margin-bottom: @padding;
+	}
+	
+	#reports-content {
+		padding-left: @padding;
+		padding-right: @padding*1.5;
+		>div {
+			.table;
+			>div {
+				vertical-align: top;
+				text-align: left;
+			}
+		}
+		h5 {
+			margin-bottom: @padding;
+		}
+	}
+	
+	#performance {
+		width: 80%;
+	}
+	#allocation {
+		width: 20%;
+	}
+}
+
+
+@media only screen and (min-width: 1800px){ // Very large screen
+	#dashboard {
+		.project-badge {
+			.grid-1-3;
+			clear: none;
+			&:nth-child(3n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+@media only screen and (min-width: 1500px) and (max-width: 1799px){ // Large screen
+	#dashboard {
+		.project-badge {
+			.grid-1-3;
+			clear: none;
+			&:nth-child(3n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+@media only screen and (min-width: 1200px) and (max-width: 1499px){ // Desktop screens
+	#dashboard {
+		.project-badge {
+			.grid-1-2;
+			clear: none;
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+@media only screen and (min-width: 1001px) and (max-width: 1199px) {
+	#dashboard {
+		.project-badge {
+			.grid-1-2;
+			clear: none;
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+/*@media only screen and (min-width: 700px) and (max-width: 1000px) { // Tablets and landscape large smartphones
+	#dashboard {
+		.project-badge {
+			.grid-1-3;
+			&:nth-child(3n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+@media only screen and (min-width: 470px) and (max-width: 699px) { // Large smartphones
+	#dashboard {
+		.project-badge {
+			.grid-1-2;
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+@media only screen and (max-width: 469px) { // Smartphones
+	#dashboard {
+		.project-badge {
+			.grid-1-1;
+		}
+	}
+}*/
+
+
+
+@media only screen and (max-width: 1000px) { // <= Tablets and landscape large smartphones
+	#investor, #manager, #dashboard {
 		.body {
 			display: block;
 		}
@@ -2406,7 +2528,6 @@ label.type {
 		.side {
 			display: block;
 			.grid-1-1;
-			.box-shadow(inset 0 1px 0 @offWhite);
 			>div {
 				padding: 0 @gridMargin;
 			}
@@ -2415,16 +2536,23 @@ label.type {
 			}
 		}
 	}
-}
-@media only screen and (min-width: 700px) and (max-width: 1000px) { // == Tablets and landscape large smartphones
-	#investor, #manager, #dashboard {
-		#investor-details, #manager-details {
-			min-height: 0;
-		}
-		.action {
-			button {
-				.zeta;
+	#dashboard {
+		.tabs {
+			display: block;
+			&.connection-tabs, &.project-tabs {
+				display: none;
 			}
+		}
+		.main {
+			.tab-content {
+				padding-right: 0;
+				+.tab-content, +.switch-group {
+					margin-top: 0;
+				}
+			}
+		}
+		.project-badge {
+			padding-right: @padding;
 		}
 	}
 }
@@ -2439,9 +2567,6 @@ label.type {
 					max-width: 15rem;
 				}
 			}
-			.action {
-				padding-left: 0;
-			}
 			.ext-account-buttons {
 				>div >div {
 					&:first-child {
@@ -2454,29 +2579,9 @@ label.type {
 			}
 		}
 	}
-	#investor, #manager, #dashboard {
-		.main > div {
-			padding: 0;
-			margin: 0;
-		}
-		.connections-wrap {
+	#dashboard {
+		#reports-content {
 			padding-left: 0;
-			padding-right: 0;
-		}
-	}
-}
-@media only screen and (min-width: 470px) and (max-width: 699px) { // == Large smartphones
-	#investor, #manager, #dashboard {
-		.main > div {
-			padding: 0;
-			margin: 0;
-		}
-		.tabs {
-			//padding: @padding @gridMargin 0;
-			ul {
-				padding: 0;
-				margin: 0 -1rem;
-			}
 		}
 	}
 }
@@ -2537,15 +2642,6 @@ label.type {
 	#investor, #manager, #dashboard {
 		width: 14*@gridMargin;
 		margin: 0;
-		.action {
-			.grid-1-1;
-			padding-left: 0;
-			padding-right: 0;
-			padding-top: 0;
-			li {
-				text-align: center;
-			}
-		}
 		.body {
 			margin: 0;
 			width: 100%;
@@ -2948,12 +3044,7 @@ label.type {
 .financials {
 	.theta;
 	.grid-1-3;
-	//text-align: center;
 	padding: @padding 0 @padding*2;
-	/*.gridwrap;
-	padding: @padding/3 @padding @padding @padding;
-	max-width: 50rem;
-	margin: 0 auto;*/
 	
 	>div {
 		.table;
@@ -2965,43 +3056,12 @@ label.type {
 			>div {
 				color: @financialsColor;
 				position: relative;
-				
-				/*height: 100%;
-				white-space: nowrap;*/
 			}
 		}
 	}
 	h1, h2, h3, h4, h5, h6 {
 		color: @financialsColor;
 	}
-	/*ul, div {
-		&.size-2 {
-			width: 50%;
-		}
-		&.size-3 {
-			width: 33.3%;
-		}
-		&.size-4 {
-			width: 25%;
-		}
-		&.size-5 {
-			width: 20%;
-		}
-		&.size-6 {
-			width: 16.6%;
-		}
-		&.size-7 {
-			width: 14.2%;
-		}
-		&.size-8 {
-			width: 12.5%;
-		}
-		&.moneywrap {
-			vertical-align: top;
-			display: inline-block;
-			padding: 0;
-		}
-	}*/
 	ul {
 		//.table;
 		display: inline-table;
@@ -3079,6 +3139,7 @@ label.type {
 				>div {
 					display: inline-block;
 					margin-right: -1.2em;
+					text-align: right;
 				}
 				label {
 					left: 0;
@@ -3087,6 +3148,9 @@ label.type {
 			&.budget {
 				padding-left: 1.75em;
 				color: @financialsColor;
+				>div {
+					text-align: right;
+				}
 				label {
 					right: 0;
 				}
@@ -4062,13 +4126,13 @@ label.type {
 				left: auto;
 				right: 0;
 				li {
-					a, &.name {
+					a{
 						text-align: right;
 						white-space: nowrap;
 						line-height: 1.3;
 						padding: @padding/2 @padding @padding/2 @padding*2;
 					}
-					&.name {
+					/*&.name {
 						.zeta;
 						height: 3rem;
 						line-height: 3rem;
@@ -4078,7 +4142,7 @@ label.type {
 						color: white;
 						margin-bottom: @padding/3;
 					}
-					/*&:last-child {
+					&:last-child {
 						padding-bottom: @padding/3;
 					}*/
 				}
@@ -4820,3 +4884,4 @@ label.type {
 
 
 
+                                                         

@@ -1,6 +1,6 @@
 <?php
 
-	global $projects, $managers;
+	global $projects, $managers, $investors;
 
 	$h = array_key_exists('project', $_GET) ? $_GET['project'] : null;
 	
@@ -22,7 +22,7 @@
 	$progress_percent	= ($goal && $progress)								? round($progress/$goal*100): null;	// percentage
 	$financials			= array_key_exists('financials',$project)			? $project['financials']	: null;
 	$location			= array_key_exists('location',	$project)			? $project['location']		: null;
-	$is_followed		= array_key_exists('is_followed',$project)			? $project['is_followed']	: null;
+	$is_tracked			= array_key_exists('is_tracked',$project)			? $project['is_tracked']	: null;
 
 ?>
 
@@ -107,10 +107,10 @@
 		<hgroup>
 			<h2>
 				<?php
-					if ($is_followed) {
-						echo '<div class="followwrap following"><button class="following" title="Stop following this project">Following</button></div>';
+					if ($is_tracked) {
+						echo '<div class="trackwrap tracking"><button class="tracking" title="Stop tracking this project">Tracking</button></div>';
 					} else {
-						echo '<div class="followwrap follow"><button class="follow" title="Follow this project">Follow</button></div>';
+						echo '<div class="trackwrap track"><button class="track" title="Follow this project">Track</button></div>';
 					}
 				?>
 				<div class="profile-badge manager-badge">
@@ -132,7 +132,7 @@
 				<li><a href="?p=project&project=<?php echo $handle; ?>#risks" id="risks-tab"><span>Risks</span></a></li>
 				<li><a href="?p=project&project=<?php echo $handle; ?>#manager" id="manager-tab"><span>Manager</span></a></li>
 				<li class="side-tab"><a href="?p=project&project=<?php echo $handle; ?>#investors" id="investors-tab"><span><em>27</em> Investors</span></a></li>
-				<li class="side-tab"><a href="?p=project&project=<?php echo $handle; ?>#followers" id="followers-tab"><span><em>189</em> Followers</span></a></li>
+				<li class="side-tab"><a href="?p=project&project=<?php echo $handle; ?>#trackers" id="trackers-tab"><span><em>189</em> Followers</span></a></li>
 				<li class="side-tab"><a href="?p=project&project=<?php echo $handle; ?>#timeline" id="timeline-tab"><span>Timeline</span></a></li>
 			</ul>
 		</div>
@@ -153,9 +153,19 @@
 						</div>
 					</div>
 					<p>	
-		Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.
-		Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim.
+						Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.
+						Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim.
 					</p>
+				</div>
+				
+				<div id="location-content" class="tab-content paper">
+					<?php if ($location && array_key_exists('address', $location)) {
+						$e_address = urlencode($location['address']); ?>
+						<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:24rem;"
+							src="https://www.google.com/maps?q=<?php echo $e_address; ?>&amp;z=14&amp;output=embed"></iframe>
+						
+						<p style="text-align: right;"><a href="https://www.google.com/maps?q=<?php echo $e_address; ?>&amp;z=14&amp;source=embed" target="_blank">Google maps &rarr;</a></p>
+					<?php } ?>
 				</div>
 				
 			</div>
@@ -163,232 +173,46 @@
 		<div class="side">
 			<div>
 			
-				<div id="investors-content" class="tab-content side-tab-content side-switch side-current">
+				<div class="switch-group">
 				
-					<div class="tabs connection-tabs">
-						<ul>
-							<li><a href="#investors" class="current"><em>27</em> Investors</a></li><li><a href="#followers"><em>189</em> Followers</a></li>
-						</ul>
-					</div>
-					<ul class="connections">
-						<?php
-								$profiles = array(
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Michael Walsh',
-										'handle'	=> 'michael',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Michael Walsh',
-										'handle'	=> 'michael',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Michael Walsh',
-										'handle'	=> 'michael',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									)
-								);
-								foreach ($profiles as $profile_data) {
+					<div id="investors-content" class="tab-content side-tab-content side-switch side-switch-current">
+					
+						<div class="tabs connection-tabs">
+							<ul>
+								<li><a href="#investors" class="current"><em>27</em> Investors</a></li><li><a href="#trackers"><em>189</em> Trackers</a></li>
+							</ul>
+						</div>
+						<ul class="connections">
+							<?php
+								for ($i=0; $i<15; $i++) {
+									$rand_investor = array_rand($investors);
+									$profile_data = $investors[$rand_investor];
 									require('connection-badge.php');
 								}
 							?>
-					</ul>
-			
-				</div>
-				
-				<div id="followers-content" class="tab-content side-tab-content side-switch">
-				
-					<div class="tabs connection-tabs">
-						<ul>
-							<li><a href="#investors"><em>27</em> Investors</a></li><li><a href="#followers" class="current"><em>189</em> Followers</a></li>
 						</ul>
+				
 					</div>
-					<ul class="connections">
-						<?php
-								$profiles = array(
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Michael Walsh',
-										'handle'	=> 'michael',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Michael Walsh',
-										'handle'	=> 'michael',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Michael Walsh',
-										'handle'	=> 'michael',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Kadri Liis Rääk',
-										'handle'	=> 'kadri',
-										'type'		=> 'investor',
-										'type_label'=> 'Accredited Investor',
-										'type_class'=> 'investor accredited'
-									),
-									array(
-										'name'		=> 'Mart Uibo',
-										'handle'	=> 'mart',
-										'type'		=> 'investor'
-									)
-								);
-								foreach ($profiles as $profile_data) {
+					
+					<div id="trackers-content" class="tab-content side-tab-content side-switch">
+					
+						<div class="tabs connection-tabs">
+							<ul>
+								<li><a href="#investors"><em>27</em> Investors</a></li><li><a href="#trackers" class="current"><em>189</em> Trackers</a></li>
+							</ul>
+						</div>
+						<ul class="connections">
+							<?php
+								for ($i=0; $i<15; $i++) {
+									$rand_investor = array_rand($investors);
+									$profile_data = $investors[$rand_investor];
 									require('connection-badge.php');
 								}
 							?>
-					</ul>
-			
+						</ul>
+				
+					</div>
+					
 				</div>
 				
 				<div id="timeline-content" class="tab-content side-tab-content">
@@ -420,7 +244,7 @@
 								</div>
 							</div>
 						</li>
-						<li>
+						<?php /*<li>
 							<div class="profile-badge manager-badge">
 								<div>
 									<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
@@ -441,7 +265,7 @@
 									<time>2 days, 7hours ago</time>
 								</div>
 							</div>
-						</li>
+						</li>*/ ?>
 						<li>
 							<div class="profile-badge manager-badge">
 								<div>
@@ -463,4 +287,4 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
