@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   acts_as_taggable
 
   has_many :investments
-  has_many :investors, through: :investments, source: :user
+  has_many :investors, through: :investments, source: :user, uniq: true
 
   mount_uploader :image, ImageUploader
   mount_uploader :company_image, CompanyImageUploader
