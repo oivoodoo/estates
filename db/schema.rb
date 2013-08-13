@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130813071632) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -253,7 +250,6 @@ ActiveRecord::Schema.define(version: 20130813071632) do
     t.string   "google_plus_link"
     t.string   "linkedin_link"
     t.string   "social_avatar_url"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
