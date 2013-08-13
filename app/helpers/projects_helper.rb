@@ -13,7 +13,7 @@ module ProjectsHelper
 
   def project_json(project)
     json = project.as_json(only: [:latitude, :longitude])
-    json['followed'] = project.followed?(current_user)
+    json['followed'] = current_user.following?(project.object)
     json.to_json
   end
 end

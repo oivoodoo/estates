@@ -2,7 +2,7 @@ class ProjectDecorator < Draper::Decorator
   delegate_all
 
   include ActionView::Helpers::NumberHelper
-
+  
   def address?
     address.strip.present?
   end
