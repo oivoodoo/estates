@@ -3,4 +3,11 @@ $('#nav').find('div:first-child').html('<%= escape_javascript(render(partial: 'l
 $('#js-settings').replaceWith('<%= escape_javascript(render(partial: 'layouts/js')) %>');
 $(document).trigger('user:signed_in')
 $.fancybox.close()
+$('.sign-in button').each(function(i, button) {
+  // extract buttons in case if wrap action that need to have signed in user.
+  var button = $(button);
+  var signupButton = $(button).parent();
+  signupButton.next('button').show();
+  signupButton.remove();
+});
 

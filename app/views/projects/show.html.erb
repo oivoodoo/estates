@@ -42,7 +42,14 @@
               </div>
             </div>
             <div class="action">
-              <button onclick="Turbolinks.visit('<%= new_project_invest_path(@project) %>')">Purchase Shares</button>
+              <% if user_signed_in? %>
+                <button onclick="Turbolinks.visit('<%= new_project_investment_path(@project) %>')">Purchase Shares</button>
+              <% else %>
+                <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+                  <button>Purchase Shares</button>
+                </a>
+                <button style='display: none' onclick="Turbolinks.visit('<%= new_project_investment_path(@project) %>')">Purchase Shares</button>
+              <% end %>
             </div>
           </div>
         </div>

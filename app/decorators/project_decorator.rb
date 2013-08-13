@@ -39,4 +39,8 @@ class ProjectDecorator < Draper::Decorator
   def view_raise
     number_to_human(raised, :precision => 2)
   end
+
+  def view_per_share
+    number_to_currency(per_share)
+  end
 end

@@ -1,15 +1,16 @@
-class InvestsController < ApplicationController
+class InvestmentsController < ApplicationController
   before_filter :find_project
+  before_filter :authenticate_user!
 
   def new
-    @invest = @project.investments.new
+    @investment = @project.investments.new
   end
 
   def create
-    @invest = @project.investments.new(params[:invest])
+    @investment = @project.investments.new(params[:investment])
 
-    if @invest.save
-      gflash(notice: "Invest was created")
+    if @investment.save
+      gflash(notice: "Investment was created")
       redirect_to root_path
     else
       gflash(errors: "Something went wrong")

@@ -16,7 +16,7 @@ Estates::Application.routes.draw do
       post 'unfollow'
     end
     resources :comments
-    resources :invests, only: [:new, :create]
+    resources :investments, only: [:new, :create]
   end
 
   get 'dashboard' => 'dashboard#index'
