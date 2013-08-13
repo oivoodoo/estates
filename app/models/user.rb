@@ -16,6 +16,30 @@ class User < ActiveRecord::Base
   has_many :followers
   has_many :projects, through: :followers
 
+  def followers
+    []
+  end
+
+  def investors
+    []
+  end
+
+  def investments
+    []
+  end
+
+  def tracking
+    projects
+  end
+
+  def total_invested
+    '82k'
+  end
+
+  def total_earnings
+    '10k'
+  end
+
   scope :recent, lambda { |count| order('users.created_at desc').limit(count) }
 
   mount_uploader :avatar, AvatarUploader

@@ -15,6 +15,10 @@ class Project < ActiveRecord::Base
 
   has_many :invests
 
+  def investors
+    []
+  end
+
   def address
     "#{street} #{city} #{country}"
   end
