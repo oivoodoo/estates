@@ -5,8 +5,8 @@
       <ul>
         <li><div><em><i>$</i><%= current_user.total_earnings %></em><label>total earnings</label></div></li>
         <li><div><em><i>$</i><%= current_user.total_invested %></em> <label>total invested</label></div></li>
-        <li><div><em><%= current_user.invested_projecst.count %></em> <label>projects invested in</label></div></li>
-        <li><div><em><%= current_user.tracking.count %></em> <label>projects tracked</label></div></li>
+        <li><div><em><%= current_user.invested_projects.count %></em> <label>projects invested in</label></div></li>
+        <li><div><em><%= current_user.following_projects.count %></em> <label>projects tracked</label></div></li>
       </ul>
     </div>
   </div>
@@ -34,7 +34,7 @@
             <div class="tabs project-tabs">
               <ul>
                 <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= current_user.investments.count %></em> Investments</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= current_user.tracking.count %></em> Tracking</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= current_user.following_projects.count %></em> Tracking</a></li>
               </ul>
             </div>
 
@@ -47,12 +47,12 @@
             <div class="tabs project-tabs">
               <ul>
                 <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)"><em><%= current_user.investments.count %></em> Investments</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= current_user.tracking.count %></em> Tracking</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= current_user.following_projects.count %></em> Tracking</a></li>
               </ul>
             </div>
 
             <div ng-show="viewerTab == 2">
-              <%= render partial: 'project', collection: current_user.tracking %>
+              <%= render partial: 'project', collection: current_user.following_projects %>
             </div>
           </div>
 
@@ -67,26 +67,26 @@
 
             <div class="tabs connection-tabs">
               <ul>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'sideViewerTab', 1)" ng:init='sideViewerTab=1'><em>0</em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'sideViewerTab', 2)"><em>0</em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'sideViewerTab', 1)" ng:init='sideViewerTab=1'><em><%= current_user.investors.count %></em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'sideViewerTab', 2)"><em><%= current_user.user_followers.count %></em> Followers</a></li>
               </ul>
             </div>
 
             <ul class="connections" ng-show="sideViewerTab == 1">
-              <%= render partial: 'projects/follower', collection: current_user.investments %>
+              <%= render partial: 'projects/follower', collection: current_user.investors %>
             </ul>
           </div>
 
           <div id="followers-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':sideViewerTab==2}">
             <div class="tabs connection-tabs">
               <ul>
-                <li><a ng-class="{current:sideViewerTab==1}" ng:click="open($event, 'sideViewerTab', 1)"><em>0</em> Investors</a></li>
-                <li><a ng-class="{current:sideViewerTab==2}" ng:click="open($event, 'sideViewerTab', 2)"><em>0</em> Followers</a></li>
+                <li><a ng-class="{current:sideViewerTab==1}" ng:click="open($event, 'sideViewerTab', 1)"><em><%= current_user.investors.count %></em> Investors</a></li>
+                <li><a ng-class="{current:sideViewerTab==2}" ng:click="open($event, 'sideViewerTab', 2)"><em><%= current_user.user_followers.count %></em> Followers</a></li>
               </ul>
             </div>
 
             <ul class="connections">
-              <%= render partial: 'projects/follower', collection: current_user.followers.count %>
+              <%= render partial: 'projects/follower', collection: current_user.user_followers %>
             </ul>
           </div>
 

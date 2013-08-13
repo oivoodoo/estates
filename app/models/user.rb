@@ -10,24 +10,20 @@ class User < ActiveRecord::Base
   validates :email, :status, presence: true
 
   has_many :authentications
-
   has_many :comments
 
-  # has_many :followed_projects, through: :followers, source: :project
-
   def followers
-    []
-  end
-
-  def investors
     []
   end
 
   has_many :investments
   has_many :invested_projects, through: :investments, source: :project
 
-  def tracking
-    projects
+  acts_as_followable
+  acts_as_follower
+
+  def investors
+    investments.map(&:project_investors).flatten.uniq
   end
 
   def total_invested
