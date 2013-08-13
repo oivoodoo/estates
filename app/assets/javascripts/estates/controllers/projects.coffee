@@ -2,6 +2,7 @@ estates.controller 'ProjectsController', [
   '$scope', '$element', '$compile', '$http'
   ($scope, $element, $compile, $http) ->
     $scope.project = $element.data('project')
+    $scope.urls = $element.data('urls')
 
     marker =
       latitude: $scope.project.latitude
@@ -22,7 +23,7 @@ estates.controller 'ProjectsController', [
       $scope.$apply ->
         control = $el.parent().find('.fixed')
         $compile(control)($scope)
-        
+
     if $scope.project.followed
       $scope.followText = 'Stop Following'
       $scope.followState = 'following'
@@ -34,11 +35,11 @@ estates.controller 'ProjectsController', [
       if $scope.followState == 'not-following'
         $scope.followText = 'Stop Following'
         $scope.followState = 'following'
-        $http.post('/projects/3/follow').success (data) ->
-          $('.follow-profile-badge').append(data)
+        $http.post($scope.urls.follow).success (data) ->
+          $('#followed').append(data)
       else
         $scope.followText = 'Follow'
         $scope.followState = 'not-following'
-        $http.post('/projects/3/unfollow').success (data) ->
-          $('.follow-profile-badge').html(data)
+        $http.post($scope.urls.unfollow).success (data) ->
+          $('.profile-badge').append(data)
 ]
