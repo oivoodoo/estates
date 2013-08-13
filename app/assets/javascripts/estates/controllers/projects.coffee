@@ -35,11 +35,10 @@ estates.controller 'ProjectsController', [
         $scope.followText = 'Stop Following'
         $scope.followState = 'following'
         $http.post('/projects/3/follow').success (data) ->
-          $('.follow-profile-badge').html(data)
+          $('.follow-profile-badge').append(data)
       else
         $scope.followText = 'Follow'
         $scope.followState = 'not-following'
         $http.post('/projects/3/unfollow').success (data) ->
           $('.follow-profile-badge').html(data)
 ]
-

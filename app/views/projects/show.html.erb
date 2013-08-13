@@ -52,9 +52,18 @@
   <div class="title fix">
     <hgroup>
       <h2>
-        <div class="followwrap following">
-          <button title='{{followText}}' ng-click="follow()" following="following">{{followText}}</button>
-        </div>
+        <% if user_signed_in? %>
+          <div class="followwrap following">
+            <button title='{{followText}}' ng-click="follow()" >{{followText}}</button>
+          </div>
+        <% else %>
+          <div class="followwrap following">
+            <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+              <button title='{{followText}}' ng-click="follow()">{{followText}}</button>
+            </a>
+          </div>
+        <% end %>
+
         <div class="profile-badge">
           <div>
             <a href="<%= dashboard_path %>" title="CBRE"><%= image_tag("cbre.png") %></a>
