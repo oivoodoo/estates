@@ -53,7 +53,7 @@
     <hgroup>
       <h2>
         <div class="trackwrap track">
-	  <% if user_signed_in? %>
+          <% if user_signed_in? %>
             <button class="track" title="{{followText}}" ng-click="follow()">{{followText}}</button>
           <% else %>
             <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
