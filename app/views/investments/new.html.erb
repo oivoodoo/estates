@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "invests" %>
-<div ng-controller="InvestsController">
+<div ng-controller="InvestmentsController" data-project='<%= @project.to_json(methods: :per_share) %>'>
   <header id="page-header">
     <div class="container">
       <ol class="progress-indicator">
@@ -31,7 +31,7 @@
     <div class="container">
       <div class="row">
         <div class="span8 column">
-          <%= form_for [@project, @invest] do |f| %>
+          <%= form_for [@project, @investment] do |f| %>
             <%= render 'step1', f: f %>
             <%= render 'step2', f: f %>
             <%= render 'step3', f: f %>
@@ -57,7 +57,7 @@
                   </tr>
                   <tr>
                     <td class="muted">Price Per Share</td>
-                    <td class="text-right"><%= number_to_currency(@project.per_share) %></td>
+                    <td class="text-right"><%= @project.view_per_share %></td>
                   </tr>
                   <tr>
                     <td class="muted">Total Investment</td>
@@ -74,3 +74,4 @@
     </div>
   </div>
 </div>
+

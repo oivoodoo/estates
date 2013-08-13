@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :find_project, except: :index
+  before_filter :authenticate_user!, only: [:follow, :unfollow]
 
 	def index
     @projects = ProjectsDecorator.decorate(Project.page(params[:page]))
@@ -9,15 +10,13 @@ class ProjectsController < ApplicationController
   end
 
   def follow
-    @project = Project.find(params[:id])
-    @project.followed_by!(current_user)
-    render partial: 'projects/follower', locals: { follower: current_user }
+    current_user.follow(@project)
+    render :nothing => true
   end
 
   def unfollow
-    @project = Project.find(params[:id])
-    @project.unfollow!(current_user)
-    render partial: 'projects/unfollow'
+    current_user.stop_following(@project)
+    render :nothing => true
   end
 
   private

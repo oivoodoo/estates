@@ -12,13 +12,11 @@ Estates::Application.routes.draw do
 
   resources :projects, only: [:index, :show] do
     member do
-      get 'image'
-      get 'company_image'
       post 'follow'
       post 'unfollow'
     end
     resources :comments
-    resources :invests, only: [:new, :create]
+    resources :investments, only: [:new, :create]
   end
 
   get 'dashboard' => 'dashboard#index'
@@ -37,6 +35,11 @@ Estates::Application.routes.draw do
   end
 
   resources :users, only: :show do
+    member do
+      post 'follow'
+      post 'unfollow'
+    end
+
     scope module: 'users' do
       resources :messages, only: :create
     end

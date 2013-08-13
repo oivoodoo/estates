@@ -1,4 +1,4 @@
-<div id="sign-in" class="signin external">
+<div id="sign-in" class="signin external" ng-controller='ContactsController'>
   <div class="modal-header">
     <div>
       <%= render 'layouts/logo' %>
@@ -8,18 +8,18 @@
 
   <div class="modal-content">
     <div>
-      <%= form_for @contact, remote: true do |f| %>
+      <%= form_for @contact, remote: true, :html => { name: 'form' } do |f| %>
         <div class="tight">
           <div class="input-group">
             <%= f.text_field :name, placeholder: "Name", size: 1, style: 'width: 50%' %>
-            <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%', required: true %>
-            <%= f.text_area :message, placeholder: "Yours message:", required: true, :cols => 35, :rows => "5" %>
+            <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%', required: true, 'ng-model' => 'contact.email' %>
+            <%= f.text_area :message, placeholder: "Yours message:", required: true, :cols => 35, :rows => "5", 'ng-model' => 'contact.message' %>
           </div>
         </div>
         <div class="action">
           <div>
             <div>
-              <%= f.submit "Submit", class: "delta thicker" %>
+              <%= f.submit "Submit", { class: "delta thicker", 'ng-click' => 'submit()', :'ng-disabled' => 'form.$invalid' } %>
             </div>
           </div>
         </div>
@@ -27,8 +27,4 @@
     </div>
   </div>
 </div>
-
-<script type='text/javascript'>
-  $('form').validate();
-</script>
 

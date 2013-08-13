@@ -10,24 +10,17 @@ class User < ActiveRecord::Base
   validates :email, :status, presence: true
 
   has_many :authentications
-
   has_many :comments
 
-  # has_many :followed_projects, through: :followers, source: :project
+  has_many :investments
+  has_many :invested_projects, through: :investments, source: :project, uniq: true
 
-  def followers
-    []
-  end
+  acts_as_followable
+  acts_as_follower
 
   def investors
-    []
-  end
-
-  has_many :investments
-  has_many :invested_projects, through: :investments, source: :project
-
-  def tracking
-    projects
+    # do not include self
+    investments.map(&:project_investors).flatten.uniq - [self]
   end
 
   def total_invested
@@ -54,7 +47,8 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large",
       name: auth.extra['raw_info']['name'],
-      email: auth.info["email"])
+      email: auth.info["email"],
+      facebook_link: auth.info['urls']['Facebook'])
   end
 
   def self.find_for_google(auth)
@@ -65,7 +59,8 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: auth.info['image'],
       name: auth.info["name"],
-      email: auth.info["email"])
+      email: auth.info["email"],
+      google_plus_link: auth.info['urls']['Google'])
   end
 
   def self.find_for_linkedin(auth)
@@ -76,7 +71,8 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: auth.info['image'],
       name: auth.info["name"],
-      email: auth.info["email"])
+      email: auth.info["email"],
+      linkedin_link: auth.info['urls']['public_profile'])
   end
 
   def self.create_user_by_auth(auth, attributes)

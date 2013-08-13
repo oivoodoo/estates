@@ -107,93 +107,19 @@
 
           <div class="tabs connection-tabs">
             <ul>
-              <li><a ng-click="connectionsTab=1" ng-class="{current:connectionsTab == 1}"><em>2</em> Investments</a></li>
-              <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em>8</em> Follows</a></li>
-              <li><a ng-click="connectionsTab=3" ng-class="{current:connectionsTab == 3}"><em>473</em> Followers</a></li>
+              <li><a ng-click="connectionsTab=1" ng-class="{current:connectionsTab == 1}"><em><%= @user.invested_projects.count %></em> Investments</a></li>
+              <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em><%= @user.following_projects.count %></em> Follows</a></li>
+              <li><a ng-click="connectionsTab=3" ng-class="{current:connectionsTab == 3}"><em><%= @user.user_followers.count %></em> Followers</a></li>
             </ul>
           </div>
           <ul class="connections" ng-show="connectionsTab == 1" ng-init="connectionsTab=1">
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
-                  <div class="focus"></div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
-                  <div class="focus">
-                  </div>
-                </div>
-              </div>
-            </li>
+            <%= render partial: 'dashboard/project', collection: current_user.invested_projects %>
           </ul>
           <ul class="connections" ng-show="connectionsTab == 2">
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
-                  <div class="focus"></div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
-                  <div class="focus">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
-                  <div class="focus">
-                  </div>
-                </div>
-              </div>
-            </li>
+            <%= render partial: 'dashboard/project', collection: current_user.following_projects %>
           </ul>
           <ul class="connections" ng-show="connectionsTab == 3">
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
-                  <div class="focus"></div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
-                  <div class="focus">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
-                  <div class="focus">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="profile-badge">
-                <div>
-                  <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
-                  <div class="focus"></div>
-                </div>
-              </div>
-            </li>
+            <%= render partial: 'projects/follower', collection: @user.user_followers %>
           </ul>
         </div>
       </div>

@@ -6,6 +6,8 @@ class Investment < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  has_many :project_investors, through: :project, source: :investors
+
   def money
     quantity * project.per_share
   end

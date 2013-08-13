@@ -23,7 +23,6 @@
             <div class="btns">
               <div>
                 <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-disabled="!user.facebook_link"></button>
-                <button name="ext-account" value="twitter" class="ext-account-button twitter" ng-click='open(user.twitter_link)' ng-class="{'connected-ext-account-button':user.twitter_link}" ng-disabled="!user.twitter_link"></button>
                 <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-disabled="!user.google_plus_link"></button>
                 <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-disabled="!user.linkedin_link"></button>
               </div>
@@ -116,9 +115,6 @@
         <div class="tight">
           <label for="user_facebook_link">
             <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
-          </label>
-          <label for="user_twitter_link">
-            <%= f.text_field :twitter_link, placeholder: "https://twitter.com/", :size => 1, 'ng-model' => 'user.twitter_link' %>
           </label>
           <label for="user_google_plus_link">
             <%= f.text_field :google_plus_link, placeholder: "https://plus.google.com/", :size => 1, 'ng-model' => 'user.google_plus_link'%>
