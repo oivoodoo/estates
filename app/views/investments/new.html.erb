@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "invests" %>
-<div ng-controller="InvestsController">
+<div ng-controller="InvestmentsController" data-project='<%= @project.to_json(methods: :per_share) %>'>
   <header id="page-header">
     <div class="container">
       <ol class="progress-indicator">
