@@ -2,7 +2,7 @@
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
 <% end %>
 
-<section id="project" ng-controller="ProjectsController" data-project='<%= @project.to_json(only: [:latitude, :longitude]) %>'>
+<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= {follow: follow_project_path(@project), unfollow: unfollow_project_path(@project)}.to_json %>">
   <div class="head">
     <div class="cover">
       <div>
@@ -56,12 +56,18 @@
       </div>
     </div>
   </div>
-
   <div class="title fix">
     <hgroup>
       <h2>
         <div class="trackwrap track">
-          <button class="track" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+          <% if user_signed_in? %>
+            <button class="track" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+          <% else %>
+            <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+              <button>Follow</button>
+            </a>
+            <button style="display: none;" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+          <% end %>
         </div>
         <div class="profile-badge manager-badge">
           <div>
@@ -142,7 +148,7 @@
               </ul>
             </div>
 
-            <ul class="connections">
+            <ul class="connections" id="followed">
               <%= render partial: 'follower', collection: @project.followers %>
             </ul>
           </div>
@@ -154,7 +160,7 @@
           <li>
             <div class="profile-badge">
               <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
+                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
                 <div class="focus"></div>
               </div>
             </div>
@@ -164,13 +170,13 @@
               <div class="entry-meta">
                 <div class="profile-badge">
                   <div>
-                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
                     <div class="focus"></div>
                   </div>
                 </div>
                 <div class="profile-badge">
                   <div>
-                    <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
+                    <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="/assets/michael.png"></a>
                     <div class="focus"></div>
                   </div>
                 </div>
@@ -181,7 +187,7 @@
           <li>
             <div class="profile-badge manager-badge">
               <div>
-                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
+                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="/assets/trigon.png"></a>
                 <div class="focus"></div>
               </div>
             </div>
@@ -197,4 +203,3 @@
     </div>
   </div>
 </section>
-

@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 	end
 
   def show
+    @project = @project.decorate
   end
 
   def follow
@@ -22,6 +23,6 @@ class ProjectsController < ApplicationController
   private
 
   def find_project
-    @project = Project.find(params[:id]).decorate
+    @project = Project.find(params[:id])
   end
 end
