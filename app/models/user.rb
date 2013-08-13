@@ -59,7 +59,8 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: auth.info['image'],
       name: auth.info["name"],
-      email: auth.info["email"])
+      email: auth.info["email"],
+      google_plus_link: auth.info['urls']['Google'])
   end
 
   def self.find_for_linkedin(auth)
@@ -70,7 +71,8 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: auth.info['image'],
       name: auth.info["name"],
-      email: auth.info["email"])
+      email: auth.info["email"],
+      linkedin_link: auth.info['urls']['public_profile'])
   end
 
   def self.create_user_by_auth(auth, attributes)
