@@ -11,7 +11,7 @@ module Estates
 
     config.active_record.whitelist_attributes = false
 
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.autoload_paths += %W(#{config.root}/lib)
 
     config.assets.enabled = true
 

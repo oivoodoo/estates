@@ -2,11 +2,11 @@ class InvestsController < ApplicationController
   before_filter :find_project
 
   def new
-    @invest = @project.invests.new
+    @invest = @project.investments.new
   end
 
   def create
-    @invest = @project.invests.new(params[:invest])
+    @invest = @project.investments.new(params[:invest])
 
     if @invest.save
       gflash(notice: "Invest was created")

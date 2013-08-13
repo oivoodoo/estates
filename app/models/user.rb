@@ -13,8 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
-  has_many :followers
-  has_many :projects, through: :followers
+  # has_many :followed_projects, through: :followers, source: :project
 
   def followers
     []
@@ -24,16 +23,15 @@ class User < ActiveRecord::Base
     []
   end
 
-  def investments
-    []
-  end
+  has_many :investments
+  has_many :invested_projects, through: :investments, source: :project
 
   def tracking
     projects
   end
 
   def total_invested
-    '82k'
+    investments.map(&:money).sum
   end
 
   def total_earnings
