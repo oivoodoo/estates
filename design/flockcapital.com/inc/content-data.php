@@ -12,7 +12,11 @@ $projects = array(
 		'location'	=> array(
 			'country'	=> 'United States',
 			'locality'	=> 'San Francisco',
-			'address'	=> '1800 Van Ness Ave, San Francisco, CA 94109'
+			'address'	=> '1800 Van Ness Ave, San Francisco, CA 94109',
+			'coordinates'=> array (
+				'lat' => 37.792549,
+				'lng' => -122.422292
+			)
 		),
 		'type_label'=> 'Residential',
 		'manager'	=> 'stonemount',
@@ -49,7 +53,11 @@ $projects = array(
 		'location'	=> array(
 			'country'	=> 'Lithuania',
 			'locality'	=> 'Vilnius',
-			'address'	=> 'Tuskulėnų gatvė 2, Vilnius 09213, Lithuania'
+			'address'	=> 'Tuskulėnų gatvė 2, Vilnius 09213, Lithuania',
+			'coordinates'=> array (
+				'lat' => 54.696334,
+				'lng' => 25.296894
+			)
 		),
 		'type_label'=> 'Retail',
 		'manager'	=> 'trigon',
@@ -86,7 +94,11 @@ $projects = array(
 		'location'	=> array(
 			'country'	=> 'Estonia',
 			'locality'	=> 'Tallinn',
-			'address'	=> 'Kalasadama 8, 10415 Tallinn, Estonia'
+			'address'	=> 'Kalasadama 8, 10415 Tallinn, Estonia',
+			'coordinates'=> array (
+				'lat' => 59.445785,
+				'lng' => 24.749311
+			)
 		),
 		'type_label'=> 'Retail',
 		'manager'	=> 'gage-partners',
@@ -123,7 +135,11 @@ $projects = array(
 		'location'	=> array(
 			'country'	=> 'Estonia',
 			'locality'	=> 'Tallinn',
-			'address'	=> 'Paldiski mnt 56, 10617 Tallinn, Estonia'
+			'address'	=> 'Paldiski mnt 56, 10617 Tallinn, Estonia',
+			'coordinates'=> array (
+				'lat' => 59.430172,
+				'lng' => 24.697773
+			)
 		),
 		'type_label'=> 'Retail',
 		'manager'	=> 'broadgate',
@@ -160,7 +176,11 @@ $projects = array(
 		'location'	=> array(
 			'country'	=> 'Spain',
 			'locality'	=> 'Palma de Mallorca',
-			'address'	=> 'Carrer Biniamar, 14, Palma, Illes Balears, Spain'
+			'address'	=> 'Carrer Biniamar, 14, Palma, Illes Balears, Spain',
+			'coordinates'=> array (
+				'lat' => 39.581653,
+				'lng' => 2.678959
+			)
 		),
 		'type_label'=> 'Retail',
 		'manager'	=> 'cbre',
@@ -491,4 +511,11 @@ $countries 		= array (
 	'VU' => 'Vanuatu',
 	'VA' => 'Vatican',
 	'VE' => 'Venezuela',
-	'VN' 
+	'VN' => 'Vietnam',
+	'WF' => 'Wallis and Futuna',
+	'EH' => 'Western Sahara',
+	'WS' => 'Western Samoa',
+	'YE' => 'Yemen',
+	'ZM' => 'Zambia',
+	'ZW' => 'Zimbabwe'
+);

@@ -22,9 +22,9 @@
           <div>
             <div class="btns">
               <div>
-                <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-disabled="!user.facebook_link"></button>
-                <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-disabled="!user.google_plus_link"></button>
-                <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-disabled="!user.linkedin_link"></button>
+                <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link || '<%= user_omniauth_authorize_path(:facebook, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.facebook_link}"></button>
+                <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click="open(user.google_plus_link || '<%= user_omniauth_authorize_path(:google_oauth2, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.google_plus_link}"></button>
+                <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link || '<%= user_omniauth_authorize_path(:linkedin, :origin => edit_user_registration_url) %>')' ng-class="{'connected-ext-account-button':user.linkedin_link}"></button>
               </div>
             </div> &nbsp;&nbsp;
             <div>
@@ -35,7 +35,6 @@
       </div>
     </div><!-- contact -->
 
-
     <div id="tabs" class="tabs profile">
       <ul>
         <li><a class="personal current" ng-click="profileTab=1" ng-class="{current:profileTab == 1}"><em>1</em> Personal Details</a></li>
@@ -44,7 +43,7 @@
     </div>
   </div>
 
-  <div class="tab-content gridwrap" id="profile" ng-class='{current:profileTab==1}' ng-show="profileTab == 1" ng-init="profileTab=1">
+  <div class="tab-content gridwrap" id="profile" ng-class='{current:profileTab==1}' ng-show="profileTab == 1">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <label for="user_email">
         <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>

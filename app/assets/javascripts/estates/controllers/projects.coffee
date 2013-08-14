@@ -1,6 +1,9 @@
 estates.controller 'ProjectsController', [
   '$scope', '$element', '$compile', '$http'
   ($scope, $element, $compile, $http) ->
+    # initialize tabs
+    $scope.projectTab = 1
+
     $scope.project = $element.data('project')
     $scope.urls = $element.data('urls')
 

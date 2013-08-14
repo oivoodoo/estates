@@ -156,9 +156,9 @@ describe User do
     let!(:kate_google)   { create(:authentication, email: 'kate@example.com', provider: 'google', uid: 'google-id') }
     let!(:kate_facebook) { create(:authentication, email: 'kate@example.com', provider: 'facebook', uid: 'facebook-id') }
     let!(:kate_linkedin) { create(:authentication, email: 'kate@example.com', provider: 'linkedin', uid: 'linkedin-id') }
-    let(:google)   { double('auth', provider: 'google', uid: 'google-id', info: { 'email' => 'kate@example.com' }) }
-    let(:facebook) { double('auth', provider: 'facebook', uid: 'facebook-id', info: { 'email' => 'kate@example.com' }, extra: { 'raw_info' => { 'name' => 'John Watson' } }) }
-    let(:linkedin) { double('auth', provider: 'linkedin', uid: 'linkedin-id', info: { 'email' => 'kate@example.com' }) }
+    let(:google)   { double('auth', provider: 'google', uid: 'google-id', info: { 'email' => 'kate@example.com', 'urls' => { 'Google' => 'http://google.com' } }) }
+    let(:facebook) { double('auth', provider: 'facebook', uid: 'facebook-id', info: { 'email' => 'kate@example.com', 'urls' => { 'Facebook' => 'http://facebook.com' } }, extra: { 'raw_info' => { 'name' => 'John Watson' } }) }
+    let(:linkedin) { double('auth', provider: 'linkedin', uid: 'linkedin-id', info: { 'email' => 'kate@example.com', 'urls' => { 'public_profile' => 'http://linkedin.com' } }) }
 
     it 'should be possible to login using email and provider details' do
       user = User.find_for_google(google)
@@ -167,6 +167,15 @@ describe User do
       expect(user).to eq(kate_facebook.user)
       user = User.find_for_linkedin(linkedin)
       expect(user).to eq(kate_linkedin.user)
+    end
+
+    it 'should pick up urls of the auth websites' do
+      user = User.find_for_google(google)
+      expect(user.google_plus_link).to eq('http://google.com')
+      user = User.find_for_facebook(facebook)
+      expect(user.facebook_link).to eq('http://facebook.com')
+      user = User.find_for_linkedin(linkedin)
+      expect(user.linkedin_link).to eq('http://linkedin.com')
     end
   end
 end

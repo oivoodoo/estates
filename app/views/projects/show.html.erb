@@ -81,7 +81,7 @@
 
     <div id="tabs" class="tabs major gridwrap-padded">
       <ul>
-        <li><a ng-class="{current:projectTab==1}" ng-click="open($event, 'projectTab', 1)" ng-init='projectTab=1'><span>Overview</span></a></li>
+        <li><a ng-class="{current:projectTab==1}" ng-click="open($event, 'projectTab', 1)"><span>Overview</span></a></li>
         <li><a ng-class="{current:projectTab==2}" ng-click="open($event, 'projectTab', 2)"><span>Financials</span></a></li>
         <% if @project.address? %>
           <li><a ng-class="{current:projectTab==3}" ng-click="open($event, 'projectTab', 3)"><span>Location</span></a></li>

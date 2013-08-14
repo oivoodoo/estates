@@ -1,7 +1,29 @@
-<canvas class="graph-canvas" id="allocation-canvas" height="100" width="100"></canvas>
-<script>
-  window.graphs.allocation = {
-    type: 'doughnut',
-    data: [{value: 30, color: 'hsl(151, 63%, 43%)'}, {value : 70, color : 'hsl(151, 23%, 83%)'}]
-  }
-</script>
+<div id="allocation">
+  <div class="big-number investments"><div><b><%= current_user.invested_projects.count %></b><label>investments</label></div></div>
+
+  <div class="chart-table">
+    <div class="chart-cell">
+      <canvas class="graph-canvas" id="allocation-canvas" height="100" width="100"></canvas>
+      <script>
+        window.graphs.allocation = {
+          type: 'doughnut',
+          data: [
+            {
+              value: 30,
+              color: "hsl(151, 63%, 43%)"
+            },{
+              value: 70,
+              color: "hsl(0, 0%, 97%)"
+            }
+          ]
+        }
+      </script>
+    </div>
+
+    <div class="legend-cell">
+      <ul class="doughnut-legend">
+        <li><b style="color:hsl(151, 63%, 43%);">30<i>%</i></b> <label>Debt</label></li><li><b style="color:hsl(0, 0%, 97%);">70<i>%</i></b> <label>Loan</label></li>						</ul>
+    </div>
+  </div>
+</div>
+

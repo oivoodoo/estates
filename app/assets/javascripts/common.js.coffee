@@ -7,7 +7,7 @@ $ ->
     if Settings.user.signed_in
       $('#nag').remove()
     window.load()
-    window.drawGraphs()
+    window.drawCharts()
 
   $(document).trigger('user:signed_in') if Settings.user.signed_in
 

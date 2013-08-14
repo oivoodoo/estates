@@ -283,22 +283,31 @@ $('.fancybox-video')
 });
 
 
-var	graphDefaults = {
-    line: {
-      bezierCurve: false,
-      scaleFontFamily: 'neue-haas-grotesk-text',
-      scaleSteps: 5,
-      scaleFontColor: 'hsl(0, 0%, 16%)',
-      pointDotRadius: 3,
-      pointDotStrokeWidth: 1,
-      scaleLineColor : 'rgba(41,41,41, .1)',
-      scaleGridLineColor : 'rgba(41,41,41, .05)',
-    },
-    doughnut: {
-    }
-};
+var	chartDefaults = {
+  line: {
+    bezierCurve: false,
+    scaleFontFamily: 'neue-haas-grotesk-text',
+    scaleSteps: 5,
+    scaleFontColor: 'hsl(0, 0%, 97%)',
+    datasetStrokeWidth : 1,
+    pointDotRadius: 3,
+    pointDotStrokeWidth: 1,
+    scaleLineColor : 'hsla(0, 0%, 97%, .2)',
+    scaleGridLineColor : 'hsla(0, 0%, 97%, .05)',
 
-window.drawGraphs = function() {
+    animation : false,
+    animationEasing : 'easeOutQuad',
+    animationSteps : 50
+  },
+  doughnut: {
+    segmentStrokeColor: 'transparent',
+
+    animation : false,
+    animationEasing : 'easeOutQuad',
+    animationSteps : 50
+  }
+};
+window.drawCharts = function() {
   $.each(window.graphs, function(g, options) {
     var $canvas = $('#'+g+'-canvas');
     if ($canvas.length && $canvas.is(':visible')) {
@@ -314,7 +323,7 @@ window.drawGraphs = function() {
       });
 
       var ctx = $canvas.get(0).getContext('2d'),
-        graph_options = $.extend(graphDefaults[options.type], options['options'], {}),
+        graph_options = $.extend(chartDefaults[options.type], options['options'], {}),
         graph = options.type == 'line' ?
               new Chart(ctx).Line(options['data'], graph_options)
             : options.type == 'doughnut' ?

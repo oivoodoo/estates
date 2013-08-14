@@ -4,7 +4,7 @@ estates.controller 'ApplicationController', [
     $window.onresize = ->
       layout()
       connectionMasonry()
-      drawGraphs()
+      drawCharts()
 
     $window.onscroll = ->
       sizeMenu()

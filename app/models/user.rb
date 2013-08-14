@@ -47,8 +47,10 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large",
       name: auth.extra['raw_info']['name'],
-      email: auth.info["email"],
-      facebook_link: auth.info['urls']['Facebook'])
+      email: auth.info["email"]) do |user|
+
+      user.facebook_link = auth.info['urls']['Facebook']
+    end
   end
 
   def self.find_for_google(auth)
@@ -59,8 +61,10 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: auth.info['image'],
       name: auth.info["name"],
-      email: auth.info["email"],
-      google_plus_link: auth.info['urls']['Google'])
+      email: auth.info["email"]) do |user|
+
+      user.google_plus_link = auth.info['urls']['Google']
+    end
   end
 
   def self.find_for_linkedin(auth)
@@ -71,16 +75,21 @@ class User < ActiveRecord::Base
     create_user_by_auth(auth,
       social_avatar_url: auth.info['image'],
       name: auth.info["name"],
-      email: auth.info["email"],
-      linkedin_link: auth.info['urls']['public_profile'])
+      email: auth.info["email"]) do |user|
+
+      user.linkedin_link = auth.info['urls']['public_profile']
+    end
   end
 
-  def self.create_user_by_auth(auth, attributes)
+  def self.create_user_by_auth(auth, attributes, &block)
     user = User.find_by(email: auth.info['email'])
 
     unless user.present?
-      user = User.create(attributes.merge(password: Devise.friendly_token[0,20]))
+      user = User.new(attributes.merge(password: Devise.friendly_token[0,20]))
     end
+
+    block.call(user)
+    user.save
 
     if user.persisted?
       user.authentications.create(provider: auth.provider, uid: auth.uid, email: auth.info['email'])

@@ -1,6 +1,14 @@
 @charset "UTF-8";
 
+@import "typeplate.less";
+@import 'mixins.less';
+
+
+
+
 @designerHighlight: @lustRed;
+
+
 
 /*	Screen size display
 	(don't really need it anymore since Google Chrome now displays
@@ -15,7 +23,7 @@
 		font-weight: normal;
 	}
 }
-
+	
 #screen-size-label li,
 #screen-width {
 	display: none;
@@ -60,7 +68,7 @@
 
 
 /*	Designer pointers
-
+	
 	WP pointers
 	https://github.com/WordPress/WordPress/blob/3.4.1/wp-includes/css/wp-pointer.dev.css
 —————————————————————————————————————————————————————————————————————————— */
@@ -76,7 +84,7 @@
 	.lambda;
 	padding-bottom: @padding/2;
 	.box-shadow(0, .5rem, 1rem, fade(black, 30%));
-
+	
 	p, ul {
 		padding: 0 @padding/1.5;
 		margin: @padding/2 0;
@@ -96,10 +104,10 @@
 		position: relative;
 		margin-bottom: @padding/2;
 		padding: @padding/2;
-
+		
 		.gamma;
 		color: white;
-
+		
 		&:before {
 			font-family: 'icobundl';
 			font-size: 1.2em;
@@ -110,7 +118,7 @@
 			margin-left: @padding/6;
 		}
 	}
-
+	
 	*:last-child {
 		margin-bottom: 0;
 	}

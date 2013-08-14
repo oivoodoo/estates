@@ -1,9 +1,10 @@
 <?php
 	
-	global $project, $managers, $project_badge_size;
+	global $project, $managers;
 	
-	if (!$project_badge_size)
-		$project_badge_size = 'full';
+	
+	$size = isset($project_badge_size) ? $project_badge_size : 'full';
+	
 		
 	$handle		= array_key_exists('handle', 	$project)	? $project['handle']	: null;
 	$name		= array_key_exists('name',		$project)	? $project['name']		: null;
@@ -22,7 +23,7 @@
 	$is_tracked			= array_key_exists('is_tracked',$project)			? $project['is_tracked']		: null;
 
 ?>
-<article class="project-badge <?php echo $project_badge_size; ?>">
+<article class="project-badge <?php echo $size.' '.(($i+1)%2==0 ? 'alt' : ''); ?>">
 	<div onclick="location.href='<?php echo $link ?>'">
 	
 		<a class="project-thumb" href="<?php echo $link ?>"><img src="img/<?php echo $handle; ?>.png"><div class="focus"></div></a>
@@ -62,11 +63,9 @@
 			</h4>
 		</header>
 		
-		<?php //if (in_array($project_badge_size, array('full'))) { ?>
-			<div class="summary">
-				<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-			</div>
-		<?php //} ?>
+		<div class="summary">
+			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
+		</div>
 		
 		<div class="financials">
 			<div>
@@ -76,7 +75,7 @@
 						
 							$fc = count($financials)+2;
 							
-							if ($financials/* && $project_badge_size!='dash-invested'*/) {
+							if ($financials) {
 								if (array_key_exists('type', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
 										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
@@ -100,7 +99,7 @@
 							}
 							
 						?>
-						<div class="moneywrap size-<?php echo /*$project_badge_size=='dash-invested' ? 1 : */$fc/2; ?>">
+						<div class="moneywrap size-<?php echo $fc/2; ?>">
 							<div>
 								<?php
 									if ($goal || $progress) {
@@ -117,9 +116,7 @@
 								?>
 								<div class="goal">
 									<div>
-										<?php /*<h4><?php echo format_money($goal); ?></h4>*/ ?>
 										<div class="goalmeter"><div class="progress <?php echo $progress_percent==100 ? 'full' : ''; ?>" style="width:<?php echo $progress_percent; ?>%"><div class="marker" style="left:<?php echo $progress_percent; ?>%;"><label><?php echo $progress_percent; ?>%</label></div></div></div>
-										<?php /*<div class="deadline"><b>22</b> Days to close</div>*/ ?>
 									</div>
 								</div>
 							</div>
@@ -129,4 +126,9 @@
 			</div>
 		</div>
 		
-		<?php //if ($project_badge_size!
+		<div class="action">
+			<button <?php echo $is_tracked ? 'class="tracking '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Stop tracking this project">'.($size!='dash-tracking-list' ? 'Tracking' : '') : 'class="track '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Track this project">'.($size!='dash-tracking-list' ? 'Track' : ''); ?></button><button class="details" title="<?php echo $name; ?>">Full Details</button>
+		</div>
+		
+	</div>
+</article>

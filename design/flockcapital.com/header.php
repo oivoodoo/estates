@@ -33,6 +33,7 @@
         <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.13&amp;sensor=false"></script>
         
         <?php /* Library ext */ ?>
         <script src="js/jquery.ui.widget-combobox.js"></script>
@@ -41,6 +42,7 @@
         <script src="js/jquery.fileupload.js"></script>
         <script src="js/jquery.ba-bbq.1.3.min.js"></script>
         <?php /* TODO: discard jQuery Isotope (this line & script files) if it ends up unused <script src="js/jquery.isotope.min.js"></script>*/ ?>
+        <script src="js/infobubble.min.js"></script>
 
         <?php /* All custom functions */ ?>
         <script src="js/custom.js"></script>
@@ -95,4 +97,7 @@
 							</ul>
 						</div>
 					</nav>
-					<a id="expand">
+					<a id="spread"><i></i></a>
+        		</div>
+			</header>
+            <div id="main">

@@ -20,13 +20,15 @@
                 <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
         <script src="js/fancybox/fancybox.min.js"></script>
         <script src="js/jquery.fileupload.js"></script>
         <script src="js/jquery.ba-bbq.1.3.min.js"></script>
-        
+                <script src="js/infobubble.min.js"></script>
+
                 <script src="js/custom.js"></script>
         
                 <script src="js/helpers.js"></script>
@@ -74,7 +76,7 @@
 							</ul>
 						</div>
 					</nav>
-					<a id="expand"><i></i></a>
+					<a id="spread"><i></i></a>
         		</div>
 			</header>
             <div id="main">
@@ -145,16 +147,16 @@
 		</hgroup>
 		<div id="tabs" class="tabs major gridwrap-padded">
 			<ul>
-				<li><a href="index-p=project&project=tallinn-rimi.html#overview" id="overview-tab" class="current"><span>Overview</span></a></li>
-				<li><a href="index-p=project&project=tallinn-rimi.html#financials" id="financials-tab"><span>Financials</span></a></li>
-				<li><a href="index-p=project&project=tallinn-rimi.html#location" id="location-tab"><span>Location</span></a></li>
-				<li><a href="index-p=project&project=tallinn-rimi.html#property" id="property-tab"><span>Property</span></a></li>
-				<li><a href="index-p=project&project=tallinn-rimi.html#strengths" id="strengths-tab"><span>Strengths</span></a></li>
-				<li><a href="index-p=project&project=tallinn-rimi.html#risks" id="risks-tab"><span>Risks</span></a></li>
-				<li><a href="index-p=project&project=tallinn-rimi.html#manager" id="manager-tab"><span>Manager</span></a></li>
-				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#investors" id="investors-tab"><span><em>27</em> Investors</span></a></li>
-				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#trackers" id="trackers-tab"><span><em>189</em> Followers</span></a></li>
-				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#timeline" id="timeline-tab"><span>Timeline</span></a></li>
+				<li><a href="index-p=project&project=tallinn-rimi.html#overview" class="tab overview-tab current"><span>Overview</span></a></li>
+				<li><a href="index-p=project&project=tallinn-rimi.html#financials" class="tab financials-tab"><span>Financials</span></a></li>
+				<li><a href="index-p=project&project=tallinn-rimi.html#location" class="tab location-tab"><span>Location</span></a></li>
+				<li><a href="index-p=project&project=tallinn-rimi.html#property" class="tab property-tab"><span>Property</span></a></li>
+				<li><a href="index-p=project&project=tallinn-rimi.html#strengths" class="tab strengths-tab"><span>Strengths</span></a></li>
+				<li><a href="index-p=project&project=tallinn-rimi.html#risks" class="tab risks-tab"><span>Risks</span></a></li>
+				<li><a href="index-p=project&project=tallinn-rimi.html#manager" class="tab manager-tab"><span>Manager</span></a></li>
+				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#investors" class="tab investors-tab"><span><em>27</em> Investors</span></a></li>
+				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#trackers" class="tab trackers-tab"><span><em>189</em> Followers</span></a></li>
+				<li class="side-tab"><a href="index-p=project&project=tallinn-rimi.html#timeline" class="tab timeline-tab"><span>Timeline</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -193,7 +195,7 @@
 			
 				<div class="switch-group">
 				
-					<div id="investors-content" class="tab-content side-tab-content side-switch side-switch-current">
+					<div id="investors-content" class="tab-content side-tab-content tab-content-connections side-switch side-switch-current">
 					
 						<div class="tabs connection-tabs">
 							<ul>
@@ -239,7 +241,14 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
@@ -260,7 +269,7 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
@@ -288,29 +297,23 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
 </li>						</ul>
+						<a class="show-all-connections investors" href="javascript:void(0)">Show all</a>
 				
 					</div>
 					
-					<div id="trackers-content" class="tab-content side-tab-content side-switch">
+					<div id="trackers-content" class="tab-content side-tab-content tab-content-connections side-switch">
 					
 						<div class="tabs connection-tabs">
 							<ul>
@@ -328,41 +331,6 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
@@ -370,7 +338,7 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
@@ -391,6 +359,55 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
+			<div class="focus"></div>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
 			<div class="focus"></div>
 		</div>
@@ -405,25 +422,12 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Array"><img src="img/michael.png"></a>
-			<div class="focus"></div>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Array"><img src="img/kadri.png"></a>
+			<a href="index-p=investor&i=mart.html" title="Array"><img src="img/mart.png"></a>
 			<div class="focus"></div>
 		</div>
 	</div>
 </li>						</ul>
+						<a class="show-all-connections trackers" href="javascript:void(0)">Show all</a>
 				
 					</div>
 					
