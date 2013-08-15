@@ -61,7 +61,8 @@ estates.controller 'ProjectsController', [
       else
         $scope.followText = 'Track'
         $scope.followState = 'not-following'
-        $http.post($scope.urls.unfollow).success (data) ->
-          $('.profile-badge').append(data)
+        $http.post($scope.urls.unfollow).success (follower) ->
+          index = (f.id for f in $scope.followers).indexOf(follower.id)
+          $scope.followers.splice(index, 1)
 ]
 

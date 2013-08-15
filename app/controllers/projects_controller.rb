@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def unfollow
     current_user.stop_following(@project)
-    render :nothing => true
+    render :json => current_user.to_json(only: :id)
   end
 
   private
