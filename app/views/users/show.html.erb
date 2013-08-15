@@ -1,16 +1,18 @@
-<section id="investor" class="me" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link]) %>'>
+<section id="investor" class="me" ng-controller='ProfileController' data-user='<%= @user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link]) %>'>
 
-  <div class="message">
-    <div>
-      This is Your profile. &nbsp;&nbsp;<a class="button" href="<%= edit_user_registration_path %>">Edit</a>
+  <% if current_user == @user %>
+    <div class="message">
+      <div>
+        This is Your profile. &nbsp;&nbsp;<a class="button" href="<%= edit_user_registration_path %>">Edit</a>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="head">
     <div>
 
       <figure class="profile-badge">
-        <%= render partial: 'users/avatar', locals: { user: current_user } %><div class="focus"></div>
+        <%= render partial: 'users/avatar', locals: { user: @user } %><div class="focus"></div>
       </figure>
       <div class="profile-details">
         <h3 class="name">{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}}</h3>
@@ -40,7 +42,7 @@
       <div>
         <div id="tab-1" class="feed-wrapper">
           <ul class="feed">
-            <% for activity in current_user.activities.order('created_at desc').limit(10) %>
+            <% for activity in @user.activities.order('created_at desc').limit(10) %>
               <%= render_activity(activity) %>
             <% end %>
           </ul>
@@ -59,10 +61,10 @@
             </ul>
           </div>
           <ul class="connections" ng-show="connectionsTab == 1" ng-init="connectionsTab=1">
-            <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.invested_projects), locals: { class_name: "dash-invested" } %>
+            <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.invested_projects), locals: { class_name: "dash-invested" } %>
           </ul>
           <ul class="connections" ng-show="connectionsTab == 2">
-            <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { class_name: "dash-tracking-list" } %>
+            <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.following_projects), locals: { class_name: "dash-tracking-list" } %>
           </ul>
           <ul class="connections" ng-show="connectionsTab == 3">
             <%= render partial: 'projects/follower', collection: @user.user_followers %>
