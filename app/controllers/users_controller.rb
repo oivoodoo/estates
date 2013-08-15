@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
   def follow
     current_user.follow(@user)
-    current_user.create_activity 'following', owner: @user
-    @user.create_activity 'followed_by', owner: current_user
+    current_user.create_activity 'user_following', owner: @user
+    @user.create_activity 'user_followed_by', owner: current_user
     render :nothing => true
   end
 

@@ -54,13 +54,13 @@ describe ProjectsController do
 
       it 'should create activity for the project' do
         expect(project.activities).to have(1).item
-        expect(project.activities[0].key).to eq("project.following")
+        expect(project.activities[0].key).to eq("project.user_following")
         expect(project.activities[0].owner).to eq(current_user)
       end
 
       it 'should create activity for the current user' do
         expect(current_user.activities).to have(1).item
-        expect(current_user.activities[0].key).to eq("user.following")
+        expect(current_user.activities[0].key).to eq("user.project_following")
         expect(current_user.activities[0].owner).to eq(project)
       end
     end

@@ -75,7 +75,13 @@
           </div>
         </div>
 
-        <%= render 'timeline' %>
+        <div id="timeline-content" class="tab-content side-tab-content">
+          <ul class="feed">
+            <% for activity in current_user.activities.order('created_at desc').limit(10) %>
+              <%= render_activity(activity) %>
+            <% end %>
+          </ul>
+        </div>
 
       </div>
     </div><!-- side -->

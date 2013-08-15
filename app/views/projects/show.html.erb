@@ -153,47 +153,9 @@
 
       <div id="timeline-content" class="tab-content side-tab-content">
         <ul class="feed">
-          <li>
-            <div class="profile-badge">
-              <div>
-                <a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk"><img src="/assets/kadri.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-
-            <div class="entry">
-              <h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="Rimi Supermaket">Rimi Supermaket</a></h5>
-              <div class="entry-meta">
-                <div class="profile-badge">
-                  <div>
-                    <a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="/assets/mart.png"></a>
-                    <div class="focus"></div>
-                  </div>
-                </div>
-                <div class="profile-badge">
-                  <div>
-                    <a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="/assets/michael.png"></a>
-                    <div class="focus"></div>
-                  </div>
-                </div>
-                <time>2 days, 7hours ago</time>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="profile-badge manager-badge">
-              <div>
-                <a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="/assets/trigon.png"></a>
-                <div class="focus"></div>
-              </div>
-            </div>
-            <div class="entry">
-              <h5 class="entry-title"><a href="index-p=manager&m=trigon.html" title="Trigon Capital">Trigon Capital</a> launched <a href="index-p=project&project=vilnius-rimi.html" title="Rimi Supermaket">Rimi Supermaket</a></h5>
-              <div class="entry-meta">
-                <time>2 days, 7hours ago</time>
-              </div>
-            </div>
-          </li>
+          <% for activity in @project.activities.order('created_at desc').limit(10) %>
+            <%= render_activity(activity) %>
+          <% end %>
         </ul>
       </div>
     </div>

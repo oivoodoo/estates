@@ -1,0 +1,20 @@
+<% user1 = activity.trackable %>
+<% user2 = activity.owner %>
+
+<li>
+  <div class="profile-badge">
+    <div>
+      <a href="<%= user_path(user1) %>" title="<%= user1.name %>"><img src="<%= user1.profile_image %>" /></a>
+      <div class="focus"></div>
+    </div>
+  </div>
+  <div class="entry">
+    <h5 class="entry-title">
+      <a href="<%= user_path(user1) %>"><%= user1.name %></a> followed <a href="<%= user_path(user2) %>"><%= user2.name %></a>
+    </h5>
+    <div class="entry-meta">
+      <time><%= distance_of_time_in_words_to_now(a.created_at) %></time>
+    </div>
+  </div>
+</li>
+
