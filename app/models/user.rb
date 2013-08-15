@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def total_earnings
-    '10k'
+    0
   end
 
   scope :recent, lambda { |count| order('users.created_at desc').limit(count) }
@@ -39,79 +39,18 @@ class User < ActiveRecord::Base
     self.role.to_s == r.to_s
   end
 
-  def self.find_for_facebook(auth)
-    user = Authentication.find_user_by_auth(auth)
-
-    return user if user.present?
-
-    create_user_by_auth(auth,
-      social_avatar_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large",
-      name: auth.extra['raw_info']['name'],
-      email: auth.info["email"]) do |user|
-
-      user.facebook_link = auth.info['urls']['Facebook']
-    end
-  end
-
-  def self.find_for_google(auth)
-    user = Authentication.find_user_by_auth(auth)
-
-    return user if user.present?
-
-    create_user_by_auth(auth,
-      social_avatar_url: auth.info['image'],
-      name: auth.info["name"],
-      email: auth.info["email"]) do |user|
-
-      user.google_plus_link = auth.info['urls']['Google']
-    end
-  end
-
-  def self.find_for_linkedin(auth)
-    user = Authentication.find_user_by_auth(auth)
-
-    return user if user.present?
-
-    create_user_by_auth(auth,
-      social_avatar_url: auth.info['image'],
-      name: auth.info["name"],
-      email: auth.info["email"]) do |user|
-
-      user.linkedin_link = auth.info['urls']['public_profile']
-    end
-  end
-
-  def self.create_user_by_auth(auth, attributes, &block)
-    user = User.find_by(email: auth.info['email'])
-
-    unless user.present?
-      user = User.new(attributes.merge(password: Devise.friendly_token[0,20]))
-    end
-
-    block.call(user)
-    user.save
-
-    if user.persisted?
-      user.authentications.create(provider: auth.provider, uid: auth.uid, email: auth.info['email'])
-      user
-    end
-  end
+  include SocialAuthentication
 
   def profile_image
-    if avatar?
-      avatar.url(:thumb)
-    elsif social_avatar_url?
-      social_avatar_url
-    else
-      "default_avatar.png"
-    end
+    return avatar.url(:thumb) if avatar?
+    return social_avatar_url  if social_avatar_url?
+    "default_avatar.png"
   end
 
   def name
-    "#{first_name} #{last_name} #{middle_name}".strip
+    [first_name.to_s, last_name.to_s, middle_name.to_s].map(&:strip).reject(&:blank?).join(' ')
   end
 
-  #"James Bond Petrovich"
   def name=(full_name)
     names = full_name.to_s.split(/ /)
     self.first_name  = names[0]
