@@ -1,4 +1,4 @@
-<article class="project-badge <%= class_name %>">
+<article class="project-badge <%= class_name %>" ng-controller='ProjectsController' data-project='<%= project_json(project) %>' data-urls="<%= project_button_urls_json(project) %>">
   <div onclick="Turbolinks.visit('<%= url_for(project) %>')">
     <a class="project-thumb" href="<%= project_path(project) %>"><%= image_tag(project.image.url(:index)) %><div class="focus"></div></a>
 
@@ -48,7 +48,7 @@
                 </ul>
                 <div class="goal">
                   <div>
-                    <div class="goalmeter"><div class="progress " style="width:<%= project.view_percent %>"><div class="marker" style="left:<%= project.view_percent %>;"><label><%= project.view_percent %></label></div></div></div>
+                    <div class="goalmeter"><div class="progress" style="width:<%= project.view_percent %>"><div class="marker" style="left:<%= project.view_percent %>;"><label><%= project.view_percent %></label></div></div></div>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,14 @@
     </div>
 
     <div class="action">
-      <button class="tracking labelled" title="Stop tracking this project"><%= "Track" if class_name == 'full' %></button>
+      <% if user_signed_in? %>
+        <button class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
+      <% else %>
+        <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+          <button>Follow</button>
+        </a>
+        <button class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
+      <% end %>
       <button class="details" onclick="Turbolinks.visit('<%= url_for(project) %>')" title='<%= project.name %>'>Full Details</button>
     </div>
   </div>

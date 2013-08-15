@@ -1,4 +1,4 @@
-<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= {follow: follow_project_path(@project), unfollow: unfollow_project_path(@project)}.to_json %>">
+<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= project_button_urls_json(@project) %>">
   <div class="head">
     <div class="cover">
       <div>
@@ -57,12 +57,12 @@
       <h2>
         <div class="trackwrap track">
           <% if user_signed_in? %>
-            <button class="track" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+            <button class="track" title="{{followText}}" ng-click="follow($event)">{{followText}}</button>
           <% else %>
             <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
               <button>Follow</button>
             </a>
-            <button style="display: none;" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+            <button style="display: none;" title="{{followText}}" ng-click="follow($event)">{{followText}}</button>
           <% end %>
         </div>
         <div class="profile-badge manager-badge">

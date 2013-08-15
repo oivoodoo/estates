@@ -16,4 +16,12 @@ module ProjectsHelper
     json['followed'] = current_user.present? && current_user.following?(project.object)
     json.to_json
   end
+
+  def project_button_urls_json(project)
+    {
+      follow: follow_project_path(project),
+      unfollow: unfollow_project_path(project)
+    }.to_json
+  end
 end
+
