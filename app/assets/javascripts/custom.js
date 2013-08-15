@@ -184,6 +184,15 @@ $(document).on('blur', '#password-old', function(){
   if ($(this).val()=='') $(this).prop('type', 'text');
 });
 
+$(document).on('mouseenter', '.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .action button.tracking, .project-badge .action button.track, .project-badge .manager-location a', function(e){
+  $(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').addClass('overridehide');
+  $(this).closest('.project-badge.dash-tracking-list').find('.project-link').addClass('overridehide');
+});
+ $(document).on('mouseleave', '.project-badge .profile-badge, .project-badge .action button.follow, .project-badge .action button.tracking, .project-badge .action button.track, .project-badge .manager-location a', function(e){
+  $(this).closest('.project-badge').find('.project-thumb .focus, .action button.details').removeClass('overridehide');
+  $(this).closest('.project-badge.dash-tracking-list').find('.project-link').removeClass('overridehide');
+});
+
 $(document).on('click', 'label.radio', function(){
   var $this = $(this),
   id = $this.attr('for');

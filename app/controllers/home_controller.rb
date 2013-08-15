@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @projects = Project.all.decorate
-    @users = User.where('users.id != ?', current_user).all
+    @projects = Project.order('created_at desc').limit(10).decorate
   end
 end
+

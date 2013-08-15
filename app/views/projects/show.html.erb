@@ -67,7 +67,7 @@
         </div>
         <div class="profile-badge manager-badge">
           <div>
-            <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag("cbre.png") %></a>
+            <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
             <div class="focus"></div>
           </div>
         </div>
