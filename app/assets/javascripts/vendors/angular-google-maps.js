@@ -93,6 +93,7 @@
             center: that.center,
             zoom: that.zoom,
             draggable: that.draggable,
+            scrollwheel: false,
             mapTypeId : google.maps.MapTypeId.ROADMAP
           }));
           
