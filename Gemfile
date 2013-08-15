@@ -54,6 +54,7 @@ gem 'acts-as-messageable'
 gem 'acts-as-taggable-on'
 gem "acts_as_follower"
 gem "geocoder"
+gem 'public_activity'
 
 gem 'jquery-validation-rails'
 
@@ -114,3 +115,4 @@ gem 'angularjs-rails'
 gem 'angularjs-rails-resource'
 gem 'angular-ui-rails'
 gem 'ng-rails-csrf'
+
