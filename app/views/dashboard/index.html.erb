@@ -1,4 +1,4 @@
-<section id="dashboard" ng-controller='DashboardController'>
+<section id="dashboard" ng-controller='DashboardController' data-user='<%= user_json(current_user) %>' data-projects='<%= projects_json(current_user.invested_projects) %>'>
 
   <div id="reports-content" class="head tab-content keep">
     <div id="charts">
@@ -83,7 +83,7 @@
   </div><!-- body-->
 
   <div id="map-content" class="tab-content keep" style='display:block;'>
-    <google-map center="center" latitude="latitude" longitude="longitude" mark-click='true' draggable="true" zoom="zoom" markers="markers" mark-click="true" style='height: 30rem;display:block;'></google-map>
+    <google-map center="center" mark-click='true' draggable="true" zoom="zoom" markers="markers" mark-click="true" style='height: 30rem;display:block;'></google-map>
   </div>
 </section>
 

@@ -29,7 +29,7 @@ ActiveAdmin.register User do
       f.input :country
       f.input :state
       f.input :city
-      f.input :street_address
+      f.input :street
     end
     f.inputs 'Social' do
       f.input :facebook_link

@@ -14,24 +14,7 @@ class Project < ActiveRecord::Base
 
   acts_as_followable
 
-  def address
-    "#{street} #{city} #{country}"
-  end
-
-  def address_changed?
-    street_changed? && city_changed? && country_changed?
-  end
-
-  before_save do
-    return unless address_changed?
-
-    coordinates = Geocoder.coordinates(address)
-
-    return unless coordinates.present?
-
-    self.longitude = coordinates[1]
-    self.latitude = coordinates[0]
-  end
+  include Addressable
 
   def per_share
     price / shares.to_f

@@ -1,7 +1,3 @@
-<% content_for :header do -%>
-  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
-<% end %>
-
 <section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= {follow: follow_project_path(@project), unfollow: unfollow_project_path(@project)}.to_json %>">
   <div class="head">
     <div class="cover">
@@ -203,3 +199,4 @@
     </div>
   </div>
 </section>
+

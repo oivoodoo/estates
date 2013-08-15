@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   end
 
   include SocialAuthentication
+  include Addressable
 
   def profile_image
     return avatar.url(:thumb) if avatar?
