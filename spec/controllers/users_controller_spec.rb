@@ -24,6 +24,18 @@ describe UsersController do
       it 'should allow current user to be as a follower of the user' do
         expect(current_user.reload.following?(user)).to be_true
       end
+
+      it 'should create activity for the project' do
+        expect(current_user.activities).to have(1).item
+        expect(current_user.activities[0].key).to eq("user.following")
+        expect(current_user.activities[0].owner).to eq(user)
+      end
+
+      it 'should create activity for the current user' do
+        expect(user.activities).to have(1).item
+        expect(user.activities[0].key).to eq("user.followed_by")
+        expect(user.activities[0].owner).to eq(current_user)
+      end
     end
 
     describe 'POST /unfollow' do

@@ -51,6 +51,18 @@ describe ProjectsController do
       it 'should allow current user to be as a follower of the project' do
         expect(current_user.reload.following?(project)).to be_true
       end
+
+      it 'should create activity for the project' do
+        expect(project.activities).to have(1).item
+        expect(project.activities[0].key).to eq("project.following")
+        expect(project.activities[0].owner).to eq(current_user)
+      end
+
+      it 'should create activity for the current user' do
+        expect(current_user.activities).to have(1).item
+        expect(current_user.activities[0].key).to eq("user.following")
+        expect(current_user.activities[0].owner).to eq(project)
+      end
     end
 
     describe 'POST /unfollow' do

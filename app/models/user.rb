@@ -42,6 +42,9 @@ class User < ActiveRecord::Base
   include SocialAuthentication
   include Addressable
 
+  include PublicActivity::Model
+  tracked skip_defaults: true
+
   def profile_image
     return avatar.url(:thumb) if avatar?
     return social_avatar_url  if social_avatar_url?

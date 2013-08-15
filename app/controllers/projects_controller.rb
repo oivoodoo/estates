@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
 
   def follow
     current_user.follow(@project)
+    @project.create_activity 'following', owner: current_user
+    current_user.create_activity 'following', owner: @project
     render :nothing => true
   end
 
