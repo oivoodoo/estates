@@ -23,5 +23,9 @@ module ProjectsHelper
       unfollow: unfollow_project_path(project)
     }.to_json
   end
+
+  def followers_json(project)
+    project.followers.to_json(only: :id, methods: [:name, :profile_image])
+  end
 end
 

@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <button class="track" title="{{followText}}" ng-click="follow($event)">{{followText}}</button>
+<% else %>
+  <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+    <button>Follow</button>
+  </a>
+  <button style="display: none;" title="{{followText}}" ng-click="follow($event)">{{followText}}</button>
+<% end %>

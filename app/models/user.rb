@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   def profile_image
     return avatar.url(:thumb) if avatar?
     return social_avatar_url  if social_avatar_url?
-    "default_avatar.png"
+    "/images/default_avatar.png"
   end
 
   def name

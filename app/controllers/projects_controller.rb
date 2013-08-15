@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     current_user.follow(@project)
     @project.create_activity 'user_following', owner: current_user
     current_user.create_activity 'project_following', owner: @project
-    render :nothing => true
+    render :json => current_user.to_json(only: :id, methods: [:name, :profile_image])
   end
 
   def unfollow

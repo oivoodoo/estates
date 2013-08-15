@@ -1,4 +1,4 @@
-<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= project_button_urls_json(@project) %>">
+<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= project_button_urls_json(@project) %>" data-followers='<%= followers_json(@project) %>'>
   <div class="head">
     <div class="cover">
       <div>
@@ -38,14 +38,7 @@
               </div>
             </div>
             <div class="action">
-              <% if user_signed_in? %>
-                <button onclick="Turbolinks.visit('<%= new_project_investment_path(@project) %>')">Purchase Shares</button>
-              <% else %>
-                <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
-                  <button>Purchase Shares</button>
-                </a>
-                <button style='display: none' onclick="Turbolinks.visit('<%= new_project_investment_path(@project) %>')">Purchase Shares</button>
-              <% end %>
+              <%= render 'purchase' %>
             </div>
           </div>
         </div>
@@ -56,14 +49,7 @@
     <hgroup>
       <h2>
         <div class="trackwrap track">
-          <% if user_signed_in? %>
-            <button class="track" title="{{followText}}" ng-click="follow($event)">{{followText}}</button>
-          <% else %>
-            <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
-              <button>Follow</button>
-            </a>
-            <button style="display: none;" title="{{followText}}" ng-click="follow($event)">{{followText}}</button>
-          <% end %>
+          <%= render 'track' %>
         </div>
         <div class="profile-badge manager-badge">
           <div>
@@ -127,7 +113,7 @@
             <div class="tabs connections-tabs">
               <ul>
                 <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= @project.followers.count %></em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>{{followers.length}}</em> Followers</a></li>
               </ul>
             </div>
 
@@ -140,12 +126,20 @@
             <div class="tabs connections-tabs">
               <ul>
                 <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= @project.followers.count %></em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>{{followers.length}}</em> Followers</a></li>
               </ul>
             </div>
 
             <ul class="connections" id="followed">
-              <%= render partial: 'follower', collection: @project.followers %>
+              <li ng-repeat='follower in followers'>
+                <div class="profile-badge">
+                  <div>
+                    <a href="/users/{{follower.id}}">
+                      <img ng-src='{{follower.profile_image}}' />
+                    </a>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>

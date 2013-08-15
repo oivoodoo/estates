@@ -1,11 +1,22 @@
 estates.controller 'ProjectsController', [
-  '$scope', '$element', '$compile', '$http'
-  ($scope, $element, $compile, $http) ->
+  '$scope', '$element', '$compile', '$http', '$timeout', '$window'
+  ($scope, $element, $compile, $http, $timeout, $window) ->
     # initialize tabs
     $scope.projectTab = 1
 
     $scope.project = $element.data('project')
     $scope.urls = $element.data('urls')
+    $scope.followers = $element.data('followers')
+
+    weirdResize = ->
+      $timeout ->
+        # TODO: remove this quick fix for the tabs
+        $('.connections a img').trigger('resize')
+      , 100
+
+    # TODO: remove this quick fix for the tabs
+    $window.onload = ->
+      weirdResize()
 
     # setup mapping
     marker =
@@ -22,6 +33,7 @@ estates.controller 'ProjectsController', [
     $scope.open = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step
+      weirdResize()
 
     $(document).bind 'fix:scroll', (event, el) ->
       $el = $(el)
@@ -43,8 +55,9 @@ estates.controller 'ProjectsController', [
       if $scope.followState == 'not-following'
         $scope.followText = "Stop tracking this project"
         $scope.followState = 'following'
-        $http.post($scope.urls.follow).success (data) ->
-          $('#followed').append(data)
+        $http.post($scope.urls.follow).success (follower) ->
+          $scope.followers.push(follower)
+          weirdResize()
       else
         $scope.followText = 'Track'
         $scope.followState = 'not-following'
