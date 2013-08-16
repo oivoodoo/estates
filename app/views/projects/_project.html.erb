@@ -21,7 +21,7 @@
     </header>
 
     <div class="summary">
-      <p><%= project.short_description %></p>
+      <p><%= project.short_description.to_s.html_safe %></p>
     </div>
 
     <div class="financials">
