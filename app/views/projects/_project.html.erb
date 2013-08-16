@@ -1,5 +1,5 @@
 <article class="project-badge <%= class_name %>" ng-controller='ProjectsController' data-project='<%= project_json(project) %>' data-urls="<%= project_button_urls_json(project) %>">
-  <div onclick="Turbolinks.visit('<%= url_for(project) %>')">
+  <div ng-click="Turbolinks.visit('<%= url_for(project) %>')">
     <a class="project-thumb" href="<%= project_path(project) %>"><%= image_tag(project.image.url(:index)) %><div class="focus"></div></a>
 
     <header>
