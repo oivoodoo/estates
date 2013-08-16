@@ -41,6 +41,6 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def view_per_share
-    number_to_currency(per_share, format: "<b><i>%u</i>%n</b>")
+    "<b><i>$</i>#{number_to_human(per_share, :precision => 3)}</b>".html_safe
   end
 end
