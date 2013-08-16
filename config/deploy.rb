@@ -77,3 +77,6 @@ after "deploy", "deploy:migrations"
 
 load 'deploy/assets'
 
+
+        require './config/boot'
+        require 'honeybadger/capistrano'
