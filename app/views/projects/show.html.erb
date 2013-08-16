@@ -16,7 +16,7 @@
               <li class="type"><div><b><%= @project.investment_type %></b> <label>offering</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="share"><div><b><i>$</i><%= @project.shares %></b> <label>/share</label></div></li>
+              <li class="share"><div><%= @project.view_per_share %><label>/share</label></div></li>
             </ul>
             <ul class='size-6'>
               <li class="yield"><div><b><%= @project.view_percent %><u></u></b> <label>yield</label></div></li>

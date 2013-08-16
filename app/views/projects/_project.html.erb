@@ -32,7 +32,7 @@
               <li class="type"><div><b><%= project.investment_type %></b> <label>offering</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="share"><div><b><i>$</i><%= project.shares %></b> <label>/share</label></div></li>
+              <li class="share"><div><%= project.view_per_share %><label>/share</label></div></li>
             </ul>
             <ul class='size-6'>
               <li class="yield"><div><b><%= project.view_percent %></b> <label>yield</label></div></li>
@@ -63,9 +63,9 @@
         <button class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
       <% else %>
         <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
-          <button>Follow</button>
+          <button class="track labelled" title="{{followText}}"><%= "{{followText}}" if class_name == 'full' %></button>
         </a>
-        <button class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
+        <button style='display:none' class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
       <% end %>
       <button class="details" onclick="Turbolinks.visit('<%= url_for(project) %>')" title='<%= project.name %>'>Full Details</button>
     </div>

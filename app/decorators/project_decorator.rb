@@ -2,7 +2,7 @@ class ProjectDecorator < Draper::Decorator
   delegate_all
 
   include ActionView::Helpers::NumberHelper
-  
+
   def address?
     address.strip.present?
   end
@@ -41,6 +41,6 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def view_per_share
-    number_to_currency(per_share)
+    number_to_currency(per_share, format: "<b><i>%u</i>%n</b>")
   end
 end

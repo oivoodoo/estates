@@ -20,7 +20,8 @@ end
   Project.create! do |p|(
     p.name        = "Project #{n}"
     p.owner       = "Owner #{n}"
-    p.price       = rand() * 100000000
+    p.price       = rand() * 1000000
+    p.shares      = 10000
     p.description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
     p.image       = File.open(Rails.root.join("public/images/house.jpg"))
     p.country     = 'Belarus'
