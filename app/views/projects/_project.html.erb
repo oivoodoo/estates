@@ -12,7 +12,7 @@
         </div>
 
         <div class="titlewrap">
-          <a class="project-link" onclick="Turbolinks.visit('<%= url_for(project) %>'); return false;" href="#"><%= project.name %></a>
+          <a class="project-link" onclick="Turbolinks.visit('<%= url_for(project) %>'); return false;" title="<%= project.name %>"><%= project.name %></a>
           <div class='manager-location'>
             <span><a><%= project.owner %></a></span>
             <address><a><%= project.address %></a></address>
