@@ -1,4 +1,4 @@
-<section id="investor" class="me" ng-controller='ProfileController' data-user='<%= @user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link]) %>'>
+<section id="investor" class="me" ng-controller='ProfileController' data-user='<%= @user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link, :latitude, :longitude]) %>' data-projects='<%= projects_json(@user.invested_projects) %>'>
 
   <% if current_user == @user %>
     <div class="message">
@@ -40,13 +40,18 @@
   <div class="body">
     <div class="main">
       <div>
-        <div id="tab-1" class="feed-wrapper">
-          <ul class="feed">
-            <% for activity in @user.activities.order('created_at desc').limit(10) %>
-              <%= render_activity(activity) %>
-            <% end %>
+        <div class="tabs project-tabs">
+          <ul>
+            <li><a ng-class="{current:sideTab==1}" ng:click="sideTab=1"><em><%= @user.invested_projects.count %></em> Investments</a></li>
+            <li><a ng-class="{current:sideTab==2}" ng:click="sideTab=2"><em><%= @user.following_projects.count %></em> Tracking</a></li>
           </ul>
         </div>
+        <ul class="connections" ng-show="sideTab == 1" ng-init='sideTab=1'>
+          <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.invested_projects), locals: { class_name: "dash-invested" } %>
+        </ul>
+        <ul class="connections" ng-show="sideTab == 2">
+          <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.following_projects), locals: { class_name: "dash-tracking-list" } %>
+        </ul>
       </div>
     </div>
 
@@ -55,23 +60,30 @@
         <div>
           <div class="tabs connection-tabs">
             <ul>
-              <li><a ng-click="connectionsTab=1" ng-class="{current:connectionsTab == 1}"><em><%= @user.invested_projects.count %></em> Investments</a></li>
-              <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em><%= @user.following_projects.count %></em> Follows</a></li>
-              <li><a ng-click="connectionsTab=3" ng-class="{current:connectionsTab == 3}"><em><%= @user.user_followers.count %></em> Followers</a></li>
+              <li><a ng-class="{current:connectionsTab==1}" ng:click="connectionsTab=1"><em><%= current_user.investors.count %></em> Investors</a></li>
+              <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em><%= @user.user_followers.count %></em> Followers</a></li>
             </ul>
           </div>
-          <ul class="connections" ng-show="connectionsTab == 1" ng-init="connectionsTab=1">
-            <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.invested_projects), locals: { class_name: "dash-invested" } %>
+          <ul class="connections" ng-show="connectionsTab == 1"  ng-init="connectionsTab=1">
+            <%= render partial: 'projects/follower', collection: @user.investors %>
           </ul>
           <ul class="connections" ng-show="connectionsTab == 2">
-            <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.following_projects), locals: { class_name: "dash-tracking-list" } %>
-          </ul>
-          <ul class="connections" ng-show="connectionsTab == 3">
             <%= render partial: 'projects/follower', collection: @user.user_followers %>
+          </ul>
+        </div>
+        <div id="timeline-content" class="tab-content side-tab-content">
+          <ul class="feed">
+            <% for activity in @user.activities.order('created_at desc').limit(7) %>
+              <%= render_activity(activity, current_user: current_user) %>
+            <% end %>
           </ul>
         </div>
       </div>
     </div>
+  </div>
+
+  <div id="map-content" class="tab-content keep" style='display:block;'>
+    <google-map center="center" fit='true' mark-click='true' draggable="true" zoom="zoom" markers="markers" mark-click="true" style='height: 30rem;display:block;'></google-map>
   </div>
 </section>
 
