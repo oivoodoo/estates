@@ -24,6 +24,7 @@
 //= require vendors/jquery.fileupload
 //= require custom
 //= require addresses
+//= require common
 //= require ajax
 //
 //= require angular
