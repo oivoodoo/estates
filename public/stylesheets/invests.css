@@ -836,7 +836,6 @@ label, input, textarea {
   clear: both;
 }
 .multi-field input, .multi-field .input-inline {
-  float: left;
   margin-right: 5px;
 }
 .labels-left .field-group {
@@ -5318,7 +5317,6 @@ h3.sidebar-heading span {
   position: relative;
   float: left;
   border-left: 1px solid #d5d9dc;
-  padding: 14px;
 }
 .meta-horizontal .item:first-child {
   border-left: none;

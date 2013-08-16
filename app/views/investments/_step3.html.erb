@@ -7,19 +7,19 @@
       <div id="checkout-order-form">
         <div class="meta-horizontal items-3">
           <div id="checkout-order-form-quantity" class="item invest_quantity_container">
-            <div class="metric">Quantity</div>
-            <%= f.number_field :quantity, :'ng-model' => 'investment.quantity', :'ng-init' => 'investment.quantity=0' %>
+            <div class="metric" style='margin-top:10px'>Quantity</div>
+            <%= f.number_field :quantity, :'ng-model' => 'investment.quantity', :'ng-init' => 'investment.quantity=0', style: 'margin:0px;padding:0px;margin-top:6px;' %>
             <div class="math-symbol">×</div>
           </div>
           <div id="checkout-order-form-price" class="item">
-            <div class="metric">Price / Share</div>
+            <div class="metric" style='margin-top: 10px;'>Price / Share</div>
             <input type='hidden' ng-model='project.per_share' value='{{project.per_share}}' />
-            <div id='per_share' class="order-form-field value"><%= @project.view_per_share %></div>
+            <div id='per_share' class="order-form-field value" style='margin-top: 6px;'><%= @project.view_per_share %></div>
             <div class="math-symbol">=</div>
           </div>
           <div id="checkout-order-form-total" class="item">
-            <div class="metric">Total Investment</div>
-            <div class="order-form-field value" id="result">{{project.per_share * investment.quantity | currency:"$"}}</div>
+            <div class="metric" style='margin-top:10px'>Total Investment</div>
+            <div class="order-form-field value" id="result" style='margin-top: 6px;'>{{project.per_share * investment.quantity | currency:"$"}}</div>
           </div>
         </div>
       </div>
