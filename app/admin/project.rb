@@ -4,6 +4,7 @@ ActiveAdmin.register Project do
     column :owner
     column :manager
     column :percent
+    column :raised
     column :shares
     column :start_investment
     column :finish_investment
@@ -15,7 +16,6 @@ ActiveAdmin.register Project do
   filter :owner
   filter :manager
   filter :price
-  filter :raised
   filter :start_investment
   filter :finish_investment
   filter :price
@@ -52,8 +52,7 @@ ActiveAdmin.register Project do
       f.input :finish_investment, :as => :string, :input_html => { :class => "hasDatetimePicker" }
       f.input :target_return
       f.input :holding
-      f.input :percent
-      f.input :investment_type, :as => :select, :include_blank => false, :collection => [["Loan", "loan"], ["Equity", "equity"]]
+      f.input :investment_type, :as => :select, :include_blank => false, :collection => [["Loan", "loan"], ["Equity", "equity"], ["Debt", "debt"]]
     end
     f.actions
   end

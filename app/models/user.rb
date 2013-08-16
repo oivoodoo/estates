@@ -31,6 +31,18 @@ class User < ActiveRecord::Base
     0
   end
 
+  def invested_projects_debt
+    total = invested_projects.count
+    return 0 if total.zero?
+    invested_projects.debt.count / total
+  end
+
+  def invested_projects_loan
+    total = invested_projects.count
+    return 0 if total.zero?
+    invested_projects.loan.count / total
+  end
+
   scope :recent, lambda { |count| order('users.created_at desc').limit(count) }
 
   mount_uploader :avatar, AvatarUploader
