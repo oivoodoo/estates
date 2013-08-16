@@ -44,11 +44,11 @@
             <section class="module-section">
               <% if @project.image? %>
                 <div class="image-bordered mb4" style='width: 238px; height: 119px;'>
-                  <%= image_tag @project.image.url(:invest) %>
+                  <a href="<%= project_path(@project) %>"><%= image_tag @project.image.url(:invest) %></a>
                 </div>
               <% end %>
 
-              <h3 class="mb1 ellipsis"><%= @project.address %></h3>
+              <h3 class="mb1 ellipsis"><a href="<%= project_path(@project) %>"><%= @project.address %></a></h3>
               <table class="mt4 table-bordered" style="display: none;">
                 <form name="theForm">
                   <tbody><tr>
