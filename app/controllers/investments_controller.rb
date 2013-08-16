@@ -7,9 +7,9 @@ class InvestmentsController < ApplicationController
   end
 
   def create
-    investments = InvestmentsCreator.new(current_user)
+    investments = InvestmentsCreator.new(current_user, @project)
 
-    if investments.create(@project, params[:investment])
+    if investments.create(params[:investment])
       gflash(success: "Investment was created")
       redirect_to @project
     else

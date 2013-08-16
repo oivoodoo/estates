@@ -32,5 +32,19 @@ describe InvestmentsController do
       end
     end
 
+    describe 'POST :create raising the money' do
+      it 'should raise money for the project' do
+        # per_share = price / shares = 10 and quantity = 1
+        post :create, project_id: project.to_param, investment: attributes_for(:investment, quantity: 1)
+        expect(project.reload.raised).to eq(10)
+        expect(project.reload.percent).to eq(10)
+
+        # per_share = price / shares = 10 and quantity = 2
+        post :create, project_id: project.to_param, investment: attributes_for(:investment, quantity: 3)
+        expect(project.reload.raised).to eq(40)
+        expect(project.reload.percent).to eq(40)
+      end
+    end
+
   end
 end

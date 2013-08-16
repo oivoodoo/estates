@@ -1,7 +1,9 @@
 FactoryGirl.define do
   factory :project do
     name
-    price       "123"
+    price       100
+    raised      0
+    shares      10.0
     owner       "John Snow"
     description "Some description here"
     start_investment { DateTime.now }
