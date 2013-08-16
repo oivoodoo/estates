@@ -12,12 +12,12 @@ class ProjectsController < ApplicationController
 
   def follow
     current_user.follow(@project)
-    render :nothing => true
+    render :json => current_user.to_json(methods: :profile_image)
   end
 
   def unfollow
     current_user.stop_following(@project)
-    render :nothing => true
+    render :json => current_user
   end
 
   private

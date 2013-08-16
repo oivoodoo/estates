@@ -2,7 +2,7 @@
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
 <% end %>
 
-<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= {follow: follow_project_path(@project), unfollow: unfollow_project_path(@project)}.to_json %>">
+<section id="project" ng-controller="ProjectsController" data-project='<%= project_json(@project) %>' data-urls="<%= {follow: follow_project_path(@project), unfollow: unfollow_project_path(@project)}.to_json %>" data-followers="<%= @project.followers.to_json(methods: [:profile_image]) %>">
   <div class="head">
     <div class="cover">
       <div>
@@ -61,12 +61,12 @@
       <h2>
         <div class="trackwrap track">
           <% if user_signed_in? %>
-            <button class="track" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+            <button class="track" title="{{followText}}" ng-click="follow(<%= current_user.to_json(only: :id)%>)">{{followText}}</button>
           <% else %>
             <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
               <button>Follow</button>
             </a>
-            <button style="display: none;" title="{{followText}}" ng-click="follow()">{{followText}}</button>
+            <button style="display: none;" title="{{followText}}" ng-click="follow">{{followText}}</button>
           <% end %>
         </div>
         <div class="profile-badge manager-badge">
@@ -130,12 +130,12 @@
           <div id="investors-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':viewerTab==1}">
             <div class="tabs connections-tabs">
               <ul>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= @project.followers.count %></em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)"><em><%= @project.investors.count %></em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)" ng:init='viewerTab=2'><em><%= @project.followers.count %></em> Followers</a></li>
               </ul>
             </div>
 
-            <ul class="connections" ng-show="viewerTab == 1">
+            <ul class="connections">
               <%= render partial: 'follower', collection: @project.investors %>
             </ul>
           </div>
@@ -144,17 +144,24 @@
             <div class="tabs connections-tabs">
               <ul>
                 <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em><%= @project.followers.count %></em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>{{followers.length}}</em> Followers</a></li>
               </ul>
             </div>
 
-            <ul class="connections" id="followed">
-              <%= render partial: 'follower', collection: @project.followers %>
+            <ul class="connections">
+              <li ng-repeat="follower in followers">
+                <div class="profile-badge">
+                  <div>
+                    <a onclick="Turbolinks.visit('/users/{{follower.id}}')">
+                      <img ng-src="{{follower.profile_image}}">
+                    </a>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-
       <div id="timeline-content" class="tab-content side-tab-content">
         <ul class="feed">
           <li>
