@@ -8,16 +8,6 @@ estates.controller 'ProjectsController', [
     $scope.urls = $element.data('urls')
     $scope.followers = $element.data('followers')
 
-    weirdResize = ->
-      $timeout ->
-        # TODO: remove this quick fix for the tabs
-        $('.connections a img').trigger('resize')
-      , 100
-
-    # TODO: remove this quick fix for the tabs
-    $window.onload = ->
-      weirdResize()
-
     # setup mapping
     marker =
       latitude: $scope.project.latitude
@@ -33,7 +23,6 @@ estates.controller 'ProjectsController', [
     $scope.open = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step
-      weirdResize()
 
     $(document).bind 'fix:scroll', (event, el) ->
       $el = $(el)
@@ -57,7 +46,10 @@ estates.controller 'ProjectsController', [
         $scope.followState = 'following'
         $http.post($scope.urls.follow).success (follower) ->
           $scope.followers.push(follower)
-          weirdResize()
+          $timeout( ->
+            $scope.$apply ->
+              $('.profile-badge img').attr('src', follower.profile_image)
+          , 100)
       else
         $scope.followText = 'Track'
         $scope.followState = 'not-following'
