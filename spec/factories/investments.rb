@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :invest do
+  factory :investment do
     address_line_1  "Address1"
     address_line_2  "Address2"
     city            "Moscow"

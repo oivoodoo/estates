@@ -1,19 +1,36 @@
 require 'spec_helper'
 
-describe InvestsController do
-  let!(:project) { create(:project) }
+describe InvestmentsController do
+  context 'when logged in' do
+    before { logged_in }
 
-  describe 'GET :new' do
-    before { get :new, project_id: project.to_param }
+    let!(:project) { create(:project) }
 
-    it { should respond_with(:success) }
-    it { should render_template('new') }
-  end
+    describe 'GET :new' do
+      before { get :new, project_id: project.to_param }
 
-  describe 'POST :create' do
-    before { post :create, project_id: project.to_param, invest: attributes_for(:invest) }
+      it { should respond_with(:success) }
+      it { should render_template('new') }
+    end
 
-    it { expect(assigns(:invest).reload).not_to be_new_record }
-    it { should redirect_to root_path }
+    describe 'POST :create' do
+      before { post :create, project_id: project.to_param, investment: attributes_for(:investment) }
+
+      it { expect(Investment.count).to eq(1) }
+      it { should redirect_to project_path(project) }
+
+      it 'should create activity for the project' do
+        expect(project.activities).to have(1).item
+        expect(project.activities[0].key).to eq("project.user_invested")
+        expect(project.activities[0].owner).to eq(current_user)
+      end
+
+      it 'should create activity for the current user' do
+        expect(current_user.activities).to have(1).item
+        expect(current_user.activities[0].key).to eq("user.project_invested")
+        expect(current_user.activities[0].owner).to eq(project)
+      end
+    end
+
   end
 end
