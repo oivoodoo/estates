@@ -6,3 +6,4 @@ estates.controller 'InvestmentsController', [
       event.preventDefault()
       $scope.investButton = step
 ]
+

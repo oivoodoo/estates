@@ -12,7 +12,7 @@
           </div>
           <div class="span6">
             <div class="fields">
-              <%= f.text_field :address_line_1, :value => current_user.street %>
+              <%= f.text_field :address_line_1, :value => current_user.street, :'ng-model' => 'investment.address_line_1'  %>
             </div>
           </div>
           <div class="span2"></div>
@@ -26,7 +26,7 @@
           </div>
           <div class="span6">
             <div class="fields">
-              <%= f.text_field :address_line_2 %>
+              <%= f.text_field :address_line_2, :'ng-model' => 'investment.address_line_2' %>
             </div>
           </div>
           <div class="span2"></div>
@@ -42,7 +42,7 @@
           </div>
           <div class="span6">
             <div class="fields">
-              <%= f.text_field :city, :value => current_user.city  %>
+              <%= f.text_field :city, :value => current_user.city, :'ng-model' => 'investment.city' %>
             </div>
           </div>
           <div class="span2"></div>
@@ -57,7 +57,7 @@
           <div class="span6">
             <div class="fields">
               <div class="select-holder">
-                <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, {})%>
+                <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, {:'ng-model' => 'investment.country'})%>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
           <div class="span6">
             <div class="fields">
               <div class="select-holder">
-                <%= f.state_select(:state, "US", {}, {})%>
+                <%= f.state_select(:state, "US", {}, {:'ng-model' => 'investment.state'}) %>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@
           </div>
           <div class="span6">
             <div class="fields">
-              <%= f.number_field :zip_code, value: current_user.zip_code, class: "char5" %>
+              <%= f.number_field :zip_code, value: current_user.zip_code, class: "char5", :'ng-model' => 'investment.zip_code' %>
             </div>
           </div>
           <div class="span2"></div>
@@ -101,11 +101,11 @@
           </div>
           <div class="span6">
             <div class="fields multi-field">
-              <%= f.number_field :phone_area_code, class: "char3" %>
+              <%= f.number_field :phone_area_code, class: "char3", :'ng-model' => 'investment.phone_area_code' %>
               <div class="input-inline">-</div>
-              <%= f.number_field :phone_prefix, class: "char3" %>
+              <%= f.number_field :phone_prefix, class: "char3", :'ng-model' => 'investment.phone_prefix' %>
               <div class="input-inline">-</div>
-              <%= f.number_field :phone_last_four, class: "char4" %>
+              <%= f.number_field :phone_last_four, class: "char4", :'ng-model' => 'investment.phone_last_four' %>
             </div>
           </div>
           <div class="span2"></div>

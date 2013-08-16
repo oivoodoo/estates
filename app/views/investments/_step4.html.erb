@@ -35,28 +35,28 @@
         <tbody>
           <tr>
             <td class="muted">Mailing Address</td>
-            <td id="address"></td>
+            <td id="address">{{investment.address_line_1 + " " + investment.address_line_2}}</td>
           </tr>
 
           <tr>
             <td class="muted">City</td>
-            <td id="city1"></td>
+            <td id="city1">{{investment.city}}</td>
           </tr>
           <tr>
             <td class="muted">Country</td>
-            <td id="country"></td>
+            <td id="country">{{investment.country}}</td>
           </tr>
           <tr id="hidden_field_state" style="display: none;">
             <td class="muted">State</td>
-            <td id="state"></td>
+            <td id="state">{{investment.state}}</td>
           </tr>
           <tr>
             <td class="muted">ZIP Code</td>
-            <td id="zip1"></td>
+            <td id="zip1">{{investment.zip_code}}</td>
           </tr>
           <tr>
             <td class="muted">Phone Number</td>
-            <td id="phone_number"></td>
+            <td id="phone_number">{{investment.phone_area_code + "-" + investment.phone_prefix + "-" + investment.phone_last_four}}</td>
           </tr>
         </tbody>
       </table>
