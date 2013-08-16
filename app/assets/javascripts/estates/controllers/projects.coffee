@@ -9,13 +9,9 @@ estates.controller 'ProjectsController', [
     $scope.followers = $element.data('followers')
 
     # setup mapping
-    marker =
-      latitude: $scope.project.latitude
-      longitude: $scope.project.longitude
+    marker = $scope.project
 
-    $scope.latitude  = marker.latitude
-    $scope.longitude = marker.longitude
-    $scope.markers   = []
+    # $scope.markers   = [marker]
     $scope.center    = marker
     $scope.zoom      = 12
 
