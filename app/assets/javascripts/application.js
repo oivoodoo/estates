@@ -23,8 +23,6 @@
 //= require vendors/jquery.ui.widget-combobox
 //= require vendors/jquery.fileupload
 //= require custom
-//= require invests
-//= require common
 //= require addresses
 //= require ajax
 //
