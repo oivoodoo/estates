@@ -376,7 +376,7 @@ jQuery(document).ready(function($) {
 						google.maps.MapTypeId.SATELLITE,
 						google.maps.MapTypeId.HYBRID
 					]
-			    },
+        },
 				//mapTypeControl: false, // or we can hide the map type switch entirely
 
 				backgroundColor: 'transparent'
@@ -426,7 +426,7 @@ jQuery(document).ready(function($) {
 						icon: icon,
 						zoomControl: false,
 						scaleControl: false,
-						scrollwheel: false,
+						scrollwheel: false
 						//animation: google.maps.Animation.DROP
 					})
 				);
