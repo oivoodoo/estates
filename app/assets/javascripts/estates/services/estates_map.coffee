@@ -1,5 +1,6 @@
 estates.factory 'EstatesMap', [
-  ->
+  '$window'
+  ($window) ->
     Styles =
       id: 'grayMap'
       name: 'Gray Map'
@@ -17,6 +18,8 @@ estates.factory 'EstatesMap', [
           stylers: [ { color: '#b8b8b8' } ]
         }
       ]
+    host = "#{$window.location.protocol}//#{$window.location.host}"
+    MarkerIcon = host + '/images/map_icon@x2.png'
 
     # setup center for the google maps
     # by default if we have no at least one invested object or user doesn't
@@ -30,10 +33,28 @@ estates.factory 'EstatesMap', [
       # configuring google maps here.
       settings = {}
 
-      markers = (object for object in collection when object.infoWindow = "#{object.name}, #{object.address}")
+      icon = new google.maps.MarkerImage(MarkerIcon, null, null, null, new google.maps.Size(18, 26))
+      for object in collection
+        object.infoWindow =
+          type: 'InfoBubble'
+          settings:
+            maxWidth: 300
+            closeButtonClass: 'infobubble-close'
+            content: "<h5><a href='/projects/#{object.id}'>#{object.name}</a></h5><address>#{object.address}</address>"
+            position: new google.maps.LatLng(object.latitude, object.longitude)
+            shadowStyle: false
+            padding: 0
+            backgroundColor: 'white'
+            borderRadius: 0
+            arrowSize: 10
+            borderWidth: 0
+            backgroundClassName: 'infobubble'
+            arrowStyle: 0
+            disableAnimation: true
+        object.icon = icon
 
       # because of exporting only lng and ltd
-      settings.markers = markers
+      settings.markers = collection
 
       object = collection[0] || {}
 

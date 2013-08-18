@@ -388,14 +388,6 @@ jQuery(document).ready(function($) {
 			// Define marker-image for location pins
 			var icon = new google.maps.MarkerImage(iconImg, null, null, null, new google.maps.Size(18, 26)); // map_icon@x2.png is 36×52px
 
-			// Let's focus on the first location once the map is ready and populated by emulating a click on it
-			/*google.maps.event.addListenerOnce(this_map, 'idle', function() {
-				google.maps.event.trigger(this_map.markers[0], 'click');
-				/*setInterval(function(){
-					jQuery(".gmnoprint a:contains('Map Data')").parent().css({'background':'#131313','color':'#59564f'});
-				}, 3000);*
-			});*/
-
 			this_map.infoBubble = new InfoBubble({
 				maxWidth: 300,
 				closeButtonClass: 'infobubble-close',

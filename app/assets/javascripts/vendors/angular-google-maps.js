@@ -194,7 +194,7 @@
         });
       };
 
-      this.addMarker = function (lat, lng, icon, infoWindowContent, label, url,
+      this.addMarker = function (lat, lng, icon, infoWindow, label, url,
           thumbnail) {
 
         if (that.findMarker(lat, lng) != null) {
@@ -215,17 +215,20 @@
 
         }
 
-        if (infoWindowContent != null) {
-          var infoWindow = new google.maps.InfoWindow({
-            content: infoWindowContent
-          });
+        if (infoWindow != null) {
+          if (infoWindow.type === 'InfoWindow') {
+            var info = new google.maps.InfoWindow(infoWindow.settings);
+          } else if (infoWindow.type === 'InfoBubble') {
+            infoWindow.settings.map = that._instance;
+            var info = new InfoBubble(infoWindow.settings);
+          }
 
           google.maps.event.addListener(marker, 'click', function() {
             if (currentInfoWindow != null) {
               currentInfoWindow.close();
             }
-            infoWindow.open(_instance, marker);
-            currentInfoWindow = infoWindow;
+            info.open(_instance, marker);
+            currentInfoWindow = info;
           });
         }
 
@@ -238,7 +241,7 @@
           "lng": lng,
           "draggable": false,
           "icon": icon,
-          "infoWindowContent": infoWindowContent,
+          "infoWindow": infoWindow,
           "label": label,
           "url": url,
           "thumbnail": thumbnail
