@@ -12,6 +12,8 @@
 
   <link rel="Shortcut Icon" type="image/svg" href="<%= image_path('g/flockinvest-logo-symbol.svg') %>">
 
+  <%= render 'layouts/js' %>
+
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
@@ -67,7 +69,6 @@
     <div class="close"></div>
   </div>
 
-  <%= render 'layouts/js' %>
 </body>
 </html>
 
