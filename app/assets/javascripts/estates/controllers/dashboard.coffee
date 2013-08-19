@@ -9,5 +9,7 @@ estates.controller 'DashboardController', [
     projects = $element.data('projects')
 
     $scope.google = EstatesMap.settings(user, projects)
+
+    drawCharts()
 ]
 

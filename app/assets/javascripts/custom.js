@@ -8,8 +8,9 @@ var winW,
   baseFontSize = parseInt($('body').css('font-size'), 10),
   hst = window.location.protocol +'//'+ window.location.host;
 
-window.load = function() {
   window.$window = $(window);
+
+window.load = function() {
   window.$body = $('body');
   window.$masthead = $('#masthead');
   window.$wrap = $('#wrap');
@@ -17,23 +18,6 @@ window.load = function() {
   is_home = $body.hasClass('home');
   is_project = $body.hasClass('project');
   is_dashboard = $body.hasClass('dashboard');
-
-	$window
-		.on('resize', function(e){
-			layout();
-			connectionMasonry();
-			drawCharts();
-		})
-		.on('scroll', function(e){
-			sizeMenu();
-			callNag();
-			fixPos();
-		})
-		.on('load', function(){
-			layout();
-			connectionMasonry();
-			drawCharts();
-		});
 
 	$('.fix')
 		.each(function(i,el){
@@ -52,6 +36,21 @@ window.load = function() {
 };
 
 $(document).ready(window.load);
+
+$window.on('load', function(){
+  layout();
+  connectionMasonry();
+});
+
+$window.on('resize', function(e){
+  layout();
+  connectionMasonry();
+}).on('scroll', function(e){
+  sizeMenu();
+  callNag();
+  fixPos();
+});
+
 
 $('.sign-in, .profile-pic')
 .fancybox({
