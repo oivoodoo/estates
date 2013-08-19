@@ -6,9 +6,11 @@
 
         <h1 class="title">Build a real estate portfolio online</h1>
         <p>Get access to exclusive investments and manage your portfolio using Flock.</p>
-        <div class="action">
-          <a href="<%= new_user_registration_path %>" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
-        </div>
+        <% unless current_user.present? %>
+          <div class="action">
+            <a href="<%= new_user_registration_path %>" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
