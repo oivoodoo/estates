@@ -5,9 +5,8 @@ section.home-listing .item .left.text { width: 70%; }
 
 .clear { clear: both; }
 
-#masthead nav .profile-badge img {
-  height: auto !important;
-}
+#masthead nav .profile-badge img { height: auto !important; }
+.feed .profile-badge > div img { height: auto !important; }
 
 #contact_message { width: 99.8%; }
 
