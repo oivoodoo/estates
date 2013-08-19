@@ -272,7 +272,6 @@ ActiveRecord::Schema.define(version: 20130819111305) do
     t.string   "google_plus_link"
     t.string   "linkedin_link"
     t.string   "social_avatar_url"
-    t.string   "uid"
     t.float    "latitude"
     t.float    "longitude"
   end

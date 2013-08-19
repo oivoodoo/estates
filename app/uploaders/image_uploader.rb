@@ -53,7 +53,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [369,184]
   end
 
-  version :index do
+  version :home do
     process :resize_to_fill => [780,390]
   end
 
