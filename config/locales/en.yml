@@ -20,6 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  contacts:
+    create:
+      success: "Message was successfully sent."
+      error: "Could not send because of the issues"
+  subscriptions:
+    create:
+      success: "You was successfully subscribed."
   number:
     human:
       decimal_units:

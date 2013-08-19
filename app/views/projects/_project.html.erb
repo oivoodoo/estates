@@ -1,4 +1,4 @@
-<article class="project-badge <%= class_name %>" ng-controller='ProjectsController' data-project='<%= project_json(project) %>' data-urls="<%= project_button_urls_json(project) %>" ng-show="<%= local_assigns.has_key?(:ng_show) ? ng_show : "true" %>" >
+<article class="project-badge <%= class_name %>" ng-controller='ProjectsController' data-project='<%= project_json(project) %>' data-urls="<%= project_button_urls_json(project) %>" ng-show="<%= local_assigns.fetch(:ng_show, "true") %>" >
   <div ng-click="Turbolinks.visit('<%= url_for(project) %>')">
     <a class="project-thumb" href="<%= project_path(project) %>"><%= image_tag(project.image.url(:index)) %><div class="focus"></div></a>
 
@@ -6,7 +6,7 @@
       <h4 class="project-name">
         <div class="profile-badge manager-badge">
           <div>
-            <a href="#" title="<%= project.owner %>"><%= image_tag(project.company_image.url(:index)) %></a>
+            <a href="#" title="<%= project.owner %>"><%= image_tag(project.company_image.url(local_assigns.fetch(:image_size, :index))) %></a>
           </div>
         </div>
 

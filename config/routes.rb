@@ -10,6 +10,8 @@ Estates::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  resources :subscriptions, only: :create
+
   resources :projects, only: [:index, :show] do
     member do
       post 'follow'

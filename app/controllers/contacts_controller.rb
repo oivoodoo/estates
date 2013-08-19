@@ -10,10 +10,11 @@ class ContactsController < ApplicationController
 
     if @contact.save
       ContactMailer.new_contact(@contact).deliver
-      flash.now[:success] = "Message was successfully sent."
+      flash.now[:success] = I18n.t('contacts.create.success')
     else
-      flash.now[:errors] = "Could not send because of the issues"
+      flash.now[:errors] = I18n.t('contacts.create.error')
       render :new
     end
   end
 end
+
