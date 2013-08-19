@@ -7,15 +7,14 @@
         <div class="profile-badge manager-badge">
           <div>
             <a href="#" title="<%= project.owner %>"><%= image_tag(project.company_image.url(:index)) %></a>
-            <div class="focus"></div>
           </div>
         </div>
 
         <div class="titlewrap">
           <a class="project-link" onclick="Turbolinks.visit('<%= url_for(project) %>'); return false;" title="<%= project.name %>"><%= project.name %></a>
           <div class='manager-location'>
-            <span><a><%= project.owner %></a></span>
-            <address><a><%= project.address %></a></address>
+            <span><a href='#'><%= project.owner %></a></span>
+            <address><a href='#'><%= project.address %></a></address>
           </div>
       </h4>
     </header>
