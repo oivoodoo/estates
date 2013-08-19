@@ -21,35 +21,42 @@ estates.controller 'ProjectsController', [
         control = $el.parent().find('.fixed')
         $compile(control)($scope)
 
+    # TODO: refactor this things, move out to the service using factory.
+
     # following things here
     if $scope.project.followed
       $scope.followText = "Stop tracking this project"
-      $scope.followState = 'following'
+      $scope.followState = 'tracking'
       $scope.className = 'tracking'
     else
-      $scope.followState = 'not-following'
+      $scope.followState = 'not-tracking'
       $scope.followText = 'Track'
       $scope.className = 'track'
 
     $scope.follow = ($event) ->
       $event.stopPropagation()
       $event.preventDefault()
-      if $scope.followState == 'not-following'
+
+      if $scope.followState == 'not-tracking'
         $scope.followText = "Stop tracking this project"
-        $scope.followState = 'following'
+        $scope.followState = 'tracking'
         $scope.className = 'tracking'
+
         $http.post($scope.urls.follow).success (follower) ->
-          $scope.followers.push(follower)
-          $timeout( ->
-            $scope.$apply ->
-              $('.profile-badge img').trigger('resize')
-          , 100)
+          if angular.isDefined($scope.followers)
+            $scope.followers.push(follower)
+            $timeout( ->
+              $scope.$apply ->
+                $('.profile-badge img').trigger('resize')
+            , 100)
       else
         $scope.followText = 'Track'
-        $scope.followState = 'not-following'
+        $scope.followState = 'not-tracking'
         $scope.className = 'track'
+
         $http.post($scope.urls.unfollow).success (follower) ->
-          index = (f.id for f in $scope.followers).indexOf(follower.id)
-          $scope.followers.splice(index, 1)
+          if angular.isDefined($scope.followers)
+            index = (f.id for f in $scope.followers).indexOf(follower.id)
+            $scope.followers.splice(index, 1)
 ]
 

@@ -35,7 +35,8 @@
             </div>
 
             <div id="tracking-list" ng-show="viewerTab == 2">
-              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { class_name: "dash-tracking-list" } %>
+              <!-- do not show in case if user untrack the project using track button -->
+              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { :ng_show => "followState=='tracking'", class_name: "dash-tracking-list" } %>
             </div>
           </div>
 
