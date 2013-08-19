@@ -18,6 +18,7 @@ estates.controller 'ProjectsController', [
     $(document).bind 'fix:scroll', (event, el) ->
       $el = $(el)
       $scope.$apply ->
+        $('.profile-badge img').trigger('resize')
         control = $el.parent().find('.fixed')
         $compile(control)($scope)
 
