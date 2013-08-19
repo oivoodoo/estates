@@ -7,8 +7,8 @@ estates.controller 'SubscriptionsController', [
           $scope.$apply ->
             $scope.email = ''
             $.gritter.add
-              image:'/assets/success.png'
-              title:'Notification'
+              image: Settings.gritter.success.image
+              title: Settings.gritter.success.title
               text:data.message
         , 10
 ]

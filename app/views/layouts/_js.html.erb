@@ -2,6 +2,12 @@
   Settings = {
     user: {
       signed_in: <%= signed_in? %>
+    },
+    gritter: {
+      success: {
+        image: "<%= asset_path('success.png') %>",
+        title:'Notification'
+      }
     }
   };
 </script>
