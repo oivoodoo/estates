@@ -54,7 +54,7 @@ $window.on('resize', function(e){
 
 $('.sign-in, .profile-pic')
 .fancybox({
-  helpers:	 {
+  helpers: {
     overlay : {
       css : {
         'background' : 'rgba(41,41,41, .9)'
@@ -70,7 +70,7 @@ $('.sign-in, .profile-pic')
 
 $('.fancybox-video')
 .fancybox({
-  helpers:	 {
+  helpers: {
     overlay : {
       css : {
         'background' : 'rgba(41,41,41, .9)'
@@ -78,7 +78,7 @@ $('.fancybox-video')
     }
   },
   beforeLoad : function() {
-    this.width	 = parseInt(this.element.data('width'));
+    this.width = parseInt(this.element.data('width'));
     this.height = parseInt(this.element.data('height'));
   }
 });
