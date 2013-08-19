@@ -494,6 +494,9 @@
           scope.$watch("refresh()", function (newValue, oldValue) {
             if (newValue && !oldValue) {
               _m.draw();
+
+              // TODO: fix ak change here.
+              scope.markers.push({});
             }
           });
         }
@@ -548,6 +551,10 @@
           });
 
         }, true);
+
+        // TODO: fix ak change here.
+        // trigger manually update of markers
+        scope.markers.push({});
 
 
         // Update map when center coordinates change

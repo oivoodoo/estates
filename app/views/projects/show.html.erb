@@ -84,10 +84,8 @@
           <%= @project.financials.to_s.html_safe %>
 				</div>
 				<div class='tab-content paper'ng-class="{current:projectTab==3}" ng:show="projectTab == 3">
-          <div id='map_container' style='display: block'>
-            <google-map center="center" fit='true' mark-click='true' draggable="true" zoom="zoom" markers="markers" mark-click="true" refresh='projectTab == 3' style="display:block; height: 400px"></google-map>
-          </div>
-          <div><%= @project.address %></div>
+          <google-map scrollwheel='google.scrollwheel' center="google.center" zoom="google.zoom" markers="google.markers" style="display:block; height: 400px" refresh='projectTab == 3' ></google-map>
+          <address><%= @project.address %></address>
 				</div>
 				<div class='tab-content paper' ng-class="{current:projectTab==4}" ng:show="projectTab == 4">
           <%= @project.property.to_s.html_safe %>

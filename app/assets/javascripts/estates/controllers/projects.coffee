@@ -1,6 +1,6 @@
 estates.controller 'ProjectsController', [
-  '$scope', '$element', '$compile', '$http', '$timeout', '$window'
-  ($scope, $element, $compile, $http, $timeout, $window) ->
+  '$scope', '$element', '$compile', '$http', '$timeout', '$window', 'EstatesMap'
+  ($scope, $element, $compile, $http, $timeout, $window, EstatesMap) ->
     # initialize tabs
     $scope.projectTab = 1
 
@@ -8,12 +8,7 @@ estates.controller 'ProjectsController', [
     $scope.urls = $element.data('urls')
     $scope.followers = $element.data('followers')
 
-    # setup mapping
-    marker = $scope.project
-
-    # $scope.markers   = [marker]
-    $scope.center    = marker
-    $scope.zoom      = 12
+    $scope.google = EstatesMap.settings({}, [$scope.project])
 
     # setup tab click function
     $scope.open = (event, variable, step) ->
