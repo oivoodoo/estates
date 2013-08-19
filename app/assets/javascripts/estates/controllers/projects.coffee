@@ -47,7 +47,7 @@ estates.controller 'ProjectsController', [
           $scope.followers.push(follower)
           $timeout( ->
             $scope.$apply ->
-              $('.profile-badge img').attr('src', follower.profile_image)
+              $('.profile-badge img').trigger('resize')
           , 100)
       else
         $scope.followText = 'Track'

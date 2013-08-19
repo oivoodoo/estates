@@ -49,11 +49,11 @@
               <% end %>
 
               <h3 class="mb1 ellipsis"><a href="<%= project_path(@project) %>"><%= @project.address %></a></h3>
-              <table class="mt4 table-bordered" style="display: none;">
+              <table class="mt4 table-bordered" ng-show="investButton == 2 || investButton == 3">
                 <form name="theForm">
                   <tbody><tr>
                     <td class="muted">Quantity</td>
-                    <td class="text-right" id="quantity1"></td>
+                    <td class="text-right" id="quantity1">{{investment.quantity}}</td>
                   </tr>
                   <tr>
                     <td class="muted">Price Per Share</td>
@@ -61,7 +61,7 @@
                   </tr>
                   <tr>
                     <td class="muted">Total Investment</td>
-                    <td class="text-right" id="total_investment"></td>
+                    <td class="text-right" id="total_investment">{{project.per_share * investment.quantity | currency:"$"}}</td>
                   </tr>
                   </tbody>
                 </form>
@@ -74,4 +74,3 @@
     </div>
   </div>
 </div>
-
