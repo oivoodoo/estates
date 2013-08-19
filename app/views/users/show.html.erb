@@ -1,5 +1,4 @@
-<section id="investor" class="me" ng-controller='ProfileController' data-user='<%= @user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link, :latitude, :longitude]) %>' data-projects='<%= projects_json(@user.invested_projects) %>'>
-
+<section id="investor" ng-controller='ProfileController' data-user='<%= profile_user_json(@user) %>' data-projects='<%= projects_json(@user.invested_projects) %>'>
   <% if current_user == @user %>
     <div class="message">
       <div>
@@ -8,8 +7,9 @@
     </div>
   <% end %>
 
-  <div class="head">
-    <div>
+  <div class="head fix elevate">
+
+    <div class="contract">
 
       <figure class="profile-badge">
         <%= render partial: 'users/avatar', locals: { user: @user } %><div class="focus"></div>
@@ -40,37 +40,71 @@
   <div class="body">
     <div class="main">
       <div>
-        <div class="tabs project-tabs">
-          <ul>
-            <li><a ng-class="{current:sideTab==1}" ng:click="sideTab=1"><em><%= @user.invested_projects.count %></em> Investments</a></li>
-            <li><a ng-class="{current:sideTab==2}" ng:click="sideTab=2"><em><%= @user.following_projects.count %></em> Tracking</a></li>
-          </ul>
+
+        <div class="switch-group">
+          <div id="investments-content" class="tab-content main-switch" ng-class="{'main-switch-current':sideTab==1}" ng-show="sideTab == 1" ng-init='sideTab=1'>
+
+            <div class="tabs project-tabs">
+              <ul>
+                <li><a ng-class="{current:sideTab==1}" ng:click="sideTab=1"><em><%= @user.invested_projects.count %></em> Investments</a></li>
+                <li><a ng-class="{current:sideTab==2}" ng:click="sideTab=2"><em><%= @user.following_projects.count %></em> Tracking</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.invested_projects), locals: { class_name: "dash-invested" } %>
+            </div>
+          </div>
+
+          <div id="tracking-content" class="tab-content main-switch" ng-show="sideTab == 2" ng-class="{'main-switch-current':sideTab==2}">
+            <div class="tabs project-tabs">
+              <ul>
+                <li><a ng-class="{current:sideTab==1}" ng:click="sideTab=1"><em><%= @user.invested_projects.count %></em> Investments</a></li>
+                <li><a ng-class="{current:sideTab==2}" ng:click="sideTab=2"><em><%= @user.following_projects.count %></em> Tracking</a></li>
+              </ul>
+            </div>
+
+            <div id='tracking-list'>
+              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.following_projects), locals: { class_name: "dash-tracking-list" } %>
+            </div>
+          </div>
+
         </div>
-        <ul class="connections" ng-show="sideTab == 1" ng-init='sideTab=1'>
-          <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.invested_projects), locals: { class_name: "dash-invested" } %>
-        </ul>
-        <ul class="connections" ng-show="sideTab == 2">
-          <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.following_projects), locals: { class_name: "dash-tracking-list" } %>
-        </ul>
+
       </div>
     </div>
 
     <div class="side">
       <div>
-        <div>
-          <div class="tabs connection-tabs">
-            <ul>
-              <li><a ng-class="{current:connectionsTab==1}" ng:click="connectionsTab=1"><em><%= @user.investors.count %></em> Investors</a></li>
-              <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em><%= @user.user_followers.count %></em> Followers</a></li>
+        <div class="switch-group">
+
+          <div id="following-content" class="tab-content side-tab-content tab-content-connections side-switch" ng-class="{'side-switch-current':connectionsTab==1}" ng-show="connectionsTab == 1" ng-init="connectionsTab=1">
+						<div class="tabs connection-tabs">
+              <ul>
+                <li><a ng-class="{current:connectionsTab==1}" ng:click="connectionsTab=1"><em><%= @user.investors.count %></em> Investors</a></li>
+                <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em><%= @user.user_followers.count %></em> Followers</a></li>
+              </ul>
+            </div>
+
+            <ul class="connections">
+              <%= render partial: 'projects/follower', collection: @user.investors %>
+            </li>
+          </div>
+
+          <div id="followers-content" class="tab-content side-tab-content tab-content-connections side-switch" ng-class="{'side-switch-current':connectionsTab==2}" ng-show="connectionsTab==2">
+						<div class="tabs connection-tabs">
+              <ul>
+                <li><a ng-class="{current:connectionsTab==1}" ng:click="connectionsTab=1"><em><%= @user.investors.count %></em> Investors</a></li>
+                <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em><%= @user.user_followers.count %></em> Followers</a></li>
+              </ul>
+            </div>
+
+            <ul class="connections">
+              <%= render partial: 'projects/follower', collection: @user.user_followers %>
             </ul>
           </div>
-          <ul class="connections" ng-show="connectionsTab == 1"  ng-init="connectionsTab=1">
-            <%= render partial: 'projects/follower', collection: @user.investors %>
-          </ul>
-          <ul class="connections" ng-show="connectionsTab == 2">
-            <%= render partial: 'projects/follower', collection: @user.user_followers %>
-          </ul>
         </div>
+
         <div id="timeline-content" class="tab-content side-tab-content">
           <ul class="feed">
             <% for activity in @user.activities.order('created_at desc').limit(7) %>

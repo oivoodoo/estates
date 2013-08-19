@@ -1,4 +1,4 @@
-<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= current_user.to_json(only: [:short_bio, :title, :first_name, :last_name, :middle_name, :facebook_link, :twitter_link, :google_plus_link, :linkedin_link]) %>'  data-projects='<%= projects_json(@user.invested_projects) %>'>
+<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= profile_user_json(current_user) %>'  data-projects='<%= projects_json(@user.invested_projects) %>'>
   <div class="message silent">
     <div>
       <a class="button" href="<%= user_path(current_user) %>">View your public profile</a>

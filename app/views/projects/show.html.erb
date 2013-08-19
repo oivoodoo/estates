@@ -45,21 +45,19 @@
       </div>
     </div>
   </div>
+
   <div class="title fix">
-    <hgroup>
-      <h2>
+    <div class="contract">
+      <figure class="profile-badge manager-badge">
+        <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
+      </figure>
+      <h2 class='name'>
         <div class="trackwrap track">
           <%= render 'track' %>
         </div>
-        <div class="profile-badge manager-badge">
-          <div>
-            <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
-            <div class="focus"></div>
-          </div>
-        </div>
         <%= @project.name %>
       </h2>
-    </hgroup>
+    </div>
 
     <div id="tabs" class="tabs major gridwrap-padded">
       <ul>
@@ -153,6 +151,17 @@
         </ul>
       </div>
     </div>
+  </div>
+
+  <div class="offer-disclaimer">
+    <hr>
+    <p>A special note regarding forward-looking statements:</p>
+    <p>This Offering material, including any sections entitled “Overview”, “Property”, “Neighborhood”, “Financials”, and “Developer” and within the Private Placement Memorandum the sections entitled “The Company,” “Risk Factors,” “Business and Properties,” “Offering Price Factors” and “Use of Proceeds”, contain forward-looking statements. In some cases you can identify these statements by forward-looking words such as “believe,” “may,” “will,” “estimate,” “continue,” “anticipate,” “intend,” “could,” “would,” “project,” “plan,” “expect” or the negative or plural of these words or similar expressions. These forward-looking statements include, but are not limited to, statements concerning the Company, property, risk factors, plans and projections.</p>
+    <p>You should not rely upon forward-looking statements as predictions of future events. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described in the “Risk Factors” within the Private Placement Memorandum. In light of these risks, uncertainties and assumptions, the forward-looking events and circumstances discussed in this Offering material may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements.</p>
+    <p>You should read this Offering material and the documents that we reference in this Offering material and the Private Placement Memorandum with the understanding that our actual future results, levels of activity, performance and events and circumstances may be materially different from what we expect.</p>
+    <p>Except as required by law, neither we nor any other person assumes responsibility for the accuracy and completeness of the forward-looking statements. We undertake no obligation to update publicly any forward-looking statements for any reason after the date of this Private Placement Memorandum to conform these statements to actual results or to changes in our expectations.</p>
+    <p>Disclaimer: Neither the SEC nor any state securities commission or regulatory authority approved, passed upon or endorsed the merits of this offering.</p>
+    <p>Flock's services do not constitute “crowd funding” as described in Title III of the Jumpstart Our Business Startups Act (“JOBS Act”).</p>
   </div>
 </section>
 

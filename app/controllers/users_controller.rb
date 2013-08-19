@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :find_messages, only: :show
   before_filter :find_user
 
   def show
@@ -18,10 +17,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def find_messages
-    @messages = current_user.messages
-  end
 
   def find_user
     @user = User.find(params[:id])

@@ -131,6 +131,8 @@ window.fixPos = function() {
         $el.data('fixed', true);
         setTimeout(function(){
           $el.data('fixedclone').addClass('narrow');
+          // AK changes
+          $(document).trigger('fix:scroll', $el);
         }, 1);
       }
     } else {
