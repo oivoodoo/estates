@@ -1,5 +1,9 @@
 <?php
 
+	session_start();
+
+
+
 	$is_forgotten = array_key_exists('action', $_GET) && $_GET['action']=='forgotten';
 	$is_signup = array_key_exists('action', $_GET) && $_GET['action']=='sign-up';
 	$is_internal = array_key_exists('internal', $_GET) && $_GET['internal'];
@@ -12,7 +16,7 @@
 	$label = $is_signup ? 'Sign up' : 'Sign in';
 	
 
-if ($is_forgotten) {} else {
+	if ($is_forgotten) {} else {
 
 ?>
 
@@ -38,11 +42,11 @@ if ($is_forgotten) {} else {
 				<?php if ($is_internal) { ?>
 				
 					<form action="signup">
-						<div class="tight">
+						<?php /*<div class="tight">*/ ?>
 							<label><input type="text" placeholder="Full Name" size="1"></label>
 							<label><input type="email" placeholder="E-mail" size="1"></label>
 							<label><input type="text" placeholder="••••••••" size="1"></label>
-						</div>
+						<?php /*</div>*/ ?>
 						<div class="action">
 							<div>
 								<div>
@@ -79,10 +83,11 @@ if ($is_forgotten) {} else {
 			
 			<?php } else { ?>
 	
-					<form action="signin">
+					<form method="post">
+						<input type="hidden" name="auth" value="1">
 						<div class="tight">
 							<div class="input-group">
-								<input style="width:50%;" type="email" placeholder="E-mail" size="1">
+								<input style="width:50%;" type="text" placeholder="E-mail" size="1" name="email">
 								<input style="width:50%;" type="password" placeholder="••••••••" size="1">
 							</div>
 						</div>

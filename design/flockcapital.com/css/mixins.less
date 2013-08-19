@@ -7,11 +7,18 @@
 @lustRed: rgb(193, 21, 41);
 @asparagusGreen: rgb(146, 199, 142);
 @shamrockGreen: rgb(41, 180, 113);
-@azureBlue: rgb(0, 160, 209);
 @prussianBlue: rgb(0, 77, 102);
 
+//@azureBlue: rgb(0, 160, 209);
+@azureBlue: hsl(200, 80%, 45%); // rgb(0, 127, 255);
+//@trueBlue: rgb(0, 115, 207);
+//@royalBlue: rgb(65, 105, 225);
+//@ceruleanBlue: rgb(0, 123, 167);
+//@frenchBlue: rgb(0, 114, 187);
+//@ncsBlue: rgb(0, 135, 189);
 
-@highlight: @shamrockGreen;
+@highlight: @azureBlue;
+@highlightDark: saturate(lighten(@highlight, 15%), 5%);
 
 
 @offWhite: darken(white, 3%);
@@ -22,6 +29,7 @@
 @nickel: darken(white, 53%);
 
 
+@black: lighten(black, 9%);
 @offBlack: lighten(black, 16%); // also @heading-color in typeplate.less
 @darkGray: lighten(black, 22%);
 @textGray: lighten(black, 31%); // also @body-copy-color in typeplate.less
@@ -41,6 +49,13 @@
 @mastheadTall: 8rem;
 @mastheadShort: 4rem;
 @menuBreakWidth: 55rem;
+
+
+
+.text {
+	font-family: 'neue-haas-grotesk-text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	//font-family: 'Helvetica Neue', 'neue-haas-grotesk-text', Helvetica, Arial, sans-serif;
+}
 
 
 
@@ -185,9 +200,8 @@
 		 -o-blend-mode:@props;
 			blend-mode:@props;
 }
-.placeholder(@color: @aluminium, @weight: 300) {
+.placeholder(@color: @aluminium, @weight: 300, @fontSize: @theta) {
 	
-	@fontSize: @theta;
 	@lineHeight: @line-height*(1/@fontSize);
 	
 	input::-webkit-input-placeholder {

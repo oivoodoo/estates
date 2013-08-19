@@ -26,14 +26,16 @@
 <article class="project-badge <?php echo $size.' '.(($i+1)%2==0 ? 'alt' : ''); ?>">
 	<div onclick="location.href='<?php echo $link ?>'">
 	
-		<a class="project-thumb" href="<?php echo $link ?>"><img src="img/<?php echo $handle; ?>.png"><div class="focus"></div></a>
+		<a class="project-thumb" href="<?php echo $link ?>">
+			<img src="img/<?php echo $handle; ?>.png">
+			<div class="focus"></div>
+		</a>
 		
 		<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
 						<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
-						<div class="focus"></div>
 					</div>
 				</div>
 				
@@ -70,8 +72,7 @@
 		<div class="financials">
 			<div>
 				<div>
-					<div>
-						<?php
+					<div><?php
 						
 							$fc = count($financials)+2;
 							
@@ -79,27 +80,26 @@
 								if (array_key_exists('type', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
 										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
-									echo "</ul>\n";
+									echo "</ul>";
 								}
 								if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
 									echo "<ul class='size-".$fc."'>\n";
 										echo '<li class="share"><div><b>'.format_money($financials['share']['price'], true, false)."</b> <label>/share</label></div></li>\n";
-									echo "</ul>\n";
+									echo "</ul>";
 								}
 								if (array_key_exists('yield', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
 										echo '<li class="yield"><div><b>'.$financials['yield']['value'].'<u>'.$financials['yield']['unit']."</u></b> <label>yield</label></div></li>\n";
-									echo "</ul>\n";
+									echo "</ul>";
 								}
 								if (array_key_exists('term', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
 										echo '<li class="term"><div><b>'.$financials['term']['value'].' <u class="short">'.$financials['term']['unit']['short'].'</u><u class="long">'.$financials['term']['unit']['long']."</u></b> <label>term</label></div></li>\n";
-									echo "</ul>\n";
+									echo "</ul>";
 								}
 							}
 							
-						?>
-						<div class="moneywrap size-<?php echo $fc/2; ?>">
+						?><div class="moneywrap size-<?php echo $fc/2; ?>">
 							<div>
 								<?php
 									if ($goal || $progress) {

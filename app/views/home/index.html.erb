@@ -1,17 +1,13 @@
 <section id="intro">
   <div id="slideshow" class="grid-1-1 no-padding" >
     <div>
-      <div style="
-        background-image: url(<%= image_path('img/intro-3-434391.jpg') %>);
-        background-size: auto 100%;
-        background-repeat: no-repeat;
-        background-position: center bottom;
-        ">
-        <h1 class="title">Build a real estate portfolio online</h1>
-        <h4>Get access to exclusive investments and manage your portfolio using Flock.</h4>
+      <div class="bg"></div>
+      <div class="fg">
 
+        <h1 class="title">Build a real estate portfolio online</h1>
+        <p>Get access to exclusive investments and manage your portfolio using Flock.</p>
         <div class="action">
-          <button onclick="Turbolinks.visit('<%= page_path("howto") %>')" class="how-it-works faded">Watch how &nbsp;&nbsp;<span>1:45 min</span></button>
+          <a href="<%= new_user_registration_path %>" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
         </div>
       </div>
     </div>

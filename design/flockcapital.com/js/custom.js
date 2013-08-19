@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
 		is_project = $body.hasClass('project'),
 		is_investor = $body.hasClass('investor'),
 		is_dashboard = $body.hasClass('dashboard'),
-		menuFlex = $body.hasAnyClass('home') ? true : false,
+		menuFlex = is_home,
 		
 		connectionMasonry = function(){
 			$('.connections').each(function(i,el){
@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
 					$submenu.children().each(function(i,el){
 						height+= $(el).outerHeight(true);
 					});
-					$submenu.data('height', height);
+					$submenu.data('height', height + (.5*baseFontSize) ); // + the speechbubble arrow
 				});
 		},
 		fixPos = function() {
@@ -53,7 +53,7 @@ jQuery(document).ready(function($) {
 			$('.fix').each(function(i,el){
 				var $el = $(el),
 					top = $el.data('top') || menuShortH,
-					steal = 0; // px
+					steal = -1; // px
 				
 				if (scrollTop+top+steal > $el.data('offsetTop') && winW > 469) {
 					if (!$el.data('fixed')) {
@@ -76,8 +76,8 @@ jQuery(document).ready(function($) {
 				var first_tab_href = $('.main .tabs a, .tabs.major a').eq(0).attr('href'),
 					tab = window.location.hash || first_tab_href.substring(first_tab_href.indexOf("#")),
 					$tab = $(tab.replace('#', '.')+'-tab'),
-					$tabs = $tab.closest('.tabs'),
-					$cloned_tabs = $tabs.data('original') || $tabs.data('fixedclone'),
+					$fix = $tab.closest('.fix, .fixed'),
+					$cloned_tabs = $fix.length ? ($fix.data('original') || $fix.data('fixedclone')) : null,
 					$other_tabs = $('a.tab').not($tab),
 					$tab_content = $(tab+'-content'),
 					$other_tab_contents = $('.tab-content').not($tab_content),
@@ -110,7 +110,18 @@ jQuery(document).ready(function($) {
 							$cloned_tab.addClass('current');
 						}
 					}
+					
+					if (!iniLoad) {
+						$('html, body').animate({
+							scrollTop: $('.title.fix').offset().top - menuShortH
+						}, 300);
+					}
 				}
+			}
+			if (is_project) {
+				var tab = window.location.hash;
+				if (tab=='#location' && !iniLoad)
+					reLayoutMaps();
 			}
 			if (is_dashboard) {
 				var tab = window.location.hash || first_tab_href.substring(first_tab_href.indexOf("#"));
@@ -119,6 +130,8 @@ jQuery(document).ready(function($) {
 				if (tab=='#map' && !iniLoad)
 					reLayoutMaps();
 			}
+			
+			iniLoad = false;
 		},
 		layout = function() {
 			winW = $(window).width();
@@ -141,6 +154,12 @@ jQuery(document).ready(function($) {
 				if (winW > 1000 && $('.side .tab-content.current').length) {
 					location.href = $('.main .tabs a, .tabs.major a').eq(0).attr('href');
 				}
+			}
+			
+			if (is_home) {
+				$('#slideshow').height(function(){
+					return $(this).find('>div').outerHeight();
+				});
 			}
 			
 			//$('#map-content').height(winH);
@@ -253,9 +272,6 @@ jQuery(document).ready(function($) {
 		.on('mouseleave', function(e){
 			$(this).text('Tracking');
 		});
-		
-	$('#masthead nav ul, .tabs ul, .submenu ul, #intro .action, .financials >div >div >div, .ext-account-buttons')
-		.cleanWhitespace();
 	
 	$('.combobox')
 		.combobox();
@@ -316,6 +332,7 @@ jQuery(document).ready(function($) {
 	/*	 Maps
 	—————————————————————————————————————————————————————————————————————————————————————— */
 	var initiated_gmaps = {},
+		poiMarker = hst+'/g/map_icon.svg'; // hst+'/g/map_icon@x2.png';
 		gmap_styles = {
 			style_one: [
 				{
@@ -353,9 +370,8 @@ jQuery(document).ready(function($) {
 				return false;
 			
 			var map_addresses = maps[map_handle],
-				iniZoom = 14,
-				iniCenter,
-				iconImg = hst+'/g/map_icon@x2.png';
+				iniZoom = 12,
+				iniCenter;
 		
 			// Create a new StyledMapType object, passing it the array of styles, as well as the name to be displayed on the map type control.
 			var styledMap = new google.maps.StyledMapType(gmap_styles.style_one, {name: 'Gray Map'}),
@@ -386,7 +402,7 @@ jQuery(document).ready(function($) {
 			var this_map = new google.maps.Map(map_canvas, mapOptions);
 		
 			// Define marker-image for location pins
-			var icon = new google.maps.MarkerImage(iconImg, null, null, null, new google.maps.Size(18, 26)); // map_icon@x2.png is 36×52px
+			var icon = new google.maps.MarkerImage(poiMarker, null, null, null, new google.maps.Size(18, 26));
 			
 			// Let's focus on the first location once the map is ready and populated by emulating a click on it
 			/*google.maps.event.addListenerOnce(this_map, 'idle', function() {
@@ -468,6 +484,14 @@ jQuery(document).ready(function($) {
 				iniCenter = latlngbounds.getCenter();
 				this_map.fitBounds(latlngbounds);
 				this_map.setCenter(iniCenter);
+				
+				// in case of only one POI the map is naturally zoomed to the max, let's pull back to iniZoom
+				zoomChangeBoundsListener = google.maps.event.addListenerOnce(this_map, 'bounds_changed', function(event) {
+					if (this_map.getZoom()>iniZoom) this_map.setZoom(iniZoom);
+					this_map.setCenter(iniCenter);
+				});
+				//setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener);}, 2000);
+				
 			} else {
 				iniCenter = new google.maps.LatLng(map_addresses[0]['lat'], map_addresses[0]['lng']);
 				this_map.setCenter(iniCenter);
@@ -556,18 +580,18 @@ jQuery(document).ready(function($) {
 	—————————————————————————————————————————————————————————————————————————————————————— */
 	$('#spread')
 		.on('click', function(e){
-			var expand = $masthead.hasClass('expanded') ? false : true;
-			if (!expand) {
+			var spread = $masthead.hasClass('spreaded') ? false : true;
+			if (!spread) {
 				$masthead.scrollTop(0).addClass('animating');
 				setTimeout(function(){$masthead.removeClass('animating')}, 300);
 				$('body').css('overflow','auto');
 			} else {
 				$('body').css('overflow','hidden');
 			}
-			$masthead.toggleClass('expanded').height(function(){
+			$masthead.toggleClass('spreaded').height(function(){
 				var navH = $masthead.find('nav').outerHeight(true);
 				
-				mastHeadH = menuFlex ? (expand ? menuH+navH : menuH) : (expand ? ((3+(navH/baseFontSize))*1.1)+'rem' : '3rem'); //TODO: +2.6 ????
+				mastHeadH = menuFlex ? (spread ? menuH+navH : menuH) : (spread ? ((3+(navH/baseFontSize))*1.1)+'rem' : '3rem'); //TODO: +2.6 ????
 				//console.log(baseFontSize, navH);
 				
 				return  mastHeadH;
@@ -580,53 +604,43 @@ jQuery(document).ready(function($) {
 	—————————————————————————————————————————————————————————————————————————————————————— */
 	var menuTimeout,
 		sizeMenu = function() {
-		if (menuFlex) {
-			var scrollTop = $(window).scrollTop(),
-				//mini = scrollTop > menuTallH-menuShortH ? true : false,
-				autohide = scrollTop > menuTallH ? true : false;
-			
-			/*if (mini)
-				return;*/
+			if (menuFlex) {
+				var scrollTop = $(window).scrollTop(),
+					autohide = scrollTop > menuTallH ? true : false;
 				
-			if (   scrollTop <= Math.max(0, $('#intro').height()-menuTallH)   ) {
-				// don't contract the menu yet
-				document.getElementById('masthead').style.height = '';
-				document.getElementById('nav').style.marginTop = '';
-				document.getElementById('expand').style.marginTop = '';
-				$('#masthead').removeClass('mini');
-			
-			} else if (   scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
-				// don't contract the menu any further 
-				document.getElementById('masthead').style.height = '';
-				document.getElementById('nav').style.marginTop = '';
-				document.getElementById('expand').style.marginTop = '';
-				$('#masthead').addClass('mini');
-			
-			} else {
-				//menuH = menuTallH - (scrollTop - (Math.abs($('#intro').height()-menuTallH)));
-				  menuH = menuTallH - scrollTop + Math.max(0, ($('#intro').height()-menuTallH));
-				//menuH = $('#intro').height() - scrollTop;
-				console.log(menuH);
-				document.getElementById('masthead').style.height = menuH+'px';
-				document.getElementById('nav').style.marginTop = ((menuH-menuShortH)/2)+'px';
-				document.getElementById('expand').style.marginTop = ((menuH-menuShortH)/2)+'px';
-				$('#masthead').removeClass('mini');
-			
+				if (   scrollTop <= Math.max(0, $('#intro').height()-menuTallH)   ) {
+					// don't contract the menu yet
+					document.getElementById('masthead').style.height = '';
+					document.getElementById('nav').style.marginTop = '';
+					document.getElementById('spread').style.marginTop = '';
+					$('#masthead').removeClass('mini');
+				
+				} else if (   scrollTop>=Math.max(Math.abs($('#intro').height()-menuShortH),0)   ) {
+					// don't contract the menu any further 
+					document.getElementById('masthead').style.height = '';
+					document.getElementById('nav').style.marginTop = '';
+					document.getElementById('spread').style.marginTop = '';
+					$('#masthead').addClass('mini');
+				
+				} else {
+					//menuH = menuTallH - (scrollTop - (Math.abs($('#intro').height()-menuTallH)));
+					  menuH = menuTallH - scrollTop + Math.max(0, ($('#intro').height()-menuTallH));
+					//menuH = $('#intro').height() - scrollTop;
+					document.getElementById('masthead').style.height = menuH+'px';
+					document.getElementById('nav').style.marginTop = ((menuH-menuShortH)/2)+'px';
+					document.getElementById('spread').style.marginTop = ((menuH-menuShortH)/2)+'px';
+					$('#masthead').removeClass('mini');
+				
+				}
 			}
-			
-
-			
-			//document.getElementById('masthead').style.height = menuH+'px';
-			//$masthead.toggleClass('mini', mini);
-		}
-	};
+		};
 
 
 
 
 	/*	Annoy/destroy the sign in/sign up nag
-		*) we need need the timeout since browsers auto-scroll the page when you
-		   navigate back/fwd and we want the nag to be invoked by manual scroll only
+		* we need need the timeout since browsers auto-scroll the page when you
+		  navigate back/fwd and we want the nag to be invoked by manual scroll only
 	—————————————————————————————————————————————————————————————————————————————————————— */
 	var nag = false,
 		callNag = function() {
@@ -639,7 +653,7 @@ jQuery(document).ready(function($) {
 			}
 		}
 		setTimeout(function(){ // *
-			nag = false; // true = nag ON, false = nag OFF
+			nag = auth || false; // true = nag ON, false = nag OFF
 		}, 1000);
 		$nag.find('.close').on('click', function(e){
 			$nag.fadeOut(200, function(){
@@ -694,7 +708,6 @@ jQuery(document).ready(function($) {
 	layout();
 	
 	$window.trigger( 'hashchange' );
-	iniLoad = false;
 	
 	
 });

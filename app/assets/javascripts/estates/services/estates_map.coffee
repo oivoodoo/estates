@@ -5,18 +5,10 @@ estates.factory 'EstatesMap', [
       id: 'grayMap'
       name: 'Gray Map'
       grayMap: [
-        {
-          stylers: [ { saturation: -100 }, { lightness: 35 } ]
-        },{
-          elementType: 'labels',
-          stylers: [ { weight: .2 }, { lightness: -10 } ]
-        },{
-          elementType: 'labels.text.stroke',
-          stylers: [ { visibility: 'off' } ]
-        }, {
-          featureType: 'water',
-          stylers: [ { color: '#b8b8b8' } ]
-        }
+        { stylers: [ { saturation: -100 }, { lightness: 35 } ] },
+        { elementType: 'labels', stylers: [ { weight: .2 }, { lightness: -10 } ] },
+        { elementType: 'labels.text.stroke', stylers: [ { visibility: 'off' } ] },
+        { featureType: 'water', stylers: [ { color: '#b8b8b8' } ] }
       ]
     host = "#{$window.location.protocol}//#{$window.location.host}"
     MarkerIcon = host + '/images/map_icon@x2.png'

@@ -1,7 +1,7 @@
 <?php
 
 	global $projects, $investors;
-	$h = 'kadri';
+	$h = $_SESSION['user'];
 	
 	if (!$h || !array_key_exists($h, $investors)) return;
 	
@@ -13,22 +13,22 @@
 	<?php /*<div id="tabs" class="submenu">
 		<div>
 			<ul>
-				<li><a class="dashboard current" href="?p=dashboard">Dashboard</a></li>
-				<li><a class="profile" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li>
-				<li><a class="settings" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
+				<li><a class="dashboard current" href="?p=dashboard">Dashboard</a></li
+				><li><a class="profile" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li
+				><li><a class="settings" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
 			</ul>
 		</div>
 	</div>*/ ?>
 
-	<div id="tabs" class="tabs major gridwrap-padded fix">
+	<div id="tabs" class="tabs major gridwrap-padded fix elevate">
 		<ul>
-			<li><a href="?p=dashboard#reports" class="tab reports-tab current"><span>Reports</span></a></li>
-			<li><a href="?p=dashboard#investments" class="tab investments-tab"><span><em>3</em> Investments</span></a></li>
-			<li><a href="?p=dashboard#tracking" class="tab tracking-tab"><span><em>7</em> Tracking</span></a></li>
-			<li><a href="?p=dashboard#following" class="tab following-tab"><span><em>27</em> Following</span></a></li>
-			<li><a href="?p=dashboard#followers" class="tab followers-tab"><span><em>3</em> Followers</span></a></li>
-			<li><a href="?p=dashboard#timeline" class="tab timeline-tab"><span>Timeline</span></a></li>
-			<li><a href="?p=dashboard#map" class="tab map-tab"><span>Map</span></a></li>
+			<li><a href="?p=dashboard#reports" class="tab reports-tab current"><span>Reports</span></a></li
+			><li><a href="?p=dashboard#investments" class="tab investments-tab"><span><em>3</em> Investments</span></a></li
+			><li><a href="?p=dashboard#tracking" class="tab tracking-tab"><span><em>7</em> Tracking</span></a></li
+			><li><a href="?p=dashboard#following" class="tab following-tab"><span><em>27</em> Following</span></a></li
+			><li><a href="?p=dashboard#followers" class="tab followers-tab"><span><em>3</em> Followers</span></a></li
+			><li><a href="?p=dashboard#timeline" class="tab timeline-tab"><span>Timeline</span></a></li
+			><li><a href="?p=dashboard#map" class="tab map-tab"><span>Map</span></a></li>
 		</ul>
 	</div>
 	
@@ -61,13 +61,13 @@
 							datasets : [
 								{
 									fillColor : 'hsla(0, 0%, 97%, .10)',
-									strokeColor : 'hsl(151, 63%, 43%)',
+									strokeColor : 'hsl(200, 80%, 45%)',
 									pointStrokeColor : 'transparent',
 									pointColor : 'transparent',
 									data : [82, 82, 82, 82, 82, 82, 82]
 								},{
-									fillColor : 'hsla(151, 63%, 43%, .1)',
-									strokeColor : 'hsl(151, 63%, 43%)',
+									fillColor : 'hsla(200, 80%, 45%, .1)',
+									strokeColor : 'hsl(200, 80%, 45%)',
 									pointColor : 'white',
 									data : [82, 83, 85.3, 85.9, 88.8, 90.13, 92.999]
 								}
@@ -97,12 +97,12 @@
 						'debt' => array(
 							'label'		=> 'Debt',
 							'percentage'=> 30,
-							'color'		=> 'hsl(151, 63%, 43%)'
+							'color'		=> 'hsl(200, 80%, 45%)'
 						),
-						'loan' => array(
-							'label'		=> 'Loan',
+						'equity' => array(
+							'label'		=> 'Equity',
 							'percentage'=> 70,
-							'color'		=> 'hsl(0, 0%, 97%)'
+							'color'		=> 'hsl(200, 40%, 85%)'
 						)
 					);
 				?>
@@ -149,7 +149,7 @@
 			<div>
 				
 				<div class="switch-group">
-					<div id="investments-content" class="tab-content main-switch">
+					<div id="investments-content" class="tab-content main-switch main-switch-current">
 						
 						<div class="tabs project-tabs">
 							<ul>
@@ -170,7 +170,7 @@
 						
 					</div>
 					
-					<div id="tracking-content" class="tab-content main-switch main-switch-current">
+					<div id="tracking-content" class="tab-content main-switch">
 						
 						<div class="tabs project-tabs">
 							<ul>
@@ -300,7 +300,7 @@
 		<script>
 			window.gmaps.dashboard_investments = [
 				<?php
-					for ($i=0; $i<10; $i++) {
+					for ($i=0; $i<3; $i++) {
 						$rand_project = array_rand($projects);
 						$map_project = $projects[$rand_project];
 						
@@ -318,423 +318,5 @@
 		</script>
 		
 	</div>
-
-<?php /*
-	<div class="body">
-		<div class="main">
-			
-			
-			
-			<div id="tabs-contents" class="tabs-contents">
-				<div>
-					<?php
-						switch($tab) {
-							/*case 'investments': ?>
-								<div class="tab-content">
-									
-									<div class="projects gridwrap">
-										<?php
-											$projects = array(
-												array(
-													'link'		=> '?p=project&project=1800-van-ness',
-													'name'		=> '1800 Van Ness',
-													'handle'	=> '1800-van-ness',
-													'type_label'=> 'Residential',
-													''	=> array(
-														'handle'=> 'broadgate',
-														'name'	=> 'Broadgate'
-													),
-													'goal'		=> format_money(32000000),
-													'progress'	=> 66, // percentage
-													'terms'		=> array(
-														'<b>12%</b> target return',
-														'<b>Equity</b> purchase',
-														'<b>24 month</b> holding period'
-													)
-												),
-												array(
-													'link'		=> '?p=project&project=1800-van-ness',
-													'name'		=> '1800 Van Ness',
-													'handle'	=> '1800-van-ness',
-													'type_label'=> 'Residential',
-													''	=> array(
-														'handle'=> 'broadgate',
-														'name'	=> 'Broadgate'
-													),
-													'goal'		=> format_money(32000000),
-													'progress'	=> 66, // percentage
-													'terms'		=> array(
-														'<b>12%</b> target return',
-														'<b>Equity</b> purchase',
-														'<b>24 month</b> holding period'
-													)
-												)
-											);
-											foreach($projects as $project) {
-												require('project-badge.php');
-											}
-										?>
-									</div>
-									
-								</div>
-								<?php break;
-							
-							case 'projects': ?>
-								<div class="tab-content">
-									
-									<div class="projects gridwrap">
-										<?php
-											$projects = array(
-												array(
-													'link'		=> '?p=project&project=1800-van-ness',
-													'name'		=> '1800 Van Ness',
-													'handle'	=> '1800-van-ness',
-													'type_label'=> 'Residential',
-													''	=> array(
-														'handle'=> 'broadgate',
-														'name'	=> 'Broadgate'
-													),
-													'goal'		=> format_money(32000000),
-													'progress'	=> 66, // percentage
-													'terms'		=> array(
-														'<b>12%</b> target return',
-														'<b>Equity</b> purchase',
-														'<b>24 month</b> holding period'
-													)
-												),
-												array(
-													'link'		=> '?p=project&project=1800-van-ness',
-													'name'		=> '1800 Van Ness',
-													'handle'	=> '1800-van-ness',
-													'type_label'=> 'Residential',
-													''	=> array(
-														'handle'=> 'broadgate',
-														'name'	=> 'Broadgate'
-													),
-													'goal'		=> format_money(32000000),
-													'progress'	=> 66, // percentage
-													'terms'		=> array(
-														'<b>12%</b> target return',
-														'<b>Equity</b> purchase',
-														'<b>24 month</b> holding period'
-													)
-												),
-												array(
-													'link'		=> '?p=project&project=1800-van-ness',
-													'name'		=> '1800 Van Ness',
-													'handle'	=> '1800-van-ness',
-													'type_label'=> 'Residential',
-													''	=> array(
-														'handle'=> 'broadgate',
-														'name'	=> 'Broadgate'
-													),
-													'goal'		=> format_money(32000000),
-													'progress'	=> 66, // percentage
-													'terms'		=> array(
-														'<b>12%</b> target return',
-														'<b>Equity</b> purchase',
-														'<b>24 month</b> holding period'
-													)
-												),
-												array(
-													'link'		=> '?p=project&project=1800-van-ness',
-													'name'		=> '1800 Van Ness',
-													'handle'	=> '1800-van-ness',
-													'type_label'=> 'Residential',
-													''	=> array(
-														'handle'=> 'broadgate',
-														'name'	=> 'Broadgate'
-													),
-													'goal'		=> format_money(32000000),
-													'progress'	=> 66, // percentage
-													'terms'		=> array(
-														'<b>12%</b> target return',
-														'<b>Equity</b> purchase',
-														'<b>24 month</b> holding period'
-													)
-												),
-												array(
-													'link'		=> '?p=project&project=1800-van-ness',
-													'name'		=> '1800 Van Ness',
-													'handle'	=> '1800-van-ness',
-													'type_label'=> 'Residential',
-													''	=> array(
-														'handle'=> 'broadgate',
-														'name'	=> 'Broadgate'
-													),
-													'goal'		=> format_money(32000000),
-													'progress'	=> 66, // percentage
-													'terms'		=> array(
-														'<b>12%</b> target return',
-														'<b>Equity</b> purchase',
-														'<b>24 month</b> holding period'
-													)
-												)
-											);
-											foreach($projects as $project) {
-												require('project-badge.php');
-											}
-										?>
-									</div>
-									
-								</div>
-								<?php break;
-							
-							case 'investors': ?>
-								<div class="tab-content">
-										
-										<ul class="connections-list  gridwrap">
-											<?php
-											$profiles = array(
-												array(
-													'name'		=> 'Kadri Liis Rääk',
-													'handle'	=> 'kadri',
-													'type'		=> 'investor',
-													'type_label'=> 'Accredited Investor',
-													'type_class'=> 'investor accredited'
-												),
-												array(
-													'name'		=> 'Mart Uibo',
-													'handle'	=> 'mart',
-													'type'		=> 'investor'
-												),
-												array(
-													'name'		=> 'Michael Walsh',
-													'handle'	=> 'michael',
-													'type'		=> 'investor',
-													'type_label'=> 'Accredited Investor',
-													'type_class'=> 'investor accredited'
-												),
-												array(
-													'name'		=> 'Kadri Liis Rääk',
-													'handle'	=> 'kadri',
-													'type'		=> 'investor',
-													'type_label'=> 'Accredited Investor',
-													'type_class'=> 'investor accredited'
-												),
-												array(
-													'name'		=> 'Mart Uibo',
-													'handle'	=> 'mart',
-													'type'		=> 'investor',
-													'type_class'=> 'investor'
-												),
-												array(
-													'name'		=> 'Kadri Liis Rääk',
-													'handle'	=> 'kadri',
-													'type'		=> 'investor',
-													'type_label'=> 'Accredited Investor',
-													'type_class'=> 'investor accredited'
-												),
-												array(
-													'name'		=> 'Michael Walsh',
-													'handle'	=> 'michael',
-													'type'		=> 'investor',
-													'type_label'=> 'Accredited Investor',
-													'type_class'=> 'investor accredited'
-												)
-											);
-											foreach ($profiles as $profile_data) {
-												require('connection-badge-list.php');
-											} ?>
-										</ul>
-										
-									</div>
-								<?php break;
-							
-							case 's': ?>
-								<div class="tab-content">
-									
-									<ul class="connections-list gridwrap">
-										<?php
-										$profiles = array(
-											array(
-												'name'		=> 'Trigon Capital',
-												'handle'	=> 'trigon',
-												'type'		=> ''
-											),
-											array(
-												'name'		=> 'Broadgate Capital',
-												'handle'	=> 'broadgate',
-												'type'		=> ''
-											),
-											array(
-												'name'		=> 'Broadgate',
-												'handle'	=> 'broadgate',
-												'type'		=> ''
-											),
-											array(
-												'name'		=> 'Trigon Capital',
-												'handle'	=> 'trigon',
-												'type'		=> ''
-											),
-											array(
-												'name'		=> 'Broadgate Capital',
-												'handle'	=> 'broadgate',
-												'type'		=> ''
-											),
-											array(
-												'name'		=> 'Trigon Capital',
-												'handle'	=> 'trigon',
-												'type'		=> ''
-											),
-											array(
-												'name'		=> 'Broadgate',
-												'handle'	=> 'broadgate',
-												'type'		=> ''
-											)
-										);
-										foreach ($profiles as $profile_data) {
-											require('connection-badge-list.php');
-										} ?>
-									</ul>
-									
-								</div>
-								<?php break;*
-							
-							default: ?>
-								<div class="tab-content gridwrap">
-									
-									<?php /*
-									<div class="message quiet">
-										<div>
-											<span>Your profile is 33% complete</span> <a class="button theta thicker" href="?p=investor-edit&i=<?php echo $h; ?>">Complete your profile</a>
-										</div>
-									</div>* ?>
-									
-									<ul class="feed">
-										<li>
-											<div class="profile-badge">
-												<div>
-													<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-													<div class="focus"></div>
-												</div>
-											</div>
-											<div class="entry">
-												<h5 class="entry-title"><a href="?p=investor&i=kadri">Kadri</a> and 2 other friends invested in <a href="?p=project&project=1800-van-ness" title="1800 Van Ness">1800 Van Ness</a></h5>
-												<div class="entry-content">
-													<div class="profile-badge project">
-														<div>
-															<a href="?p=project&project=1800-van-ness" title="1800 Van Ness"><img src="img/1800-van-ness.png"></a>
-															<div class="focus"></div>
-														</div>
-													</div>
-												</div>
-												<div class="entry-meta">
-													<div class="profile-badge">
-														<div>
-															<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
-															<div class="focus"></div>
-														</div>
-													</div>
-													<div class="profile-badge">
-														<div>
-															<a href="?p=investor&i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
-															<div class="focus"></div>
-														</div>
-													</div>
-													<time>2 days, 7hours ago</time>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="profile-badge">
-												<div>
-													<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-													<div class="focus"></div>
-												</div>
-											</div>
-											<div class="entry">
-												<h5 class="entry-title" title="Kadri Liis Rääk"><a href="#">Kadri</a> joined Flock</h5>
-												<div class="entry-meta">
-													<div class="profile-badge">
-														<div>
-															<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
-															<div class="focus"></div>
-														</div>
-													</div>
-													<div class="profile-badge">
-														<div>
-															<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-															<div class="focus"></div>
-														</div>
-													</div>
-													<time>2 days, 7hours ago</time>
-												</div>
-											</div>
-										</li>
-									</ul>
-									
-								</div>
-								<?php break;
-						}
-					?>
-				</div>
-			</div>
-			
-		</div>
-		<div class="side">
-			<div id="tabs" class="tabs">
-				<ul>
-					<li><a href="#" class="current">Following</a></li><li><a href="#">Followers</a></li><li><a href="#">Investments</a></li>
-				</ul>
-			</div>
-			<div>
-				<div class="connections-wrap">
-					
-					<ul class="connections">
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="#" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="#" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="#" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="#" title="Michael Walsh"><img src="img/michael.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="#" title="Mart Uibo"><img src="img/mart.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="#" title="Kadri Liis Rääk"><img src="img/kadri.png" width="256" height="256"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-						</li>
-					</ul>
-					
-				</div>
-			</div>
-		</div>
-	</div>*/ ?>
 
 </section>

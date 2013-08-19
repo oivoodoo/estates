@@ -18,19 +18,25 @@
 |                                                                     |
 +---------------------------------------------------------------------+
 */
-@font-face {
-  font-family: "Ampersand";
-  src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
-  unicode-range: U+270C;
+/*@font-face {
+	font-family: "@{amp-fontface-name}";
+	src: @amp-fontface-source;
+	unicode-range: ~"U+270C";
 }
+
+// Ampersand fallback font for unicode range
 @font-face {
-  font-family: "Ampersand";
-  src: local("Georgia");
-  unicode-range: U+270C;
+	font-family: "@{amp-fontface-name}";
+	src: @amp-fontface-fallback;
+	unicode-range: ~"U+270C";
+}*/
+/*.ampersand (@amp-font-family) {
+	font-family: @amp-font-family;
 }
+
 .ampersand-placeholder {
-  font-family: Verdana, sans-serif;
-}
+	.ampersand(@amp-font-family);
+}*/
 .breakword {
   word-wrap: break-word;
 }
@@ -49,17 +55,23 @@
  * Extend this object into your custom stylesheet.
  *
  */
-.drop-cap:first-letter {
-  float: left;
-  margin: inherit;
-  padding: inherit;
-  font-size: 4em;
-  font-family: inherit;
-  line-height: 1;
-  text-indent: 0;
-  background: transparent;
-  color: inherit;
+/*.dropcap (@float: left, @font-size: 4em, @font-family: inherit, @text-indent: 0, @margin: inherit, @padding: inherit, @color: inherit, @lineHeight: 1, @bg: transparent) {
+	&:first-letter {
+		float: @float;
+		margin: @margin;
+		padding: @padding;
+		font-size: @font-size;
+		font-family: @font-family;
+		line-height: @lineHeight;
+		text-indent: @text-indent;
+		background: @bg;
+		color: @color;
+	}
 }
+
+.drop-cap {
+	.dropcap;
+}*/
 html {
   font: normal 106.25%/1.5 'neue-haas-grotesk-text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   /*-webkit-font-feature-settings: "pnum" 1, "frac" 1, "kern" 1, "salt" 1;

@@ -33,18 +33,6 @@
 
 
 <section id="investor-edit" class="<?php echo $tab; ?>">
-	
-	<?php /*
-	<div class="submenu">
-		<div>
-			<ul>
-				<li><a class="dashboard" href="?p=dashboard">Dashboard</a></li>
-				<li><a class="profile current" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li>
-				<?php /*<li><a class="accreditation <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='accreditation' ? 'current' : ''; ?>" href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation">Investor Accreditation</a></li>* ?>
-				<li><a class="settings" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
-			</ul>
-		</div>
-	</div>*/ ?>
 
 	
 	<?php if (array_key_exists('email', $_POST)) { ?>
@@ -94,9 +82,9 @@
 		
 		<div id="tabs" class="tabs profile">
 			<ul>
-				<li><a href="?p=investor-edit&i=<?php echo $h ?>" class="personal <?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='personal') ? 'current' : ''; ?>"><em>1</em> Personal Details</a></li>
-				<li><a href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation" class="accreditation <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='accreditation' ? 'current' : ''; ?>"><em>2</em> Accreditation</a></li>
-				<li><a href="?p=investor-edit&i=<?php echo $h ?>&tab=experience" class="experience <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='experience' ? 'current' : ''; ?>"><em>3</em> Experience</a></li>
+				<li><a href="?p=investor-edit&i=<?php echo $h ?>" class="personal <?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='personal') ? 'current' : ''; ?>">Personal Details</a></li
+				><li><a href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation" class="accreditation <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='accreditation' ? 'current' : ''; ?>">Accreditation</a></li
+				><li><a href="?p=investor-edit&i=<?php echo $h ?>&tab=experience" class="experience <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='experience' ? 'current' : ''; ?>">Experience</a></li>
 			</ul>
 		</div>
 	</div>

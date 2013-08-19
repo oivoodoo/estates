@@ -1,6 +1,6 @@
 estates.controller 'ProfileController', [
-  '$scope', '$element', '$window', 'EstatesMap'
-  ($scope, $element, $window, EstatesMap) ->
+  '$scope', '$element', '$window', '$compile', 'EstatesMap'
+  ($scope, $element, $window, $compile, EstatesMap) ->
     $scope.profileTab = 1
     user = $element.data('user')
     projects = $element.data('projects')

@@ -33,17 +33,6 @@
 
 <section id="investor-edit" class="<?php echo $tab; ?>">
 	
-	<?php /*
-	<div class="submenu">
-		<div>
-			<ul>
-				<li><a class="dashboard" href="?p=dashboard">Dashboard</a></li>
-				<li><a class="profile" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li>
-				<?php /*<li><a class="accreditation <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='accreditation' ? 'current' : ''; ?>" href="?p=investor-edit&i=<?php echo $h ?>&tab=accreditation">Investor Accreditation</a></li>* ?>
-				<li><a class="settings current" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
-			</ul>
-		</div>
-	</div>*/ ?>
 	
 	
 		
