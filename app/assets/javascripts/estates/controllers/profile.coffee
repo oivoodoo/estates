@@ -14,8 +14,6 @@ estates.controller 'ProfileController', [
     $scope.openTab = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step
-      $('#accreditation_user_form').fileupload
-        dataType: "script"
 
     $scope.google = EstatesMap.settings($scope.user, $scope.projects)
 ]
