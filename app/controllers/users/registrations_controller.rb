@@ -38,8 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def accreditation
-    @user = User.find(current_user.id)
-    @user.update_attributes(params[:user])
+    current_user.update_attributes(params[:user])
     render :edit
   end
 
