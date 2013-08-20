@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_password
 
+
+
   validates :email, :status, presence: true
 
   has_many :authentications
@@ -46,6 +48,7 @@ class User < ActiveRecord::Base
   scope :recent, lambda { |count| order('users.created_at desc').limit(count) }
 
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :identification_document, IdentificationDocumentUploader
 
   def role?(r)
     self.role.to_s == r.to_s

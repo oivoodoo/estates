@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rake'
+gem 'rake', '~> 10.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -79,6 +79,9 @@ gem 'capistrano-puma', require: false
 gem 'rvm-capistrano'
 
 gem 'honeybadger'
+
+gem 'jquery-fileupload-rails'
+gem 'minitest', '~> 4.7.5'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
