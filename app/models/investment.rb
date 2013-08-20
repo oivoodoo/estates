@@ -1,5 +1,5 @@
 class Investment < ActiveRecord::Base
-  mount_uploader :identification_image, IdentificationImageUploader
+  mount_uploader :identification_document, IdentificationDocumentUploader
 
   attr_accessor :state, :country
 

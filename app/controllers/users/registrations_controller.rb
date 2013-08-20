@@ -37,10 +37,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def accreditation
+    @user = User.find(current_user.id)
+    @user.update_attributes(params[:user])
+    render :edit
+  end
+
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :current_password, :avatar)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :current_password, :avatar, :identification_document)
   end
 
   def needs_password?(user, params)

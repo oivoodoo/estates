@@ -37,8 +37,8 @@
 
     <div id="tabs" class="tabs profile">
       <ul>
-        <li><a class="personal current" ng-click="profileTab=1" ng-class="{current:profileTab == 1}"><em>1</em> Personal Details</a></li>
-        <li><a class="accreditation " ng-click="profileTab=2" ng-class="{current:profileTab == 2}"><em>2</em> Accreditation</a></li>
+        <li><a class="personal current" ng-click="openTab($event, 'profileTab', 1)" ng-class="{current:profileTab == 1}"><em>1</em> Personal Details</a></li>
+        <li><a class="accreditation " ng-click="openTab($event, 'profileTab', 2)" ng-class="{current:profileTab == 2}"><em>2</em> Accreditation</a></li>
       </ul>
     </div>
   </div>
@@ -137,7 +137,7 @@
 
   <div class="tab-content gridwrap" id="accreditation" ng-class='{current:profileTab==2}' ng-show="profileTab == 2">
     <div>
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= form_for(resource, :as => resource_name, :url => {:action => "accreditation"}, :html => { :method => :put, :id => "accreditation_user_form"}) do |f| %>
         <div class="intro">
           <p>
             Most investments are available to accredited investors only. Please answer the following questions to verify your qualification as an <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
@@ -149,7 +149,7 @@
           <p>Please upload a scan of your Identification Document.</p>
           <div class="table">
             <div style="text-align:left;">
-              <input id="doc-upload" type="file" name="doc-scan[]">
+              <%= f.file_field :identification_document %>
             </div>
             <div id="doc-upload-response"></div>
           </div>
@@ -157,7 +157,7 @@
             <div class="progress" style="width:0%"></div>
           </div>
           <div id="doc-scan-preview">
-            <%= image_tag("img/doc-scan.png") %>
+            <%= image_tag @user.identification_document_url(:thumb) %>
           </div>
         </fieldset>
 
@@ -187,7 +187,7 @@
         <div class="action">
           <div>
             <div>
-              <%= f.submit 'Update', class: "zeta thickest", disabled: 'disabled' %>
+              <%= f.submit 'Update', class: "zeta thickest" %>
             </div>
           </div>
         </div>
@@ -196,4 +196,3 @@
     </div>
   </div>
 </section>
-

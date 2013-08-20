@@ -19,6 +19,7 @@
  *= require errors
  *= require own
  *= require angular-ui
+ *= require jquery.fileupload-ui
  *= require validates
  */
 
