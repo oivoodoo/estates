@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
 
-  attr_accessor :current_password, :individual_income, :securities_firm, :company_director, :company_officer
+  attr_accessor :current_password
 
 
 

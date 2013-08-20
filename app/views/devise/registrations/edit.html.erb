@@ -172,17 +172,17 @@
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "1000000") %> $200'000 — $350'000
+                <%= f.radio_button(:individual_income, "200'000") %> $200'000 — $350'000
               </label>
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "2500000") %> $350'000 — $500'000
+                <%= f.radio_button(:individual_income, "350'000") %> $350'000 — $500'000
               </label>
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "5000000") %> $500'000 &lt;
+                <%= f.radio_button(:individual_income, "500'000") %> $500'000 &lt;
               </label>
             </li>
           </ul>
@@ -194,12 +194,12 @@
           <ul class="radio-checkbox-list mb0">
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:securities_firm, "false") %> No
+                <%= f.radio_button(:securities_firm, false) %> No
               </label>
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:securities_firm, "true") %> Yes
+                <%= f.radio_button(:securities_firm, true) %> Yes
               </label>
             </li>
           </ul>
@@ -211,12 +211,12 @@
           <ul class="radio-checkbox-list mb0">
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:company_director, "false") %> No
+                <%= f.radio_button(:company_director, false) %> No
               </label>
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:company_director, "true") %> Yes
+                <%= f.radio_button(:company_director, true) %> Yes
               </label>
             </li>
           </ul>

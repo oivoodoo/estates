@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :current_password, :avatar, :identification_document)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :current_password, :avatar, :identification_document,  :individual_income, :securities_firm, :company_director, :company_officer)
   end
 
   def needs_password?(user, params)
