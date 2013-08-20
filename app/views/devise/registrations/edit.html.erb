@@ -167,22 +167,22 @@
           <ul class="radio-checkbox-list">
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "0") %> &lt; $200'000
+                <%= f.radio_button(:individual_income, true) %> &lt; $200'000
               </label>
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "200'000") %> $200'000 — $350'000
+                <%= f.radio_button(:individual_income, true) %> $200'000 — $350'000
               </label>
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "350'000") %> $350'000 — $500'000
+                <%= f.radio_button(:individual_income, true ) %> $350'000 — $500'000
               </label>
             </li>
             <li>
               <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "500'000") %> $500'000 &lt;
+                <%= f.radio_button(:individual_income, true) %> $500'000 &lt;
               </label>
             </li>
           </ul>
