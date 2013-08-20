@@ -19,14 +19,6 @@ window.load = function() {
   is_project = $body.hasClass('project');
   is_dashboard = $body.hasClass('dashboard');
 
-	$('.fix')
-		.each(function(i,el){
-			var $el = $(el);
-			$el.data('fixedclone', $el.clone().removeClass('fix').addClass('fixed'));
-			$el.data('fixedclone').data('original', $el);
-			$el.data('fixedclone').find('ul').cleanWhitespace();
-		});
-
 	submenuHeights();
 
 	$('.combobox')
@@ -36,6 +28,16 @@ window.load = function() {
 };
 
 $(document).ready(window.load);
+
+window.applyFix = function(apply) {
+  $('.fix')
+    .each(function(i,el){
+      var $el = $(el);
+      $el.data('fixedclone', apply($el.clone().removeClass('fix').addClass('fixed')));
+      $el.data('fixedclone').data('original', $el);
+      $el.data('fixedclone').find('ul').cleanWhitespace();
+    });
+};
 
 $window.on('load', function(){
   layout();
@@ -130,8 +132,6 @@ window.fixPos = function() {
         $el.data('fixed', true);
         setTimeout(function(){
           $el.data('fixedclone').addClass('narrow');
-          // AK changes
-          $(document).trigger('fix:scroll', $el);
         }, 1);
       }
     } else {

@@ -15,12 +15,8 @@ estates.controller 'ProjectsController', [
       event.preventDefault()
       $scope[variable] = step
 
-    $(document).bind 'fix:scroll', (event, el) ->
-      $el = $(el)
-      $scope.$apply ->
-        $('.profile-badge img').trigger('resize')
-        control = $el.parent().find('.fixed')
-        $compile(control)($scope)
+    window.applyFix (el) ->
+      $compile($(el))($scope)
 
     # TODO: refactor this things, move out to the service using factory.
 
