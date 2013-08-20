@@ -14,6 +14,11 @@ estates.controller 'ProfileController', [
         control = $el.parent().find('.fixed')
         $compile(control)($scope)
 
+    $scope.openTab = (event, variable, step) ->
+      event.preventDefault()
+      $scope[variable] = step
+      $('#accreditation_user_form').fileupload
+        dataType: "script"
+
     $scope.google = EstatesMap.settings($scope.user, $scope.projects)
 ]
-
