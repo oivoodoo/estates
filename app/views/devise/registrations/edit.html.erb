@@ -164,24 +164,62 @@
         <fieldset class="separated-bottom">
           <h5>Annual Individual Income</h5>
           <p>I have an individual income for each of the two most recent years equal to an income level indicated below and reasonably expect to reach at least the same level this year.</p>
-          <label class="radio" for="level-1"><input id="level-1" type="radio" name="income-level"> &lt; $200'000</label>
-          <label class="radio" for="level-2"><input id="level-2" type="radio" name="income-level"> $200'000 — $350'000</label>
-          <label class="radio" for="level-3"><input id="level-3" type="radio" name="income-level"> $350'000 — $500'000</label>
-          <label class="radio" for="level-4"><input id="level-4" type="radio" name="income-level"> $500'000 &lt;</label>
+          <ul class="radio-checkbox-list">
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:individual_income, "0") %> &lt; $200'000
+              </label>
+            </li>
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:individual_income, "1000000") %> $200'000 — $350'000
+              </label>
+            </li>
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:individual_income, "2500000") %> $350'000 — $500'000
+              </label>
+            </li>
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:individual_income, "5000000") %> $500'000 &lt;
+              </label>
+            </li>
+          </ul>
         </fieldset>
 
         <fieldset class="separated-bottom">
           <h5>Securities Firm</h5>
           <p>Are you associated with a Securities Firm?</p>
-          <label class="radio" for="no-securities-firm"><input id="no-securities-firm" type="radio" name="securities-firm"> No</label>
-          <label class="radio" for="yes-securities-firm"><input id="yes-securities-firm" type="radio" name="securities-firm"> Yes</label>
+          <ul class="radio-checkbox-list mb0">
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:securities_firm, "false") %> No
+              </label>
+            </li>
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:securities_firm, "true") %> Yes
+              </label>
+            </li>
+          </ul>
         </fieldset>
 
         <fieldset>
           <h5>Public Company Shareholder or Officer</h5>
           <p>?</p>
-          <label class="radio" for="no-public-company"><input id="no-public-company" type="radio" name="public-company"> No</label>
-          <label class="radio" for="yes-public-company"><input id="yes-public-company" type="radio" name="public-company"> Yes</label>
+          <ul class="radio-checkbox-list mb0">
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:company_director, "false") %> No
+              </label>
+            </li>
+            <li>
+              <label class="radio-checkbox-label">
+                <%= f.radio_button(:company_director, "true") %> Yes
+              </label>
+            </li>
+          </ul>
         </fieldset>
 
         <div class="action">
