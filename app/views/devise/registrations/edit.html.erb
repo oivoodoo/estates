@@ -1,4 +1,4 @@
-<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= profile_user_json(current_user) %>'  data-projects='<%= projects_json(@user.invested_projects) %>'>
+<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= profile_user_json(current_user) %>'  data-projects='<%= projects_json(current_user.invested_projects) %>'>
   <div class="message silent">
     <div>
       <a class="button" href="<%= user_path(current_user) %>">View your public profile</a>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="tab-content gridwrap" id="profile" ng-class='{current:profileTab==1}' ng-show="profileTab == 1">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(current_user, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <label for="user_email">
         <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
       </label>
@@ -137,7 +137,7 @@
 
   <div class="tab-content gridwrap" id="accreditation" ng-class='{current:profileTab==2}' ng-show="profileTab == 2">
     <div>
-      <%= form_for(resource, :as => resource_name, :url => {:action => "accreditation"}, :html => { :method => :put, :id => "accreditation_user_form"}) do |f| %>
+      <%= form_for(current_user, :url => {:action => "accreditation"}, :html => { :method => :put, :id => "accreditation_user_form"}) do |f| %>
         <div class="intro">
           <p>
             Most investments are available to accredited investors only. Please answer the following questions to verify your qualification as an <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
@@ -157,7 +157,7 @@
             <div class="progress" style="width:0%"></div>
           </div>
           <div id="doc-scan-preview">
-            <%= image_tag @user.identification_document_url(:thumb) %>
+            <%= image_tag current_user.identification_document_url(:thumb) %>
           </div>
         </fieldset>
 
