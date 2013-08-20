@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819135302) do
+ActiveRecord::Schema.define(version: 20130820121229) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20130819135302) do
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
   create_table "investments", force: true do |t|
-    t.string   "identification_image"
+    t.string   "identification_document"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id",              null: false
@@ -272,6 +272,9 @@ ActiveRecord::Schema.define(version: 20130819135302) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "identification_document"
+    t.boolean  "individual_income"
+    t.boolean  "securities_firm"
+    t.boolean  "company_director"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
