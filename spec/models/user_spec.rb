@@ -219,15 +219,16 @@ describe User do
     let!(:project1) { create(:project, price: 100, shares: 1) }
     let!(:project2) { create(:project, price: 200, shares: 1) }
 
-    let(:investments) { InvestmentsCreator.new(user) }
+    let(:investments1) { InvestmentsCreator.new(user, project1) }
+    let(:investments2) { InvestmentsCreator.new(user, project2) }
 
     before do
-      investments.create(project1, quantity: 1)
-      investments.create(project2, quantity: 2)
+      investments1.create(quantity: 1)
+      investments2.create(quantity: 2)
     end
 
     it 'should calculate total investments' do
-      expect(user.total_invested).to eq(500)
+      expect(user.reload.total_invested).to eq(500)
     end
   end
 end
