@@ -10,7 +10,7 @@
             <div class="metric" style='margin-top:10px'>Quantity</div>
             <%= f.number_field :quantity, :'ng-model' => 'investment.quantity', :'ng-init' => 'investment.quantity=0', style: 'margin:0px;padding:0px;margin-top:6px;', required: true %>
             <div class="math-symbol">×</div>
-            <span class="error-message" ng-show="investor_profile['investment[quantity]'].$error.required">Required!</span>
+            <span class="error-message" ng-show="investor_profile['investment[quantity]'].$error.required">This field is Required!</span>
           </div>
           <div id="checkout-order-form-price" class="item">
             <div class="metric" style='margin-top: 10px;'>Price / Share</div>
