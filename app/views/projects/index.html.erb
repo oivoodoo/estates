@@ -1,15 +1,4 @@
 <section>
-  <div class="submenu" style="display:none;">
-    <div>
-      <ul>
-        <li><%= link_to "Local", tag_path("local"), class: tag_class_name('local') %></li>
-        <li><%= link_to "Featured", tag_path("featured"), class: tag_class_name('featured') %></li>
-        <li><%= link_to "Trending", tag_path("trending"), class: tag_class_name('trending') %></li>
-        <li><%= link_to "All", projects_path, class: tag_class_name('all') %></li>
-      </ul>
-    </div>
-  </div>
-
   <div id="projects" class="gridwrap">
     <%= render partial: 'projects/project', collection: @projects, locals: { class_name: "full" } %>
   </div>

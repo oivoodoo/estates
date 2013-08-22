@@ -11,6 +11,8 @@ module ApplicationHelper
       "investor-edit"
     elsif controller_name == 'users'
       'investor'
+    elsif controller_name == 'pages'
+      'projects'
     else
       controller_name
     end

@@ -1,7 +1,7 @@
-section.home-listing .item { margin-bottom: 30px }
-section.home-listing .item .left { float: left; }
-section.home-listing .item .left.image { width: 280px; }
-section.home-listing .item .left.text { width: 70%; }
+section.how .item { margin-bottom: 30px }
+section.how .item .left { float: left; }
+section.how .item .left.image { width: 280px; }
+section.how .item .left.text { width: 70%; }
 
 .clear { clear: both; }
 
@@ -11,3 +11,5 @@ section.home-listing .item .left.text { width: 70%; }
 #contact_message { width: 99.8%; }
 
 .financials ul.money li>div { display: inline; }
+.project-badge .financials ul.size-6, .project-badge .financials div.size-6 { float: left; }
+

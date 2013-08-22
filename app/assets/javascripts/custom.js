@@ -15,9 +15,11 @@ window.load = function() {
   window.$masthead = $('#masthead');
   window.$wrap = $('#wrap');
   window.$footer = $wrap.find('>footer');
-  is_home = $body.hasClass('home');
-  is_project = $body.hasClass('project');
-  is_dashboard = $body.hasClass('dashboard');
+  window.is_home = $body.hasClass('home');
+  window.is_project = $body.hasClass('project');
+  window.is_dashboard = $body.hasClass('dashboard');
+  window.is_settings = $body.hasClass('settings');
+  window.is_projects = $body.hasClass('projects');
 
 	submenuHeights();
 
@@ -25,6 +27,7 @@ window.load = function() {
 		.combobox();
 
 	layout();
+  window.drawRise();
 };
 
 $(document).ready(window.load);
@@ -337,5 +340,160 @@ var	chartDefaults = {
       }
     }
   );
+};
+
+
+/* Illustrative chart-line in the footer
+     —————————————————————————————————————————————————————————————————————————————————————— */
+window.drawRise = function() {
+  var riseCanvas = document.getElementById('riseCanvas');
+  var w = winW,
+  h = Math.round((winW<470 ? (7*.6) : winW<700 ? (7*.8) : 7) * baseFontSize),
+  poly = [
+    -10,   -10,
+    -10, .55*h,
+    .05*w,  .5*h,
+    .275*w, .66*h,
+    .50*w, .33*h,
+    .725*w, .28*h,
+    .95*w,  .1*h,
+    w+10, .09*h,
+    w+10,   -10
+  ],
+  spacing = 0,
+  dots = [
+    [ .05*w,  .5*h+spacing],
+    [.275*w, .66*h+spacing],
+    [ .50*w, .33*h+spacing],
+    [.725*w, .28*h+spacing],
+    [ .95*w,  .1*h+spacing]
+  ],
+  riseColor = (is_settings && $('#settings').hasClass('general')) || is_projects ? 'hsl(0, 0%, 96%)' : 'white';
+  strokeW = 0,
+  strokeColor = 'hsl(200, 80%, 45%)',  // #1791cf = @azureBlue
+  drawDots = true,
+  dotRadius = 2,
+  dotStrokeW = 4,
+  dotStrokeColor = 'hsla(200, 80%, 45%, .35)',
+  eyeColor = riseColor
+  drawShadow = true;
+
+
+  //	resize our canvas to fit viewport width
+  $(riseCanvas).attr({
+    'width': w,
+    'height': h
+  });
+
+
+  //	get canvas 2D context and clear it for re-drawing
+  var ctx = riseCanvas.getContext('2d');
+  ctx.clearRect( 0, 0, w, h );
+
+
+  // drawing our first polygon — filled white
+  ctx.beginPath();
+  ctx.moveTo(poly[0], poly[1]);
+  for(i=2; i<poly.length-1; i+=2)  ctx.lineTo(poly[i] , poly[i+1]);
+  ctx.closePath();
+  ctx.fillStyle = riseColor;
+  ctx.fill();
+
+
+  /*	Set the composition mode to 'destination-out' which subtracts the next shapes from the previous
+      see more: https://developer.mozilla.org/samples/canvas-tutorial/6_1_canvas_composite.html */
+  if (drawDots) {
+    ctx.globalCompositeOperation = 'destination-out';
+
+    // Draw the shapes you want to cut out
+    ctx.fillStyle = '#f00'; // any color
+    ctx.beginPath();
+    for (i=0; i<dots.length; i++) {
+      ctx.arc(
+        dots[i][0],	// center X
+        dots[i][1],	// center Y
+        dotRadius+spacing-.5, // radius
+        0,
+        2*Math.PI
+      );
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+
+
+  if (drawShadow) {
+    //	Set composition mode to 'destination-over' to draw underneath
+    ctx.globalCompositeOperation = 'destination-over';
+
+    //	Let's draw another black polygon shape with shadow to go below everything
+    ctx.beginPath();
+    ctx.moveTo(poly[0], poly[1]);
+    for(i=2; i < poly.length-1 ; i+=2) ctx.lineTo(poly[i], poly[i+1]);
+    ctx.closePath();
+    ctx.fillStyle = 'hsla(0, 0%, 0%, .85)';
+    ctx.shadowColor = 'hsla(0, 0%, 0%, .85)';
+    ctx.shadowBlur = 40;
+    ctx.fill();
+  }
+
+
+  // Set comp mode back to default
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.shadowBlur = 0; // reset shadow
+
+
+  // Shift our polygon down by {spacing}
+  for(i=1; i<poly.length; i+=2) poly[i] = poly[i]+spacing;
+
+  if (strokeW) {
+    //	Draw the blue-stroked polygon
+    ctx.beginPath();
+    ctx.moveTo(poly[0], poly[1]);
+    for(i=2; i < poly.length-1 ; i+=2)
+    ctx.lineTo( poly[i] , poly[i+1] )
+    ctx.closePath();
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = strokeW;
+    ctx.stroke();
+  }
+
+  if (drawDots) {
+    if (dotStrokeW) {
+      //	Draw the wider dots (stroke color)
+      ctx.fillStyle = dotStrokeColor;
+      ctx.beginPath();
+      for (i=0; i<dots.length; i++) {
+        ctx.arc(
+          dots[i][0],	// center X
+          dots[i][1],	// center Y
+          dotRadius+dotStrokeW, // radius
+          0,
+          2*Math.PI
+        );
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+
+
+    //	Draw white dots over blue ones
+    ctx.fillStyle = eyeColor;
+    ctx.shadowColor = 'hsla(0, 0%, 0%, .4)';
+    ctx.shadowBlur = Math.max(dotStrokeW*2, 10);
+    ctx.beginPath();
+    for (i=0; i<dots.length; i++) {
+      ctx.arc(
+        dots[i][0],	// center X
+        dots[i][1],	// center Y
+        dotRadius,	// radius
+        0,
+        2*Math.PI
+      );
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+
 };
 

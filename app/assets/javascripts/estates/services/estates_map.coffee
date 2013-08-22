@@ -11,7 +11,7 @@ estates.factory 'EstatesMap', [
         { featureType: 'water', stylers: [ { color: '#b8b8b8' } ] }
       ]
     host = "#{$window.location.protocol}//#{$window.location.host}"
-    MarkerIcon = host + '/images/map_icon@x2.png'
+    MarkerIcon = host + '/images/map_icon.svg'
 
     # setup center for the google maps
     # by default if we have no at least one invested object or user doesn't
