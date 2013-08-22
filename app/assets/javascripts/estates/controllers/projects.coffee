@@ -27,7 +27,7 @@ estates.controller 'ProjectsController', [
       $scope.className = 'tracking'
     else
       $scope.followState = 'not-tracking'
-      $scope.followText = 'Track'
+      $scope.followText = 'Track this project'
       $scope.className = 'track'
 
     $scope.follow = ($event) ->
@@ -47,7 +47,7 @@ estates.controller 'ProjectsController', [
                 $('.profile-badge img').trigger('resize')
             , 100)
       else
-        $scope.followText = 'Track'
+        $scope.followText = 'Track this project'
         $scope.followState = 'not-tracking'
         $scope.className = 'track'
 

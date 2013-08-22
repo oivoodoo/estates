@@ -3,7 +3,7 @@
     <div class="cover">
       <div>
         <div>
-          <%= image_tag @project.image.url(:show) %>
+          <%= image_tag @project.image.url(:show), class: 'elevated' %>
         </div>
       </div>
     </div>
@@ -46,17 +46,28 @@
     </div>
   </div>
 
-  <div class="title fix">
+  <div class="title">
     <div class="contract">
       <figure class="profile-badge manager-badge">
         <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
       </figure>
-      <h2 class='name'>
-        <div class="trackwrap track">
-          <%= render 'track' %>
-        </div>
-        <%= @project.name %>
-      </h2>
+      <h2 class='name'><%= @project.name %></h2>
+
+      <div class="secondary-action tracking">
+        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"></button>
+        <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"></button>
+        <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"></button>
+        <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"></button>
+
+        <% if user_signed_in? %>
+          <button class="{{className}}"title="{{followText}}" ng-click="follow($event)"></button>
+        <% else %>
+          <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+            <button class="track" title='Track this project'></button>
+          </a>
+          <button class="{{className}}" style="display: none;" title="{{followText}}" ng-click="follow($event)"></button>
+        <% end %>
+      </div>
     </div>
 
     <div id="tabs" class="tabs major gridwrap-padded">

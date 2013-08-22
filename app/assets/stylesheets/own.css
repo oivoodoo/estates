@@ -13,3 +13,5 @@ section.how .item .left.text { width: 70%; }
 .financials ul.money li>div { display: inline; }
 .project-badge .financials ul.size-6, .project-badge .financials div.size-6 { float: left; }
 
+.secondary-action button.tracking { background-color: #1791cf !important; }
+
