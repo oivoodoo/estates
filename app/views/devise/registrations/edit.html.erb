@@ -1,236 +1,42 @@
-<section id="investor-edit" class="edit-profile" ng-controller='ProfileController' data-user='<%= profile_user_json(current_user) %>'  data-projects='<%= projects_json(current_user.invested_projects) %>'>
-  <div class="message silent">
-    <div>
-      <a class="button" href="<%= user_path(current_user) %>">View your public profile</a>
-    </div>
-  </div>
+<section id="settings" class="general" ng-controller='ProfileController' data-user='<%= profile_user_json(current_user) %>'  data-projects='<%= projects_json(current_user.invested_projects) %>'>
 
-  <div class="head fix">
-    <div class='contract'>
-      <figure class="profile-badge">
-        <%= render partial: 'users/avatar', locals: { user: current_user } %>
-      </figure>
+  <div class="head fix elevate">
 
-      <div class="profile-details">
-        <h3>{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}} </h3>
-
-        <div class="mini-bio">
-          <p>{{ user.short_bio }}</p>
-        </div>
-
-        <div class="ext-account-buttons">
-          <div>
-            <div class="btns">
-              <div>
-                <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link || '<%= user_omniauth_authorize_path(:facebook, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.facebook_link}"></button>
-                <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click="open(user.google_plus_link || '<%= user_omniauth_authorize_path(:google_oauth2, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.google_plus_link}"></button>
-                <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click="open(user.linkedin_link || '<%= user_omniauth_authorize_path(:linkedin, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.linkedin_link}"></button>
-              </div>
-            </div> &nbsp;&nbsp;
-            <div>
-              <p class="tertiary">Connect external accounts to follow your friends' activity on Flock.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- contact -->
-
-    <div id="tabs" class="tabs profile">
+    <div id="tabs" class="tabs submenu">
       <ul>
-        <li><a class="personal current" ng-click="openTab($event, 'profileTab', 1)" ng-class="{current:profileTab == 1}"><em>1</em> Personal Details</a></li>
-        <li><a class="accreditation " ng-click="openTab($event, 'profileTab', 2)" ng-class="{current:profileTab == 2}"><em>2</em> Accreditation</a></li>
+        <li><a class="general" ng-click="openTab($event, 'profileTab', 1)" ng-class="{current:profileTab == 1}">Personal Details</a></li>
+        <li><a class="external-accounts" ng-click="openTab($event, 'profileTab', 2)" ng-class="{current:profileTab == 2}">External Accounts</a></li>
+        <li><a class="accreditation " ng-click="openTab($event, 'profileTab', 3)" ng-class="{current:profileTab == 3}">Investor Qualification</a></li>
+        <li><a class="notifications " ng-click="openTab($event, 'profileTab', 4)" ng-class="{current:profileTab == 4}">Notifications</a></li>
+        <li><a class="delete-account " ng-click="openTab($event, 'profileTab', 5)" ng-class="{current:profileTab == 5}">Delete Account</a></li>
       </ul>
     </div>
+
   </div>
 
-  <div class="tab-content gridwrap" id="profile" ng-class='{current:profileTab==1}' ng-show="profileTab == 1">
-    <%= form_for(current_user, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <label for="user_email">
-        <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
-      </label>
-
-      <label for="user_short_bio">
-        <%= f.text_area :short_bio, placeholder: "Short biography", 'ng-model' => "user.short_bio", :size => 1 do %>
-          {{user.short_bio}}
-        <% end %>
-      </label>
-
-      <fieldset class="separated-bottom">
-        <legend>To change your password, provide your old password and then type the new one:</legend>
-        <div class="input-group">
-          <label for="user_current_password" style="width:33.3%">
-            <%= f.password_field :current_password, placeholder: "Old password", :size => 1, :autocomplete => 'off' %>
-          </label>
-          <label for="user_password" style="width:33.3%">
-            <%= f.password_field :password, placeholder: "New password", :size => 1, :autocomplete => 'off' %>
-          </label>
-          <label for="user_password_confirmation" style="width:33.3%">
-            <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1, :autocomplete => 'off' %>
-          </label>
-        </div>
-      </fieldset>
-
-      <fieldset class="input-group name">
-        <label for="user_title" style="width:15%;">
-          <%= f.text_field :title, placeholder: 'Title', 'ng-model' => "user.title", size: 1 %>
-        </label>
-        <label for="user_first_name" style="width:28.33%">
-          <%= f.text_field :first_name, placeholder: 'First Name', 'ng-model' => "user.first_name", size: 1 %>
-        </label>
-        <label for="user_last_name" style="width:28.33%">
-          <%= f.text_field :last_name, placeholder: 'Last Name', 'ng-model' => "user.last_name", size: 1 %>
-        </label>
-        <label for="user_middle_name" style="width:28.33%">
-          <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', 'ng-model' => "user.middle_name", size: 1 %>
-        </label>
-      </fieldset>
-
-      <label for="user_phone">
-        <%= f.text_field :phone, placeholder: "Phone", size: 1 %>
-      </label>
-
-      <fieldset class="separated-bottom">
-        <div class="tight">
-          <label for="user_street">
-            <%= f.text_field :street, placeholder: "Street address", size: 1 %>
-          </label>
-          <label for="user_zip">
-            <%= f.text_field :zip_code, placeholder: "Zip code", size: 1 %>
-          </label>
-
-          <label for="user_city">
-            <%= f.text_field :city, placeholder: "City/Town/Locality", size: 1 %>
-          </label>
-
-          <label for="user_country">
-            <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
-          </label>
-
-          <label for="user_state">
-            <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
-          </label>
-        </div>
-
-        <div class="tight">
-          <label for="user_facebook_link">
-            <%= f.text_field :facebook_link, placeholder: "https://www.facebook.com/", 'ng-model' => "user.facebook_link", :size => 1 %>
-          </label>
-          <label for="user_google_plus_link">
-            <%= f.text_field :google_plus_link, placeholder: "https://plus.google.com/", :size => 1, 'ng-model' => 'user.google_plus_link'%>
-          </label>
-          <label for="user_linkedin_link">
-            <%= f.text_field :linkedin_link, placeholder: "http://www.linkedin.com/", :size => 1, :autocomplete => 'off', 'ng-model' => 'user.linkedin_link' %>
-          </label>
-        </div>
-      </fieldset>
-
-      <div class="action">
-        <div>
-          <div>
-            <%= f.submit 'Update', :class => "zeta thickest" %>
-          </div>
-        </div>
-      </div>
-
-    <% end %>
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==1}' ng-show="profileTab == 1">
+    <%= render 'general' %>
   </div>
 
-  <div class="tab-content gridwrap" id="accreditation" ng-class='{current:profileTab==2}' ng-show="profileTab == 2">
-    <div>
-      <%= form_for(current_user, :url => {:action => "accreditation"}, :html => { :method => :put, :id => "accreditation_user_form"}) do |f| %>
-        <div class="intro">
-          <p>
-            Most investments are available to accredited investors only. Please answer the following questions to verify your qualification as an <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
-          </p>
-        </div>
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==2}' ng-show="profileTab == 2">
+    <%= render 'external_accounts' %>
+  </div>
 
-        <fieldset class="separated-both">
-          <h5>Identification Document</h5>
-          <p>Please upload a scan of your Identification Document.</p>
-          <div class="table">
-            <div style="text-align:left;">
-              <%= f.file_field :identification_document %>
-            </div>
-            <div id="doc-upload-response"></div>
-          </div>
-          <div id="doc-upload-progress" class="goalmeter">
-            <div class="progress" style="width:0%"></div>
-          </div>
-          <div id="doc-scan-preview">
-            <%= image_tag current_user.identification_document_url(:thumb) %>
-          </div>
-        </fieldset>
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==3}' ng-show="profileTab == 3">
+    <%= render 'accreditation' %>
+  </div>
 
-        <fieldset class="separated-bottom">
-          <h5>Annual Individual Income</h5>
-          <p>I have an individual income for each of the two most recent years equal to an income level indicated below and reasonably expect to reach at least the same level this year.</p>
-          <ul class="radio-checkbox-list">
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "<200'000") %> &lt; $200'000
-              </label>
-            </li>
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "200'000") %> $200'000 — $350'000
-              </label>
-            </li>
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "350'000" ) %> $350'000 — $500'000
-              </label>
-            </li>
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:individual_income, "500'000>") %> $500'000 &lt;
-              </label>
-            </li>
-          </ul>
-        </fieldset>
-
-        <fieldset class="separated-bottom">
-          <h5>Securities Firm</h5>
-          <p>Are you associated with a Securities Firm?</p>
-          <ul class="radio-checkbox-list mb0">
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:securities_firm, false) %> No
-              </label>
-            </li>
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:securities_firm, true) %> Yes
-              </label>
-            </li>
-          </ul>
-        </fieldset>
-
-        <fieldset>
-          <h5>Public Company Shareholder or Officer</h5>
-          <p>?</p>
-          <ul class="radio-checkbox-list mb0">
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:company_director, false) %> No
-              </label>
-            </li>
-            <li>
-              <label class="radio-checkbox-label">
-                <%= f.radio_button(:company_director, true) %> Yes
-              </label>
-            </li>
-          </ul>
-        </fieldset>
-
-        <div class="action">
-          <div>
-            <div>
-              <%= f.submit 'Update', class: "zeta thickest" %>
-            </div>
-          </div>
-        </div>
-
-      <% end %>
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==4}' ng-show="profileTab == 4">
+    <div class="tab-content current">
+      <div></div>
     </div>
   </div>
+
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==5}' ng-show="profileTab == 5">
+    <div class="tab-content current">
+      <div></div>
+    </div>
+  </div>
+
 </section>
+
