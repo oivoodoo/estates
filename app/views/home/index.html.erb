@@ -4,10 +4,10 @@
       <div class="bg"></div>
       <div class="fg">
 
-        <h1 class="title">Build a real estate portfolio online</h1>
-        <p>Get access to exclusive investments and manage your portfolio using Flock.</p>
+        <h1 class="title">Invest in real estate online</h1>
         <% unless current_user.present? %>
           <div class="action">
+            <button class="how-it-works elevated">How? &nbsp;&nbsp;<span>1:45 min</span></button>
             <a href="<%= new_user_registration_path %>" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
           </div>
         <% end %>

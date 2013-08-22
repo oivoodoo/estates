@@ -7,9 +7,8 @@
         <meta name="keywords" content="html, meta, keywords" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-                <link rel="canonical" href="index.html" />
-        <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
+        
+                <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
 
         <link rel="stylesheet" href="style.css" type="text/css">
                 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen"><![endif]-->
@@ -20,7 +19,7 @@
                 <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
@@ -31,7 +30,7 @@
 
                 <script src="js/custom.js"></script>
         <script>
-        	var auth = true;
+        	var auth = false;
         </script>
         
                 
@@ -59,8 +58,8 @@
 								 <li><a href="index-p=projects.html" >Investments</a></li
 								><li><a href="index-p=managers.html" >Managers</a></li
 								><li><a href="index-p=how-it-works.html" >How It Works</a></li
-										 ><li><a href="sign-in.php-action=sign-up.html" class="sign-in fancybox.ajax">Sign Up</a></li
-										 ><li><a href="sign-in.php.html" class="sign-in fancybox.ajax">Log In</a></li>							</ul>
+										 ><li class="sign-in"><a href="sign-in.php-action=sign-up.html" class="sign-in sign-up fancybox.ajax">Sign Up</a></li
+										 ><li class="sign-in"><a href="sign-in.php.html" class="sign-in log-in fancybox.ajax">Log In</a></li>							</ul>
 						</div>
 					</nav>
 					<a id="spread"><i></i></a>
@@ -72,7 +71,7 @@
 <section id="investor" >
 	
 		
-	<div class="head fix elevate">
+	<div class="head ">
 	
 		<div class="contract">
 			
@@ -87,14 +86,10 @@
 				</div>
 	
 				<div class="ext-account-buttons">
-					<div>
-						<div class="btns">
-							<div>
-								<button name="ext-account" value="facebook" class="ext-account-button facebook connected-ext-account-button"></button>
-								<button name="ext-account" value="twitter" class="ext-account-button twitter connected-ext-account-button"></button>
-							</div>
-						</div>
-					</div>
+					<span>
+						<button name="ext-account" value="facebook" class="ext-account-button facebook"></button>
+						<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -118,173 +113,53 @@
 						
 						<div>
 							<article class="project-badge dash-invested ">
-	<div onclick="location.href='?p=project&project=1800-van-ness'">
+	<div onclick="location.href='?p=project&project=spain-maxima'">
 	
-		<a class="project-thumb" href="index-p=project&project=1800-van-ness.html">
-			<img src="img/1800-van-ness.png">
+		<a class="project-thumb" href="index-p=project&project=spain-maxima.html">
+			<img src="img/spain-maxima.png">
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="index-p=manager&m=stonemount.html" title="Stonemount"><img src="img/stonemount.png"></a>
+						<a href="index-p=manager&m=cbre.html" title="CBRE"><img src="img/cbre.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=1800-van-ness.html">1800 Van Ness</a>
+					<a class="project-link" href="index-p=project&project=spain-maxima.html">Maxima Supermarket</a>
 					<div class="manager-location">
-						<span><a href="index-p=manager&m=stonemount.html" title="Stonemount">Stonemount</a></span> <address><a href="index-p=project&project=1800-van-ness.html#location" title="1800 Van Ness Ave, San Francisco, CA 94109">San Francisco</a></address>					</div>
+						<span><a href="index-p=manager&m=cbre.html" title="CBRE">CBRE</a></span> <address><a href="index-p=project&project=spain-maxima.html#location" title="Carrer Biniamar, 14, Palma, Illes Balears, Spain">Palma de Mallorca</a></address>					</div>
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.4k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
-							<div>
-								<ul class='money'>
-<li class="raised" style="width:34%;"><div><label>Raised</label><i>$</i>10.9m</div></li>
-<li class="budget" style="width:66%;"><div><label>Budget</label><i>$</i>32m</div></li>
-</ul>
-								<div class="goal">
-									<div>
-										<div class="goalmeter"><div class="progress " style="width:34%"><div class="marker" style="left:34%;"><label>34%</label></div></div></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="action">
-			<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="1800 Van Ness">Full Details</button>
-		</div>
-		
-	</div>
-</article><article class="project-badge dash-invested alt">
-	<div onclick="location.href='?p=project&project=1800-van-ness'">
-	
-		<a class="project-thumb" href="index-p=project&project=1800-van-ness.html">
-			<img src="img/1800-van-ness.png">
-			<div class="focus"></div>
-		</a>
-		
-		<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
 					<div>
-						<a href="index-p=manager&m=stonemount.html" title="Stonemount"><img src="img/stonemount.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=1800-van-ness.html">1800 Van Ness</a>
-					<div class="manager-location">
-						<span><a href="index-p=manager&m=stonemount.html" title="Stonemount">Stonemount</a></span> <address><a href="index-p=project&project=1800-van-ness.html#location" title="1800 Van Ness Ave, San Francisco, CA 94109">San Francisco</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
-			<div>
-				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.4k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
 <li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
+</ul>						</div>
+						<div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:34%;"><div><label>Raised</label><i>$</i>10.9m</div></li>
-<li class="budget" style="width:66%;"><div><label>Budget</label><i>$</i>32m</div></li>
-</ul>
-								<div class="goal">
-									<div>
-										<div class="goalmeter"><div class="progress " style="width:34%"><div class="marker" style="left:34%;"><label>34%</label></div></div></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="action">
-			<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="1800 Van Ness">Full Details</button>
-		</div>
-		
-	</div>
-</article><article class="project-badge dash-invested ">
-	<div onclick="location.href='?p=project&project=vilnius-rimi'">
-	
-		<a class="project-thumb" href="index-p=project&project=vilnius-rimi.html">
-			<img src="img/vilnius-rimi.png">
-			<div class="focus"></div>
-		</a>
-		
-		<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
-					<div>
-						<a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=vilnius-rimi.html">Rimi Supermaket</a>
-					<div class="manager-location">
-						<span><a href="index-p=manager&m=trigon.html" title="Trigon Capital">Trigon Capital</a></span> <address><a href="index-p=project&project=vilnius-rimi.html#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
-			<div>
-				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
-							<div>
-								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
 </ul>
 								<div class="goal">
 									<div>
@@ -297,10 +172,154 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button class="track labelled" title="Track this project">Track</button><button class="details" title="Rimi Supermaket">Full Details</button>
+			
+			<div class="action">
+				<button class="track labelled" title="Track this project">Track</button><button class="details" title="Maxima Supermarket">Full Details</button>
+			</div>
+			
 		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge dash-invested alt">
+	<div onclick="location.href='?p=project&project=cafe-klaus'">
+	
+		<a class="project-thumb" href="index-p=project&project=cafe-klaus.html">
+			<img src="img/cafe-klaus.png">
+			<div class="focus"></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="index-p=manager&m=gage-partners.html" title="Gage Partners"><img src="img/gage-partners.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="index-p=project&project=cafe-klaus.html">Café Klaus</a>
+					<div class="manager-location">
+						<span><a href="index-p=manager&m=gage-partners.html" title="Gage Partners">Gage Partners</a></span> <address><a href="index-p=project&project=cafe-klaus.html#location" title="Kalasadama 8, 10415 Tallinn, Estonia">Tallinn</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+			
+			<div class="financials">
+			<div>
+				<div>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Debt</b> <label>purchase</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$400</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>10<u>%</u></b> <label>annual interest</label></div></li>
+</ul><ul class='size-6'>
+<li class="term"><div><b>3 <u class="short">yrs</u><u class="long">years</u></b> <label>term</label></div></li>
+</ul>						</div>
+						<div class="moneywrap size-3">
+							<div>
+								<ul class='money'>
+<li class="raised" style="width:20%;"><div><label>Raised</label>$81k</div></li>
+<li class="budget" style="width:80%;"><div><label>Budget</label>$400k</div></li>
+</ul>
+								<div class="goal">
+									<div>
+										<div class="goalmeter"><div class="progress " style="width:20%"><div class="marker" style="left:20%;"><label>20%</label></div></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Café Klaus">Full Details</button>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge dash-invested ">
+	<div onclick="location.href='?p=project&project=tallinn-rimi'">
+	
+		<a class="project-thumb" href="index-p=project&project=tallinn-rimi.html">
+			<img src="img/tallinn-rimi.png">
+			<div class="focus"></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="index-p=manager&m=broadgate.html" title="Broadgate"><img src="img/broadgate.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="index-p=project&project=tallinn-rimi.html">Rimi Supermarket</a>
+					<div class="manager-location">
+						<span><a href="index-p=manager&m=broadgate.html" title="Broadgate">Broadgate</a></span> <address><a href="index-p=project&project=tallinn-rimi.html#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
+				<p>Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus.</p>			</div>
+			
+			<div class="financials">
+			<div>
+				<div>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+</ul><ul class='size-6'>
+<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
+</ul>						</div>
+						<div class="moneywrap size-3">
+							<div>
+								<ul class='money'>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
+</ul>
+								<div class="goal">
+									<div>
+										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			<div class="action">
+				<button class="track labelled" title="Track this project">Track</button><button class="details" title="Rimi Supermarket">Full Details</button>
+			</div>
+			
+		</div>
+		
+		
 		
 	</div>
 </article>						</div>
@@ -316,7 +335,7 @@
 						</div>
 						
 						<div id="tracking-list">
-							<article class="project-badge dash-tracking-list ">
+							<article class="project-badge dash-tracking ">
 	<div onclick="location.href='?p=project&project=vilnius-rimi'">
 	
 		<a class="project-thumb" href="index-p=project&project=vilnius-rimi.html">
@@ -324,7 +343,9 @@
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
@@ -339,27 +360,29 @@
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
 <li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
+</ul>						</div>
+						<div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
 </ul>
 								<div class="goal">
 									<div>
@@ -372,13 +395,157 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button class="tracking " title="Stop tracking this project"></button><button class="details" title="Rimi Supermaket">Full Details</button>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Rimi Supermaket">Full Details</button>
+			</div>
+			
 		</div>
 		
+		
+		
 	</div>
-</article><article class="project-badge dash-tracking-list alt">
+</article><article class="project-badge dash-tracking alt">
+	<div onclick="location.href='?p=project&project=tallinn-rimi'">
+	
+		<a class="project-thumb" href="index-p=project&project=tallinn-rimi.html">
+			<img src="img/tallinn-rimi.png">
+			<div class="focus"></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="index-p=manager&m=broadgate.html" title="Broadgate"><img src="img/broadgate.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="index-p=project&project=tallinn-rimi.html">Rimi Supermarket</a>
+					<div class="manager-location">
+						<span><a href="index-p=manager&m=broadgate.html" title="Broadgate">Broadgate</a></span> <address><a href="index-p=project&project=tallinn-rimi.html#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+			
+			<div class="financials">
+			<div>
+				<div>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+</ul><ul class='size-6'>
+<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
+</ul>						</div>
+						<div class="moneywrap size-3">
+							<div>
+								<ul class='money'>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
+</ul>
+								<div class="goal">
+									<div>
+										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Rimi Supermarket">Full Details</button>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge dash-tracking ">
+	<div onclick="location.href='?p=project&project=tallinn-rimi'">
+	
+		<a class="project-thumb" href="index-p=project&project=tallinn-rimi.html">
+			<img src="img/tallinn-rimi.png">
+			<div class="focus"></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="index-p=manager&m=broadgate.html" title="Broadgate"><img src="img/broadgate.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="index-p=project&project=tallinn-rimi.html">Rimi Supermarket</a>
+					<div class="manager-location">
+						<span><a href="index-p=manager&m=broadgate.html" title="Broadgate">Broadgate</a></span> <address><a href="index-p=project&project=tallinn-rimi.html#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
+				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
+			
+			<div class="financials">
+			<div>
+				<div>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+</ul><ul class='size-6'>
+<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
+</ul>						</div>
+						<div class="moneywrap size-3">
+							<div>
+								<ul class='money'>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
+</ul>
+								<div class="goal">
+									<div>
+										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Rimi Supermarket">Full Details</button>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge dash-tracking alt">
 	<div onclick="location.href='?p=project&project=vilnius-rimi'">
 	
 		<a class="project-thumb" href="index-p=project&project=vilnius-rimi.html">
@@ -386,7 +553,9 @@
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
@@ -401,27 +570,29 @@
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<p>Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus.</p>			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
 <li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
+</ul>						</div>
+						<div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
 </ul>
 								<div class="goal">
 									<div>
@@ -434,56 +605,134 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button class="tracking " title="Stop tracking this project"></button><button class="details" title="Rimi Supermaket">Full Details</button>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Rimi Supermaket">Full Details</button>
+			</div>
+			
 		</div>
 		
+		
+		
 	</div>
-</article><article class="project-badge dash-tracking-list ">
-	<div onclick="location.href='?p=project&project=spain-maxima'">
+</article><article class="project-badge dash-tracking ">
+	<div onclick="location.href='?p=project&project=cafe-klaus'">
 	
-		<a class="project-thumb" href="index-p=project&project=spain-maxima.html">
-			<img src="img/spain-maxima.png">
+		<a class="project-thumb" href="index-p=project&project=cafe-klaus.html">
+			<img src="img/cafe-klaus.png">
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="index-p=manager&m=cbre.html" title="CBRE"><img src="img/cbre.png"></a>
+						<a href="index-p=manager&m=gage-partners.html" title="Gage Partners"><img src="img/gage-partners.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=spain-maxima.html">Maxima Supermarket</a>
+					<a class="project-link" href="index-p=project&project=cafe-klaus.html">Café Klaus</a>
 					<div class="manager-location">
-						<span><a href="index-p=manager&m=cbre.html" title="CBRE">CBRE</a></span> <address><a href="index-p=project&project=spain-maxima.html#location" title="Carrer Biniamar, 14, Palma, Illes Balears, Spain">Palma de Mallorca</a></address>					</div>
+						<span><a href="index-p=manager&m=gage-partners.html" title="Gage Partners">Gage Partners</a></span> <address><a href="index-p=project&project=cafe-klaus.html#location" title="Kalasadama 8, 10415 Tallinn, Estonia">Tallinn</a></address>					</div>
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Debt</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$400</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>10<u>%</u></b> <label>annual interest</label></div></li>
 </ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
+<li class="term"><div><b>3 <u class="short">yrs</u><u class="long">years</u></b> <label>term</label></div></li>
+</ul>						</div>
+						<div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:20%;"><div><label>Raised</label>$81k</div></li>
+<li class="budget" style="width:80%;"><div><label>Budget</label>$400k</div></li>
+</ul>
+								<div class="goal">
+									<div>
+										<div class="goalmeter"><div class="progress " style="width:20%"><div class="marker" style="left:20%;"><label>20%</label></div></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Café Klaus">Full Details</button>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge dash-tracking alt">
+	<div onclick="location.href='?p=project&project=vilnius-rimi'">
+	
+		<a class="project-thumb" href="index-p=project&project=vilnius-rimi.html">
+			<img src="img/vilnius-rimi.png">
+			<div class="focus"></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="index-p=project&project=vilnius-rimi.html">Rimi Supermaket</a>
+					<div class="manager-location">
+						<span><a href="index-p=manager&m=trigon.html" title="Trigon Capital">Trigon Capital</a></span> <address><a href="index-p=project&project=vilnius-rimi.html#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
+				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
+			
+			<div class="financials">
+			<div>
+				<div>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+</ul><ul class='size-6'>
+<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
+</ul>						</div>
+						<div class="moneywrap size-3">
+							<div>
+								<ul class='money'>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
 </ul>
 								<div class="goal">
 									<div>
@@ -496,13 +745,17 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button class="tracking " title="Stop tracking this project"></button><button class="details" title="Maxima Supermarket">Full Details</button>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Rimi Supermaket">Full Details</button>
+			</div>
+			
 		</div>
 		
+		
+		
 	</div>
-</article><article class="project-badge dash-tracking-list alt">
+</article><article class="project-badge dash-tracking ">
 	<div onclick="location.href='?p=project&project=1800-van-ness'">
 	
 		<a class="project-thumb" href="index-p=project&project=1800-van-ness.html">
@@ -510,7 +763,9 @@
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
@@ -525,27 +780,29 @@
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.4k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.4k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
 <li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
+</ul>						</div>
+						<div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:34%;"><div><label>Raised</label><i>$</i>10.9m</div></li>
-<li class="budget" style="width:66%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:34%;"><div><label>Raised</label>$10.9m</div></li>
+<li class="budget" style="width:66%;"><div><label>Budget</label>$32m</div></li>
 </ul>
 								<div class="goal">
 									<div>
@@ -558,196 +815,14 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button class="tracking " title="Stop tracking this project"></button><button class="details" title="1800 Van Ness">Full Details</button>
-		</div>
-		
-	</div>
-</article><article class="project-badge dash-tracking-list ">
-	<div onclick="location.href='?p=project&project=vilnius-rimi'">
-	
-		<a class="project-thumb" href="index-p=project&project=vilnius-rimi.html">
-			<img src="img/vilnius-rimi.png">
-			<div class="focus"></div>
-		</a>
-		
-		<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
-					<div>
-						<a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=vilnius-rimi.html">Rimi Supermaket</a>
-					<div class="manager-location">
-						<span><a href="index-p=manager&m=trigon.html" title="Trigon Capital">Trigon Capital</a></span> <address><a href="index-p=project&project=vilnius-rimi.html#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
-			<div>
-				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
-							<div>
-								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
-</ul>
-								<div class="goal">
-									<div>
-										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="1800 Van Ness">Full Details</button>
 			</div>
+			
 		</div>
 		
-		<div class="action">
-			<button class="tracking " title="Stop tracking this project"></button><button class="details" title="Rimi Supermaket">Full Details</button>
-		</div>
 		
-	</div>
-</article><article class="project-badge dash-tracking-list alt">
-	<div onclick="location.href='?p=project&project=spain-maxima'">
-	
-		<a class="project-thumb" href="index-p=project&project=spain-maxima.html">
-			<img src="img/spain-maxima.png">
-			<div class="focus"></div>
-		</a>
-		
-		<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
-					<div>
-						<a href="index-p=manager&m=cbre.html" title="CBRE"><img src="img/cbre.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=spain-maxima.html">Maxima Supermarket</a>
-					<div class="manager-location">
-						<span><a href="index-p=manager&m=cbre.html" title="CBRE">CBRE</a></span> <address><a href="index-p=project&project=spain-maxima.html#location" title="Carrer Biniamar, 14, Palma, Illes Balears, Spain">Palma de Mallorca</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
-			<div>
-				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
-							<div>
-								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
-</ul>
-								<div class="goal">
-									<div>
-										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="action">
-			<button class="tracking " title="Stop tracking this project"></button><button class="details" title="Maxima Supermarket">Full Details</button>
-		</div>
-		
-	</div>
-</article><article class="project-badge dash-tracking-list ">
-	<div onclick="location.href='?p=project&project=vilnius-rimi'">
-	
-		<a class="project-thumb" href="index-p=project&project=vilnius-rimi.html">
-			<img src="img/vilnius-rimi.png">
-			<div class="focus"></div>
-		</a>
-		
-		<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
-					<div>
-						<a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=vilnius-rimi.html">Rimi Supermaket</a>
-					<div class="manager-location">
-						<span><a href="index-p=manager&m=trigon.html" title="Trigon Capital">Trigon Capital</a></span> <address><a href="index-p=project&project=vilnius-rimi.html#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
-			<div>
-				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
-							<div>
-								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
-</ul>
-								<div class="goal">
-									<div>
-										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="action">
-			<button class="tracking " title="Stop tracking this project"></button><button class="details" title="Rimi Supermaket">Full Details</button>
-		</div>
 		
 	</div>
 </article>						</div>
@@ -788,6 +863,30 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
 			</a>
@@ -806,30 +905,6 @@
 		<div>
 			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
 				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -865,6 +940,54 @@
 							<li>
 	<div class="profile-badge">
 		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
 				<img src="img/michael.png">
 			</a>
@@ -891,54 +1014,6 @@
 		<div>
 			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
 			</a>
 		</div>
 	</div>
@@ -971,7 +1046,7 @@
 								<div class="entry-meta">
 																		<div class="profile-badge">
 										<div>
-											<a href="index-p=investor&i=mart.html" title="Mart Uibo"><img src="img/mart.png"></a>
+											<a href="index-p=investor&i=michael.html" title="Michael Walsh"><img src="img/michael.png"></a>
 										</div>
 									</div>
 									<time>2 days, 7 hours ago</time>
@@ -1013,24 +1088,29 @@ address: 'Carrer Biniamar, 14, Palma, Illes Balears, Spain',
 title: 'Maxima Supermarket',
 link: '?p=project&project=spain-maxima'
 },{
-lat: 59.430172,
-lng: 24.697773,
-address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
-title: 'Rimi Supermarket',
-link: '?p=project&project=tallinn-rimi'
+lat: 59.445785,
+lng: 24.749311,
+address: 'Kalasadama 8, 10415 Tallinn, Estonia',
+title: 'Café Klaus',
+link: '?p=project&project=cafe-klaus'
 },{
-lat: 59.430172,
-lng: 24.697773,
-address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
-title: 'Rimi Supermarket',
-link: '?p=project&project=tallinn-rimi'
+lat: 59.445785,
+lng: 24.749311,
+address: 'Kalasadama 8, 10415 Tallinn, Estonia',
+title: 'Café Klaus',
+link: '?p=project&project=cafe-klaus'
 }			];
 		</script>
 		
 	</div>
 	
 	
-</section>            </div><!-- #main -->
+</section>            	<div id="rise">
+            		<div>
+	            		<canvas id="riseCanvas" width="1" height="1"></canvas>
+            		</div>
+            	</div>
+            </div><!-- #main -->
 	        <footer id="footer">
 	        	
 	        	<div class="quicknav">
@@ -1079,7 +1159,7 @@ link: '?p=project&project=tallinn-rimi'
 
 	    <div id="nag">
 	    	<div>
-		        <span><a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php.html">sign in</a></span> <span>to follow projects</span>
+		        <span><a class="button flat thickest sign-in sign-up fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in log-in fancybox.ajax" href="sign-in.php.html">Log in</a></span> <span>to follow projects</span>
 	    	</div>
 		    <div class="close"></div>
 	    </div>

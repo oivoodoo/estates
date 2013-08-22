@@ -3,7 +3,7 @@
 —————————————————————————————————————————————————————————————————————————— */
 @font-face {
     font-family: 'icobundl';
-    src: url('../f/icobundl-ext.woff') format('woff');
+    src: url('../f/icobundl.woff') format('woff');
 }
 
 
@@ -13,11 +13,11 @@
 @font-face {
     font-family: 'entypo';
     src: url('../f/entypo.woff') format('woff');
-}
+}/*
 @font-face {
     font-family: 'entypo-social';
     src: url('../f/entypo-social.woff') format('woff');
-}
+}*/
 
 
 
@@ -124,6 +124,31 @@
     font-family: 'neue-haas-grotesk-text';
     src: url('../f/nhaasgrotesktxpro-75bd.woff') format('woff');
     font-weight: bold;
+}
+
+
+
+/*	Helvetica Neue Text (extended letter-spacing) — 'helvetica-neue-text'
+—————————————————————————————————————————————————————————————————————————— */
+@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/helveticaneueltstd-lt.woff') format('woff');
+}
+@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/helveticaneueltstd-ltit.woff') format('woff');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/helveticaneueltstd-bd.woff') format('woff');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/helveticaneueltstd-bdit.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
 }
 
 

@@ -20,7 +20,7 @@
 		</div>
 	</div>*/ ?>
 
-	<div id="tabs" class="tabs major gridwrap-padded fix elevate">
+	<div id="tabs" class="tabs major gridwrap-padded <?php /*fix elevate*/ ?>">
 		<ul>
 			<li><a href="?p=dashboard#reports" class="tab reports-tab current"><span>Reports</span></a></li
 			><li><a href="?p=dashboard#investments" class="tab investments-tab"><span><em>3</em> Investments</span></a></li
@@ -184,7 +184,7 @@
 									$rand_project = array_rand($projects);
 									$project = $projects[$rand_project];
 									$project['is_tracked'] = true;
-									$project_badge_size = 'dash-tracking-list';
+									$project_badge_size = 'dash-tracking';
 									require('project-badge.php');
 								}
 							?>

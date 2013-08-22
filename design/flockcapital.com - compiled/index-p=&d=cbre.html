@@ -7,9 +7,8 @@
         <meta name="keywords" content="html, meta, keywords" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-                <link rel="canonical" href="index.html" />
-        <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
+        
+                <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
 
         <link rel="stylesheet" href="style.css" type="text/css">
                 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen"><![endif]-->
@@ -20,7 +19,7 @@
                 <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
@@ -31,7 +30,7 @@
 
                 <script src="js/custom.js"></script>
         <script>
-        	var auth = true;
+        	var auth = false;
         </script>
         
                 
@@ -59,8 +58,8 @@
 								 <li><a href="index-p=projects.html" >Investments</a></li
 								><li><a href="index-p=managers.html" >Managers</a></li
 								><li><a href="index-p=how-it-works.html" >How It Works</a></li
-										 ><li><a href="sign-in.php-action=sign-up.html" class="sign-in fancybox.ajax">Sign Up</a></li
-										 ><li><a href="sign-in.php.html" class="sign-in fancybox.ajax">Log In</a></li>							</ul>
+										 ><li class="sign-in"><a href="sign-in.php-action=sign-up.html" class="sign-in sign-up fancybox.ajax">Sign Up</a></li
+										 ><li class="sign-in"><a href="sign-in.php.html" class="sign-in log-in fancybox.ajax">Log In</a></li>							</ul>
 						</div>
 					</nav>
 					<a id="spread"><i></i></a>
@@ -72,10 +71,10 @@
 			<div class="bg"></div>
 						<div class="fg">
 			  
-				<h1 class="title">Build a real estate portfolio online</h1>
-				<p>Get access to exclusive investments and manage your portfolio using Flock.</p>
+								<h1 class="title">Invest in real estate online</h1>
 				<div class="action">
-										<a href="sign-in.php-action=sign-up.html" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
+					<button class="how-it-works elevated">How? &nbsp;&nbsp;<span>1:45 min</span></button
+					><a href="sign-in.php-action=sign-up.html" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
 				</div>
 				
 								
@@ -96,7 +95,9 @@
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
@@ -111,31 +112,33 @@
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Debt</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$400</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>10<u>%</u></b> <label>annual interest</label></div></li>
 </ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
+<li class="term"><div><b>3 <u class="short">yrs</u><u class="long">years</u></b> <label>term</label></div></li>
+</ul>						</div>
+						<div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:20%;"><div><label>Raised</label>$81k</div></li>
+<li class="budget" style="width:80%;"><div><label>Budget</label>$400k</div></li>
 </ul>
 								<div class="goal">
 									<div>
-										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
+										<div class="goalmeter"><div class="progress " style="width:20%"><div class="marker" style="left:20%;"><label>20%</label></div></div></div>
 									</div>
 								</div>
 							</div>
@@ -144,13 +147,17 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Café Klaus">Full Details</button>
+			
+			<div class="action">
+				<button class="tracking labelled" title="Stop tracking this project">Tracking</button><button class="details" title="Café Klaus">Full Details</button>
+			</div>
+			
 		</div>
 		
+		
+		
 	</div>
-</article><article class="project-badge full ">
+</article><article class="project-badge full alt">
 	<div onclick="location.href='?p=project&project=tallinn-rimi'">
 	
 		<a class="project-thumb" href="index-p=project&project=tallinn-rimi.html">
@@ -158,7 +165,9 @@
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
@@ -173,27 +182,29 @@
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+					<div>
+						<div class="numbers">
+							<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
 <li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul><div class="moneywrap size-3">
+</ul>						</div>
+						<div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
 </ul>
 								<div class="goal">
 									<div>
@@ -206,13 +217,22 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button class="track labelled" title="Track this project">Track</button><button class="details" title="Rimi Supermarket">Full Details</button>
+			
+			<div class="action">
+				<button class="track labelled" title="Track this project">Track</button><button class="details" title="Rimi Supermarket">Full Details</button>
+			</div>
+			
 		</div>
 		
+		
+		
 	</div>
-</article>	</div></section>            </div><!-- #main -->
+</article>	</div></section>            	<div id="rise">
+            		<div>
+	            		<canvas id="riseCanvas" width="1" height="1"></canvas>
+            		</div>
+            	</div>
+            </div><!-- #main -->
 	        <footer id="footer">
 	        	
 	        	<div class="quicknav">
@@ -261,7 +281,7 @@
 
 	    <div id="nag">
 	    	<div>
-		        <span><a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php.html">sign in</a></span> <span>to follow projects</span>
+		        <span><a class="button flat thickest sign-in sign-up fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in log-in fancybox.ajax" href="sign-in.php.html">Log in</a></span> <span>to follow projects</span>
 	    	</div>
 		    <div class="close"></div>
 	    </div>

@@ -33,14 +33,15 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def view_price
-    number_to_human(price, :precision => 2)
+    "<i>$</i>#{number_to_human(price, :precision => 2).to_s.gsub(/ /, '')}".html_safe
   end
 
   def view_raise
-    number_to_human(raised, :precision => 2)
+    "<i>$</i>#{number_to_human(raised, :precision => 2).to_s.gsub(/ /, '')}".html_safe
   end
 
   def view_per_share
-    "<b><i>$</i>#{number_to_human(per_share, :precision => 3)}</b>".html_safe
+    "<b><i>$</i>#{number_to_human(per_share, :precision => 3).to_s.gsub(/ /, '')}</b>".html_safe
   end
 end
+

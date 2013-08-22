@@ -15,7 +15,7 @@
 
 <section id="manager">
 
-	<div class="head fix elevate">
+	<div class="head <?php /*fix elevate*/ ?>">
 	
 		<div class="contract">
 			<figure class="profile-badge">
@@ -29,15 +29,11 @@
 				</div>
 	
 				<div class="ext-account-buttons">
-					<div>
-						<div class="btns">
-							<div>
-								<button name="ext-account" value="twitter" class="ext-account-button connected-ext-account-button twitter"></button>
-								<button name="ext-account" value="google-plus" class="ext-account-button connected-ext-account-button google-plus"></button>
-								<button name="ext-account" value="linked-in" class="ext-account-button connected-ext-account-button linked-in"></button>
-							</div>
-						</div>
-					</div>
+					<span>
+						<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
+						<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+						<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -171,98 +167,5 @@
 		</script>
 		
 	</div>
-	
-	<?php /*
-	<div class="body">
-		<div class="main">
-			
-			<div class="tabspace"></div>
-			
-			<div>
-				<div id="tab-1">
-					
-					<ul class="feed">
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><img src="img/<?php echo $h; ?>.png"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-							<div class="entry">
-								<h5 class="entry-title"><a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><?php echo $manager_name; ?></a> launched <a href="?p=project&project=1800-van-ness" title="1800 Van Ness">1800 Van Ness</a></h5>
-								<div class="entry-content">
-									<div class="profile-badge project">
-										<div>
-											<a href="?p=project&project=1800-van-ness" title="1800 Van Ness"><img src="img/1800-van-ness.png"></a>
-											<div class="focus"></div>
-										</div>
-									</div>
-								</div>
-								<div class="entry-meta">
-									<div class="profile-badge">
-										<div>
-											<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
-											<div class="focus"></div>
-										</div>
-									</div>
-									<div class="profile-badge">
-										<div>
-											<a href="?p=investor&i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
-											<div class="focus"></div>
-										</div>
-									</div>
-									<time>2 days, 7 hours ago</time>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="profile-badge">
-								<div>
-									<a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><img src="img/<?php echo $h; ?>.png"></a>
-									<div class="focus"></div>
-								</div>
-							</div>
-							<div class="entry">
-								<h5 class="entry-title"><a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><?php echo $manager_name; ?></a> joined Flock</h5>
-								<div class="entry-meta">
-									<div class="profile-badge">
-										<div>
-											<a href="?p=investor&i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
-											<div class="focus"></div>
-										</div>
-									</div>
-									<div class="profile-badge">
-										<div>
-											<a href="?p=investor&i=kadri" title="Kadri Liis Rääk"><img src="img/kadri.png"></a>
-											<div class="focus"></div>
-										</div>
-									</div>
-									<time>2 days, 7 hours ago</time>
-								</div>
-							</div>
-						</li>
-					</ul>
-					
-				</div>
-			</div>
-			
-		</div>
-		<div class="side">
-			<div id="tabs" class="tabs">
-				<ul>
-					<li><a href="#">Projects</a></li><li><a href="#">Followers</a></li>
-				</ul>
-			</div>
-			<div>
-				<div class="connections-wrap">
-					
-					<ul class="connections">
-					</ul>
-					
-				</div>
-			</div>
-		</div>
-	</div>*/ ?>
 	
 </section>

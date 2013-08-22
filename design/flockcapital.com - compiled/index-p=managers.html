@@ -7,9 +7,8 @@
         <meta name="keywords" content="html, meta, keywords" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-                <link rel="canonical" href="index.html" />
-        <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
+        
+                <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
 
         <link rel="stylesheet" href="style.css" type="text/css">
                 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen"><![endif]-->
@@ -20,7 +19,7 @@
                 <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
@@ -31,7 +30,7 @@
 
                 <script src="js/custom.js"></script>
         <script>
-        	var auth = true;
+        	var auth = false;
         </script>
         
                 
@@ -59,8 +58,8 @@
 								 <li><a href="index-p=projects.html" >Investments</a></li
 								><li><a href="index-p=managers.html" class="current">Managers</a></li
 								><li><a href="index-p=how-it-works.html" >How It Works</a></li
-										 ><li><a href="sign-in.php-action=sign-up.html" class="sign-in fancybox.ajax">Sign Up</a></li
-										 ><li><a href="sign-in.php.html" class="sign-in fancybox.ajax">Log In</a></li>							</ul>
+										 ><li class="sign-in"><a href="sign-in.php-action=sign-up.html" class="sign-in sign-up fancybox.ajax">Sign Up</a></li
+										 ><li class="sign-in"><a href="sign-in.php.html" class="sign-in log-in fancybox.ajax">Log In</a></li>							</ul>
 						</div>
 					</nav>
 					<a id="spread"><i></i></a>
@@ -71,7 +70,12 @@
 
 	
 
-</section>            </div><!-- #main -->
+</section>            	<div id="rise">
+            		<div>
+	            		<canvas id="riseCanvas" width="1" height="1"></canvas>
+            		</div>
+            	</div>
+            </div><!-- #main -->
 	        <footer id="footer">
 	        	
 	        	<div class="quicknav">
@@ -120,7 +124,7 @@
 
 	    <div id="nag">
 	    	<div>
-		        <span><a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php.html">sign in</a></span> <span>to follow projects</span>
+		        <span><a class="button flat thickest sign-in sign-up fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in log-in fancybox.ajax" href="sign-in.php.html">Log in</a></span> <span>to follow projects</span>
 	    	</div>
 		    <div class="close"></div>
 	    </div>

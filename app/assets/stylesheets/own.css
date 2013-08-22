@@ -10,3 +10,4 @@ section.home-listing .item .left.text { width: 70%; }
 
 #contact_message { width: 99.8%; }
 
+.financials ul.money li>div { display: inline; }

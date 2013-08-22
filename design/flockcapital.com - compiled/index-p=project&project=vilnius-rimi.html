@@ -7,9 +7,8 @@
         <meta name="keywords" content="html, meta, keywords" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-                <link rel="canonical" href="index.html" />
-        <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
+        
+                <link rel="Shortcut Icon" type="image/svg" href="http://flockcapital.com/g/flockinvest-logo-symbol.svg">
 
         <link rel="stylesheet" href="style.css" type="text/css">
                 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/ie8.css" type="text/css" media="screen"><![endif]-->
@@ -20,7 +19,7 @@
                 <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
@@ -31,7 +30,7 @@
 
                 <script src="js/custom.js"></script>
         <script>
-        	var auth = true;
+        	var auth = false;
         </script>
         
                 
@@ -59,8 +58,8 @@
 								 <li><a href="index-p=projects.html" class="current">Investments</a></li
 								><li><a href="index-p=managers.html" >Managers</a></li
 								><li><a href="index-p=how-it-works.html" >How It Works</a></li
-										 ><li><a href="sign-in.php-action=sign-up.html" class="sign-in fancybox.ajax">Sign Up</a></li
-										 ><li><a href="sign-in.php.html" class="sign-in fancybox.ajax">Log In</a></li>							</ul>
+										 ><li class="sign-in"><a href="sign-in.php-action=sign-up.html" class="sign-in sign-up fancybox.ajax">Sign Up</a></li
+										 ><li class="sign-in"><a href="sign-in.php.html" class="sign-in log-in fancybox.ajax">Log In</a></li>							</ul>
 						</div>
 					</nav>
 					<a id="spread"><i></i></a>
@@ -84,18 +83,18 @@
 			<div>
 				<div>
 					<div><ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b><i>$</i>1.5k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="yield"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
 <li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
 </ul><div class="moneywrap size-3">
 							<div>
 								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label><i>$</i>21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label><i>$</i>32m</div></li>
+<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
+<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
 </ul>
 								<div class="goal">
 									<div>
@@ -113,17 +112,24 @@
 	</div>
 	
 	
-	<div class="title fix elevate">
+	<div class="title ">
 		
 		<div class="contract">
 			<figure class="profile-badge manager-badge">
 				<a href="index-p=manager&m=trigon.html" title="Trigon Capital"><img src="img/trigon.png"></a>
 			</figure>
 			<h2 class="name">
-				<div class="trackwrap track"><button class="track" title="Follow this project">Track</button></div>Rimi Supermaket			</h2>
+				Rimi Supermaket			</h2>
+			<div class="secondary-action tracking">
+				 <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"></button
+				><button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"></button
+				><button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"></button
+				><button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"></button
+				><button class="track" title="Track this project"></button>
+			</div>
 		</div>
 		
-		<div id="tabs" class="tabs major gridwrap-padded">
+		<div id="tabs" class="tabs gridwrap-padded">
 			<ul>
 				<li><a href="index-p=project&project=vilnius-rimi.html#overview" class="tab overview-tab current"><span>Overview</span></a></li
 				><li><a href="index-p=project&project=vilnius-rimi.html#financials" class="tab financials-tab"><span>Financials</span></a></li
@@ -145,19 +151,9 @@
 			<div>
 			
 				<div id="overview-content" class="tab-content paper current">
-					<p>
-						Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio. Quisque convallis euismod mi. Nunc tristique, arcu a commodo ornare, arcu lectus imperdiet lorem, non ornare felis arcu iaculis nulla. Praesent dolor sem, euismod ac pellentesque ac, volutpat et dui. Integer elementum odio eget metus adipiscing consequat. Suspendisse nunc sem, hendrerit vel imperdiet ac, faucibus sed velit. Phasellus et augue eget enim ultricies vestibulum.
-					</p>
-					<div class="gallery">
-						<div>
-							<img src="img/sf-housing.jpg">
-						</div>
-					</div>
-					<p>	
-						Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.
-						Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim.
-					</p>
-				</div>
+					<p>Stonemount, as a debt advisor, plans to assist the current anchor tentant raise a combination of bank debt and private debt financing to acquire the property. <strong>The current tenant</strong> operates a successful café with a large summer terrace. The tenant wishes to acquire the property to make capital improvements and expand the business. Stonemount believes the property provides <i>a good opportunity for a <b>junior debt investment</b></i> that will be secured against the property in second position behind the bank.</p>
+					<p>Loan interest is currently tax free in Estonia and the current tenant is offering 10% per annum for a 3 year term.</p>
+									</div>
 				
 				<div id="location-content" class="tab-content paper">
 												
@@ -175,6 +171,17 @@
 							</script>
 							
 										</div>
+			   
+			    <div class="offer-disclaimer paper">
+			    	<hr>
+			    	<p>A special note regarding forward-looking statements:</p>
+			    	<p>This Offering material, including any sections entitled “Overview”, “Property”, “Neighborhood”, “Financials”, and “Developer” and within the Private Placement Memorandum the sections entitled “The Company,” “Risk Factors,” “Business and Properties,” “Offering Price Factors” and “Use of Proceeds”, contain forward-looking statements. In some cases you can identify these statements by forward-looking words such as “believe,” “may,” “will,” “estimate,” “continue,” “anticipate,” “intend,” “could,” “would,” “project,” “plan,” “expect” or the negative or plural of these words or similar expressions. These forward-looking statements include, but are not limited to, statements concerning the Company, property, risk factors, plans and projections.</p>
+			    	<p>You should not rely upon forward-looking statements as predictions of future events. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described in the “Risk Factors” within the Private Placement Memorandum. In light of these risks, uncertainties and assumptions, the forward-looking events and circumstances discussed in this Offering material may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements.</p>
+			    	<p>You should read this Offering material and the documents that we reference in this Offering material and the Private Placement Memorandum with the understanding that our actual future results, levels of activity, performance and events and circumstances may be materially different from what we expect.</p>
+			    	<p>Except as required by law, neither we nor any other person assumes responsibility for the accuracy and completeness of the forward-looking statements. We undertake no obligation to update publicly any forward-looking statements for any reason after the date of this Private Placement Memorandum to conform these statements to actual results or to changes in our expectations.</p>
+			    	<p>Disclaimer: Neither the SEC nor any state securities commission or regulatory authority approved, passed upon or endorsed the merits of this offering.</p>
+			    	<p>Flock's services do not constitute “crowd funding” as described in Title III of the Jumpstart Our Business Startups Act (“JOBS Act”).</p>
+			    </div>
 				
 			</div>
 		</div>
@@ -194,64 +201,16 @@
 							<li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
 			</a>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
 			</a>
 		</div>
 	</div>
@@ -274,6 +233,54 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
 			</a>
@@ -298,8 +305,8 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -335,22 +342,6 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
 				<img src="img/michael.png">
 			</a>
@@ -399,16 +390,32 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -431,16 +438,16 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
 			</a>
 		</div>
 	</div>
@@ -503,19 +510,14 @@
 	</div>
 	
 	
-    <div class="offer-disclaimer">
-    	<hr>
-    	<p>A special note regarding forward-looking statements:</p>
-    	<p>This Offering material, including any sections entitled “Overview”, “Property”, “Neighborhood”, “Financials”, and “Developer” and within the Private Placement Memorandum the sections entitled “The Company,” “Risk Factors,” “Business and Properties,” “Offering Price Factors” and “Use of Proceeds”, contain forward-looking statements. In some cases you can identify these statements by forward-looking words such as “believe,” “may,” “will,” “estimate,” “continue,” “anticipate,” “intend,” “could,” “would,” “project,” “plan,” “expect” or the negative or plural of these words or similar expressions. These forward-looking statements include, but are not limited to, statements concerning the Company, property, risk factors, plans and projections.</p>
-    	<p>You should not rely upon forward-looking statements as predictions of future events. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described in the “Risk Factors” within the Private Placement Memorandum. In light of these risks, uncertainties and assumptions, the forward-looking events and circumstances discussed in this Offering material may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements.</p>
-    	<p>You should read this Offering material and the documents that we reference in this Offering material and the Private Placement Memorandum with the understanding that our actual future results, levels of activity, performance and events and circumstances may be materially different from what we expect.</p>
-    	<p>Except as required by law, neither we nor any other person assumes responsibility for the accuracy and completeness of the forward-looking statements. We undertake no obligation to update publicly any forward-looking statements for any reason after the date of this Private Placement Memorandum to conform these statements to actual results or to changes in our expectations.</p>
-    	<p>Disclaimer: Neither the SEC nor any state securities commission or regulatory authority approved, passed upon or endorsed the merits of this offering.</p>
-    	<p>Flock's services do not constitute “crowd funding” as described in Title III of the Jumpstart Our Business Startups Act (“JOBS Act”).</p>
-    </div>
     
 	
-</section>            </div><!-- #main -->
+</section>            	<div id="rise">
+            		<div>
+	            		<canvas id="riseCanvas" width="1" height="1"></canvas>
+            		</div>
+            	</div>
+            </div><!-- #main -->
 	        <footer id="footer">
 	        	
 	        	<div class="quicknav">
@@ -564,7 +566,7 @@
 
 	    <div id="nag">
 	    	<div>
-		        <span><a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php.html">sign in</a></span> <span>to follow projects</span>
+		        <span><a class="button flat thickest sign-in sign-up fancybox.ajax" href="sign-in.php-action=sign-up.html">Sign up</a> or <a class="button flat thickest sign-in log-in fancybox.ajax" href="sign-in.php.html">Log in</a></span> <span>to follow projects</span>
 	    	</div>
 		    <div class="close"></div>
 	    </div>

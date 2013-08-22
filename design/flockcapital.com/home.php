@@ -11,11 +11,12 @@
 			 ?>.png')"></div>*/ ?>
 			<div class="fg">
 			  
-				<h1 class="title">Build a real estate portfolio online</h1>
-				<p>Get access to exclusive investments and manage your portfolio using Flock.</p>
+				<?php /*<h1 class="title">Build a real estate portfolio online</h1>
+				<p>Get access to exclusive investments and manage your portfolio using Flock.</p>*/ ?>
+				<h1 class="title">Invest in real estate online</h1>
 				<div class="action">
-					<?php /*<button class="how-it-works faded">Watch how &nbsp;&nbsp;<span>1:45 min</span></button>*/ ?>
-					<a href="sign-in.php?action=sign-up" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
+					<button class="how-it-works elevated">How? &nbsp;&nbsp;<span>1:45 min</span></button
+					><a href="sign-in.php?action=sign-up" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
 				</div>
 				
 				<?php /*
@@ -48,7 +49,8 @@
 	<div class="gridwrap">
 		<?php
 			global $featured_projects;
-			foreach($featured_projects as $project) {
+			for($i=0; $i<count($featured_projects); $i++) {
+				$project = $featured_projects[$i];
 				require('project-badge.php');
 			}
 		?>

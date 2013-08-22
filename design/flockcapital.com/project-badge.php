@@ -31,7 +31,9 @@
 			<div class="focus"></div>
 		</a>
 		
-		<header>
+		<div class="textual">
+		
+			<header>
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
@@ -64,42 +66,56 @@
 				</div>
 			</h4>
 		</header>
-		
-		<div class="summary">
-			<p>Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio.</p>
-		</div>
-		
-		<div class="financials">
+			
+			<div class="summary">
+				<?php
+					$summaries = array(
+						'WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.',
+						'Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.',
+						'Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus.',
+						'Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.'
+					);
+					$rand_sumary = array_rand($summaries);
+					$summary = $summaries[$rand_sumary];
+					echo '<p>'.$summary.'</p>';
+				?>
+			</div>
+			
+			<div class="financials">
 			<div>
 				<div>
-					<div><?php
-						
-							$fc = count($financials)+2;
+					<div>
+						<div class="numbers">
+							<?php
 							
-							if ($financials) {
-								if (array_key_exists('type', $financials)) {
-									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
-									echo "</ul>";
+								$fc = count($financials)+2;
+								
+								if ($financials) {
+									if (array_key_exists('type', $financials)) {
+										echo "<ul class='size-".$fc."'>\n";
+											echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>purchase</label></div></li>\n";
+										echo "</ul>";
+									}
+									if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
+										echo "<ul class='size-".$fc."'>\n";
+											echo '<li class="share"><div><b>'.format_money($financials['share']['price'], true, false)."</b> <label>/share</label></div></li>\n";
+										echo "</ul>";
+									}
+									if (array_key_exists('return', $financials)) {
+										echo "<ul class='size-".$fc."'>\n";
+											echo '<li class="return"><div><b>'.$financials['return']['value'].'<u>'.$financials['return']['unit']."</u></b> <label>".$financials['return']['period']."</label></div></li>\n";
+										echo "</ul>";
+									}
+									if (array_key_exists('term', $financials)) {
+										echo "<ul class='size-".$fc."'>\n";
+											echo '<li class="term"><div><b>'.$financials['term']['value'].' <u class="short">'.$financials['term']['unit']['short'].'</u><u class="long">'.$financials['term']['unit']['long']."</u></b> <label>term</label></div></li>\n";
+										echo "</ul>";
+									}
 								}
-								if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
-									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="share"><div><b>'.format_money($financials['share']['price'], true, false)."</b> <label>/share</label></div></li>\n";
-									echo "</ul>";
-								}
-								if (array_key_exists('yield', $financials)) {
-									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="yield"><div><b>'.$financials['yield']['value'].'<u>'.$financials['yield']['unit']."</u></b> <label>yield</label></div></li>\n";
-									echo "</ul>";
-								}
-								if (array_key_exists('term', $financials)) {
-									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="term"><div><b>'.$financials['term']['value'].' <u class="short">'.$financials['term']['unit']['short'].'</u><u class="long">'.$financials['term']['unit']['long']."</u></b> <label>term</label></div></li>\n";
-									echo "</ul>";
-								}
-							}
-							
-						?><div class="moneywrap size-<?php echo $fc/2; ?>">
+								
+							?>
+						</div>
+						<div class="moneywrap size-<?php echo $fc/2; ?>">
 							<div>
 								<?php
 									if ($goal || $progress) {
@@ -125,10 +141,14 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="action">
-			<button <?php echo $is_tracked ? 'class="tracking '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Stop tracking this project">'.($size!='dash-tracking-list' ? 'Tracking' : '') : 'class="track '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Track this project">'.($size!='dash-tracking-list' ? 'Track' : ''); ?></button><button class="details" title="<?php echo $name; ?>">Full Details</button>
+			
+			<div class="action">
+				<button <?php echo $is_tracked ? 'class="tracking '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Stop tracking this project">'.($size!='dash-tracking-list' ? 'Tracking' : '') : 'class="track '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Track this project">'.($size!='dash-tracking-list' ? 'Track' : ''); ?></button><button class="details" title="<?php echo $name; ?>">Full Details</button>
+			</div>
+			
 		</div>
+		
+		
 		
 	</div>
 </article>

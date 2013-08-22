@@ -34,7 +34,7 @@
 @darkGray: lighten(black, 22%);
 @textGray: lighten(black, 31%); // also @body-copy-color in typeplate.less
 
-
+@bgGray: mix(@offWhite, @lightGray, 75%);
 
 
 @facebookBlue: rgb(59, 89, 152);
@@ -46,15 +46,22 @@
 
 @bodyMaxW: 320px;
 @padding: 1.25rem;
+
 @mastheadTall: 8rem;
 @mastheadShort: 4rem;
+
 @menuBreakWidth: 55rem;
 
+@riseH: 7rem;
 
 
+
+
+@textFontFamily: 'helvetica-neue-text', 'Helvetica Neue', 'neue-haas-grotesk-text', Helvetica, Arial, sans-serif;
 .text {
-	font-family: 'neue-haas-grotesk-text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	//font-family: 'Helvetica Neue', 'neue-haas-grotesk-text', Helvetica, Arial, sans-serif;
+	font-family: @textFontFamily;
+	font-weight: 300;
+	//letter-spacing: .033em;
 }
 
 
@@ -200,6 +207,17 @@
 		 -o-blend-mode:@props;
 			blend-mode:@props;
 }
+
+
+.clip-path (...) {
+	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
+	-webkit-clip-path:@props;
+	   -moz-clip-path:@props;
+		-ms-clip-path:@props;
+		 -o-clip-path:@props;
+			clip-path:@props;
+}
+
 .placeholder(@color: @aluminium, @weight: 300, @fontSize: @theta) {
 	
 	@lineHeight: @line-height*(1/@fontSize);

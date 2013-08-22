@@ -7,13 +7,12 @@
 	
 	
 	if (isset($_POST['auth'])) {
-		if ($_POST['auth']) {
+		if (isset($_POST['auth']) && $_POST['auth']) {
 			$_SESSION['auth'] = true;
+			$_SESSION['user'] = isset($_POST['username']) && array_key_exists($_POST['username'], $investors) ? $_POST['username'] : array_rand($investors);
 		} else {
 			unset($_SESSION['auth']);
-		}
-		if ($_POST['auth']) {
-			$_SESSION['user'] = isset($_POST['email']) && array_key_exists($_POST['email'], $investors) ? $_POST['email'] : array_rand($investors);
+			unset($_SESSION['user']);
 		}
 	}
 	if (!isset($_SESSION['auth']) && array_key_exists('p', $_GET) && in_array($_GET['p'], array('dashboard', 'investor-edit', 'settings'))) {

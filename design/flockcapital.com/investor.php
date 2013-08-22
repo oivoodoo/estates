@@ -20,12 +20,12 @@
 	<?php if ($me) { ?>
 		<div class="message">
 			<div>
-				This is Your profile. &nbsp;&nbsp;<a class="button" href="?p=investor-edit&i=<?php echo $h; ?>">Edit</a>
+				This is Your profile. &nbsp;&nbsp;<a class="button" href="?p=settings&i=<?php echo $h; ?>">Edit</a>
 			</div>
 		</div>
 	<?php } ?>
 	
-	<div class="head fix elevate">
+	<div class="head <?php /*fix elevate*/ ?>">
 	
 		<div class="contract">
 			
@@ -40,14 +40,10 @@
 				</div>
 	
 				<div class="ext-account-buttons">
-					<div>
-						<div class="btns">
-							<div>
-								<button name="ext-account" value="facebook" class="ext-account-button facebook connected-ext-account-button"></button>
-								<button name="ext-account" value="twitter" class="ext-account-button twitter connected-ext-account-button"></button>
-							</div>
-						</div>
-					</div>
+					<span>
+						<button name="ext-account" value="facebook" class="ext-account-button facebook"></button>
+						<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -96,7 +92,7 @@
 									$rand_project = array_rand($projects);
 									$project = $projects[$rand_project];
 									$project['is_tracked'] = true;
-									$project_badge_size = 'dash-tracking-list';
+									$project_badge_size = 'dash-tracking';
 									require('project-badge.php');
 								}
 							?>

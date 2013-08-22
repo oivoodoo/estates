@@ -9,9 +9,9 @@
 	$is_internal = array_key_exists('internal', $_GET) && $_GET['internal'];
 	
 	$alt =	$is_signup ? (
-				$is_internal ? 'Already have an account? <a href="sign-in.php" class="sign-in fancybox.ajax">Sign in</a>.'
-						   : 'Sign up with an external account to follow your friends\' activity on Flock.<br><a href="sign-in.php?action=sign-up&internal=1" class="sign-in fancybox.ajax">Sign up without any external accounts</a>.'
-			) : '<a href="sign-in.php?action=forgotten" class="sign-in fancybox.ajax">Forgot password?</a>'/*'Don\'t have an account? <a href="sign-in.php?action=sign-up" class="sign-in fancybox.ajax">Sign up</a>!'*/;
+				$is_internal ? 'Already have an account? <a href="sign-in.php" class="sign-in log-in fancybox.ajax">Sign in</a>.'
+						   : 'Sign up with an external account to follow your friends\' activity on Flock.<br><a href="sign-in.php?action=sign-up&internal=1" class="sign-in sign-up fancybox.ajax">Sign up without any external accounts</a>'
+			) : '<a href="sign-in.php?action=forgotten" class="sign-in forgotten fancybox.ajax">Forgot password?</a>';
 	
 	$label = $is_signup ? 'Sign up' : 'Sign in';
 	
@@ -41,9 +41,10 @@
 	
 				<?php if ($is_internal) { ?>
 				
-					<form action="signup">
+					<form method="post">
+						<input type="hidden" name="auth" value="1">
 						<?php /*<div class="tight">*/ ?>
-							<label><input type="text" placeholder="Full Name" size="1"></label>
+							<label><input type="text" placeholder="Full Name" size="1" name="username"></label>
 							<label><input type="email" placeholder="E-mail" size="1"></label>
 							<label><input type="text" placeholder="••••••••" size="1"></label>
 						<?php /*</div>*/ ?>
@@ -53,7 +54,7 @@
 									<?php echo $alt; ?>
 								</div>
 								<div>
-									<input type="submit" class="delta thicker" value="<?php echo $label; ?>">
+									<input type="submit" class="epsilon thickest" value="<?php echo $label; ?>">
 								</div>
 							</div>
 						</div>
@@ -61,13 +62,14 @@
 			
 				<?php } else { ?>
 				
-					<form action="signup">
+					<form method="post">
+						<input type="hidden" name="auth" value="1">
 						<div class="ext-account-buttons">
 							<span>
-								<button name="ext-account" value="facebook" class="ext-account-button facebook"></button>
-								<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
-								<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-								<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+								<button name="ext-account" value="facebook" class="ext-account-button facebook labelled"></button>
+								<button name="ext-account" value="twitter" class="ext-account-button twitter labelled"></button>
+								<button name="ext-account" value="google-plus" class="ext-account-button google-plus labelled"></button>
+								<button name="ext-account" value="linked-in" class="ext-account-button linked-in labelled"></button>
 							</span>
 						</div>
 						<div class="action">
@@ -87,7 +89,7 @@
 						<input type="hidden" name="auth" value="1">
 						<div class="tight">
 							<div class="input-group">
-								<input style="width:50%;" type="text" placeholder="E-mail" size="1" name="email">
+								<input style="width:50%;" type="text" placeholder="E-mail" size="1" name="username">
 								<input style="width:50%;" type="password" placeholder="••••••••" size="1">
 							</div>
 						</div>
@@ -97,7 +99,7 @@
 									<?php echo $alt; ?>
 								</div>
 								<div>
-									<input type="submit" class="delta thicker" value="<?php echo $label; ?>">
+									<input type="submit" class="epsilon thickest" value="<?php echo $label; ?>">
 								</div>
 							</div>
 						</div>

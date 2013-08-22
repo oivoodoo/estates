@@ -581,3 +581,9 @@ h6 {
   right: 0.059523809523809534rem;
   border-left: 0.35714285714285715rem solid #c11529;
 }
+  border-right: 0.35714285714285715rem solid #c11529;
+}
+.wp-pointer-right .wp-pointer-arrow {
+  right: 0.059523809523809534rem;
+  border-left: 0.35714285714285715rem solid #c11529;
+}

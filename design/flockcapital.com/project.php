@@ -49,7 +49,7 @@
 							if ($financials) {
 								if (array_key_exists('type', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
+										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>purchase</label></div></li>\n";
 									echo "</ul>";
 								}
 								if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
@@ -57,9 +57,9 @@
 										echo '<li class="share"><div><b>'.format_money($financials['share']['price'], true, false)."</b> <label>/share</label></div></li>\n";
 									echo "</ul>";
 								}
-								if (array_key_exists('yield', $financials)) {
+								if (array_key_exists('return', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="yield"><div><b>'.$financials['yield']['value'].'<u>'.$financials['yield']['unit']."</u></b> <label>yield</label></div></li>\n";
+										echo '<li class="return"><div><b>'.$financials['return']['value'].'<u>'.$financials['return']['unit']."</u></b> <label>".$financials['return']['period']."</label></div></li>\n";
 									echo "</ul>";
 								}
 								if (array_key_exists('term', $financials)) {
@@ -101,25 +101,25 @@
 	</div>
 	
 	
-	<div class="title fix elevate">
+	<div class="title <?php /*fix elevate*/ ?>">
 		
 		<div class="contract">
 			<figure class="profile-badge manager-badge">
 				<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
 			</figure>
 			<h2 class="name">
-				<?php
-					if ($is_tracked)
-						echo '<div class="trackwrap tracking"><button class="tracking labelled" title="Stop tracking this project">Tracking</button></div>';
-					else
-						echo '<div class="trackwrap track"><button class="track" title="Follow this project">Track</button></div>';
-					
-					echo $name;
-				?>
+				<?php echo $name; ?>
 			</h2>
+			<div class="secondary-action tracking">
+				 <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"></button
+				><button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"></button
+				><button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"></button
+				><button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"></button
+				><button class="<?php echo $is_tracked ? 'tracking' : 'track' ?>" title="<?php echo $is_tracked ? 'Stop tracking this project' : 'Track this project' ?>"></button>
+			</div>
 		</div>
 		
-		<div id="tabs" class="tabs major gridwrap-padded">
+		<div id="tabs" class="tabs gridwrap-padded">
 			<ul>
 				<li><a href="?p=project&project=<?php echo $p; ?>#overview" class="tab overview-tab current"><span>Overview</span></a></li
 				><li><a href="?p=project&project=<?php echo $p; ?>#financials" class="tab financials-tab"><span>Financials</span></a></li
@@ -141,18 +141,13 @@
 			<div>
 			
 				<div id="overview-content" class="tab-content paper current">
-					<p>
-						Phasellus a tellus ac augue luctus fermentum. Phasellus blandit faucibus metus in scelerisque. Nunc ac purus hendrerit lorem sollicitudin egestas et quis felis. Sed ornare, sapien at laoreet lobortis, tellus arcu hendrerit nibh, at fermentum ante ante id odio. Quisque convallis euismod mi. Nunc tristique, arcu a commodo ornare, arcu lectus imperdiet lorem, non ornare felis arcu iaculis nulla. Praesent dolor sem, euismod ac pellentesque ac, volutpat et dui. Integer elementum odio eget metus adipiscing consequat. Suspendisse nunc sem, hendrerit vel imperdiet ac, faucibus sed velit. Phasellus et augue eget enim ultricies vestibulum.
-					</p>
-					<div class="gallery">
+					<p>Stonemount, as a debt advisor, plans to assist the current anchor tentant raise a combination of bank debt and private debt financing to acquire the property. <strong>The current tenant</strong> operates a successful café with a large summer terrace. The tenant wishes to acquire the property to make capital improvements and expand the business. Stonemount believes the property provides <i>a good opportunity for a <b>junior debt investment</b></i> that will be secured against the property in second position behind the bank.</p>
+					<p>Loan interest is currently tax free in Estonia and the current tenant is offering 10% per annum for a 3 year term.</p>
+					<?php /*<div class="gallery">
 						<div>
 							<img src="img/sf-housing.jpg">
 						</div>
-					</div>
-					<p>	
-						Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.
-						Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim.
-					</p>
+					</div>*/ ?>
 				</div>
 				
 				<div id="location-content" class="tab-content paper">
@@ -182,6 +177,17 @@
 						}
 					?>
 				</div>
+			   
+			    <div class="offer-disclaimer paper">
+			    	<hr>
+			    	<p>A special note regarding forward-looking statements:</p>
+			    	<p>This Offering material, including any sections entitled “Overview”, “Property”, “Neighborhood”, “Financials”, and “Developer” and within the Private Placement Memorandum the sections entitled “The Company,” “Risk Factors,” “Business and Properties,” “Offering Price Factors” and “Use of Proceeds”, contain forward-looking statements. In some cases you can identify these statements by forward-looking words such as “believe,” “may,” “will,” “estimate,” “continue,” “anticipate,” “intend,” “could,” “would,” “project,” “plan,” “expect” or the negative or plural of these words or similar expressions. These forward-looking statements include, but are not limited to, statements concerning the Company, property, risk factors, plans and projections.</p>
+			    	<p>You should not rely upon forward-looking statements as predictions of future events. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described in the “Risk Factors” within the Private Placement Memorandum. In light of these risks, uncertainties and assumptions, the forward-looking events and circumstances discussed in this Offering material may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements.</p>
+			    	<p>You should read this Offering material and the documents that we reference in this Offering material and the Private Placement Memorandum with the understanding that our actual future results, levels of activity, performance and events and circumstances may be materially different from what we expect.</p>
+			    	<p>Except as required by law, neither we nor any other person assumes responsibility for the accuracy and completeness of the forward-looking statements. We undertake no obligation to update publicly any forward-looking statements for any reason after the date of this Private Placement Memorandum to conform these statements to actual results or to changes in our expectations.</p>
+			    	<p>Disclaimer: Neither the SEC nor any state securities commission or regulatory authority approved, passed upon or endorsed the merits of this offering.</p>
+			    	<p>Flock's services do not constitute “crowd funding” as described in Title III of the Jumpstart Our Business Startups Act (“JOBS Act”).</p>
+			    </div>
 				
 			</div>
 		</div>
@@ -306,16 +312,6 @@
 	</div>
 	
 	
-    <div class="offer-disclaimer">
-    	<hr>
-    	<p>A special note regarding forward-looking statements:</p>
-    	<p>This Offering material, including any sections entitled “Overview”, “Property”, “Neighborhood”, “Financials”, and “Developer” and within the Private Placement Memorandum the sections entitled “The Company,” “Risk Factors,” “Business and Properties,” “Offering Price Factors” and “Use of Proceeds”, contain forward-looking statements. In some cases you can identify these statements by forward-looking words such as “believe,” “may,” “will,” “estimate,” “continue,” “anticipate,” “intend,” “could,” “would,” “project,” “plan,” “expect” or the negative or plural of these words or similar expressions. These forward-looking statements include, but are not limited to, statements concerning the Company, property, risk factors, plans and projections.</p>
-    	<p>You should not rely upon forward-looking statements as predictions of future events. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described in the “Risk Factors” within the Private Placement Memorandum. In light of these risks, uncertainties and assumptions, the forward-looking events and circumstances discussed in this Offering material may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements.</p>
-    	<p>You should read this Offering material and the documents that we reference in this Offering material and the Private Placement Memorandum with the understanding that our actual future results, levels of activity, performance and events and circumstances may be materially different from what we expect.</p>
-    	<p>Except as required by law, neither we nor any other person assumes responsibility for the accuracy and completeness of the forward-looking statements. We undertake no obligation to update publicly any forward-looking statements for any reason after the date of this Private Placement Memorandum to conform these statements to actual results or to changes in our expectations.</p>
-    	<p>Disclaimer: Neither the SEC nor any state securities commission or regulatory authority approved, passed upon or endorsed the merits of this offering.</p>
-    	<p>Flock's services do not constitute “crowd funding” as described in Title III of the Jumpstart Our Business Startups Act (“JOBS Act”).</p>
-    </div>
     
 	
 </section>

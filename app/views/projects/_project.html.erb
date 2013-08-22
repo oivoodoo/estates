@@ -2,52 +2,57 @@
   <div ng-click="Turbolinks.visit('<%= url_for(project) %>')">
     <a class="project-thumb" href="<%= project_path(project) %>"><%= image_tag(project.image.url(local_assigns.fetch(:image_size, :index))) %><div class="focus"></div></a>
 
-    <header>
-      <h4 class="project-name">
-        <div class="profile-badge manager-badge">
-          <div>
-            <a href="#" title="<%= project.owner %>"><%= image_tag(project.company_image.url(:index)) %></a>
+    <div class='textual'>
+
+      <header>
+        <h4 class="project-name">
+          <div class="profile-badge manager-badge">
+            <div>
+              <a href="#" title="<%= project.owner %>"><%= image_tag(project.company_image.url(:index)) %></a>
+            </div>
           </div>
-        </div>
 
-        <div class="titlewrap">
-          <a class="project-link" onclick="Turbolinks.visit('<%= url_for(project) %>'); return false;" title="<%= project.name %>"><%= project.name %></a>
-          <div class='manager-location'>
-            <span><a href='#'><%= project.owner %></a></span>
-            <address><a href='#'><%= project.address %></a></address>
-          </div>
-      </h4>
-    </header>
+          <div class="titlewrap">
+            <a class="project-link" onclick="Turbolinks.visit('<%= url_for(project) %>'); return false;" title="<%= project.name %>"><%= project.name %></a>
+            <div class='manager-location'>
+              <span><a href='#'><%= project.owner %></a></span>
+              <address><a href='#'><%= project.address %></a></address>
+            </div>
+        </h4>
+      </header>
 
-    <div class="summary">
-      <p><%= project.short_description.to_s.html_safe %></p>
-    </div>
+      <div class="summary">
+        <p><%= project.short_description.to_s.html_safe %></p>
+      </div>
 
-    <div class="financials">
-      <div>
+      <div class="financials">
         <div>
           <div>
-            <ul class='size-6'>
-              <li class="type"><div><b><%= project.investment_type %></b> <label>offering</label></div></li>
-            </ul>
-            <ul class='size-6'>
-              <li class="share"><div><%= project.view_per_share %><label>/share</label></div></li>
-            </ul>
-            <ul class='size-6'>
-              <li class="yield"><div><b><%= project.view_percent %></b> <label>yield</label></div></li>
-            </ul>
-            <ul class='size-6'>
-              <li class="term"><div><b><%= project.holding %> <u class="short"></u><u class="long">months</u></b> <label>term</label></div></li>
-            </ul>
-            <div class="moneywrap size-3">
-              <div>
-                <ul class='money'>
-                  <li class="raised" style="width:<%= project.view_percent %>;"><div><label>Raised</label><i>$</i><%= project.view_raise %></div></li>
-                  <li class="budget" style="width:<%= project.view_remaining_percent %>;"><div><label>Budget</label><i>$</i><%= project.view_price %></div></li>
+            <div>
+              <div class="numbers">
+                <ul class='size-6'>
+                  <li class="type"><div><b><%= project.investment_type %></b> <label>offering</label></div></li>
                 </ul>
-                <div class="goal">
-                  <div>
-                    <div class="goalmeter"><div class="progress" style="width:<%= project.view_percent %>"><div class="marker" style="left:<%= project.view_percent %>;"><label><%= project.view_percent %></label></div></div></div>
+                <ul class='size-6'>
+                  <li class="share"><div><%= project.view_per_share %><label>/share</label></div></li>
+                </ul>
+                <ul class='size-6'>
+                  <li class="yield"><div><b><%= project.view_percent %></b> <label>yield</label></div></li>
+                </ul>
+                <ul class='size-6'>
+                  <li class="term"><div><b><%= project.holding %> <u class="short"></u><u class="long">months</u></b> <label>term</label></div></li>
+                </ul>
+              </div>
+              <div class="moneywrap size-3">
+                <div>
+                  <ul class='money'>
+                    <li class="raised" style="width:<%= project.view_percent %>;"><div><label>Raised</label><%= project.view_raise %></div></li>
+                    <li class="budget" style="width:<%= project.view_remaining_percent %>;"><div><label>Budget</label><%= project.view_price %></div></li>
+                  </ul>
+                  <div class="goal">
+                    <div>
+                      <div class="goalmeter"><div class="progress" style="width:<%= project.view_percent %>"><div class="marker" style="left:<%= project.view_percent %>;"><label><%= project.view_percent %></label></div></div></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -55,19 +60,20 @@
           </div>
         </div>
       </div>
+
+      <div class="action">
+        <% if user_signed_in? %>
+          <button class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
+        <% else %>
+          <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+            <button class="track labelled" title="{{followText}}"><%= "{{followText}}" if class_name == 'full' %></button>
+          </a>
+          <button style='display:none' class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
+        <% end %>
+        <button class="details" onclick="Turbolinks.visit('<%= url_for(project) %>')" title='<%= project.name %>'>Full Details</button>
+      </div>
     </div>
 
-    <div class="action">
-      <% if user_signed_in? %>
-        <button class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
-      <% else %>
-        <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
-          <button class="track labelled" title="{{followText}}"><%= "{{followText}}" if class_name == 'full' %></button>
-        </a>
-        <button style='display:none' class="track labelled" title="{{followText}}" ng-click="follow($event)"><%= "{{followText}}" if class_name == 'full' %></button>
-      <% end %>
-      <button class="details" onclick="Turbolinks.visit('<%= url_for(project) %>')" title='<%= project.name %>'>Full Details</button>
-    </div>
   </div>
 </article>
 

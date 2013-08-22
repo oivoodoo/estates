@@ -13,17 +13,17 @@ function format_money($sum, $short=true, $round=true) {
 	$money_format = '%.1n';
 	
     if($sum>1000000000000)
-    	return '<i>'.$currency.'</i>'.round(($sum/1000000000000),1). ($short ? 't' : ' trillion');
+    	return $currency.round(($sum/1000000000000),1). ($short ? 't' : ' trillion');
     	//return money_format($money_format, round(($sum/1000000000000),1)). ($short ? 't' : ' trillion');
     	
     else if ($sum>1000000000)
-    	return '<i>'.$currency.'</i>'.round(($sum/1000000000),1). ($short ? 'b' : ' billion');
+    	return $currency.round(($sum/1000000000),1). ($short ? 'b' : ' billion');
     
     else if ($sum>1000000)
-    	return '<i>'.$currency.'</i>'.round(($sum/1000000),1). ($short ? 'm' : ' million');
+    	return $currency.round(($sum/1000000),1). ($short ? 'm' : ' million');
     
     else if ($sum>1000)
-    	return '<i>'.$currency.'</i>'.round(($sum/1000),1). ($short ? 'k' : 'k');
+    	return $currency.round(($sum/1000),1). ($short ? 'k' : 'k');
     
     return $currency.$sum;
 	//return money_format($money_format, $sum);

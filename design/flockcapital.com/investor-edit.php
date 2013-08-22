@@ -50,7 +50,7 @@
 	<?php } ?>
 	
 	
-	<div class="head fix">
+	<div class="head fix elevate">
 		<div class="contract">
 			<figure class="profile-badge">
 				<a href="profile-pic.php" class="profile-pic fancybox.ajax"><img src="img/<?php echo $h; ?>.png"><div class="focus"></div></a>
@@ -63,19 +63,15 @@
 				</div>
 	
 				<div class="ext-account-buttons">
-					<div>
-						<div class="btns">
-							<div>
-								<button name="ext-account" value="facebook" class="ext-account-button facebook connected-ext-account-button"></button>
-								<button name="ext-account" value="twitter" class="ext-account-button twitter connected-ext-account-button"></button>
-								<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-								<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
-							</div>
-						</div> &nbsp;&nbsp;
-						<div>
-							<p class="tertiary">Connect external accounts to follow your friends' activity on Flock.</p>
-						</div>
-					</div>
+					<span>
+						<button name="ext-account" value="facebook" class="ext-account-button facebook connected-ext-account-button"></button>
+						<button name="ext-account" value="twitter" class="ext-account-button twitter connected-ext-account-button"></button>
+						<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+						<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+					</span> &nbsp;&nbsp;
+					<p class="tertiary">
+						Connect external accounts to follow your friends' activity on Flock.
+					</p>
 				</div>
 			</div>
 		</div>

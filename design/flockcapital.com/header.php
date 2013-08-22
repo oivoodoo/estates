@@ -12,9 +12,11 @@
         <meta name="keywords" content="html, meta, keywords" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <?php /* <meta http-equiv="cache-control" content="no-store">
+        <meta http-equiv="robots" content="nofollow,noindex"> */ ?>
 
-        <?php /* TODO: review the canonical url before public release (flockinvest.com might be a better alternative) */ ?>
-        <link rel="canonical" href="http://flockcapital.com/" />
+        <?php /* TODO: review the canonical url before public release (flockinvest.com might be a better alternative)
+        <link rel="canonical" href="http://flockcapital.com/" /> */ ?>
         <link rel="Shortcut Icon" type="image/svg" href="g/flockinvest-logo-symbol.svg">
 
         <link rel="stylesheet" href="style.css" type="text/css">
@@ -30,7 +32,7 @@
         <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.13&amp;sensor=false"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
         
         <?php /* Library ext */ ?>
         <script src="js/jquery.ui.widget-combobox.js"></script>
@@ -44,7 +46,7 @@
         <?php /* All custom functions */ ?>
         <script src="js/custom.js"></script>
         <script>
-        	var auth = <?php echo isset($_SESSION['user']) ? 'false' : 'true'; ?>;
+        	var auth = <?php echo (isset($_SESSION['auth'])) ? 'true' : 'false'; ?>;
         </script>
         
         <?php /* TODO: discard helpers (this line & script files) from production release 
@@ -77,7 +79,7 @@
 						<div><?php
 								if (
 									(array_key_exists('p', $_GET) && $_GET['p']=='dashboard') ||
-									((array_key_exists('p', $_GET) && ($_GET['p']=='investor' || $_GET['p']=='investor-edit')) && (array_key_exists('i', $_GET) && ($_GET['i']==$_SESSION['user']))) ||
+									((array_key_exists('p', $_GET) && ($_GET['p']=='investor' || $_GET['p']=='investor-edit')) && (array_key_exists('i', $_GET) && isset($_SESSION['user']) && $_GET['i']==$_SESSION['user'])) ||
 									(array_key_exists('p', $_GET) && $_GET['p']=='settings')
 								) {
 									$is_user_page = true;
@@ -92,7 +94,7 @@
 								
 									if (isset($_SESSION['auth']) && $_SESSION['auth']) {
 									
-										?><li><a href="?p=support" <?php if (array_key_exists('p', $_GET) && ($_GET['p']=='support')) echo 'class="current"' ?>>Support</a></li
+										?><li><a href="?p=help" <?php if (array_key_exists('p', $_GET) && ($_GET['p']=='help')) echo 'class="current"' ?>>Help</a></li
 										 ><li class="profile-badge <?php if ($is_user_page) echo 'current' ?>">
 											<a href="?p=dashboard" id="profile-badge" class="<?php if ($is_user_page) echo 'current' ?>">
 												<img class="front" src="img/<?php echo $_SESSION['user'] ?>.png">
@@ -113,8 +115,8 @@
 									} else {
 									
 										?><li><a href="?p=how-it-works" <?php if (array_key_exists('p', $_GET) && ($_GET['p']=='how-it-works')) echo 'class="current"' ?>>How It Works</a></li
-										 ><li><a href="sign-in.php?action=sign-up" class="sign-in fancybox.ajax">Sign Up</a></li
-										 ><li><a href="sign-in.php" class="sign-in fancybox.ajax">Log In</a></li><?php
+										 ><li class="sign-in"><a href="sign-in.php?action=sign-up" class="sign-in sign-up fancybox.ajax">Sign Up</a></li
+										 ><li class="sign-in"><a href="sign-in.php" class="sign-in log-in fancybox.ajax">Log In</a></li><?php
 										
 									}
 								?>

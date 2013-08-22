@@ -23,9 +23,10 @@ $projects = array(
 		'goal'		=> 32000000,
 		'progress' => 32000000*.34,
 		'financials'=> array(
-			'yield'	=> array(
+			'return'	=> array(
 				'value'	=> 12,
-				'unit'	=> '%'
+				'unit'	=> '%',
+				'period'=> 'yield'
 			),
 			'type'	=> 'equity', //Equity/Debt
 			'term'	=> array(
@@ -38,11 +39,6 @@ $projects = array(
 			'share' => array(
 				'price' => 1400
 			)
-		),
-		'terms'		=> array(
-			'<b>12%</b> target return',
-			'<b>Equity</b> purchase',
-			'<b>24 mo</b> holding period'
 		)
 	),
 	'vilnius-rimi' => array(
@@ -64,9 +60,10 @@ $projects = array(
 		'goal'		=> 32000000,
 		'progress' => 21120000,
 		'financials'=> array(
-			'yield'	=> array(
+			'return'	=> array(
 				'value'	=> 12,
-				'unit'	=> '%'
+				'unit'	=> '%',
+				'period'=> 'yield'
 			),
 			'type'	=> 'equity', //Equity/Debt
 			'term'	=> array(
@@ -79,11 +76,6 @@ $projects = array(
 			'share' => array(
 				'price' => 1500
 			)
-		),
-		'terms'		=> array(
-			'<b>12%</b> target return',
-			'<b>Equity</b> purchase',
-			'<b>24 mo</b> holding period'
 		)
 	),
 	'cafe-klaus' => array(
@@ -102,29 +94,25 @@ $projects = array(
 		),
 		'type_label'=> 'Retail',
 		'manager'	=> 'gage-partners',
-		'goal'		=> 32000000,
-		'progress' => 21120000,
+		'goal'		=> 400000,
+		'progress' => 81000,
 		'financials'=> array(
-			'yield'	=> array(
-				'value'	=> 12,
-				'unit'	=> '%'
+			'return'	=> array(
+				'value'	=> 10,
+				'unit'	=> '%',
+				'period'=> 'annual interest'
 			),
-			'type'	=> 'equity', //Equity/Debt
+			'type'	=> 'debt', //Equity/Debt
 			'term'	=> array(
-				'value'	=> 24,
+				'value'	=> 3,
 				'unit'	=> array(
-					'short' => 'mos',
-					'long' => 'months'
+					'short' => 'yrs',
+					'long' => 'years'
 				)
 			),
 			'share' => array(
-				'price' => 1500
+				'price' => 400
 			)
-		),
-		'terms'		=> array(
-			'<b>12%</b> target return',
-			'<b>Equity</b> purchase',
-			'<b>24 mo</b> holding period'
 		)
 	),
 	'tallinn-rimi' => array(
@@ -146,9 +134,10 @@ $projects = array(
 		'goal'		=> 32000000,
 		'progress' => 21120000,
 		'financials'=> array(
-			'yield'	=> array(
+			'return'	=> array(
 				'value'	=> 12,
-				'unit'	=> '%'
+				'unit'	=> '%',
+				'period'=> 'yield'
 			),
 			'type'	=> 'equity', //Equity/Debt
 			'term'	=> array(
@@ -161,11 +150,6 @@ $projects = array(
 			'share' => array(
 				'price' => 1500
 			)
-		),
-		'terms'		=> array(
-			'<b>12%</b> target return',
-			'<b>Equity</b> purchase',
-			'<b>24 mo</b> holding period'
 		)
 	),
 	'spain-maxima' => array(
@@ -187,9 +171,10 @@ $projects = array(
 		'goal'		=> 32000000,
 		'progress' => 21120000,
 		'financials'=> array(
-			'yield'	=> array(
+			'return'	=> array(
 				'value'	=> 12,
-				'unit'	=> '%'
+				'unit'	=> '%',
+				'period'=> 'yield'
 			),
 			'type'	=> 'equity', //Equity/Debt
 			'term'	=> array(
@@ -202,11 +187,6 @@ $projects = array(
 			'share' => array(
 				'price' => 1500
 			)
-		),
-		'terms'		=> array(
-			'<b>12%</b> target return',
-			'<b>Equity</b> purchase',
-			'<b>24 mo</b> holding period'
 		)
 	)
 );
@@ -223,9 +203,15 @@ $investors = array(
 			'last'	=> 'Rääk'
 		),
 		'handle'	=> 'kadri',
-		'type'		=> 'investor',
-		'type_label'=> 'Accredited Investor',
-		'type_class'=> 'investor accredited'
+		'email'		=> 'kadri@example.com',
+		'phone'		=> '+372 5555 5555',
+		'address'	=> array(
+			'street'	=> 'Kadriorg 2-3',
+			'zip'		=> '10123',
+			'locality'	=> 'Tallinn',
+			'country'	=> 'EE'
+		),
+		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav"
 	),
 	'mart' => array(
 		'name'		=> array(
@@ -233,7 +219,15 @@ $investors = array(
 			'last'	=> 'Uibo'
 		),
 		'handle'	=> 'mart',
-		'type'		=> 'investor'
+		'email'		=> 'mart@example.com',
+		'phone'		=> '+372 6666 6666',
+		'address'	=> array(
+			'street'	=> 'Street 44',
+			'zip'		=> '22201',
+			'locality'	=> 'Minsk',
+			'country'	=> 'BY'
+		),
+		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav"
 	),
 	'michael' => array(
 		'name'		=> array(
@@ -241,9 +235,15 @@ $investors = array(
 			'last'	=> 'Walsh'
 		),
 		'handle'	=> 'michael',
-		'type'		=> 'investor',
-		'type_label'=> 'Accredited Investor',
-		'type_class'=> 'investor accredited'
+		'email'		=> 'michael@example.com',
+		'phone'		=> '+372 7777 7777',
+		'address'	=> array(
+			'street'	=> 'Cuenca 31',
+			'zip'		=> '25730',
+			'locality'	=> 'Guayaquil',
+			'country'	=> 'EC'
+		),
+		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav"
 	)
 );
 
@@ -273,7 +273,7 @@ $managers = array(
 
 
 
-$countries 		= array (
+$countries = array (
 	'AX' => 'Åland Islands',
 	'AF' => 'Afghanistan',
 	'AL' => 'Albania',

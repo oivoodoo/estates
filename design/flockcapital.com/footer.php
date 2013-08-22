@@ -1,3 +1,8 @@
+            	<div id="rise">
+            		<div>
+	            		<canvas id="riseCanvas" width="1" height="1"></canvas>
+            		</div>
+            	</div>
             </div><!-- #main -->
 	        <footer id="footer">
 	        	
@@ -87,7 +92,7 @@
 
 	    <div id="nag">
 	    	<div>
-		        <span><a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php?action=sign-up">Sign up</a> or <a class="button flat thickest sign-in fancybox.ajax" href="sign-in.php">sign in</a></span> <span>to follow projects</span>
+		        <span><a class="button flat thickest sign-in sign-up fancybox.ajax" href="sign-in.php?action=sign-up">Sign up</a> or <a class="button flat thickest sign-in log-in fancybox.ajax" href="sign-in.php">Log in</a></span> <span>to follow projects</span>
 	    	</div>
 		    <div class="close"></div>
 	    </div>

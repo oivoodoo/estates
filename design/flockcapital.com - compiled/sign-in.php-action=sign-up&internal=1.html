@@ -18,16 +18,17 @@
 			
 				
 								
-					<form action="signup">
-													<label><input type="text" placeholder="Full Name" size="1"></label>
+					<form method="post">
+						<input type="hidden" name="auth" value="1">
+													<label><input type="text" placeholder="Full Name" size="1" name="username"></label>
 							<label><input type="email" placeholder="E-mail" size="1"></label>
 							<label><input type="text" placeholder="••••••••" size="1"></label>
 												<div class="action">
 							<div>
 								<div>
-									Already have an account? <a href="sign-in.php.html" class="sign-in fancybox.ajax">Sign in</a>.								</div>
+									Already have an account? <a href="sign-in.php.html" class="sign-in log-in fancybox.ajax">Sign in</a>.								</div>
 								<div>
-									<input type="submit" class="delta thicker" value="Sign up">
+									<input type="submit" class="epsilon thickest" value="Sign up">
 								</div>
 							</div>
 						</div>
