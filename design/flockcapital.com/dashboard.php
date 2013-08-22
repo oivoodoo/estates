@@ -2,161 +2,40 @@
 
 	global $projects, $investors;
 	$h = $_SESSION['user'];
-	
+
 	if (!$h || !array_key_exists($h, $investors)) return;
-	
+
 ?>
 
 
 <section id="dashboard">
 
-	<?php /*<div id="tabs" class="submenu">
-		<div>
-			<ul>
-				<li><a class="dashboard current" href="?p=dashboard">Dashboard</a></li
-				><li><a class="profile" href="?p=investor-edit&i=<?php echo $h ?>">Profile</a></li
-				><li><a class="settings" href="?p=settings&i=<?php echo $h ?>">Settings</a></li>
-			</ul>
-		</div>
-	</div>*/ ?>
-
-	<div id="tabs" class="tabs major gridwrap-padded <?php /*fix elevate*/ ?>">
-		<ul>
-			<li><a href="?p=dashboard#reports" class="tab reports-tab current"><span>Reports</span></a></li
-			><li><a href="?p=dashboard#investments" class="tab investments-tab"><span><em>3</em> Investments</span></a></li
-			><li><a href="?p=dashboard#tracking" class="tab tracking-tab"><span><em>7</em> Tracking</span></a></li
-			><li><a href="?p=dashboard#following" class="tab following-tab"><span><em>27</em> Following</span></a></li
-			><li><a href="?p=dashboard#followers" class="tab followers-tab"><span><em>3</em> Followers</span></a></li
-			><li><a href="?p=dashboard#timeline" class="tab timeline-tab"><span>Timeline</span></a></li
-			><li><a href="?p=dashboard#map" class="tab map-tab"><span>Map</span></a></li>
-		</ul>
-	</div>
-	
 	<div id="reports-content" class="head tab-content keep">
-		
-		<?php /*<div id="main-numbers" class="financials">
-			<div>
-				<div>
-					<div>
-						<ul class="size-6"><li class="earnings"><div><b><?php echo format_money(9999); ?></b> <label>earnings in total</label></div></li></ul>
-						<ul class="size-6"><li class="invested"><div><b><?php echo format_money(82000); ?></b> <label>invested in total</label></div></li></ul>
-						<ul class="size-6"><li class="investments"><div><b>3</b> <label>investments</label></div></li></ul>
-					</div>
-				</div>
-			</div>
-		</div>*/ ?>
-		
 		<div id="charts">
-		
+
 			<div id="performance">
-				<div class="big-number invested"><div><b><?php echo format_money(82000); ?></b> <label>invested in total</label></div></div>
-				<div class="big-number earnings"><div><b><?php echo format_money(9999); ?></b> <label>earnings in total</label></div></div>
-				
-				<canvas class="graph-canvas" id="performance-canvas" height="100" width="400"></canvas>
-				<script>
-					window.graphs.performance = {
-						type: 'line',
-						data: {
-							labels : ['', "March '13", "April '13", "May '13", "June '13", "July '13", "August '13"],
-							datasets : [
-								{
-									fillColor : 'hsla(0, 0%, 97%, .10)',
-									strokeColor : 'hsl(200, 80%, 45%)',
-									pointStrokeColor : 'transparent',
-									pointColor : 'transparent',
-									data : [82, 82, 82, 82, 82, 82, 82]
-								},{
-									fillColor : 'hsla(200, 80%, 45%, .1)',
-									strokeColor : 'hsl(200, 80%, 45%)',
-									pointColor : 'white',
-									data : [82, 83, 85.3, 85.9, 88.8, 90.13, 92.999]
-								}
-							]	
-							
-						},
-						options: {
-							scaleOverride : true,
-							
-							//** Required if scaleOverride is true **
-							//Number - The number of steps in a hard coded scale
-							scaleSteps: 4,
-							//Number - The value jump in the hard coded scale
-							scaleStepWidth: 4,
-							//Number - The scale starting value
-							scaleStartValue: 80,
-						}
-					}
-				</script>
 			</div>
-				
+
 			<div id="allocation">
-				<div class="big-number investments"><div><b>3</b> <label>investments</label></div></div>
-				
-				<?php
-					$asset_allocation = array(
-						'debt' => array(
-							'label'		=> 'Debt',
-							'percentage'=> 30,
-							'color'		=> 'hsl(200, 80%, 45%)'
-						),
-						'equity' => array(
-							'label'		=> 'Equity',
-							'percentage'=> 70,
-							'color'		=> 'hsl(200, 40%, 85%)'
-						)
-					);
-				?>
-				
-				<div class="chart-table">
-					<div class="chart-cell">
-						<canvas class="graph-canvas" id="allocation-canvas" height="100" width="100"></canvas>
-						<script>
-						window.graphs.allocation = {
-							type: 'doughnut',
-							data: [
-								<?php
-									foreach ($asset_allocation as $a) {
-										$aa[] = '{
-											value: '.$a['percentage'].',
-											color: "'.$a['color'].'"
-										}';
-									}
-									echo implode(',', $aa);
-								?>
-							]
-						}
-					</script>
-					</div>
-					<div class="legend-cell">
-						<ul class="doughnut-legend">
-							<?php
-								foreach ($asset_allocation as $a) {
-									echo '<li><b style="color:'.$a['color'].';">'.$a['percentage'].'<i>%</i></b> <label>'.$a['label'].'</label></li>';
-								}
-							?>
-						</ul>
-					</div>
-				</div>
-				
 			</div>
-		
+
 		</div>
-		
+
 	</div>
 
 	<div class="body">
 		<div class="main">
 			<div>
-				
+
 				<div class="switch-group">
 					<div id="investments-content" class="tab-content main-switch main-switch-current">
-						
+
 						<div class="tabs project-tabs">
 							<ul>
 								<li><a href="#investments" class="current"><em>3</em> Investments</a></li><li><a href="#tracking"><em>7</em> Tracking</a></li>
 							</ul>
 						</div>
-						
+
 						<div>
 							<?php
 								for ($i=0; $i<3; $i++) {
@@ -167,17 +46,17 @@
 								}
 							?>
 						</div>
-						
+
 					</div>
-					
+
 					<div id="tracking-content" class="tab-content main-switch">
-						
+
 						<div class="tabs project-tabs">
 							<ul>
 								<li><a href="#investments"><em>3</em> Investments</a></li><li><a href="#tracking" class="current"><em>7</em> Tracking</a></li>
 							</ul>
 						</div>
-						
+
 						<div id="tracking-list">
 							<?php
 								for ($i=0; $i<7; $i++) {
@@ -189,18 +68,18 @@
 								}
 							?>
 						</div>
-						
+
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="side">
 			<div>
-			
+
 				<div class="switch-group">
 					<div id="following-content" class="tab-content side-tab-content tab-content-connections side-switch side-switch-current">
-					
+
 						<div class="tabs connection-tabs">
 							<ul>
 								<li><a href="#following" class="current"><em>27</em> Following</a></li><li><a href="#followers"><em>189</em> Followers</a></li>
@@ -216,11 +95,11 @@
 							?>
 						</ul>
 						<a class="show-all-connections following" href="javascript:void(0)">Show all</a>
-				
+
 					</div>
-					
+
 					<div id="followers-content" class="tab-content side-tab-content tab-content-connections side-switch">
-					
+
 						<div class="tabs connection-tabs">
 							<ul>
 								<li><a href="#following"><em>27</em> Following</a></li><li><a href="#followers" class="current"><em>189</em> Followers</a></li>
@@ -236,12 +115,12 @@
 							?>
 						</ul>
 						<a class="show-all-connections followers" href="javascript:void(0)">Show all</a>
-				
+
 					</div>
 				</div>
-					
+
 				<div id="timeline-content" class="tab-content side-tab-content">
-					
+
 					<ul class="feed">
 						<li>
 							<div class="profile-badge">
@@ -286,16 +165,16 @@
 							</div>
 						</li>
 					</ul>
-				
+
 				</div>
-				
+
 			</div>
 		</div>
-		
+
 	</div>
-		
+
 	<div id="map-content" class="tab-content keep">
-		
+
 		<div id="dashboard_investments_map_canvas"></div>
 		<script>
 			window.gmaps.dashboard_investments = [
@@ -303,7 +182,7 @@
 					for ($i=0; $i<3; $i++) {
 						$rand_project = array_rand($projects);
 						$map_project = $projects[$rand_project];
-						
+
 						echo $i>0 ? ',' : '';
 						echo "{\n";
 							echo "lat: ".$map_project['location']['coordinates']['lat'].",\n";
@@ -316,7 +195,7 @@
 				?>
 			];
 		</script>
-		
+
 	</div>
 
 </section>

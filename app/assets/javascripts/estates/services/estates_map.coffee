@@ -25,6 +25,8 @@ estates.factory 'EstatesMap', [
       # configuring google maps here.
       settings = {}
 
+      return { center: SF } unless google?
+
       icon = new google.maps.MarkerImage(MarkerIcon, null, null, null, new google.maps.Size(18, 26))
       for object in collection
         object.infoWindow =
