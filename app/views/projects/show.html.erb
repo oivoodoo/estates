@@ -95,7 +95,7 @@
           <%= @project.financials.to_s.html_safe %>
 				</div>
 				<div class='tab-content paper'ng-class="{current:projectTab==3}" ng:show="projectTab == 3">
-          <google-map scrollwheel='google.scrollwheel' center="google.center" draggable='google.draggable' zoom="google.zoom" markers="google.markers" style="display:block; height: 400px" refresh='projectTab == 3' ></google-map>
+          <google-map scrollwheel='google.scrollwheel' center="google.center" styles='google.styles' draggable='google.draggable' zoom="14" markers="google.markers" style="display:block; height: 400px" refresh='projectTab == 3' ></google-map>
           <address><%= @project.address %></address>
 				</div>
 				<div class='tab-content paper' ng-class="{current:projectTab==4}" ng:show="projectTab == 4">
