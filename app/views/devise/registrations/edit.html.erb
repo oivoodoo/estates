@@ -8,7 +8,9 @@
         <li><a class="external-accounts" ng-click="openTab($event, 'profileTab', 2)" ng-class="{current:profileTab == 2}">External Accounts</a></li>
         <li><a class="accreditation " ng-click="openTab($event, 'profileTab', 3)" ng-class="{current:profileTab == 3}">Investor Qualification</a></li>
         <li><a class="notifications " ng-click="openTab($event, 'profileTab', 4)" ng-class="{current:profileTab == 4}">Notifications</a></li>
-        <li><a class="delete-account " ng-click="openTab($event, 'profileTab', 5)" ng-class="{current:profileTab == 5}">Delete Account</a></li>
+        <li>
+          <%= link_to "Delete Account", registration_path(resource_name), data: { :confirm => "Are You Sure?!" }, method: :delete %>
+        </li>
       </ul>
     </div>
 
@@ -31,12 +33,4 @@
       <div></div>
     </div>
   </div>
-
-  <div class="tab-content gridwrap" ng-class='{current:profileTab==5}' ng-show="profileTab == 5">
-    <div class="tab-content current">
-      <div></div>
-    </div>
-  </div>
-
 </section>
-
