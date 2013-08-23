@@ -27,8 +27,8 @@
             <div class="moneywrap size-3">
               <div>
                 <ul class='money'>
-                  <li class="raised" style="width:<%= @project.view_percent %>;"><div><label>Raised</label><i>$</i><%= @project.view_raise %></div></li>
-                  <li class="budget" style="width:<%= @project.view_remaining_percent %>;"><div><label>Budget</label><i>$</i><%= @project.view_price %></div></li>
+                  <li class="raised" style="width:<%= @project.view_percent %>;"><div><label>Raised</label><%= @project.view_raise %></div></li>
+                  <li class="budget" style="width:<%= @project.view_remaining_percent %>;"><div><label>Budget</label><%= @project.view_price %></div></li>
                 </ul>
                 <div class="goal">
                   <div>
