@@ -52,7 +52,7 @@
               $('#'+id+'-progress').removeClass('error');
               $('#'+id+'-response').removeClass('error').text('Done!').show();
               // change pic
-              $(".manage-pic .profile-badge img").attr("src", response.result.avatar_url);
+              $(".profile-badge img").attr("src", response.result.avatar_url);
             },
             fail: function(e, response) {
               $('#'+id+'-progress').addClass('error');
