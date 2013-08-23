@@ -29,7 +29,7 @@
   </div>
   <div class="module">
     <div class="module-section form-actions">
-      <button class="button button-blue" es-scroll-top ng-click="step(3, $event)" ng-disabled="!investor_profile.$valid">Continue</button>
+      <button class="button button-blue" es-scroll-top ng-click="step(3, $event)" ng-hide="!investor_profile.$valid">Continue</button>
       <button class="button" es-scroll-top ng-click="step(1, $event)">Go Back</button>
     </div>
   </div>
