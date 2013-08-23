@@ -39,10 +39,6 @@
           var id = 'profile-pic-upload';
           $('#avatar_form #user_avatar').fileupload({
             dataType: 'json',
-            add: function (e, data) {
-              data.context = $('<p/>').text('Uploading...').appendTo();
-              data.submit();
-            },
             progressall: function (e, response) {
               var progress = parseInt(response.loaded / response.total * 100, 10);
               $('#'+id+'-progress .progress').width(progress+'%');
