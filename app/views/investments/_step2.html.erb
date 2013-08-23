@@ -158,7 +158,7 @@
   </div>
   <div class="module module-subdued">
     <div class="module-section form-actions">
-      <button class="button button-blue" es-scroll-top ng-click="step(2, $event)" ng-model="clicked" ng-disabled="!investor_profile.$valid">Continue</button>
+      <button class="button button-blue" es-scroll-top ng-click="step(2, $event)" ng-model="clicked" ng-hide="!investor_profile.$valid">Continue</button>
       <button class="button" es-scroll-top ng-click="step(0, $event)">Go Back</button>
     </div>
   </div>
