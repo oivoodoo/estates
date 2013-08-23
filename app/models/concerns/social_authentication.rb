@@ -12,7 +12,7 @@ module SocialAuthentication
         user
       else
         create_user_by_auth(auth,
-          social_avatar_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large",
+          facebook_avatar: "http://graph.facebook.com/#{auth.uid}/picture?type=large",
           name: auth.extra['raw_info']['name'],
           email: auth.info["email"]) do |user|
 
@@ -31,7 +31,7 @@ module SocialAuthentication
         user
       else
         create_user_by_auth(auth,
-          social_avatar_url: auth.info['image'],
+          google_plus_avatar: auth.info['image'],
           name: auth.info["name"],
           email: auth.info["email"]) do |user|
 
@@ -52,7 +52,7 @@ module SocialAuthentication
         user
       else
         create_user_by_auth(auth,
-          social_avatar_url: auth.info['image'],
+          linkedin_avatar: auth.info['image'],
           name: auth.info["name"],
           email: auth.info["email"]) do |user|
 
