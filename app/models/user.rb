@@ -62,7 +62,21 @@ class User < ActiveRecord::Base
 
   def profile_image
     return avatar.url(:thumb) if avatar?
-    return social_avatar_url  if social_avatar_url?
+    "/images/default_avatar.png"
+  end
+
+  def facebook_image
+    return facebook_avatar if facebook_avatar?
+    "/images/default_avatar.png"
+  end
+
+  def google_plus_image
+    return google_plus_avatar if google_plus_avatar?
+    "/images/default_avatar.png"
+  end
+
+  def linkedin_image
+    return linkedin_avatar if linkedin_avatar?
     "/images/default_avatar.png"
   end
 

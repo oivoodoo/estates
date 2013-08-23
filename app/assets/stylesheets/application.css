@@ -16,7 +16,7 @@
  *= require style
 
  *= require gritter
- *= require errors
+ *= require error
  *= require own
  *= require angular-ui
  *= require validates

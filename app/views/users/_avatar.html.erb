@@ -1,2 +1,10 @@
-<%= image_tag user.profile_image, alt: user.name %>
+<% if user.avatar? %>
+  <%= image_tag user.profile_image, alt: user.name %>
+<% elsif user.facebook_avatar? %>
+  <%= image_tag user.facebook_image, alt: user.name %>
+<% elsif user.google_plus_avatar? %>
+  <%= image_tag user.google_plus_image, alt: user.name %>
+<% else %>
+  <%= image_tag user.linkedin_image, alt: user.name %>
+<% end %>
 
