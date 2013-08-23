@@ -343,7 +343,8 @@ var	chartDefaults = {
 };
 
 
-/* Illustrative chart-line in the footer
+
+/*   Illustrative chart-line in the footer
      —————————————————————————————————————————————————————————————————————————————————————— */
 window.drawRise = function() {
   var riseCanvas = document.getElementById('riseCanvas');
@@ -379,14 +380,14 @@ window.drawRise = function() {
   drawShadow = true;
 
 
-  //	resize our canvas to fit viewport width
+  //  resize our canvas to fit viewport width
   $(riseCanvas).attr({
     'width': w,
     'height': h
   });
 
 
-  //	get canvas 2D context and clear it for re-drawing
+  //  get canvas 2D context and clear it for re-drawing
   var ctx = riseCanvas.getContext('2d');
   ctx.clearRect( 0, 0, w, h );
 
@@ -400,7 +401,7 @@ window.drawRise = function() {
   ctx.fill();
 
 
-  /*	Set the composition mode to 'destination-out' which subtracts the next shapes from the previous
+  /*  Set the composition mode to 'destination-out' which subtracts the next shapes from the previous
       see more: https://developer.mozilla.org/samples/canvas-tutorial/6_1_canvas_composite.html */
   if (drawDots) {
     ctx.globalCompositeOperation = 'destination-out';
@@ -410,8 +411,8 @@ window.drawRise = function() {
     ctx.beginPath();
     for (i=0; i<dots.length; i++) {
       ctx.arc(
-        dots[i][0],	// center X
-        dots[i][1],	// center Y
+        dots[i][0], // center X
+        dots[i][1], // center Y
         dotRadius+spacing-.5, // radius
         0,
         2*Math.PI
@@ -423,10 +424,10 @@ window.drawRise = function() {
 
 
   if (drawShadow) {
-    //	Set composition mode to 'destination-over' to draw underneath
+    //  Set composition mode to 'destination-over' to draw underneath
     ctx.globalCompositeOperation = 'destination-over';
 
-    //	Let's draw another black polygon shape with shadow to go below everything
+    //  Let's draw another black polygon shape with shadow to go below everything
     ctx.beginPath();
     ctx.moveTo(poly[0], poly[1]);
     for(i=2; i < poly.length-1 ; i+=2) ctx.lineTo(poly[i], poly[i+1]);
@@ -447,7 +448,7 @@ window.drawRise = function() {
   for(i=1; i<poly.length; i+=2) poly[i] = poly[i]+spacing;
 
   if (strokeW) {
-    //	Draw the blue-stroked polygon
+    //  Draw the blue-stroked polygon
     ctx.beginPath();
     ctx.moveTo(poly[0], poly[1]);
     for(i=2; i < poly.length-1 ; i+=2)
@@ -460,13 +461,13 @@ window.drawRise = function() {
 
   if (drawDots) {
     if (dotStrokeW) {
-      //	Draw the wider dots (stroke color)
+      //  Draw the wider dots (stroke color)
       ctx.fillStyle = dotStrokeColor;
       ctx.beginPath();
       for (i=0; i<dots.length; i++) {
         ctx.arc(
-          dots[i][0],	// center X
-          dots[i][1],	// center Y
+          dots[i][0], // center X
+          dots[i][1], // center Y
           dotRadius+dotStrokeW, // radius
           0,
           2*Math.PI
@@ -477,16 +478,16 @@ window.drawRise = function() {
     }
 
 
-    //	Draw white dots over blue ones
+    //  Draw white dots over blue ones
     ctx.fillStyle = eyeColor;
     ctx.shadowColor = 'hsla(0, 0%, 0%, .4)';
     ctx.shadowBlur = Math.max(dotStrokeW*2, 10);
     ctx.beginPath();
     for (i=0; i<dots.length; i++) {
       ctx.arc(
-        dots[i][0],	// center X
-        dots[i][1],	// center Y
-        dotRadius,	// radius
+        dots[i][0], // center X
+        dots[i][1], // center Y
+        dotRadius,  // radius
         0,
         2*Math.PI
       );
@@ -494,6 +495,6 @@ window.drawRise = function() {
     ctx.closePath();
     ctx.fill();
   }
-
 };
+
 
