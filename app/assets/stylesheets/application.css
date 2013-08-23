@@ -20,5 +20,6 @@
  *= require own
  *= require angular-ui
  *= require validates
+ *= require jquery.fileupload-ui
  */
 

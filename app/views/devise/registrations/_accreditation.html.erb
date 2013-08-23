@@ -1,6 +1,6 @@
 <div>
   <div class="formwrap">
-    <%= form_for(current_user, :url => registration_path(resource_name), :html => { :method => :put, :id => "accreditation_user_form"}) do |f| %>
+    <%= form_for(current_user, :url => { :action => :accreditation }, :html => { :method => :put, :id => "accreditation_user_form"}) do |f| %>
       <div class="intro">
         <p>
           Most investments are available to accredited investors only. Please answer the following questions to verify your qualification as an <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.

@@ -22,21 +22,48 @@
         </div>
 
         <div class="upload-profile-pic">
-          <form>
+          <%= form_for(current_user, :url => { :action => :upload_images } , :html => { :method => :put, :id => 'avatar_form' }) do |f| %>
             <div class="table">
               <div style="text-align:left;">
-                <%= form_for(current_user, :url => registration_path(resource_name), :html => { :method => :put, :id => 'avatar_form' }) do |f| %>
-                  <%= f.file_field :avatar %>
-                <% end %>
+                <%= f.file_field(:avatar) %>
               </div>
               <div id="profile-pic-upload-response" class="upload-response"></div>
             </div>
             <div id="profile-pic-upload-progress" class="goalmeter">
               <div class="progress" style="width:0%"></div>
             </div>
-          </form>
+          <% end %>
         </div>
 
+        <script type='text/javascript'>
+          var id = 'profile-pic-upload';
+          $('#avatar_form #user_avatar').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+              data.context = $('<p/>').text('Uploading...').appendTo();
+              data.submit();
+            },
+            progressall: function (e, response) {
+              var progress = parseInt(response.loaded / response.total * 100, 10);
+              $('#'+id+'-progress .progress').width(progress+'%');
+            },
+            done: function(e, response) {
+              $('#'+id+'-progress .progress').width('100%');
+              $('#'+id+'-progress').removeClass('error');
+              $('#'+id+'-response').removeClass('error').text('Done!').show();
+              // change pic
+              $(".manage-pic .profile-badge img").attr("src", response.result.avatar_url);
+            },
+            fail: function(e, response) {
+              $('#'+id+'-progress').addClass('error');
+              $('#'+id+'-response').addClass('error').text('Failed!').show();
+            },
+            send: function(e, data) {
+              $('#'+id+'-progress').removeClass('error').show();
+              $('#'+id+'-response').hide();
+            }
+          });
+        </script>
       </div>
 
     </div>

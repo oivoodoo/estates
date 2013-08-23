@@ -46,9 +46,10 @@ Estates::Application.routes.draw do
       resources :messages, only: :create
     end
   end
-  
+
   devise_scope :user do
     put '/users/accreditation', to: 'users/registrations#accreditation'
+    put '/users/upload_images', to: 'users/registrations#upload_images'
   end
 
   resources :contacts, only: [:new, :create]

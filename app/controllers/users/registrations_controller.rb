@@ -38,8 +38,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def accreditation
-    current_user.update_attributes(params[:user])
+    current_user.update_attributes(sign_up_params)
     render :edit
+  end
+
+  def upload_images
+    current_user.update_attributes(sign_up_params)
+    render :json => current_user.to_json(only: [], methods: [:identification_document_url, :avatar_url])
   end
 
   private
