@@ -160,16 +160,30 @@
 	background-image: -o-linear-gradient(top,@top,@bottom);
 	background-image: linear-gradient(to bottom,@top,@bottom);
 }
-.linear-gradient (@from: left, @start: #ffffff, @stop: #000000) {
-    background-color: @start;
+.linear-gradient (@from: left, @start: #ffffff, @stop: #000000, @bgColor: true) when (@bgColor = true) {
+    background-image: -webkit-linear-gradient(@from, @start, @stop);
+    background-image: -moz-linear-gradient(@from, @start, @stop);
+    background-image: -o-linear-gradient(@from, @start, @stop);
+    background-image: -ms-linear-gradient(@from, @start, @stop);
+    background-image: linear-gradient(@from, @start, @stop);
+    background-color: mix(@start, @stop, 50%);
+}
+.linear-gradient (@from: left, @start: #ffffff, @stop: #000000, @bgColor: true) when not (@bgColor = true) {
     background-image: -webkit-linear-gradient(@from, @start, @stop);
     background-image: -moz-linear-gradient(@from, @start, @stop);
     background-image: -o-linear-gradient(@from, @start, @stop);
     background-image: -ms-linear-gradient(@from, @start, @stop);
     background-image: linear-gradient(@from, @start, @stop);
 }
-.radial-gradient (@from: center, @start: #ffffff, @stop: #000000, @extent: farthest-corner) {
-    background-color: @start;
+.radial-gradient (@from: center, @start: #ffffff, @stop: #000000, @extent: farthest-corner, @bgColor: true) when (@bgColor = true) {
+    background-image: -webkit-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: -moz-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: -o-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: -ms-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-image: radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
+    background-color: mix(@start, @stop, 50%);
+}
+.radial-gradient (@from: center, @start: #ffffff, @stop: #000000, @extent: farthest-corner, @bgColor: true) when not (@bgColor = true) {
     background-image: -webkit-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
     background-image: -moz-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);
     background-image: -o-radial-gradient(@from, ellipse @extent, @start 0%, @stop 100%);

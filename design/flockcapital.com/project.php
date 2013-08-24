@@ -23,6 +23,8 @@
 	$financials			= array_key_exists('financials',$project)			? $project['financials']	: null;
 	$location			= array_key_exists('location',	$project)			? $project['location']		: null;
 	$is_tracked			= array_key_exists('is_tracked',$project)			? $project['is_tracked']	: null;
+	$num_investors		= array_key_exists('num_investors',$project)		? $project['num_investors']	: null;
+	$num_trackers		= array_key_exists('num_trackers',$project)			? $project['num_trackers']	: null;
 
 ?>
 
@@ -49,7 +51,7 @@
 							if ($financials) {
 								if (array_key_exists('type', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>purchase</label></div></li>\n";
+										echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
 									echo "</ul>";
 								}
 								if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
@@ -59,12 +61,12 @@
 								}
 								if (array_key_exists('return', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="return"><div><b>'.$financials['return']['value'].'<u>'.$financials['return']['unit']."</u></b> <label>".$financials['return']['period']."</label></div></li>\n";
+										echo '<li class="return"><div><b>'.$financials['return']['value'].'<u>'.$financials['return']['unit']."</u></b> <label>".$financials['return']['yield_type']."</label></div></li>\n";
 									echo "</ul>";
 								}
-								if (array_key_exists('term', $financials)) {
+								if (array_key_exists('period', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
-										echo '<li class="term"><div><b>'.$financials['term']['value'].' <u class="short">'.$financials['term']['unit']['short'].'</u><u class="long">'.$financials['term']['unit']['long']."</u></b> <label>term</label></div></li>\n";
+										echo '<li class="period"><div><b>'.$financials['period']['value'].' <u class="short">'.$financials['period']['unit']['short'].'</u><u class="long">'.$financials['period']['unit']['long']."</u></b> <label>period</label></div></li>\n";
 									echo "</ul>";
 								}
 							}
@@ -72,24 +74,34 @@
 							<div>
 								<?php
 									if ($goal || $progress) {
-										echo "<ul class='money'>\n";
+										echo "<ul class='money ".( $progress==$goal ? 'full' : '' )."'>\n";
 					
 											if ($progress)
-												echo '<li class="raised" style="width:'.$progress_percent.'%;"><div><label>Raised</label>'.format_money($progress)."</div></li>\n";
+												echo '<li class="raised" style="width:'.$progress_percent.'%;"><div>'.format_money($progress)."</div></li>\n";
 						
 											if ($goal)
-												echo '<li class="budget" style="width:'.(!$progress ? 100 : 100-$progress_percent).'%;"><div><label>Budget</label>'.format_money($goal)."</div></li>\n";
+												echo '<li class="budget" style="width:'.(!$progress ? 100 : 100-$progress_percent).'%;"><div>'.( $progress==$goal ? 'goal reached' : format_money($goal) )."</div></li>\n";
+											
+										echo "</ul>\n";
+									}
+									if ($progress_percent) {
+								?>
+								<div class="goal">
+									<div>
+										<div class="goalmeter"><div class="progress <?php echo $progress_percent==100 ? 'full' : ''; ?>" style="width:<?php echo $progress_percent; ?>%"><div class="marker" style="left:<?php echo $progress_percent; ?>%;"><label><?php echo $progress_percent; ?>%</label></div></div></div>
+									</div>
+								</div>
+								<?php
+									}
+									if ($num_investors && $progress_percent) {
+										echo "<ul class='num-investors'>\n";
+					
+											if ($progress)
+												echo '<li style="width:'.$progress_percent.'%;"></li><li><div>'.$num_investors."<i> investors</i></div></li>\n";
 											
 										echo "</ul>\n";
 									}
 								?>
-								<div class="goal">
-									<div>
-										<?php /*<h4><?php echo format_money($goal); ?></h4>*/ ?>
-										<div class="goalmeter"><div class="progress <?php echo $progress_percent==100 ? 'full' : ''; ?>" style="width:<?php echo $progress_percent; ?>%"><div class="marker" style="left:<?php echo $progress_percent; ?>%;"><label><?php echo $progress_percent; ?>%</label></div></div></div>
-										<?php /*<div class="deadline"><b>22</b> Days to close</div>*/ ?>
-									</div>
-								</div>
 							</div>
 						</div><div class="action">
 							<button class="elevated">Purchase Shares</button>
@@ -111,11 +123,17 @@
 				<?php echo $name; ?>
 			</h2>
 			<div class="secondary-action tracking">
-				 <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"></button
-				><button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"></button
-				><button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"></button
-				><button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"></button
-				><button class="<?php echo $is_tracked ? 'tracking' : 'track' ?>" title="<?php echo $is_tracked ? 'Stop tracking this project' : 'Track this project' ?>"></button>
+				 <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button
+				><button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button
+				><button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button
+				><button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button
+				><?php
+					if ($is_tracked) {
+						echo '<button class="tracking" title="Stop tracking this project"><b title="Stop tracking this project"></b></button>';
+					} else {
+						echo '<button class="track" title="Track this project"><b title="Track this project"></b></button>';
+					}
+				?>
 			</div>
 		</div>
 		
@@ -141,7 +159,7 @@
 			<div>
 			
 				<div id="overview-content" class="tab-content paper current">
-					<p>Stonemount, as a debt advisor, plans to assist the current anchor tentant raise a combination of bank debt and private debt financing to acquire the property. <strong>The current tenant</strong> operates a successful café with a large summer terrace. The tenant wishes to acquire the property to make capital improvements and expand the business. Stonemount believes the property provides <i>a good opportunity for a <b>junior debt investment</b></i> that will be secured against the property in second position behind the bank.</p>
+					<p>Stonemount, as a debt advisor, plans to assist the current anchor tentant raise a combination of bank debt and private debt financing to acquire the property. The current tenant operates a successful café with a large summer terrace. The tenant wishes to acquire the property to make capital improvements and expand the business. Stonemount believes the property provides a good opportunity for a junior debt investment that will be secured against the property in second position behind the bank.</p>
 					<p>Loan interest is currently tax free in Estonia and the current tenant is offering 10% per annum for a 3 year term.</p>
 					<?php /*<div class="gallery">
 						<div>
@@ -163,7 +181,7 @@
 										lng: <?php echo $location['coordinates']['lng'] ?>,
 										address: "<?php echo $location['address'] ?>",
 										title: "<?php echo $name ?>",
-										link: "<?php echo $link ?>"
+										link: "<?php echo $link ?>",
 									}
 								];
 							</script>
@@ -249,7 +267,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="?p=investor&i=kadri" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="?p=project&project=1800-van-ness" title="<?php echo $name; ?>"><?php echo $name; ?></a></h5>
+								<h6 class="entry-title"><a href="?p=investor&i=kadri" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="?p=project&project=1800-van-ness" title="<?php echo $name; ?>"><?php echo $name; ?></a></h6>
 								<div class="entry-meta">
 									<div class="profile-badge">
 										<div>
@@ -275,7 +293,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><?php echo $manager['name']; ?></a> published a video to <a href="?p=project&project=1800-van-ness" title="<?php echo $name; ?>"><?php echo $name; ?></a></h5>
+								<h6 class="entry-title"><a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><?php echo $manager['name']; ?></a> published a video to <a href="?p=project&project=1800-van-ness" title="<?php echo $name; ?>"><?php echo $name; ?></a></h6>
 								<div class="entry-content">
 									<div class="profile-badge video">
 										<div>
@@ -297,7 +315,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><?php echo $manager['name']; ?></a> launched <a href="?p=project&project=<?php echo $h; ?>" title="<?php echo $name; ?>"><?php echo $name; ?></a></h5>
+								<h6 class="entry-title"><a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><?php echo $manager['name']; ?></a> launched <a href="?p=project&project=<?php echo $h; ?>" title="<?php echo $name; ?>"><?php echo $name; ?></a></h6>
 								<div class="entry-meta">
 									<time>2 days, 7hours ago</time>
 								</div>

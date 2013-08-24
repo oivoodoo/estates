@@ -20,6 +20,12 @@
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
+        <script src="http://flockcapital.com/js/d3.v3.min.js"></script>
+        <script src="http://flockcapital.com/js/nv.d3.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="http://flockcapital.com/js/aight.min.js"></script>
+        <script src="http://flockcapital.com/js/aight.d3.min.js"></script>
+        <![endif]-->
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
@@ -83,24 +89,27 @@
 			<div>
 				<div>
 					<div><ul class='size-6'>
-<li class="type"><div><b>Debt</b> <label>purchase</label></div></li>
+<li class="type"><div><b>Debt</b> <label>offering</label></div></li>
 </ul><ul class='size-6'>
 <li class="share"><div><b>$400</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="return"><div><b>10<u>%</u></b> <label>annual interest</label></div></li>
+<li class="return"><div><b>30<u>%</u></b> <label>YTM</label></div></li>
 </ul><ul class='size-6'>
-<li class="term"><div><b>3 <u class="short">yrs</u><u class="long">years</u></b> <label>term</label></div></li>
+<li class="period"><div><b>3 <u class="short">yr</u><u class="long">year</u></b> <label>period</label></div></li>
 </ul><div class="moneywrap size-3">
 							<div>
-								<ul class='money'>
-<li class="raised" style="width:20%;"><div><label>Raised</label>$81k</div></li>
-<li class="budget" style="width:80%;"><div><label>Budget</label>$400k</div></li>
+								<ul class='money '>
+<li class="raised" style="width:21%;"><div>$84k</div></li>
+<li class="budget" style="width:79%;"><div>$400k</div></li>
 </ul>
 								<div class="goal">
 									<div>
-																				<div class="goalmeter"><div class="progress " style="width:20%"><div class="marker" style="left:20%;"><label>20%</label></div></div></div>
-																			</div>
+										<div class="goalmeter"><div class="progress " style="width:21%"><div class="marker" style="left:21%;"><label>21%</label></div></div></div>
+									</div>
 								</div>
+								<ul class='num-investors'>
+<li style="width:21%;"></li><li><div>27<i> investors</i></div></li>
+</ul>
 							</div>
 						</div><div class="action">
 							<button class="elevated">Purchase Shares</button>
@@ -121,12 +130,11 @@
 			<h2 class="name">
 				Café Klaus			</h2>
 			<div class="secondary-action tracking">
-				 <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"></button
-				><button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"></button
-				><button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"></button
-				><button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"></button
-				><button class="tracking" title="Stop tracking this project"></button>
-			</div>
+				 <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button
+				><button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button
+				><button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button
+				><button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button
+				><button class="tracking" title="Stop tracking this project"><b title="Stop tracking this project"></b></button>			</div>
 		</div>
 		
 		<div id="tabs" class="tabs gridwrap-padded">
@@ -151,7 +159,7 @@
 			<div>
 			
 				<div id="overview-content" class="tab-content paper current">
-					<p>Stonemount, as a debt advisor, plans to assist the current anchor tentant raise a combination of bank debt and private debt financing to acquire the property. <strong>The current tenant</strong> operates a successful café with a large summer terrace. The tenant wishes to acquire the property to make capital improvements and expand the business. Stonemount believes the property provides <i>a good opportunity for a <b>junior debt investment</b></i> that will be secured against the property in second position behind the bank.</p>
+					<p>Stonemount, as a debt advisor, plans to assist the current anchor tentant raise a combination of bank debt and private debt financing to acquire the property. The current tenant operates a successful café with a large summer terrace. The tenant wishes to acquire the property to make capital improvements and expand the business. Stonemount believes the property provides a good opportunity for a junior debt investment that will be secured against the property in second position behind the bank.</p>
 					<p>Loan interest is currently tax free in Estonia and the current tenant is offering 10% per annum for a 3 year term.</p>
 									</div>
 				
@@ -165,7 +173,7 @@
 										lng: 24.749311,
 										address: "Kalasadama 8, 10415 Tallinn, Estonia",
 										title: "Café Klaus",
-										link: "?p=project&project=cafe-klaus"
+										link: "?p=project&project=cafe-klaus",
 									}
 								];
 							</script>
@@ -209,16 +217,16 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -241,14 +249,6 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
 			</a>
@@ -257,40 +257,8 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -315,6 +283,46 @@
 		<div>
 			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
 				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -334,24 +342,8 @@
 							<li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -384,38 +376,6 @@
 		<div>
 			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
-				<img src="img/mart.png">
 			</a>
 		</div>
 	</div>
@@ -448,6 +408,54 @@
 		<div>
 			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
 			</a>
 		</div>
 	</div>
@@ -469,7 +477,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="Café Klaus">Café Klaus</a></h5>
+								<h6 class="entry-title"><a href="index-p=investor&i=kadri.html" title="Kadri Liis Rääk">Kadri</a> and two other friends invested in <a href="index-p=project&project=1800-van-ness.html" title="Café Klaus">Café Klaus</a></h6>
 								<div class="entry-meta">
 									<div class="profile-badge">
 										<div>
@@ -495,7 +503,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="index-p=manager&m=gage-partners.html" title="Gage Partners">Gage Partners</a> launched <a href="index-p=project&project=cafe-klaus.html" title="Café Klaus">Café Klaus</a></h5>
+								<h6 class="entry-title"><a href="index-p=manager&m=gage-partners.html" title="Gage Partners">Gage Partners</a> launched <a href="index-p=project&project=cafe-klaus.html" title="Café Klaus">Café Klaus</a></h6>
 								<div class="entry-meta">
 									<time>2 days, 7hours ago</time>
 								</div>

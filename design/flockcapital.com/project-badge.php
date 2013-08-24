@@ -21,14 +21,31 @@
 	$financials			= array_key_exists('financials',$project)			? $project['financials']		: null;
 	$location			= array_key_exists('location',	$project)			? $project['location']			: null;
 	$is_tracked			= array_key_exists('is_tracked',$project)			? $project['is_tracked']		: null;
+	$num_investors		= array_key_exists('num_investors',$project)		? $project['num_investors']		: null;
+	$num_trackers		= array_key_exists('num_trackers',$project)			? $project['num_trackers']		: null;
+	$amount_invested	= array_key_exists('amount_invested',$project)		? $project['amount_invested']	: null;
+	$projected_earnings	= array_key_exists('projected_earnings',$project)	? $project['projected_earnings']: null;
 
 ?>
 <article class="project-badge <?php echo $size.' '.(($i+1)%2==0 ? 'alt' : ''); ?>">
 	<div onclick="location.href='<?php echo $link ?>'">
 	
+		<?php if ($size == 'dash-invested' && $amount_invested) { ?>
+			<div class="project-share">
+				<div>
+					<b title="Amount invested"><?php echo format_money($amount_invested, true, false); ?></b>
+					<label title="Amount invested"><?php echo $amount_invested/$financials['share']['price']; ?> shares</label>
+				</div>
+				<div>
+					<b title="Projected<?php echo $financials['type']=='equity' ? ' annual' : '';?> earnings"><?php echo format_money($projected_earnings, true, false); ?></b>
+					<label title="Projected<?php echo $financials['type']=='equity' ? ' annual' : '';?> earnings"><?php echo $financials['return']['value'].$financials['return']['unit'].' '.$financials['return']['yield_type']; ?></label>
+				</div>
+			</div>
+		<?php } ?>
+	
 		<a class="project-thumb" href="<?php echo $link ?>">
 			<img src="img/<?php echo $handle; ?>.png">
-			<div class="focus"></div>
+			<div class="focus"><span>Full details</span></div>
 		</a>
 		
 		<div class="textual">
@@ -82,69 +99,81 @@
 			</div>
 			
 			<div class="financials">
-			<div>
 				<div>
 					<div>
-						<div class="numbers">
-							<?php
-							
-								$fc = count($financials)+2;
-								
-								if ($financials) {
-									if (array_key_exists('type', $financials)) {
-										echo "<ul class='size-".$fc."'>\n";
-											echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>purchase</label></div></li>\n";
-										echo "</ul>";
-									}
-									if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
-										echo "<ul class='size-".$fc."'>\n";
-											echo '<li class="share"><div><b>'.format_money($financials['share']['price'], true, false)."</b> <label>/share</label></div></li>\n";
-										echo "</ul>";
-									}
-									if (array_key_exists('return', $financials)) {
-										echo "<ul class='size-".$fc."'>\n";
-											echo '<li class="return"><div><b>'.$financials['return']['value'].'<u>'.$financials['return']['unit']."</u></b> <label>".$financials['return']['period']."</label></div></li>\n";
-										echo "</ul>";
-									}
-									if (array_key_exists('term', $financials)) {
-										echo "<ul class='size-".$fc."'>\n";
-											echo '<li class="term"><div><b>'.$financials['term']['value'].' <u class="short">'.$financials['term']['unit']['short'].'</u><u class="long">'.$financials['term']['unit']['long']."</u></b> <label>term</label></div></li>\n";
-										echo "</ul>";
-									}
-								}
-								
-							?>
-						</div>
-						<div class="moneywrap size-<?php echo $fc/2; ?>">
-							<div>
+						<div>
+							<div class="numbers">
 								<?php
-									if ($goal || $progress) {
-										echo "<ul class='money'>\n";
-					
-											if ($progress)
-												echo '<li class="raised" style="width:'.$progress_percent.'%;"><div><label>Raised</label>'.format_money($progress)."</div></li>\n";
-						
-											if ($goal)
-												echo '<li class="budget" style="width:'.(!$progress ? 100 : 100-$progress_percent).'%;"><div><label>Budget</label>'.format_money($goal)."</div></li>\n";
-											
-										echo "</ul>\n";
+								
+									$fc = count($financials)+2;
+									
+									if ($financials) {
+										if (array_key_exists('type', $financials)) {
+											echo "<ul class='size-".$fc."'>\n";
+												echo '<li class="type"><div><b>'.ucfirst($financials['type'])."</b> <label>offering</label></div></li>\n";
+											echo "</ul>";
+										}
+										if (array_key_exists('share', $financials) && array_key_exists('price', $financials['share'])) {
+											echo "<ul class='size-".$fc."'>\n";
+												echo '<li class="share"><div><b>'.format_money($financials['share']['price'], true, false)."</b> <label>/share</label></div></li>\n";
+											echo "</ul>";
+										}
+										if (array_key_exists('return', $financials)) {
+											echo "<ul class='size-".$fc."'>\n";
+												echo '<li class="return"><div><b>'.$financials['return']['value'].'<u>'.$financials['return']['unit']."</u></b> <label>".$financials['return']['yield_type']."</label></div></li>\n";
+											echo "</ul>";
+										}
+										if (array_key_exists('period', $financials)) {
+											echo "<ul class='size-".$fc."'>\n";
+												echo '<li class="period"><div><b>'.$financials['period']['value'].' <u class="short">'.$financials['period']['unit']['short'].'</u><u class="long">'.$financials['period']['unit']['long']."</u></b> <label>period</label></div></li>\n";
+											echo "</ul>";
+										}
 									}
+									
 								?>
-								<div class="goal">
-									<div>
-										<div class="goalmeter"><div class="progress <?php echo $progress_percent==100 ? 'full' : ''; ?>" style="width:<?php echo $progress_percent; ?>%"><div class="marker" style="left:<?php echo $progress_percent; ?>%;"><label><?php echo $progress_percent; ?>%</label></div></div></div>
+							</div>
+							<div class="moneywrap size-<?php echo $fc/2; ?>">
+								<div>
+									<?php
+										if ($goal || $progress) {
+											echo "<ul class='money ".( $progress==$goal ? 'full' : '' )."'>\n";
+						
+												if ($progress)
+													echo '<li class="raised" style="width:'.$progress_percent.'%;"><div>'.format_money($progress)."</div></li>\n";
+							
+												if ($goal)
+													echo '<li class="budget" style="width:'.(!$progress ? 100 : 100-$progress_percent).'%;"><div>'.( $progress==$goal ? 'goal reached' : format_money($goal) )."</div></li>\n";
+												
+											echo "</ul>\n";
+										}
+										if ($progress_percent) {
+									?>
+									<div class="goal">
+										<div>
+											<div class="goalmeter"><div class="progress <?php echo $progress_percent==100 ? 'full' : ''; ?>" style="width:<?php echo $progress_percent; ?>%"><div class="marker" style="left:<?php echo $progress_percent; ?>%;"><label><?php echo $progress_percent; ?>%</label></div></div></div>
+										</div>
 									</div>
+									<?php
+										}
+										if ($num_investors && $progress_percent) {
+											echo "<ul class='num-investors'>\n";
+						
+												if ($progress)
+													echo '<li style="width:'.$progress_percent.'%;"></li><li><div>'.$num_investors."<i> investors</i></div></li>\n";
+												
+											echo "</ul>\n";
+										}
+									?>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 			
-			<div class="action">
+			<?php /*<div class="action">
 				<button <?php echo $is_tracked ? 'class="tracking '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Stop tracking this project">'.($size!='dash-tracking-list' ? 'Tracking' : '') : 'class="track '.($size!='dash-tracking-list' ? 'labelled' : '').'" title="Track this project">'.($size!='dash-tracking-list' ? 'Track' : ''); ?></button><button class="details" title="<?php echo $name; ?>">Full Details</button>
-			</div>
+			</div>*/ ?>
 			
 		</div>
 		

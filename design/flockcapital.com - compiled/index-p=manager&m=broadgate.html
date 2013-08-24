@@ -20,6 +20,12 @@
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
+        <script src="http://flockcapital.com/js/d3.v3.min.js"></script>
+        <script src="http://flockcapital.com/js/nv.d3.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="http://flockcapital.com/js/aight.min.js"></script>
+        <script src="http://flockcapital.com/js/aight.d3.min.js"></script>
+        <![endif]-->
         
                 <script src="js/jquery.ui.widget-combobox.js"></script>
         <script src="js/jquery.wp-pointer.min.js"></script>
@@ -77,18 +83,17 @@
 				<img src="img/broadgate.png">
 			</figure>
 			<div class="profile-details">
-				<h3 class="name">Broadgate</h3>
-				
+				<h3 class="name">
+					Broadgate					<div class="ext-account-buttons">
+						<span>
+							<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
+							<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+							<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+						</span>
+					</div>
+				</h3>
 				<div class="mini-bio">
 					<p>Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav</p>
-				</div>
-	
-				<div class="ext-account-buttons">
-					<span>
-						<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
-						<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-						<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
-					</span>
 				</div>
 			</div>
 		</div>
@@ -102,20 +107,50 @@
 				
 				<div class="switch-group">
 					<div id="investments-content" class="tab-content main-switch main-switch-current">
-						
+					
+												
 						<div class="tabs project-tabs">
 							<ul>
-								<li><a href="index-p=manager&m=broadgate.html#investments"><em>3</em> Investments</a></li>
+								<li><a href="index-p=manager&m=broadgate.html#investments"><em>1</em> Project</a></li>
 							</ul>
 						</div>
+		
+						<div class="map-view tucked">
+							
+							<div class="map-toolbar-one">
+								<button>Show map</button>
+							</div>
+							
+							<div class="map-toolbar-two">
+								<button></button>
+							</div>
+							
+							<div class="map-viewport">
+								
+								<div id="dashboard_investments_map_canvas" class="map-canvas"></div>
+								<script>
+									window.gmaps.dashboard_investments = [
+										{
+lat: 59.445785,
+lng: 24.749311,
+address: 'Kalasadama 8, 10415 Tallinn, Estonia',
+title: 'Café Klaus',
+link: '?p=project&project=cafe-klaus'
+}									];
+								</script>
+								
+							</div>
+							
+						</div>
 						
-						<div>
-							<article class="project-badge dash-invested ">
-	<div onclick="location.href='?p=project&project=tallinn-rimi'">
+						<div class="listing">
+							<article class="project-badge invested ">
+	<div onclick="location.href='?p=project&project=cafe-klaus'">
 	
-		<a class="project-thumb" href="index-p=project&project=tallinn-rimi.html">
-			<img src="img/tallinn-rimi.png">
-			<div class="focus"></div>
+			
+		<a class="project-thumb" href="index-p=project&project=cafe-klaus.html">
+			<img src="img/cafe-klaus.png">
+			<div class="focus"><span>Full details</span></div>
 		</a>
 		
 		<div class="textual">
@@ -124,57 +159,57 @@
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="index-p=manager&m=broadgate.html" title="Broadgate"><img src="img/broadgate.png"></a>
+						<a href="index-p=manager&m=gage-partners.html" title="Gage Partners"><img src="img/gage-partners.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="index-p=project&project=tallinn-rimi.html">Rimi Supermarket</a>
+					<a class="project-link" href="index-p=project&project=cafe-klaus.html">Café Klaus</a>
 					<div class="manager-location">
-						<span><a href="index-p=manager&m=broadgate.html" title="Broadgate">Broadgate</a></span> <address><a href="index-p=project&project=tallinn-rimi.html#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
+						<span><a href="index-p=manager&m=gage-partners.html" title="Gage Partners">Gage Partners</a></span> <address><a href="index-p=project&project=cafe-klaus.html#location" title="Kalasadama 8, 10415 Tallinn, Estonia">Tallinn</a></address>					</div>
 				</div>
 			</h4>
 		</header>
 			
 			<div class="summary">
-				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
 			
 			<div class="financials">
-			<div>
 				<div>
 					<div>
-						<div class="numbers">
-							<ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>purchase</label></div></li>
+						<div>
+							<div class="numbers">
+								<ul class='size-6'>
+<li class="type"><div><b>Debt</b> <label>offering</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b>$1.5k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$400</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>30<u>%</u></b> <label>YTM</label></div></li>
 </ul><ul class='size-6'>
-<li class="term"><div><b>24 <u class="short">mos</u><u class="long">months</u></b> <label>term</label></div></li>
-</ul>						</div>
-						<div class="moneywrap size-3">
-							<div>
-								<ul class='money'>
-<li class="raised" style="width:66%;"><div><label>Raised</label>$21.1m</div></li>
-<li class="budget" style="width:34%;"><div><label>Budget</label>$32m</div></li>
+<li class="period"><div><b>3 <u class="short">yr</u><u class="long">year</u></b> <label>period</label></div></li>
+</ul>							</div>
+							<div class="moneywrap size-3">
+								<div>
+									<ul class='money '>
+<li class="raised" style="width:21%;"><div>$84k</div></li>
+<li class="budget" style="width:79%;"><div>$400k</div></li>
 </ul>
-								<div class="goal">
-									<div>
-										<div class="goalmeter"><div class="progress " style="width:66%"><div class="marker" style="left:66%;"><label>66%</label></div></div></div>
+									<div class="goal">
+										<div>
+											<div class="goalmeter"><div class="progress " style="width:21%"><div class="marker" style="left:21%;"><label>21%</label></div></div></div>
+										</div>
 									</div>
+									<ul class='num-investors'>
+<li style="width:21%;"></li><li><div>27<i> investors</i></div></li>
+</ul>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 			
-			<div class="action">
-				<button class="track labelled" title="Track this project">Track</button><button class="details" title="Rimi Supermarket">Full Details</button>
-			</div>
-			
+						
 		</div>
 		
 		
@@ -219,6 +254,14 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
+			<a href="index-p=investor&i=mart.html" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
 				<img src="img/michael.png">
 			</a>
@@ -251,24 +294,16 @@
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="index-p=investor&i=kadri.html" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="index-p=investor&i=michael.html" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -297,7 +332,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="index-p=&d=broadgate.html" title="Broadgate">Broadgate</a> launched <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness">1800 Van Ness</a></h5>
+								<h6 class="entry-title"><a href="index-p=&d=broadgate.html" title="Broadgate">Broadgate</a> launched <a href="index-p=project&project=1800-van-ness.html" title="1800 Van Ness">1800 Van Ness</a></h6>
 								<div class="entry-content">
 									<div class="profile-badge project">
 										<div>
@@ -318,7 +353,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="index-p=&d=broadgate.html" title="Broadgate">Broadgate</a> joined Flock</h5>
+								<h6 class="entry-title"><a href="index-p=&d=broadgate.html" title="Broadgate">Broadgate</a> joined Flock</h6>
 								<div class="entry-meta">
 									<time>2 days, 7 hours ago</time>
 								</div>
@@ -333,22 +368,7 @@
 		
 	</div>
 		
-	<div id="map-content" class="tab-content keep">
 		
-		<div id="dashboard_investments_map_canvas"></div>
-		<script>
-			window.gmaps.dashboard_investments = [
-				{
-lat: 59.430172,
-lng: 24.697773,
-address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
-title: 'Rimi Supermarket',
-link: '?p=project&project=tallinn-rimi'
-}			];
-		</script>
-		
-	</div>
-	
 </section>            	<div id="rise">
             		<div>
 	            		<canvas id="riseCanvas" width="1" height="1"></canvas>

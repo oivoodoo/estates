@@ -40,7 +40,7 @@
 		<div id="tabs" class="tabs submenu">
 			<ul>
 				<li><a href="?p=settings&i=<?php echo $h ?>" 						class="general	 		<?php echo !array_key_exists('tab', $_GET) || (array_key_exists('tab', $_GET) && $_GET['tab']=='general') ? 'current' : ''; ?>">General</a></li
-				><li><a href="?p=settings&i=<?php echo $h ?>&tab=external-accounts" class="external-accounts <?php echo array_key_exists('tab', $_GET) && $_GET['tab']=='external-accounts' ? 'current' : ''; ?>">External Accounts</a></li
+				><li><a href="?p=settings&i=<?php echo $h ?>&tab=social-networks" 	class="social-networks 	<?php echo  array_key_exists('tab', $_GET) && $_GET['tab']=='social-networks' ? 'current' : ''; ?>">Social Networks</a></li
 				><li><a href="?p=settings&i=<?php echo $h ?>&tab=accreditation"		class="accreditation 	<?php echo  array_key_exists('tab', $_GET) && $_GET['tab']=='accreditation' ? 'current' : ''; ?>">Investor Qualification</a></li
 				><li><a href="?p=settings&i=<?php echo $h ?>&tab=notifications"		class="notifications 	<?php echo  array_key_exists('tab', $_GET) && $_GET['tab']=='notifications' ? 'current' : ''; ?>">Notifications</a></li
 				><li><a href="?p=settings&i=<?php echo $h ?>&tab=delete-account"	class="delete-account 	<?php echo  array_key_exists('tab', $_GET) && $_GET['tab']=='delete-account' ? 'current' : ''; ?>">Delete Account</a></li>
@@ -52,7 +52,7 @@
 	<?php
 		switch($tab) {
 
-			case 'external-accounts': ?>
+			case 'social-networks': ?>
 				<div class="tab-content gridwrap current">
 					<div>
 						
@@ -116,12 +116,12 @@
 									<h5>Contact Details</h5>
 									<div>
 										<label for="phone">
-											<?php /*<span>Phone</span>*/ ?>
+											<span>Phone number</span>
 											<input id="phone" type="text" placeholder="Phone" size="1" value="<?php echo $phone ?>">
 										</label>
 										<div class="tight">
 											<label for="street">
-												<?php /*<span>Street Address</span>*/ ?>
+												<span>Address of your primary residence</span>
 												<input id="street" type="text" placeholder="Street address" size="1" value="<?php echo $street ?>">
 											</label>
 											<label for="zip">
@@ -196,112 +196,108 @@
 				<?php break;
 
 			default: ?>
-        <div class="tab-content gridwrap current">
-          <div>
-
-            <div class="formwrap">
-
-              <div class="manage-pic">
-                <figure class="profile-badge">
-                  <a href="profile-pic.php" class="profile-pic fancybox.ajax"><img src="img/<?php echo $h; ?>.png"><div class="focus"></div></a>
-                </figure>
-              <div>
-
-              <div class="ext-account-pics">
-                <span>
-                  <button name="ext-account" value="facebook" title="Use profile picture from Facebook" class="ext-account-button facebook">
-                    <img src="img/<?php echo $h; ?>.png">
-                  </button>
-                  <button name="ext-account" value="twitter" title="Use profile picture from Twitter" class="ext-account-button twitter used">
-                    <img src="img/<?php echo $h; ?>.png">
-                  </button>
-                  <button name="ext-account" value="google-plus" title="Use profile picture from Google+" class="ext-account-button google-plus">
-                    <img src="img/<?php echo $h; ?>.png">
-                  </button>
-                  <button name="ext-account" value="linked-in" title="Use profile picture from LinkedIn" class="ext-account-button linked-in">
-                    <img src="img/<?php echo $h; ?>.png">
-                  </button>
-                </span>
-              </div>
-
-              <div class="upload-profile-pic">
-                <form>
-                  <div class="table">
-                    <div style="text-align:left;">
-                      <input id="profile-pic-upload" class="file-upload" type="file" name="profile-pic[]">
-                    </div>
-                    <div id="profile-pic-upload-response" class="upload-response"></div>
-                  </div>
-                  <div id="profile-pic-upload-progress" class="goalmeter">
-                    <div class="progress" style="width:0%"></div>
-                  </div>
-                </form>
-              </div>
-
-            </div>
-          </div>
-
-          <form action="?p=investor-edit&i=<?php echo $h ?>" method="post">
-
-              <fieldset class="input-group name">
-                <legend>Your name</legend>
-                <label for="title" style="width:15%;">
-                  <?php /*<span>Full Name</span>*/ ?>
-                  <input id="title" type="text" placeholder="Title" size="1" value="<?php echo $title ?>">
-                </label>
-                <label for="first-name" style="width:28.33%">
-                  <?php /*<span>&nbsp;</span>*/ ?>
-                  <input id="first-name" type="text" placeholder="First Name" size="1" value="<?php echo $first_name ?>">
-                </label>
-                <label for="middle-names" style="width:28.33%">
-                  <?php /*<span>&nbsp;</span>*/ ?>
-                  <input id="middle-names" type="text" placeholder="Middle Name(s)" size="1" value="<?php echo $middle_name ?>">
-                </label>
-                <label for="last-name" style="width:28.33%">
-                  <?php /*<span>&nbsp;</span>*/ ?>
-                  <input id="last-name" type="text" placeholder="Last Name" size="1" value="<?php echo $last_name ?>">
-                </label>
-              </fieldset>
-
-              <label for="bio">
-                <span>Mini biography</span>
-                <textarea id="bio" type="text" placeholder="Mini biography, max 160 characters" rows="5"><?php echo $bio ?></textarea>
-              </label>
-
-
-              <fieldset class="separated-top">
-                <label for="email">
-                  <span>E-mail</span>
-                  <input id="email" name="email" type="email" placeholder="E-mail" size="1" value="<?php echo $email ?>">
-                </label>
-              </fieldset>
-
-              <fieldset>
-                <legend class="text">To change your password, provide your old password and then type the new one:</legend>
-                <div class="input-group">
-                  <label for="password-old" style="width:50%">
-                    <input id="password-old" type="text" placeholder="Old password" size="1" value="">
-                  </label>
-                  <label for="password-new" style="width:50%">
-                    <input id="password-new" type="text" placeholder="New password" size="1" value="">
-                  </label>
-                </div>
-              </fieldset>
-
-              <div class="action">
-              <div>
-                <div>
-                  <?php /*<a href="?p=investor&i=<?php echo $h ?>" class="button zeta thickest gray">Cancel</a>*/ ?>
-                  <input type="submit" class="zeta thickest" value="Update">
-                </div>
-              </div>
-            </div>
-
-            </form>
-            </div>
-
-          </div>	
-        </div>
+				<div class="tab-content gridwrap current">
+					<div>
+						
+						<div class="formwrap">
+							
+							<div class="manage-pic">
+								<figure class="profile-badge">
+									<img src="img/<?php echo $h; ?>.png"><div class="focus"></div>
+								</figure>
+								<div>
+									<div class="ext-account-pics">
+										<span>
+											<button name="ext-account" value="facebook" title="Use profile picture from Facebook" class="ext-account-button facebook">
+												<img src="img/<?php echo $h; ?>.png">
+											</button>
+											<button name="ext-account" value="twitter" title="Use profile picture from Twitter" class="ext-account-button twitter used">
+												<img src="img/<?php echo $h; ?>.png">
+											</button>
+											<button name="ext-account" value="google-plus" title="Use profile picture from Google+" class="ext-account-button google-plus">
+												<img src="img/<?php echo $h; ?>.png">
+											</button>
+											<button name="ext-account" value="linked-in" title="Use profile picture from LinkedIn" class="ext-account-button linked-in">
+												<img src="img/<?php echo $h; ?>.png">
+											</button>
+										</span>
+									</div>
+									<div class="upload-profile-pic">
+										<form>
+											<div class="table">
+												<div style="text-align:left;">
+													<input id="profile-pic-upload" class="file-upload" type="file" name="profile-pic[]">
+												</div>
+												<div id="profile-pic-upload-response" class="upload-response"></div>
+											</div>
+											<div id="profile-pic-upload-progress" class="goalmeter">
+												<div class="progress" style="width:0%"></div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							
+							<form action="?p=investor-edit&i=<?php echo $h ?>" method="post">
+								
+								<fieldset class="input-group name">
+									<legend>Your name</legend>
+									<label for="title" style="width:15%;">
+										<?php /*<span>Full Name</span>*/ ?>
+										<input id="title" type="text" placeholder="Title" size="1" value="<?php echo $title ?>">
+									</label>
+									<label for="first-name" style="width:28.33%">
+										<?php /*<span>&nbsp;</span>*/ ?>
+										<input id="first-name" type="text" placeholder="First Name" size="1" value="<?php echo $first_name ?>">
+									</label>
+									<label for="middle-names" style="width:28.33%">
+										<?php /*<span>&nbsp;</span>*/ ?>
+										<input id="middle-names" type="text" placeholder="Middle Name(s)" size="1" value="<?php echo $middle_name ?>">
+									</label>
+									<label for="last-name" style="width:28.33%">
+										<?php /*<span>&nbsp;</span>*/ ?>
+										<input id="last-name" type="text" placeholder="Last Name" size="1" value="<?php echo $last_name ?>">
+									</label>
+								</fieldset>
+								
+								<label for="bio">
+									<span>Mini biography</span>
+									<textarea id="mini-bio" type="text" placeholder="Mini biography, max 160 characters" rows="1"><?php echo $bio ?></textarea>
+								</label>
+								
+								
+								<fieldset class="separated-top">
+									<label for="email">
+										<span>E-mail</span>
+										<input id="email" name="email" type="email" placeholder="E-mail" size="1" value="<?php echo $email ?>">
+									</label>
+								</fieldset>
+								<fieldset>
+									<legend>To change your password, provide your old password and then type the new one:</legend>
+									<div class="input-group">
+										<label for="password-old" style="width:50%">
+											<input id="password-old" type="text" placeholder="Old password" size="1" value="">
+										</label>
+										<label for="password-new" style="width:50%">
+											<input id="password-new" type="text" placeholder="New password" size="1" value="">
+										</label>
+									</div>
+								</fieldset>
+								
+								<div class="action">
+								<div>
+									<div>
+										<?php /*<a href="?p=investor&i=<?php echo $h ?>" class="button zeta thickest gray">Cancel</a>*/ ?>
+										<input type="submit" class="zeta thickest" value="Update">
+									</div>
+								</div>
+							</div>
+								
+							</form>
+						</div>
+					
+					</div>	
+				</div>
 				<?php break;
 
 		}

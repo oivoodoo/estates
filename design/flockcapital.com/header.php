@@ -33,6 +33,12 @@
         <script src="js/jquery-ui-1.10.3.min.js"></script>
         <script src="js/chart.min.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"></script>
+        <script src="js/d3.v3.min.js"></script>
+        <script src="js/nv.d3.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="js/aight.min.js"></script>
+        <script src="js/aight.d3.min.js"></script>
+        <![endif]-->
         
         <?php /* Library ext */ ?>
         <script src="js/jquery.ui.widget-combobox.js"></script>

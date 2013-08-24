@@ -13,10 +13,10 @@
 			  
 				<?php /*<h1 class="title">Build a real estate portfolio online</h1>
 				<p>Get access to exclusive investments and manage your portfolio using Flock.</p>*/ ?>
-				<h1 class="title">Invest in real estate online</h1>
+				<h1 class="title"><span>Invest in real estate online</span></h1>
 				<div class="action">
-					<button class="how-it-works elevated">How? &nbsp;&nbsp;<span>1:45 min</span></button
-					><a href="sign-in.php?action=sign-up" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a>
+					<?php /*<button class="how-it-works elevated">How? &nbsp;&nbsp;<span>1:45 min</span></button
+					><a href="sign-in.php?action=sign-up" class="button sign-up sign-in elevated fancybox.ajax">Sign Up</a> */ ?>
 				</div>
 				
 				<?php /*

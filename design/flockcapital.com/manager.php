@@ -22,18 +22,18 @@
 				<img src="img/<?php echo $h; ?>.png">
 			</figure>
 			<div class="profile-details">
-				<h3 class="name"><?php echo $manager_name; ?></h3>
-				
+				<h3 class="name">
+					<?php echo $manager_name; ?>
+					<div class="ext-account-buttons">
+						<span>
+							<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
+							<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
+							<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+						</span>
+					</div>
+				</h3>
 				<div class="mini-bio">
 					<p>Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav<?php /*<br><a href="#" class="hellip">…</a>*/ ?></p>
-				</div>
-	
-				<div class="ext-account-buttons">
-					<span>
-						<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
-						<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-						<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
-					</span>
 				</div>
 			</div>
 		</div>
@@ -47,19 +47,61 @@
 				
 				<div class="switch-group">
 					<div id="investments-content" class="tab-content main-switch main-switch-current">
+					
+						<?php
+							for ($i=0; $i<1; $i++) {
+								$rand_project = array_rand($projects);
+								$investments[] = $projects[$rand_project];
+							}
+						?>
 						
 						<div class="tabs project-tabs">
 							<ul>
-								<li><a href="#investments"><em>3</em> Investments</a></li>
+								<li><a href="#investments"><em>1</em> Project</a></li>
 							</ul>
 						</div>
+		
+						<div class="map-view tucked">
+							
+							<div class="map-toolbar-one">
+								<button>Show map</button>
+							</div>
+							
+							<div class="map-toolbar-two">
+								<button></button>
+							</div>
+							
+							<div class="map-viewport">
+								
+								<div id="dashboard_investments_map_canvas" class="map-canvas"></div>
+								<script>
+									window.gmaps.dashboard_investments = [
+										<?php
+											for ($i=0; $i<1; $i++) {
+												$map_project = $investments[$i];
+												
+												echo $i>0 ? ',' : '';
+												echo "{\n";
+													echo "lat: ".$map_project['location']['coordinates']['lat'].",\n";
+													echo "lng: ".$map_project['location']['coordinates']['lng'].",\n";
+													echo "address: '".$map_project['location']['address']."',\n";
+													echo "title: '".$map_project['name']."',\n";
+													echo "link: '".$map_project['link']."'\n";
+												echo '}';
+											}
+										?>
+									];
+								</script>
+								
+							</div>
+							
+						</div>
 						
-						<div>
+						<div class="listing">
 							<?php
 								for ($i=0; $i<1; $i++) {
-									$rand_project = array_rand($projects);
-									$project = $projects[$rand_project];
-									$project_badge_size = 'dash-invested';
+									$project = $investments[$i];
+									$project_badge_size = 'invested';
 									require('project-badge.php');
 								}
 							?>
@@ -107,7 +149,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><?php echo $manager_name; ?></a> launched <a href="?p=project&project=1800-van-ness" title="1800 Van Ness">1800 Van Ness</a></h5>
+								<h6 class="entry-title"><a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><?php echo $manager_name; ?></a> launched <a href="?p=project&project=1800-van-ness" title="1800 Van Ness">1800 Van Ness</a></h6>
 								<div class="entry-content">
 									<div class="profile-badge project">
 										<div>
@@ -128,7 +170,7 @@
 								</div>
 							</div>
 							<div class="entry">
-								<h5 class="entry-title"><a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><?php echo $manager_name; ?></a> joined Flock</h5>
+								<h6 class="entry-title"><a href="?p=&d=<?php echo $h; ?>" title="<?php echo $manager_name; ?>"><?php echo $manager_name; ?></a> joined Flock</h6>
 								<div class="entry-meta">
 									<time>2 days, 7 hours ago</time>
 								</div>
@@ -143,7 +185,7 @@
 		
 	</div>
 		
-	<div id="map-content" class="tab-content keep">
+	<?php /*<div id="map-content" class="tab-content keep">
 		
 		<div id="dashboard_investments_map_canvas"></div>
 		<script>
@@ -166,6 +208,6 @@
 			];
 		</script>
 		
-	</div>
+	</div>*/ ?>
 	
 </section>

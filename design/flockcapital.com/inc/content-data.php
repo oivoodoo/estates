@@ -20,26 +20,30 @@ $projects = array(
 		),
 		'type_label'=> 'Residential',
 		'manager'	=> 'stonemount',
-		'goal'		=> 32000000,
-		'progress' => 32000000*.34,
+		'goal'		=> 14000000,
+		'progress' 	=> 14000000,
 		'financials'=> array(
-			'return'	=> array(
-				'value'	=> 12,
-				'unit'	=> '%',
-				'period'=> 'yield'
+			'return'=> array(
+				'value'		=> 12,
+				'unit'		=> '%',
+				'yield_type'=> 'APR'
 			),
 			'type'	=> 'equity', //Equity/Debt
-			'term'	=> array(
+			'period'	=> array(
 				'value'	=> 24,
 				'unit'	=> array(
-					'short' => 'mos',
-					'long' => 'months'
+					'short' => 'mo',
+					'long' 	=> 'month'
 				)
 			),
 			'share' => array(
 				'price' => 1400
 			)
-		)
+		),
+		'num_investors' => 27,
+		'num_trackers'	=> 89,
+		'amount_invested'	=> 28000,
+		'projected_earnings'=> 3360
 	),
 	'vilnius-rimi' => array(
 		'is_tracked' => false,
@@ -58,25 +62,29 @@ $projects = array(
 		'type_label'=> 'Retail',
 		'manager'	=> 'trigon',
 		'goal'		=> 32000000,
-		'progress' => 21120000,
+		'progress'	=> 32000000*.62,
 		'financials'=> array(
-			'return'	=> array(
-				'value'	=> 12,
-				'unit'	=> '%',
-				'period'=> 'yield'
+			'return'=> array(
+				'value'		=> 12,
+				'unit'		=> '%',
+				'yield_type'=> 'APR'
 			),
 			'type'	=> 'equity', //Equity/Debt
-			'term'	=> array(
+			'period'	=> array(
 				'value'	=> 24,
 				'unit'	=> array(
-					'short' => 'mos',
-					'long' => 'months'
+					'short' => 'mo',
+					'long' 	=> 'month'
 				)
 			),
 			'share' => array(
-				'price' => 1500
+				'price' => 1600
 			)
-		)
+		),
+		'num_investors' => 27,
+		'num_trackers'	=> 89,
+		'amount_invested'	=> 32000,
+		'projected_earnings'=> 3840
 	),
 	'cafe-klaus' => array(
 		'is_tracked' => true,
@@ -95,25 +103,29 @@ $projects = array(
 		'type_label'=> 'Retail',
 		'manager'	=> 'gage-partners',
 		'goal'		=> 400000,
-		'progress' => 81000,
+		'progress' 	=> 400000*.21,
 		'financials'=> array(
-			'return'	=> array(
-				'value'	=> 10,
-				'unit'	=> '%',
-				'period'=> 'annual interest'
+			'return'=> array(
+				'value'		=> 30,
+				'unit'		=> '%',
+				'yield_type'=> 'YTM'
 			),
 			'type'	=> 'debt', //Equity/Debt
-			'term'	=> array(
+			'period'	=> array(
 				'value'	=> 3,
 				'unit'	=> array(
-					'short' => 'yrs',
-					'long' => 'years'
+					'short' => 'yr',
+					'long'	=> 'year'
 				)
 			),
 			'share' => array(
 				'price' => 400
 			)
-		)
+		),
+		'num_investors' => 27,
+		'num_trackers'	=> 89,
+		'amount_invested'	=> 8000,
+		'projected_earnings'=> 2400
 	),
 	'tallinn-rimi' => array(
 		'is_tracked' => false,
@@ -132,28 +144,33 @@ $projects = array(
 		'type_label'=> 'Retail',
 		'manager'	=> 'broadgate',
 		'goal'		=> 32000000,
-		'progress' => 21120000,
+		'progress'	=> 32000000*.62,
 		'financials'=> array(
-			'return'	=> array(
-				'value'	=> 12,
-				'unit'	=> '%',
-				'period'=> 'yield'
+			'return'=> array(
+				'value'		=> 12,
+				'unit'		=> '%',
+				'yield_type'=> 'APR'
 			),
 			'type'	=> 'equity', //Equity/Debt
-			'term'	=> array(
+			'period'	=> array(
 				'value'	=> 24,
 				'unit'	=> array(
-					'short' => 'mos',
-					'long' => 'months'
+					'short'	=> 'mo',
+					'long'	=> 'month'
 				)
 			),
 			'share' => array(
-				'price' => 1500
+				'price' => 1600
 			)
-		)
+		),
+		'num_investors' => 27,
+		'num_trackers'	=> 89,
+		'amount_invested'	=> 8000,
+		'amount_invested'	=> 32000,
+		'projected_earnings'=> 3840
 	),
 	'spain-maxima' => array(
-		'is_tracked' => false,
+		'is_tracked'=> false,
 		'link'		=> '?p=project&project=spain-maxima',
 		'handle'	=> 'spain-maxima',
 		'name'		=> 'Maxima Supermarket',
@@ -169,25 +186,29 @@ $projects = array(
 		'type_label'=> 'Retail',
 		'manager'	=> 'cbre',
 		'goal'		=> 32000000,
-		'progress' => 21120000,
+		'progress'	=> 32000000*.62,
 		'financials'=> array(
-			'return'	=> array(
-				'value'	=> 12,
-				'unit'	=> '%',
-				'period'=> 'yield'
+			'return'=> array(
+				'value'		=> 12,
+				'unit'		=> '%',
+				'yield_type'=> 'APR'
 			),
 			'type'	=> 'equity', //Equity/Debt
-			'term'	=> array(
+			'period'	=> array(
 				'value'	=> 24,
 				'unit'	=> array(
-					'short' => 'mos',
-					'long' => 'months'
+					'short'	=> 'mo',
+					'long'	=> 'month'
 				)
 			),
 			'share' => array(
-				'price' => 1500
+				'price' => 1600
 			)
-		)
+		),
+		'num_investors' => 27,
+		'num_trackers'	=> 89,
+		'amount_invested'	=> 32000,
+		'projected_earnings'=> 3840
 	)
 );
 $featured_projects = array($projects['cafe-klaus'], $projects['tallinn-rimi']);
@@ -211,7 +232,8 @@ $investors = array(
 			'locality'	=> 'Tallinn',
 			'country'	=> 'EE'
 		),
-		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav"
+		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav",
+		'qualified'	=> true
 	),
 	'mart' => array(
 		'name'		=> array(
@@ -227,7 +249,8 @@ $investors = array(
 			'locality'	=> 'Minsk',
 			'country'	=> 'BY'
 		),
-		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav"
+		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav",
+		'qualified'	=> false
 	),
 	'michael' => array(
 		'name'		=> array(
@@ -243,7 +266,8 @@ $investors = array(
 			'locality'	=> 'Guayaquil',
 			'country'	=> 'EC'
 		),
-		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav"
+		'bio' 		=> "Hours of plowing like this would leave any girl's hairy goblet looking like Pete Burns' lips, and I was no different! I can't wait to chow down on the baby grav",
+		'qualified'	=> true
 	)
 );
 

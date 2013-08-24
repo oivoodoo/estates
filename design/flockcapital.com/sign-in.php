@@ -10,7 +10,7 @@
 	
 	$alt =	$is_signup ? (
 				$is_internal ? 'Already have an account? <a href="sign-in.php" class="sign-in log-in fancybox.ajax">Sign in</a>.'
-						   : 'Sign up with an external account to follow your friends\' activity on Flock.<br><a href="sign-in.php?action=sign-up&internal=1" class="sign-in sign-up fancybox.ajax">Sign up without any external accounts</a>'
+						   : 'Sign up with one of your social network accounts to follow your friends\' activity on Flock.<br><a href="sign-in.php?action=sign-up&internal=1" class="sign-in sign-up fancybox.ajax">Sign up without any external accounts</a>'
 			) : '<a href="sign-in.php?action=forgotten" class="sign-in forgotten fancybox.ajax">Forgot password?</a>';
 	
 	$label = $is_signup ? 'Sign up' : 'Sign in';
@@ -110,7 +110,7 @@
 							<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
 							<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
 						</div>
-						<p class="tertiary">You may alternatively sign in with one of your external accounts</p>
+						<p class="tertiary">You may alternatively sign in with one of your social network accounts</p>
 					</form>
 				
 			<?php } ?>
