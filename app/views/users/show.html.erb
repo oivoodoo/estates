@@ -15,20 +15,23 @@
         <%= render partial: 'users/avatar', locals: { user: @user } %><div class="focus"></div>
       </figure>
       <div class="profile-details">
-        <h3 class="name">{{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}}</h3>
+        <h3 class="name">
+          {{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}}
+
+          <div class="ext-account-buttons">
+            <span>
+              <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-hide="!user.facebook_link"></button>
+              <button name="ext-account" value="twitter" class="ext-account-button twitter" ng-click='open(user.twitter_link)' ng-class="{'connected-ext-account-button':user.twitter_link}" ng-hide="!user.twitter_link"></button>
+              <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-hide="!user.google_plus_link"></button>
+              <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-hide="!user.linkedin_link"></button>
+            </span>
+          </div>
+        </h3>
 
         <div class="mini-bio">
           <p>{{user.short_bio}}</p>
         </div>
 
-        <div class="ext-account-buttons">
-          <span>
-            <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-hide="!user.facebook_link"></button>
-            <button name="ext-account" value="twitter" class="ext-account-button twitter" ng-click='open(user.twitter_link)' ng-class="{'connected-ext-account-button':user.twitter_link}" ng-hide="!user.twitter_link"></button>
-            <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-hide="!user.google_plus_link"></button>
-            <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-hide="!user.linkedin_link"></button>
-          </span>
-        </div>
       </div>
 
     </div>

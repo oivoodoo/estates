@@ -35,6 +35,10 @@
                     <div class="goalmeter"><div class="progress " style="width:<%= @project.view_percent %>"><div class="marker" style="left:<%= @project.view_percent %>;"><label><%= @project.view_percent %></label></div></div></div>
                   </div>
                 </div>
+                  <ul class='num-investors'>
+                    <li style="width:<%= @project.view_percent %>;"></li>
+                    <li><div><%= @project.investors.count %><i> investors</i></div></li>
+                  </ul>
               </div>
             </div>
             <div class="action">
@@ -54,18 +58,18 @@
       <h2 class='name'><%= @project.name %></h2>
 
       <div class="secondary-action tracking">
-        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"></button>
-        <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"></button>
-        <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"></button>
-        <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"></button>
+        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
+        <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
+        <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
+        <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button>
 
         <% if user_signed_in? %>
-          <button class="{{className}}"title="{{followText}}" ng-click="follow($event)"></button>
+          <button class="{{className}}"title="{{followText}}" ng-click="follow($event)"><b title='{{followText}}'></b></button>
         <% else %>
           <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
-            <button class="track" title='Track this project'></button>
+            <button class="track" title='Track this project'><b title='Track this project'></b></button>
           </a>
-          <button class="{{className}}" style="display: none;" title="{{followText}}" ng-click="follow($event)"></button>
+          <button class="{{className}}" style="display: none;" title="{{followText}}" ng-click="follow($event)"><b title='{{followText}}'></b></button>
         <% end %>
       </div>
     </div>

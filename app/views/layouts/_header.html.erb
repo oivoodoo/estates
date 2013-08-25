@@ -16,6 +16,7 @@
       <ul>
         <li class="name"><a class='current' href="<%= dashboard_path %>"><%= current_user.name %></a></li>
         <li class="dashboard"><a href="<%= dashboard_path %>">Dashboard</a></li>
+        <li class="profile"><a href="<%= user_path(current_user) %>">Profile</a></li>
         <li class="settings"><a href="<%= edit_user_registration_path %>">Settings</a></li>
         <% if can?(:manage, :all) %>
           <li><%= link_to "Admin", '/admin'%></li>
