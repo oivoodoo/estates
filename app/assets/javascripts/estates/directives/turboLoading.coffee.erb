@@ -1,0 +1,16 @@
+estates.directive 'turboLoading', ->
+  compile = ($element) ->
+    # lets setup visible settings
+    $element.attr('src', "<%= image_path('loading.gif') %>")
+
+    ($scope, $element) ->
+      # lets link events here
+      $(document).on 'page:fetch', -> # $element.css('display', 'block')
+      $(document).on 'page:receive', -> # $element.css('display', 'none')
+  return {
+    restrict: 'E'
+    replace: true
+    template: "<img style='display:none;position:relative;top:14px;' />"
+    compile: compile
+  }
+
