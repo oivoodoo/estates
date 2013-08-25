@@ -5,11 +5,37 @@ estates.factory 'EstatesMap', [
       id: 'grayMap'
       name: 'Gray Map'
       grayMap: [
-        { stylers: [ { saturation: -100 }, { lightness: 35 } ] },
-        { elementType: 'labels', stylers: [ { weight: .2 }, { lightness: -10 } ] },
-        { elementType: 'labels.text.stroke', stylers: [ { visibility: 'off' } ] },
-        { featureType: 'water', stylers: [ { color: '#b8b8b8' } ] }
+        {
+          "stylers": [ { "saturation": -40 }, { "hue": "#ffaa00" } ]
+        },{
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [ { "visibility": "simplified" }, { "lightness": 100 } ]
+        },{
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [ { "visibility": "on" }, { "weight": 0.3 }, { "saturation": -60 } ]
+        },{
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [ { "color": "#cadfaa" }, { "saturation": -40 }, { "lightness": 20 } ]
+        },{
+          "featureType": "landscape.natural",
+          "stylers": [ { "color": "#9cdfaa" }, { "saturation": -75 } ]
+        },{
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [ { "color": "#a6cade" }, { "saturation": -60 }, { "lightness": -20 }, { "visibility": "simplified" } ]
+        },{
+          "featureType": "transit.line",
+          "stylers": [ { "saturation": -100 }, { "lightness": 20 } ]
+        },{
+          "featureType": "water",
+          "elementType": "labels",
+          "stylers": [ { "saturation": -100 } ]
+        }
       ]
+
     host = "#{$window.location.protocol}//#{$window.location.host}"
     MarkerIcon = host + '/images/map_icon.svg'
 

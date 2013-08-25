@@ -52,6 +52,20 @@
               </ul>
             </div>
 
+            <div class="map-view tucked">
+              <div class="map-toolbar-one">
+                <button>Show map</button>
+              </div>
+
+              <div class="map-toolbar-two">
+                <button></button>
+              </div>
+
+              <div class="map-viewport">
+                <google-map scrollwheel='google.scrollwheel' center="google.center" fit='google.fit' mark-click='google.markClick' draggable="google.draggable" zoom="google.zoom" markers="google.markers" mark-click="google.markClick" styles='google.styles' map-type-control-options='google.mapTypeControlOptions' style='height: 30rem;display:block;'></google-map>
+              </div>
+            </div>
+
             <div>
               <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.invested_projects), locals: { class_name: "dash-invested" } %>
             </div>
@@ -63,6 +77,20 @@
                 <li><a ng-class="{current:sideTab==1}" ng:click="sideTab=1"><em><%= @user.invested_projects.count %></em> Investments</a></li>
                 <li><a ng-class="{current:sideTab==2}" ng:click="sideTab=2"><em><%= @user.following_projects.count %></em> Tracking</a></li>
               </ul>
+            </div>
+
+            <div class="map-view tucked">
+              <div class="map-toolbar-one">
+                <button>Show map</button>
+              </div>
+
+              <div class="map-toolbar-two">
+                <button></button>
+              </div>
+
+              <div class="map-viewport">
+                <google-map scrollwheel='google.scrollwheel' center="google.center" fit='google.fit' mark-click='google.markClick' draggable="google.draggable" zoom="google.zoom" markers="google.markers" mark-click="google.markClick" styles='google.styles' map-type-control-options='google.mapTypeControlOptions' style='height: 30rem;display:block;'></google-map>
+              </div>
             </div>
 
             <div id='tracking-list'>
@@ -117,8 +145,5 @@
     </div>
   </div>
 
-  <div id="map-content" class="tab-content keep" style='display:block;'>
-    <google-map scrollwheel='google.scrollwheel' center="google.center" fit='google.fit' mark-click='google.markClick' draggable="google.draggable" zoom="google.zoom" markers="google.markers" mark-click="google.markClick" styles='google.styles' map-type-control-options='google.mapTypeControlOptions' style='height: 30rem;display:block;'></google-map>
-  </div>
 </section>
 
