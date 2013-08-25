@@ -83,6 +83,7 @@
       this.options = o.options;
       this.styles = o.styles;
       this.mapTypeControlOptions = o.mapTypeControlOptions;
+      this.disableDefaultUI = o.disableDefaultUI;
 
       this.draw = function () {
 
@@ -101,7 +102,8 @@
             minZoom: that.minZoom,
             draggable: that.draggable,
             scrollwheel: that.scrollwheel,
-            mapTypeControlOptions: that.mapTypeControlOptions
+            mapTypeControlOptions: that.mapTypeControlOptions,
+            disableDefaultUI: that.disableDefaultUI
           }));
 
           if (angular.isDefined(that.styles)) {
@@ -158,19 +160,33 @@
         }
         else {
 
-          // Refresh the existing instance
-          google.maps.event.trigger(_instance, "resize");
+          var refresher = function() {
+            _instance.setOptions({
+              zoom: that.zoom,
+              minZoom: that.minZoom,
+              draggable: that.draggable,
+              scrollwheel: that.scrollwheel,
+              mapTypeControlOptions: that.mapTypeControlOptions,
+              disableDefaultUI: that.disableDefaultUI
+            });
 
-          var instanceCenter = _instance.getCenter();
+            // Refresh the existing instance
+            google.maps.event.trigger(_instance, "resize");
 
-          if (!floatEqual(instanceCenter.lat(), that.center.lat())
-            || !floatEqual(instanceCenter.lng(), that.center.lng())) {
-              _instance.setCenter(that.center);
-          }
+            var instanceCenter = _instance.getCenter();
 
-          if (_instance.getZoom() != that.zoom) {
-            _instance.setZoom(that.zoom);
-          }
+            if (!floatEqual(instanceCenter.lat(), that.center.lat())
+              || !floatEqual(instanceCenter.lng(), that.center.lng())) {
+                _instance.setCenter(that.center);
+            }
+
+            if (_instance.getZoom() != that.zoom) {
+              _instance.setZoom(that.zoom);
+            }
+
+          };
+
+          refresher();
         }
       };
 
@@ -357,6 +373,7 @@
         minZoom: "=minZoom",                             // optional
         styles: "=styles",                               // optional
         mapTypeControlOptions: "=mapTypeControlOptions", // optional
+        disableDefaultUI: '=disableDefaultUI',    // optional
         zoom: "=zoom",                                   // required
         refresh: "&refresh",                             // optional
         windows: "=windows",                             // optional
@@ -492,6 +509,13 @@
           _m.draw();
         }
         else {
+          scope.$on('map-refresh', function() {
+            _m.draw();
+
+            // TODO: fix ak change here.
+            scope.markers.push({});
+          });
+
           scope.$watch("refresh()", function (newValue, oldValue) {
             if (newValue && !oldValue) {
               _m.draw();

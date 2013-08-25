@@ -342,8 +342,6 @@ var	chartDefaults = {
   );
 };
 
-
-
 /*   Illustrative chart-line in the footer
      —————————————————————————————————————————————————————————————————————————————————————— */
 window.drawRise = function() {

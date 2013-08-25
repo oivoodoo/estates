@@ -1,6 +1,6 @@
 estates.controller 'ProfileController', [
-  '$scope', '$element', '$window', '$compile', '$timeout', '$rootScope', 'EstatesMap'
-  ($scope, $element, $window, $compile, $timeout, $rootScope, EstatesMap) ->
+  '$scope', '$element', '$window', '$compile', '$timeout', '$rootScope'
+  ($scope, $element, $window, $compile, $timeout, $rootScope) ->
     $scope.profileTab = 1
     $scope.user = $element.data('user')
     $scope.projects = $element.data('projects')
@@ -14,6 +14,5 @@ estates.controller 'ProfileController', [
     $scope.openTab = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step
-
-    $scope.google = EstatesMap.settings($scope.user, $scope.projects)
+      $scope.$broadcast('map-refresh')
 ]

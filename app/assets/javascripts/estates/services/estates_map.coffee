@@ -90,10 +90,10 @@ estates.factory 'EstatesMap', [
       settings.styles      = Styles
       settings.markClick   = true
       settings.draggable   = true
+      settings.disableDefaultUI = false
       settings.mapTypeControlOptions =
         mapTypeIds: [
           'grayMap',
-          google.maps.MapTypeId.ROADMAP,
           google.maps.MapTypeId.TERRAIN,
           google.maps.MapTypeId.SATELLITE,
           google.maps.MapTypeId.HYBRID
