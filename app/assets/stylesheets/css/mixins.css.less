@@ -90,13 +90,11 @@
 }
 .text-shadow (...) {
 	-webkit-text-shadow: @arguments;
-	   -moz-text-shadow: @arguments;
 	   		text-shadow: @arguments;
 }
 .text-shadow-multiple (...) {
 	@props: ~`'@{arguments}'.replace(/[\[\]]/g, '')`;
 	-webkit-text-shadow: @props;
-	   -moz-text-shadow: @props;
 	   		text-shadow: @props;
 }
 .box-shadow (...) {

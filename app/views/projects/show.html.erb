@@ -76,15 +76,15 @@
 
     <div id="tabs" class="tabs major gridwrap-padded">
       <ul>
-        <li><a ng-class="{current:projectTab==1}" ng-click="open($event, 'projectTab', 1)"><span>Overview</span></a></li>
-        <li><a ng-class="{current:projectTab==2}" ng-click="open($event, 'projectTab', 2)"><span>Financials</span></a></li>
+        <li><a ng-class="{current:projectTab==1}" ng-click="openTab($event, 'projectTab', 1)"><span>Overview</span></a></li>
+        <li><a ng-class="{current:projectTab==2}" ng-click="openTab($event, 'projectTab', 2)"><span>Financials</span></a></li>
         <% if @project.address? %>
-          <li><a ng-class="{current:projectTab==3}" ng-click="open($event, 'projectTab', 3)"><span>Location</span></a></li>
+          <li><a ng-class="{current:projectTab==3}" ng-click="openTab($event, 'projectTab', 3)"><span>Location</span></a></li>
         <% end %>
-        <li><a ng-class="{current:projectTab==4}" ng-click="open($event, 'projectTab', 4)"><span>Property</span></a></li>
-        <li><a ng-class="{current:projectTab==5}" ng-click="open($event, 'projectTab', 5)"><span>Strengths</span></a></li>
-        <li><a ng-class="{current:projectTab==6}" ng-click="open($event, 'projectTab', 6)"><span>Risks</span></a></li>
-        <li><a ng-class="{current:projectTab==7}" ng-click="open($event, 'projectTab', 7)"><span>Manager</span></a></li>
+        <li><a ng-class="{current:projectTab==4}" ng-click="openTab($event, 'projectTab', 4)"><span>Property</span></a></li>
+        <li><a ng-class="{current:projectTab==5}" ng-click="openTab($event, 'projectTab', 5)"><span>Strengths</span></a></li>
+        <li><a ng-class="{current:projectTab==6}" ng-click="openTab($event, 'projectTab', 6)"><span>Risks</span></a></li>
+        <li><a ng-class="{current:projectTab==7}" ng-click="openTab($event, 'projectTab', 7)"><span>Manager</span></a></li>
       </ul>
     </div>
   </div>
@@ -99,7 +99,7 @@
           <%= @project.financials.to_s.html_safe %>
 				</div>
 				<div class='tab-content paper'ng-class="{current:projectTab==3}" ng:show="projectTab == 3">
-          <google-map scrollwheel='google.settings.scrollwheel' center="google.settings.center" styles='google.styles' draggable='google.settings.draggable' zoom="14" markers="google.settings.markers" style="display:block; height: 400px" refresh='projectTab == 3' ></google-map>
+          <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
           <address><%= @project.address %></address>
 				</div>
 				<div class='tab-content paper' ng-class="{current:projectTab==4}" ng:show="projectTab == 4">
@@ -133,8 +133,8 @@
           <div id="investors-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':viewerTab==1}">
             <div class="tabs connections-tabs">
               <ul>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>{{followers.length}}</em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="openTab($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="openTab($event, 'viewerTab', 2)"><em>{{followers.length}}</em> Followers</a></li>
               </ul>
             </div>
 
@@ -146,8 +146,8 @@
           <div id="trackers-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':viewerTab==2}">
             <div class="tabs connections-tabs">
               <ul>
-                <li><a ng-class="{current:viewerTab==1}" ng:click="open($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
-                <li><a ng-class="{current:viewerTab==2}" ng:click="open($event, 'viewerTab', 2)"><em>{{followers.length}}</em> Followers</a></li>
+                <li><a ng-class="{current:viewerTab==1}" ng:click="openTab($event, 'viewerTab', 1)" ng:init='viewerTab=1'><em><%= @project.investors.count %></em> Investors</a></li>
+                <li><a ng-class="{current:viewerTab==2}" ng:click="openTab($event, 'viewerTab', 2)"><em>{{followers.length}}</em> Followers</a></li>
               </ul>
             </div>
 

@@ -11,15 +11,21 @@ estates.controller 'ProjectsController', [
     $scope.google = EstatesMap.settings({}, [$scope.project])
 
     # setup tab click function
-    $scope.open = (event, variable, step) ->
+    $scope.openTab = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step
+
+    # user selected location tab that mean we need to refresh map
+    $scope.$watch 'projectTab==3', ->
+      $scope.$broadcast('map-refresh')
+
+    $scope.$on 'map-refresh', ->
+      $scope.google.refresh = !$scope.google.refresh
 
     window.applyFix (el) ->
       $compile($(el))($scope)
 
     # TODO: refactor this things, move out to the service using factory.
-
     # following things here
     if $scope.project.followed
       $scope.followText = "Stop tracking this project"
