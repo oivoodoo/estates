@@ -98,7 +98,7 @@ estates.factory 'EstatesMap', [
         ]
 
       extra =
-        fit: false
+        fit: true
 
       return { settings: settings, styles: Styles, extra: extra }
 
