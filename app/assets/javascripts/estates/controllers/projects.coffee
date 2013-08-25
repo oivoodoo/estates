@@ -8,6 +8,7 @@ estates.controller 'ProjectsController', [
     $scope.urls = $element.data('urls')
     $scope.followers = $element.data('followers')
 
+    # setup google maps events
     $scope.google = EstatesMap.settings({}, [$scope.project])
 
     # setup tab click function
