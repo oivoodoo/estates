@@ -3,20 +3,20 @@
 	global $projects, $managers, $investors;
 
 	$h = array_key_exists('project', $_GET) ? $_GET['project'] : null;
-	
+
 	if (!$h || !array_key_exists($h, $projects)) return;
-	
+
 	$project = $projects[$h];
 
 	$p			= array_key_exists('handle',	$project)	? $project['handle']	: null;
 	$name		= array_key_exists('name',		$project)	? $project['name']		: null;
-	
+
 	$link				= array_key_exists('link',		$project)			? $project['link']			: null;
 	$type				= array_key_exists('type_label',$project)			? $project['type_label']	: null;
-	
+
 	$manager			= array_key_exists('manager',	$project) &&
 						  array_key_exists($project['manager'], $managers)	? $managers[$project['manager']] : null;
-	
+
 	$goal				= array_key_exists('goal',		$project)			? $project['goal']			: null;
 	$progress			= array_key_exists('progress',	$project)			? $project['progress']		: null;
 	$progress_percent	= ($goal && $progress)								? round($progress/$goal*100): null;	// percentage
@@ -40,14 +40,14 @@
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="financials">
 			<div>
 				<div>
 					<div><?php
 							//$fw = round(100/(count($financials)+2), 2);
 							$fc = count($financials)+2;
-							
+
 							if ($financials) {
 								if (array_key_exists('type', $financials)) {
 									echo "<ul class='size-".$fc."'>\n";
@@ -75,13 +75,13 @@
 								<?php
 									if ($goal || $progress) {
 										echo "<ul class='money ".( $progress==$goal ? 'full' : '' )."'>\n";
-					
+
 											if ($progress)
 												echo '<li class="raised" style="width:'.$progress_percent.'%;"><div>'.format_money($progress)."</div></li>\n";
-						
+
 											if ($goal)
 												echo '<li class="budget" style="width:'.(!$progress ? 100 : 100-$progress_percent).'%;"><div>'.( $progress==$goal ? 'goal reached' : format_money($goal) )."</div></li>\n";
-											
+
 										echo "</ul>\n";
 									}
 									if ($progress_percent) {
@@ -95,10 +95,10 @@
 									}
 									if ($num_investors && $progress_percent) {
 										echo "<ul class='num-investors'>\n";
-					
+
 											if ($progress)
 												echo '<li style="width:'.$progress_percent.'%;"></li><li><div>'.$num_investors."<i> investors</i></div></li>\n";
-											
+
 										echo "</ul>\n";
 									}
 								?>
@@ -111,10 +111,10 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="title <?php /*fix elevate*/ ?>">
-		
+
 		<div class="contract">
 			<figure class="profile-badge manager-badge">
 				<a href="?p=manager&m=<?php echo $project['manager']; ?>" title="<?php echo $manager['name']; ?>"><img src="img/<?php echo $project['manager']; ?>.png"></a>
@@ -136,7 +136,7 @@
 				?>
 			</div>
 		</div>
-		
+
 		<div id="tabs" class="tabs gridwrap-padded">
 			<ul>
 				<li><a href="?p=project&project=<?php echo $p; ?>#overview" class="tab overview-tab current"><span>Overview</span></a></li
@@ -152,12 +152,12 @@
 			</ul>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="body">
 		<div class="main">
 			<div>
-			
+
 				<div id="overview-content" class="tab-content paper current">
 					<p>Stonemount, as a debt advisor, plans to assist the current anchor tentant raise a combination of bank debt and private debt financing to acquire the property. The current tenant operates a successful café with a large summer terrace. The tenant wishes to acquire the property to make capital improvements and expand the business. Stonemount believes the property provides a good opportunity for a junior debt investment that will be secured against the property in second position behind the bank.</p>
 					<p>Loan interest is currently tax free in Estonia and the current tenant is offering 10% per annum for a 3 year term.</p>
@@ -167,12 +167,12 @@
 						</div>
 					</div>*/ ?>
 				</div>
-				
+
 				<div id="location-content" class="tab-content paper">
 					<?php
-					
+
 						if ($location && array_key_exists('address', $location)  && array_key_exists('coordinates', $location)) { ?>
-							
+
 							<div class="map-canvas" id="project_map_canvas"></div>
 							<script>
 								window.gmaps.project = [
@@ -185,17 +185,17 @@
 									}
 								];
 							</script>
-							
+
 						<?php /*$e_address = urlencode($location['address']); ?>
 							<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:24rem;"
 								src="https://www.google.com/maps?q=<?php echo $e_address; ?>&amp;z=14&amp;output=embed"></iframe>
-							
+
 							<p style="text-align: right;"><a href="https://www.google.com/maps?q=<?php echo $e_address; ?>&amp;z=14&amp;source=embed" target="_blank">Google maps &rarr;</a></p>
 							<?php*/
 						}
 					?>
 				</div>
-			   
+
 			    <div class="offer-disclaimer paper">
 			    	<hr>
 			    	<p>A special note regarding forward-looking statements:</p>
@@ -206,16 +206,16 @@
 			    	<p>Disclaimer: Neither the SEC nor any state securities commission or regulatory authority approved, passed upon or endorsed the merits of this offering.</p>
 			    	<p>Flock's services do not constitute “crowd funding” as described in Title III of the Jumpstart Our Business Startups Act (“JOBS Act”).</p>
 			    </div>
-				
+
 			</div>
 		</div>
 		<div class="side">
 			<div>
-			
+
 				<div class="switch-group">
-				
+
 					<div id="investors-content" class="tab-content side-tab-content tab-content-connections side-switch side-switch-current">
-					
+
 						<div class="tabs connection-tabs">
 							<ul>
 								<li><a href="#investors" class="current"><em>27</em> Investors</a></li><li><a href="#trackers"><em>189</em> Trackers</a></li>
@@ -231,11 +231,11 @@
 							?>
 						</ul>
 						<a class="show-all-connections investors" href="javascript:void(0)">Show all</a>
-				
+
 					</div>
-					
+
 					<div id="trackers-content" class="tab-content side-tab-content tab-content-connections side-switch">
-					
+
 						<div class="tabs connection-tabs">
 							<ul>
 								<li><a href="#investors"><em>27</em> Investors</a></li><li><a href="#trackers" class="current"><em>189</em> Trackers</a></li>
@@ -251,13 +251,13 @@
 							?>
 						</ul>
 						<a class="show-all-connections trackers" href="javascript:void(0)">Show all</a>
-				
+
 					</div>
-					
+
 				</div>
-				
+
 				<div id="timeline-content" class="tab-content side-tab-content">
-					
+
 					<ul class="feed">
 						<li>
 							<div class="profile-badge">
@@ -322,14 +322,14 @@
 							</div>
 						</li>
 					</ul>
-				
+
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
-	
-	
-    
-	
+
+
+
+
 </section>

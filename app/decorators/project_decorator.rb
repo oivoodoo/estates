@@ -33,15 +33,21 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def view_price
-    "<i>$</i>#{number_to_human(price, :precision => 2).to_s.gsub(/ /, '')}".html_safe
+    "$#{number_to_human(price, :precision => 2).to_s.gsub(/ /, '')}".html_safe
   end
 
   def view_raise
-    "<i>$</i>#{number_to_human(raised, :precision => 2).to_s.gsub(/ /, '')}".html_safe
+    unless raised.to_i.zero?
+      "$#{number_to_human(raised, :precision => 2).to_s.gsub(/ /, '')}".html_safe
+    end
   end
 
   def view_per_share
     "<b><i>$</i>#{number_to_human(per_share, :precision => 3).to_s.gsub(/ /, '')}</b>".html_safe
+  end
+
+  def view_full
+    percent >= 100.0 ? 'full' : ''
   end
 end
 

@@ -46,7 +46,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :show do
-    process :resize_to_fill => [918,459]
+    process :resize_to_fill => [784,392]
   end
 
   version :index do

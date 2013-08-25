@@ -22,13 +22,13 @@
               <li class="yield"><div><b><%= @project.view_percent %><u></u></b> <label>yield</label></div></li>
             </ul>
             <ul class='size-6'>
-              <li class="term"><div><b><%= @project.holding %><u class="short"></u><u class="long"></u></b> <label>term</label></div></li>
+              <li class="period"><div><b><%= @project.holding %> <u class="short">mo</u><u class="long">month</u></b> <label>period</label></div></li>
             </ul>
             <div class="moneywrap size-3">
               <div>
                 <ul class='money'>
-                  <li class="raised" style="width:<%= @project.view_percent %>;"><div><label>Raised</label><%= @project.view_raise %></div></li>
-                  <li class="budget" style="width:<%= @project.view_remaining_percent %>;"><div><label>Budget</label><%= @project.view_price %></div></li>
+                  <li class="raised" style="width:<%= @project.view_percent %>;"><div><%= @project.view_raise %></div></li>
+                  <li class="budget" style="width:<%= @project.view_remaining_percent %>;"><div><%= @project.view_price %></div></li>
                 </ul>
                 <div class="goal">
                   <div>
