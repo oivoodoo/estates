@@ -1,0 +1,55 @@
+production:
+  facebook:
+    id: 472903682777717
+    secret: 4879261b8fb5aa966983dbcb942e534c
+  google:
+    id: 662955766629-cmin826i75v5aha8f9u4r8a4bbcdf4bd.apps.googleusercontent.com
+    secret: pkp5OxM6JVFXU7BJ9ot-g5pZ
+  linkedin:
+    id: 8yu2q2khym8y
+    secret: 9itDbJc0ho46halv
+  email:
+    host: "smtp.sendgrid.net"
+    port: 587
+    domain: "li603-78.members.linode.com"
+    username: "oivoodoo"
+    password: "201287ali"
+    support_address: "alex.korsak@gmail.com"
+
+development:
+  facebook:
+    id: "217873215035447"
+    secret: "4e2d3c9835e99d8dc7c93d62cc16d159"
+  google:
+    id: "662955766629-ker183n38a59d9rqgbd8eno9ehk0kvg6.apps.googleusercontent.com"
+    secret: "RdFJhD5hc6soMw2OnSpXM-Lx"
+  linkedin:
+    id: "0futayxxa8pq"
+    secret: "Mdtba4VZq1JCCUgs"
+  email:
+    host: "smtp.gmail.com"
+    port: 587
+    domain: "gmail.com"
+    username: "petya.petinych@gmail.com"
+    password: "mintscinnamon02"
+    support_address: "petya.petinych@gmail.com"
+    subject: "Message"
+
+test:
+  facebook:
+    id: "id"
+    secret: "secret"
+  google:
+    id: "id"
+    secret: "secret"
+  linkedin:
+    id: "id"
+    secret: "secret"
+  email:
+    host: "smtp.test.com"
+    port: 587
+    domain: "test.com"
+    username: "username"
+    password: "password"
+    support_address: "address"
+
