@@ -1,1 +1,1 @@
-rvm use --create 1.9.3@estates
+rvm use --create 2.0.0@estates
