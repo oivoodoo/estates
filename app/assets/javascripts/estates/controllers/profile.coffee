@@ -2,6 +2,7 @@ estates.controller 'ProfileController', [
   '$scope', '$element', '$window', '$compile', '$timeout', '$rootScope'
   ($scope, $element, $window, $compile, $timeout, $rootScope) ->
     $scope.profileTab = 1
+
     $scope.user = $element.data('user')
     $scope.projects = $element.data('projects')
 

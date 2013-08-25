@@ -83,11 +83,9 @@ estates.factory 'EstatesMap', [
         longitude: user.longitude || object.longitude || SF.longitude
 
       settings.center      = center
-      settings.zoom        = 12
+      settings.zoom        = 14
       settings.minZoom     = 2
-      settings.fit         = true
       settings.scrollwheel = false
-      settings.styles      = Styles
       settings.markClick   = true
       settings.draggable   = true
       settings.disableDefaultUI = false
@@ -99,7 +97,10 @@ estates.factory 'EstatesMap', [
           google.maps.MapTypeId.HYBRID
         ]
 
-      settings
+      extra =
+        fit: false
+
+      return { settings: settings, styles: Styles, extra: extra }
 
     this
 ]

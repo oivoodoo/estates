@@ -1,15 +1,14 @@
 estates.controller 'DashboardController', [
-  '$scope', '$element', 'EstatesMap'
-  ($scope, $element, EstatesMap) ->
-    $scope.open = (event, variable, step) ->
-      event.preventDefault()
-      $scope[variable] = step
-
-    user = $element.data('user')
-    projects = $element.data('projects')
-
-    $scope.google = EstatesMap.settings(user, projects)
+  '$scope', '$element'
+  ($scope, $element) ->
+    $scope.user = $element.data('user')
+    $scope.projects = $element.data('projects')
 
     drawCharts()
+
+    $scope.openTab = (event, variable, step) ->
+      event.preventDefault()
+      $scope[variable] = step
+      $scope.$broadcast('map-refresh')
 ]
 

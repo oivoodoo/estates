@@ -89,8 +89,22 @@ $('.fancybox-video')
 });
 
 window.layout = function() {
+  window.$body = $('body');
+  window.$masthead = $('#masthead');
+  window.$wrap = $('#wrap');
+  window.$footer = $wrap.find('>footer');
+  window.is_home = $body.hasClass('home');
+  window.is_project = $body.hasClass('project');
+  window.is_dashboard = $body.hasClass('dashboard');
+  window.is_settings = $body.hasClass('settings');
+  window.is_projects = $body.hasClass('projects');
+
   winW = $(window).width();
   winH = $(window).height();
+
+  window.$wrap = $('#wrap');
+  window.$footer = $wrap.find('>footer');
+
   footerH = $footer.outerHeight(true);
   baseFontSize = parseInt($body.css('font-size'), 10);
   menuTallH = 8*baseFontSize;

@@ -1,4 +1,4 @@
-@estates = angular.module('estates', ['ng-rails-csrf', 'rails', 'ui', 'google-maps'])
+@estates = angular.module('estates', ['ng-rails-csrf', 'rails', 'ui'])
 
 $(document).on 'ready page:change', ->
   angular.bootstrap(document, ['estates'])

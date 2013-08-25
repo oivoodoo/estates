@@ -30,7 +30,6 @@
 //= require angularjs/rails/resource
 //= require angular-ui
 //= require ng-rails-csrf
-//= require vendors/angular-google-maps
 //= require vendors/infobubble
 //= require vendors/chart.min
 //= require estates

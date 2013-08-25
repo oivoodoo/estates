@@ -4,13 +4,17 @@ estates.controller 'MapsController', [
     $scope.markers = $element.data('markers')
 
     $scope.google = EstatesMap.settings($scope.user, $scope.markers)
-    $scope.google.mapTypeControlOptions = false
-    $scope.google.disableDefaultUI = true
+    $scope.google.settings.mapTypeControlOptions = false
+    $scope.google.settings.disableDefaultUI = true
     $scope.isOpened = false
+
+    $scope.$on 'map-refresh', ->
+      $scope.google.refresh = !$scope.google.refresh
 
     $scope.show = ->
       $scope.isOpened = true
-      $scope.google.mapTypeControlOptions =
+
+      $scope.google.settings.mapTypeControlOptions =
         mapTypeIds: [
           'grayMap',
           google.maps.MapTypeId.TERRAIN,
@@ -18,14 +22,14 @@ estates.controller 'MapsController', [
           google.maps.MapTypeId.HYBRID
         ],
         position: google.maps.ControlPosition.RIGHT_BOTTOM
-      $scope.google.disableDefaultUI = false
-      $scope.$broadcast('map-refresh');
+      $scope.google.settings.disableDefaultUI = false
+      $scope.google.refresh = !$scope.google.refresh
 
       # mapTypeControlOptions: (open ? false : mTCO)
     $scope.close = ->
       $scope.isOpened = false
-      $scope.google.mapTypeControlOptions = false
-      $scope.google.disableDefaultUI = true
-      $scope.$broadcast('map-refresh');
+      $scope.google.settings.mapTypeControlOptions = false
+      $scope.google.settings.disableDefaultUI = true
+      $scope.google.refresh = !$scope.google.refresh
 ]
 
