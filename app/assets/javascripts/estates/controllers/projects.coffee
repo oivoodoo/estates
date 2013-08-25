@@ -26,6 +26,11 @@ estates.controller 'ProjectsController', [
     window.applyFix (el) ->
       $compile($(el))($scope)
 
+    $timeout( ->
+      $scope.$apply ->
+        $('.profile-badge img').trigger('resize')
+    , 1000)
+
     # TODO: refactor this things, move out to the service using factory.
     # following things here
     if $scope.project.followed
@@ -52,7 +57,7 @@ estates.controller 'ProjectsController', [
             $timeout( ->
               $scope.$apply ->
                 $('.profile-badge img').trigger('resize')
-            , 100)
+            , 1000)
       else
         $scope.followText = 'Track this project'
         $scope.followState = 'not-tracking'
