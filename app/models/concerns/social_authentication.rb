@@ -47,8 +47,6 @@ module SocialAuthentication
     def find_for_linkedin(user, auth)
       user = user || Authentication.find_user_by_auth(auth)
 
-      return user if user.present?
-
       link = auth.info['urls']['public_profile']
       image = auth.info['image']
       if user.present?
