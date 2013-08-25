@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    @user = User.find_for_facebook(request.env["omniauth.auth"])
+    @user = User.find_for_facebook(current_user, request.env["omniauth.auth"])
 
     if @user.present?
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
@@ -12,7 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def google_oauth2
-    @user = User.find_for_google(request.env["omniauth.auth"])
+    @user = User.find_for_google(current_user, request.env["omniauth.auth"])
 
     if @user.present?
       set_flash_message(:notice, :success, :kind => "Google") if is_navigational_format?
@@ -24,7 +24,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def linkedin
-    @user = User.find_for_linkedin(request.env["omniauth.auth"])
+    @user = User.find_for_linkedin(current_user, request.env["omniauth.auth"])
 
     if @user.present?
       set_flash_message(:notice, :success, :kind => "Linkedin") if is_navigational_format?
