@@ -5,7 +5,7 @@ gem 'rake', '~> 10.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-gem 'puma'
+gem 'unicorn'
 
 gem 'sass-rails'
 gem 'less-rails'
