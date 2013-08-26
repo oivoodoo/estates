@@ -1,4 +1,5 @@
-<%= stylesheet_link_tag "invests" %>
+<link type="text/css" rel="stylesheet" href="/stylesheets/invests.css">
+
 <div ng-controller="InvestmentsController" data-project='<%= @project.to_json(methods: :per_share) %>' data-user='<%= current_user.to_json %>'>
   <header id="page-header">
     <div class="container">
