@@ -1,4 +1,5 @@
 require 'redis'
+
 preload_app true
 worker_processes 3 # amount of unicorn workers to spin up
 timeout 30         # restarts workers that hang for 30 seconds
@@ -6,6 +7,7 @@ timeout 30         # restarts workers that hang for 30 seconds
 after_fork do |server, worker|
    defined?(ActiveRecord::Base) and
    ActiveRecord::Base.establish_connection
+   $redis = Redis.connect({url: ENV['REDISTOGO_URL'], thread_safe: true})
 end
 
 before_fork do |server, worker|
@@ -23,5 +25,6 @@ before_fork do |server, worker|
       # someone else did our job for us
     end
   end
+
 end
 

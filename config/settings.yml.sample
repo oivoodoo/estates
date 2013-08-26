@@ -16,6 +16,8 @@ staging:
     password: <%= ENV['email_password'] %>
     support_address: "petya.petinych@gmail.com"
     subject: "Message"
+  redis:
+    url: <%= ENV['REDISTOGO_URL'] %>
 
 production:
   facebook:
@@ -35,6 +37,8 @@ production:
     password: <%= ENV['email_password'] %>
     support_address: "petya.petinych@gmail.com"
     subject: "Message"
+  redis:
+    url: <%= ENV['REDISTOGO_URL'] %>
 
 development:
   facebook:
@@ -72,3 +76,6 @@ test:
     username: "username"
     password: "password"
     support_address: "address"
+  redis:
+    url: "redis://127.0.0.1:6379/"
+

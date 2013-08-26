@@ -82,6 +82,10 @@ gem 'honeybadger'
 gem 'jquery-fileupload-rails'
 gem 'minitest', '~> 4.7.5'
 
+gem 'redis'
+gem 'redis-store'
+gem 'redis-rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

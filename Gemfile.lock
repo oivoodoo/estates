@@ -369,6 +369,23 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.4)
+    redis-actionpack (4.0.0)
+      actionpack (~> 4)
+      redis-rack (~> 1.5.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (4.0.0)
+      activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-rack (1.5.0)
+      rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-rails (4.0.0)
+      redis-actionpack (~> 4)
+      redis-activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.4)
+      redis (>= 2.2)
     ref (1.0.5)
     request_store (1.0.5)
     responders (1.0.0.rc)
@@ -509,6 +526,9 @@ DEPENDENCIES
   public_activity
   rails (= 4.0.0)
   rake (~> 10.1.0)
+  redis
+  redis-rails
+  redis-store
   rspec-rails (~> 2.0)
   rvm-capistrano
   sass-rails
