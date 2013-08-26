@@ -62,23 +62,17 @@ class User < ActiveRecord::Base
   tracked skip_defaults: true
 
   def profile_image
-    return avatar.url(:thumb) if avatar?
-    "/images/default_avatar.png"
-  end
-
-  def facebook_image
-    return facebook_avatar.url(:thumb) if facebook_avatar?
-    "/images/default_avatar.png"
-  end
-
-  def google_plus_image
-    return google_plus_avatar.url(:thumb) if google_plus_avatar?
-    "/images/default_avatar.png"
-  end
-
-  def linkedin_image
-    return linkedin_avatar.url(:thumb) if linkedin_avatar?
-    "/images/default_avatar.png"
+    if avatar?
+      avatar.url(:thumb)
+    elsif facebook_avatar?
+      facebook_avatar.url(:thumb)
+    elsif google_plus_avatar?
+      google_plus_avatar.url(:thumb)
+    elsif linkedin_avatar?
+      linkedin_avatar.url(:thumb)
+    else
+      "/images/default_avatar.png"
+    end
   end
 
   def name

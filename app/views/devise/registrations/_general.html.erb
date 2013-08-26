@@ -10,13 +10,13 @@
         <div class="ext-account-pics">
           <span>
             <button name="ext-account" value="facebook" title="Use profile picture from Facebook" class="ext-account-button facebook">
-              <%= image_tag current_user.facebook_image, alt: current_user.name %>
+              <%= image_tag current_user.facebook_avatar.url(:thumb), alt: current_user.name %>
             </button>
             <button name="ext-account" value="google-plus" title="Use profile picture from Google+" class="ext-account-button google-plus">
-              <%= image_tag current_user.google_plus_image, alt: current_user.name %>
+              <%= image_tag current_user.google_plus_avatar.url(:thumb), alt: current_user.name %>
             </button>
             <button name="ext-account" value="linked-in" title="Use profile picture from LinkedIn" class="ext-account-button linked-in">
-              <%= image_tag current_user.linkedin_image, alt: current_user.name %>
+              <%= image_tag current_user.linkedin_avatar.url(:thumb), alt: current_user.name %>
             </button>
           </span>
         </div>
