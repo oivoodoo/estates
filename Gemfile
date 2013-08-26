@@ -86,12 +86,19 @@ gem 'redis'
 gem 'redis-store'
 gem 'redis-rails'
 
+gem 'faraday'
+
+group :production do
+  gem 'rails_12factor'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
 group :development, :test do
+  gem 'bullet'
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers'
   gem 'debugger'

@@ -80,7 +80,6 @@ estates.directive 'esGoogleMap', [
       google.maps.event.addListener _instance, "center_changed", ->
         $timeout ->
           $scope.$apply ->
-            debugger
             if !dragging
               $scope.options.center.latitude = center.lat()
               $scope.options.center.longitude = center.lng()

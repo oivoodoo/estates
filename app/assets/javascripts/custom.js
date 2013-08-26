@@ -28,6 +28,9 @@ window.load = function() {
 
 	layout();
   window.drawRise();
+
+  // preload images
+  $('.project-thumb img').imageloader();
 };
 
 $(document).ready(window.load);

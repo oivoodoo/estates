@@ -1,17 +1,17 @@
 production:
   facebook:
-    id: 472903682777717
-    secret: 4879261b8fb5aa966983dbcb942e534c
+    id: <%= ENV['FACEBOOK_ID'] %>
+    secret: <%= ENV['FACEBOOK_SECRET'] %>
   google:
-    id: 662955766629-cmin826i75v5aha8f9u4r8a4bbcdf4bd.apps.googleusercontent.com
-    secret: pkp5OxM6JVFXU7BJ9ot-g5pZ
+    id: <%= ENV['GOOGLE_ID'] %>
+    secret: <%= ENV['GOOGLE_SECRET'] %>
   linkedin:
-    id: 8yu2q2khym8y
-    secret: 9itDbJc0ho46halv
+    id: <%= ENV['LINKEDIN_ID'] %>
+    secret: <%= ENV['LINKEDIN_SECRET'] %>
   email:
     host: "smtp.sendgrid.net"
     port: 587
-    domain: "li603-78.members.linode.com"
+    domain: "http://flockcapital.herokuapp.com/"
     username: "oivoodoo"
     password: "201287ali"
     support_address: "alex.korsak@gmail.com"
