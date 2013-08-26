@@ -11,6 +11,7 @@ gem 'unicorn'
 
 gem 'sass-rails'
 gem 'less-rails'
+gem 'therubyracer'
 
 group :assets do
   # Use SCSS for stylesheets
