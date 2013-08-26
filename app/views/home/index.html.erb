@@ -1,9 +1,8 @@
 <section id="intro">
   <div id="slideshow" class="grid-1-1 no-padding" >
     <div>
-      <div class="bg"></div>
+      <div class="bg" style="display: none"></div>
       <div class="fg">
-
         <h1 class="title">Invest in real estate online</h1>
         <% unless current_user.present? %>
           <div class="action">
@@ -22,3 +21,8 @@
     <%= render partial: 'projects/project', collection: @projects, locals: { class_name: "full", image_size: :home, :long_term => true } %>
   </div>
 </section>
+<script>
+window.setTimeout(function() {
+    $('.bg').fadeIn();
+}, 100);
+</script>
