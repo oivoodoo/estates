@@ -55,6 +55,7 @@ gem 'acts-as-taggable-on'
 gem "acts_as_follower"
 gem "geocoder"
 gem 'public_activity'
+gem 'facebook_share'
 
 gem 'jquery-validation-rails'
 

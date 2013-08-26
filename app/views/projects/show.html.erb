@@ -176,3 +176,18 @@
     </div>
   </div>
 </section>
+<%= link_to 'Share on Facebook', '#', :class => "fb_share"  %>
+<%= facebook_share_once %>
+
+<script type="text/javascript">
+$(".fb_share").unbind("click.facebook_share").bind("click.facebook_share",function () {
+  FB.ui({method: 'stream.publish',
+    link: "http://link.to/current_site",
+    display: "iframe",
+    name: "<%= @project.name %>",
+    picture: "http://pic.tu.re/of/awesomeness.png",
+    description: "<%= @project.description.to_s.html_safe %>"
+  });
+  return false;
+});
+</script>

@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include FacebookShare
   include ProjectsHelper
   include UsersHelper
 
