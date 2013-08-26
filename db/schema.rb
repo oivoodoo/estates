@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130825100418) do
+ActiveRecord::Schema.define(version: 20130826122142) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -145,6 +148,9 @@ ActiveRecord::Schema.define(version: 20130825100418) do
     t.integer  "user_id"
   end
 
+  add_index "investments", ["project_id"], name: "index_investments_on_project_id", using: :btree
+  add_index "investments", ["user_id"], name: "index_investments_on_user_id", using: :btree
+
   create_table "messages", force: true do |t|
     t.string   "topic"
     t.text     "body"
@@ -269,6 +275,7 @@ ActiveRecord::Schema.define(version: 20130825100418) do
     t.string   "google_plus_link"
     t.string   "linkedin_link"
     t.string   "social_avatar_url"
+    t.string   "uid"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "identification_document"
