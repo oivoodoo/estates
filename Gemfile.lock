@@ -351,6 +351,11 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.1)
+    rails_stdout_logging (0.0.1)
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
@@ -491,6 +496,7 @@ DEPENDENCIES
   devise!
   draper!
   factory_girl_rails
+  faraday
   fog
   foreman
   formtastic!
@@ -525,6 +531,7 @@ DEPENDENCIES
   protected_attributes
   public_activity
   rails (= 4.0.0)
+  rails_12factor
   rake (~> 10.1.0)
   redis
   redis-rails
