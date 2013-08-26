@@ -48,7 +48,7 @@
                   <li class="term">
                     <div>
                       <b><%= project.holding %>
-                        <% if class_name == 'full' %>
+                        <% if local_assigns.fetch(:long_term, false) %>
                           <u class="long">months</u>
                         <% else %>
                           <u class="short">mo</u>
