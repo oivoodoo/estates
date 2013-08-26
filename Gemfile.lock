@@ -127,6 +127,9 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.0)
+    asset_sync (1.0.0)
+      activemodel
+      fog (>= 1.8.0)
     atomic (1.1.13)
     bcrypt-ruby (3.1.1)
     bourbon (3.1.8)
@@ -486,6 +489,7 @@ DEPENDENCIES
   angular-ui-rails
   angularjs-rails
   angularjs-rails-resource
+  asset_sync
   bullet
   cancan
   capistrano

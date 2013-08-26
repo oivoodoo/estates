@@ -17,6 +17,8 @@ group :assets do
   # Use SCSS for stylesheets
 end
 
+gem "asset_sync"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
