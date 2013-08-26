@@ -1,6 +1,6 @@
 <article class="project-badge <%= class_name %>" ng-controller='ProjectsController' data-project='<%= project_json(project) %>' data-urls="<%= project_button_urls_json(project) %>" ng-show="<%= local_assigns.fetch(:ng_show, "true") %>" >
   <div onclick="Turbolinks.visit('<%= url_for(project) %>')" class="image-preloader">
-    <a class="project-thumb" href="<%= project_path(project) %>"><%= image_tag(project.image.url(local_assigns.fetch(:image_size, :index)), class: 'elevated') %>
+    <a class="project-thumb" href="<%= project_path(project) %>"><%= image_tag(project.image.url(local_assigns.fetch(:image_size, :index))) %>
       <div class="focus">
         <span>Full details</span>
       </div>
