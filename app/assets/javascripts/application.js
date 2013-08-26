@@ -32,5 +32,6 @@
 //= require ng-rails-csrf
 //= require vendors/infobubble
 //= require vendors/chart.min
+//= require vendors/spin
 //= require estates
 

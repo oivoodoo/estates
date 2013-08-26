@@ -9,3 +9,6 @@ section.how .item .left.text { width: 70%; }
 
 .project-badge .financials ul.size-6, .project-badge .financials div.size-6 { float: left; }
 
+.loader { position: absolute; top: 65px; right: -25px; }
+.mini .loader { top: 35px; }
+
