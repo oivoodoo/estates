@@ -29,8 +29,7 @@ window.load = function() {
 	layout();
   window.drawRise();
 
-  // preload images
-  $('.project-thumb img').imageloader();
+  $(".image-preloader").krioImageLoader();
 };
 
 $(document).ready(window.load);
