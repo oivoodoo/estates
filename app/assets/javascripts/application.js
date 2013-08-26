@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.validate
-//= require jquery.krioImageLoader
 //
 //= require turbolinks
 
@@ -23,7 +22,7 @@
 //= require vendors/jquery-ui-1.10.3.min
 //= require vendors/jquery.ui.widget-combobox
 //= require vendors/jquery.fileupload
-//= require vendors/jquery.imageloader
+//= require vendors/jquery.krioImageLoader
 //= require custom
 //= require common
 //= require ajax

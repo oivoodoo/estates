@@ -9,12 +9,8 @@ gem 'rails', '4.0.0'
 
 gem 'unicorn'
 
-gem 'sass-rails'
-gem 'less-rails'
-gem 'therubyracer'
-
 group :assets do
-  # Use SCSS for stylesheets
+  gem 'sass-rails'
 end
 
 gem "asset_sync"

@@ -16,7 +16,8 @@ production:
     password: "201287ali"
     support_address: "alex.korsak@gmail.com"
   redis:
-    url: <%= ENV['REDISTOGO_URL'] %>
+    url: "redis://127.0.0.1:6379/"
+
 
 staging:
   facebook:
@@ -36,7 +37,7 @@ staging:
     password: "201287ali"
     support_address: "alex.korsak@gmail.com"
   redis:
-    url: <%= ENV['REDISTOGO_URL'] %>
+    url: "redis://127.0.0.1:6379/"
 
 development:
   facebook:
