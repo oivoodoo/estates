@@ -3,10 +3,10 @@ FacebookShare.default_facebook_share_options = {
   :jquery_function => "$",
 
   :app_id => "217873215035447",
-  :status => "false",
+  :status => "true",
   :cookie => "false",
-  :xfbml => "false",
+  :xfbml => "true",
 
-  :selector => '.fb_share',
+  :selector => '.facebook',
   :locale => "en_US"
 }

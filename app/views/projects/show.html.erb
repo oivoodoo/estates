@@ -58,7 +58,7 @@
       <h2 class='name'><%= @project.name %></h2>
 
       <div class="secondary-action tracking">
-        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
+        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once %></button>
         <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
         <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
         <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button>
@@ -176,18 +176,36 @@
     </div>
   </div>
 </section>
-<%= link_to 'Share on Facebook', '#', :class => "fb_share"  %>
-<%= facebook_share_once %>
 
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript">
-$(".fb_share").unbind("click.facebook_share").bind("click.facebook_share",function () {
-  FB.ui({method: 'stream.publish',
-    link: "http://link.to/current_site",
-    display: "iframe",
-    name: "<%= @project.name %>",
-    picture: "http://pic.tu.re/of/awesomeness.png",
-    description: "<%= @project.description.to_s.html_safe %>"
-  });
-  return false;
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<script type="text/javascript">
+$(".facebook").unbind("click.facebook_share").bind("click.facebook_share",function () {
+  FB.ui(
+  {
+    method: 'stream.publish',
+    name: '<%= @project.name %>',
+    caption: 'Bringing Facebook to the desktop and mobile web',
+    description: ("<%= @project.description %>"),
+    picture: 'http://www.fbrell.com/public/f8.jpg',
+    display: "iframe" 
+  },
+  function(response) {
+    if (response && response.post_id) {
+      alert('Post was published.');
+    } else {
+      alert('Post was not published.');
+    }
+  }
+);
 });
 </script>

@@ -426,6 +426,9 @@ GEM
     sendgrid (1.2.0)
       json
       json
+    shareable (0.0.2)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     shoulda-matchers (2.2.0)
       activesupport (>= 3.0.0)
     sinatra (1.4.3)
@@ -537,6 +540,7 @@ DEPENDENCIES
   sass-rails
   sdoc
   sendgrid
+  shareable
   shoulda-matchers
   spork
   spork-rails!
