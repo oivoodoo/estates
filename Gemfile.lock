@@ -291,6 +291,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     netrc (0.7.7)
+    newrelic_rpm (3.6.6.147)
     ng-rails-csrf (0.1.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -517,6 +518,7 @@ DEPENDENCIES
   kaminari
   mini_magick
   minitest (~> 4.7.5)
+  newrelic_rpm
   ng-rails-csrf
   omniauth
   omniauth-facebook
