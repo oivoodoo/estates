@@ -24,8 +24,8 @@ module ProjectsHelper
     }.to_json
   end
 
-  def followers_json(project)
-    project.followers.to_json(only: :id, methods: [:name, :profile_image])
+  def followers_json(followers)
+    followers.to_json(only: :id, methods: [:name, :profile_image])
   end
 end
 

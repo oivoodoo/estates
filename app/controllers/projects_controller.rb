@@ -8,6 +8,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = @project.decorate
+    @activities = @project.activities.includes(:owner).includes(:trackable).order('created_at desc').limit(7).all
+    @investors = @project.investors.all # scope
+    @followers = @project.followers # array
   end
 
   def follow
