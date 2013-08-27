@@ -7,10 +7,10 @@ class ProjectsController < ApplicationController
 	end
 
   def show
-    @project = @project.decorate
     @activities = @project.activities.includes(:owner).includes(:trackable).order('created_at desc').limit(7).load
     @investors = @project.investors.load # scope
     @followers = @project.followers # array
+    @project = @project.decorate
   end
 
   def follow
