@@ -94,7 +94,7 @@
             </div>
 
             <div id='tracking-list'>
-              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.following_projects), locals: { class_name: "dash-tracking-list" } %>
+              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(@user.following_projects), locals: { class_name: "dash-tracking" } %>
             </div>
           </div>
 

@@ -22,6 +22,7 @@
 //= require vendors/jquery-ui-1.10.3.min
 //= require vendors/jquery.ui.widget-combobox
 //= require vendors/jquery.fileupload
+//= require vendors/jquery.krioImageLoader
 //= require custom
 //= require common
 //= require ajax
@@ -32,5 +33,6 @@
 //= require ng-rails-csrf
 //= require vendors/infobubble
 //= require vendors/chart.min
+//= require vendors/spin
 //= require estates
 

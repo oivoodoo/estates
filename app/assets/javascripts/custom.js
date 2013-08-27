@@ -28,6 +28,8 @@ window.load = function() {
 
 	layout();
   window.drawRise();
+
+  $(".image-preloader").krioImageLoader();
 };
 
 $(document).ready(window.load);

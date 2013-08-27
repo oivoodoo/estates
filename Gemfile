@@ -9,13 +9,13 @@ gem 'rails', '4.0.0'
 
 gem 'unicorn'
 
-gem 'sass-rails'
-gem 'less-rails'
-gem 'therubyracer'
-
 group :assets do
-  # Use SCSS for stylesheets
+  gem 'sass-rails'
 end
+
+gem "asset_sync"
+
+gem 'newrelic_rpm'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -87,12 +87,19 @@ gem 'redis'
 gem 'redis-store'
 gem 'redis-rails'
 
+gem 'faraday'
+
+group :production do
+  gem 'rails_12factor'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
 group :development, :test do
+  gem 'bullet'
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers'
   gem 'debugger'
