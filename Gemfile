@@ -55,6 +55,7 @@ gem 'acts-as-taggable-on'
 gem "acts_as_follower"
 gem "geocoder"
 gem 'public_activity'
+gem 'multi_fetch_fragments'
 
 gem 'jquery-validation-rails'
 

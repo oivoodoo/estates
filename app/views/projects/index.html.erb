@@ -1,9 +1,10 @@
 <section>
   <div id="projects" class="gridwrap">
-    <%= render partial: 'projects/project', collection: @projects, locals: { class_name: "full" } %>
+    <%= render partial: 'projects/project', collection: @projects, locals: { class_name: "full" }, cache: true %>
   </div>
 
   <div id="projects" class="gridwrap">
     <%= paginate @projects %>
   </div>
 </section>
+
