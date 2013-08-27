@@ -24,6 +24,10 @@ class Project < ActiveRecord::Base
   include PublicActivity::Model
   tracked skip_defaults: true
 
+  Project.all.each do |project|
+    project.image.recreate_versions!
+  end
+
   def per_share
     price / shares.to_f
   end
