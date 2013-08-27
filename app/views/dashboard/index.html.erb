@@ -106,7 +106,7 @@
 
         <div id="timeline-content" class="tab-content side-tab-content">
           <ul class="feed">
-            <% for activity in current_user.activities.order('created_at desc').limit(7) %>
+            <% for activity in current_user.activities.includes(:owner).includes(:trackable).order('created_at desc').limit(7) %>
               <%= render_activity(activity, current_user: current_user) %>
             <% end %>
           </ul>

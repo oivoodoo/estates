@@ -25,6 +25,6 @@ class ProjectsController < ApplicationController
   private
 
   def find_project
-    @project = Project.find(params[:id])
+    @project = Project.includes(:investors).find(params[:id])
   end
 end
