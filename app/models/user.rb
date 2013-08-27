@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_follower
 
+  def following_projects_ids
+    @following_projects_ids ||= following_projects.map(&:id)
+  end
+
   def investors
     # do not include self
     investments.map(&:project_investors).flatten.uniq - [self]
