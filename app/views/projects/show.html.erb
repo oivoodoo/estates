@@ -189,6 +189,6 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
 </script>
-<a href="https://plus.google.com/share?url={URL}" onclick="javascript:window.open(this.href,
+<a href="https://plus.google.com/share?url={<%= request.protocol + request.host_with_port + request.fullpath %>}" onclick="javascript:window.open(this.href,
   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" description="<%= @project.description %>"><img
   src="https://www.gstatic.com/images/icons/gplus-64.png" alt="Share on Google+"/></a>
