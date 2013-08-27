@@ -4,27 +4,27 @@ preload_app true
 worker_processes 3 # amount of unicorn workers to spin up
 timeout 30         # restarts workers that hang for 30 seconds
 
-after_fork do |server, worker|
-   defined?(ActiveRecord::Base) and
-   ActiveRecord::Base.establish_connection
-   $redis = Redis.connect({url: ENV['REDISTOGO_URL'], thread_safe: true})
+before_fork do |server, worker|
+
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
 end
 
-before_fork do |server, worker|
-  # the following is highly recomended for Rails + "preload_app true"
-  # as there's no need for the master process to hold a connection
-  defined?(ActiveRecord::Base) and
-  ActiveRecord::Base.connection.disconnect!
+after_fork do |server, worker|
 
-  # 0 down time deployment
-  old_pid = Rails.root + '/tmp/pids/unicorn.pid.oldbin'
-  if File.exists?(old_pid) && server.pid != old_pid
-    begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
-    rescue Errno::ENOENT, Errno::ESRCH
-      # someone else did our job for us
-    end
+  Signal.trap 'TERM' do
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to sent QUIT'
   end
+
+  $redis = Redis.connect({url: ENV['REDISTOGO_URL'], thread_safe: true})
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
 
 end
 
