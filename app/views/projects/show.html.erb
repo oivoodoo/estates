@@ -176,6 +176,9 @@
     </div>
   </div>
 </section>
+<% content_for :meta do %>
+  <meta property="og:image" content="<%= @project.image.path %>"/>
+<% end %>
 
 <!-- Place this tag where you want the +1 button to render. -->
 <div class="g-plusone" data-annotation="inline" data-width="300"></div>
@@ -190,14 +193,13 @@
 </script>
 <script type="text/javascript">
 $(".facebook").unbind("click.facebook_share").bind("click.facebook_share",function () {
-  FB.ui(
-  {
-    method: 'stream.publish',
-    name: '<%= @project.name %>',
+  FB.ui({method: 'stream.publish',
+    link: "http://link.to/current_site",
+    display: "iframe",
     caption: 'Bringing Facebook to the desktop and mobile web',
-    description: ("<%= @project.description %>"),
-    picture: 'http://www.fbrell.com/public/f8.jpg',
-    display: "iframe" 
+    name: "<%= @project.name %>",
+    picture: "http://pic.tu.re/of/awesomeness.png",
+    description: "<%= @project.description %>"
   },
   function(response) {
     if (response && response.post_id) {
@@ -206,6 +208,6 @@ $(".facebook").unbind("click.facebook_share").bind("click.facebook_share",functi
       alert('Post was not published.');
     }
   }
-);
+  );
 });
 </script>
