@@ -58,7 +58,7 @@
       <h2 class='name'><%= @project.name %></h2>
 
       <div class="secondary-action tracking">
-        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: "#{@project.name}", description: "#{@project.description}", :display => "iframe" %></button>
+        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: "#{@project.name}", description: "#{@project.description}"%></button>
         <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
         <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
         <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button>
@@ -179,7 +179,6 @@
 <% content_for :meta do %>
   <meta property="og:image" content="<%= @project.image_url(:small) %>"/>
 <% end %>
-
 <!-- Place this tag where you want the +1 button to render. -->
 <div class="g-plusone" data-annotation="inline" data-width="300"></div>
 
@@ -191,4 +190,3 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
 </script>
-
