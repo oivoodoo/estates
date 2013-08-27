@@ -64,7 +64,7 @@
 
             <div id="tracking-list" ng-show="viewerTab == 2">
               <!-- do not show in case if user untrack the project using track button -->
-              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { :ng_show => "followState=='tracking'", class_name: "dash-tracking" }, cache: true %>
+              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { :ng_show => "followState=='tracking'", class_name: "dash-tracking" } %>
             </div>
           </div>
 
@@ -86,7 +86,7 @@
             </div>
 
             <ul class="connections" ng-show="sideViewerTab == 1">
-              <%= render partial: 'projects/follower', collection: current_user.investors, cache: true %>
+              <%= render partial: 'projects/follower', collection: current_user.investors %>
             </ul>
           </div>
 
@@ -99,7 +99,7 @@
             </div>
 
             <ul class="connections">
-              <%= render partial: 'projects/follower', collection: current_user.user_followers, cache: true %>
+              <%= render partial: 'projects/follower', collection: current_user.user_followers %>
             </ul>
           </div>
         </div>

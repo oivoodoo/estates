@@ -281,7 +281,6 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.5.1)
     minitest (4.7.5)
-    multi_fetch_fragments (0.0.17)
     multi_json (1.7.9)
     multipart-post (1.2.0)
     net-scp (1.1.2)
@@ -519,7 +518,6 @@ DEPENDENCIES
   kaminari
   mini_magick
   minitest (~> 4.7.5)
-  multi_fetch_fragments
   newrelic_rpm
   ng-rails-csrf
   omniauth
