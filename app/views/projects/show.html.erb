@@ -63,7 +63,10 @@
       <div class="secondary-action tracking">
         <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: @project.name, description: strip_tags(@project.description.squish), picture: @project.image_url(:small), caption: @project.address %></button>
         <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
-        <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
+        <a href="https://plus.google.com/share?url={<%= request.protocol + request.host_with_port + request.fullpath %>}" onclick="javascript:window.open(this.href,
+          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+          <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
+        </a>
         <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button>
 
         <% if user_signed_in? %>
@@ -179,16 +182,3 @@
     </div>
   </div>
 </section>
-
-<div class="g-plus" data-action="share" ... ></div>
-
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-<a href="https://plus.google.com/share?url={<%= request.protocol + request.host_with_port + request.fullpath %>}" onclick="javascript:window.open(this.href,
-  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" description="<%= @project.description %>"><img
-  src="https://www.gstatic.com/images/icons/gplus-64.png" alt="Share on Google+"/></a>
