@@ -194,6 +194,7 @@
 <script type="text/javascript">
 $(".facebook").unbind("click.facebook_share").bind("click.facebook_share",function () {
   FB.ui({method: 'stream.publish',
+    appId: "343425419125509",
     link: "http://link.to/current_site",
     display: "iframe",
     caption: 'Bringing Facebook to the desktop and mobile web',
