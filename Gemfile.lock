@@ -338,6 +338,8 @@ GEM
       activesupport (>= 3.0.0)
       i18n (>= 0.5.0)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-protection (1.5.0)
       rack
     rack-test (0.6.2)
@@ -528,6 +530,7 @@ DEPENDENCIES
   pg
   protected_attributes
   public_activity
+  rack-cache
   rails (= 4.0.0)
   rails_12factor
   rake (~> 10.1.0)

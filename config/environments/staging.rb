@@ -79,10 +79,5 @@ Estates::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-  config.assets.paths << Rails.root.join('app', 'assets', 'images')
-
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
 end
 
