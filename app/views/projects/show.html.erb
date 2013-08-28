@@ -186,21 +186,27 @@
     </div>
   </div>
 </section>
-<a target="_blank" href="http://www.facebook.com/dialog/feed?u=<%= full_path %>" onclick="javascript:window.open(this.href,
+<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>" onclick="javascript:window.open(this.href,
           '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share</a>
-<a href="#" 
-  onclick="
-    window.open(
-      'https://www.facebook.com/sharer/sharer.php?u='<%= full_path %>', 
-      'facebook-share-dialog', 
-      'width=626,height=436'); 
-    return false;">
-  Share on Facebook
-</a>
-<a href="http://www.facebook.com/dialog/feed?app_id=123050457758183&
+<a href="http://www.facebook.com/dialog/feed?app_id=343425419125509&
 link=http://developers.facebook.com/docs/reference/dialogs/&
 picture=<%= image_url(@project.image) %>&
 name=<%= @project.name %>&
 caption=<%= @project.address %>&
 description=<%= strip_tags(@project.description.squish) %>&
 redirect_uri=<%= full_path %>">ololol</a>
+
+<b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+<div style='float:left;padding:3px 3px 3px 3px;'>
+<a expr:share_url='data:post.url' 
+href='http://www.facebook.com/sharer.php' 
+name='fb_share' 
+type='box_count'>
+Share
+</a>
+<script 
+src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' 
+type='text/javascript'>
+</script>
+</div>
+</b:if>
