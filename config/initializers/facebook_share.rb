@@ -2,7 +2,7 @@ FacebookShare.default_facebook_share_options = {
   :framework => :jquery,
   :jquery_function => "$",
 
-  :app_id => "343425419125509",
+  :app_id => Rails.configuration.facebook.id,
   :status => "true",
   :cookie => "false",
   :xfbml => "true",

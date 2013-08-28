@@ -57,7 +57,7 @@
       </figure>
       <h2 class='name'><%= @project.name %></h2>
       <div class="secondary-action tracking">
-        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: @project.name, description: strip_tags(@project.description.squish), picture: @project.image_url(:small), caption: @project.address %></button>
+        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: @project.name, description: strip_tags(@project.description.squish), caption: @project.address %></button>
 
         <a href="https://twitter.com/intent/tweet?source=webclient&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
