@@ -56,8 +56,15 @@
         <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
       </figure>
       <h2 class='name'><%= @project.name %></h2>
+
+      <% content_for :meta do %>
+        <meta property="og:image" content="<%= @project.image %>" />
+        <meta property="og:title" content="<%= @project.name%>" />
+        <meta property="og:description" content="<%= strip_tags(@project.description.squish) %>" />
+      <% end %>
+
       <div class="secondary-action tracking">
-        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>&name=<%= @project.name %>&description=<%= strip_tags(@project.description.squish) %>" onclick="javascript:window.open(this.href,
+        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>&name=<%= @project.name %>&description=<%= strip_tags(@project.description.squish) %>" name="<%= @project.name %>" onclick="javascript:window.open(this.href,
           '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
         </a>
@@ -189,5 +196,3 @@
     </div>
   </div>
 </section>
-<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>&name=<%= @project.name %>&description=<%= strip_tags(@project.description.squish) %>" onclick="javascript:window.open(this.href,
-          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share</a>
