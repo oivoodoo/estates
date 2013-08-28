@@ -15,9 +15,9 @@ Estates::Application.configure do
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
-  # Add `rack-cache` to your Gemfile before enabling this.
+  # Add  to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
-  # config.action_dispatch.rack_cache = true
+  config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = true
@@ -80,9 +80,6 @@ Estates::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-  config.assets.paths << Rails.root.join('app', 'assets', 'images')
-
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
+  GA.tracker = 'UA-43566255-1'
 end
 

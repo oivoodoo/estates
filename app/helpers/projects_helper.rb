@@ -13,7 +13,7 @@ module ProjectsHelper
 
   def project_json(project)
     json = project.as_json(only: [:id, :name, :latitude, :longitude], methods: :address)
-    json['followed'] = current_user.present? && current_user.following?(project.object)
+    json['followed'] = current_user.present? && current_user.following_projects_ids.include?(project.object.id)
     json.to_json
   end
 
@@ -24,8 +24,8 @@ module ProjectsHelper
     }.to_json
   end
 
-  def followers_json(project)
-    project.followers.to_json(only: :id, methods: [:name, :profile_image])
+  def followers_json(followers)
+    followers.to_json(only: :id, methods: [:name, :profile_image])
   end
 end
 

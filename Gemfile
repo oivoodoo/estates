@@ -6,6 +6,7 @@ gem 'rake', '~> 10.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+gem "rack-cache"
 
 gem 'unicorn'
 
@@ -132,4 +133,5 @@ gem 'angularjs-rails'
 gem 'angularjs-rails-resource'
 gem 'angular-ui-rails'
 gem 'ng-rails-csrf'
+gem 'google-analytics-rails'
 

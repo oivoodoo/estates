@@ -7,6 +7,9 @@ class ProjectsController < ApplicationController
 	end
 
   def show
+    @activities = @project.activities.includes(:owner).includes(:trackable).order('created_at desc').limit(7).load
+    @investors = @project.investors.load # scope
+    @followers = @project.followers # array
     @project = @project.decorate
   end
 
@@ -25,6 +28,6 @@ class ProjectsController < ApplicationController
   private
 
   def find_project
-    @project = Project.find(params[:id])
+    @project = Project.includes(:investors).find(params[:id])
   end
 end

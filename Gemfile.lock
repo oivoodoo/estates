@@ -209,6 +209,7 @@ GEM
     geocoder (1.1.8)
     get-version (0.0.1)
       sinatra
+    google-analytics-rails (0.0.4)
     gritter (1.0.3)
     guard (1.8.2)
       formatador (>= 0.2.4)
@@ -341,6 +342,8 @@ GEM
       activesupport (>= 3.0.0)
       i18n (>= 0.5.0)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-protection (1.5.0)
       rack
     rack-test (0.6.2)
@@ -509,6 +512,7 @@ DEPENDENCIES
   fuubar
   geocoder
   get-version
+  google-analytics-rails
   gritter (= 1.0.3)
   guard
   guard-bundler
@@ -536,6 +540,7 @@ DEPENDENCIES
   pg
   protected_attributes
   public_activity
+  rack-cache
   rails (= 4.0.0)
   rails_12factor
   rake (~> 10.1.0)
