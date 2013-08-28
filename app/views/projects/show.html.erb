@@ -56,8 +56,9 @@
         <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
       </figure>
       <h2 class='name'><%= @project.name %></h2>
+
       <% content_for :meta do %>
-        <meta property="og:image" content="<%= @project.image %>"/>
+        <meta property="og:image" content="<%= @project.image %>" data-turbolinks-track />
       <% end %>
 
       <div class="secondary-action tracking">
