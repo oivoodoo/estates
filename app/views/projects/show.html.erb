@@ -59,7 +59,7 @@
       <div class="secondary-action tracking">
         <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: @project.name, description: strip_tags(@project.description.squish), caption: @project.address %></button>
 
-        <a href="https://twitter.com/intent/tweet?&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+        <a href="https://twitter.com/intent/tweet?original_referer=<%= full_path %>&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
         </a>
 
@@ -186,3 +186,7 @@
     </div>
   </div>
 </section>
+
+<a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.activeadmin.info%2Fdocs%2F1-general-configuration.html&text=Active%20Admin%20%7C%20The%20administration%20framework%20for%20Ruby%20on%20Rails&tw_p=tweetbutton&url=http%3A%2F%2Fwww.activeadmin.info%2Fdocs%2F1-general-configuration.html"></a>
+
+<a href="https://twitter.com/intent/tweet?original_referer=<%= full_path %>&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">tweet</a>

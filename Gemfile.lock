@@ -94,6 +94,10 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    activeadmin-cancan (0.1.4)
+      activeadmin (>= 0.4.0)
+      cancan (>= 1.6.2)
+      rails (>= 3.0)
     activemodel (4.0.0)
       activesupport (= 4.0.0)
       builder (~> 3.1.0)
@@ -476,6 +480,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  activeadmin-cancan
   activerecord-session_store!
   acts-as-messageable
   acts-as-taggable-on
