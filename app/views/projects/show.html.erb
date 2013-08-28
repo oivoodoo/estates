@@ -57,7 +57,10 @@
       </figure>
       <h2 class='name'><%= @project.name %></h2>
       <div class="secondary-action tracking">
-        <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: @project.name, description: strip_tags(@project.description.squish), caption: @project.address %></button>
+        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>&name=<%= @project.name %>&description=<%= strip_tags(@project.description.squish) %>" onclick="javascript:window.open(this.href,
+          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+          <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
+        </a>
 
         <a href="https://twitter.com/intent/tweet?original_referer=<%= full_path %>&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
@@ -186,27 +189,5 @@
     </div>
   </div>
 </section>
-<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>" onclick="javascript:window.open(this.href,
+<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>&name=<%= @project.name %>&description=<%= strip_tags(@project.description.squish) %>" onclick="javascript:window.open(this.href,
           '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share</a>
-<a href="http://www.facebook.com/dialog/feed?app_id=343425419125509&
-link=http://developers.facebook.com/docs/reference/dialogs/&
-picture=<%= image_url(@project.image) %>&
-name=<%= @project.name %>&
-caption=<%= @project.address %>&
-description=<%= strip_tags(@project.description.squish) %>&
-redirect_uri=<%= full_path %>">ololol</a>
-
-<b:if cond='data:blog.pageType != &quot;static_page&quot;'>
-<div style='float:left;padding:3px 3px 3px 3px;'>
-<a expr:share_url='data:post.url' 
-href='http://www.facebook.com/sharer.php' 
-name='fb_share' 
-type='box_count'>
-Share
-</a>
-<script 
-src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' 
-type='text/javascript'>
-</script>
-</div>
-</b:if>
