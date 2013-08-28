@@ -187,6 +187,6 @@
   </div>
 </section>
 
-<a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.activeadmin.info%2Fdocs%2F1-general-configuration.html&text=Active%20Admin%20%7C%20The%20administration%20framework%20for%20Ruby%20on%20Rails&tw_p=tweetbutton&url=http%3A%2F%2Fwww.activeadmin.info%2Fdocs%2F1-general-configuration.html"></a>
+<a href="https://twitter.com/intent/tweet?original_referer=<%= full_path %>&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>&url=<%= full_path %>">Tweet</a>
 
 <a href="https://twitter.com/intent/tweet?original_referer=<%= full_path %>&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">tweet</a>
