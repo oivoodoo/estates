@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include FacebookShare
   include ProjectsHelper
   include UsersHelper
 
@@ -20,6 +21,10 @@ module ApplicationHelper
 
   def header_class
     'mini' unless controller_name == 'home'
+  end
+
+   def full_path
+    request.protocol + request.host_with_port + request.fullpath
   end
 end
 
