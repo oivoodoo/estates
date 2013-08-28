@@ -70,7 +70,10 @@
           '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
         </a>
-        <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button>
+        <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= request.protocol + request.host_with_port + request.fullpath %>.com" onclick="javascript:window.open(this.href,
+          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+          <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button>
+        </a>
 
         <% if user_signed_in? %>
           <button class="{{className}}"title="{{followText}}" ng-click="follow($event)"><b title='{{followText}}'></b></button>
