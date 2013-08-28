@@ -57,7 +57,6 @@ gem "acts_as_follower"
 gem "geocoder"
 gem 'public_activity'
 gem 'facebook_share'
-gem 'therubyracer'
 
 gem 'jquery-validation-rails'
 
