@@ -62,7 +62,10 @@
 
       <div class="secondary-action tracking">
         <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b><%= facebook_share_once name: @project.name, description: strip_tags(@project.description.squish), picture: @project.image_url(:small), caption: @project.address %></button>
-        <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
+        <a href="https://twitter.com/share?url={<%= request.protocol + request.host_with_port + request.fullpath %>}" onclick="javascript:window.open(this.href,
+          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" data-via="<%= @project.name %>" data-text="<%= strip_tags(@project.short_description.squish) %>"  data-url="<%= request.protocol + request.host_with_port + request.fullpath %>" data-counturl="<%= request.protocol + request.host_with_port + request.fullpath %>" data-lang="en" data-count="none">
+          <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
+        </a>
         <a href="https://plus.google.com/share?url={<%= request.protocol + request.host_with_port + request.fullpath %>}" onclick="javascript:window.open(this.href,
           '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
@@ -183,7 +186,7 @@
   </div>
 </section>
 
-<a href="http://www.linkedin.com/shareArticle?mini=true&url=(<%= request.protocol + request.host_with_port + request.fullpath %>).com&title=(<%= @project.name %> <%= strip_tags(@project.short_description.squish) %>)&summary=(<%= request.protocol + request.host_with_port + request.fullpath %>)" target="_blank" ><img src="http://www.YourImageURLGoesHere.com/image"/></a>
+<a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= request.protocol + request.host_with_port + request.fullpath %>.com&title=<%= @project.name %> <%= strip_tags(@project.short_description.squish) %>&summary=(<%= request.protocol + request.host_with_port + request.fullpath %>)" target="_blank" ><img src="http://www.YourImageURLGoesHere.com/image"/></a>
 
 <script src="//platform.linkedin.com/in.js" type="text/javascript">
  lang: en_US
