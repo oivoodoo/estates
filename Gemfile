@@ -131,4 +131,5 @@ gem 'angularjs-rails'
 gem 'angularjs-rails-resource'
 gem 'angular-ui-rails'
 gem 'ng-rails-csrf'
+gem 'google-analytics-rails'
 

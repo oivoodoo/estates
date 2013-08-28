@@ -207,6 +207,7 @@ GEM
     geocoder (1.1.8)
     get-version (0.0.1)
       sinatra
+    google-analytics-rails (0.0.4)
     gritter (1.0.3)
     guard (1.8.2)
       formatador (>= 0.2.4)
@@ -503,6 +504,7 @@ DEPENDENCIES
   fuubar
   geocoder
   get-version
+  google-analytics-rails
   gritter (= 1.0.3)
   guard
   guard-bundler

@@ -79,5 +79,7 @@ Estates::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  GA.tracker = 'UA-43566255-1'
 end
 
