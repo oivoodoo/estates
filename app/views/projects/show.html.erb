@@ -61,9 +61,10 @@
         <meta property="og:image" content="<%= @project.image %>" />
         <meta property="og:title" content="<%= @project.name%>" />
         <meta property="og:description" content="<%= strip_tags(@project.description.squish) %>" />
-        <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="<%= request.protocol + request.host_with_port %>">
-        <meta name="twitter:creator" content="<%= request.protocol + request.host_with_port %>">
+        <meta name="twitter:title" content= "<%= @project.name %>">
+        <meta name="twitter:description" content="<%= strip_tags(@project.description.squish) %>">
+        <meta name="twitter:image:src" content="<%= @project.image %>">
         <meta itemprop="name" content="<%= @project.name %>">
         <meta itemprop="description" content="<%= strip_tags(@project.description.squish) %>">
       <% end %>
@@ -73,7 +74,7 @@
           <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
         </a>
 
-        <a href="https://twitter.com/intent/tweet?url=<%= request.protocol + request.host_with_port %>&text=<%= @project.description %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+        <a href="https://twitter.com/intent/tweet?url=<%= request.protocol + request.host_with_port %>?text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
         </a>
 
