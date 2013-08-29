@@ -2,7 +2,6 @@ class Users::SessionsController < Devise::SessionsController
   def new
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
-
     if request.xhr?
       # render devise sessions new form instead of new.js.erb of user users/sessions
       render :new_form, :layout => false
