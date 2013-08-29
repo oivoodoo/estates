@@ -12,5 +12,3 @@ section.how .item .left.text { width: 70%; }
 .loader { position: absolute; top: 65px; right: -25px; }
 .mini .loader { top: 35px; }
 
-.projects .project-badge .project-thumb img { width: 369px; height: 184px; }
-
