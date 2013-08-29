@@ -74,7 +74,7 @@
           <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
         </a>
 
-        <a href="https://twitter.com/intent/tweet?url=<%= request.protocol + request.host_with_port %>&text=for more information check this link&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+        <a href="https://twitter.com/intent/tweet?url=<%= full_path %>&text=For more information check this link&via=<%= request.protocol + request.host_with_port %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
         </a>
 
