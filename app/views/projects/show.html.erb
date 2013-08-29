@@ -64,8 +64,7 @@
       <% end %>
 
       <div class="secondary-action tracking">
-        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>" onclick="javascript:window.open(this.href,
-          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
         </a>
 
@@ -73,13 +72,11 @@
           <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
         </a>
 
-        <a href="https://plus.google.com/share?url=<%= full_path %>" onclick="javascript:window.open(this.href,
-          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+        <a href="https://plus.google.com/share?url=<%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="google-plus" title="Share on Google+" class="ext-account-button google-plus"><b title="Share on Google+"></b></button>
         </a>
 
-        <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= full_path %>" onclick="javascript:window.open(this.href,
-          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+        <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="linked-in" title="Share on LinkedIn" class="ext-account-button linked-in"><b title="Share on LinkedIn"></b></button>
         </a>
 
@@ -197,4 +194,6 @@
   </div>
 </section>
 
-<a href="https://twitter.com/intent/tweet?text=olololllolololo">ololol</a>
+<a href="https://twitter.com/intent/tweet?text=olololllolololo" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">without original refer</a>
+
+<a href="https://twitter.com/intent/tweet??original_referer=<%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">without original refer</a>
