@@ -1,4 +1,12 @@
 <section>
+  <div class="head fix elevate">
+    <div id="tabs" class="tabs submenu">
+      <ul>
+        <li><a href="<%= projects_path(:active => :local) %>" class="local <%= filter_class('local') %>">Local</a></li><li><a href="<%= projects_path(:active => :featured) %>" class="featured  <%= filter_class('featured') %>">Featured</a></li><li><a href="<%= projects_path(:active => :trending) %>" class="trending  <%= filter_class('trending') %>">Trending</a></li><li><a href="<%= projects_path(:active => :all) %>" class="all  <%= filter_class('all') %>">All</a></li>
+      </ul>
+    </div>
+  </div>
+
   <div id="projects" class="gridwrap">
     <%= render partial: 'projects/project', collection: @projects, locals: { class_name: "full" } %>
   </div>

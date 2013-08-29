@@ -27,5 +27,9 @@ module ProjectsHelper
   def followers_json(followers)
     followers.to_json(only: :id, methods: [:name, :profile_image])
   end
+
+  def filter_class(active)
+    params.fetch(:active, 'local') == active ? 'current' : ''
+  end
 end
 

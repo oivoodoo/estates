@@ -1,5 +1,7 @@
 # Estates
 
+[![Build Status](https://drone.io/github.com/oivoodoo/estates/status.png)](https://drone.io/github.com/oivoodoo/estates/latest) 
+
 # Deployment
 
 
