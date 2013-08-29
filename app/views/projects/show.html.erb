@@ -64,7 +64,7 @@
         <meta name="twitter:site" content="<%= request.protocol + request.host_with_port %>">
         <meta name="twitter:title" content= "<%= @project.name %>">
         <meta name="twitter:description" content="<%= strip_tags(@project.description.squish) %>">
-        <meta name="twitter:creator" content="<%= current_user.email %>">
+        <meta name="twitter:creator" content="<%= current_user.name %>">
         <meta name="twitter:image:src" content="<%= @project.image %>">
       <% end %>
 
