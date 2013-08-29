@@ -200,7 +200,7 @@
   </div>
 </section>
 
-<a href="https://twitter.com/intent/tweet?text=лоцувлцувоцлув&via=<%= @project.name %>: <%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">without original refer</a>
+<a href="https://twitter.com/intent/tweet?source=webclient&text=<%= strip_tags(@project.description.squish) %>&via=<%= @project.name %>: <%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">without original refer</a>
 
 <a href="https://twitter.com/intent/tweet?url=<%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">ololololo</a>
-<a href="https://twitter.com/share?url=<%= full_path %>" class="twitter-share-button" data-text="Here\'s a custom tweet">Tweet</a>
+<a href="https://twitter.com/share?url=<%= full_path %>" class="twitter-share-button" data-text="<%= @project.name %>">Tweet</a>
