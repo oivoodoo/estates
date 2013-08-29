@@ -196,9 +196,6 @@
 
 <a href="https://twitter.com/intent/tweet?text=лоцувлцувоцлув&via=<%= @project.name %>: <%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">without original refer</a>
 
-<a href="https://twitter.com/intent/tweet?text=<%= @project.description %>&via=<%= @project.name %>: <%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">with short description</a>
+<a href="https://twitter.com/intent/tweet?text=<%= @project.description.html_safe %>&via=<%= @project.name %>: <%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">with short description</a>
 
-<a href="https://twitter.com/intent/tweet?url=<%= full_path %>&via=<%= @project.name %>&text=<%= @project.description %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">with original refer</a>
-
-<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<a href="https://twitter.com/intent/tweet?url=<%= full_path %>&via=<%= @project.name %>&text=<%= @project.description.to_s.html_safe %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">with original refer</a>
