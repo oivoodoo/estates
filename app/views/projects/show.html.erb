@@ -60,7 +60,12 @@
       <% content_for :meta do %>
         <meta property="og:image" content="<%= @project.image %>" />
         <meta property="og:title" content="<%= @project.name%>" />
-        <meta property="og:description" content="<%= @project.short_description %>" />
+        <meta property="og:description" content="<%= strip_tags(@project.description.squish) %>" />
+        <meta name="twitter:site" content="<%= current_user.email %>">
+        <meta name="twitter:title" content= "<%= @project.name %>">
+        <meta name="twitter:description" content="<%= project.name %>">
+        <meta name="twitter:creator" content="eg:author name">
+        <meta name="twitter:image:src" content="<%= @project.image %>">
       <% end %>
 
       <div class="secondary-action tracking">
@@ -68,7 +73,7 @@
           <button name="ext-account" value="facebook" title="Share on Facebook" class="ext-account-button facebook"><b title="Share on Facebook"></b></button>
         </a>
 
-        <a href="https://twitter.com/intent/tweet?url=<%= full_path %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+        <a href="https://twitter.com/intent/tweet?url=<%= request.protocol + request.host_with_por %>&via=<%= @project.name %>: <%= full_path %>" data-lang="en" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
           <button name="ext-account" value="twitter" title="Share on Twitter" class="ext-account-button twitter"><b title="Share on Twitter"></b></button>
         </a>
 
@@ -196,4 +201,4 @@
 
 <a href="https://twitter.com/intent/tweet?text=лоцувлцувоцлув&via=<%= @project.name %>: <%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">without original refer</a>
 
-<a href="https://twitter.com/intent/tweet?url=<%= full_path %>&via=<%= @project.name %>&text=<%= @project.description %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">with original refer</a>
+<a href="https://twitter.com/intent/tweet?url=<%= full_path %>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">with original refer</a>
