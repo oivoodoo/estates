@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-  layout false
+  layout :determine_layout
 
   def create
     self.resource = warden.authenticate(auth_options)
@@ -10,6 +10,13 @@ class Users::SessionsController < Devise::SessionsController
       flash.now[:errors] = I18n.t('devise.failure.invalid')
       render :new
     end
+  end
+
+  private
+
+  def determine_layout
+    return false if request.xhr?
+    'application'
   end
 end
 
