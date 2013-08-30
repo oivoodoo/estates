@@ -1,6 +1,6 @@
 
 
-<div id="sign-in" class="signin external">
+<div id="sign-in" class="signup internal">
 	<div class="modal-header">
 		<div>
 			<div class="logo">
@@ -17,33 +17,24 @@
 	<div class="modal-content">
 			
 				
+								
 					<form method="post">
 						<input type="hidden" name="auth" value="1">
-						<div class="tight">
-							<div class="input-group">
-								<input style="width:50%;" type="text" placeholder="E-mail" size="1" name="username">
-								<input style="width:50%;" type="password" placeholder="••••••••" size="1">
-							</div>
-						</div>
-						<div class="action">
+													<label><input type="text" placeholder="Full Name" size="1" name="username"></label>
+							<label><input type="email" placeholder="E-mail" size="1"></label>
+							<label><input type="text" placeholder="••••••••" size="1"></label>
+												<div class="action">
 							<div>
 								<div>
-									<a href="sign-in.php?action=forgotten" class="sign-in forgotten fancybox.ajax">Forgot password?</a>								</div>
+									Already have an account? <a href="sign-in.php" class="sign-in log-in fancybox.ajax">Sign in</a>.								</div>
 								<div>
-									<input type="submit" class="epsilon thickest" value="Sign in">
+									<input type="submit" class="epsilon thickest" value="Sign up">
 								</div>
 							</div>
 						</div>
-						<br><br>
-						<div class="ext-account-buttons">
-							<button name="ext-account" value="facebook" class="ext-account-button facebook"></button>
-							<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
-							<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-							<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
-						</div>
-						<p class="tertiary">You may alternatively sign in with one of your social network accounts</p>
 					</form>
-				
+			
+							
 						
 		</div>
 	</div>
