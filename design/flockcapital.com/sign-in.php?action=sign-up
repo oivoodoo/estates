@@ -1,6 +1,6 @@
 
 
-<div id="sign-in" class="signin external">
+<div id="sign-in" class="signup external">
 	<div class="modal-header">
 		<div>
 			<div class="logo">
@@ -17,33 +17,26 @@
 	<div class="modal-content">
 			
 				
+								
 					<form method="post">
 						<input type="hidden" name="auth" value="1">
-						<div class="tight">
-							<div class="input-group">
-								<input style="width:50%;" type="text" placeholder="E-mail" size="1" name="username">
-								<input style="width:50%;" type="password" placeholder="••••••••" size="1">
-							</div>
+						<div class="ext-account-buttons">
+							<span>
+								<button name="ext-account" value="facebook" class="ext-account-button facebook labelled"></button>
+								<button name="ext-account" value="twitter" class="ext-account-button twitter labelled"></button>
+								<button name="ext-account" value="google-plus" class="ext-account-button google-plus labelled"></button>
+								<button name="ext-account" value="linked-in" class="ext-account-button linked-in labelled"></button>
+							</span>
 						</div>
 						<div class="action">
 							<div>
 								<div>
-									<a href="sign-in.php?action=forgotten" class="sign-in forgotten fancybox.ajax">Forgot password?</a>								</div>
-								<div>
-									<input type="submit" class="epsilon thickest" value="Sign in">
-								</div>
+									Sign up with one of your social network accounts to follow your friends' activity on Flock.<br><a href="sign-in.php?action=sign-up&internal=1" class="sign-in sign-up fancybox.ajax">Sign up without any external accounts</a>								</div>
 							</div>
 						</div>
-						<br><br>
-						<div class="ext-account-buttons">
-							<button name="ext-account" value="facebook" class="ext-account-button facebook"></button>
-							<button name="ext-account" value="twitter" class="ext-account-button twitter"></button>
-							<button name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-							<button name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
-						</div>
-						<p class="tertiary">You may alternatively sign in with one of your social network accounts</p>
 					</form>
 				
+							
 						
 		</div>
 	</div>

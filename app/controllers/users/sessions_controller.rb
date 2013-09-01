@@ -25,7 +25,7 @@ class Users::SessionsController < Devise::SessionsController
         # render users/sessions/new.js.erb with errors
         render :new, :layout => false
       else
-        render :html_form
+        redirect_to root_path
       end
     end
   end
