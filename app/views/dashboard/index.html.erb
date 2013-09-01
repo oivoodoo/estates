@@ -2,8 +2,8 @@
 
   <div id="reports-content" class="head tab-content keep">
     <div id="charts">
-      <%= render "performance" %>
       <%= render 'allocation' %>
+      <%= render "performance" %>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
               </div>
             </div>
 
-            <div ng-show="viewerTab == 1">
+            <div class="listing" ng-show="viewerTab == 1">
               <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.invested_projects), locals: { class_name: "dash-invested" }, cache: true %>
             </div>
           </div>
@@ -62,7 +62,7 @@
               </div>
             </div>
 
-            <div id="tracking-list" ng-show="viewerTab == 2">
+            <div class="listing" id="tracking-list" ng-show="viewerTab == 2">
               <!-- do not show in case if user untrack the project using track button -->
               <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { :ng_show => "followState=='tracking'", class_name: "dash-tracking" } %>
             </div>

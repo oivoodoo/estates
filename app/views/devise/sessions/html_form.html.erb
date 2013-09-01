@@ -1,6 +1,6 @@
 <div id="sign-in" class="signup external" style="width: 50%; margin: 10px auto 0;">
   <div class="modal-content">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <table>
         <tr>
           <td style="padding-right: 20px"><%= f.label :email %></td>

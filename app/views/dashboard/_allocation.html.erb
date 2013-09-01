@@ -1,31 +1,26 @@
 <div id="allocation">
-  <div class="big-number investments"><div><b><%= current_user.invested_projects.count %></b><label>investments</label></div></div>
-
+  <div class="big-number investments"><div><b><%= current_user.invested_projects.count %></b> <label>investments</label></div></div>
   <div class="chart-table">
     <div class="chart-cell">
-      <canvas class="graph-canvas" id="allocation-canvas" height="100" width="100"></canvas>
+      <canvas class="graph-canvas" id="allocation-canvas" height="193" width="193" style="display: inline; width: 193px; height: 193px;"></canvas>
       <script>
-        window.graphs.allocation = {
-          type: 'doughnut',
-          data: [
-            {
-              value: <%= current_user.invested_projects_debt %>,
-              color: "hsl(151, 63%, 43%)"
-            },{
-              value: <%= current_user.invested_projects_loan %>,
-              color: "hsl(0, 0%, 97%)"
-            }
-          ]
-        }
+      window.graphs.allocation = {
+        type: 'doughnut',
+        data: [
+        {
+          value: <%= current_user.invested_projects_debt %>,
+          color: "hsl(200, 80%, 45%)"
+        },{
+          value: <%= current_user.invested_projects_loan %>,
+          color: "hsl(200, 40%, 85%)"
+        }             ]
+      }
       </script>
     </div>
-
     <div class="legend-cell">
       <ul class="doughnut-legend">
-        <li><b style="color:hsl(151, 63%, 43%);"><%= number_with_precision(current_user.invested_projects_debt, :precision => 1) %><i>%</i></b><label>Debt</label></li>
-        <li><b style="color:hsl(0, 0%, 97%);"><%= number_with_precision(current_user.invested_projects_debt, :precision => 1) %><i>%</i></b> <label>Loan</label></li>
+        <li><b style="color:hsl(200, 80%, 45%);"><%= number_with_precision(current_user.invested_projects_debt, :precision => 1) %><i>%</i></b> <label>Debt</label></li><li><b style="color:hsl(200, 40%, 85%);"><%= number_with_precision(current_user.invested_projects_debt, :precision => 1) %><i>%</i></b> <label>Equity</label></li>
       </ul>
     </div>
   </div>
 </div>
-

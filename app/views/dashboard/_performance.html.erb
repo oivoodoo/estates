@@ -2,30 +2,32 @@
   <div class="big-number invested"><div><b><i>$</i><%= number_with_precision(current_user.total_invested, :precision => 2) %></b> <label>invested in total</label></div></div>
   <div class="big-number earnings"><div><b><i>$</i><%= number_with_precision(current_user.total_earnings, :precision => 2) %></b> <label>earnings in total</label></div></div>
 
-  <canvas class="graph-canvas" id="performance-canvas" height="100" width="400"></canvas>
-  <script>
-    window.graphs.performance = {
-      type: 'line',
-      data: {
-        labels : ['', "March '13", "April '13", "May '13", "June '13", "July '13", "August '13"],
-        datasets : [
-          {
-          fillColor : 'hsla(0, 0%, 97%, .10)',
-          strokeColor : 'hsl(151, 63%, 43%)',
-          pointStrokeColor : 'transparent',
-          pointColor : 'transparent',
-          data : [82, 82, 82, 82, 82, 82, 82]
-        },{
-          fillColor : 'hsla(151, 63%, 43%, .1)',
-          strokeColor : 'hsl(151, 63%, 43%)',
-          pointColor : 'white',
-          data : [82, 83, 85.3, 85.9, 88.8, 90.13, 92.999]
-        }
-        ]
+  <canvas class="graph-canvas" id="performance-canvas" height="200" width="953" style="display: inline; width: 953px; height: 200px;"></canvas>
+</div>
 
-      },
-      options: {
-        scaleOverride : true,
+<script>
+  window.graphs.performance = {
+    type: 'line',
+    data: {
+      labels : ['', "March '13", "April '13", "May '13", "June '13", "July '13", "August '13"],
+      datasets : [
+      {
+        fillColor : 'hsla(0, 0%, 97%, .10)',
+        strokeColor : 'hsl(200, 80%, 45%)',
+        pointStrokeColor : 'transparent',
+        pointColor : 'transparent',
+        data : [82, 82, 82, 82, 82, 82, 82]
+      },{
+        fillColor : 'hsla(200, 80%, 45%, .1)',
+        strokeColor : 'hsl(200, 80%, 45%)',
+        pointColor : 'white',
+        data : [82, 83, 85.3, 85.9, 88.8, 90.13, 92.999]
+      }
+      ] 
+
+    },
+    options: {
+      scaleOverride : true,
 
         //** Required if scaleOverride is true **
         //Number - The number of steps in a hard coded scale
@@ -36,6 +38,4 @@
         scaleStartValue: 80,
       }
     }
-  </script>
-</div>
-
+</script>
