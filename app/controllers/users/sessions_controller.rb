@@ -21,11 +21,11 @@ class Users::SessionsController < Devise::SessionsController
     else
       flash.now[:errors] = I18n.t('devise.failure.invalid')
 
+      redirect_to new_user_session_path
+
       if request.xhr?
         # render users/sessions/new.js.erb with errors
         render :new, :layout => false
-      else
-        redirect_to root_path
       end
     end
   end
