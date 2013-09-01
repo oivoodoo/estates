@@ -1,6 +1,0 @@
-
-<section id="managers">
-
-	
-
-</section>
