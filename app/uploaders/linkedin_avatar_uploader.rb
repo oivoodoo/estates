@@ -20,7 +20,7 @@ class LinkedinAvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    image_path("default_avatar.png")
+    asset_path("default_avatar.png")
   end
 
   # Process files as they are uploaded:
