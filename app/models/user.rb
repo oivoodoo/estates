@@ -66,16 +66,37 @@ class User < ActiveRecord::Base
   tracked skip_defaults: true
 
   def profile_image
-    if avatar?
-      avatar.url(:thumb)
-    elsif facebook_avatar?
-      facebook_avatar.url(:thumb)
-    elsif google_plus_avatar?
-      google_plus_avatar.url(:thumb)
-    elsif linkedin_avatar?
-      linkedin_avatar.url(:thumb)
-    else
-      "/images/default_avatar.png"
+    @profile_image ||= ProfileImage.new(self)
+    @profile_image.url
+  end
+
+  require 'delegate'
+
+  class ProfileImage < SimpleDelegator
+    include ActionView::Helpers::AssetUrlHelper
+
+    attr_reader :user
+
+    def initialize(user)
+      @user = user
+    end
+
+    def __getobj__
+      @user
+    end
+
+    def url
+      if avatar?
+        avatar.url(:thumb)
+      elsif facebook_avatar?
+        facebook_avatar.url(:thumb)
+      elsif google_plus_avatar?
+        google_plus_avatar.url(:thumb)
+      elsif linkedin_avatar?
+        linkedin_avatar.url(:thumb)
+      else
+        asset_path("default_avatar.png")
+      end
     end
   end
 
