@@ -41,10 +41,10 @@ class User < ActiveRecord::Base
     invested_projects.debt.count / total
   end
 
-  def invested_projects_loan
+  def invested_projects_equity
     total = invested_projects.count
     return 0 if total.zero?
-    invested_projects.loan.count / total
+    invested_projects.equity.count / total
   end
 
   scope :recent, lambda { |count| order('users.created_at desc').limit(count) }
