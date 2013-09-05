@@ -1,6 +1,6 @@
 <div id="performance">
-  <div class="big-number invested"><div><b><i>$</i><%= number_with_precision(current_user.total_invested, :precision => 2) %></b> <label>invested in total</label></div></div>
-  <div class="big-number earnings"><div><b><i>$</i><%= number_with_precision(current_user.total_earnings, :precision => 2) %></b> <label>earnings in total</label></div></div>
+  <div class="big-number invested"><div><b><i>$</i><%= number_with_precision(current_user.total_invested, :precision => 0) %></b> <label>total invested</label></div></div>
+  <div class="big-number earnings"><div><b><i>$</i><%= number_with_precision(current_user.total_earnings, :precision => 0) %></b> <label>present value</label></div></div>
 
   <canvas class="graph-canvas" id="performance-canvas" height="200" width="953" style="display: inline; width: 953px; height: 200px;"></canvas>
 </div>
