@@ -1,8 +1,4 @@
 $ ->
-  tinyMCE.init
-    mode: 'textareas'
-    theme: 'advanced'
-
   $('input.hasDatetimePicker').datepicker
     dateFormat: "dd/mm/yy"
     beforeShow: ->
