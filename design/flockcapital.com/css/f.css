@@ -116,7 +116,7 @@
 
 /*	Neue Haas Grotesk Text — 'neue-haas-grotesk-text'
 —————————————————————————————————————————————————————————————————————————— */
-@font-face {
+/*@font-face {
     font-family: 'neue-haas-grotesk-text';
     src: url('../f/nhaasgrotesktxpro-55rg.woff') format('woff');
 }
@@ -124,7 +124,7 @@
     font-family: 'neue-haas-grotesk-text';
     src: url('../f/nhaasgrotesktxpro-75bd.woff') format('woff');
     font-weight: bold;
-}
+}*/
 
 
 
@@ -150,6 +150,26 @@
     font-weight: bold;
     font-style: italic;
 }
+/*@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/neue-helvetica-etext-light.woff') format('woff');
+}
+@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/neue-helvetica-etext-light-italic.woff') format('woff');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/neue-helvetica-etext-bold.woff') format('woff');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'helvetica-neue-text';
+    src: url('../f/neue-helvetica-etext-bold-italic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}*/
 
 
 
