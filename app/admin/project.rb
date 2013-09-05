@@ -52,7 +52,7 @@ ActiveAdmin.register Project do
       f.input :finish_investment, :as => :string, :input_html => { :class => "hasDatetimePicker" }
       f.input :target_return
       f.input :holding
-      f.input :investment_type, :as => :select, :include_blank => false, :collection => [["Loan", "loan"], ["Equity", "equity"], ["Debt", "debt"]]
+      f.input :investment_type, :as => :select, :include_blank => false, :collection => [["Equity", "equity"], ["Debt", "debt"]]
     end
     f.actions
   end
