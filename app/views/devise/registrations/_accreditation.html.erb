@@ -46,10 +46,10 @@
             </label>
 
             <label for="user_country">
-              <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { class: "combobox" })%>
+              <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {}, { :'ng-model' => 'country', :'ng-init' => 'country="USA"', class: "combobox" })%>
             </label>
 
-            <label for="user_state">
+            <label for="user_state" ng-show="country=='USA'">
               <%= f.state_select(:state, "US", {}, {class: "combobox"})%>
             </label>
           </div>
