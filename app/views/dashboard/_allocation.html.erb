@@ -19,7 +19,7 @@
     </div>
     <div class="legend-cell">
       <ul class="doughnut-legend">
-        <li><b style="color:hsl(200, 80%, 45%);"><%= number_with_precision(current_user.invested_projects_debt, :precision => 1) %><i>%</i></b> <label>Debt</label></li><li><b style="color:hsl(200, 40%, 85%);"><%= number_with_precision(current_user.invested_projects_debt, :precision => 1) %><i>%</i></b> <label>Equity</label></li>
+        <li><b style="color:hsl(200, 80%, 45%);"><%= number_with_precision(current_user.invested_projects_debt, :precision => 0) %><i>%</i></b> <label>Debt</label></li><li><b style="color:hsl(200, 40%, 85%);"><%= number_with_precision(current_user.invested_projects_loan, :precision => 0) %><i>%</i></b> <label>Equity</label></li>
       </ul>
     </div>
   </div>

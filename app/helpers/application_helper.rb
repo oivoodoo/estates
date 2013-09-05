@@ -9,7 +9,7 @@ module ApplicationHelper
     elsif controller_name == 'project_tags'
       "projects"
     elsif controller_name == "registrations"
-      "investor-edit"
+      "settings"
     elsif controller_name == 'users'
       'investor'
     elsif controller_name == 'pages'
