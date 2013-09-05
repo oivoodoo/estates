@@ -24,7 +24,11 @@ window.load = function() {
 	submenuHeights();
 
 	$('.combobox')
-		.combobox();
+		.combobox({
+      select: function( event, ui ) {
+        $(this).trigger('change');
+      }
+    });
 
 	layout();
   window.drawRise();
