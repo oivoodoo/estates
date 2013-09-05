@@ -59,7 +59,22 @@ $window.on('resize', function(e){
 });
 
 
-$('.sign-in, .profile-pic')
+$('.sign-in.sign-up, .profile-pic')
+.fancybox({
+  helpers: {
+    overlay : {
+      css : {
+        'background' : 'rgba(41,41,41, .9)'
+      }
+    }
+  },
+  closeBtn: false,
+  afterShow: function() {
+    $('.ext-account-buttons').cleanWhitespace();
+  }
+});
+
+$('.sign-in.log-in, .profile-pic')
 .fancybox({
   helpers: {
     overlay : {

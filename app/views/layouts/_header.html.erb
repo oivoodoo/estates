@@ -4,8 +4,8 @@
   <li><%= link_to "Get In Touch", new_contact_path, class: "get-in-touch fancybox.ajax" %></li>
 
   <% unless current_user.present? %>
-    <li><a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">Sign Up</a></li>
-    <li><a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Log In</a></li>
+    <li class="sign-in"><a href="<%= new_user_registration_path %>" class="sign-in sign-up fancybox.ajax">Sign Up</a></li>
+    <li class="sign-in"><a href="<%= new_user_session_path %>" class="sign-in log-in fancybox.ajax">Log In</a></li>
   <% else %>
     <li class="profile-badge ">
       <a href="<%= dashboard_path %>" id="profile-badge">
