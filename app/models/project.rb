@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
 
   validates :name, :price, :owner, :start_investment, :finish_investment, presence: true
 
-  paginates_per 8
+  paginates_per 6
 
   acts_as_followable
 
