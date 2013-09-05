@@ -16,7 +16,7 @@ class Project < ActiveRecord::Base
 
   include Addressable
 
-  scope :loan, where(investment_type: 'loan')
+  scope :equity, where(investment_type: 'equity')
   scope :debt, where(investment_type: 'debt')
 
   # we are going to use this public_activity gem fot tracking things in our app
