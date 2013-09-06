@@ -1,5 +1,15 @@
 <article class="project-badge <%= class_name %>" ng-controller='ProjectsController' data-project='<%= project_json(project) %>' data-urls="<%= project_button_urls_json(project) %>" ng-show="<%= local_assigns.fetch(:ng_show, "true") %>" >
   <div onclick="Turbolinks.visit('<%= url_for(project) %>')">
+    <div class="project-share" ng-show="viewerTab == 1">
+      <div>
+        <b title="Amount invested">$32k</b>
+        <label title="Amount invested"><%= project.investors.count %> shares</label>
+      </div>
+      <div>
+        <b title="Projected annual earnings">$3.84k</b>
+        <label title="Projected annual earnings"><%= project.view_percent %> yield</label>
+      </div>
+    </div>
     <a class="project-thumb    image-preloader" href="<%= project_path(project) %>"><%= image_tag(project.image.url(local_assigns.fetch(:image_size, :index))) %>
       <div class="focus">
         <span>Full details</span>

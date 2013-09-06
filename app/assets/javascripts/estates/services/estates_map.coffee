@@ -83,7 +83,7 @@ estates.factory 'EstatesMap', [
         longitude: user.longitude || object.longitude || SF.longitude
 
       settings.center      = center
-      settings.zoom        = 14
+      settings.zoom        = 2
       settings.minZoom     = 2
       settings.scrollwheel = false
       settings.markClick   = true

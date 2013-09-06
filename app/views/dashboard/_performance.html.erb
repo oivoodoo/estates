@@ -2,40 +2,39 @@
   <div class="big-number invested"><div><b><i>$</i><%= number_with_precision(current_user.total_invested, :precision => 0) %></b> <label>total invested</label></div></div>
   <div class="big-number earnings"><div><b><i>$</i><%= number_with_precision(current_user.total_earnings, :precision => 0) %></b> <label>present value</label></div></div>
 
-  <canvas class="graph-canvas" id="performance-canvas" height="200" width="953" style="display: inline; width: 953px; height: 200px;"></canvas>
+  <%= render 'chart' %>
 </div>
 
 <script>
-  window.graphs.performance = {
-    type: 'line',
-    data: {
-      labels : ['', "March '13", "April '13", "May '13", "June '13", "July '13", "August '13"],
-      datasets : [
-      {
-        fillColor : 'hsla(0, 0%, 97%, .10)',
-        strokeColor : 'hsl(200, 80%, 45%)',
-        pointStrokeColor : 'transparent',
-        pointColor : 'transparent',
-        data : [82, 82, 82, 82, 82, 82, 82]
-      },{
-        fillColor : 'hsla(200, 80%, 45%, .1)',
-        strokeColor : 'hsl(200, 80%, 45%)',
-        pointColor : 'white',
-        data : [82, 83, 85.3, 85.9, 88.8, 90.13, 92.999]
-      }
-      ] 
-
-    },
-    options: {
-      scaleOverride : true,
-
-        //** Required if scaleOverride is true **
-        //Number - The number of steps in a hard coded scale
-        scaleSteps: 4,
-        //Number - The value jump in the hard coded scale
-        scaleStepWidth: 4,
-        //Number - The scale starting value
-        scaleStartValue: 80,
-      }
+Ips.Flock.charts.performance = {
+  'selector': '#performance-chart',
+  'type': 'stacked-bar',
+  'data': [
+    {
+      'key': 'Total Invested',
+      'values': [
+        //{ size:  8000,  x: new Date(2013, 1), y:  8000, y0: 0,  y1:  8000 },
+        //{ size: 13000,  x: new Date(2013, 2), y: 13000, y0: 0,  y1: 13000 },
+        { size: 19000,  x: new Date(2013, 3), y: 19000, y0: 0,  y1: 19000 },
+        { size: 32000,  x: new Date(2013, 4), y: 32000, y0: 0,  y1: 32000 },
+        { size: 51000,  x: new Date(2013, 5), y: 51000, y0: 0,  y1: 51000 },
+        { size: 82000,  x: new Date(2013, 6), y: 82000, y0: 0,  y1: 82000 },
+        { size: 88000,  x: new Date(2013, 7), y: 88000, y0: 0,  y1: 58000 },
+        { size: 95000,  x: new Date(2013, 8), y: 95000, y0: 0,  y1: 95000 }
+      ]
+    },{
+      'key': 'Value',
+      'values': [
+        //{ size:   0,  x: new Date(2013, 1), y:   0, y0:  8000,  y1:  8000 },
+        //{ size:  1200,  x: new Date(2013, 2), y:  1200, y0: 13000,  y1: 14200 },
+        { size:  4100,  x: new Date(2013, 3), y:  4100, y0: 19000,  y1: 23100 },
+        { size:  5400,  x: new Date(2013, 4), y:  5400, y0: 32000,  y1: 37400 },
+        { size:  8000,  x: new Date(2013, 5), y:  8000, y0: 51000,  y1: 59000 },
+        { size: 10800,  x: new Date(2013, 6), y: 10800, y0: 82000,  y1: 92800 },
+        { size: 11500,  x: new Date(2013, 7), y: 11500, y0: 88000,  y1: 99500 },
+        { size: 14800,  x: new Date(2013, 8), y: 14800, y0: 95000,  y1:109800 }
+      ]
     }
+  ]
+}
 </script>
