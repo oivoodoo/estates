@@ -139,11 +139,11 @@
 								<script>
 									Ips.Flock.gmaps.dashboard_investments = [
 										{
-lat: 59.445785,
-lng: 24.749311,
-address: 'Kalasadama 8, 10415 Tallinn, Estonia',
-title: 'Café Klaus',
-link: '?p=project&project=cafe-klaus'
+lat: 37.792549,
+lng: -122.422292,
+address: '1800 Van Ness Ave, San Francisco, CA 94109',
+title: '1800 Van Ness',
+link: '?p=project&project=1800-van-ness'
 }									];
 								</script>
 								
@@ -152,12 +152,12 @@ link: '?p=project&project=cafe-klaus'
 						</div>
 						
 						<div class="listing">
-							<article class="project-badge invested " onclick="location.href='?p=project&project=cafe-klaus'">
+							<article class="project-badge invested " onclick="location.href='?p=project&project=1800-van-ness'">
 	<div>
 	
 			
-		<a class="project-thumb" href="?p=project&project=cafe-klaus">
-			<img src="img/cafe-klaus.png">
+		<a class="project-thumb" href="?p=project&project=1800-van-ness">
+			<img src="img/1800-van-ness.png">
 			<div class="focus"><span>Full details</span></div>
 		</a>
 		
@@ -167,20 +167,20 @@ link: '?p=project&project=cafe-klaus'
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="?p=manager&m=gage-partners" title="Gage Partners"><img src="img/gage-partners.png"></a>
+						<a href="?p=manager&m=stonemount" title="Stonemount"><img src="img/stonemount.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=cafe-klaus">Café Klaus</a>
+					<a class="project-link" href="?p=project&project=1800-van-ness">1800 Van Ness</a>
 					<div class="manager-location">
-						<span><a href="?p=manager&m=gage-partners" title="Gage Partners">Gage Partners</a></span> <address><a href="?p=project&project=cafe-klaus#location" title="Kalasadama 8, 10415 Tallinn, Estonia">Tallinn</a></address>					</div>
+						<span><a href="?p=manager&m=stonemount" title="Stonemount">Stonemount</a></span> <address><a href="?p=project&project=1800-van-ness#location" title="1800 Van Ness Ave, San Francisco, CA 94109">San Francisco</a></address>					</div>
 				</div>
 			</h4>
 		</header>
 			
 			<div class="summary">
-				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+				<p>Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -188,27 +188,27 @@ link: '?p=project&project=cafe-klaus'
 						<div>
 							<div class="numbers">
 								<ul class='size-6'>
-<li class="type"><div><b>Debt</b> <label>offering</label></div></li>
+<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b>$400</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.4k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
-<li class="return"><div><b>30<u>%</u></b> <label>yield</label></div></li>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
-<li class="period"><div><b>3 <u class="short">yr</u><u class="long">year</u></b> <label>term</label></div></li>
+<li class="period"><div><b>24 <u class="short">mo</u><u class="long">month</u></b> <label>term</label></div></li>
 </ul>							</div>
 							<div class="moneywrap size-3">
 								<div>
-									<ul class='money '>
-<li class="raised" style="width:21%;"><div>$84k</div></li>
-<li class="budget" style="width:79%;"><div>$400k</div></li>
+									<ul class='money full'>
+<li class="raised" style="width:100%;"><div>$14m</div></li>
+<li class="budget" style="width:0%;"><div>goal reached</div></li>
 </ul>
 									<div class="goal">
 										<div>
-											<div class="goalmeter"><div class="progress " style="width:21%"><div class="marker" style="left:21%;"><label>21%</label></div></div></div>
+											<div class="goalmeter"><div class="progress full" style="width:100%"><div class="marker" style="left:100%;"><label>100%</label></div></div></div>
 										</div>
 									</div>
 									<ul class='num-investors'>
-<li style="width:21%;"></li><li><div>27<i> investors</i></div></li>
+<li style="width:100%;"></li><li><div>27<i> investors</i></div></li>
 </ul>
 								</div>
 							</div>
@@ -246,6 +246,14 @@ link: '?p=project&project=cafe-klaus'
 							<li>
 	<div class="profile-badge">
 		<div>
+			<a href="?p=investor&i=mart" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="?p=investor&i=michael" title="Michael Walsh">
 				<img src="img/michael.png">
 			</a>
@@ -270,6 +278,30 @@ link: '?p=project&project=cafe-klaus'
 </li><li>
 	<div class="profile-badge">
 		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=mart" title="Mart Uibo">
+				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="?p=investor&i=mart" title="Mart Uibo">
 				<img src="img/mart.png">
 			</a>
@@ -286,40 +318,8 @@ link: '?p=project&project=cafe-klaus'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
 				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>

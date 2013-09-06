@@ -139,11 +139,11 @@
 								<script>
 									Ips.Flock.gmaps.dashboard_investments = [
 										{
-lat: 59.430172,
-lng: 24.697773,
-address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
-title: 'Rimi Supermarket',
-link: '?p=project&project=tallinn-rimi'
+lat: 54.696334,
+lng: 25.296894,
+address: 'Tuskulėnų gatvė 2, Vilnius 09213, Lithuania',
+title: 'Rimi Supermaket',
+link: '?p=project&project=vilnius-rimi'
 }									];
 								</script>
 								
@@ -152,12 +152,12 @@ link: '?p=project&project=tallinn-rimi'
 						</div>
 						
 						<div class="listing">
-							<article class="project-badge invested " onclick="location.href='?p=project&project=tallinn-rimi'">
+							<article class="project-badge invested " onclick="location.href='?p=project&project=vilnius-rimi'">
 	<div>
 	
 			
-		<a class="project-thumb" href="?p=project&project=tallinn-rimi">
-			<img src="img/tallinn-rimi.png">
+		<a class="project-thumb" href="?p=project&project=vilnius-rimi">
+			<img src="img/vilnius-rimi.png">
 			<div class="focus"><span>Full details</span></div>
 		</a>
 		
@@ -167,20 +167,20 @@ link: '?p=project&project=tallinn-rimi'
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="?p=manager&m=broadgate" title="Broadgate"><img src="img/broadgate.png"></a>
+						<a href="?p=manager&m=trigon" title="Trigon Capital"><img src="img/trigon.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=tallinn-rimi">Rimi Supermarket</a>
+					<a class="project-link" href="?p=project&project=vilnius-rimi">Rimi Supermaket</a>
 					<div class="manager-location">
-						<span><a href="?p=manager&m=broadgate" title="Broadgate">Broadgate</a></span> <address><a href="?p=project&project=tallinn-rimi#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
+						<span><a href="?p=manager&m=trigon" title="Trigon Capital">Trigon Capital</a></span> <address><a href="?p=project&project=vilnius-rimi#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
 				</div>
 			</h4>
 		</header>
 			
 			<div class="summary">
-				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -246,16 +246,8 @@ link: '?p=project&project=tallinn-rimi'
 							<li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
+			<a href="?p=investor&i=mart" title="Mart Uibo">
+				<img src="img/mart.png">
 			</a>
 		</div>
 	</div>
@@ -286,8 +278,24 @@ link: '?p=project&project=tallinn-rimi'
 </li><li>
 	<div class="profile-badge">
 		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
 			<a href="?p=investor&i=michael" title="Michael Walsh">
 				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -310,16 +318,8 @@ link: '?p=project&project=tallinn-rimi'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>

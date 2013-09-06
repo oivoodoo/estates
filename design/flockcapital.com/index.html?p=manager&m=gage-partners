@@ -139,11 +139,11 @@
 								<script>
 									Ips.Flock.gmaps.dashboard_investments = [
 										{
-lat: 39.581653,
-lng: 2.678959,
-address: 'Carrer Biniamar, 14, Palma, Illes Balears, Spain',
-title: 'Maxima Supermarket',
-link: '?p=project&project=spain-maxima'
+lat: 59.430172,
+lng: 24.697773,
+address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
+title: 'Rimi Supermarket',
+link: '?p=project&project=tallinn-rimi'
 }									];
 								</script>
 								
@@ -152,12 +152,12 @@ link: '?p=project&project=spain-maxima'
 						</div>
 						
 						<div class="listing">
-							<article class="project-badge invested " onclick="location.href='?p=project&project=spain-maxima'">
+							<article class="project-badge invested " onclick="location.href='?p=project&project=tallinn-rimi'">
 	<div>
 	
 			
-		<a class="project-thumb" href="?p=project&project=spain-maxima">
-			<img src="img/spain-maxima.png">
+		<a class="project-thumb" href="?p=project&project=tallinn-rimi">
+			<img src="img/tallinn-rimi.png">
 			<div class="focus"><span>Full details</span></div>
 		</a>
 		
@@ -167,14 +167,14 @@ link: '?p=project&project=spain-maxima'
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="?p=manager&m=cbre" title="CBRE"><img src="img/cbre.png"></a>
+						<a href="?p=manager&m=broadgate" title="Broadgate"><img src="img/broadgate.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=spain-maxima">Maxima Supermarket</a>
+					<a class="project-link" href="?p=project&project=tallinn-rimi">Rimi Supermarket</a>
 					<div class="manager-location">
-						<span><a href="?p=manager&m=cbre" title="CBRE">CBRE</a></span> <address><a href="?p=project&project=spain-maxima#location" title="Carrer Biniamar, 14, Palma, Illes Balears, Spain">Palma de Mallorca</a></address>					</div>
+						<span><a href="?p=manager&m=broadgate" title="Broadgate">Broadgate</a></span> <address><a href="?p=project&project=tallinn-rimi#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
 				</div>
 			</h4>
 		</header>
@@ -246,14 +246,6 @@ link: '?p=project&project=spain-maxima'
 							<li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="?p=investor&i=mart" title="Mart Uibo">
 				<img src="img/mart.png">
 			</a>
@@ -262,24 +254,16 @@ link: '?p=project&project=spain-maxima'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -296,6 +280,22 @@ link: '?p=project&project=spain-maxima'
 		<div>
 			<a href="?p=investor&i=mart" title="Mart Uibo">
 				<img src="img/mart.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
