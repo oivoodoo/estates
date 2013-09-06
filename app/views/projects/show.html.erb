@@ -26,7 +26,7 @@
             </ul>
             <div class="moneywrap size-3">
               <div>
-                <ul class='money'>
+                <ul class='money <%= @project.view_full %>'>
                   <li class="raised" style="width:<%= @project.view_percent %>;"><div><%= @project.view_raise %></div></li>
                   <li class="budget" style="width:<%= @project.view_remaining_percent %>;"><div><%= @project.view_price %></div></li>
                 </ul>
@@ -189,12 +189,15 @@
         </div>
       </div>
 
-      <div id="timeline-content" class="tab-content side-tab-content">
-        <ul class="feed">
+      <div id="timeline-content" class="tab-content side-tab-content scroll" style="max-height: 360px;">
+        <ul id="timeline-list" class="feed">
           <% for activity in @activities %>
             <%= render_activity(activity) %>
           <% end %>
         </ul>
+        <% if activity %>
+          <a href="#" class="button load-feed" data-feed="#timeline-list" title="Load more"></a>
+        <% end %>
       </div>
     </div>
   </div>
