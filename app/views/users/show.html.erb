@@ -136,7 +136,7 @@
 
         <div id="timeline-content" class="tab-content side-tab-content scroll" style="max-height: 360px;">
           <ul id="timeline-list" class="feed">
-            <% for activity in @user.activities.order('created_at desc') %>
+            <% for activity in @user.activities.order('created_at desc').limit(20) %>
               <%= render_activity(activity, current_user: current_user) %>
             <% end %>
           </ul>
