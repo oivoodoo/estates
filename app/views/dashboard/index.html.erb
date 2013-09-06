@@ -27,7 +27,7 @@
               </div>
 
               <div class="map-toolbar-two">
-                <button ng-click='close()'></button>
+                <button ng-click='close()'>x</button>
               </div>
 
               <div class="map-viewport">
@@ -54,7 +54,7 @@
               </div>
 
               <div class="map-toolbar-two">
-                <button ng-click='close()'></button>
+                <button ng-click='close()'>x</button>
               </div>
 
               <div class="map-viewport">
@@ -64,7 +64,7 @@
 
             <div class="listing" id="tracking-list" ng-show="viewerTab == 2">
               <!-- do not show in case if user untrack the project using track button -->
-              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { :ng_show => "followState=='tracking'", class_name: "dash-tracking" } %>
+              <%= render partial: 'projects/project', collection: ProjectsDecorator.decorate(current_user.following_projects), locals: { :ng_show => "followState=='tracking'", class_name: "dash-tracking-list" } %>
             </div>
           </div>
 
@@ -104,12 +104,15 @@
           </div>
         </div>
 
-        <div id="timeline-content" class="tab-content side-tab-content">
-          <ul class="feed">
-            <% for activity in current_user.activities.includes(:owner).includes(:trackable).order('created_at desc').limit(7) %>
+        <div id="timeline-content" class="tab-content side-tab-content scroll" style="max-height: 360px;">
+          <ul id="timeline-list" class="feed">
+            <% for activity in current_user.activities.includes(:owner).includes(:trackable).order('created_at desc') %>
               <%= render_activity(activity, current_user: current_user) %>
             <% end %>
           </ul>
+          <% if activity %>
+            <a href="#" class="button load-feed" data-feed="#timeline-list" title="Load more"></a>
+          <% end %>
         </div>
 
       </div>

@@ -58,7 +58,7 @@
               </div>
 
               <div class="map-toolbar-two">
-                <button ng-click='close()'></button>
+                <button ng-click='close()'>x</button>
               </div>
 
               <div class="map-viewport">
@@ -85,7 +85,7 @@
               </div>
 
               <div class="map-toolbar-two">
-                <button ng-click='close()'></button>
+                <button ng-click='close()'>x</button>
               </div>
 
               <div class="map-viewport">
@@ -134,12 +134,15 @@
           </div>
         </div>
 
-        <div id="timeline-content" class="tab-content side-tab-content">
-          <ul class="feed">
-            <% for activity in @user.activities.order('created_at desc').limit(7) %>
+        <div id="timeline-content" class="tab-content side-tab-content scroll" style="max-height: 360px;">
+          <ul id="timeline-list" class="feed">
+            <% for activity in @user.activities.order('created_at desc') %>
               <%= render_activity(activity, current_user: current_user) %>
             <% end %>
           </ul>
+          <% if activity %>
+            <a href="#" class="button load-feed" data-feed="#timeline-list" title="Load more"></a>
+          <% end %>
         </div>
       </div>
     </div>

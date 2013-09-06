@@ -33,7 +33,11 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def view_price
-    "$#{number_to_human(price, :precision => 2).to_s.gsub(/ /, '')}".html_safe
+    if percent >= 100
+      "goal reached"
+    else
+      "$#{number_to_human(price, :precision => 2).to_s.gsub(/ /, '')}".html_safe
+    end
   end
 
   def view_raise
