@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div class="title">
+  <div class="title fix">
     <div class="contract">
       <figure class="profile-badge manager-badge">
         <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
@@ -115,29 +115,29 @@
   <div class="body">
     <div class="main">
 			<div>
-				<div class='tab-content paper' ng-class="{current:projectTab==1}" ng:show="projectTab == 1">
+				<div id="overview-content" class='tab-content paper' ng-class="{current:projectTab==1}" ng:show="projectTab == 1">
           <%= @project.description.to_s.html_safe %>
 				</div>
-				<div class='tab-content paper' ng-class="{current:projectTab==2}" ng:show="projectTab == 2">
+				<div id="financials-content" class='tab-content paper' ng-class="{current:projectTab==2}" ng:show="projectTab == 2">
           <%= @project.financials.to_s.html_safe %>
 				</div>
-				<div class='tab-content paper'ng-class="{current:projectTab==3}" ng:show="projectTab == 3">
+				<div id="location-content" class='tab-content paper'ng-class="{current:projectTab==3}" ng:show="projectTab == 3">
           <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
           <address><%= @project.address %></address>
 				</div>
-				<div class='tab-content paper' ng-class="{current:projectTab==4}" ng:show="projectTab == 4">
+				<div id="property-content" class='tab-content paper' ng-class="{current:projectTab==4}" ng:show="projectTab == 4">
           <%= @project.property.to_s.html_safe %>
 				</div>
-        <div class='tab-content paper' ng-class="{current:projectTab==5}" ng:show="projectTab == 5">
+        <div id="strength-content" class='tab-content paper' ng-class="{current:projectTab==5}" ng:show="projectTab == 5">
           <%= @project.strength.to_s.html_safe %>
         </div>
-        <div class='tab-content paper' ng-class="{current:projectTab==6}" ng:show="projectTab == 6">
+        <div id="risks-content" class='tab-content paper' ng-class="{current:projectTab==6}" ng:show="projectTab == 6">
           <%= @project.risks.to_s.html_safe %>
         </div>
-        <div class='tab-content paper' ng-class="{current:projectTab==7}" ng:show="projectTab == 7">
+        <div id="manager-content" class='tab-content paper' ng-class="{current:projectTab==7}" ng:show="projectTab == 7">
           <%= @project.manager.to_s.html_safe %>
         </div>
-        <div class="offer-disclaimer">
+        <div class="offer-disclaimer paper">
           <hr>
           <p>A special note regarding forward-looking statements:</p>
           <p>This Offering material, including any sections entitled “Overview”, “Property”, “Neighborhood”, “Financials”, and “Developer” and within the Private Placement Memorandum the sections entitled “The Company,” “Risk Factors,” “Business and Properties,” “Offering Price Factors” and “Use of Proceeds”, contain forward-looking statements. In some cases you can identify these statements by forward-looking words such as “believe,” “may,” “will,” “estimate,” “continue,” “anticipate,” “intend,” “could,” “would,” “project,” “plan,” “expect” or the negative or plural of these words or similar expressions. These forward-looking statements include, but are not limited to, statements concerning the Company, property, risk factors, plans and projections.</p>
