@@ -1,0 +1,383 @@
+  <div>
+    <div class="modal-header">
+      <div>
+        <%= render 'layouts/logo' %>
+        <div class="close" onclick="$.fancybox.close()"></div>
+      </div>
+    </div>
+    <div class="modal-content">
+      <div>
+        <div class="title">
+          <figure class="profile-badge manager-badge">
+            <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
+          </figure>
+          <h2><%= @project.name %> <span>Investors</span></h2>
+        </div>
+        <ul id="all-investors" class="all-connections">
+          <li onclick="location.href='?p=investor&amp;i=mart'">
+            <div class="profile-badge">
+              <div>
+                <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+              </div>
+            </div>
+            <div class="profile-title">
+              <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+            </div>
+          </li><li onclick="location.href='?p=investor&amp;i=michael'">
+          <div class="profile-badge">
+            <div>
+              <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+            </div>
+          </div>
+          <div class="profile-title">
+            <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+          </div>
+        </li><li onclick="location.href='?p=investor&amp;i=mart'">
+        <div class="profile-badge">
+          <div>
+            <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+          </div>
+        </div>
+        <div class="profile-title">
+          <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+        </div>
+      </li><li onclick="location.href='?p=investor&amp;i=kadri'">
+      <div class="profile-badge">
+        <div>
+          <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+        </div>
+      </div>
+      <div class="profile-title">
+        <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+      </div>
+    </li><li onclick="location.href='?p=investor&amp;i=kadri'">
+    <div class="profile-badge">
+      <div>
+        <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+      </div>
+    </div>
+    <div class="profile-title">
+      <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+    </div>
+  </li><li onclick="location.href='?p=investor&amp;i=kadri'">
+  <div class="profile-badge">
+    <div>
+      <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+    </div>
+  </div>
+  <div class="profile-title">
+    <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+  </div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=kadri'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=kadri" title="Ms. Kadri Liis Rääk"><img src="img/kadri.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=kadri">Ms. Kadri Liis Rääk</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=mart'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=mart" title="Mart Uibo"><img src="img/mart.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=mart">Mart Uibo</a></h5>
+</div>
+</li><li onclick="location.href='?p=investor&amp;i=michael'">
+<div class="profile-badge">
+  <div>
+    <a href="?p=investor&amp;i=michael" title="Michael Walsh"><img src="img/michael.png"></a>
+  </div>
+</div>
+<div class="profile-title">
+  <h5><a href="?p=investor&amp;i=michael">Michael Walsh</a></h5>
+</div>
+</li>                   </ul>
+
+<a href="#" class="button load-connections" data-feed="#all-investors" title="Load more"></a>
+
+</div>
+</div>
+</div>

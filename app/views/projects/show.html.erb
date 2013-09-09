@@ -52,10 +52,12 @@
 
   <div class="title fix">
     <div class="contract">
-      <figure class="profile-badge manager-badge">
-        <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
-      </figure>
-      <h2 class='name'><%= @project.name %></h2>
+      <div>
+        <figure class="profile-badge manager-badge">
+          <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
+        </figure>
+        <h2 class='name'><%= @project.name %></h2>
+      </div>
 
       <% content_for :meta do %>
         <meta property="og:image" content="<%= @project.image %>" />
@@ -164,6 +166,10 @@
             <ul class="connections" ng-show="viewerTab == 1">
               <%= render partial: 'follower', collection: @investors %>
             </ul>
+            <div id="all-connections">
+              <%= render partial: 'all_connections' %>
+            </div>
+            <a class="show-all-connections investors" href="#all-connections">Show all</a>
           </div>
 
           <div id="trackers-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':viewerTab==2}">
@@ -189,7 +195,7 @@
         </div>
       </div>
 
-      <div id="timeline-content" class="tab-content side-tab-content scroll" style="max-height: 360px;">
+      <div id="timeline-content" class="tab-content side-tab-content" style="max-height: 325px;">
         <ul id="timeline-list" class="feed">
           <% for activity in @activities %>
             <%= render_activity(activity) %>

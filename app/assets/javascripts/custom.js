@@ -93,6 +93,18 @@ $('.sign-in.log-in, .profile-pic')
   }
 });
 
+$('.show-all-connections')
+.fancybox({
+  helpers: {
+    overlay : {
+      css : {
+        'background' : 'rgba(41,41,41, .9)'
+      }
+    }
+  },
+  closeBtn: false
+});
+
 
 $('.fancybox-video')
 .fancybox({
