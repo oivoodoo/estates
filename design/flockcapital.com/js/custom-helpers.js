@@ -80,42 +80,55 @@ jQuery.fn.autoGrow = function(options) {
 /*	http://stackoverflow.com/a/16324762
 	http://jsfiddle.net/TroyAlford/4wrxq/1
 —————————————————————————————————————————————————————————————————————————————————————— */
-jQuery.fn.preventParentScroll = function() {
+jQuery.fn.preventParentScroll = function(activate) {
+	
+	if (typeof activate == 'undefined')
+		activate = true;
+		
 	return this.each(function() {
-		$(this)
-			.addClass('start')
-			.on('DOMMouseScroll mousewheel', function(ev) {
-			    var $this = $(this),
-			    	is_scrollable = $this.css('overflow')!='hidden';
-			    
-			    if (!is_scrollable)
-			    	return;
-			    
-			    var scrollTop = this.scrollTop,
-			        scrollHeight = this.scrollHeight,
-			        height = $this.height(),
-			        delta = ev.originalEvent.wheelDelta,
-			        up = delta > 0;
-			
-			    var prevent = function() {
-			        ev.stopPropagation();
-			        ev.preventDefault();
-			        ev.returnValue = false;
-			        return false;
-			    }
-			    
-			    if (!up && -delta > scrollHeight - height - scrollTop) {
-			        // Scrolling down, but this will take us past the bottom.
-			        $this.removeClass('start').scrollTop(scrollHeight);
-			        return prevent();
-			    } else if (up && delta > scrollTop) {
-			        // Scrolling up, but this will take us past the top.
-			        $this.addClass('start').scrollTop(0);
-			        return prevent();
-			    } else {
-			        $this.removeClass('start');
-			    }
-		    });
+		if (activate) {
+			$(this)
+				.addClass('start')
+				.off('DOMMouseScroll')
+				.off('mousewheel')
+				.on('DOMMouseScroll mousewheel', function(ev) {
+				    var $this = $(this),
+				    	is_scrollable = $this.css('overflow')!='hidden';
+				    
+				    if (!is_scrollable)
+				    	return;
+				    
+				    var scrollTop = this.scrollTop,
+				        scrollHeight = this.scrollHeight,
+				        height = $this.height(),
+				        delta = ev.originalEvent.wheelDelta,
+				        up = delta > 0;
+				
+				    var prevent = function() {
+				        ev.stopPropagation();
+				        ev.preventDefault();
+				        ev.returnValue = false;
+				        return false;
+				    }
+				    
+				    if (!up && -delta > scrollHeight - height - scrollTop) {
+				        // Scrolling down, but this will take us past the bottom.
+				        $this.removeClass('start').scrollTop(scrollHeight);
+				        return prevent();
+				    } else if (up && delta > scrollTop) {
+				        // Scrolling up, but this will take us past the top.
+				        $this.addClass('start').scrollTop(0);
+				        return prevent();
+				    } else {
+				        $this.removeClass('start');
+				    }
+			    });
+		} else {
+			$(this)
+				.removeClass('start')
+				.off('DOMMouseScroll')
+				.off('mousewheel');
+		}
     });
 };
 

@@ -34,6 +34,8 @@
         <script src="js/fancybox/fancybox.min.js"></script>
         <script src="js/jquery.fileupload.js"></script>
         <script src="js/jquery.ba-bbq.1.3.min.js"></script>
+        <script src="js/jquery.fullscreen.min.js"></script>
+        <script src="js/jquery.scrollspy.min.js"></script>
                 <script src="js/infobubble.min.js"></script>
 
                 <script src="js/jquery.encapsulatedPlugin.min.js"></script>
@@ -130,7 +132,7 @@
 							</div>
 							
 							<div class="map-toolbar-two">
-								<button>×</button>
+								<button class="fold"></button><button class="fscreen togglefs"></button>
 							</div>
 							
 							<div class="map-viewport">
@@ -139,11 +141,11 @@
 								<script>
 									Ips.Flock.gmaps.dashboard_investments = [
 										{
-lat: 54.696334,
-lng: 25.296894,
-address: 'Tuskulėnų gatvė 2, Vilnius 09213, Lithuania',
-title: 'Rimi Supermaket',
-link: '?p=project&project=vilnius-rimi'
+lat: 39.581653,
+lng: 2.678959,
+address: 'Carrer Biniamar, 14, Palma, Illes Balears, Spain',
+title: 'Maxima Supermarket',
+link: '?p=project&project=spain-maxima'
 }									];
 								</script>
 								
@@ -152,12 +154,12 @@ link: '?p=project&project=vilnius-rimi'
 						</div>
 						
 						<div class="listing">
-							<article class="project-badge invested " onclick="location.href='?p=project&project=vilnius-rimi'">
+							<article class="project-badge invested " onclick="location.href='?p=project&project=spain-maxima'">
 	<div>
 	
 			
-		<a class="project-thumb" href="?p=project&project=vilnius-rimi">
-			<img src="img/vilnius-rimi.png">
+		<a class="project-thumb" href="?p=project&project=spain-maxima">
+			<img src="img/spain-maxima.png">
 			<div class="focus"><span>Full details</span></div>
 		</a>
 		
@@ -167,20 +169,20 @@ link: '?p=project&project=vilnius-rimi'
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="?p=manager&m=trigon" title="Trigon Capital"><img src="img/trigon.png"></a>
+						<a href="?p=manager&m=cbre" title="CBRE"><img src="img/cbre.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=vilnius-rimi">Rimi Supermaket</a>
+					<a class="project-link" href="?p=project&project=spain-maxima">Maxima Supermarket</a>
 					<div class="manager-location">
-						<span><a href="?p=manager&m=trigon" title="Trigon Capital">Trigon Capital</a></span> <address><a href="?p=project&project=vilnius-rimi#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
+						<span><a href="?p=manager&m=cbre" title="CBRE">CBRE</a></span> <address><a href="?p=project&project=spain-maxima#location" title="Carrer Biniamar, 14, Palma, Illes Balears, Spain">Palma de Mallorca</a></address>					</div>
 				</div>
 			</h4>
 		</header>
 			
 			<div class="summary">
-				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
+				<p>Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -246,8 +248,24 @@ link: '?p=project&project=vilnius-rimi'
 							<li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=mart" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -262,16 +280,8 @@ link: '?p=project&project=vilnius-rimi'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=mart" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -312,14 +322,6 @@ link: '?p=project&project=vilnius-rimi'
 		<div>
 			<a href="?p=investor&i=michael" title="Michael Walsh">
 				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>

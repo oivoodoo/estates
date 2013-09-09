@@ -34,6 +34,8 @@
         <script src="js/fancybox/fancybox.min.js"></script>
         <script src="js/jquery.fileupload.js"></script>
         <script src="js/jquery.ba-bbq.1.3.min.js"></script>
+        <script src="js/jquery.fullscreen.min.js"></script>
+        <script src="js/jquery.scrollspy.min.js"></script>
                 <script src="js/infobubble.min.js"></script>
 
                 <script src="js/jquery.encapsulatedPlugin.min.js"></script>
@@ -78,6 +80,114 @@
             <div id="main">
 <section id="how-it-works">
 
+
+	<div class="card">
+		<div>
+	
+			<figure>
+				<div>
+					<img src="img/how-1.png">
+				</div>
+			</figure>
+			
+			<div>
+				<div>
+					<h1 class="title"><em>1</em> <span>Join</span></h1>
+					<h4 class="subtitle">Create an account,<br>get qualified as an investor</h4>
+					<p>Flock membership is free and gives you insider access to invest in real estate that is pre-screened by the Flock team. You will also benefit from low minimums, starting at $1,000, compared to $50k - $100k for traditional real estate investments. Flock is currently open to accredited and international investors. To be an accredited investor requires a minimum income and/or net worth. The sign up process for Flock verifies the accreditation of its members.</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+	<div class="card">
+		<div class="slant"><canvas></canvas></div>
+		<div>
+	
+			<figure>
+				<div>
+					<img src="img/how-2.png">
+				</div>
+			</figure>
+			
+			<div>
+				<div>
+					<h1 class="title"><em>2</em> <span>Choose</span></h1>
+					<h4 class="subtitle">Select an investment<br>&nbsp;</h4>
+					<p>Flock offers direct investment opportunities in local real estate projects. Browse investment opportunities in your city and choose to invest in what you know and support.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="card">
+		<div class="slant"><canvas></canvas></div>
+		<div>
+	
+			<figure>
+				<div>
+					<img src="img/how-3.png">
+				</div>
+			</figure>
+			
+			<div>
+				<div>
+					<h1 class="title"><em>3</em> <span>Assess</span></h1>
+					<h4 class="subtitle">Review investment materials,<br>purchase shares</h4>
+					<p>Members of Flock can browse the marketplace and learn more about specific investments. For every opportunity, there is detailed information including estimated length of the investment, estimated annual return, property and location information and a profile for any companies or individuals involved in the investment. Once you decide which investment you are interested in, you can securely sign legal paperwork online and submit payment for your investment via check or wire transfer. Flock may also request additional information to verify that you are an accredited investor.</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+	<div class="card">
+		<div class="slant"><canvas></canvas></div>
+		<div>
+	
+			<figure>
+				<div>
+					<img src="img/how-4.png">
+				</div>
+			</figure>
+			
+			<div>
+				<div>
+					<h1 class="title"><em>4</em> <span>Wait</span></h1>
+					<h4 class="subtitle">Wait for funding process<br>to complete</h4>
+					<p>If we don't reach the funding goal 100% of your money will be returned to you with no fees or hidden charges. In order to finalize your investment, the full amount for the opportunity must be reached. Flock will keep you up to date via email and your investor dashboard. In the event the investment is oversubscribed, the first investors who have funded their portion of the investment will have preference.</p>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+
+
+	<div class="card">
+		<div class="slant"><canvas></canvas></div>
+		<div>
+	
+			<figure>
+				<div>
+					<img src="img/how-5.png">
+				</div>
+			</figure>
+			
+			<div>
+				<div>
+					<h1 class="title"><em>5</em> <span>Earn</span></h1>
+					<h4 class="subtitle">Earn Potential Returns &<br>Investor Benefits</h4>
+					<p>You are officially an investor and can expect to receive frequent updates and your share of cash distributions. You will also have access to your investor dashboard to watch how your money is working for you and receive exclusive invites to Realty Mogul events. For each investment, your shares of ownership entitle you to potential financial returns from the project, as well as certain investor benefits. By investing directly in local real estate you become a shareholder in your community. As your neighborhood grows and succeeds, so does your investment. By choosing where to invest and what projects to support, you can help build the city you want!</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
 	
 
 </section>            	<div id="rise">

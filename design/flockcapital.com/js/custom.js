@@ -95,10 +95,70 @@ jQuery(document).ready(function($) {
 				]
 			},
 			_o = $.extend({}, {
-				gmap_style: gmap_styles.style_two
+				gmap_style: [
+					{
+						"stylers": [
+							{ "saturation": -40 },
+							{ "hue": "#ffaa00" }
+						]
+					},{
+						"featureType": "road",
+						"elementType": "geometry",
+						"stylers": [
+							{ "visibility": "simplified" },
+							{ "lightness": 100 }
+						]
+					},{
+						"featureType": "road",
+						"elementType": "labels",
+						"stylers": [
+							{ "visibility": "on" },
+							{ "weight": 0.3 },
+							//{ "gamma": .1 },
+							{ "saturation": -60 }
+						]
+					},{
+						"featureType": "poi.park",
+						"elementType": "geometry",
+						"stylers": [
+							{ "color": "#cadfaa" },
+							{ "saturation": -40 },
+							{ "lightness": 20 }
+						]
+					},{
+						"featureType": "landscape.natural",
+						"stylers": [
+							{ "color": "#9cdfaa" },
+							{ "saturation": -75 }
+						]
+					},{
+						"featureType": "water",
+						"elementType": "geometry",
+						"stylers": [
+							{ "color": "#a6cade" },
+							{ "saturation": -60 },
+							{ "lightness": -20 },
+							{ "visibility": "simplified" }
+						]
+					},{
+						"featureType": "transit.line",
+						"stylers": [
+							{ "saturation": -100 },
+							{ "lightness": 20 }
+						]
+					},{
+						"featureType": "water",
+						"elementType": "labels",
+						"stylers": [
+							{ "saturation": -100 }
+						]
+					}
+				],
+				
 			}, options);
 	
 		var $window = $(window),
+			$document = $(document),
 			$body = $('body'),
 			$masthead = $('#masthead'),
 			$wrap = $('#wrap'),
@@ -107,12 +167,7 @@ jQuery(document).ready(function($) {
 			winW = $window.width(),
 			winH = $window.width(),
 			is_narrow = winW<=1000 ? true : false,
-			menuTallH,
-			menuShortH,
-			submenuH,
 			baseFontSize = parseInt($('body').css('font-size'), 10),
-			menuH,
-			footerH,
 			hash = '',
 			iniLoad = true,
 			hst = window.location.protocol +'//'+ window.location.host,
@@ -123,8 +178,15 @@ jQuery(document).ready(function($) {
 			is_manager = $body.hasClass('manager'),
 			is_dashboard = $body.hasClass('dashboard'),
 			is_settings = $body.hasClass('settings'),
+			is_howto = $body.hasClass('how-it-works'),
 			do_drawRaise = true, // (!is_dashboard && !is_investor && !is_manager),
+			do_drawSlants = is_howto,
 			menuFlex = is_home,
+			menuTallH = 8 * baseFontSize,
+			menuShortH = 4 * baseFontSize,
+			menuH = menuFlex ? menuTallH : menuShortH,
+			submenuH,
+			footerH,
 			fancyboxOpts = {
 				helpers:{
 					overlay : {
@@ -169,6 +231,8 @@ jQuery(document).ready(function($) {
 						$el.data('fixed', false);
 					}
 				});
+				if ($('.fix').length)
+					layoutSideFeed();
 			},
 			submenuHeights = function() {
 				$('#masthead ul ul')
@@ -287,10 +351,16 @@ jQuery(document).ready(function($) {
 			},
 			is_sideFeed = is_project || is_dashboard || is_investor || is_manager,
 			bodyBottom=mainH=sideSiblingsH=feedTop = 0,
-			minFeedH = 360,
+			minFeedH = 480,
 			layoutSideFeed = function() {
 				if (is_sideFeed) {
 					if (winW>1000) {
+						var otherFixedH = menuH;
+							
+						$('.fixed').filter(':visible').each(function(i,el){
+							otherFixedH+= $(el).outerHeight();
+						});
+						
 						mainH = $('.main >div').height();
 						pageScrollPos = feedTop = $('html, body').scrollTop();
 						bodyBottom = $('.body').height() + $('.body').offset().top + pageScrollPos;
@@ -304,13 +374,17 @@ jQuery(document).ready(function($) {
 								return;
 						});
 						
-						if (mainH-sideSiblingsH > (winH-menuH)) {
-							$('#timeline-content').css('max-height', winH-menuH);
+						if (mainH-sideSiblingsH > (winH-otherFixedH)) {
+							$('#timeline-content')
+								.css('max-height', winH-otherFixedH);
 						} else {
-							$('#timeline-content').css('max-height', Math.max(Math.min(mainH-sideSiblingsH, winH-menuH), minFeedH) );
+							$('#timeline-content')
+								.css('max-height', Math.max(/* Math.min( */mainH-sideSiblingsH/* , winH-otherFixedH) */, minFeedH) );
 						}
 					} else {
-						$('#timeline-content').removeClass('scroll fixxed bottom').css('max-height', '');
+						$('#timeline-content')
+							.removeClass('scroll fixxed bottom')
+							.css('max-height', '');
 					}
 					
 					fixSideFeed();
@@ -318,22 +392,49 @@ jQuery(document).ready(function($) {
 			},
 			fixSideFeed = function(e) {
 				if (is_sideFeed && winW>1000) {
-					var scrollTop = $window.scrollTop();
-					if (mainH-sideSiblingsH > (winH-menuH)) {
-						if (scrollTop >= feedTop-menuH) {
-							if (scrollTop > bodyBottom-winH)
-								$('#timeline-content').removeClass('fixxed scroll').addClass('bottom');
-							else
-								$('#timeline-content').removeClass('bottom').addClass('fixxed scroll');
+					var scrollTop = $window.scrollTop(),
+						otherFixedH = menuH;
+					
+					$('.fixed').filter(':visible').each(function(i,el){
+						otherFixedH+= $(el).outerHeight();
+					});
+					
+					if (mainH-sideSiblingsH > (winH-otherFixedH)) {
+						if (scrollTop >= feedTop-otherFixedH) {
+							if (scrollTop > bodyBottom-winH) {
+								// Stick to bottom
+								$('#timeline-content')
+									//.removeClass('fixxed scroll')
+									.removeClass('fixxed')
+									.addClass('bottom')
+									.css('top', '')
+									.preventParentScroll(false);
+							} else {
+								// Fix it
+								$('#timeline-content')
+									.removeClass('bottom')
+									//.addClass('fixxed scroll')
+									.addClass('fixxed')
+									.css('top', otherFixedH)
+									.preventParentScroll();
+							}
 						} else {
-							$('#timeline-content').removeClass('fixxed bottom scroll');
+							// Normal
+							$('#timeline-content')
+								.removeClass('fixxed bottom scroll')
+								.css('top', '')
+								.preventParentScroll(false);
 						}
 					} else {
 						var feedBottom = feedTop + $('#timeline-content').outerHeight();
-						if (scrollTop >= feedBottom-winH && scrollTop < feedTop-menuH) {
-							$('#timeline-content').addClass('scroll');
+						if (scrollTop >= feedBottom-winH && scrollTop < feedTop-otherFixedH) {
+							$('#timeline-content')
+								.addClass('scroll')
+								.css('top', '');
 						} else {
-							$('#timeline-content').removeClass('scroll');
+							$('#timeline-content')
+								//.removeClass('scroll')
+								.css('top', '');
 						}
 					}
 				}
@@ -397,6 +498,7 @@ jQuery(document).ready(function($) {
 				drawCharts();
 				layoutSideFeed();
 				drawRise();
+				drawSlants();
 			})
 			.on('scroll', function(e){
 				sizeMenu();
@@ -562,14 +664,15 @@ jQuery(document).ready(function($) {
 	
 	
 	
-		/*	 Timeline functionality
+		/*
+			Timeline functionality
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		Ips.Flock.Timeline = function(element, options) {
 		
 			var $this = $(element),
 				_o = $.extend({}, {
 					'start': 0,
-					'size': 10,
+					'size': 20,
 					'type': null,
 					'animDur': 10,
 					'manager': null,
@@ -670,9 +773,6 @@ jQuery(document).ready(function($) {
 			})
 			.load();
 		
-		/*$('#timeline-content')
-			.preventParentScroll();*/
-		
 		$('a.load-feed')
 			.on('click', function(e){
 				e.preventDefault();
@@ -685,17 +785,23 @@ jQuery(document).ready(function($) {
 				$feed.flocktimeline().load({
 					'start': start,
 					'success': function() {
+						var otherFixedH = menuH;
+						
+						$('.fixed').filter(':visible').each(function(i,el){
+							otherFixedH+= $(el).outerHeight();
+						});
+						
 						if (winW>1000) {
 							$feed.parent().animate({
 								scrollTop: $('#timeline-item-'+start).offset().top + $feed.parent().scrollTop() - $feed.parent().offset().top - 12
-							}, 300);
+							}, 600);
 							$('html, body').animate({
-								scrollTop: $feed.parent().offset().top + $('html, body').scrollTop() - menuShortH
-							}, 300);
+								scrollTop: $feed.parent().offset().top + $('html, body').scrollTop() - otherFixedH
+							}, 600);
 						} else {
 							$('html, body').animate({
-								scrollTop: (is_dashboard ? -$('#tabs').outerHeight() : 0) + $('#timeline-item-'+start).offset().top + $('html, body').scrollTop() - menuShortH - (1.5*17)
-							}, 300);
+								scrollTop: $('#timeline-item-'+start).offset().top + $('html, body').scrollTop() - otherFixedH - (1.5*17)
+							}, 600);
 						}
 					}
 				});
@@ -705,7 +811,8 @@ jQuery(document).ready(function($) {
 	
 	
 	
-		/*	 File upload UIs
+		/*	
+			File upload UIs
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		$('#doc-upload, #profile-pic-upload')
 			.each(function(i, el) {
@@ -738,168 +845,8 @@ jQuery(document).ready(function($) {
 	
 	
 	
-		/*	 Illustrative chart-line in the footer
-		—————————————————————————————————————————————————————————————————————————————————————— */
-		var riseCanvas = document.getElementById('riseCanvas'),
-			drawRise = function() {
-				
-				if (!do_drawRaise) return;
-				
-				var w = winW,
-					h = Math.round((winW<470 ? (7*.6) : winW<700 ? (7*.8) : 7) * baseFontSize),
-					poly = [
-						  -10,	  -10,
-						  -10, .55*h,
-						.05*w,	 .5*h,
-					   .275*w, .66*h,
-			 			.50*w, .33*h,
-			 			.725*w, .28*h,
-			 			 .95*w,	 .1*h,
-						 w+10, .09*h,
-						 w+10,	  -10
-					],
-					spacing = 0,
-					dots = [
-						[ .05*w,  .5*h+spacing],
-						[.275*w, .66*h+spacing],
-						[ .50*w, .33*h+spacing],
-						[.725*w, .28*h+spacing],
-						[ .95*w,  .1*h+spacing]
-					],
-					riseColor = (is_settings && $('#settings').hasClass('general')) ? 'hsl(0, 0%, 96%)' : 'white';
-					strokeW = 0,
-					strokeColor = 'hsl(200, 80%, 45%)',	 // #1791cf = @azureBlue
-					drawDots = true,
-					dotRadius = 2,
-					dotStrokeW = 4,
-					dotStrokeColor = 'hsla(200, 80%, 45%, .35)',
-					eyeColor = riseColor
-					drawShadow = true;
-				
-				
-				//	resize our canvas to fit viewport width
-				$(riseCanvas).attr({
-					'width': w,
-					'height': h
-				});
-				
-				
-				//	get canvas 2D context and clear it for re-drawing
-				var ctx = riseCanvas.getContext('2d');
-				ctx.clearRect( 0, 0, w, h );
-				
-				
-				// drawing our first polygon — filled white
-				ctx.beginPath();
-				ctx.moveTo(poly[0], poly[1]);
-				for(i=2; i<poly.length-1; i+=2)	ctx.lineTo(poly[i] , poly[i+1]);
-				ctx.closePath();
-				ctx.fillStyle = riseColor;
-				ctx.fill();
-				
-				
-				/*	Set the composition mode to 'destination-out' which subtracts the next shapes from the previous
-					see more: https://developer.mozilla.org/samples/canvas-tutorial/6_1_canvas_composite.html */
-				if (drawDots) {
-					ctx.globalCompositeOperation = 'destination-out';
-					
-					// Draw the shapes you want to cut out
-					ctx.fillStyle = '#f00'; // any color
-					ctx.beginPath();
-					for (i=0; i<dots.length; i++) {
-						ctx.arc(
-							dots[i][0],	// center X
-							dots[i][1],	// center Y
-							dotRadius+spacing-.5, // radius
-							0,
-							2*Math.PI
-						);
-					}
-					ctx.closePath();
-					ctx.fill();
-				}
-				
-				
-				if (drawShadow) {
-					//	Set composition mode to 'destination-over' to draw underneath
-					ctx.globalCompositeOperation = 'destination-over';
-					
-					//	Let's draw another black polygon shape with shadow to go below everything
-					ctx.beginPath();
-					ctx.moveTo(poly[0], poly[1]);
-					for(i=2; i < poly.length-1 ; i+=2) ctx.lineTo(poly[i], poly[i+1]);
-					ctx.closePath();
-					ctx.fillStyle = 'hsla(0, 0%, 0%, .85)';
-					ctx.shadowColor = 'hsla(0, 0%, 0%, .85)';
-					ctx.shadowBlur = 40;
-					ctx.fill();
-				}
-				
-				
-				// Set comp mode back to default
-				ctx.globalCompositeOperation = 'source-over';
-				ctx.shadowBlur = 0; // reset shadow
-				
-				
-				// Shift our polygon down by {spacing}
-				for(i=1; i<poly.length; i+=2) poly[i] = poly[i]+spacing;
-				
-				if (strokeW) {
-					//	Draw the blue-stroked polygon
-					ctx.beginPath();
-					ctx.moveTo(poly[0], poly[1]);
-					for(i=2; i < poly.length-1 ; i+=2)
-						ctx.lineTo( poly[i] , poly[i+1] )
-					ctx.closePath();
-					ctx.strokeStyle = strokeColor;
-					ctx.lineWidth = strokeW;
-					ctx.stroke();
-				}
-				
-				if (drawDots) {
-					if (dotStrokeW) {
-						//	Draw the wider dots (stroke color)
-						ctx.fillStyle = dotStrokeColor;
-						ctx.beginPath();
-						for (i=0; i<dots.length; i++) {
-							ctx.arc(
-								dots[i][0],	// center X
-								dots[i][1],	// center Y
-								dotRadius+dotStrokeW, // radius
-								0,
-								2*Math.PI
-							);
-						}
-						ctx.closePath();
-						ctx.fill();
-					}
-					
-					
-					//	Draw white dots over blue ones
-					ctx.fillStyle = eyeColor;
-					ctx.shadowColor = 'hsla(0, 0%, 0%, .4)';
-					ctx.shadowBlur = Math.max(dotStrokeW*2, 10);
-					ctx.beginPath();
-					for (i=0; i<dots.length; i++) {
-						ctx.arc(
-							dots[i][0],	// center X
-							dots[i][1],	// center Y
-							dotRadius,	// radius
-							0,
-							2*Math.PI
-						);
-					}
-					ctx.closePath();
-					ctx.fill();
-				}
-				
-			};
-		drawRise();
-	
-	
-	
-	
-		/*	 Maps
+		/*	
+			Maps
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		var initiated_gmaps = {},
 			poiMarker = hst+'/g/map_icon_s.svg'; // hst+'/g/map_icon@x2.png';
@@ -922,13 +869,13 @@ jQuery(document).ready(function($) {
 					styledMapID = 'flockStyledMap',
 					mTCO = {
 						mapTypeIds: [
-							styledMapID,
-							//google.maps.MapTypeId.ROADMAP,
+							//styledMapID,
+							google.maps.MapTypeId.ROADMAP,
 							google.maps.MapTypeId.TERRAIN,
 							google.maps.MapTypeId.SATELLITE,
 							google.maps.MapTypeId.HYBRID
 						],
-						position: map_handle=='project' ? google.maps.ControlPosition.TOP_RIGHT : google.maps.ControlPosition.RIGHT_BOTTOM
+						position: google.maps.ControlPosition.TOP_CENTER
 					};
 				
 				// Create a map object, and include the MapTypeId to add to the map type control.
@@ -939,7 +886,7 @@ jQuery(document).ready(function($) {
 					draggable: true,
 					
 					disableDefaultUI: map_handle=='project' ? false : true,
-					mapTypeControlOptions: map_handle=='project' ? mTCO : false,
+					mapTypeControlOptions: mTCO,
 					
 					backgroundColor: 'transparent'
 				};
@@ -1014,7 +961,11 @@ jQuery(document).ready(function($) {
 									limitBounds = new google.maps.LatLngBounds(ne, sw);
 								this_map.fitBounds(limitBounds);
 							} else {
-								this_map.panTo(lastValidCenter);
+								var lat = lastValidCenter.lat(),
+									lng = this_map.getCenter().lng(),
+									limitedCenter = new google.maps.LatLng(lat, lng);
+									
+								this_map.panTo(limitedCenter);
 							}
 						}
 					}
@@ -1044,8 +995,8 @@ jQuery(document).ready(function($) {
 				}
 				
 				// Associate the styled map with the MapTypeId.
-				this_map.mapTypes.set(styledMapID, styledMap);
-				this_map.setMapTypeId(styledMapID);
+				//this_map.mapTypes.set(styledMapID, styledMap);
+				//this_map.setMapTypeId(styledMapID);
 				
 				initiated_gmaps[map_handle] = {
 					iniCenter: iniCenter,
@@ -1053,7 +1004,7 @@ jQuery(document).ready(function($) {
 					map: this_map,
 					map_canvas: map_canvas,
 					mTCO: mTCO,
-					open: false,
+					open: map_handle=='project' ? true : false,
 					reLayed: false
 				};
 			}
@@ -1062,9 +1013,9 @@ jQuery(document).ready(function($) {
 				for (map_handle in initiated_gmaps) {
 					if (initiated_gmaps.hasOwnProperty(map_handle)) {
 					
-						if (	   !initiated_gmaps[map_handle].reLayed  &&   $(initiated_gmaps[map_handle].map_canvas).is(':visible')  ||
+						/*if (	   !initiated_gmaps[map_handle].reLayed  &&   $(initiated_gmaps[map_handle].map_canvas).is(':visible')  ||
 								    initiated_gmaps[map_handle].reLayed  &&   $(initiated_gmaps[map_handle].map_canvas).is(':visible')  &&  resizing) {
-						
+						*/
 							// map_handle -> initiated_gmaps[map_handle]
 							var map = initiated_gmaps[map_handle].map,
 								center = initiated_gmaps[map_handle].iniCenter || map.getCenter(),
@@ -1074,18 +1025,18 @@ jQuery(document).ready(function($) {
 							map.setCenter( center );
 							initiated_gmaps[map_handle].reLayed = true;
 							
-						} else if ( initiated_gmaps[map_handle].reLayed  &&  !$(initiated_gmaps[map_handle].map_canvas).is(':visible')  &&  resizing) {
+						/*} else if ( initiated_gmaps[map_handle].reLayed  &&  !$(initiated_gmaps[map_handle].map_canvas).is(':visible')  &&  resizing) {
 							
 							initiated_gmaps[map_handle].reLayed = false;
 							reLayoutMaps();
 							
-						}
+						}*/
 						
 					}
 				}
 			};
 		
-		$('.map-toolbar-one, .map-toolbar-two button')
+		$('.map-toolbar-one, .map-toolbar-two button.fold')
 			.on('click', function(){
 				var $map_view = $(this).closest('.map-view'),
 					$map_canvas = $map_view.find('.map-canvas'),
@@ -1105,11 +1056,33 @@ jQuery(document).ready(function($) {
 					layoutSideFeed();
 				}, 300);
 			});
+		
+		$('.map-toolbar-two button.togglefs')
+			.on('click', function(){
+				$(this)
+					.closest('.map-view')
+						.toggleFullScreen();
+			});
+		
+		$document
+			.on('fullscreenchange.maps', function() {
+			    var is_full = $document.fullScreen() ? true : false;
+			    
+			    $('.map-toolbar-two button.togglefs')
+					.toggleClass('fscreen', !is_full)
+					.toggleClass('nscreen', is_full)
+					.closest('.map-view')
+						.toggleClass('full', is_full);
+				$('.map-toolbar-two button.fold')
+						.toggleClass('hidden', is_full);
+			    setTimeout(reLayoutMaps, 250);
+			});
 	
 	
 	
 	
-		/*	 Chart creation
+		/*	
+			Chart creation
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		var	chartDefaults = {
 			line: {
@@ -1280,7 +1253,8 @@ jQuery(document).ready(function($) {
 	
 	
 	
-		/*	 Fold the main menu when when viewport is too narrow
+		/*	
+			Fold the main menu when when viewport is too narrow
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		$('#spread')
 			.on('click', function(e){
@@ -1303,7 +1277,8 @@ jQuery(document).ready(function($) {
 	
 	
 	
-		/*	 Shrink the main menu then scrolling down / bloat when scrolling to top
+		/*	
+			Shrink the main menu then scrolling down / bloat when scrolling to top
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		var menuTimeout,
 			sizeMenu = function() {
@@ -1346,9 +1321,11 @@ jQuery(document).ready(function($) {
 	
 	
 	
-		/*	Annoy/destroy the sign in/sign up nag
+		/*	
+			Annoy/destroy the sign in/sign up nag
+			
 			* we need need the timeout since browsers auto-scroll the page when you
-				navigate back/fwd and we want the nag to be invoked by manual scroll only
+			  navigate back/fwd and we want the nag to be invoked by manual scroll only
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		var nag = false,
 			callNag = function() {
@@ -1372,7 +1349,8 @@ jQuery(document).ready(function($) {
 	
 	
 	
-		/*	 Sign-in modal
+		/*	
+			Sign-in modal
 		—————————————————————————————————————————————————————————————————————————————————————— */
 		$('a.sign-in.sign-up, a.sign-in.forgotten')
 			.fancybox($.extend({}, fancyboxOpts, {
@@ -1395,6 +1373,244 @@ jQuery(document).ready(function($) {
 	
 	
 	
+	
+		/*	
+			Illustrative chart-line in the footer
+		—————————————————————————————————————————————————————————————————————————————————————— */
+		var riseCanvas = document.getElementById('riseCanvas'),
+			drawRise = function() {
+				
+				if (!do_drawRaise) return;
+				
+				var w = winW,
+					h = Math.round((winW<470 ? (7*.6) : winW<700 ? (7*.8) : 7) * baseFontSize),
+					poly = [
+						  -10,	  -10,
+						  -10, .55*h,
+						.05*w,	 .5*h,
+					   .275*w, .66*h,
+			 			.50*w, .33*h,
+			 			.725*w, .28*h,
+			 			 .95*w,	 .1*h,
+						 w+10, .09*h,
+						 w+10,	  -10
+					],
+					spacing = 0,
+					dots = [
+						[ .05*w,  .5*h+spacing],
+						[.275*w, .66*h+spacing],
+						[ .50*w, .33*h+spacing],
+						[.725*w, .28*h+spacing],
+						[ .95*w,  .1*h+spacing]
+					],
+					riseColor = (is_settings && $('#settings').hasClass('general')) ? 'hsl(0, 0%, 96%)' : 'white';
+					strokeW = 0,
+					strokeColor = 'hsl(200, 80%, 45%)',	 // #1791cf = @azureBlue
+					drawDots = true,
+					dotRadius = 2,
+					dotStrokeW = 4,
+					dotStrokeColor = 'hsla(200, 80%, 45%, .35)',
+					eyeColor = riseColor
+					drawShadow = true;
+				
+				
+				//	resize our canvas to fit viewport width
+				$(riseCanvas).attr({
+					'width': w,
+					'height': h
+				});
+				
+				
+				//	get canvas 2D context and clear it for re-drawing
+				var ctx = riseCanvas.getContext('2d');
+				ctx.clearRect( 0, 0, w, h );
+				
+				
+				// drawing our first polygon — filled white
+				ctx.beginPath();
+				ctx.moveTo(poly[0], poly[1]);
+				for(i=2; i<poly.length-1; i+=2)	ctx.lineTo(poly[i] , poly[i+1]);
+				ctx.closePath();
+				ctx.fillStyle = riseColor;
+				ctx.fill();
+				
+				
+				/*	Set the composition mode to 'destination-out' which subtracts the next shapes from the previous
+					see more: https://developer.mozilla.org/samples/canvas-tutorial/6_1_canvas_composite.html */
+				if (drawDots) {
+					ctx.globalCompositeOperation = 'destination-out';
+					
+					// Draw the shapes you want to cut out
+					ctx.fillStyle = '#f00'; // any color
+					ctx.beginPath();
+					for (i=0; i<dots.length; i++) {
+						ctx.arc(
+							dots[i][0],	// center X
+							dots[i][1],	// center Y
+							dotRadius+spacing-.5, // radius
+							0,
+							2*Math.PI
+						);
+					}
+					ctx.closePath();
+					ctx.fill();
+				}
+				
+				
+				if (drawShadow) {
+					//	Set composition mode to 'destination-over' to draw underneath
+					ctx.globalCompositeOperation = 'destination-over';
+					
+					//	Let's draw another black polygon shape with shadow to go below everything
+					ctx.beginPath();
+					ctx.moveTo(poly[0], poly[1]);
+					for(i=2; i < poly.length-1 ; i+=2) ctx.lineTo(poly[i], poly[i+1]);
+					ctx.closePath();
+					ctx.fillStyle = 'hsla(0, 0%, 0%, .85)';
+					ctx.shadowColor = 'hsla(0, 0%, 0%, .85)';
+					ctx.shadowBlur = 40;
+					ctx.fill();
+				}
+				
+				
+				// Set comp mode back to default
+				ctx.globalCompositeOperation = 'source-over';
+				ctx.shadowBlur = 0; // reset shadow
+				
+				
+				// Shift our polygon down by {spacing}
+				for(i=1; i<poly.length; i+=2) poly[i] = poly[i]+spacing;
+				
+				if (strokeW) {
+					//	Draw the blue-stroked polygon
+					ctx.beginPath();
+					ctx.moveTo(poly[0], poly[1]);
+					for(i=2; i < poly.length-1 ; i+=2)
+						ctx.lineTo( poly[i] , poly[i+1] )
+					ctx.closePath();
+					ctx.strokeStyle = strokeColor;
+					ctx.lineWidth = strokeW;
+					ctx.stroke();
+				}
+				
+				if (drawDots) {
+					if (dotStrokeW) {
+						//	Draw the wider dots (stroke color)
+						ctx.fillStyle = dotStrokeColor;
+						ctx.beginPath();
+						for (i=0; i<dots.length; i++) {
+							ctx.arc(
+								dots[i][0],	// center X
+								dots[i][1],	// center Y
+								dotRadius+dotStrokeW, // radius
+								0,
+								2*Math.PI
+							);
+						}
+						ctx.closePath();
+						ctx.fill();
+					}
+					
+					
+					//	Draw white dots over blue ones
+					ctx.fillStyle = eyeColor;
+					ctx.shadowColor = 'hsla(0, 0%, 0%, .4)';
+					ctx.shadowBlur = Math.max(dotStrokeW*2, 10);
+					ctx.beginPath();
+					for (i=0; i<dots.length; i++) {
+						ctx.arc(
+							dots[i][0],	// center X
+							dots[i][1],	// center Y
+							dotRadius,	// radius
+							0,
+							2*Math.PI
+						);
+					}
+					ctx.closePath();
+					ctx.fill();
+				}
+				
+			};
+		drawRise();
+	
+	
+	
+	
+		/*	
+			How-to
+		—————————————————————————————————————————————————————————————————————————————————————— */
+		$.fn.drawSlant = function() {
+		
+			return this.each(function(i,el){
+				
+				if (!do_drawSlants) return;
+				
+				var $this = $(this),
+					slantCanvas = $this.find('canvas').get(0),
+					w = winW,
+					h = 3.75*baseFontSize,
+					odd = i%2==0,
+					poly = odd ? [
+						0, 0,
+						w, h,
+						w, 0
+					] : [
+						0, 0,
+						0, h,
+						w, 0
+					],
+					slantColor = i%2 ? '#ededed' : 'white';
+				
+				
+				//	resize our canvas to fit viewport width
+				$(slantCanvas).attr({
+					'width': w,
+					'height': h
+				});
+				
+				//	get canvas 2D context and clear it for re-drawing
+				var ctx = slantCanvas.getContext('2d');
+				ctx.clearRect( 0, 0, w, h );
+				
+				// drawing our polygon — triangle, filled white/@lightGray
+				ctx.beginPath();
+				ctx.moveTo(poly[0], poly[1]);
+				for(i=2; i<poly.length-1; i+=2)	ctx.lineTo(poly[i] , poly[i+1]);
+				ctx.closePath();
+				ctx.fillStyle = slantColor;
+				ctx.fill();
+				
+			});
+			
+		}
+		var drawSlants = function() {
+				$('.slant')
+					.drawSlant();
+			}
+		drawSlants();
+		
+		$('.card')
+			.each(function(i) {
+				var position = $(this).position(),
+					otherFixedH = menuH;
+				
+				$(this).scrollspy({
+					min: position.top - otherFixedH,
+					max: position.top + $(this).height() - otherFixedH,
+					onEnter: function(el, position) {
+						//console.log('entering ' + $(el).find('h1 span').text());
+						$(el).addClass('focused');
+					},
+					onLeave: function(el, position) {
+						//console.log('leaving ' +  $(el).find('h1 span').text());
+						$(el).removeClass('focused');
+					}
+				});
+				
+			});		
+	
+	
+	
 		layout();
 		
 		$window.trigger( 'hashchange' );
@@ -1405,66 +1621,6 @@ jQuery(document).ready(function($) {
 		return $.fn.encapsulatedPlugin('flock', Ips.Flock.Init, this, options);
 	}
 	
-	$(document).flock({
-		gmap_style: [
-			{
-				"stylers": [
-					{ "saturation": -40 },
-					{ "hue": "#ffaa00" }
-				]
-			},{
-				"featureType": "road",
-				"elementType": "geometry",
-				"stylers": [
-					{ "visibility": "simplified" },
-					{ "lightness": 100 }
-				]
-			},{
-				"featureType": "road",
-				"elementType": "labels",
-				"stylers": [
-					{ "visibility": "on" },
-					{ "weight": 0.3 },
-					//{ "gamma": .1 },
-					{ "saturation": -60 }
-				]
-			},{
-				"featureType": "poi.park",
-				"elementType": "geometry",
-				"stylers": [
-					{ "color": "#cadfaa" },
-					{ "saturation": -40 },
-					{ "lightness": 20 }
-				]
-			},{
-				"featureType": "landscape.natural",
-				"stylers": [
-					{ "color": "#9cdfaa" },
-					{ "saturation": -75 }
-				]
-			},{
-				"featureType": "water",
-				"elementType": "geometry",
-				"stylers": [
-					{ "color": "#a6cade" },
-					{ "saturation": -60 },
-					{ "lightness": -20 },
-					{ "visibility": "simplified" }
-				]
-			},{
-				"featureType": "transit.line",
-				"stylers": [
-					{ "saturation": -100 },
-					{ "lightness": 20 }
-				]
-			},{
-				"featureType": "water",
-				"elementType": "labels",
-				"stylers": [
-					{ "saturation": -100 }
-				]
-			}
-		]
-	});
+	$(document).flock({});
 	
 });
