@@ -1,10 +1,9 @@
 <li>
   <div class="profile-badge">
     <div>
-      <%= link_to user_path(follower) do %>
+      <%= link_to user_path(follower), title: "#{follower.name}" do %>
         <%= image_tag follower.profile_image %>
       <% end %>
     </div>
   </div>
 </li>
-
