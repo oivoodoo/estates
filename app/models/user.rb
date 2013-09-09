@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
       elsif linkedin_avatar?
         linkedin_avatar.url(:thumb)
       else
-        asset_path("default_avatar.png")
+        "mart.png"
       end
     end
   end
