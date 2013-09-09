@@ -23,8 +23,24 @@ module ApplicationHelper
     'mini' unless controller_name == 'home'
   end
 
-   def full_path
+  def full_path
     request.protocol + request.host_with_port + request.fullpath
+  end
+
+  def class_name(projects)
+    controller_name == projects ? "current" : ""
+  end
+
+  def nav_helper
+    if controller_name == 'users' && action_name == 'show'
+      "current"
+    elsif controller_name == 'dashboard' && action_name == 'index'
+      "current"
+    elsif controller_name == "registrations"
+      "current"
+    else
+      controller_name
+    end
   end
 end
 
