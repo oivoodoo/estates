@@ -20,7 +20,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "mart.png"
+    "/images/mart.png"
   end
 
   # Process files as they are uploaded:

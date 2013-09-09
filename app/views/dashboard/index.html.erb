@@ -104,7 +104,7 @@
           </div>
         </div>
 
-        <div id="timeline-content" class="tab-content side-tab-content scroll" style="max-height: 360px;">
+        <div id="timeline-content" class="tab-content side-tab-content" style="max-height: 325px;">
           <ul id="timeline-list" class="feed">
             <% for activity in current_user.activities.includes(:owner).includes(:trackable).order('created_at desc').limit(20) %>
               <%= render_activity(activity, current_user: current_user) %>
