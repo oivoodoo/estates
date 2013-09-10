@@ -16,7 +16,7 @@
 
   <%= render 'layouts/js' %>
 
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application"%>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 
@@ -77,4 +77,6 @@
 
 </body>
 </html>
-
+<script>
+  var auth = false;
+</script>

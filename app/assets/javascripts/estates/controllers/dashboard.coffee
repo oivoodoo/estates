@@ -4,8 +4,6 @@ estates.controller 'DashboardController', [
     $scope.user = $element.data('user')
     $scope.projects = $element.data('projects')
 
-    drawCharts()
-
     $scope.openTab = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step
