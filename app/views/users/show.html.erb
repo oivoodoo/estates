@@ -16,7 +16,7 @@
       </figure>
       <div class="profile-details">
         <h3 class="name">
-          {{user.title}} {{user.first_name}} {{user.last_name}} {{user.middle_name}}
+          <%= @user.name %>
 
           <div class="ext-account-buttons">
             <span>
@@ -29,7 +29,7 @@
         </h3>
 
         <div class="mini-bio">
-          <p>{{user.short_bio}}</p>
+          <p><%= @user.short_bio %></p>
         </div>
 
       </div>
@@ -136,12 +136,12 @@
 
         <div id="timeline-content" class="tab-content side-tab-content" style="max-height: 325px;">
           <ul id="timeline-list" class="feed">
-            <% for activity in @user.activities.order('created_at desc').limit(20) %>
+            <% for activity in @user.activities.order('created_at desc').limit(15) %>
               <%= render_activity(activity, current_user: current_user) %>
             <% end %>
           </ul>
           <% if activity %>
-            <a href="#" class="button load-feed" data-feed="#timeline-list" title="Load more"></a>
+            <!-- <a href="#" class="button load-feed" data-feed="#timeline-list" title="Load more"></a> -->
           <% end %>
         </div>
       </div>

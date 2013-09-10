@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    [first_name.to_s, last_name.to_s, middle_name.to_s].map(&:strip).reject(&:blank?).join(' ')
+    [title.to_s, first_name.to_s, last_name.to_s, middle_name.to_s].map(&:strip).reject(&:blank?).join(' ')
   end
 
   def name=(full_name)
