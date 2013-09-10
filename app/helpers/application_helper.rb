@@ -27,8 +27,8 @@ module ApplicationHelper
     request.protocol + request.host_with_port + request.fullpath
   end
 
-  def class_name(projects)
-    controller_name == projects ? "current" : ""
+  def class_name(menu)
+    controller_name == menu ? "current" : ""
   end
 
   def nav_helper
