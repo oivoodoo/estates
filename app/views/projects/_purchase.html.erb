@@ -1,8 +1,12 @@
 <% if user_signed_in? %>
-  <button class="elevated" onclick="Turbolinks.visit('<%= new_project_investment_path(@project) %>')">Purchase Shares</button>
-<% else %>
-  <a href="<%= new_user_registration_path %>" class="sign-in fancybox.ajax">
+  <a href="<%= new_project_investment_path(@project) %>">
     <button class="elevated">Purchase Shares</button>
   </a>
-  <button class="elevated" style='display: none' onclick="Turbolinks.visit('<%= new_project_investment_path(@project) %>')">Purchase Shares</button>
+<% else %>
+  <a href="<%= new_user_registration_path %>" class="sign-in log-in fancybox.ajax">
+    <button class="elevated">Purchase Shares</button>
+  </a>
+  <a href="<%= new_project_investment_path(@project) %>">
+    <button class="elevated" style='display: none'>Purchase Shares</button>
+  </a>
 <% end %>

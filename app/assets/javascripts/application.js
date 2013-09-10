@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.validate
 //
-//= require turbolinks
 
 //= require gritter
 //= require vendors/html5
@@ -23,7 +22,16 @@
 //= require vendors/jquery.ui.widget-combobox
 //= require vendors/jquery.fileupload
 //= require vendors/jquery.krioImageLoader
+//= require vendors/jquery.ba-bbq.1.3.min
+//= require vendors/jquery.encapsulatedPlugin.min
+//= require vendors/jquery.fullscreen.min
+//= require vendors/jquery.scrollspy.min
+//= require vendors/jquery.wp-pointer.min
+//= require vendors/nvd3/nv.d3.min
+//= require vendors/nvd3/tooltip
+//= require vendors/nvd3/utils
 //= require custom
+//= require custom-helpers
 //= require common
 //= require ajax
 //
@@ -34,5 +42,6 @@
 //= require vendors/infobubble
 //= require vendors/chart.min
 //= require vendors/spin
+//= require vendors/d3.v3.min
 //= require estates
 
