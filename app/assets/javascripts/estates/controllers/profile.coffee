@@ -9,9 +9,6 @@ estates.controller 'ProfileController', [
     $scope.open = (link) ->
       window.open(link, '_blank')
 
-    window.applyFix (el) ->
-      $compile($(el))($scope)
-
     $scope.openTab = (event, variable, step) ->
       event.preventDefault()
       $scope[variable] = step

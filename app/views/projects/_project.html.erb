@@ -1,5 +1,5 @@
 <article class="project-badge <%= class_name %>" ng-controller='ProjectsController' data-project='<%= project_json(project) %>' data-urls="<%= project_button_urls_json(project) %>" ng-show="<%= local_assigns.fetch(:ng_show, "true") %>" >
-  <div onclick="Turbolinks.visit('<%= url_for(project) %>')">
+  <div>
     <div class="project-share" ng-show="viewerTab == 1">
       <div>
         <b title="Amount invested">$32k</b>
@@ -27,7 +27,7 @@
           </div>
 
           <div class="titlewrap">
-            <a class="project-link" onclick="Turbolinks.visit('<%= url_for(project) %>'); return false;" title="<%= project.name %>"><%= project.name %></a>
+            <a class="project-link" href="<%= url_for(project) %>" title="<%= project.name %>"><%= project.name %></a>
             <div class='manager-location'>
               <span><a href='<%= project_path(project) %>'><%= project.owner %></a></span>
               <address><a href='<%= project_path(project) %>'><%= project.city %></a></address>

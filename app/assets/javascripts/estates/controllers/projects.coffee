@@ -23,9 +23,6 @@ estates.controller 'ProjectsController', [
     $scope.$on 'map-refresh', ->
       $scope.google.refresh = !$scope.google.refresh
 
-    window.applyFix (el) ->
-      $compile($(el))($scope)
-
     $timeout( ->
       $scope.$apply ->
         $('.profile-badge img').trigger('resize')
