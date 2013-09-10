@@ -1,22 +1,22 @@
 <ul>
-  <li><%= link_to "Investments", projects_path %></li>
-  <li><%= link_to "How it Works", page_path("howto")%></li>
+  <li ><%= link_to "Investments", projects_path, class: "#{class_name('projects')}" %></li>
+  <li><%= link_to "How it Works", page_path("howto"), class: "#{class_name('pages')}"%></li>
   <li><%= link_to "Get In Touch", new_contact_path, class: "get-in-touch fancybox.ajax" %></li>
 
   <% unless current_user.present? %>
     <li class="sign-in"><a href="<%= new_user_registration_path %>" class="sign-in sign-up fancybox.ajax">Sign Up</a></li>
     <li class="sign-in"><a href="<%= new_user_session_path %>" class="sign-in log-in fancybox.ajax">Log In</a></li>
   <% else %>
-    <li class="profile-badge ">
-      <a href="<%= dashboard_path %>" id="profile-badge">
+    <li class="profile-badge <%= nav_helper %>">
+      <a href="<%= dashboard_path %>" id="profile-badge" class="<%= nav_helper %>">
         <%= render partial: 'users/avatar', locals: { user: current_user } %>
         <div class="focus"></div>
       </a>
 
       <ul>
-        <li class="dashboard"><a href="<%= dashboard_path %>">Dashboard</a></li>
-        <li class="profile"><a href="<%= user_path(current_user) %>">Profile</a></li>
-        <li class="settings"><a href="<%= edit_user_registration_path %>">Settings</a></li>
+        <li class="dashboard"><a href="<%= dashboard_path %>" class="<%= class_name('dashboard') %> %>">Dashboard</a></li>
+        <li class="profile"><a href="<%= user_path(current_user) %>" class="<%= class_name('users') %>">Profile</a></li>
+        <li class="settings"><a href="<%= edit_user_registration_path %>" class="<%= class_name('registrations') %>">Settings</a></li>
         <% if can?(:manage, :all) %>
           <li><%= link_to "Admin", '/admin'%></li>
         <% end %>
