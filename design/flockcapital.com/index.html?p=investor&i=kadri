@@ -155,6 +155,12 @@
 								<script>
 									Ips.Flock.gmaps.dashboard_investments = [
 										{
+lat: 59.430172,
+lng: 24.697773,
+address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
+title: 'Rimi Supermarket',
+link: '?p=project&project=tallinn-rimi'
+},{
 lat: 59.445785,
 lng: 24.749311,
 address: 'Kalasadama 8, 10415 Tallinn, Estonia',
@@ -166,12 +172,6 @@ lng: 25.296894,
 address: 'Tuskulėnų gatvė 2, Vilnius 09213, Lithuania',
 title: 'Rimi Supermaket',
 link: '?p=project&project=vilnius-rimi'
-},{
-lat: 59.430172,
-lng: 24.697773,
-address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
-title: 'Rimi Supermarket',
-link: '?p=project&project=tallinn-rimi'
 }									];
 								</script>
 								
@@ -180,7 +180,78 @@ link: '?p=project&project=tallinn-rimi'
 						</div>
 						
 						<div class="listing">
-							<article class="project-badge invested " onclick="location.href='?p=project&project=cafe-klaus'">
+							<article class="project-badge invested " onclick="location.href='?p=project&project=tallinn-rimi'">
+	<div>
+	
+			
+		<a class="project-thumb" href="?p=project&project=tallinn-rimi">
+			<img src="img/tallinn-rimi.png">
+			<div class="focus"><span>Full details</span></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="?p=manager&m=broadgate" title="Broadgate"><img src="img/broadgate.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="?p=project&project=tallinn-rimi">Rimi Supermarket</a>
+					<div class="manager-location">
+						<span><a href="?p=manager&m=broadgate" title="Broadgate">Broadgate</a></span> <address><a href="?p=project&project=tallinn-rimi#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
+				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
+			
+			<div class="financials">
+				<div>
+					<div>
+						<div>
+							<div class="numbers">
+								<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$1.6k</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+</ul><ul class='size-6'>
+<li class="period"><div><b>24 <u class="short">mo</u><u class="long">month</u></b> <label>term</label></div></li>
+</ul>							</div>
+							<div class="moneywrap size-3">
+								<div>
+									<ul class='money '>
+<li class="raised" style="width:62%;"><div>$19.8m</div></li>
+<li class="budget" style="width:38%;"><div>$32m</div></li>
+</ul>
+									<div class="goal">
+										<div>
+											<div class="goalmeter"><div class="progress " style="width:62%"><div class="marker" style="left:62%;"><label>62%</label></div></div></div>
+										</div>
+									</div>
+									<ul class='num-investors'>
+<li style="width:62%;"></li><li><div>27<i> investors</i></div></li>
+</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+						
+		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge invested alt" onclick="location.href='?p=project&project=cafe-klaus'">
 	<div>
 	
 			
@@ -251,7 +322,7 @@ link: '?p=project&project=tallinn-rimi'
 		
 		
 	</div>
-</article><article class="project-badge invested alt" onclick="location.href='?p=project&project=vilnius-rimi'">
+</article><article class="project-badge invested " onclick="location.href='?p=project&project=vilnius-rimi'">
 	<div>
 	
 			
@@ -279,78 +350,7 @@ link: '?p=project&project=tallinn-rimi'
 		</header>
 			
 			<div class="summary">
-				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
-			
-			<div class="financials">
-				<div>
-					<div>
-						<div>
-							<div class="numbers">
-								<ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b>$1.6k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="period"><div><b>24 <u class="short">mo</u><u class="long">month</u></b> <label>term</label></div></li>
-</ul>							</div>
-							<div class="moneywrap size-3">
-								<div>
-									<ul class='money '>
-<li class="raised" style="width:62%;"><div>$19.8m</div></li>
-<li class="budget" style="width:38%;"><div>$32m</div></li>
-</ul>
-									<div class="goal">
-										<div>
-											<div class="goalmeter"><div class="progress " style="width:62%"><div class="marker" style="left:62%;"><label>62%</label></div></div></div>
-										</div>
-									</div>
-									<ul class='num-investors'>
-<li style="width:62%;"></li><li><div>27<i> investors</i></div></li>
-</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-						
-		</div>
-		
-		
-		
-	</div>
-</article><article class="project-badge invested " onclick="location.href='?p=project&project=tallinn-rimi'">
-	<div>
-	
-			
-		<a class="project-thumb" href="?p=project&project=tallinn-rimi">
-			<img src="img/tallinn-rimi.png">
-			<div class="focus"><span>Full details</span></div>
-		</a>
-		
-		<div class="textual">
-		
-			<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
-					<div>
-						<a href="?p=manager&m=broadgate" title="Broadgate"><img src="img/broadgate.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=tallinn-rimi">Rimi Supermarket</a>
-					<div class="manager-location">
-						<span><a href="?p=manager&m=broadgate" title="Broadgate">Broadgate</a></span> <address><a href="?p=project&project=tallinn-rimi#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-			
-			<div class="summary">
-				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
+				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -422,17 +422,17 @@ link: '?p=project&project=tallinn-rimi'
 								<script>
 									Ips.Flock.gmaps.dashboard_tracked = [
 										{
+lat: 59.430172,
+lng: 24.697773,
+address: 'Paldiski mnt 56, 10617 Tallinn, Estonia',
+title: 'Rimi Supermarket',
+link: '?p=project&project=tallinn-rimi'
+},{
 lat: 54.696334,
 lng: 25.296894,
 address: 'Tuskulėnų gatvė 2, Vilnius 09213, Lithuania',
 title: 'Rimi Supermaket',
 link: '?p=project&project=vilnius-rimi'
-},{
-lat: 39.581653,
-lng: 2.678959,
-address: 'Carrer Biniamar, 14, Palma, Illes Balears, Spain',
-title: 'Maxima Supermarket',
-link: '?p=project&project=spain-maxima'
 },{
 lat: 54.696334,
 lng: 25.296894,
@@ -447,12 +447,12 @@ link: '?p=project&project=vilnius-rimi'
 						</div>
 						
 						<div class="listing">
-							<article class="project-badge tracking " onclick="location.href='?p=project&project=vilnius-rimi'">
+							<article class="project-badge tracking " onclick="location.href='?p=project&project=tallinn-rimi'">
 	<div>
 	
 			
-		<a class="project-thumb" href="?p=project&project=vilnius-rimi">
-			<img src="img/vilnius-rimi.png">
+		<a class="project-thumb" href="?p=project&project=tallinn-rimi">
+			<img src="img/tallinn-rimi.png">
 			<div class="focus"><span>Full details</span></div>
 		</a>
 		
@@ -462,162 +462,20 @@ link: '?p=project&project=vilnius-rimi'
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="?p=manager&m=trigon" title="Trigon Capital"><img src="img/trigon.png"></a>
+						<a href="?p=manager&m=broadgate" title="Broadgate"><img src="img/broadgate.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=vilnius-rimi">Rimi Supermaket</a>
+					<a class="project-link" href="?p=project&project=tallinn-rimi">Rimi Supermarket</a>
 					<div class="manager-location">
-						<span><a href="?p=manager&m=trigon" title="Trigon Capital">Trigon Capital</a></span> <address><a href="?p=project&project=vilnius-rimi#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
+						<span><a href="?p=manager&m=broadgate" title="Broadgate">Broadgate</a></span> <address><a href="?p=project&project=tallinn-rimi#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
 				</div>
 			</h4>
 		</header>
 			
 			<div class="summary">
-				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
-			
-			<div class="financials">
-				<div>
-					<div>
-						<div>
-							<div class="numbers">
-								<ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b>$1.6k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="period"><div><b>24 <u class="short">mo</u><u class="long">month</u></b> <label>term</label></div></li>
-</ul>							</div>
-							<div class="moneywrap size-3">
-								<div>
-									<ul class='money '>
-<li class="raised" style="width:62%;"><div>$19.8m</div></li>
-<li class="budget" style="width:38%;"><div>$32m</div></li>
-</ul>
-									<div class="goal">
-										<div>
-											<div class="goalmeter"><div class="progress " style="width:62%"><div class="marker" style="left:62%;"><label>62%</label></div></div></div>
-										</div>
-									</div>
-									<ul class='num-investors'>
-<li style="width:62%;"></li><li><div>27<i> investors</i></div></li>
-</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-						
-		</div>
-		
-		
-		
-	</div>
-</article><article class="project-badge tracking alt" onclick="location.href='?p=project&project=spain-maxima'">
-	<div>
-	
-			
-		<a class="project-thumb" href="?p=project&project=spain-maxima">
-			<img src="img/spain-maxima.png">
-			<div class="focus"><span>Full details</span></div>
-		</a>
-		
-		<div class="textual">
-		
-			<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
-					<div>
-						<a href="?p=manager&m=cbre" title="CBRE"><img src="img/cbre.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=spain-maxima">Maxima Supermarket</a>
-					<div class="manager-location">
-						<span><a href="?p=manager&m=cbre" title="CBRE">CBRE</a></span> <address><a href="?p=project&project=spain-maxima#location" title="Carrer Biniamar, 14, Palma, Illes Balears, Spain">Palma de Mallorca</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-			
-			<div class="summary">
-				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
-			
-			<div class="financials">
-				<div>
-					<div>
-						<div>
-							<div class="numbers">
-								<ul class='size-6'>
-<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
-</ul><ul class='size-6'>
-<li class="share"><div><b>$1.6k</b> <label>/share</label></div></li>
-</ul><ul class='size-6'>
-<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
-</ul><ul class='size-6'>
-<li class="period"><div><b>24 <u class="short">mo</u><u class="long">month</u></b> <label>term</label></div></li>
-</ul>							</div>
-							<div class="moneywrap size-3">
-								<div>
-									<ul class='money '>
-<li class="raised" style="width:62%;"><div>$19.8m</div></li>
-<li class="budget" style="width:38%;"><div>$32m</div></li>
-</ul>
-									<div class="goal">
-										<div>
-											<div class="goalmeter"><div class="progress " style="width:62%"><div class="marker" style="left:62%;"><label>62%</label></div></div></div>
-										</div>
-									</div>
-									<ul class='num-investors'>
-<li style="width:62%;"></li><li><div>27<i> investors</i></div></li>
-</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-						
-		</div>
-		
-		
-		
-	</div>
-</article><article class="project-badge tracking " onclick="location.href='?p=project&project=vilnius-rimi'">
-	<div>
-	
-			
-		<a class="project-thumb" href="?p=project&project=vilnius-rimi">
-			<img src="img/vilnius-rimi.png">
-			<div class="focus"><span>Full details</span></div>
-		</a>
-		
-		<div class="textual">
-		
-			<header>
-			<h4 class="project-name">
-				<div class="profile-badge manager-badge">
-					<div>
-						<a href="?p=manager&m=trigon" title="Trigon Capital"><img src="img/trigon.png"></a>
-					</div>
-				</div>
-				
-				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=vilnius-rimi">Rimi Supermaket</a>
-					<div class="manager-location">
-						<span><a href="?p=manager&m=trigon" title="Trigon Capital">Trigon Capital</a></span> <address><a href="?p=project&project=vilnius-rimi#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
-				</div>
-			</h4>
-		</header>
-			
-			<div class="summary">
-				<p>Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus.</p>			</div>
+				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -688,7 +546,7 @@ link: '?p=project&project=vilnius-rimi'
 		</header>
 			
 			<div class="summary">
-				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
+				<p>Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus. Nulla non est venenatis diam fermentum tincidunt non non dolor. Quisque euismod sollicitudin dignissim. Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -731,12 +589,12 @@ link: '?p=project&project=vilnius-rimi'
 		
 		
 	</div>
-</article><article class="project-badge tracking " onclick="location.href='?p=project&project=spain-maxima'">
+</article><article class="project-badge tracking " onclick="location.href='?p=project&project=vilnius-rimi'">
 	<div>
 	
 			
-		<a class="project-thumb" href="?p=project&project=spain-maxima">
-			<img src="img/spain-maxima.png">
+		<a class="project-thumb" href="?p=project&project=vilnius-rimi">
+			<img src="img/vilnius-rimi.png">
 			<div class="focus"><span>Full details</span></div>
 		</a>
 		
@@ -746,14 +604,14 @@ link: '?p=project&project=vilnius-rimi'
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="?p=manager&m=cbre" title="CBRE"><img src="img/cbre.png"></a>
+						<a href="?p=manager&m=trigon" title="Trigon Capital"><img src="img/trigon.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=spain-maxima">Maxima Supermarket</a>
+					<a class="project-link" href="?p=project&project=vilnius-rimi">Rimi Supermaket</a>
 					<div class="manager-location">
-						<span><a href="?p=manager&m=cbre" title="CBRE">CBRE</a></span> <address><a href="?p=project&project=spain-maxima#location" title="Carrer Biniamar, 14, Palma, Illes Balears, Spain">Palma de Mallorca</a></address>					</div>
+						<span><a href="?p=manager&m=trigon" title="Trigon Capital">Trigon Capital</a></span> <address><a href="?p=project&project=vilnius-rimi#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
 				</div>
 			</h4>
 		</header>
@@ -802,12 +660,12 @@ link: '?p=project&project=vilnius-rimi'
 		
 		
 	</div>
-</article><article class="project-badge tracking alt" onclick="location.href='?p=project&project=1800-van-ness'">
+</article><article class="project-badge tracking alt" onclick="location.href='?p=project&project=tallinn-rimi'">
 	<div>
 	
 			
-		<a class="project-thumb" href="?p=project&project=1800-van-ness">
-			<img src="img/1800-van-ness.png">
+		<a class="project-thumb" href="?p=project&project=tallinn-rimi">
+			<img src="img/tallinn-rimi.png">
 			<div class="focus"><span>Full details</span></div>
 		</a>
 		
@@ -817,20 +675,20 @@ link: '?p=project&project=vilnius-rimi'
 			<h4 class="project-name">
 				<div class="profile-badge manager-badge">
 					<div>
-						<a href="?p=manager&m=stonemount" title="Stonemount"><img src="img/stonemount.png"></a>
+						<a href="?p=manager&m=broadgate" title="Broadgate"><img src="img/broadgate.png"></a>
 					</div>
 				</div>
 				
 				<div class="titlewrap">
-					<a class="project-link" href="?p=project&project=1800-van-ness">1800 Van Ness</a>
+					<a class="project-link" href="?p=project&project=tallinn-rimi">Rimi Supermarket</a>
 					<div class="manager-location">
-						<span><a href="?p=manager&m=stonemount" title="Stonemount">Stonemount</a></span> <address><a href="?p=project&project=1800-van-ness#location" title="1800 Van Ness Ave, San Francisco, CA 94109">San Francisco</a></address>					</div>
+						<span><a href="?p=manager&m=broadgate" title="Broadgate">Broadgate</a></span> <address><a href="?p=project&project=tallinn-rimi#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
 				</div>
 			</h4>
 		</header>
 			
 			<div class="summary">
-				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -840,7 +698,7 @@ link: '?p=project&project=vilnius-rimi'
 								<ul class='size-6'>
 <li class="type"><div><b>Equity</b> <label>offering</label></div></li>
 </ul><ul class='size-6'>
-<li class="share"><div><b>$1.4k</b> <label>/share</label></div></li>
+<li class="share"><div><b>$1.6k</b> <label>/share</label></div></li>
 </ul><ul class='size-6'>
 <li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
 </ul><ul class='size-6'>
@@ -848,17 +706,17 @@ link: '?p=project&project=vilnius-rimi'
 </ul>							</div>
 							<div class="moneywrap size-3">
 								<div>
-									<ul class='money full'>
-<li class="raised" style="width:100%;"><div>$14m</div></li>
-<li class="budget" style="width:0%;"><div>goal reached</div></li>
+									<ul class='money '>
+<li class="raised" style="width:62%;"><div>$19.8m</div></li>
+<li class="budget" style="width:38%;"><div>$32m</div></li>
 </ul>
 									<div class="goal">
 										<div>
-											<div class="goalmeter"><div class="progress full" style="width:100%"><div class="marker" style="left:100%;"><label>100%</label></div></div></div>
+											<div class="goalmeter"><div class="progress " style="width:62%"><div class="marker" style="left:62%;"><label>62%</label></div></div></div>
 										</div>
 									</div>
 									<ul class='num-investors'>
-<li style="width:100%;"></li><li><div>27<i> investors</i></div></li>
+<li style="width:62%;"></li><li><div>27<i> investors</i></div></li>
 </ul>
 								</div>
 							</div>
@@ -901,7 +759,149 @@ link: '?p=project&project=vilnius-rimi'
 		</header>
 			
 			<div class="summary">
+				<p>WestMill Capital Partners (WCP), as developer, plans to renovate the property and lease it to a restaurant or retail tenant. WCP believes that the property offers an opportunity for current cash flow over the mid-term while providing the potential of long-term appreciation, as a result of the surrounding growth of the H Street Neighborhood.</p>			</div>
+			
+			<div class="financials">
+				<div>
+					<div>
+						<div>
+							<div class="numbers">
+								<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$1.6k</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+</ul><ul class='size-6'>
+<li class="period"><div><b>24 <u class="short">mo</u><u class="long">month</u></b> <label>term</label></div></li>
+</ul>							</div>
+							<div class="moneywrap size-3">
+								<div>
+									<ul class='money '>
+<li class="raised" style="width:62%;"><div>$19.8m</div></li>
+<li class="budget" style="width:38%;"><div>$32m</div></li>
+</ul>
+									<div class="goal">
+										<div>
+											<div class="goalmeter"><div class="progress " style="width:62%"><div class="marker" style="left:62%;"><label>62%</label></div></div></div>
+										</div>
+									</div>
+									<ul class='num-investors'>
+<li style="width:62%;"></li><li><div>27<i> investors</i></div></li>
+</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+						
+		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge tracking alt" onclick="location.href='?p=project&project=tallinn-rimi'">
+	<div>
+	
+			
+		<a class="project-thumb" href="?p=project&project=tallinn-rimi">
+			<img src="img/tallinn-rimi.png">
+			<div class="focus"><span>Full details</span></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="?p=manager&m=broadgate" title="Broadgate"><img src="img/broadgate.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="?p=project&project=tallinn-rimi">Rimi Supermarket</a>
+					<div class="manager-location">
+						<span><a href="?p=manager&m=broadgate" title="Broadgate">Broadgate</a></span> <address><a href="?p=project&project=tallinn-rimi#location" title="Paldiski mnt 56, 10617 Tallinn, Estonia">Tallinn</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
 				<p>Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta. Vivamus ut justo lacus, suscipit pretium tellus. Proin tincidunt tellus et massa commodo eget mollis turpis malesuada. Donec commodo molestie elementum. Aliquam ultrices enim in est aliquam accumsan. Vestibulum fringilla lobortis cursus.</p>			</div>
+			
+			<div class="financials">
+				<div>
+					<div>
+						<div>
+							<div class="numbers">
+								<ul class='size-6'>
+<li class="type"><div><b>Equity</b> <label>offering</label></div></li>
+</ul><ul class='size-6'>
+<li class="share"><div><b>$1.6k</b> <label>/share</label></div></li>
+</ul><ul class='size-6'>
+<li class="return"><div><b>12<u>%</u></b> <label>yield</label></div></li>
+</ul><ul class='size-6'>
+<li class="period"><div><b>24 <u class="short">mo</u><u class="long">month</u></b> <label>term</label></div></li>
+</ul>							</div>
+							<div class="moneywrap size-3">
+								<div>
+									<ul class='money '>
+<li class="raised" style="width:62%;"><div>$19.8m</div></li>
+<li class="budget" style="width:38%;"><div>$32m</div></li>
+</ul>
+									<div class="goal">
+										<div>
+											<div class="goalmeter"><div class="progress " style="width:62%"><div class="marker" style="left:62%;"><label>62%</label></div></div></div>
+										</div>
+									</div>
+									<ul class='num-investors'>
+<li style="width:62%;"></li><li><div>27<i> investors</i></div></li>
+</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+						
+		</div>
+		
+		
+		
+	</div>
+</article><article class="project-badge tracking " onclick="location.href='?p=project&project=vilnius-rimi'">
+	<div>
+	
+			
+		<a class="project-thumb" href="?p=project&project=vilnius-rimi">
+			<img src="img/vilnius-rimi.png">
+			<div class="focus"><span>Full details</span></div>
+		</a>
+		
+		<div class="textual">
+		
+			<header>
+			<h4 class="project-name">
+				<div class="profile-badge manager-badge">
+					<div>
+						<a href="?p=manager&m=trigon" title="Trigon Capital"><img src="img/trigon.png"></a>
+					</div>
+				</div>
+				
+				<div class="titlewrap">
+					<a class="project-link" href="?p=project&project=vilnius-rimi">Rimi Supermaket</a>
+					<div class="manager-location">
+						<span><a href="?p=manager&m=trigon" title="Trigon Capital">Trigon Capital</a></span> <address><a href="?p=project&project=vilnius-rimi#location" title="Tuskulėnų gatvė 2, Vilnius 09213, Lithuania">Vilnius</a></address>					</div>
+				</div>
+			</h4>
+		</header>
+			
+			<div class="summary">
+				<p>Sed faucibus, odio a adipiscing interdum, leo dolor ultricies metus, vitae cursus lacus lectus consectetur erat. Donec pellentesque egestas orci, et vehicula sem commodo ut. Suspendisse quam dolor, imperdiet quis placerat eget, tristique consequat erat. Cras congue consequat nisl ac gravida. Morbi consequat, leo sed blandit elementum, tortor ante blandit magna, ac facilisis risus tellus quis tortor. Pellentesque interdum porta.</p>			</div>
 			
 			<div class="financials">
 				<div>
@@ -974,22 +974,6 @@ link: '?p=project&project=vilnius-rimi'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=mart" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="?p=investor&i=michael" title="Michael Walsh">
 				<img src="img/michael.png">
 			</a>
@@ -1006,8 +990,8 @@ link: '?p=project&project=vilnius-rimi'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=mart" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -1030,8 +1014,8 @@ link: '?p=project&project=vilnius-rimi'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=mart" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
 			</a>
 		</div>
 	</div>
@@ -1040,6 +1024,22 @@ link: '?p=project&project=vilnius-rimi'
 		<div>
 			<a href="?p=investor&i=michael" title="Michael Walsh">
 				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -1059,48 +1059,8 @@ link: '?p=project&project=vilnius-rimi'
 							<li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=michael" title="Michael Walsh">
-				<img src="img/michael.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
 			<a href="?p=investor&i=mart" title="Mart Uibo">
 				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=mart" title="Mart Uibo">
-				<img src="img/mart.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
-			</a>
-		</div>
-	</div>
-</li><li>
-	<div class="profile-badge">
-		<div>
-			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
-				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
@@ -1131,8 +1091,48 @@ link: '?p=project&project=vilnius-rimi'
 </li><li>
 	<div class="profile-badge">
 		<div>
-			<a href="?p=investor&i=mart" title="Mart Uibo">
-				<img src="img/mart.png">
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=michael" title="Michael Walsh">
+				<img src="img/michael.png">
+			</a>
+		</div>
+	</div>
+</li><li>
+	<div class="profile-badge">
+		<div>
+			<a href="?p=investor&i=kadri" title="Ms. Kadri Liis Rääk">
+				<img src="img/kadri.png">
 			</a>
 		</div>
 	</div>
