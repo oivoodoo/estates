@@ -169,7 +169,9 @@
             <div id="all-connections">
               <%= render partial: 'all_connections' %>
             </div>
-            <a class="show-all-connections investors" href="#all-connections">Show all</a>
+            <% if @investors.present? %>
+              <a class="show-all-connections investors" href="#all-connections">Show all</a>
+            <% end %>
           </div>
 
           <div id="trackers-content" class="tab-content side-tab-content side-switch" ng-class="{'side-switch-current':viewerTab==2}">
