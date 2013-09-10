@@ -11,4 +11,4 @@ $ ->
           css:
             'background' : 'rgba(41,41,41, .9)'
       closeBtn: false
-
+ 

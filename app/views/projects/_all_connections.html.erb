@@ -1,0 +1,37 @@
+<div>
+  <div class="modal-header">
+    <div>
+      <%= render 'layouts/logo' %>
+      <div class="close" onclick="$.fancybox.close()"></div>
+    </div>
+  </div>
+  <div class="modal-content">
+    <div>
+      <div class="title">
+        <figure class="profile-badge manager-badge">
+          <a href="<%= dashboard_path %>" title="<%= @project.owner %>"><%= image_tag(@project.company_image.url(:index)) %></a>
+        </figure>
+        <h2><%= @project.name %> <span>Investors</span></h2>
+      </div>
+      <ul id="all-investors" class="all-connections">
+        <li>
+          <% @investors.each do |investor| %>
+            <div class="profile-badge">
+              <div>
+                <%= link_to user_path(investor) do %>
+                  <%= image_tag investor.profile_image %>
+                <% end %>
+              </div>
+            </div>
+            <div class="profile-title">
+              <h5><%= link_to investor.name, user_path(investor) %></h5>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+
+      <!-- <a href="#" class="button load-connections" data-feed="#all-investors" title="Load more"></a> -->
+
+    </div>
+  </div>
+</div>
