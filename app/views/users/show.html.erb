@@ -1,4 +1,4 @@
-<section id="investor" ng-controller='ProfileController' data-user='<%= profile_user_json(@user) %>' data-projects='<%= projects_json(@user.invested_projects) %>'>
+<section id="investor" ng-controller='ProfileController' data-user='<%= profile_user_json(@user) %>' data-projects='<%= projects_json(@user.invested_projects) %>'  data-urls="<%= profile_user_button_urls_json(@user) %>" data-followers='<%= followers_json(@followers) %>'>
   <% if current_user == @user %>
     <div class="message">
       <div>
@@ -34,6 +34,9 @@
 
       </div>
 
+    </div>
+    <div class="action">       
+      <button class="elevated" ng-click="profile($event)" title="{{followTitle}}">{{followTitle}}</button>
     </div>
 
   </div> <!-- head -->
@@ -124,12 +127,20 @@
 						<div class="tabs connection-tabs">
               <ul>
                 <li><a ng-class="{current:connectionsTab==1}" ng:click="connectionsTab=1"><em><%= @user.investors.count %></em> Investors</a></li>
-                <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em><%= @user.user_followers.count %></em> Followers</a></li>
+                <li><a ng-click="connectionsTab=2" ng-class="{current:connectionsTab == 2}"><em>{{followers.length}}</em> Followers</a></li>
               </ul>
             </div>
 
-            <ul class="connections">
-              <%= render partial: 'projects/follower', collection: @user.user_followers %>
+            <ul class="connections" id="followed">
+              <li ng-repeat='follower in followers'>
+                <div class="profile-badge">
+                  <div>
+                    <a href="/users/{{follower.id}}" title="{{follower.name}}" >
+                      <img ng-src='{{follower.profile_image}}' />
+                    </a>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -148,4 +159,3 @@
     </div>
   </div>
 </section>
-
