@@ -200,12 +200,9 @@
       <div id="timeline-content" class="tab-content side-tab-content" style="max-height: 325px;">
         <ul id="timeline-list" class="feed">
           <% for activity in @activities %>
-            <%= render_activity(activity) %>
+            <%= render_activity(activity, current_user: current_user) %>
           <% end %>
         </ul>
-        <% if activity %>
-          <!-- <a href="#" class="button load-feed" data-feed="#timeline-list" title="Load more"></a> -->
-        <% end %>
       </div>
     </div>
   </div>
