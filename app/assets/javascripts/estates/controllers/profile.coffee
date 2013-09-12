@@ -1,6 +1,6 @@
 estates.controller 'ProfileController', [
-  '$scope', '$element', '$window', '$compile', '$timeout', '$rootScope', '$http'
-  ($scope, $element, $window, $compile, $timeout, $rootScope, $http) ->
+  '$scope', '$element', '$window', '$compile', '$timeout', '$http'
+  ($scope, $element, $window, $compile, $timeout, $http) ->
     $scope.profileTab = 1
 
     $scope.user = $element.data('user')
