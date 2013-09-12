@@ -22,11 +22,11 @@ estates.controller 'ProfileController', [
     , 1000)
 
     if $scope.user.followed
-      $scope.followTitle = "Stop following"
+      $scope.followTitle = "Stop Following"
       $scope.followProfile = 'following'
     else
       $scope.followProfile = 'not-following'
-      $scope.followTitle = 'Following'
+      $scope.followTitle = 'Follow'
 
     $scope.profile = ($event) ->
       $event.stopPropagation()
@@ -44,7 +44,7 @@ estates.controller 'ProfileController', [
                 $('.profile-badge img').trigger('resize')
             , 1000)
       else
-        $scope.followTitle = "Following"
+        $scope.followTitle = "Follow"
         $scope.followProfile = 'not-following'
 
         $http.post($scope.urls.unfollow).success (follower) ->

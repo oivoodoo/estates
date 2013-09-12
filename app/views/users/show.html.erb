@@ -30,15 +30,22 @@
 
         <div class="mini-bio">
           <p><%= @user.short_bio %></p>
-        </div>
 
+        </div>
+        <div class="financials" style="float: right; padding: 0px;">
+          <div>
+            <div>
+              <div>
+                <div class="action">       
+                  <button class="elevated" ng-click="profile($event)" title="{{followTitle}}">{{followTitle}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
-    <div class="action">       
-      <button class="elevated" ng-click="profile($event)" title="{{followTitle}}">{{followTitle}}</button>
-    </div>
-
   </div> <!-- head -->
 
   <div class="body">
