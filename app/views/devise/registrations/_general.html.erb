@@ -9,13 +9,13 @@
       <div>
         <div class="ext-account-pics">
           <span>
-            <button name="ext-account" value="facebook" title="Use profile picture from Facebook" class="ext-account-button facebook">
+            <button name="ext-account" value="facebook" title="Use profile picture from Facebook" class="ext-account-button facebook" ng-class="{used:user.facebook_link}">
               <%= image_tag current_user.facebook_avatar.url(:thumb), alt: current_user.name %>
             </button>
-            <button name="ext-account" value="google-plus" title="Use profile picture from Google+" class="ext-account-button google-plus">
+            <button name="ext-account" value="google-plus" title="Use profile picture from Google+" class="ext-account-button google-plus" ng-class="{used:user.google_plus_link}">
               <%= image_tag current_user.google_plus_avatar.url(:thumb), alt: current_user.name %>
             </button>
-            <button name="ext-account" value="linked-in" title="Use profile picture from LinkedIn" class="ext-account-button linked-in">
+            <button name="ext-account" value="linked-in" title="Use profile picture from LinkedIn" class="ext-account-button linked-in" ng-class="{used:user.linkedin_link}">
               <%= image_tag current_user.linkedin_avatar.url(:thumb), alt: current_user.name %>
             </button>
           </span>
