@@ -2,15 +2,8 @@ estates.controller 'ProfileController', [
   '$scope', '$element', '$window', '$compile', '$timeout', '$http', "$location"
   ($scope, $element, $window, $compile, $timeout, $http, $location) ->
     tab = $location.path() || '/details'
-    
-    if tab == '/details'
-      $scope.profileTab = 1
-    else if tab == '/accounts'
-      $scope.profileTab = 2
-    else if tab == '/qualification'
-      $scope.profileTab = 3
-    else if tab == '/notifications'
-      $scope.profileTab = 4
+
+    $scope.profileTab = ["/details", "/accounts", "/qualification", "/notifications"].indexOf(tab) + 1
 
     $scope.user = $element.data('user')
     $scope.projects = $element.data('projects')
