@@ -54,6 +54,8 @@ Estates::Application.routes.draw do
 
   resources :contacts, only: [:new, :create]
 
+  resources :find_friends, only: [:index]
+
   mount GetVersion::Web => '/'
 end
 

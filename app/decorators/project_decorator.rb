@@ -4,7 +4,7 @@ class ProjectDecorator < Draper::Decorator
   include ActionView::Helpers::NumberHelper
 
   def address?
-    address.strip.present?
+    object.address.strip.present?
   end
 
   def days_to_close
