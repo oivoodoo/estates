@@ -1,7 +1,9 @@
 estates.controller 'ProfileController', [
-  '$scope', '$element', '$window', '$compile', '$timeout', '$http'
-  ($scope, $element, $window, $compile, $timeout, $http) ->
-    $scope.profileTab = 1
+  '$scope', '$element', '$window', '$compile', '$timeout', '$http', "$location"
+  ($scope, $element, $window, $compile, $timeout, $http, $location) ->
+    tab = $location.path() || '/details'
+
+    $scope.profileTab = ["/details", "/accounts", "/qualification", "/notifications"].indexOf(tab) + 1
 
     $scope.user = $element.data('user')
     $scope.projects = $element.data('projects')
@@ -12,7 +14,6 @@ estates.controller 'ProfileController', [
       window.open(link, '_blank')
 
     $scope.openTab = (event, variable, step) ->
-      event.preventDefault()
       $scope[variable] = step
       $scope.$broadcast('map-refresh')
 
