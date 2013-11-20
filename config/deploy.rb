@@ -5,7 +5,7 @@ require "rvm/capistrano"
 
 set :rails_env, "production"
 set :stage, "production"
-set :rvm_ruby_string, '2.0.0'
+set :rvm_ruby_string, 'ruby-1.9.3-p429'
 set :rvm_type, :user
 
 set :user, 'deploy'
