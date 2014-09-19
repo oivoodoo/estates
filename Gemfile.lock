@@ -1,68 +1,4 @@
 GIT
-  remote: git://github.com/drapergem/draper.git
-  revision: d8e742c9f47490370624a91b5fc741b01bbffa08
-  specs:
-    draper (1.2.1)
-      actionpack (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0.3)
-
-GIT
-  remote: git://github.com/gregbell/active_admin.git
-  revision: ac4918ef99cf0272eb5f744b7e3f3fc7cde5811f
-  branch: rails4
-  specs:
-    activeadmin (0.6.0)
-      arbre (>= 1.0.1)
-      bourbon (>= 1.0.0)
-      coffee-rails (>= 3.2.0)
-      devise (>= 3.0.2)
-      formtastic (>= 2.3.0.rc2)
-      inherited_resources (>= 1.4.1)
-      jquery-rails (>= 3.0.0)
-      jquery-ui-rails (>= 4.0.0)
-      kaminari (>= 0.13.0)
-      rails (>= 3.2.0)
-      ransack (>= 1.0.0)
-      sass-rails (>= 3.2.0)
-
-GIT
-  remote: git://github.com/josevalim/inherited_resources.git
-  revision: cf9c44845c6af46739978fdca8ed06ea840d01a1
-  specs:
-    inherited_resources (1.4.1)
-      has_scope (~> 0.6.0.rc)
-      responders (~> 1.0.0.rc)
-
-GIT
-  remote: git://github.com/justinfrench/formtastic.git
-  revision: cd6cb88f28ea7444267802ced8e5ec0f5cfd0f90
-  specs:
-    formtastic (2.3.0.rc2)
-      actionpack (>= 3.0)
-
-GIT
-  remote: git://github.com/plataformatec/devise.git
-  revision: 041fcf90807df5efded5fdcd53ced80544e7430f
-  specs:
-    devise (3.1.0)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
-
-GIT
-  remote: git://github.com/rails/activerecord-session_store.git
-  revision: 022d45b4ae9b7e862ee92ea8871c9bf4c2d93106
-  specs:
-    activerecord-session_store (0.0.1)
-      actionpack (>= 4.0.0.beta, < 5)
-      activerecord (>= 4.0.0.beta, < 5)
-      railties (>= 4.0.0.beta, < 5)
-
-GIT
   remote: git://github.com/railstutorial/spork-rails.git
   revision: 5db525af2f917047057f546bc1ac2574d1c6b11e
   specs:
@@ -82,29 +18,74 @@ GIT
   specs:
     state_select (0.1.0)
 
+GIT
+  remote: git://github.com/justinfrench/formtastic.git
+  revision: cd6cb88f28ea7444267802ced8e5ec0f5cfd0f90
+  specs:
+    formtastic (2.3.0.rc2)
+      actionpack (>= 3.0)
+
+GIT
+  remote: git://github.com/josevalim/inherited_resources.git
+  revision: cf9c44845c6af46739978fdca8ed06ea840d01a1
+  specs:
+    inherited_resources (1.4.1)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
+
+GIT
+  remote: git://github.com/drapergem/draper.git
+  revision: d8e742c9f47490370624a91b5fc741b01bbffa08
+  specs:
+    draper (1.2.1)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
+
+GIT
+  remote: git://github.com/rails/activerecord-session_store.git
+  revision: 022d45b4ae9b7e862ee92ea8871c9bf4c2d93106
+  specs:
+    activerecord-session_store (0.0.1)
+      actionpack (>= 4.0.0.beta, < 5)
+      activerecord (>= 4.0.0.beta, < 5)
+      railties (>= 4.0.0.beta, < 5)
+
+GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: 041fcf90807df5efded5fdcd53ced80544e7430f
+  specs:
+    devise (3.1.0)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.0.0)
-      actionpack (= 4.0.0)
-      mail (~> 2.5.3)
-    actionpack (4.0.0)
-      activesupport (= 4.0.0)
+    actionmailer (4.0.9)
+      actionpack (= 4.0.9)
+      mail (~> 2.5.4)
+    actionpack (4.0.9)
+      activesupport (= 4.0.9)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.0)
-      activesupport (= 4.0.0)
+    activemodel (4.0.9)
+      activesupport (= 4.0.9)
       builder (~> 3.1.0)
-    activerecord (4.0.0)
-      activemodel (= 4.0.0)
+    activerecord (4.0.9)
+      activemodel (= 4.0.9)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.0)
+      activesupport (= 4.0.9)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.0)
-      i18n (~> 0.6, >= 0.6.4)
+    activesupport (4.0.9)
+      i18n (~> 0.6, >= 0.6.9)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
@@ -124,17 +105,11 @@ GEM
     angular-ui-rails (0.4.0.2)
     angularjs-rails (1.0.8)
     angularjs-rails-resource (0.2.2)
-    arbre (1.0.1)
-      activesupport (>= 3.0.0)
-    arel (4.0.0)
+    arel (4.0.2)
     asset_sync (1.0.0)
       activemodel
       fog (>= 1.8.0)
-    atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    bourbon (3.1.8)
-      sass (>= 3.2.0)
-      thor
     builder (3.1.4)
     bullet (4.6.0)
       uniform_notifier
@@ -162,18 +137,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    columnize (0.3.6)
     countries (0.9.2)
       currencies (>= 0.4.0)
     country_select (1.2.0)
     currencies (0.4.2)
     database_cleaner (1.1.1)
-    debugger (1.6.1)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
     dotenv (0.9.0)
     erubis (2.7.0)
@@ -247,7 +215,7 @@ GEM
     honeybadger (1.8.0)
       json
     httpauth (0.2.0)
-    i18n (0.6.5)
+    i18n (0.6.11)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
     jquery-fileupload-rails (0.4.1)
@@ -256,9 +224,6 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.0.4)
-      jquery-rails
-      railties (>= 3.1.0)
     jquery-validation-rails (1.11.1)
       thor (~> 0.14)
     json (1.8.0)
@@ -279,12 +244,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.2)
-    mime-types (1.25)
+    mime-types (1.25.1)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
     mini_portile (0.5.1)
     minitest (4.7.5)
-    multi_json (1.8.0)
+    multi_json (1.10.1)
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -313,8 +278,6 @@ GEM
     omniauth-google-oauth2 (0.2.1)
       omniauth (~> 1.0)
       omniauth-oauth2
-    omniauth-linkedin (0.1.0)
-      omniauth-oauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -326,9 +289,7 @@ GEM
       omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
     pg (0.16.0)
-    polyamorous (0.6.4)
-      activerecord (>= 3.0)
-    polyglot (0.3.3)
+    polyglot (0.3.5)
     protected_attributes (1.0.3)
       activemodel (>= 4.0.0, < 5.0)
     pry (0.9.12.2)
@@ -347,30 +308,26 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.0.0)
-      actionmailer (= 4.0.0)
-      actionpack (= 4.0.0)
-      activerecord (= 4.0.0)
-      activesupport (= 4.0.0)
+    rails (4.0.9)
+      actionmailer (= 4.0.9)
+      actionpack (= 4.0.9)
+      activerecord (= 4.0.9)
+      activesupport (= 4.0.9)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.0)
-      sprockets-rails (~> 2.0.0)
+      railties (= 4.0.9)
+      sprockets-rails (~> 2.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.1)
     rails_stdout_logging (0.0.2)
-    railties (4.0.0)
-      actionpack (= 4.0.0)
-      activesupport (= 4.0.0)
+    railties (4.0.9)
+      actionpack (= 4.0.9)
+      activesupport (= 4.0.9)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
-    rake (10.1.0)
-    ransack (1.0.0)
-      actionpack (>= 3.0)
-      activerecord (>= 3.0)
-      polyamorous (~> 0.6.0)
+    rake (10.1.1)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.1)
       ffi (>= 0.5.0)
@@ -440,24 +397,23 @@ GEM
       tilt (~> 1.3, >= 1.3.4)
     slop (3.4.6)
     spork (1.0.0rc3)
-    sprockets (2.10.0)
+    sprockets (2.12.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     subexec (0.2.3)
-    thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
+    thor (0.19.1)
+    thread_safe (0.3.4)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.37)
+    tzinfo (0.3.41)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -473,7 +429,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin!
   activerecord-session_store!
   acts-as-messageable
   acts-as-taggable-on
@@ -493,7 +448,6 @@ DEPENDENCIES
   countries
   country_select
   database_cleaner
-  debugger
   devise!
   draper!
   facebook_share
@@ -528,13 +482,12 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
-  omniauth-linkedin
   omniauth-twitter
   pg
   protected_attributes
   public_activity
   rack-cache
-  rails (= 4.0.0)
+  rails
   rails_12factor
   rake (~> 10.1.0)
   redis

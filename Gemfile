@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rake', '~> 10.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails'
 gem "rack-cache"
 
 gem 'unicorn'
@@ -39,10 +39,6 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-linkedin'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'high_voltage'
 gem 'choices'
@@ -63,7 +59,6 @@ gem 'get-version', require: 'get_version'
 gem "gritter", "1.0.3"
 
 # admin pages
-gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',          github: 'justinfrench/formtastic'
 gem 'countries'
@@ -100,7 +95,6 @@ group :development, :test do
   gem 'bullet'
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers'
-  gem 'debugger'
   gem 'factory_girl_rails'
   gem 'fuubar'
   gem 'spork'
