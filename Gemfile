@@ -12,8 +12,6 @@ group :assets do
   gem 'sass-rails'
 end
 
-gem "asset_sync"
-
 gem 'newrelic_rpm'
 
 # Use Uglifier as compressor for JavaScript assets
